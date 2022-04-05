@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Zoo.Common.Api;
@@ -56,14 +57,14 @@ public class ZooController : ControllerBase
         return (routeValues, actionName);
     }
 
-    private static IEnumerable<string> GetRouteParameterNames(RouteAttribute routeAttribute)
+    private static IEnumerable<string> GetRouteParameterNames(IRouteTemplateProvider routeProvider)
     {
-        var routeMatches = RouteParameterRegex.Matches(routeAttribute!.Template);
+        var routeMatches = RouteParameterRegex.Matches(routeProvider.Template!);
         var routeParameters = new List<string>();
         foreach (Match match in routeMatches)
         {
             if (!match.Groups.TryGetValue("name", out var name))
-                throw new ArgumentException("Route parameter name not found", nameof(routeAttribute));
+                throw new ArgumentException("Route parameter name not found", nameof(routeProvider));
 
             routeParameters.Add(name.Value);
         }
@@ -71,22 +72,17 @@ public class ZooController : ControllerBase
         return routeParameters;
     }
 
-    private static IEnumerable<string> GetRouteParameterNames(Type type)
+    private static IEnumerable<string> GetRouteParameterNames(MemberInfo type)
     {
-        var route = type.GetCustomAttribute<RouteAttribute>();
-        if (route is null) return Array.Empty<string>();
+        var routeProvider = type.GetCustomAttributes()
+            .Where(t => t.GetType().IsAssignableTo(typeof(IRouteTemplateProvider)))
+            .Cast<IRouteTemplateProvider>()
+            .FirstOrDefault(x => x.Template is not null);
+        if (routeProvider is null) return Array.Empty<string>();
 
-        return GetRouteParameterNames(route);
+        return GetRouteParameterNames(routeProvider);
     }
     
-    private static IEnumerable<string> GetRouteParameterNames(MethodInfo methodInfo)
-    {
-        var route = methodInfo.GetCustomAttribute<RouteAttribute>();
-        if (route is null) return Array.Empty<string>();
-
-        return GetRouteParameterNames(route);
-    }
-
     protected ResponseMappingBuilder<T0> Map<T0>(OneOf<T0> oneOf)
     {
         return Mapper.Map(oneOf);

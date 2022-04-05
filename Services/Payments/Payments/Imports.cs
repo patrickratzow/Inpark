@@ -6,4 +6,3 @@ global using Zoo.Common.Api;
 global using FluentValidation;
 global using Microsoft.AspNetCore.Http;
 global using Zoo.Payments.Extensions;
-global using Zoo.Payments.Entities;

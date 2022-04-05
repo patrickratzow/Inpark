@@ -1,9 +1,6 @@
-namespace Zoo.Payments.Features.Products;
+using Zoo.Payments.Contracts;
 
-public record ProductNotFound(Guid Id) : INotFoundError
-{
-    public string ErrorMessage => $"No product with the Id {Id} was found";
-}
+namespace Zoo.Payments.Features.Products;
 
 public record GetProductByIdQuery(Guid Id) : IRequest<OneOf<Product, ProductNotFound>>;
 
@@ -22,7 +19,7 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, O
         var product = await _context.Products.FindByKey(request.Id, cancellationToken);
         if (product is null) return new ProductNotFound(request.Id);
 
-        return product;
+        return new Product(product.Id, product.Name);
     }
 }
 
@@ -45,8 +42,7 @@ public partial class GetProductByIdController : ZooController
         _mediator = mediator;
     }
 
-    [HttpGet]
-    [Route("products/{productId:guid}")]
+    [HttpGet("products/{productId:guid}")]
     public async partial Task<ActionResult> GetProductById([FromRoute] Guid productId, 
         CancellationToken cancellationToken)
     {

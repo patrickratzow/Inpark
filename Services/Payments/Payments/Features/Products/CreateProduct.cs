@@ -1,4 +1,5 @@
 using Zoo.Common.Api.SourceGenerator.Attributes.OpenApi;
+using Zoo.Payments.Entities;
 
 namespace Zoo.Payments.Features.Products;
 
@@ -33,8 +34,6 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
         RuleFor(x => x.Name).NotEmpty().MaximumLength(4096);
     }
 }
-
-public record CreateProductRequest(string Name);
 
 [ApiController]
 [MethodGroup(Groups.Products)]

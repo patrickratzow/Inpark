@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Api.SourceGenerator.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainFixture", "Common\DomainFixture\DomainFixture.csproj", "{8A308920-122F-44CD-8666-C95D6955E6AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.Contracts", "Services\Payments\Payments.Contracts\Payments.Contracts.csproj", "{4B0C2F3E-EC19-4D24-89AC-B222CFA9EC2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,7 @@ Global
 		{DFAD58C7-345E-4C15-A3BA-4ABB79CAB077} = {92BEDF8B-445A-472F-9C39-EB7B2834C51C}
 		{5A2ECB29-8FA3-41C1-8141-2C8F9B6A288F} = {92BEDF8B-445A-472F-9C39-EB7B2834C51C}
 		{8A308920-122F-44CD-8666-C95D6955E6AB} = {92BEDF8B-445A-472F-9C39-EB7B2834C51C}
+		{4B0C2F3E-EC19-4D24-89AC-B222CFA9EC2E} = {4F4CE65C-4D91-4A01-A013-74C0A86BE09D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1A279412-1049-4809-9919-D58309F7105D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -70,5 +73,9 @@ Global
 		{8A308920-122F-44CD-8666-C95D6955E6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A308920-122F-44CD-8666-C95D6955E6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A308920-122F-44CD-8666-C95D6955E6AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B0C2F3E-EC19-4D24-89AC-B222CFA9EC2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B0C2F3E-EC19-4D24-89AC-B222CFA9EC2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B0C2F3E-EC19-4D24-89AC-B222CFA9EC2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B0C2F3E-EC19-4D24-89AC-B222CFA9EC2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

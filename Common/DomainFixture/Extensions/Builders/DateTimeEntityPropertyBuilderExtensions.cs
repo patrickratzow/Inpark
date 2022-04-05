@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace DomainFixture;
+﻿namespace DomainFixture;
 
 public static class DateTimeEntityPropertyBuilderExtensions
 {
