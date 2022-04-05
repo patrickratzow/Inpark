@@ -1,7 +1,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Zoo.Payments.Common;
-using Zoo.Payments.Contracts;
+using Zoo.Payments.Entities;
 
 namespace Zoo.Payments;
 
