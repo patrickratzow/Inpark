@@ -1,4 +1,4 @@
-namespace Zoo.Common.Api;
+namespace Zoo.Payments.Common;
 
 public interface IHasDomainEvent
 {

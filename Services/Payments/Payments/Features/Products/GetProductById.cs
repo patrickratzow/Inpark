@@ -1,5 +1,3 @@
-using Zoo.Payments.Entities;
-
 namespace Zoo.Payments.Features.Products;
 
 public record ProductNotFound(Guid Id) : INotFoundError
@@ -18,10 +16,10 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, O
         _context = context;
     }
 
-
-    public async Task<OneOf<Product, ProductNotFound>> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
+    public async Task<OneOf<Product, ProductNotFound>> Handle(GetProductByIdQuery request, 
+        CancellationToken cancellationToken)
     {
-        var product = await _context.Products.FindAsync(request.Id);
+        var product = await _context.Products.FindByKey(request.Id, cancellationToken);
         if (product is null) return new ProductNotFound(request.Id);
 
         return product;
@@ -37,6 +35,7 @@ public class GetProductByIdQueryValidator : AbstractValidator<GetProductByIdQuer
 }
 
 [ApiController]
+[MethodGroup(Groups.Products)]
 public partial class GetProductByIdController : ZooController
 {
     private readonly IMediator _mediator;
@@ -46,12 +45,13 @@ public partial class GetProductByIdController : ZooController
         _mediator = mediator;
     }
 
-    [HttpGet("products/{productId:guid}")]
-    [MethodGroup(Groups.Products)]
-    public async partial Task<ActionResult> GetProductById([FromRoute] Guid productId)
+    [HttpGet]
+    [Route("products/{productId:guid}")]
+    public async partial Task<ActionResult> GetProductById([FromRoute] Guid productId, 
+        CancellationToken cancellationToken)
     {
         var command = new GetProductByIdQuery(productId);
-        var result = await _mediator.Send(command);
+        var result = await _mediator.Send(command, cancellationToken);
 
         return Map(result);
     }

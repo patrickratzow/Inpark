@@ -1,7 +1,7 @@
 using System.Reflection;
-using FluentValidation;
+using System.Runtime.Loader;
 
-namespace Zoo.Common.Api;
+namespace Zoo.Payments.Common;
 
 public static class ValidationService
 {

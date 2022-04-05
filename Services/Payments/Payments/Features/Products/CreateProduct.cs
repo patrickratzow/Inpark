@@ -1,5 +1,4 @@
 using Zoo.Common.Api.SourceGenerator.Attributes.OpenApi;
-using Zoo.Payments.Entities;
 
 namespace Zoo.Payments.Features.Products;
 
@@ -38,6 +37,7 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
 public record CreateProductRequest(string Name);
 
 [ApiController]
+[MethodGroup(Groups.Products)]
 public partial class CreateProductController : ZooController
 {
     private readonly IMediator _mediator;
@@ -48,18 +48,18 @@ public partial class CreateProductController : ZooController
     }
 
     [HttpPost("products")]
-    [MethodGroup(Groups.Products)]
     [SuccessResponse(StatusCodes.Status201Created)]
-    public async partial Task<ActionResult> CreateProduct([FromBody] CreateProductRequest request)
+    public async partial Task<ActionResult> CreateProduct([FromBody] CreateProductRequest request, 
+        CancellationToken cancellationToken)
     {
-        var productId = Guid.NewGuid();
-        var command = new CreateProductCommand(productId, request.Name);
-        var result = await _mediator.Send(command);
+        var id = Guid.NewGuid();
+        var command = new CreateProductCommand(id, request.Name);
+        var result = await _mediator.Send(command, cancellationToken);
 
         return Map(result)
             .When<Unit>(_ =>
             {
-                return CreatedAtAction<GetProductByIdController>(x => x.GetProductById(productId));
+                return CreatedAtAction<GetProductByIdController>(x => x.GetProductById(id, CancellationToken.None));
             });
     }
 }

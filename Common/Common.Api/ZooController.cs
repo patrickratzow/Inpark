@@ -36,38 +36,55 @@ public class ZooController : ControllerBase
     {
         var actionName = methodCallExpression.Method.Name;
         var controllerRouteNames = GetRouteParameterNames(typeof(TController));
-        var actionRouteNames = GetRouteParameterNames(typeof(TController).GetMethod(actionName)!.GetType());
+        var actionMethod = typeof(TController).GetMethod(actionName);
+        var actionRouteNames = GetRouteParameterNames(actionMethod!);
         var routeValues = new Dictionary<string, object>();
-        
-        foreach (var argument in methodCallExpression.Arguments)
-        {
-            if (argument is not MemberExpression memberExpression)
-                throw new ArgumentException("Expression must be a member expression", nameof(argument));
+        var routeNames = controllerRouteNames.Concat(actionRouteNames).ToList();
 
+        for (var i = 0; i < methodCallExpression.Arguments.Count && routeValues.Count < routeNames.Count; i++)
+        {
+            var argument = methodCallExpression.Arguments[i]; 
             var lambda = Expression.Lambda(argument);
             var value = lambda.Compile().DynamicInvoke();
-            var key = memberExpression.Member.Name;
+            // If it's some kind of cancellationToken we couldn't care less :)
+            if (value is CancellationToken) continue;
+            
+            var key = routeNames[i];
             routeValues[key] = value!;
         }
 
         return (routeValues, actionName);
     }
 
-    private static IEnumerable<string> GetRouteParameterNames(Type type)
+    private static IEnumerable<string> GetRouteParameterNames(RouteAttribute routeAttribute)
     {
-        var route = type.GetCustomAttribute<RouteAttribute>();
-        if (route is null) return Array.Empty<string>();
-        var routeMatches = RouteParameterRegex.Matches(route!.Template);
+        var routeMatches = RouteParameterRegex.Matches(routeAttribute!.Template);
         var routeParameters = new List<string>();
         foreach (Match match in routeMatches)
         {
             if (!match.Groups.TryGetValue("name", out var name))
-                throw new ArgumentException("Route parameter name not found", nameof(type));
+                throw new ArgumentException("Route parameter name not found", nameof(routeAttribute));
 
             routeParameters.Add(name.Value);
         }
         
         return routeParameters;
+    }
+
+    private static IEnumerable<string> GetRouteParameterNames(Type type)
+    {
+        var route = type.GetCustomAttribute<RouteAttribute>();
+        if (route is null) return Array.Empty<string>();
+
+        return GetRouteParameterNames(route);
+    }
+    
+    private static IEnumerable<string> GetRouteParameterNames(MethodInfo methodInfo)
+    {
+        var route = methodInfo.GetCustomAttribute<RouteAttribute>();
+        if (route is null) return Array.Empty<string>();
+
+        return GetRouteParameterNames(route);
     }
 
     protected ResponseMappingBuilder<T0> Map<T0>(OneOf<T0> oneOf)

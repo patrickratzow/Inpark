@@ -1,6 +1,6 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Zoo.Payments.Entities;
+using Zoo.Payments.Common;
 
 namespace Zoo.Payments;
 

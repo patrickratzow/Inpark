@@ -38,8 +38,6 @@ public static class DependencyInjection
                 Title = "Zoo - Payments API",
                 Description = "Payments API for Zoo"
             });
-            
-            /*
             options.AddSecurityDefinition("bearer", new()
             {
                 Type = SecuritySchemeType.Http,
@@ -59,7 +57,6 @@ public static class DependencyInjection
                     groupAttribute.Name
                 };
             });
-            */
             options.CustomOperationIds(operation =>
             {
                 if (operation.ActionDescriptor is not ControllerActionDescriptor controllerActionDescriptor)
