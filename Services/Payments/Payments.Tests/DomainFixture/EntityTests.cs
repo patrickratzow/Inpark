@@ -1,6 +1,5 @@
 ﻿using System;
 using DomainFixture;
-using NUnit.Framework;
 using Zoo.Payments.Common;
 using Zoo.Payments.Entities;
 
