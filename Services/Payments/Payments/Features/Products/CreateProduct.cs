@@ -1,5 +1,6 @@
 using Zoo.Common.Api.SourceGenerator.Attributes.OpenApi;
-using Zoo.Payments.Entities;
+using Zoo.Payments.Contracts;
+using Product = Zoo.Payments.Entities.Product;
 
 namespace Zoo.Payments.Features.Products;
 
