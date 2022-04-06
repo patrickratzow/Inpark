@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Zoo App',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -73,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(
@@ -80,19 +81,12 @@ class _MyHomePageState extends State<MyHomePage> {
           style: const TextStyle(
             color: Colors.black,
           ),
-          textAlign: TextAlign.center,
         ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/tiger.jpg'),
-                fit: BoxFit.cover)
-          ),
-            child:Column(
+        child:Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -110,10 +104,57 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
+              'Parker i appen',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 40
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Row(
+                children: [
+                  const SizedBox(width: 20),
+                  Material(
+                    child: Center(
+                      child: Ink(
+                        decoration: const ShapeDecoration(
+                          color: Colors.green,
+                            shape: CircleBorder()
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset('assets/zoo.png'),
+                          iconSize: 100,
+                      ),
+                    ),
+                  )),
+                  const SizedBox(width: 20),
+                  Material(
+                      child: Center(
+                        child: Ink(
+                          decoration: const ShapeDecoration(
+                              color: Colors.green,
+                              shape: CircleBorder()
+                          ),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Image.asset('assets/zoo.png'),
+                            iconSize: 100,
+                          ),
+                        ),
+                      )),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.add_location),
+                    iconSize: 100,
+                  ),
+                ]
+            ),
+            const SizedBox(height: 100),
+            const Text(
               'Welcome to the most awesome zoo app ever',
               style: TextStyle(
-                color: Colors.white,
-                backgroundColor: Colors.black,
+                color: Colors.black,
                 fontSize: 40
               ),
               textAlign: TextAlign.center,
@@ -132,18 +173,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontSize: 50
               ),
             ),
-            Row(
-              children: [
-                 IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.account_box),
-                   iconSize: 50,
-                ),
-                MyStatelessWidget()
-              ]
-            ),
           ],
-        )),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.amber,
