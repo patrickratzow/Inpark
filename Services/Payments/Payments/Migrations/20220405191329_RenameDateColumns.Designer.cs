@@ -12,8 +12,8 @@ using Zoo.Payments;
 namespace Zoo.Payments.Migrations
 {
     [DbContext(typeof(PaymentsDbContext))]
-    [Migration("20220405135310_FixProductsTable")]
-    partial class FixProductsTable
+    [Migration("20220405191329_RenameDateColumns")]
+    partial class RenameDateColumns
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,16 +30,16 @@ namespace Zoo.Payments.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ModificationDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(4096)
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
