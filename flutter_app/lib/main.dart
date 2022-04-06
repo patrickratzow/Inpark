@@ -2,7 +2,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_performance/firebase_performance.dart';
 import 'firebase_options.dart';
 
 // ...
@@ -12,7 +11,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebasePerformance performance = FirebasePerformance.instance;
 
   runApp(const MyApp());
 }
@@ -115,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            const SizedBox(height: 8),
+            const Padding(padding: EdgeInsets.all(4)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -128,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   },
                 ),
-                const SizedBox(width: 16),
+                const Padding(padding: EdgeInsets.all(8)),
                 ElevatedButton(
                   child: const Text('Crash'),
                   onPressed: () => {
