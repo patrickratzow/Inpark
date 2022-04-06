@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "237063156596",
+    "project_id": "zooinator",
+    "storage_bucket": "zooinator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237063156596:android:3b616501ba84d13f26f221",
+        "android_client_info": {
+          "package_name": "dk.zooinator.zoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237063156596-vuo6n9me7ioid4gt4r3lrk7nmu2jaumj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD3h7O3S4bFKdebGB0okmhtocLVFYb6bk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237063156596-vuo6n9me7ioid4gt4r3lrk7nmu2jaumj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
