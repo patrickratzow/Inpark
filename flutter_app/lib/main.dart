@@ -1,6 +1,18 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'firebase_options.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
-void main() {
+// ...
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -101,6 +113,15 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            ElevatedButton(
+              child: const Text('Analytics'),
+              onPressed: () =>
+                  {FirebaseAnalytics.instance.logEvent(name: "hi there")},
+            ),
+            ElevatedButton(
+              child: const Text('Crash'),
+              onPressed: () => {FirebaseCrashlytics.instance.crash()},
             ),
           ],
         ),
