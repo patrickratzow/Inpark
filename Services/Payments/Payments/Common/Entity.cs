@@ -4,8 +4,8 @@ public abstract class Entity : IValidatable, IHasDomainEvent
 {
     private readonly List<DomainEvent> _domainEvents = new();
 
-    public DateTime CreatedAt { get; protected set; }
-    public DateTime UpdatedAt { get; protected set; }
+    public DateTimeOffset CreatedAt { get; protected set; }
+    public DateTimeOffset UpdatedAt { get; protected set; }
     public IReadOnlyList<DomainEvent> DomainEvents => _domainEvents;
     public void AddDomainEvent(DomainEvent domainEvent) { _domainEvents.Add(domainEvent); }
 

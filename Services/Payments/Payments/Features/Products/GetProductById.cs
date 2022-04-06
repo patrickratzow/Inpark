@@ -2,9 +2,9 @@ using Zoo.Payments.Contracts;
 
 namespace Zoo.Payments.Features.Products;
 
-public record GetProductByIdQuery(Guid Id) : IRequest<OneOf<Product, ProductNotFound>>;
+public record GetProductByIdQuery(Guid Id) : IRequest<OneOf<ProductDto, ProductNotFound>>;
 
-public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, OneOf<Product, ProductNotFound>>
+public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, OneOf<ProductDto, ProductNotFound>>
 {
     private readonly PaymentsDbContext _context;
 
@@ -13,13 +13,13 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, O
         _context = context;
     }
 
-    public async Task<OneOf<Product, ProductNotFound>> Handle(GetProductByIdQuery request, 
+    public async Task<OneOf<ProductDto, ProductNotFound>> Handle(GetProductByIdQuery request, 
         CancellationToken cancellationToken)
     {
         var product = await _context.Products.FindByKey(request.Id, cancellationToken);
         if (product is null) return new ProductNotFound(request.Id);
 
-        return new Product(product.Id, product.Name);
+        return new ProductDto(product.Id, product.Name);
     }
 }
 

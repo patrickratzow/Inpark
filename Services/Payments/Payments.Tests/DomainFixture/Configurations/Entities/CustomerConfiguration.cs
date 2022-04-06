@@ -1,9 +1,9 @@
-﻿using DomainFixture;
+using DomainFixture;
 using Zoo.Payments.Entities;
 
-namespace Zoo.Payments.Tests.DomainFixture.Configurations;
+namespace Zoo.Payments.Tests.DomainFixture.Configurations.Entities;
 
-public class ProductConfiguration : FixtureConfiguration<Product>
+public class CustomerConfiguration : FixtureConfiguration<Customer>
 {
     public override void Configure()
     {

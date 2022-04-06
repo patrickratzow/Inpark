@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using FluentValidation;
 using MediatR;
 
-namespace Zoo.Payments.Tests;
+namespace Zoo.Payments.Tests.ImplementationTests;
 
 /// <summary>
 /// The purpose of these tests are to ensure implementations of certain things.
@@ -14,7 +14,7 @@ namespace Zoo.Payments.Tests;
 /// </summary>
 [TestFixture]
 [Category(Categories.Unit)]
-public class ImplementationTests
+public class HandlerTests
 {
     private static readonly Assembly Assembly = typeof(DependencyInjection).Assembly;
 

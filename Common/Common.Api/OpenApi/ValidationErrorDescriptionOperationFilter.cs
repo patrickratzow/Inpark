@@ -10,6 +10,6 @@ public class ValidationErrorDescriptionOperationFilter : IOperationFilter
         var responses = operation.Responses;
         if (!responses.TryGetValue("422", out var validationError)) return;
 
-        validationError.Description = "Array of validation errors";
+        validationError.Description = "Request validation error";
     }
 }
