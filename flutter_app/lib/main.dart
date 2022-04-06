@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'halfcircle.dart';
+import 'entermodal.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,9 +24,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Zoo App!'),
     );
   }
 }
@@ -73,12 +75,24 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            color: Colors.black,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/tiger.jpg'),
+                fit: BoxFit.cover)
+          ),
+            child:Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -96,20 +110,50 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
+              'Welcome to the most awesome zoo app ever',
+              style: TextStyle(
+                color: Colors.white,
+                backgroundColor: Colors.black,
+                fontSize: 40
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 100),
+            const Text(
               'You have pushed the button this many times:',
+              style: TextStyle(
+                backgroundColor: Colors.red
+              ),
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 50
+              ),
+            ),
+            Row(
+              children: [
+                 IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.account_box),
+                   iconSize: 50,
+                ),
+                MyStatelessWidget()
+              ]
             ),
           ],
-        ),
+        )),
       ),
       floatingActionButton: FloatingActionButton(
+        foregroundColor: Colors.amber,
+        backgroundColor: Colors.greenAccent,
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
