@@ -50,16 +50,16 @@ public partial class CreateProductController : ZooController
     [HttpPost("products")]
     [MethodGroup(Groups.Products)]
     [SuccessResponse(StatusCodes.Status201Created)]
-    public async partial Task<ActionResult> CreateProduct([FromBody] CreateProductRequest request)
+    public async partial Task<ActionResult> CreateProduct([FromBody] CreateProductRequest request, 
+        CancellationToken cancellationToken)
     {
         var productId = Guid.NewGuid();
         var command = new CreateProductCommand(productId, request.Name);
-        var result = await _mediator.Send(command);
+        var result = await _mediator.Send(command, cancellationToken);
 
         return Map(result)
-            .When<Unit>(_ =>
-            {
-                return CreatedAtAction<GetProductByIdController>(x => x.GetProductById(productId));
-            });
+            .When<Unit>(_ => 
+                CreatedAtAction<GetProductByIdController>(x => x.GetProductById(productId, CancellationToken.None))
+            );
     }
 }

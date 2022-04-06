@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Zoo.Payments.Common;
 
 namespace Zoo.Payments.Entities;
 

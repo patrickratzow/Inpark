@@ -31,6 +31,7 @@
       <ProjectReference Include="..\..\..\Common\Common.Api.SourceGenerator\Common.Api.SourceGenerator.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
       <ProjectReference Include="..\..\..\Common\Common.Api\Common.Api.csproj" />
       <ProjectReference Include="..\..\..\Common\Common\Common.csproj" />
+      <ProjectReference Include="..\Payments.Contracts\Payments.Contracts.csproj" />
     </ItemGroup>
 
 </Project>
