@@ -2,8 +2,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_performance/firebase_performance.dart';
 import 'firebase_options.dart';
-import 'package:flutter/foundation.dart' show kDebugMode;
 
 // ...
 
@@ -12,6 +12,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebasePerformance performance = FirebasePerformance.instance;
 
   runApp(const MyApp());
 }
@@ -34,9 +35,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Aalborg Zoo'),
     );
   }
 }
@@ -108,21 +109,34 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'You have patted Floppa this many times:',
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            ElevatedButton(
-              child: const Text('Analytics'),
-              onPressed: () =>
-                  {FirebaseAnalytics.instance.logEvent(name: "hi there")},
-            ),
-            ElevatedButton(
-              child: const Text('Crash'),
-              onPressed: () => {FirebaseCrashlytics.instance.crash()},
-            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  child: const Text('Analytics'),
+                  onPressed: () async => {
+                    await FirebaseAnalytics.instance.logEvent(
+                      name: "press_button",
+                      parameters: {"floppa_pressed": '$_counter'},
+                    )
+                  },
+                ),
+                const SizedBox(width: 16),
+                ElevatedButton(
+                  child: const Text('Crash'),
+                  onPressed: () => {
+                    FirebaseCrashlytics.instance.crash(),
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ),
