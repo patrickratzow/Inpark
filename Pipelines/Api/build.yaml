@@ -12,9 +12,9 @@ pool:
 stages:
   - stage: Build
     jobs:
-    - job: BuildJob
+    - job: 'API Build & Test'
       steps:
-      - template: Pipelines/Api/Templates/build-test.yml
+      - template: Templates/build-test.yml
         parameters:
           buildConfiguration: Debug
           projectsFilter: '**/*.csproj'
