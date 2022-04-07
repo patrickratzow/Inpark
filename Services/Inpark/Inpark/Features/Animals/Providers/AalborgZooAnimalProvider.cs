@@ -7,6 +7,9 @@ namespace Zoo.Inpark.Features.Animals.Providers;
 
 public class AalborgZooAnimalProvider : IAnimalProvider
 {
+    const string Query =
+        "{\"area\":{\"areaId\":\"marketing\",\"languageCode\":\"da-DK\",\"currencyCode\":\"DKK\"},\"facets\":[{\"type\":\"CheckboxOr\",\"field\":\"data.properties.category\"}],\"skip\":0,\"take\":1000,\"search\":{\"type\":\"and\",\"queries\":[],\"weighted\":false},\"lookupTemplate\":\"animal\",\"sorting\":[]}";
+
     private readonly IMemoryCache _cache;
     private readonly HttpClient _client;
     private readonly ILogger<AalborgZooAnimalProvider> _logger;
@@ -22,18 +25,17 @@ public class AalborgZooAnimalProvider : IAnimalProvider
     {
         var overview = _cache.GetOrCreateAsync("zoo_animals", async entry =>
         {
-            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5);
-            
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(12);
+
             try
             {
-                var httpContent = new StringContent(
-                    "{\"area\":{\"areaId\":\"marketing\",\"languageCode\":\"da-DK\",\"currencyCode\":\"DKK\"},\"facets\":[{\"type\":\"CheckboxOr\",\"field\":\"data.properties.category\"}],\"skip\":0,\"take\":1000,\"search\":{\"type\":\"and\",\"queries\":[],\"weighted\":false},\"lookupTemplate\":\"animal\",\"sorting\":[]}");
+                var httpContent = new StringContent(Query);
                 httpContent.Headers.ContentType = new("application/json");
                 var response = await _client.PostAsync("Content/GetElementsBySearch", httpContent);
                 response.EnsureSuccessStatusCode();
-                
+
                 var jsonString = await response.Content.ReadAsStringAsync();
-                
+
                 using var json = JsonDocument.Parse(jsonString);
                 var items = json.RootElement.GetProperty("items");
                 var animals = new List<Animal>();
@@ -59,34 +61,36 @@ public class AalborgZooAnimalProvider : IAnimalProvider
 
                     var contents = new List<AnimalContent>();
                     foreach (
-                        var animalArrayContent in 
-                        from itemContentJson in content.EnumerateArray() 
-                        select itemContentJson.GetProperty("content") into animalContentJson
-                        from animalArrayContent in animalContentJson.EnumerateArray() 
-                        from animalContent in animalArrayContent.EnumerateArray() 
+                        var animalArrayContent in
+                        from itemContentJson in content.EnumerateArray()
+                        select itemContentJson.GetProperty("content")
+                        into animalContentJson
+                        from animalArrayContent in animalContentJson.EnumerateArray()
+                        from animalContent in animalArrayContent.EnumerateArray()
                         select animalArrayContent
                     )
                     {
                         var animalContent = animalArrayContent.EnumerateArray().First();
                         var type = animalContent.GetProperty("type").GetString();
-                        var text = type switch {
+                        var text = type switch
+                        {
                             "text" or "headline" => ParseText(animalContent),
                             "header" => ParseHeader(animalContent),
                             "image" => ParseImage(animalContent),
                             _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown animal type")
                         };
-                        
+
                         contents.Add(new(text, type));
                     }
 
                     var animal = new Animal(
                         animalName,
                         category,
-                        image, 
+                        image,
                         url,
                         contents
                     );
-                    
+
                     animals.Add(animal);
                 }
 
@@ -98,7 +102,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
             catch (Exception ex)
             {
                 _logger.LogError("Unable to get overview of animals. Exception: {Exception}", ex);
-                
+
                 return null;
             }
         });
@@ -113,7 +117,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
 
         return text;
     }
-    
+
     private static string ParseHeader(JsonElement content)
     {
         var text = content.GetProperty("header").GetString();
@@ -121,7 +125,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
 
         return text;
     }
-    
+
     private static string ParseImage(JsonElement content)
     {
         var text = content.GetProperty("image").GetString();
@@ -129,7 +133,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
 
         return text;
     }
-    
+
     private static AnimalName ParseAnimalName(JsonElement properties)
     {
         var displayName = properties.GetProperty("nonLatinName").GetString();
