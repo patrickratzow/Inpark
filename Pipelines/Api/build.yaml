@@ -14,7 +14,7 @@ stages:
     jobs:
     - job: BuildJob
       steps:
-      - template: Pipelines/Api/Templates/build-test.yml
+      - template: Templates/build-test.yml
         parameters:
           buildConfiguration: Debug
           projectsFilter: '**/*.csproj'
