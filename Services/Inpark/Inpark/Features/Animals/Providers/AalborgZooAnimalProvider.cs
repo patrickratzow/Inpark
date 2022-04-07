@@ -20,7 +20,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
 
     public ValueTask<AnimalOverview?> GetOverview()
     {
-        var overview = _cache.GetOrCreate("zoo_animals", async entry =>
+        var overview = _cache.GetOrCreateAsync("zoo_animals", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5);
             
@@ -32,12 +32,68 @@ public class AalborgZooAnimalProvider : IAnimalProvider
                 var response = await _client.PostAsync("Content/GetElementsBySearch", httpContent);
                 response.EnsureSuccessStatusCode();
                 
-                var content = await response.Content.ReadAsStringAsync();
-                var animals = JsonSerializer.Deserialize<AnimalOverview>(content, new JsonSerializerOptions
+                var jsonString = await response.Content.ReadAsStringAsync();
+                
+                using var json = JsonDocument.Parse(jsonString);
+                var items = json.RootElement.GetProperty("items");
+                var animals = new List<Animal>();
+                foreach (var itemJson in items.EnumerateArray())
                 {
-                    PropertyNameCaseInsensitive = true
-                });
-                return animals;
+                    var item = itemJson.GetProperty("item");
+                    var properties = item.GetProperty("properties");
+                    var url = item.GetProperty("url").GetString();
+                    var animalName = ParseAnimalName(properties);
+                    var category = properties.GetProperty("category").GetString();
+                    var content = item.GetProperty("content");
+                    var previewImage = properties.GetProperty("image")
+                        .GetProperty("umbracoFile")
+                        .GetProperty("src");
+                    var fullscreenImage = properties.GetProperty("imageFullscreen")
+                        .GetProperty("umbracoFile")
+                        .GetProperty("src");
+                    var baseUrl = "https://cms.aalborg.zoo.dk";
+                    var image = new AnimalImage(
+                        $"{baseUrl}{previewImage}",
+                        $"{baseUrl}{fullscreenImage}"
+                    );
+
+                    var contents = new List<AnimalContent>();
+                    foreach (
+                        var animalArrayContent in 
+                        from itemContentJson in content.EnumerateArray() 
+                        select itemContentJson.GetProperty("content") into animalContentJson
+                        from animalArrayContent in animalContentJson.EnumerateArray() 
+                        from animalContent in animalArrayContent.EnumerateArray() 
+                        select animalArrayContent
+                    )
+                    {
+                        var animalContent = animalArrayContent.EnumerateArray().First();
+                        var type = animalContent.GetProperty("type").GetString();
+                        var text = type switch {
+                            "text" or "headline" => ParseText(animalContent),
+                            "header" => ParseHeader(animalContent),
+                            "image" => ParseImage(animalContent),
+                            _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown animal type")
+                        };
+                        
+                        contents.Add(new(text, type));
+                    }
+
+                    var animal = new Animal(
+                        animalName,
+                        category,
+                        image, 
+                        url,
+                        contents
+                    );
+                    
+                    animals.Add(animal);
+                }
+
+                return new AnimalOverview(
+                    animals,
+                    animals.Select(x => x.Category).Distinct().ToList()
+                );
             }
             catch (Exception ex)
             {
@@ -50,18 +106,35 @@ public class AalborgZooAnimalProvider : IAnimalProvider
         return new(overview);
     }
 
-    public ValueTask<Animal?> GetAnimal(string id)
+    private static string ParseText(JsonElement content)
     {
-        throw new NotImplementedException();
+        var text = content.GetProperty("text").GetString();
+        if (text is null) throw new NullReferenceException("No text found");
+
+        return text;
     }
     
-    public class SearchResult
+    private static string ParseHeader(JsonElement content)
     {
-        public List<SearchItem> Items { get; set; } = new();
-    }
+        var text = content.GetProperty("header").GetString();
+        if (text is null) throw new NullReferenceException("No text found");
 
-    public class SearchItem
+        return text;
+    }
+    
+    private static string ParseImage(JsonElement content)
     {
-        
+        var text = content.GetProperty("image").GetString();
+        if (text is null) throw new NullReferenceException("No text found");
+
+        return text;
+    }
+    
+    private static AnimalName ParseAnimalName(JsonElement properties)
+    {
+        var displayName = properties.GetProperty("nonLatinName").GetString();
+        var latinName = properties.GetProperty("latinName").GetString();
+        var animalName = new AnimalName(displayName!, latinName!);
+        return animalName;
     }
 }

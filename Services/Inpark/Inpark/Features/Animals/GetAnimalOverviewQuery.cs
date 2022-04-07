@@ -16,8 +16,8 @@ public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQu
 
     public async Task<OneOf<AnimalOverview>> Handle(GetAnimalOverviewQuery request, CancellationToken cancellationToken)
     {
-        //var overview = await _animalProvider.GetOverview();
-        //if (overview is null) throw new Exception("null!");
+        var overview = await _animalProvider.GetOverview();
+        if (overview is null) throw new Exception("No animals found");
 
         return new AnimalOverview(
             new List<Animal>()
