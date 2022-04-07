@@ -17,7 +17,7 @@ public class DefaultResponseMapper : IResponseMapper
             _ => GetResult<OkResult, OkObjectResult>(response)
         };
 
-    private IActionResult GetResult<TCodeResult, TObjectResult>(object? data)
+    private static IActionResult GetResult<TCodeResult, TObjectResult>(object? data)
         where TCodeResult : StatusCodeResult
         where TObjectResult : ObjectResult
     {
@@ -26,7 +26,7 @@ public class DefaultResponseMapper : IResponseMapper
             : Activator.CreateInstance(typeof(TObjectResult), data) as IActionResult)!;
     }
 
-    private IActionResult GetGenericResult(object? data, int statusCode)
+    private static IActionResult GetGenericResult(object? data, int statusCode)
     {
         if (data is null) return new StatusCodeResult(statusCode);
         

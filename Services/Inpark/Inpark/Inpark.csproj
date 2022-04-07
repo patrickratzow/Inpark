@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Zoo.Inpark</RootNamespace>
+        <AssemblyName>Zoo.Inpark</AssemblyName>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="10.4.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
+        <PackageReference Include="MediatR" Version="10.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.3" />
+        <PackageReference Include="Polly" Version="7.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Common\Common.Api.SourceGenerator.Attributes\Common.Api.SourceGenerator.Attributes.csproj" />
+        <ProjectReference Include="..\..\..\Common\Common.Api.SourceGenerator\Common.Api.SourceGenerator.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+        <ProjectReference Include="..\..\..\Common\Common.Api\Common.Api.csproj" />
+        <ProjectReference Include="..\..\..\Common\Common\Common.csproj" />
+        <ProjectReference Include="..\Inpark.Contracts\Inpark.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>
