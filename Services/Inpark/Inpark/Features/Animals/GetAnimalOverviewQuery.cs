@@ -16,10 +16,36 @@ public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQu
 
     public async Task<OneOf<AnimalOverview>> Handle(GetAnimalOverviewQuery request, CancellationToken cancellationToken)
     {
-        var overview = await _animalProvider.GetOverview();
-        if (overview is null) throw new Exception("null!");
+        //var overview = await _animalProvider.GetOverview();
+        //if (overview is null) throw new Exception("null!");
 
-        return overview;
+        return new AnimalOverview(
+            new List<Animal>()
+            {
+                new Animal(
+                    new AnimalName("Vaskebjørn", "floppa"),
+                    "Pattedyr",
+                    new AnimalImage(
+                        "https://i.imgur.com/l1gHaaf.jpeg",
+                        "https://i.imgur.com/l1gHaaf.jpeg"
+                    ),
+                    "/vores-dyr/vaskebjørn"
+                ),
+                new Animal(
+                    new AnimalName("Big Floppa", "The Flopster"),
+                    "Pattedyr",
+                    new AnimalImage(
+                        "https://i.imgur.com/l1gHaaf.jpeg",
+                        "https://i.imgur.com/l1gHaaf.jpeg"
+                    ),
+                    "/vores-dyr/floppa"
+                )
+            },
+            new List<string>()
+            {
+                "Pattedyr"
+            }
+        );
     }
 }
 

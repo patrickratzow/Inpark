@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/generated_code/client_index.dart';
+import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 import 'entermodal.dart';
+import 'package:chopper/chopper.dart' as chopper;
 
 class ZooMainView extends StatelessWidget {
   const ZooMainView({Key? key}) : super(key: key);
@@ -51,6 +54,11 @@ class _ZooPageState extends State<ZooMainPage> {
 
   @override
   Widget build(BuildContext context) {
+    void animalList(){
+
+    }
+
+    final zooApi = Zooinator.create(baseUrl: "https://10.0.2.2:5000");
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -70,59 +78,42 @@ class _ZooPageState extends State<ZooMainPage> {
         ),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/tiger.jpg'),
-                    fit: BoxFit.cover)
-            ),
-            child:Column(
-              // Column is also a layout widget. It takes a list of children and
-              // arranges them vertically. By default, it sizes itself to fit its
-              // children horizontally, and tries to be as tall as its parent.
-              //
-              // Invoke "debug painting" (press "p" in the console, choose the
-              // "Toggle Debug Paint" action from the Flutter Inspector in Android
-              // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-              // to see the wireframe for each widget.
-              //
-              // Column has various properties to control how it sizes itself and
-              // how it positions its children. Here we use mainAxisAlignment to
-              // center the children vertically; the main axis here is the vertical
-              // axis because Columns are vertical (the cross axis would be
-              // horizontal).
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'Welcome to the most awesome zoo app ever',
-                  style: TextStyle(
-                      color: Colors.white,
-                      backgroundColor: Colors.black,
-                      fontSize: 40
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 100),
-                Center(
-                  child: Column(
-                    children: [
-                      const Text('Se dyrene',
-                        style: TextStyle(
-                            fontSize: 50,
-                            color: Colors.white),),
-                      IconButton(
-                        onPressed: (){},
-                        icon: const Icon(Icons.account_box_rounded),
-                        iconSize: 100,
-                      ),
-                    ],
-                  )
-                )],
-            )),
-      ),
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child:
+              FutureBuilder<chopper.Response<ZooInparkContractsAnimalOverview>>(
+                  future: zooApi.animalsOverviewGet(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<
+                              chopper.Response<ZooInparkContractsAnimalOverview>>
+                          snapshot) {
+                    if (snapshot.hasData) {
+                      final List<Widget> rows = snapshot.data?.body?.animals?.map((animal) =>
+                          Center(
+                            child:
+                              Column(
+                                children: [
+                                  const Padding(padding: EdgeInsets.all(10)),
+                                  Text(animal.name!.displayName!),
+                                  const Padding(padding: EdgeInsets.all(10)),
+                                  Image.network(
+                                      animal.image!.previewUrl!,
+                                      width: 300,),
+                                ],
+                              )
+                            ,
+                          )
+                      ).toList() as List<Widget>;
+
+                      return ListView(
+                        children: rows
+                      );
+                    }
+
+                    return const Text("oof");
+                  })),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
