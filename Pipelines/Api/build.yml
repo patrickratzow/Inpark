@@ -1,36 +1,22 @@
-parameters:
-- name: buildConfiguration
-  type: string
-  default: Release
-- name: projectsFilter
-  type: string
-- name: testProjectsFilter
-  type: string
-- name: testCategory
-  type: string
-- name: publishToDirectory
-  type: string
-  default: ''
+trigger:
+  branches:
+    include:
+    - '*'
 
-steps:
-- task: DotNetCoreCli@2
-  displayName: Restore
-  inputs:
-    command: restore
-    projects: '${{ parameters.projectsFilter }}'
-    feedsToUse: 'select'
+variables:
+  buildConfiguration: 'Debug'
 
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
-    command: build
-    projects: '${{ parameters.projectsFilter }}'
-    arguments: '--configuration ${{ parameters.buildConfiguration }} --no-restore'
+pool:
+  vmImage: 'ubuntu-latest'
 
-- task: DotNetCoreCLI@2
-  displayName: 'UnitTest'
-  inputs:
-    command: 'test'
-    projects: '${{ parameters.testProjectsFilter }}'
-    arguments: '--logger trx --configuration ${{ parameters.buildConfiguration }} --filter Category=${{ parameters.testCategory }} --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
-    publishTestResults: true
+stages:
+  - stage: Build
+    jobs:
+    - job: BuildJob
+      steps:
+      - template: Pipelines/Api/Templates/build-test.yml
+        parameters:
+          buildConfiguration: Debug
+          projectsFilter: '**/*.csproj'
+          testProjectsFilter: '**/*Tests.csproj'
+          testCategory: 'UnitTest'
