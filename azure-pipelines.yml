@@ -1,14 +1,22 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+  branches:
+    include:
+    - '*'
+
+variables:
+  buildConfiguration: 'Debug'
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: Build
+    jobs:
+    - job: BuildJob
+      steps:
+      - template: Pipelines/Api/Templates/build-test.yml
+        parameters:
+          buildConfiguration: Debug
+          projectsFilter: '**/*.csproj'
+          testProjectsFilter: '**/*Tests.csproj'
+          testCategory: 'UnitTest'
