@@ -8,7 +8,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Animal.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalOverview.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Common/DomainEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Common/Entity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Common/IHasDomainEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Common/IValidatable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Common/ValidationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Common/ValueObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalOverviewQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/AalborgZooAnimalProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/IAnimalProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Groups.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Imports.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AspNetCore/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Contracts/CreateProductRequestConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Contracts/CreateProductRequestConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,12 +72,15 @@
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/21509f74bc9029a4b42d40d7363a0a58c90e2faebb783d391281a32d873fa/ServiceCollectionDescriptorExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d1aac3b6cd62f44c8897851472612c95b5ee545b24a675c4ffb4f2b161faeb93/IMemoryCache.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4fdb7ce693216bf34d4e85b76b03c8589d722ff5dd2b39cf442731e6287c6a1/MemoryCacheExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
@@ -134,6 +162,7 @@
       <workItem from="1649164814888" duration="1711000" />
       <workItem from="1649167005654" duration="5498000" />
       <workItem from="1649237678116" duration="1856000" />
+      <workItem from="1649315975349" duration="5064000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -196,19 +225,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/AspNetCore/Program.cs</url>
-          <line>30</line>
-          <properties documentPath="$PROJECT_DIR$/AspNetCore/Program.cs" initialLine="15" containingFunctionPresentation="">
-            <startOffsets>
-              <option value="870" />
-            </startOffsets>
-            <endOffsets>
-              <option value="871" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs</url>
           <line>127</line>
           <properties documentPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainImplementationTests.cs" initialLine="127" containingFunctionPresentation="method 'ShouldMakeSureThatEveryPropertyIsValidatedForAnEntity'" />
@@ -226,6 +242,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/AalborgZooAnimalProvider.cs</url>
+          <line>34</line>
+          <properties documentPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/AalborgZooAnimalProvider.cs" initialLine="35" containingFunctionPresentation="lambda expression inside method 'GetOverview'">
+            <startOffsets>
+              <option value="1493" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1550" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

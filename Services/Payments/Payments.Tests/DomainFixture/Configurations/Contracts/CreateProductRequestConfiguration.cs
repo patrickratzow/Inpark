@@ -4,7 +4,6 @@ using Zoo.Payments.Contracts.Customers;
 
 namespace Zoo.Payments.Tests.DomainFixture.Configurations.Contracts;
 
-
 public class CreateCustomerRequestConfiguration : FixtureConfiguration<CreateCustomerRequest>
 {
     public override void Configure()
