@@ -4,7 +4,8 @@ public record Animal(
     AnimalName Name,
     string Category,
     AnimalImage Image,
-    string Id
+    string Id,
+    List<AnimalContent> Contents
 );
 
 public record AnimalName(
@@ -16,5 +17,10 @@ public record AnimalImage
 (
     string PreviewUrl,
     string FullscreenUrl
+);
+
+public record AnimalContent(
+    string Text, 
+    string Type
 );
 
