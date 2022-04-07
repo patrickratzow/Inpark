@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'entermodal.dart';
 
-class ZooView extends StatelessWidget {
-  const ZooView({Key? key}) : super(key: key);
+class ZooMainView extends StatelessWidget {
+  const ZooMainView({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -21,21 +21,21 @@ class ZooView extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const ZooPage(title: 'Aalborg Zoo'),
+      home: const ZooMainPage(title: 'Aalborg Zoo'),
     );
   }
 }
 
-class ZooPage extends StatefulWidget {
-  const ZooPage({Key? key, required this.title}) : super(key: key);
+class ZooMainPage extends StatefulWidget {
+  const ZooMainPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<ZooPage> createState() => _ZooPageState();
+  State<ZooMainPage> createState() => _ZooPageState();
 }
 
-class _ZooPageState extends State<ZooPage> {
+class _ZooPageState extends State<ZooMainPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -94,8 +94,8 @@ class _ZooPageState extends State<ZooPage> {
               // axis because Columns are vertical (the cross axis would be
               // horizontal).
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                 Text(
+              children: <Widget>[
+                const Text(
                   'Welcome to the most awesome zoo app ever',
                   style: TextStyle(
                       color: Colors.white,
@@ -104,11 +104,22 @@ class _ZooPageState extends State<ZooPage> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                 SizedBox(height: 100),
-                 Center(
-                    child: MyStatelessWidget(),
-                ),
-              ],
+                const SizedBox(height: 100),
+                Center(
+                  child: Column(
+                    children: [
+                      const Text('Se dyrene',
+                        style: TextStyle(
+                            fontSize: 50,
+                            color: Colors.white),),
+                      IconButton(
+                        onPressed: (){},
+                        icon: const Icon(Icons.account_box_rounded),
+                        iconSize: 100,
+                      ),
+                    ],
+                  )
+                )],
             )),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

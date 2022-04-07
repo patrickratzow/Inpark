@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'halfcircle.dart';
-import 'entermodal.dart';
+import 'package:flutter_app/zooview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Zoo App',
+      initialRoute: "home",
+      routes: {
+        'home': (context) => const MyHomePage(title: "Home Page"),
+        'zooView': (context) => const ZooPage(title: "Zoo"),
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -26,7 +30,6 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Zoo App!'),
     );
   }
 }
@@ -122,7 +125,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             shape: CircleBorder()
                         ),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            //Navigator.pushNamed(context, 'zooView');
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) {
+                                return const ZooPage(title: 'zoo');
+                              })
+                            );
+                          },
                           icon: Image.asset('assets/zoo.png'),
                           iconSize: 100,
                       ),
@@ -187,4 +197,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-

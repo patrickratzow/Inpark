@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/zoomain.dart';
 
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
@@ -38,7 +39,12 @@ class MyStatelessWidget extends StatelessWidget {
                             )
               ),
               child: const Text('Enter'),
-              onPressed: () => Navigator.pop(context),
+              onPressed:
+                  () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return const ZooMainPage(title: 'Aalborg zoo');
+                    })
+                  ),
               ))
                     ],
                   ),
