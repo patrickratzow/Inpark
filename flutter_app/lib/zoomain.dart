@@ -95,7 +95,7 @@ class _ZooPageState extends State<ZooMainPage> {
                                 children: [
                                   const Padding(padding: EdgeInsets.all(10)),
                                   Text(animal.name!.displayName!),
-                                  const Padding(padding: EdgeInsets.all(10)),
+                                  const Padding(padding: EdgeInsets.all(5)),
                                   Image.network(
                                       animal.image!.previewUrl!,
                                       width: 300,),
