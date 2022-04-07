@@ -1,7 +1,18 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/zooview.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'firebase_options.dart';
 
-void main() {
+// ...
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -183,6 +194,28 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontSize: 50
               ),
             ),
+            const Padding(padding: EdgeInsets.all(4)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  child: const Text('Analytics'),
+                  onPressed: () async => {
+                    await FirebaseAnalytics.instance.logEvent(
+                      name: "press_button",
+                      parameters: {"floppa_pressed": '$_counter'},
+                    )
+                  },
+                ),
+                const Padding(padding: EdgeInsets.all(8)),
+                ElevatedButton(
+                  child: const Text('Crash'),
+                  onPressed: () => {
+                    FirebaseCrashlytics.instance.crash(),
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ),
