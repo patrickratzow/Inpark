@@ -19,33 +19,7 @@ public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQu
         var overview = await _animalProvider.GetOverview();
         if (overview is null) throw new Exception("No animals found");
 
-        return new AnimalOverview(
-            new List<Animal>()
-            {
-                new Animal(
-                    new AnimalName("Vaskebjørn", "floppa"),
-                    "Pattedyr",
-                    new AnimalImage(
-                        "https://i.imgur.com/l1gHaaf.jpeg",
-                        "https://i.imgur.com/l1gHaaf.jpeg"
-                    ),
-                    "/vores-dyr/vaskebjørn"
-                ),
-                new Animal(
-                    new AnimalName("Big Floppa", "The Flopster"),
-                    "Pattedyr",
-                    new AnimalImage(
-                        "https://i.imgur.com/l1gHaaf.jpeg",
-                        "https://i.imgur.com/l1gHaaf.jpeg"
-                    ),
-                    "/vores-dyr/floppa"
-                )
-            },
-            new List<string>()
-            {
-                "Pattedyr"
-            }
-        );
+        return overview;
     }
 }
 
