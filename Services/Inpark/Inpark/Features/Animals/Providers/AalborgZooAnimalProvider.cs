@@ -51,7 +51,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
                     var fullscreenImage = properties.GetProperty("imageFullscreen")
                         .GetProperty("umbracoFile")
                         .GetProperty("src");
-                    var baseUrl = "https://cms.aalborg.zoo.dk";
+                    var baseUrl = "https://cms.aalborgzoo.dk";
                     var image = new AnimalImage(
                         $"{baseUrl}{previewImage}",
                         $"{baseUrl}{fullscreenImage}"
