@@ -21,7 +21,7 @@ class ZooView extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const ZooPage(title: 'Aalborg Zoo'),
+      home: const ZooPage(title: 'Aalborg Zoo Dyr'),
     );
   }
 }

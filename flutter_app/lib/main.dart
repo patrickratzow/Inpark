@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/entermodal.dart';
 import 'package:flutter_app/zooview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -169,17 +170,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               shape: CircleBorder()
                           ),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              const MyStatelessWidget();
+                            },
                             icon: Image.asset('assets/zoo.png'),
                             iconSize: 100,
                           ),
                         ),
                       )),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.add_location),
-                    iconSize: 100,
-                  ),
+                  const MyStatelessWidget(),
                 ]
             ),
             const SizedBox(height: 100),

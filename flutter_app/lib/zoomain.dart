@@ -24,7 +24,7 @@ class ZooMainView extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const ZooMainPage(title: 'Aalborg Zoo'),
+      home: const ZooMainPage(title: 'Aalborg Zoo Dyr'),
     );
   }
 }
@@ -67,6 +67,11 @@ class _ZooPageState extends State<ZooMainPage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: (){},
+              icon: const Icon(Icons.search))
+        ],
         centerTitle: true,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -93,21 +98,25 @@ class _ZooPageState extends State<ZooMainPage> {
                             child:
                               Column(
                                 children: [
-                                  const Padding(padding: EdgeInsets.all(10)),
+                                  const Padding(padding: EdgeInsets.all(5)),
                                   Text(animal.name!.displayName!),
                                   const Padding(padding: EdgeInsets.all(5)),
                                   Image.network(
                                       animal.image!.previewUrl!,
                                       width: 300,),
+                                  const Padding(padding: EdgeInsets.all(15))
                                 ],
-                              )
-                            ,
+                              ),
                           )
                       ).toList() as List<Widget>;
 
-                      return ListView(
-                        children: rows
-                      );
+                      return Scrollbar(
+                        isAlwaysShown: true,
+                          hoverThickness: 100,
+                          showTrackOnHover: true,
+                          child: ListView(
+                            children: rows
+                      ));
                     }
 
                     return const Text("oof");
