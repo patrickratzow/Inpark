@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/zoomain.dart';
+import 'package:flutter_app/screens/zoomain.dart';
 
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
@@ -25,64 +25,55 @@ class MyStatelessWidget extends StatelessWidget {
                     top: Radius.circular(25.0),
                   ),
                 ),
-                child: SafeArea(
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        const Text(
-                          'Aalborg Zoo',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontFamily: 'Inter',
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Text(
-                          'Lorem ipsum dolor sit amet, '
-                          'consectetur adipiscing elit. '
-                          'Morbi convallis justo at mi ultricies sollicitudin.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontFamily: 'Inter',
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 60,
-                        ),
-                        Image.asset(
-                          'assets/zoo.png',
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      const Text(
+                        'Aalborg Zoo',
+                        style: TextStyle(
                           color: Colors.white,
-                          scale: 0.6,
+                          fontSize: 30,
+                          fontFamily: 'Inter',
                         ),
-                        const SizedBox(height: 50),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(36.0),
-                              ),
+                      ),
+                      const Text(
+                        'Lorem ipsum dolor sit amet, '
+                        'consectetur adipiscing elit. '
+                        'Morbi convallis justo at mi ultricies sollicitudin.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/zoo.png',
+                        color: Colors.white,
+                        scale: 0.6,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<
+                              RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(36.0),
                             ),
                           ),
-                          child: const Text('Gå til park'),
-                          onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const ZooMainPage(
-                                    title: 'Aalborg Zoo Dyr');
-                              },
-                            ),
+                        ),
+                        child: const Text('Gå til park'),
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const ZooMainPage(
+                                  title: 'Aalborg Zoo Dyr');
+                            },
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               );
