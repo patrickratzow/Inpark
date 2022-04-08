@@ -20,19 +20,20 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyHttpOverrides extends HttpOverrides{
+class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context){
+  HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
 class Routes {
   Map<String, WidgetBuilder> build(BuildContext context) {
-    return  {
-      'home': (context) => const MyHomePage(title: "Home Page"),
-      'zooView': (context) => const ZooPage(title: "Zoo"),
+    return {
+      '/home': (context) => const MyHomePage(title: "Home Page"),
+      '/zooView': (context) => const ZooPage(title: "Zoo"),
     };
   }
 }
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Zoo App',
-      initialRoute: "home",
+      initialRoute: "/home",
       routes: Routes().build(context),
       theme: ThemeData(
         // This is the theme of your application.
@@ -116,10 +117,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: SafeArea(
-        child: Center(
+          child: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child:Column(
+        child: Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -138,77 +139,75 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'Parker i appen',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 40
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 40),
               textAlign: TextAlign.center,
             ),
-            Row(
-                children: [
-                  const SizedBox(width: 20),
-                  Material(
-                    child: Center(
-                      child: Ink(
-                        decoration: const ShapeDecoration(
-                          color: Colors.green,
-                            shape: CircleBorder()
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            //Navigator.pushNamed(context, 'zooView');
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) {
-                                return const ZooPage(title: 'zoo');
-                              })
-                            );
-                          },
-                          icon: Image.asset('assets/zoo.png'),
-                          iconSize: 100,
-                      ),
-                    ),
-                  )),
-                  const SizedBox(width: 20),
-                  Material(
-                      child: Center(
-                        child: Ink(
-                          decoration: const ShapeDecoration(
-                              color: Colors.green,
-                              shape: CircleBorder()
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              const MyStatelessWidget();
-                            },
-                            icon: Image.asset('assets/zoo.png'),
-                            iconSize: 100,
-                          ),
-                        ),
-                      )),
-                  const MyStatelessWidget(),
-                ]
+            Row(children: [
+              const SizedBox(width: 20),
+              Material(
+                  child: Center(
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                      color: Colors.green, shape: CircleBorder()),
+                  child: IconButton(
+                    onPressed: () {
+                      //Navigator.pushNamed(context, 'zooView');
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const ZooPage(title: 'zoo');
+                      }));
+                    },
+                    icon: Image.asset('assets/zoo.png'),
+                    iconSize: 100,
+                  ),
+                ),
+              )),
+              const SizedBox(
+                width: 20,
+              ),
+              Material(
+                  child: Center(
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                    color: Colors.green,
+                    shape: CircleBorder(),
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      const MyStatelessWidget();
+                    },
+                    icon: Image.asset('assets/zoo.png'),
+                    iconSize: 100,
+                  ),
+                ),
+              )),
+              const MyStatelessWidget(),
+            ]),
+            const SizedBox(
+              height: 100,
             ),
-            const SizedBox(height: 100),
             const Text(
               'Welcome to the most awesome zoo app ever',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 40
+                fontSize: 40,
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 100),
+            const SizedBox(
+              height: 100,
+            ),
             const Text(
               'You have pushed the button this many times:',
               style: TextStyle(
-                backgroundColor: Colors.red
+                backgroundColor: Colors.red,
               ),
             ),
             Text(
               '$_counter',
               style: const TextStyle(
                 color: Colors.black,
-                fontSize: 50
+                fontSize: 50,
               ),
             ),
             const Padding(padding: EdgeInsets.all(4)),
