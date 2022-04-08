@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/generated_code/client_index.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
@@ -54,11 +56,10 @@ class _ZooPageState extends State<ZooMainPage> {
 
   @override
   Widget build(BuildContext context) {
-    void animalList(){
-
-    }
-
-    final zooApi = Zooinator.create(baseUrl: "https://10.0.2.2:5000");
+    final zooApi = Zooinator.create(
+        baseUrl: Platform.isAndroid
+            ? "https://10.0.2.2:5000"
+            : "https://localhost:5000");
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -67,11 +68,7 @@ class _ZooPageState extends State<ZooMainPage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: (){},
-              icon: const Icon(Icons.search))
-        ],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
         centerTitle: true,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -90,33 +87,32 @@ class _ZooPageState extends State<ZooMainPage> {
                   future: zooApi.animalsOverviewGet(),
                   builder: (BuildContext context,
                       AsyncSnapshot<
-                              chopper.Response<ZooInparkContractsAnimalOverview>>
+                              chopper
+                                  .Response<ZooInparkContractsAnimalOverview>>
                           snapshot) {
                     if (snapshot.hasData) {
-                      final List<Widget> rows = snapshot.data?.body?.animals?.map((animal) =>
-                          Center(
-                            child:
-                              Column(
-                                children: [
-                                  const Padding(padding: EdgeInsets.all(5)),
-                                  Text(animal.name!.displayName!),
-                                  const Padding(padding: EdgeInsets.all(5)),
-                                  Image.network(
+                      final List<Widget> rows = snapshot.data?.body?.animals
+                          ?.map((animal) => Center(
+                                child: Column(
+                                  children: [
+                                    const Padding(padding: EdgeInsets.all(5)),
+                                    Text(animal.name!.displayName!),
+                                    const Padding(padding: EdgeInsets.all(5)),
+                                    Image.network(
                                       animal.image!.previewUrl!,
-                                      width: 300,),
-                                  const Padding(padding: EdgeInsets.all(15))
-                                ],
-                              ),
-                          )
-                      ).toList() as List<Widget>;
+                                      width: 300,
+                                    ),
+                                    const Padding(padding: EdgeInsets.all(15))
+                                  ],
+                                ),
+                              ))
+                          .toList() as List<Widget>;
 
                       return Scrollbar(
-                        isAlwaysShown: true,
+                          isAlwaysShown: true,
                           hoverThickness: 100,
                           showTrackOnHover: true,
-                          child: ListView(
-                            children: rows
-                      ));
+                          child: ListView(children: rows));
                     }
 
                     return const Text("oof");
@@ -125,4 +121,3 @@ class _ZooPageState extends State<ZooMainPage> {
     );
   }
 }
-
