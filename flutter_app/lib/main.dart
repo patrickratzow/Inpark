@@ -161,13 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: const ShapeDecoration(
                       color: Colors.green, shape: CircleBorder()),
                   child: IconButton(
-                    onPressed: () {
-                      //Navigator.pushNamed(context, 'zooView');
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return const ZooPage(title: 'zoo');
-                      }));
-                    },
+                    onPressed: () => Navigator.pushNamed(context, "/zooView"),
                     icon: Image.asset('assets/zoo.png'),
                     iconSize: 100,
                   ),
@@ -234,7 +228,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   },
                 ),
-                const Padding(padding: EdgeInsets.all(8)),
+                const Padding(
+                  padding: EdgeInsets.all(8),
+                ),
                 ElevatedButton(
                   child: const Text('Crash'),
                   onPressed: () => {
