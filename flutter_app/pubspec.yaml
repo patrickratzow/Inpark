@@ -99,3 +99,36 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter/Inter-Black.ttf
+        - asset: fonts/Inter/Inter-Bold.ttf
+        - asset: fonts/Inter/Inter-ExtraBold.ttf
+        - asset: fonts/Inter/Inter-ExtraLight.ttf
+        - asset: fonts/Inter/Inter-Light.ttf
+        - asset: fonts/Inter/Inter-Medium.ttf
+        - asset: fonts/Inter/Inter-Regular.ttf
+        - asset: fonts/Inter/Inter-SemiBold.ttf
+        - asset: fonts/Inter/Inter-Thin.ttf
+          weight: 700
+    - family: Poppins
+      fonts:
+        - asset: font/Poppins/Poppins-Black.ttf
+        - asset: font/Poppins/Poppins-BlackItalic.ttf
+        - asset: font/Poppins/Poppins-Bold.ttf
+        - asset: font/Poppins/Poppins-BoldItalic.ttf
+        - asset: font/Poppins/Poppins-ExtraBold.ttf
+        - asset: font/Poppins/Poppins-ExtraBoldItalic.ttf
+        - asset: font/Poppins/Poppins-ExtraLight.ttf
+        - asset: font/Poppins/Poppins-ExtraLightItalic.ttf
+        - asset: font/Poppins/Poppins-Italic.ttf
+        - asset: font/Poppins/Poppins-Light.ttf 
+        - asset: font/Poppins/Poppins-LightItalic.ttf
+        - asset: font/Poppins/Poppins-Medium.ttf
+        - asset: font/Poppins/Poppins-MediumItaic.ttf
+        - asset: font/Poppins/Poppins-Regular.ttf
+        - asset: font/Poppins/Poppins-SemiBold.ttf
+        - asset: font/Poppins/Poppins-SemiBoldItalic.ttf
+        - asset: font/Poppins/Poppins-Thin.ttf
+        - asset: font/Poppins/Poppins-ThinItalic.ttf

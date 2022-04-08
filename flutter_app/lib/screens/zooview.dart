@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'entermodal.dart';
+import '../entermodal.dart';
 
 class ZooView extends StatelessWidget {
   const ZooView({Key? key}) : super(key: key);

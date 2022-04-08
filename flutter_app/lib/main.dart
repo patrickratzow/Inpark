@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/entermodal.dart';
-import 'package:flutter_app/zooview.dart';
+import 'package:flutter_app/screens/zooview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:provider/provider.dart';
@@ -127,7 +127,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: Center(
+      body: SafeArea(
+        child: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -228,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           ],
         ),
-      ),
+      )),
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.amber,
         backgroundColor: Colors.greenAccent,

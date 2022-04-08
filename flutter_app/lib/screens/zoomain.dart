@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/generated_code/client_index.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
-import 'entermodal.dart';
+import '../entermodal.dart';
 import 'package:chopper/chopper.dart' as chopper;
 
 class ZooMainView extends StatelessWidget {
@@ -79,15 +79,15 @@ class _ZooPageState extends State<ZooMainPage> {
           ),
         ),
       ),
-      body: Center(
+      body: SafeArea(
+        child:Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child:
               FutureBuilder<chopper.Response<ZooInparkContractsAnimalOverview>>(
                   future: zooApi.animalsOverviewGet(),
                   builder: (BuildContext context,
-                      AsyncSnapshot<
-                              chopper
+                      AsyncSnapshot<chopper
                                   .Response<ZooInparkContractsAnimalOverview>>
                           snapshot) {
                     if (snapshot.hasData) {
@@ -96,11 +96,12 @@ class _ZooPageState extends State<ZooMainPage> {
                                 child: Column(
                                   children: [
                                     const Padding(padding: EdgeInsets.all(5)),
-                                    Text(animal.name!.displayName!),
+                                    Text(animal.name!.displayName!,
+                                      style: TextStyle(fontSize: 20),),
                                     const Padding(padding: EdgeInsets.all(5)),
                                     Image.network(
                                       animal.image!.previewUrl!,
-                                      width: 300,
+                                      width: 350,
                                     ),
                                     const Padding(padding: EdgeInsets.all(15))
                                   ],
@@ -110,7 +111,7 @@ class _ZooPageState extends State<ZooMainPage> {
 
                       return Scrollbar(
                           isAlwaysShown: true,
-                          hoverThickness: 100,
+                          hoverThickness: 300,
                           showTrackOnHover: true,
                           child: ListView(children: rows));
                     }
@@ -118,6 +119,6 @@ class _ZooPageState extends State<ZooMainPage> {
                     return const Text("oof");
                   })),
       // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    ));
   }
 }
