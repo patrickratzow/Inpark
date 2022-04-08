@@ -8,7 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,6 +133,8 @@
       <workItem from="1649164814888" duration="1711000" />
       <workItem from="1649167005654" duration="5498000" />
       <workItem from="1649237678116" duration="1856000" />
+      <workItem from="1649399486100" duration="1854000" />
+      <workItem from="1649402018980" duration="1147000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>

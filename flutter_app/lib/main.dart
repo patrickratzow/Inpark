@@ -28,6 +28,15 @@ class MyHttpOverrides extends HttpOverrides{
   }
 }
 
+class Routes {
+  Map<String, WidgetBuilder> build(BuildContext context) {
+    return  {
+      'home': (context) => const MyHomePage(title: "Home Page"),
+      'zooView': (context) => const ZooPage(title: "Zoo"),
+    };
+  }
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -37,10 +46,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Zoo App',
       initialRoute: "home",
-      routes: {
-        'home': (context) => const MyHomePage(title: "Home Page"),
-        'zooView': (context) => const ZooPage(title: "Zoo"),
-      },
+      routes: Routes().build(context),
       theme: ThemeData(
         // This is the theme of your application.
         //
