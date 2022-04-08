@@ -6,7 +6,10 @@ import 'package:flutter_app/entermodal.dart';
 import 'package:flutter_app/zooview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
+import 'logic/models/animals.dart';
+import 'screens/animals_screen.dart';
 
 // ...
 
@@ -20,19 +23,21 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyHttpOverrides extends HttpOverrides{
+class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context){
+  HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
 class Routes {
   Map<String, WidgetBuilder> build(BuildContext context) {
-    return  {
+    return {
       'home': (context) => const MyHomePage(title: "Home Page"),
       'zooView': (context) => const ZooPage(title: "Zoo"),
+      '/animals': (context) => const AnimalsScreen(),
     };
   }
 }
@@ -43,21 +48,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Zoo App',
-      initialRoute: "home",
-      routes: Routes().build(context),
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.green,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => AnimalsModel(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Zoo App',
+        initialRoute: "home",
+        routes: Routes().build(context),
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.green,
+        ),
       ),
     );
   }
@@ -118,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child:Column(
+        child: Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -137,78 +149,60 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'Parker i appen',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 40
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 40),
               textAlign: TextAlign.center,
             ),
-            Row(
-                children: [
-                  const SizedBox(width: 20),
-                  Material(
-                    child: Center(
-                      child: Ink(
-                        decoration: const ShapeDecoration(
-                          color: Colors.green,
-                            shape: CircleBorder()
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            //Navigator.pushNamed(context, 'zooView');
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) {
-                                return const ZooPage(title: 'zoo');
-                              })
-                            );
-                          },
-                          icon: Image.asset('assets/zoo.png'),
-                          iconSize: 100,
-                      ),
-                    ),
-                  )),
-                  const SizedBox(width: 20),
-                  Material(
-                      child: Center(
-                        child: Ink(
-                          decoration: const ShapeDecoration(
-                              color: Colors.green,
-                              shape: CircleBorder()
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              const MyStatelessWidget();
-                            },
-                            icon: Image.asset('assets/zoo.png'),
-                            iconSize: 100,
-                          ),
-                        ),
-                      )),
-                  const MyStatelessWidget(),
-                ]
-            ),
+            Row(children: [
+              const SizedBox(width: 20),
+              Material(
+                  child: Center(
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                      color: Colors.green, shape: CircleBorder()),
+                  child: IconButton(
+                    onPressed: () {
+                      //Navigator.pushNamed(context, 'zooView');
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const ZooPage(title: 'zoo');
+                      }));
+                    },
+                    icon: Image.asset('assets/zoo.png'),
+                    iconSize: 100,
+                  ),
+                ),
+              )),
+              const SizedBox(width: 20),
+              Material(
+                  child: Center(
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                      color: Colors.green, shape: CircleBorder()),
+                  child: IconButton(
+                    onPressed: () {
+                      const MyStatelessWidget();
+                    },
+                    icon: Image.asset('assets/zoo.png'),
+                    iconSize: 100,
+                  ),
+                ),
+              )),
+              const MyStatelessWidget(),
+            ]),
             const SizedBox(height: 100),
             const Text(
               'Welcome to the most awesome zoo app ever',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 40
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 40),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 100),
             const Text(
               'You have pushed the button this many times:',
-              style: TextStyle(
-                backgroundColor: Colors.red
-              ),
+              style: TextStyle(backgroundColor: Colors.red),
             ),
             Text(
               '$_counter',
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 50
-              ),
+              style: const TextStyle(color: Colors.black, fontSize: 50),
             ),
             const Padding(padding: EdgeInsets.all(4)),
             Row(
