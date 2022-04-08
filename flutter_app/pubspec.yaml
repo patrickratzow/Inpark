@@ -126,7 +126,7 @@ flutter:
         - asset: fonts/Poppins/Poppins-Light.ttf
         - asset: fonts/Poppins/Poppins-LightItalic.ttf
         - asset: fonts/Poppins/Poppins-Medium.ttf
-        - asset: fonts/Poppins/Poppins-MediumItaic.ttf
+        - asset: fonts/Poppins/Poppins-MediumItalic.ttf
         - asset: fonts/Poppins/Poppins-Regular.ttf
         - asset: fonts/Poppins/Poppins-SemiBold.ttf
         - asset: fonts/Poppins/Poppins-SemiBoldItalic.ttf
