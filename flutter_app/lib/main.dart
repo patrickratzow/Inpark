@@ -185,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   child: IconButton(
                     onPressed: () {
-                      const MyStatelessWidget();
+                      Navigator.pushNamed(context, '/animals');
                     },
                     icon: Image.asset('assets/zoo.png'),
                     iconSize: 100,
