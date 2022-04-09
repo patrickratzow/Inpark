@@ -5,3 +5,5 @@ targets:
         options:
           input_folder: 'lib/swagger'
           output_folder: 'lib/generated_code/'
+          use_path_for_request_names: false
+          cut_from_model_names: ZooInparkContracts

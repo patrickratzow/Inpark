@@ -67,40 +67,42 @@ class _ZooPageState extends State<ZooMainPage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
-        centerTitle: true,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(
-          widget.title,
-          style: const TextStyle(
-            color: Colors.black,
+        appBar: AppBar(
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.search))
+          ],
+          centerTitle: true,
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(
+            widget.title,
+            style: const TextStyle(
+              color: Colors.black,
+            ),
           ),
         ),
-      ),
-      body: SafeArea(
-        child:Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          child:
-              FutureBuilder<chopper.Response<ZooInparkContractsAnimalOverview>>(
-                  future: zooApi.animalsOverviewGet(),
+        body: SafeArea(
+          child: Center(
+              // Center is a layout widget. It takes a single child and positions it
+              // in the middle of the parent.
+              child: FutureBuilder<chopper.Response<AnimalOverview>>(
+                  future: zooApi.getAnimalOverview(),
                   builder: (BuildContext context,
-                      AsyncSnapshot<chopper
-                                  .Response<ZooInparkContractsAnimalOverview>>
+                      AsyncSnapshot<chopper.Response<AnimalOverview>>
                           snapshot) {
                     if (snapshot.hasData) {
                       final List<Widget> rows = snapshot.data?.body?.animals
-                          ?.map((animal) => Center(
+                          .map((animal) => Center(
                                 child: Column(
                                   children: [
                                     const Padding(padding: EdgeInsets.all(5)),
-                                    Text(animal.name!.displayName!,
-                                      style: TextStyle(fontSize: 20),),
+                                    Text(
+                                      animal.name.displayName,
+                                      style: TextStyle(fontSize: 20),
+                                    ),
                                     const Padding(padding: EdgeInsets.all(5)),
                                     Image.network(
-                                      animal.image!.previewUrl!,
+                                      animal.image.previewUrl,
                                       width: 350,
                                     ),
                                     const Padding(padding: EdgeInsets.all(15))
@@ -118,7 +120,7 @@ class _ZooPageState extends State<ZooMainPage> {
 
                     return const Text("oof");
                   })),
-      // This trailing comma makes auto-formatting nicer for build methods.
-    ));
+          // This trailing comma makes auto-formatting nicer for build methods.
+        ));
   }
 }

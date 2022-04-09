@@ -60,7 +60,9 @@ builder.Services.AddSwaggerGen(options =>
         if (operation.ActionDescriptor is not ControllerActionDescriptor controllerActionDescriptor)
             throw new InvalidOperationException("ActionDescriptor does not originate from a controller");
 
-        return controllerActionDescriptor.ActionName;
+        var name = controllerActionDescriptor.ActionName;
+
+        return $"{name[..1].ToLower()}{name[1..]}";
     });
         
     options.UseZooOptions();

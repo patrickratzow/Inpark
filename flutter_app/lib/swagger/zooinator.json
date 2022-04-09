@@ -11,7 +11,7 @@
         "tags": [
           "Animals"
         ],
-        "operationId": "GetAnimalOverview",
+        "operationId": "getAnimalOverview",
         "responses": {
           "200": {
             "description": "Success",
@@ -70,7 +70,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "CreateCustomer",
+        "operationId": "createCustomer",
         "requestBody": {
           "content": {
             "application/json": {
@@ -144,7 +144,7 @@
         "tags": [
           "Products"
         ],
-        "operationId": "CreateProduct",
+        "operationId": "createProduct",
         "requestBody": {
           "content": {
             "application/json": {
@@ -218,7 +218,7 @@
         "tags": [
           "Products"
         ],
-        "operationId": "GetProductById",
+        "operationId": "getProductById",
         "parameters": [
           {
             "name": "productId",
@@ -307,6 +307,9 @@
   "components": {
     "schemas": {
       "Zoo.Common.GenericError": {
+        "required": [
+          "errorMessage"
+        ],
         "type": "object",
         "properties": {
           "errorMessage": {
@@ -317,6 +320,13 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.Animal": {
+        "required": [
+          "category",
+          "contents",
+          "id",
+          "image",
+          "name"
+        ],
         "type": "object",
         "properties": {
           "name": {
@@ -338,11 +348,37 @@
           },
           "id": {
             "type": "string"
+          },
+          "contents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalContent"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.AnimalContent": {
+        "required": [
+          "text",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.AnimalImage": {
+        "required": [
+          "fullscreenUrl",
+          "previewUrl"
+        ],
         "type": "object",
         "properties": {
           "previewUrl": {
@@ -355,6 +391,10 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.AnimalName": {
+        "required": [
+          "displayName",
+          "latinName"
+        ],
         "type": "object",
         "properties": {
           "displayName": {
@@ -367,6 +407,10 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.AnimalOverview": {
+        "required": [
+          "animals",
+          "categories"
+        ],
         "type": "object",
         "properties": {
           "animals": {
@@ -385,6 +429,9 @@
         "additionalProperties": false
       },
       "Zoo.Payments.Contracts.CreateProductRequest": {
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
           "name": {
@@ -394,6 +441,10 @@
         "additionalProperties": false
       },
       "Zoo.Payments.Contracts.Customers.CreateCustomerRequest": {
+        "required": [
+          "email",
+          "name"
+        ],
         "type": "object",
         "properties": {
           "name": {
@@ -406,6 +457,10 @@
         "additionalProperties": false
       },
       "Zoo.Payments.Contracts.ProductDto": {
+        "required": [
+          "id",
+          "name"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -419,6 +474,10 @@
         "additionalProperties": false
       },
       "Zoo.Payments.Contracts.ProductNotFound": {
+        "required": [
+          "errorMessage",
+          "id"
+        ],
         "type": "object",
         "properties": {
           "id": {
