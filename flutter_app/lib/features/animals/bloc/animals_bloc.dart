@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_app/common/ioc.dart';
 import 'package:flutter_app/features/animals/models/animals_model.dart';
 import 'package:flutter_app/features/animals/repositories/animals_repository.dart';
 
@@ -8,7 +9,7 @@ part 'animals_state.dart';
 
 class AnimalsBloc extends Bloc<AnimalsEvent, AnimalsState> {
   AnimalsBloc() : super(AnimalsInitial()) {
-    final animalsRepository = AnimalsRepository();
+    final animalsRepository = locator.get<AnimalsRepository>();
 
     on<GetAnimals>((event, emit) async {
       try {
