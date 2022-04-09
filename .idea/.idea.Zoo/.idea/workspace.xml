@@ -8,32 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="chore: add .idea files">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/common/ioc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/common/result.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/bloc/animals_bloc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/bloc/animals_event.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/bloc/animals_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ioc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/animals_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/repositories/animals_repository.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal_card.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal_overview_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AspNetCore/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/NSwagTypesSchemaFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/RequiredPropertiesSchemaFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/SwaggerGenOptionsExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/SwaggerGenOptionsExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/build.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/build.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/logic/api_client.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/logic/models/animals.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/screens/animals_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/screens/zoomain.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/screens/zoomain.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="chore: add .idea files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

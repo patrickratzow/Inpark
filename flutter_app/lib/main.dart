@@ -4,6 +4,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/entermodal.dart';
 import 'package:flutter_app/features/animals/ui/animal_overview_screen.dart';
+import 'package:flutter_app/features/animals/ui/animal_screen.dart';
 import 'package:flutter_app/screens/zooview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -39,6 +40,7 @@ class Routes {
       '/home': (context) => const MyHomePage(title: "Home Page"),
       '/zooView': (context) => const ZooPage(title: "Zoo"),
       '/animals': (context) => const AnimalOverviewScreen(),
+      '/animals/id': (context) => const AnimalScreen(),
     };
   }
 }

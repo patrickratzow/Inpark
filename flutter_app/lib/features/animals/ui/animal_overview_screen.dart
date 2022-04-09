@@ -13,7 +13,7 @@ class AnimalOverviewScreen extends StatelessWidget {
       create: (context) => AnimalsBloc()..add(GetAnimals()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Animals"),
+          title: const Text("Dyr"),
         ),
         body: BlocBuilder<AnimalsBloc, AnimalsState>(
           builder: (context, state) {
@@ -33,7 +33,15 @@ class AnimalOverviewScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final animal = state.animalsModel.animals[index];
 
-                  return AnimalCard(animal: animal);
+                  return TextButton(
+                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                    onPressed: () => Navigator.pushNamed(
+                      context,
+                      "/animals/id",
+                      arguments: animal,
+                    ),
+                    child: AnimalCard(animal: animal),
+                  );
                 },
               );
             }
