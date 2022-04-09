@@ -25,5 +25,17 @@ class AnimalsBloc extends Bloc<AnimalsEvent, AnimalsState> {
         emit(AnimalsError(ex.toString()));
       }
     });
+
+    on<UpdateSearch>((event, emit) async {
+      var animalsResult = await animalsRepository.fetchAnimals();
+
+      if (animalsResult.isSuccess) {
+        var model = animalsResult.success!;
+        model.search = event.search;
+        emit(AnimalsLoaded(model));
+      } else {
+        emit(AnimalsError(animalsResult.error!));
+      }
+    });
   }
 }

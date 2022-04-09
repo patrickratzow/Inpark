@@ -4,36 +4,44 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'animal_card.dart';
 
-class AnimalOverviewScreen extends StatelessWidget {
+class AnimalOverviewScreen extends StatefulWidget {
   const AnimalOverviewScreen({Key? key}) : super(key: key);
 
   @override
+  State<AnimalOverviewScreen> createState() => _AnimalOverviewScreenState();
+}
+
+class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<AnimalsBloc>(context).add(GetAnimals());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AnimalsBloc()..add(GetAnimals()),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Dyr"),
-        ),
-        body: BlocBuilder<AnimalsBloc, AnimalsState>(
-          builder: (context, state) {
-            if (state is AnimalsLoading) {
-              return _loadingIndicator();
-            }
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Dyr i parken"),
+      ),
+      body: BlocBuilder<AnimalsBloc, AnimalsState>(
+        builder: (context, state) {
+          if (state is AnimalsLoading) {
+            return _loadingIndicator();
+          }
 
-            if (state is AnimalsError) {
-              return Center(
-                child: Text(state.message),
-              );
-            }
+          if (state is AnimalsError) {
+            return Center(
+              child: Text(state.message),
+            );
+          }
 
-            if (state is AnimalsLoaded) {
-              return ListView.builder(
-                itemCount: state.animalsModel.animals.length,
-                itemBuilder: (context, index) {
-                  final animal = state.animalsModel.animals[index];
-
-                  return TextButton(
+          if (state is AnimalsLoaded) {
+            return ListView(
+              children: [
+                buildSearch(context),
+                ...state.animalsModel.animals.map(
+                  (animal) => TextButton(
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
                     onPressed: () => Navigator.pushNamed(
                       context,
@@ -41,15 +49,45 @@ class AnimalOverviewScreen extends StatelessWidget {
                       arguments: animal,
                     ),
                     child: AnimalCard(animal: animal),
-                  );
-                },
-              );
-            }
+                  ),
+                ),
+              ],
+            );
+          }
 
-            return _loadingIndicator();
-          },
-        ),
+          return _loadingIndicator();
+        },
       ),
+    );
+  }
+
+  Widget buildSearch(BuildContext context) {
+    return BlocBuilder<AnimalsBloc, AnimalsState>(
+      buildWhen: (previous, current) {
+        return false;
+      },
+      builder: (context, state) {
+        if (state is AnimalsLoaded) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              initialValue: state.animalsModel.search,
+              onChanged: (text) {
+                BlocProvider.of<AnimalsBloc>(context).add(UpdateSearch(text));
+              },
+              decoration: InputDecoration(
+                hintText: 'Søg efter dyr',
+                hintStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ),
+          );
+        }
+        return Container();
+      },
     );
   }
 
