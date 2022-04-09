@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 
@@ -21,8 +22,14 @@ class AnimalCard extends StatelessWidget {
         children: [
           Hero(
             tag: "animal-${animal.id}",
-            child: Image.network(
-              animal.image.previewUrl,
+            child: CachedNetworkImage(
+              imageUrl: animal.image.previewUrl,
+              placeholder: (context, url) {
+                return const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: CircularProgressIndicator(),
+                );
+              },
             ),
           ),
           ListTile(
@@ -30,10 +37,17 @@ class AnimalCard extends StatelessWidget {
               animal.name.displayName.trim(),
               style: const TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w900,
+                color: Color.fromARGB(255, 59, 91, 59),
               ),
             ),
-            subtitle: Text(animal.name.latinName),
+            subtitle: Text(
+              animal.name.latinName,
+              style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                color: Color.fromARGB(255, 59, 91, 59),
+              ),
+            ),
           ),
         ],
       ),

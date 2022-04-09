@@ -1,6 +1,6 @@
 import 'package:flutter_app/common/ioc.dart';
 import 'package:flutter_app/common/result.dart';
-import 'package:flutter_app/generated_code/client_index.dart';
+import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 
 import '../models/animals_model.dart';
 

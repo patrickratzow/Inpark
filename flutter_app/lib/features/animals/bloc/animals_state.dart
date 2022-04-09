@@ -15,6 +15,9 @@ class AnimalsLoaded extends AnimalsState {
   final AnimalsModel animalsModel;
 
   const AnimalsLoaded(this.animalsModel);
+
+  @override
+  List<Object> get props => [animalsModel];
 }
 
 class AnimalsError extends AnimalsState {

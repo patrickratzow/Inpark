@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/common/ui/fullscreen_image.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 
 class AnimalScreen extends StatelessWidget {
@@ -18,8 +20,22 @@ class AnimalScreen extends StatelessWidget {
         children: [
           Hero(
             tag: "animal-${animal.id}",
-            child: Image.network(
-              animal.image.previewUrl,
+            child: GestureDetector(
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FullScreenImage(
+                      imageUrl: animal.image.fullscreenUrl,
+                      tag: "animal-${animal.id}",
+                      title: animal.name.displayName,
+                    ),
+                  ),
+                ),
+              },
+              child: CachedNetworkImage(
+                imageUrl: animal.image.previewUrl,
+              ),
             ),
           ),
           ListTile(
@@ -27,21 +43,25 @@ class AnimalScreen extends StatelessWidget {
               animal.name.displayName.trim(),
               style: const TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w900,
+                color: Color.fromARGB(255, 59, 91, 59),
               ),
             ),
-            subtitle: Text(animal.name.latinName),
+            subtitle: Text(
+              animal.name.latinName,
+              style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                color: Color.fromARGB(255, 59, 91, 59),
+              ),
+            ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: Column(
-              children: animal.contents
-                  .skip(1)
-                  .map(
-                    (content) => Text(content.text),
-                  )
-                  .toList(),
-            ),
+                children: animal.contents
+                    .skip(1)
+                    .map((content) => Text(content.text))
+                    .toList()),
           ),
         ],
       ),
