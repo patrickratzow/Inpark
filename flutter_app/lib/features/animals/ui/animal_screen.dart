@@ -60,7 +60,7 @@ class AnimalScreen extends StatelessWidget {
             child: Column(
                 children: animal.contents
                     .skip(1)
-                    .map((content) => Text(content.text))
+                    .map((content) => Text(content.value))
                     .toList()),
           ),
         ],
