@@ -22,6 +22,12 @@ class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          )
+        ],
         title: const Text("Dyr i parken"),
       ),
       body: BlocBuilder<AnimalsBloc, AnimalsState>(
@@ -77,7 +83,7 @@ class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
               onChanged: (text) {
                 BlocProvider.of<AnimalsBloc>(context).add(UpdateSearch(text));
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Søg efter dyr',
                 hintStyle: TextStyle(
                   color: Colors.black,
