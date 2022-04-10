@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Zoo.Common.Api.Pipelines;
 
 namespace Zoo.Payments;
 
@@ -27,6 +28,7 @@ public static class DependencyInjection
         });
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddPipelines();
 
         services.AddResponseMapper();
     }

@@ -1,13 +1,11 @@
 ﻿namespace Zoo.Common;
 
-public class GenericError : IError
+public sealed class GenericError : IError
 {
-    private readonly string? _errorMessage;
+    public string ErrorMessage { get; }
 
-    public GenericError(string? errorMessage)
+    public GenericError(string errorMessage)
     {
-        _errorMessage = errorMessage;
+        ErrorMessage = errorMessage;
     }
-
-    public string? ErrorMessage => _errorMessage ?? "An error occured";
 }

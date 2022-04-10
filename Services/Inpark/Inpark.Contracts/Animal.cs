@@ -5,5 +5,5 @@ public record Animal(
     string Category,
     AnimalImage Image,
     string Id,
-    List<AnimalContent> Contents
+    List<ContentDto> Contents
 );

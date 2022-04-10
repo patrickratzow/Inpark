@@ -1,6 +1,6 @@
 using Zoo.Inpark.Contracts;
 
-namespace Zoo.Inpark.Features.Animals.Providers;
+namespace Zoo.Inpark.Services;
 
 public interface IAnimalProvider
 {
