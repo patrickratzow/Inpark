@@ -1,24 +1,30 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Zoo.Inpark.Contracts;
+using Zoo.Inpark.Models;
+using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark.Features.Animals.Providers;
 
 public class AalborgZooAnimalProvider : IAnimalProvider
 {
-    const string Query =
+    private const string Query =
         "{\"area\":{\"areaId\":\"marketing\",\"languageCode\":\"da-DK\",\"currencyCode\":\"DKK\"},\"facets\":[{\"type\":\"CheckboxOr\",\"field\":\"data.properties.category\"}],\"skip\":0,\"take\":1000,\"search\":{\"type\":\"and\",\"queries\":[],\"weighted\":false},\"lookupTemplate\":\"animal\",\"sorting\":[]}";
 
     private readonly IMemoryCache _cache;
     private readonly HttpClient _client;
+    private readonly IHtmlTransformer _htmlTransformer;
     private readonly ILogger<AalborgZooAnimalProvider> _logger;
 
-    public AalborgZooAnimalProvider(IMemoryCache cache, HttpClient client, ILogger<AalborgZooAnimalProvider> logger)
+    public AalborgZooAnimalProvider(IMemoryCache cache, HttpClient client, ILogger<AalborgZooAnimalProvider> logger, 
+        IHtmlTransformer htmlTransformer)
     {
         _cache = cache;
         _client = client;
         _logger = logger;
+        _htmlTransformer = htmlTransformer;
     }
 
     public ValueTask<AnimalOverview?> GetOverview()
@@ -72,32 +78,41 @@ public class AalborgZooAnimalProvider : IAnimalProvider
                     {
                         var animalContent = animalArrayContent.EnumerateArray().First();
                         var type = animalContent.GetProperty("type").GetString();
-                        var text = type switch
+                        var contentObject = type switch
                         {
-                            "text" or "headline" => ParseText(animalContent),
-                            "header" => ParseHeader(animalContent),
-                            "image" => ParseImage(animalContent),
+                            "text" or "headline" => GetContentValue(animalContent, type),
+                            "header" => GetContentValue(animalContent, type, "header"),
+                            "image" => GetContentValue(animalContent, type, "image"),
                             _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown animal type")
                         };
-
-                        contents.Add(new(text, type));
+                        var parsedContent = ParseContent(contentObject);
+                        
+                        contents.Add(parsedContent);
                     }
 
                     var animal = new Animal(
                         animalName,
-                        category,
+                        category!,
                         image,
-                        url,
-                        contents
+                        url!,
+                        contents.Select(x => new ContentDto(
+                            x.Value, 
+                            x.Type, 
+                            new()
+                        )).ToList()
                     );
 
                     animals.Add(animal);
                 }
 
-                return new AnimalOverview(
+                var overview = new AnimalOverview(
                     animals,
                     animals.Select(x => x.Category).Distinct().ToList()
                 );
+
+                overview = TransformOverview(overview);
+
+                return overview;
             }
             catch (Exception ex)
             {
@@ -106,32 +121,18 @@ public class AalborgZooAnimalProvider : IAnimalProvider
                 return null;
             }
         });
+        
+        _cache.Remove("zoo_animals");
 
         return new(overview);
     }
 
-    private static string ParseText(JsonElement content)
+    private static AnimalContent GetContentValue(JsonElement content, string type, string propertyName = "text")
     {
-        var text = content.GetProperty("text").GetString();
-        if (text is null) throw new NullReferenceException("No text found");
+        var text = content.GetProperty(propertyName).GetString();
+        if (text is null) throw new NullReferenceException("No property found");
 
-        return text;
-    }
-
-    private static string ParseHeader(JsonElement content)
-    {
-        var text = content.GetProperty("header").GetString();
-        if (text is null) throw new NullReferenceException("No text found");
-
-        return text;
-    }
-
-    private static string ParseImage(JsonElement content)
-    {
-        var text = content.GetProperty("image").GetString();
-        if (text is null) throw new NullReferenceException("No text found");
-
-        return text;
+        return new(text, type);
     }
 
     private static AnimalName ParseAnimalName(JsonElement properties)
@@ -139,6 +140,50 @@ public class AalborgZooAnimalProvider : IAnimalProvider
         var displayName = properties.GetProperty("nonLatinName").GetString();
         var latinName = properties.GetProperty("latinName").GetString();
         var animalName = new AnimalName(displayName!, latinName!);
+        
         return animalName;
+    }
+
+    private AnimalOverview TransformOverview(AnimalOverview overview)
+    {
+        overview = RemoveTitleFromContents(overview);
+        
+        return overview;
+    }
+
+    private static AnimalOverview RemoveTitleFromContents(AnimalOverview overview) 
+        => overview with
+        {
+            Animals = overview.Animals
+                .Select(animal => animal with
+                {
+                    Contents = animal.Contents.Skip(1).ToList()
+                })
+                .ToList()
+        };
+    
+    // First part is just the title
+    private AnimalContent ParseContent(AnimalContent content)
+    {
+        _logger.LogInformation("Content {Content}", content);
+
+        return content.Type switch
+        {
+            ContentType.Text or ContentType.HeadLine => ParseText(content),
+            ContentType.Image => ParseText(content),
+            ContentType.Header => ParseText(content),
+            _ => throw new ArgumentOutOfRangeException(nameof(content), content, null)
+        };
+    }
+
+    private AnimalContent ParseText(AnimalContent content)
+    {
+        if (content.Value is not string str) throw new InvalidOperationException($"Value must be a string");
+        
+        var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
+        var isHtml = regex.IsMatch(str);
+        if (!isHtml) return new(str, content.Type);
+
+        return new(str.Replace("<p>", "xd"), content.Type);
     }
 }

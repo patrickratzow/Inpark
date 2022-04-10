@@ -16,6 +16,7 @@
     <ItemGroup>
         <PackageReference Include="FluentValidation" Version="10.4.0" />
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
         <PackageReference Include="MediatR" Version="10.0.1" />
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
         <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
@@ -31,6 +32,10 @@
         <ProjectReference Include="..\..\..\Common\Common.Api\Common.Api.csproj" />
         <ProjectReference Include="..\..\..\Common\Common\Common.csproj" />
         <ProjectReference Include="..\Inpark.Contracts\Inpark.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Entities" />
     </ItemGroup>
 
 </Project>

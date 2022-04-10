@@ -1,5 +1,6 @@
 using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Features.Animals.Providers;
+using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark.Features.Animals;
 
@@ -18,7 +19,7 @@ public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQu
     {
         var overview = await _animalProvider.GetOverview();
         if (overview is null) throw new Exception("No animals found");
-
+        
         return overview;
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using Polly;
 using Polly.Extensions.Http;
 using Zoo.Inpark.Features.Animals.Providers;
+using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark;
 
@@ -21,6 +22,7 @@ public static class DependencyInjection
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddSingleton<IAnimalProvider, AalborgZooAnimalProvider>();
+        services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
         services.AddHttpClient<IAnimalProvider, AalborgZooAnimalProvider>(httpClient =>
             {
                 httpClient.BaseAddress = new("https://api.aalborgzoo.dk/api/");

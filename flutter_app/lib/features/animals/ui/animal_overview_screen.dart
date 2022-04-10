@@ -35,11 +35,13 @@ class AnimalOverviewScreen extends StatelessWidget {
 
                   return TextButton(
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                    onPressed: () => Navigator.pushNamed(
-                      context,
-                      "/animals/id",
-                      arguments: animal,
-                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        "/animals/id",
+                        arguments: animal,
+                      );
+                    },
                     child: AnimalCard(animal: animal),
                   );
                 },
