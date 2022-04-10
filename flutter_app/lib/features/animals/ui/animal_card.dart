@@ -19,35 +19,78 @@ class AnimalCard extends StatelessWidget {
       ),
       clipBehavior: Clip.hardEdge,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Hero(
-            tag: "animal-${animal.id}",
-            child: CachedNetworkImage(
-              imageUrl: animal.image.previewUrl,
-              placeholder: (context, url) {
-                return const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: CircularProgressIndicator(),
-                );
-              },
-            ),
-          ),
-          ListTile(
-            title: Text(
-              animal.name.displayName.trim(),
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w900,
-                color: Color.fromARGB(255, 59, 91, 59),
+          Stack(
+            children: [
+              Hero(
+                tag: "animal-${animal.id}",
+                child: CachedNetworkImage(
+                  imageUrl: animal.image.previewUrl,
+                  colorBlendMode: BlendMode.darken,
+                  placeholder: (context, url) {
+                    return const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                ),
               ),
-            ),
-            subtitle: Text(
-              animal.name.latinName,
-              style: const TextStyle(
-                fontWeight: FontWeight.w400,
-                color: Color.fromARGB(255, 59, 91, 59),
+              Container(
+                decoration: BoxDecoration(
+                  //border corner radius
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black38.withOpacity(0.4),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: Text(
+                        animal.name.displayName.trim(),
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        animal.name.latinName,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      textColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      contentPadding: const EdgeInsets.fromLTRB(20, 60, 0, 0),
+                      title: Text(
+                        animal.category,
+                        style: TextStyle(
+                            fontSize: 8,
+                            background: Paint()
+                              ..color = Colors.greenAccent
+                              ..strokeWidth = 10
+                              ..strokeJoin = StrokeJoin.round
+                              ..strokeCap = StrokeCap.round
+                              ..style = PaintingStyle.stroke,
+                            color: Colors.green),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),
