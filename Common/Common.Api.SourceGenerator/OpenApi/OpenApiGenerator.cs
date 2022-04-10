@@ -160,7 +160,7 @@ public class OpenApiGenerator : IIncrementalGenerator
                     builder.AppendLine($"{indentation}[{producesResponseType}({responseData})]");
                 }
                 builder.AppendLine(
-                    $"{indentation}[{producesResponseType}(typeof(System.Collections.Generic.List<Zoo.Common.GenericError>), 422)]");
+                    $"{indentation}[{producesResponseType}(typeof(System.Collections.Generic.List<Zoo.Common.PropertyError>), 422)]");
 
                 var parameters = string.Join(", ", method.Parameters);
                 builder.AppendLine(

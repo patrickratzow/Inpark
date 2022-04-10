@@ -165,8 +165,6 @@ public class AalborgZooAnimalProvider : IAnimalProvider
     // First part is just the title
     private AnimalContent ParseContent(AnimalContent content)
     {
-        _logger.LogInformation("Content {Content}", content);
-
         return content.Type switch
         {
             ContentType.Text or ContentType.HeadLine => ParseText(content),

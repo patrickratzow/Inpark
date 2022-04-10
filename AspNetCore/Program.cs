@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Trace;
 using Zoo.Common.Api;
+using Zoo.Common.Api.Extensions;
 using Zoo.Inpark;
 using Zoo.Payments;
 
@@ -80,6 +81,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseFluentValidationExceptionHandler();
 
 app.UsePayments();
 app.UseInpark();
