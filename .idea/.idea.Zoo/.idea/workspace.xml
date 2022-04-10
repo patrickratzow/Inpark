@@ -8,19 +8,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Extensions/ApplicationBuilderExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Pipelines/DependencyInjection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Pipelines/LoggingPipeline.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Pipelines/ValidationPipeline.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common/Errors/PropertyError.cs" afterDir="false" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="feat(api): better error &amp; logging handling">
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Services/HtmlDocumentTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AspNetCore/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Errors/GenericError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Errors/GenericError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/AalborgZooAnimalProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/AalborgZooAnimalProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Inpark.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Inpark.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +32,16 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/57c2d4282221452cad4df86bbd5d6fa0a1fc70/d7/cdbc9086/ICustomAttributeProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/117c4271f4cf1f303fc5478918ca595e5d22ce995d77101639578f06a323038/MethodInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1e5ac068a2e34999806b2fd1a32ca4bbcc270d732196da0cafe4cfa14cc9/MemberInfoExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/258df92a3a29662b2c26fe4d4f17fe801b845d960573376acb26fc19551bc/ServiceRegistrar.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4fdb7ce693216bf34d4e85b76b03c8589d722ff5dd2b39cf442731e6287c6a1/MemoryCacheExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/73f99b2224ed48b9259d785821221369b2e14b362cd79ca87512bb5b76dc/Where.SpeedOpt.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/74f096188b7b56260fc4373fd73b31d2b38c86294714275cf615a726a2372d/RequestPreProcessorBehavior.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/767db1e17d404f86c3c73c54c6b20b5ff9ec43b79ef47681ae34b40a6852cf9/Where.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/84e3a8ffdcd86e30276b61d16979c6967c974581cbca0107a2780ad211bddda/MemberInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/901d1d7676eb3381e6d72547d182730f1741ef6a8eee1df2d84431d2698028/MethodBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c09c2ce5107b877e7d30d6b1ce5e4c36cdd52749b6bedce0ba4056c294869653/Type.Helpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d1aac3b6cd62f44c8897851472612c95b5ee545b24a675c4ffb4f2b161faeb93/IMemoryCache.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5b9c140912e8295f69159adbf39ad664d070868f2c2ae42d7e7dd1d92a9d4/ServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f5a2ccf8d64e7aa05089a63a768244d9f2dc55854b3a5ab1b61126bdc8f7ebe2/ToCollection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -189,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649607318078</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat(api): better error &amp; logging handling">
+      <created>1649611410270</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649611410270</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +220,8 @@
     <MESSAGE value="feat: add contract tests &amp; customer" />
     <MESSAGE value="feat(inpark): crude version of aalborg zoo animal api provider" />
     <MESSAGE value="refactor(api): html transformer pogU" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(api): html transformer pogU" />
+    <MESSAGE value="feat(api): better error &amp; logging handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(api): better error &amp; logging handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -243,17 +246,43 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Common/Common.Api/Pipelines/DependencyInjection.cs</url>
-          <line>10</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\Common.Api\Pipelines\DependencyInjection.cs" initialLine="10" containingFunctionPresentation="method 'AddPipelines'">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Services/HtmlDocumentTests.cs</url>
+          <line>28</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark.Tests\Services\HtmlDocumentTests.cs" initialLine="28" containingFunctionPresentation="method 'Should'">
             <startOffsets>
-              <option value="330" />
+              <option value="547" />
             </startOffsets>
             <endOffsets>
-              <option value="413" />
+              <option value="573" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="14" />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs</url>
+          <line>23</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark\Services\IHtmlTransformer.cs" initialLine="20" containingFunctionPresentation="method 'Parse'">
+            <startOffsets>
+              <option value="536" />
+            </startOffsets>
+            <endOffsets>
+              <option value="551" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs</url>
+          <line>20</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark\Services\IHtmlTransformer.cs" initialLine="20" containingFunctionPresentation="method 'Parse'">
+            <startOffsets>
+              <option value="494" />
+            </startOffsets>
+            <endOffsets>
+              <option value="495" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
