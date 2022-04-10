@@ -8,3 +8,11 @@ abstract class AnimalsEvent extends Equatable {
 }
 
 class GetAnimals extends AnimalsEvent {}
+
+class UpdateSearch extends AnimalsEvent {
+  final String search;
+  const UpdateSearch(this.search);
+
+  @override
+  List<Object> get props => [search];
+}
