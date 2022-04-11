@@ -117,8 +117,6 @@ public class AalborgZooAnimalProvider : IAnimalProvider
                 return null;
             }
         });
-        
-        _cache.Remove("zoo_animals");
 
         return new(overview);
     }

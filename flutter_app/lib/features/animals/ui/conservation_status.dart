@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/features/animals/ui/conservation_status_bow.dart';
 
 import '../../../common/colors.dart';
 
@@ -89,10 +90,14 @@ class ConservationStatus extends StatelessWidget {
                     )
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: const [Text('1'), Text('2'), Text('3')],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 4, 0, 5),
+                  child: Image.asset("assets/bow_connector.png"),
+                ),
+                const Text(
+                  'Truet',
+                  style: TextStyle(color: Color(0xff698665)),
+                  textAlign: TextAlign.center,
                 )
               ],
             ),

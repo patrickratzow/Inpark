@@ -123,11 +123,18 @@ class AnimalScreen extends StatelessWidget {
               padding: EdgeInsets.all(8),
             ),
             const Padding(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: EdgeInsets.only(bottom: 16),
               child: ConservationStatus(),
             ),
+            Container(
+              color: const Color(0xffE3E5E5),
+              child: const SizedBox(
+                height: 1,
+                width: double.infinity,
+              ),
+            ),
             Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
+              padding: const EdgeInsets.all(8),
               child: _buildContents(animal.contents),
             ),
           ],
