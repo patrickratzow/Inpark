@@ -7,6 +7,7 @@ import 'package:flutter_app/features/animals/ui/conservation_status.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 
 import '../../../common/colors.dart';
+import 'conservation_status_bow.dart';
 
 class AnimalScreen extends StatelessWidget {
   const AnimalScreen({
@@ -52,7 +53,7 @@ class AnimalScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(9, 6, 9, 6),
                     child: AnimalCategory(
-                      fontSize: 8,
+                      fontSize: 10,
                       text: animal.category,
                       padding: const EdgeInsets.all(6),
                     ),

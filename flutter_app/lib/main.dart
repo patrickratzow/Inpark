@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/entermodal.dart';
-import 'package:flutter_app/features/animals/bloc/animals_bloc.dart';
+import 'package:flutter_app/features/animals/models/animals_model.dart';
 import 'package:flutter_app/features/animals/ui/animal_overview_screen.dart';
 import 'package:flutter_app/features/animals/ui/animal_screen.dart';
 import 'package:flutter_app/screens/zooview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'common/ioc.dart';
 import 'firebase_options.dart';
 
@@ -41,7 +41,7 @@ class Routes {
     return {
       '/home': (context) => const MyHomePage(title: "Home Page"),
       '/zooView': (context) => const ZooPage(title: "Zoo"),
-      '/animals': (context) => const AnimalOverviewScreen(),
+      '/animals': (context) => AnimalOverviewScreen(),
       '/animals/id': (context) => const AnimalScreen(),
     };
   }
@@ -53,18 +53,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
-        BlocProvider(
-          create: (context) => AnimalsBloc(),
-        )
+        ChangeNotifierProvider<AnimalsModel>(
+          create: (context) => AnimalsModel(),
+        ),
       ],
       child: MaterialApp(
         title: 'Zoo App',
         initialRoute: "/home",
         routes: Routes().build(context),
         theme: ThemeData(
-          // This is the theme of your application.
+          // This is the theme of your application.½
           //
           // Try running your application with "flutter run". You'll see the
           // application has a blue toolbar. Then, without quitting the app, try

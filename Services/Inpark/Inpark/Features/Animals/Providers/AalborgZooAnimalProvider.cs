@@ -173,7 +173,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
         return content.Type switch
         {
             ContentType.Text or ContentType.HeadLine => ParseText(content),
-            ContentType.Image => ParseText(content),
+            ContentType.Image => ParseImage(content),
             ContentType.Header => ParseText(content),
             _ => throw new ArgumentOutOfRangeException(nameof(content), content, null)
         };
@@ -188,5 +188,12 @@ public class AalborgZooAnimalProvider : IAnimalProvider
         if (!isHtml) return new Content(str, content.Type);
 
         return _htmlTransformer.Load(str).Parse();
+    }
+    
+    private static IContent ParseImage(IContent content)
+    {
+        if (content.Value is not string str) throw new InvalidOperationException($"Value must be a string");
+
+        return new Content("https://cms.aalborgzoo.dk" + str, ContentType.Image);
     }
 }

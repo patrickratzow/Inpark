@@ -2,8 +2,6 @@ import 'package:flutter_app/common/ioc.dart';
 import 'package:flutter_app/common/result.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 
-import '../models/animals_model.dart';
-
 class AnimalsRepository {
   late final Zooinator _apiClient;
   AnimalOverview? _animalOverview;
@@ -13,10 +11,11 @@ class AnimalsRepository {
     _animalOverview = null;
   }
 
-  Future<Result<AnimalsModel, String>> fetchAnimals() async {
+  Future<Result<AnimalOverview, String>> fetchAnimals() async {
     if (_animalOverview != null) {
-      return Result.success(AnimalsModel(_animalOverview!.animals));
+      return Result.success(_animalOverview!);
     }
+
     var response = await _apiClient.getAnimalOverview();
 
     if (!response.isSuccessful) {
@@ -24,6 +23,6 @@ class AnimalsRepository {
     }
 
     _animalOverview = response.body;
-    return Result.success(AnimalsModel(response.body!.animals));
+    return Result.success(response.body!);
   }
 }
