@@ -22,7 +22,7 @@ class AnimalCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
         ),
-        clipBehavior: Clip.hardEdge,
+        clipBehavior: Clip.antiAlias,
         child: Stack(
           children: [
             buildImage(),
@@ -117,9 +117,9 @@ class AnimalCard extends StatelessWidget {
             Row(
               children: [
                 AnimalCategory(
-                  fontSize: 6,
+                  fontSize: 8,
                   text: animal.category,
-                  padding: const EdgeInsets.fromLTRB(6, 3, 6, 3),
+                  padding: const EdgeInsets.fromLTRB(6, 4, 6, 4),
                 )
               ],
             ),

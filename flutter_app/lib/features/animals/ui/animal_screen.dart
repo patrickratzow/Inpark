@@ -51,7 +51,7 @@ class AnimalScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(9, 6, 9, 6),
                     child: AnimalCategory(
-                      fontSize: 8,
+                      fontSize: 10,
                       text: animal.category,
                       padding: const EdgeInsets.all(6),
                     ),
