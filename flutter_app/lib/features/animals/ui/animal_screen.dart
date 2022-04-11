@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/ui/fullscreen_image.dart';
+import 'package:flutter_app/features/animals/ui/animal_category.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
+
+import '../../../common/colors.dart';
 
 class AnimalScreen extends StatelessWidget {
   const AnimalScreen({
@@ -11,59 +14,125 @@ class AnimalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Animal animal = ModalRoute.of(context)!.settings.arguments as Animal;
+    const Color softTextColor = Color(0xffDDF8DA);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(animal.name.displayName),
       ),
-      body: ListView(
-        children: [
-          Hero(
-            tag: "animal-${animal.id}",
-            child: GestureDetector(
-              onTap: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FullScreenImage(
-                      imageUrl: animal.image.fullscreenUrl,
-                      tag: "animal-${animal.id}",
-                      title: animal.name.displayName,
+      body: Card(
+        margin: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+        ),
+        clipBehavior: Clip.hardEdge,
+        child: ListView(
+          children: [
+            Hero(
+              tag: "animal-${animal.id}",
+              child: GestureDetector(
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FullScreenImage(
+                        imageUrl: animal.image.fullscreenUrl,
+                        tag: "animal-${animal.id}",
+                        title: animal.name.displayName,
+                      ),
                     ),
                   ),
+                },
+                child: Stack(children: [
+                  CachedNetworkImage(
+                    imageUrl: animal.image.previewUrl,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(9, 6, 9, 6),
+                    child: AnimalCategory(
+                      fontSize: 8,
+                      text: animal.category,
+                      padding: const EdgeInsets.all(6),
+                    ),
+                  ),
+                  Positioned.fill(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.center,
+                                colors: [
+                                  CustomColor.green.middle,
+                                  CustomColor.green.middle.withOpacity(0),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ]),
+              ),
+            ),
+            Container(
+              color: CustomColor.green.middle,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        animal.name.displayName.trim(),
+                        style: const TextStyle(
+                          fontSize: 20,
+                          height: 18 / 20,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.bold,
+                          color: softTextColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        animal.name.latinName,
+                        style: const TextStyle(
+                          height: 1.5,
+                          fontFamily: 'Poppins',
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: softTextColor,
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 4),
+                    ),
+                  ],
                 ),
-              },
-              child: CachedNetworkImage(
-                imageUrl: animal.image.previewUrl,
               ),
             ),
-          ),
-          ListTile(
-            title: Text(
-              animal.name.displayName.trim(),
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w900,
-                color: Color.fromARGB(255, 59, 91, 59),
-              ),
+            Padding(
+              padding: const EdgeInsets.all(8),
             ),
-            subtitle: Text(
-              animal.name.latinName,
-              style: const TextStyle(
-                fontWeight: FontWeight.w400,
-                color: Color.fromARGB(255, 59, 91, 59),
-              ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8, right: 8, top: 13),
+              child: Column(
+                  children: animal.contents
+                      .skip(1)
+                      .map((content) => Text(content.value))
+                      .toList()),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            child: Column(
-                children: animal.contents
-                    .skip(1)
-                    .map((content) => Text(content.value))
-                    .toList()),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
