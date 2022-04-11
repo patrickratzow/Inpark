@@ -65,7 +65,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
                         $"{baseUrl}{fullscreenImage}"
                     );
 
-                    var contents = new List<AnimalContent>();
+                    var contents = new List<IContent>();
                     foreach (
                         var animalArrayContent in
                         from itemContentJson in content.EnumerateArray()
@@ -95,11 +95,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
                         category!,
                         image,
                         url!,
-                        contents.Select(x => new ContentDto(
-                            x.Value, 
-                            x.Type, 
-                            new()
-                        )).ToList()
+                        contents.Select(MapToContentDto).ToList()
                     );
 
                     animals.Add(animal);
@@ -127,12 +123,21 @@ public class AalborgZooAnimalProvider : IAnimalProvider
         return new(overview);
     }
 
-    private static AnimalContent GetContentValue(JsonElement content, string type, string propertyName = "text")
+    private static ContentDto MapToContentDto(IContent content)
+    {
+        return new(
+            content.Value,
+            content.Type,
+            content.Children.Select(MapToContentDto).ToList()
+        );
+    }
+    
+    private static IContent GetContentValue(JsonElement content, string type, string propertyName = "text")
     {
         var text = content.GetProperty(propertyName).GetString();
         if (text is null) throw new NullReferenceException("No property found");
 
-        return new(text, type);
+        return new Content(text, type);
     }
 
     private static AnimalName ParseAnimalName(JsonElement properties)
@@ -163,7 +168,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
         };
     
     // First part is just the title
-    private AnimalContent ParseContent(AnimalContent content)
+    private IContent ParseContent(IContent content)
     {
         return content.Type switch
         {
@@ -174,14 +179,14 @@ public class AalborgZooAnimalProvider : IAnimalProvider
         };
     }
 
-    private AnimalContent ParseText(AnimalContent content)
+    private IContent ParseText(IContent content)
     {
         if (content.Value is not string str) throw new InvalidOperationException($"Value must be a string");
         
         var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
         var isHtml = regex.IsMatch(str);
-        if (!isHtml) return new(str, content.Type);
+        if (!isHtml) return new Content(str, content.Type);
 
-        return new(str.Replace("<p>", "xd"), content.Type);
+        return _htmlTransformer.Load(str).Parse();
     }
 }
