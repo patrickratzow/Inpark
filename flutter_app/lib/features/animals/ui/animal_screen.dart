@@ -121,23 +121,15 @@ class AnimalScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8),
+            const Padding(
+              padding: EdgeInsets.all(8),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8, top: 13),
-              child: Column(
-                  children: animal.contents
-                      .skip(1)
-                      .map((content) => Text(content.value))
-                      .toList()),
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: _buildContents(animal.contents),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            child: _buildContents(animal.contents),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
