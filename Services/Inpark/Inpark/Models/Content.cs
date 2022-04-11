@@ -6,64 +6,58 @@ public static class ContentType
     public const string HeadLine = "headline";
     public const string Image = "image";
     public const string Header = "header";
+    public const string ListItem = "listitem";
 }
 
+public static class LayoutType
+{
+    public const string Container = "container";
+    public const string Spacer = "spacer";
+    public const string List = "list";
+
+}
 public interface IContainer
 {
-    public List<IContainer> Children { get; set; }
+    public IEnumerable<Content> Children { get; set; }
 }
 
 public interface IContent : IContainer
 {
+    public object Value { get; set; }
     public string Type { get; set; }
 }
 
-public abstract class Content : Container, IContent
-{
-    public string Type { get; set; } = null!;
-
-    protected Content(string type, List<IContainer>? children = null) : base(children)
-    {
-        Type = type;
-    }
-}
-
-public class AnimalContent : Container, IContent
+public class Content : Container, IContent
 {
     public object Value { get; set; }
     public string Type { get; set; }
-    
 
-    public AnimalContent(object value, string type)
+    public Content(object value, string type, IEnumerable<Content>? children = null) : base(children)
     {
         Value = value;
         Type = type;
+        Children = children ?? Array.Empty<Content>();
     }
+}
+
+public class ContentLayout : Content
+{
+    public ContentLayout(ContentLayoutOptions? value = null, string? type = null) 
+        : base(value ?? new(), type ?? LayoutType.Container)
+    {
+    }
+}
+
+public class ContentLayoutOptions
+{
 }
 
 public class Container : IContainer
 {
-    public List<IContainer> Children { get; set; }
+    public IEnumerable<Content> Children { get; set; }
     
-    public Container(List<IContainer>? children = null)
+    public Container(IEnumerable<Content>? children = null)
     {
-        Children = children ?? new();
-    }
-}
-
-public class ListAnimalContent : Content
-{
-    public ListAnimalContent(IEnumerable<Content> contents) : base("list", new(contents))
-    {
-    }
-    
-    public static ListAnimalContent WithPoints(IEnumerable<string> values)
-    {
-        var contents = values
-            .Select(str => new AnimalContent(str, "text"))
-            .Cast<Content>()
-            .ToList();
-
-        return new(contents);
+        Children = children ?? Array.Empty<Content>();
     }
 }

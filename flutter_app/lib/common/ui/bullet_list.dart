@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BulletList extends StatelessWidget {
-  final List<String> strings;
+  final List<Widget> children;
 
-  const BulletList(this.strings);
+  const BulletList(this.children);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class BulletList extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 15, 16, 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: strings.map((str) {
+        children: children.map((child) {
           return Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -27,18 +27,7 @@ class BulletList extends StatelessWidget {
                 width: 5,
               ),
               Expanded(
-                child: Container(
-                  child: Text(
-                    str,
-                    textAlign: TextAlign.left,
-                    softWrap: true,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black.withOpacity(0.6),
-                      height: 1.55,
-                    ),
-                  ),
-                ),
+                child: child,
               ),
             ],
           );

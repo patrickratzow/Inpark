@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/common/ui/bullet_list.dart';
 import 'package:flutter_app/common/ui/fullscreen_image.dart';
 import 'package:flutter_app/features/animals/ui/animal_category.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
@@ -131,9 +132,61 @@ class AnimalScreen extends StatelessWidget {
                       .map((content) => Text(content.value))
                       .toList()),
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: _buildContents(animal.contents),
+          ),
+        ],
       ),
     );
+  }
+
+  Widget _buildContents(List<ContentDto> contents) {
+    return Column(
+      children: contents.map(_buildContent).toList(),
+    );
+  }
+
+  Widget _buildContent(ContentDto content) {
+    if (content.type == "container") {
+      return Column(
+        children: content.children.map(_buildContent).toList(),
+      );
+    }
+    if (content.type == "text") {
+      return Text(
+        content.value.toString(),
+        textAlign: TextAlign.left,
+        softWrap: true,
+        style: TextStyle(
+          fontSize: 16,
+          color: Colors.black.withOpacity(0.6),
+          height: 1.55,
+        ),
+      );
+    }
+    if (content.type == "spacer") {
+      return const SizedBox(height: 8);
+    }
+    if (content.type == "list") {
+      var children =
+          content.children.where((child) => child.type == "listitem");
+
+      return BulletList(children.map(_buildContent).toList());
+    }
+    if (content.type == "listitem") {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: content.children.map(_buildContent).toList(),
+      );
+    }
+    if (content.type == "image") {
+      return CachedNetworkImage(
+        imageUrl: content.value.toString(),
+      );
+    }
+
+    return Container();
   }
 }
