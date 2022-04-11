@@ -28,7 +28,7 @@ void main() {
     'animals returns backing field',
     () {
       // Arrange
-      AnimalsModel model = AnimalsModel(animals);
+      AnimalsModel model = AnimalsModel.withAnimals(animals);
 
       // Act
       var result = model.animals;
@@ -44,7 +44,7 @@ void main() {
     'animals returns animals that matches search string',
     () {
       // Arrange
-      AnimalsModel model = AnimalsModel(animals);
+      AnimalsModel model = AnimalsModel.withAnimals(animals);
 
       // Act
       model.search = 'Fl';
@@ -60,7 +60,7 @@ void main() {
     'animals search is case insensitive',
     () {
       // Arrange
-      AnimalsModel model = AnimalsModel(animals);
+      AnimalsModel model = AnimalsModel.withAnimals(animals);
 
       // Act
       model.search = 'fl';

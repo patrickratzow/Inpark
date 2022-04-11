@@ -6,6 +6,7 @@ import 'package:flutter_app/features/animals/ui/animal_category.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 
 import '../../../common/colors.dart';
+import 'conservation_status_bow.dart';
 
 class AnimalScreen extends StatelessWidget {
   const AnimalScreen({
@@ -173,11 +174,11 @@ class AnimalScreen extends StatelessWidget {
         children: content.children.map(_buildContent).toList(),
       );
     }
-    if (content.type == "image") {
+    /*if (content.type == "image") {
       return CachedNetworkImage(
         imageUrl: content.value.toString(),
       );
-    }
+    }*/
 
     return Container();
   }

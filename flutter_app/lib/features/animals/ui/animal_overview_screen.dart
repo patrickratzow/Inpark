@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/features/animals/bloc/animals_bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_app/features/animals/models/animals_model.dart';
+import 'package:provider/provider.dart';
 
 import 'animal_card.dart';
 
-class AnimalOverviewScreen extends StatefulWidget {
+class AnimalOverviewScreen extends StatelessWidget {
   const AnimalOverviewScreen({Key? key}) : super(key: key);
 
   @override
-  State<AnimalOverviewScreen> createState() => _AnimalOverviewScreenState();
-}
-
-class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<AnimalsBloc>(context).add(GetAnimals());
-  }
-
-  @override
   Widget build(BuildContext context) {
+    context.read<AnimalsModel>().fetchAnimals();
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -30,23 +21,24 @@ class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
         ],
         title: const Text("Dyr i parken"),
       ),
-      body: BlocBuilder<AnimalsBloc, AnimalsState>(
-        builder: (context, state) {
-          if (state is AnimalsLoading) {
+      body: Consumer<AnimalsModel>(
+        builder: (context, animalsModel, child) {
+          if (animalsModel.loading) {
             return _loadingIndicator();
           }
 
-          if (state is AnimalsError) {
+          if (animalsModel.hasError) {
             return Center(
-              child: Text(state.message),
+              child: Text("An error happened: " + animalsModel.error),
             );
           }
 
-          if (state is AnimalsLoaded) {
-            return ListView(
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+            child: ListView(
               children: [
                 buildSearch(context),
-                ...state.animalsModel.animals.map(
+                ...animalsModel.animals.map(
                   (animal) => TextButton(
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
                     onPressed: () {
@@ -60,42 +52,32 @@ class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
                   ),
                 ),
               ],
-            );
-          }
-
-          return _loadingIndicator();
+            ),
+          );
         },
       ),
     );
   }
 
   Widget buildSearch(BuildContext context) {
-    return BlocBuilder<AnimalsBloc, AnimalsState>(
-      buildWhen: (previous, current) {
-        return false;
-      },
-      builder: (context, state) {
-        if (state is AnimalsLoaded) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              initialValue: state.animalsModel.search,
-              onChanged: (text) {
-                BlocProvider.of<AnimalsBloc>(context).add(UpdateSearch(text));
-              },
-              decoration: const InputDecoration(
-                hintText: 'Søg efter dyr',
-                hintStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
+    return Column(
+      children: [
+        TextFormField(
+          initialValue: "",
+          onChanged: (text) {
+            context.read<AnimalsModel>().search = text;
+          },
+          decoration: const InputDecoration(
+            hintText: 'Søg efter dyr',
+            hintStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontStyle: FontStyle.italic,
             ),
-          );
-        }
-        return Container();
-      },
+          ),
+        ),
+        const SizedBox(height: 16),
+      ],
     );
   }
 

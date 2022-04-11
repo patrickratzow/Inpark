@@ -18,7 +18,7 @@ class AnimalCard extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 343 / 139,
       child: Card(
-        margin: const EdgeInsets.all(8),
+        margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
         ),
