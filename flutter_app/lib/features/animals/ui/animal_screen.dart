@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/ui/bullet_list.dart';
 import 'package:flutter_app/common/ui/fullscreen_image.dart';
+import 'package:flutter_app/common/ui/screen_app_bar.dart';
 import 'package:flutter_app/features/animals/ui/animal_category.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 
@@ -19,66 +20,61 @@ class AnimalScreen extends StatelessWidget {
     const Color softTextColor = Color(0xffDDF8DA);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(animal.name.displayName),
-      ),
+      appBar: const ScreenAppBar(),
       body: Card(
-        margin: const EdgeInsets.all(16),
+        margin: const EdgeInsets.fromLTRB(16, 8, 16, 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
         ),
         clipBehavior: Clip.hardEdge,
         child: ListView(
           children: [
-            Hero(
-              tag: "animal-${animal.id}",
-              child: GestureDetector(
-                onTap: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FullScreenImage(
-                        imageUrl: animal.image.fullscreenUrl,
-                        tag: "animal-${animal.id}",
-                        title: animal.name.displayName,
-                      ),
+            GestureDetector(
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FullScreenImage(
+                      imageUrl: animal.image.fullscreenUrl,
+                      tag: "animal-${animal.id}",
+                      title: animal.name.displayName,
                     ),
                   ),
-                },
-                child: Stack(children: [
-                  CachedNetworkImage(
-                    imageUrl: animal.image.previewUrl,
+                ),
+              },
+              child: Stack(children: [
+                CachedNetworkImage(
+                  imageUrl: animal.image.previewUrl,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(9, 6, 9, 6),
+                  child: AnimalCategory(
+                    fontSize: 10,
+                    text: animal.category,
+                    padding: const EdgeInsets.all(6),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(9, 6, 9, 6),
-                    child: AnimalCategory(
-                      fontSize: 10,
-                      text: animal.category,
-                      padding: const EdgeInsets.all(6),
-                    ),
-                  ),
-                  Positioned.fill(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.center,
-                                colors: [
-                                  CustomColor.green.middle,
-                                  CustomColor.green.middle.withOpacity(0),
-                                ],
-                              ),
+                ),
+                Positioned.fill(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.center,
+                              colors: [
+                                CustomColor.green.middle,
+                                CustomColor.green.middle.withOpacity(0),
+                              ],
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  )
-                ]),
-              ),
+                      ),
+                    ],
+                  ),
+                )
+              ]),
             ),
             Container(
               color: CustomColor.green.middle,
@@ -126,7 +122,7 @@ class AnimalScreen extends StatelessWidget {
               padding: EdgeInsets.all(8),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
+              padding: const EdgeInsets.only(left: 8, right: 8),
               child: _buildContents(animal.contents),
             ),
           ],

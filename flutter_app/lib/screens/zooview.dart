@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/CustomWidgets/app_bar2.dart';
-import '../CustomWidgets/app_bar1.dart';
+import 'package:flutter_app/common/ui/screen_app_bar.dart';
+import '../common/ui/home_app_bar.dart';
 import '../entermodal.dart';
 
 class ZooView extends StatelessWidget {
@@ -60,7 +60,7 @@ class _ZooPageState extends State<ZooPage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar2(widget.title),
+      appBar: ScreenAppBar(name: widget.title),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.

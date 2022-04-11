@@ -36,21 +36,18 @@ class AnimalCard extends StatelessWidget {
 
   Widget buildImage() {
     return Positioned.fill(
-      child: Hero(
-        tag: "animal-${animal.id}",
-        child: CachedNetworkImage(
-          fit: BoxFit.cover,
-          imageUrl: animal.image.previewUrl,
-          colorBlendMode: BlendMode.darken,
-          placeholder: (context, url) {
-            return const Center(
-              child: Padding(
-                padding: EdgeInsets.all(16),
-                child: CircularProgressIndicator(),
-              ),
-            );
-          },
-        ),
+      child: CachedNetworkImage(
+        fit: BoxFit.cover,
+        imageUrl: animal.image.previewUrl,
+        colorBlendMode: BlendMode.darken,
+        placeholder: (context, url) {
+          return const Center(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: CircularProgressIndicator(),
+            ),
+          );
+        },
       ),
     );
   }

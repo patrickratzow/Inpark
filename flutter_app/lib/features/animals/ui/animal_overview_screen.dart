@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/common/ui/screen_app_bar.dart';
 import 'package:flutter_app/features/animals/models/animals_model.dart';
 import 'package:provider/provider.dart';
 
@@ -12,14 +13,15 @@ class AnimalOverviewScreen extends StatelessWidget {
     context.read<AnimalsModel>().fetchAnimals();
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: ScreenAppBar(
+        name: "Dyr i parken",
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.search),
+            color: Colors.black,
           )
         ],
-        title: const Text("Dyr i parken"),
       ),
       body: Consumer<AnimalsModel>(
         builder: (context, animalsModel, child) {
@@ -60,25 +62,7 @@ class AnimalOverviewScreen extends StatelessWidget {
   }
 
   Widget buildSearch(BuildContext context) {
-    return Column(
-      children: [
-        TextFormField(
-          initialValue: "",
-          onChanged: (text) {
-            context.read<AnimalsModel>().search = text;
-          },
-          decoration: const InputDecoration(
-            hintText: 'Søg efter dyr',
-            hintStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontStyle: FontStyle.italic,
-            ),
-          ),
-        ),
-        const SizedBox(height: 16),
-      ],
-    );
+    return Container();
   }
 
   Widget _loadingIndicator() =>
