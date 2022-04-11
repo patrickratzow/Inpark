@@ -69,6 +69,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
     <configuration name="AspNetCore" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" />
@@ -114,7 +117,7 @@
       <workItem from="1649164814888" duration="1711000" />
       <workItem from="1649167005654" duration="5498000" />
       <workItem from="1649237678116" duration="1856000" />
-      <workItem from="1649658996681" duration="837000" />
+      <workItem from="1649658996681" duration="1429000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
