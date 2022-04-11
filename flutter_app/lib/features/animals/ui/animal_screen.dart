@@ -4,6 +4,7 @@ import 'package:flutter_app/common/ui/bullet_list.dart';
 import 'package:flutter_app/common/ui/fullscreen_image.dart';
 import 'package:flutter_app/common/ui/screen_app_bar.dart';
 import 'package:flutter_app/features/animals/ui/animal_category.dart';
+import 'package:flutter_app/features/animals/ui/conservation_status.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 
 import '../../../common/colors.dart';
@@ -120,6 +121,10 @@ class AnimalScreen extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.all(8),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: ConservationStatus(),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8, right: 8),
