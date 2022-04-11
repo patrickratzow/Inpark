@@ -1,0 +1,511 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Zooinator - API",
+    "description": "API for Zooinator",
+    "version": "v1"
+  },
+  "paths": {
+    "/animals/overview": {
+      "get": {
+        "tags": [
+          "Animals"
+        ],
+        "operationId": "getAnimalOverview",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalOverview"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalOverview"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalOverview"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "createCustomer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "operationId": "createProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{productId}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "operationId": "getProductById",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Zoo.Common.PropertyError": {
+        "required": [
+          "errorMessage",
+          "propertyName"
+        ],
+        "type": "object",
+        "properties": {
+          "propertyName": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.Animal": {
+        "required": [
+          "category",
+          "contents",
+          "id",
+          "image",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalName"
+              }
+            ]
+          },
+          "category": {
+            "type": "string"
+          },
+          "image": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalImage"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "contents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.AnimalImage": {
+        "required": [
+          "fullscreenUrl",
+          "previewUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "previewUrl": {
+            "type": "string"
+          },
+          "fullscreenUrl": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.AnimalName": {
+        "required": [
+          "displayName",
+          "latinName"
+        ],
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "latinName": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.AnimalOverview": {
+        "required": [
+          "animals",
+          "categories"
+        ],
+        "type": "object",
+        "properties": {
+          "animals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.Animal"
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.ContentDto": {
+        "required": [
+          "children",
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": { },
+          "type": {
+            "type": "string"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Payments.Contracts.CreateProductRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Payments.Contracts.Customers.CreateCustomerRequest": {
+        "required": [
+          "email",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Payments.Contracts.ProductDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Payments.Contracts.ProductNotFound": {
+        "required": [
+          "errorMessage",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Token"
+      }
+    }
+  }
+}

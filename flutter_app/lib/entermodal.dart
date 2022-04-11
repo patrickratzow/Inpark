@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/zoomain.dart';
+import 'package:flutter_app/screens/zoomain.dart';
 
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
@@ -10,42 +10,69 @@ class MyStatelessWidget extends StatelessWidget {
       child: ElevatedButton(
         child: const Text('Enter Zoo'),
         onPressed: () {
-          showModalBottomSheet<void>(
+          showModalBottomSheet<Widget>(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(25.0),
+              ),
+            ),
             context: context,
             builder: (BuildContext context) {
               return Container(
-                height: 200,
-                color: Colors.black,
+                decoration: const BoxDecoration(
+                  color: Colors.black87,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(25.0),
+                  ),
+                ),
                 child: Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
-                      const Text('Enter the coolest Zoo ever!',
-                      style: TextStyle(color: Colors.white)),
-                      const SizedBox(height:30),
-                      Image.asset('assets/zoo.png',
-                      color: Colors.white),
-                      const SizedBox(height:30),
-                      SizedBox(
-                        height: 45,
-                        width: 350,
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
+                      const Text(
+                        'Aalborg Zoo',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                      const Text(
+                        'Lorem ipsum dolor sit amet, '
+                        'consectetur adipiscing elit. '
+                        'Morbi convallis justo at mi ultricies sollicitudin.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/zoo.png',
+                        color: Colors.white,
+                        scale: 0.6,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<
+                              RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(36.0),
-                              )
-                            )
-              ),
-              child: const Text('Enter'),
-              onPressed:
-                  () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return const ZooMainPage(title: 'Aalborg zoo');
-                    })
-                  ),
-              ))
+                            ),
+                          ),
+                        ),
+                        child: const Text('Gå til park'),
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const ZooMainPage(
+                                  title: 'Aalborg Zoo Dyr');
+                            },
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),

@@ -27,6 +27,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  chopper: ^4.0.1
+  json_annotation: ^4.4.0
   flutter:
     sdk: flutter
 
@@ -38,8 +40,16 @@ dependencies:
   firebase_analytics: ^9.1.1
   firebase_crashlytics: ^2.5.2
   firebase_performance: ^0.8.0+8
+  equatable: ^2.0.3
+  flutter_bloc: ^8.0.1
+  get_it: ^7.2.0
+  cached_network_image: ^3.2.0
 
 dev_dependencies:
+  build_runner: ^2.1.7
+  chopper_generator: ^4.0.5
+  json_serializable: ^6.1.4
+  swagger_dart_code_generator: ^2.4.6
   flutter_test:
     sdk: flutter
 
@@ -92,3 +102,36 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter/Inter-Black.ttf
+        - asset: fonts/Inter/Inter-Bold.ttf
+        - asset: fonts/Inter/Inter-ExtraBold.ttf
+        - asset: fonts/Inter/Inter-ExtraLight.ttf
+        - asset: fonts/Inter/Inter-Light.ttf
+        - asset: fonts/Inter/Inter-Medium.ttf
+        - asset: fonts/Inter/Inter-Regular.ttf
+        - asset: fonts/Inter/Inter-SemiBold.ttf
+        - asset: fonts/Inter/Inter-Thin.ttf
+          weight: 700
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins/Poppins-Black.ttf
+        - asset: fonts/Poppins/Poppins-BlackItalic.ttf
+        - asset: fonts/Poppins/Poppins-Bold.ttf
+        - asset: fonts/Poppins/Poppins-BoldItalic.ttf
+        - asset: fonts/Poppins/Poppins-ExtraBold.ttf
+        - asset: fonts/Poppins/Poppins-ExtraBoldItalic.ttf
+        - asset: fonts/Poppins/Poppins-ExtraLight.ttf
+        - asset: fonts/Poppins/Poppins-ExtraLightItalic.ttf
+        - asset: fonts/Poppins/Poppins-Italic.ttf
+        - asset: fonts/Poppins/Poppins-Light.ttf
+        - asset: fonts/Poppins/Poppins-LightItalic.ttf
+        - asset: fonts/Poppins/Poppins-Medium.ttf
+        - asset: fonts/Poppins/Poppins-MediumItalic.ttf
+        - asset: fonts/Poppins/Poppins-Regular.ttf
+        - asset: fonts/Poppins/Poppins-SemiBold.ttf
+        - asset: fonts/Poppins/Poppins-SemiBoldItalic.ttf
+        - asset: fonts/Poppins/Poppins-Thin.ttf
+        - asset: fonts/Poppins/Poppins-ThinItalic.ttf

@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Zoo.Common.Api.Pipelines;
 
 namespace Zoo.Payments;
 
@@ -27,51 +28,9 @@ public static class DependencyInjection
         });
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddPipelines();
 
         services.AddResponseMapper();
-
-        services.AddSwaggerGen(options =>
-        {
-            options.SwaggerDoc("v1", new()
-            {
-                Version = "v1",
-                Title = "Zoo - Payments API",
-                Description = "Payments API for Zoo"
-            });
-            options.AddSecurityDefinition("bearer", new()
-            {
-                Type = SecuritySchemeType.Http,
-                BearerFormat = "Token",
-                In = ParameterLocation.Header,
-                Scheme = "bearer"
-            });
-            options.TagActionsBy(apiDescription =>
-            {
-                var actionDescriptor = (ControllerActionDescriptor)apiDescription.ActionDescriptor;
-                var controller = actionDescriptor.ControllerTypeInfo;
-                var groupAttribute = controller.GetCustomAttribute<MethodGroupAttribute>();
-                if (groupAttribute is null) return new List<string>();
-
-                return new List<string>
-                {
-                    groupAttribute.Name
-                };
-            });
-            options.CustomOperationIds(operation =>
-            {
-                if (operation.ActionDescriptor is not ControllerActionDescriptor controllerActionDescriptor)
-                    throw new InvalidOperationException("ActionDescriptor does not originate from a controller");
-
-                return controllerActionDescriptor.ActionName;
-            });
-            
-            options.UseZooOptions();
-
-            // using System.Reflection;
-            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-        });
-
     }
 
     public static void UsePayments(this IApplicationBuilder app)

@@ -11,7 +11,7 @@ public static class SwaggerGenOptionsExtensions
         options.CustomSchemaIds(GetSchemaId);
         
         options.SchemaFilter<EnumSchemaFilter>();
-        options.SchemaFilter<NSwagTypesSchemaFilter>();
+        options.SchemaFilter<RequiredPropertiesSchemaFilter>();
         options.OperationFilter<ValidationErrorDescriptionOperationFilter>();
         options.RequestBodyFilter<FixRequestBodyNullableReferencesSchemaFilter>();
         options.SupportNonNullableReferenceTypes();

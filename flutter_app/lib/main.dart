@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/CustomWidgets/app_bar1.dart';
-import 'package:flutter_app/routes.dart';
-import 'package:flutter_app/zooview.dart';
+import 'package:flutter_app/entermodal.dart';
+import 'package:flutter_app/features/animals/bloc/animals_bloc.dart';
+import 'package:flutter_app/features/animals/ui/animal_overview_screen.dart';
+import 'package:flutter_app/features/animals/ui/animal_screen.dart';
+import 'package:flutter_app/screens/zooview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'CustomWidgets/app_bar2.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'common/ioc.dart';
 import 'firebase_options.dart';
 
 // ...
@@ -15,8 +20,31 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  HttpOverrides.global = MyHttpOverrides();
+
+  setupIoC();
 
   runApp(const MyApp());
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
+class Routes {
+  Map<String, WidgetBuilder> build(BuildContext context) {
+    return {
+      '/home': (context) => const MyHomePage(title: "Home Page"),
+      '/zooView': (context) => const ZooPage(title: "Zoo"),
+      '/animals': (context) => const AnimalOverviewScreen(),
+      '/animals/id': (context) => const AnimalScreen(),
+    };
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -25,21 +53,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Zoo App',
-      initialRoute: '/',
-      onGenerateRoute: Routes.generateRoute,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.green,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AnimalsBloc(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Zoo App',
+        initialRoute: "/home",
+        routes: Routes().build(context),
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.green,
+        ),
       ),
     );
   }
@@ -86,8 +121,19 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar1('Checkout', '/zooView'),
-      body: Center(
+      appBar: AppBar(
+        centerTitle: true,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+      body: SafeArea(
+          child: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -120,51 +166,59 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: const ShapeDecoration(
                       color: Colors.green, shape: CircleBorder()),
                   child: IconButton(
+                    onPressed: () => Navigator.pushNamed(context, "/zooView"),
+                    icon: Image.asset('assets/zoo.png'),
+                    iconSize: 100,
+                  ),
+                ),
+              )),
+              const SizedBox(
+                width: 20,
+              ),
+              Material(
+                  child: Center(
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                    color: Colors.green,
+                    shape: CircleBorder(),
+                  ),
+                  child: IconButton(
                     onPressed: () {
-                      //Navigator.pushNamed(context, 'zooView');
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return const ZooPage(title: 'zoo');
-                      }));
+                      Navigator.pushNamed(context, '/animals');
                     },
                     icon: Image.asset('assets/zoo.png'),
                     iconSize: 100,
                   ),
                 ),
               )),
-              const SizedBox(width: 20),
-              Material(
-                  child: Center(
-                child: Ink(
-                  decoration: const ShapeDecoration(
-                      color: Colors.green, shape: CircleBorder()),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Image.asset('assets/zoo.png'),
-                    iconSize: 100,
-                  ),
-                ),
-              )),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.add_location),
-                iconSize: 100,
-              ),
+              const MyStatelessWidget(),
             ]),
-            const SizedBox(height: 100),
+            const SizedBox(
+              height: 100,
+            ),
             const Text(
               'Welcome to the most awesome zoo app ever',
-              style: TextStyle(color: Colors.black, fontSize: 40),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 40,
+              ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 100),
+            const SizedBox(
+              height: 100,
+            ),
             const Text(
               'You have pushed the button this many times:',
-              style: TextStyle(backgroundColor: Colors.red),
+              style: TextStyle(
+                backgroundColor: Colors.red,
+              ),
             ),
             Text(
               '$_counter',
-              style: const TextStyle(color: Colors.black, fontSize: 50),
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 50,
+              ),
             ),
             const Padding(padding: EdgeInsets.all(4)),
             Row(
@@ -179,18 +233,27 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   },
                 ),
-                const Padding(padding: EdgeInsets.all(8)),
+                const Padding(
+                  padding: EdgeInsets.all(8),
+                ),
                 ElevatedButton(
                   child: const Text('Crash'),
                   onPressed: () => {
                     FirebaseCrashlytics.instance.crash(),
                   },
                 ),
+                const Padding(
+                  padding: EdgeInsets.all(8),
+                ),
+                ElevatedButton(
+                  child: const Text('Animals'),
+                  onPressed: () => Navigator.pushNamed(context, "/animals"),
+                ),
               ],
             )
           ],
         ),
-      ),
+      )),
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.amber,
         backgroundColor: Colors.greenAccent,
