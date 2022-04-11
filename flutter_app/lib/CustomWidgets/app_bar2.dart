@@ -22,7 +22,8 @@ class AppBar2 extends StatelessWidget implements PreferredSizeWidget {
         centerTitle: true,
         title: Text(
           name,
-          style: const TextStyle(color: Colors.black, fontSize: 20),
+          style: const TextStyle(
+              color: Colors.black, fontSize: 20, fontFamily: 'Poppins'),
         ),
       );
     } else {
@@ -39,7 +40,8 @@ class AppBar2 extends StatelessWidget implements PreferredSizeWidget {
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 32,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins'),
               ),
               alignment: Alignment.centerLeft,
             ),

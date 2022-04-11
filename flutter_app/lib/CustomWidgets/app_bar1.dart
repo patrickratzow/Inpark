@@ -18,11 +18,14 @@ class AppBar1 extends StatelessWidget implements PreferredSizeWidget {
             size: 12, color: Colors.green),
         actions: <Widget>[
           TextButton(
-            child: Text(name,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold)),
+            child: Text(
+              name,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins'),
+            ),
             onPressed: () {
               Navigator.of(context).pushNamed(route);
             },
