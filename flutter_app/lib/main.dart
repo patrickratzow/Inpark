@@ -1,8 +1,11 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/CustomWidgets/app_bar1.dart';
+import 'package:flutter_app/routes.dart';
 import 'package:flutter_app/zooview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'CustomWidgets/app_bar2.dart';
 import 'firebase_options.dart';
 
 // ...
@@ -24,11 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Zoo App',
-      initialRoute: "home",
-      routes: {
-        'home': (context) => const MyHomePage(title: "Home Page"),
-        'zooView': (context) => const ZooPage(title: "Zoo"),
-      },
+      initialRoute: '/',
+      onGenerateRoute: Routes.generateRoute,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -86,21 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(
-          widget.title,
-          style: const TextStyle(
-            color: Colors.black,
-          ),
-        ),
-      ),
+      appBar: AppBar1('Checkout', '/zooView'),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child:Column(
+        child: Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -119,80 +109,62 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'Parker i appen',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 40
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 40),
               textAlign: TextAlign.center,
             ),
-            Row(
-                children: [
-                  const SizedBox(width: 20),
-                  Material(
-                    child: Center(
-                      child: Ink(
-                        decoration: const ShapeDecoration(
-                          color: Colors.green,
-                            shape: CircleBorder()
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            //Navigator.pushNamed(context, 'zooView');
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) {
-                                return const ZooPage(title: 'zoo');
-                              })
-                            );
-                          },
-                          icon: Image.asset('assets/zoo.png'),
-                          iconSize: 100,
-                      ),
-                    ),
-                  )),
-                  const SizedBox(width: 20),
-                  Material(
-                      child: Center(
-                        child: Ink(
-                          decoration: const ShapeDecoration(
-                              color: Colors.green,
-                              shape: CircleBorder()
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Image.asset('assets/zoo.png'),
-                            iconSize: 100,
-                          ),
-                        ),
-                      )),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.add_location),
+            Row(children: [
+              const SizedBox(width: 20),
+              Material(
+                  child: Center(
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                      color: Colors.green, shape: CircleBorder()),
+                  child: IconButton(
+                    onPressed: () {
+                      //Navigator.pushNamed(context, 'zooView');
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const ZooPage(title: 'zoo');
+                      }));
+                    },
+                    icon: Image.asset('assets/zoo.png'),
                     iconSize: 100,
                   ),
-                ]
-            ),
+                ),
+              )),
+              const SizedBox(width: 20),
+              Material(
+                  child: Center(
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                      color: Colors.green, shape: CircleBorder()),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Image.asset('assets/zoo.png'),
+                    iconSize: 100,
+                  ),
+                ),
+              )),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.add_location),
+                iconSize: 100,
+              ),
+            ]),
             const SizedBox(height: 100),
             const Text(
               'Welcome to the most awesome zoo app ever',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 40
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 40),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 100),
             const Text(
               'You have pushed the button this many times:',
-              style: TextStyle(
-                backgroundColor: Colors.red
-              ),
+              style: TextStyle(backgroundColor: Colors.red),
             ),
             Text(
               '$_counter',
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 50
-              ),
+              style: const TextStyle(color: Colors.black, fontSize: 50),
             ),
             const Padding(padding: EdgeInsets.all(4)),
             Row(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'CustomWidgets/app_bar2.dart';
 import 'entermodal.dart';
 
 class ZooView extends StatelessWidget {
@@ -58,27 +59,16 @@ class _ZooPageState extends State<ZooPage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(
-          widget.title,
-          style: const TextStyle(
-            color: Colors.black,
-          ),
-        ),
-      ),
+      appBar: AppBar2('Payment'),
+      extendBodyBehindAppBar: true,
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/tiger.jpg'),
-                    fit: BoxFit.cover)
-            ),
-            child:Column(
+                    image: AssetImage('assets/tiger.jpg'), fit: BoxFit.cover)),
+            child: Column(
               // Column is also a layout widget. It takes a list of children and
               // arranges them vertically. By default, it sizes itself to fit its
               // children horizontally, and tries to be as tall as its parent.
@@ -95,18 +85,17 @@ class _ZooPageState extends State<ZooPage> {
               // horizontal).
               mainAxisAlignment: MainAxisAlignment.center,
               children: const <Widget>[
-                 Text(
+                Text(
                   'Welcome to the most awesome zoo app ever',
                   style: TextStyle(
                       color: Colors.white,
                       backgroundColor: Colors.black,
-                      fontSize: 40
-                  ),
+                      fontSize: 40),
                   textAlign: TextAlign.center,
                 ),
-                 SizedBox(height: 100),
-                 Center(
-                    child: MyStatelessWidget(),
+                SizedBox(height: 100),
+                Center(
+                  child: MyStatelessWidget(),
                 ),
               ],
             )),
