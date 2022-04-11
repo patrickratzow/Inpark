@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/zooview.dart';
+import 'package:flutter_app/screens/zoomain.dart';
+import 'package:flutter_app/screens/zooview.dart';
 import 'main.dart';
 
 class Routes {
@@ -12,6 +13,8 @@ class Routes {
             builder: (_) => const MyHomePage(title: "Home Page"));
       case '/zooView':
         return MaterialPageRoute(builder: (_) => const ZooPage(title: "Zoo"));
+      case '/zooMainView>':
+        return MaterialPageRoute(builder: (_) => const ZooMainView());
       default:
         return _errorRoute();
     }
