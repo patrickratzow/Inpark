@@ -27,9 +27,9 @@ public class AalborgZooAnimalProvider : IAnimalProvider
         _htmlTransformer = htmlTransformer;
     }
 
-    public ValueTask<AnimalOverview?> GetOverview()
+    public async ValueTask<AnimalOverview?> GetOverview()
     {
-        var overview = _cache.GetOrCreateAsync("zoo_animals", async entry =>
+        var overview = await _cache.GetOrCreateAsync("zoo_animals", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(12);
 
@@ -118,7 +118,10 @@ public class AalborgZooAnimalProvider : IAnimalProvider
             }
         });
 
-        return new(overview);
+        return overview with
+        {
+            Animals = overview.Animals.OrderBy(x => x.Name.DisplayName).ToList()
+        };
     }
 
     private static ContentDto MapToContentDto(IContent content)
@@ -142,7 +145,7 @@ public class AalborgZooAnimalProvider : IAnimalProvider
     {
         var displayName = properties.GetProperty("nonLatinName").GetString();
         var latinName = properties.GetProperty("latinName").GetString();
-        var animalName = new AnimalName(displayName!, latinName!);
+        var animalName = new AnimalName(displayName!.Trim(), latinName!.Trim());
         
         return animalName;
     }
