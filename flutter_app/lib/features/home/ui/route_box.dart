@@ -30,8 +30,8 @@ class RouteBox extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pushNamed(route);
           },
-          child: SizedBox(
-            height: 50,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -56,13 +56,13 @@ class RouteBox extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 6),
                 Text(
                   description,
                   textAlign: TextAlign.left,
                   style: const TextStyle(
                     color: Color.fromARGB(255, 102, 102, 102),
                     fontSize: 12,
-                    fontFamily: "Inter",
                   ),
                 ),
               ],

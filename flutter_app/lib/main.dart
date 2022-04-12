@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget {
         initialRoute: "/home",
         routes: Routes().build(context),
         theme: ThemeData(
+          fontFamily: "Inter",
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
