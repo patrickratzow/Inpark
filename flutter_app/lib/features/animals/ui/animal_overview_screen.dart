@@ -71,11 +71,11 @@ class AnimalsOverviewList extends StatelessWidget {
       return SliverList(
         delegate: SliverChildBuilderDelegate(
           (context, index) {
-            if (animalsModel.loading) {
+            if (animalsModel.loading && index == 0) {
               return _loadingIndicator();
             }
 
-            if (animalsModel.hasError) {
+            if (animalsModel.hasError && index == 0) {
               return Center(
                 child: Text("An error happened: " + animalsModel.error),
               );
@@ -85,21 +85,23 @@ class AnimalsOverviewList extends StatelessWidget {
               return null;
             }
 
-            final animal = animalsModel.animals[index];
-            return Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              child: TextButton(
-                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    "/animals/id",
-                    arguments: animal,
-                  );
-                },
-                child: AnimalCard(animal: animal),
-              ),
-            );
+            if (animalsModel.animals.isNotEmpty) {
+              final animal = animalsModel.animals[index];
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                child: TextButton(
+                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      "/animals/id",
+                      arguments: animal,
+                    );
+                  },
+                  child: AnimalCard(animal: animal),
+                ),
+              );
+            }
           },
         ),
       );
