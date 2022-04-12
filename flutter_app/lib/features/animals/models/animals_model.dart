@@ -8,6 +8,7 @@ class AnimalsModel extends ChangeNotifier {
   List<Animal> _animals = List.empty();
   String _search = '';
   String error = "";
+  bool isSearching = false;
   bool loading = false;
   bool get hasError => error.isNotEmpty;
 
@@ -17,6 +18,20 @@ class AnimalsModel extends ChangeNotifier {
   String get search => _search;
   set search(String value) {
     _search = value;
+
+    notifyListeners();
+  }
+
+  void startSearching() {
+    _search = "";
+    isSearching = true;
+
+    notifyListeners();
+  }
+
+  void stopSearching() {
+    _search = "";
+    isSearching = false;
 
     notifyListeners();
   }

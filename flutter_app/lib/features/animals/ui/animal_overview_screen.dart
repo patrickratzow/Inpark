@@ -1,83 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_app/common/ui/cancel_button.dart';
 import 'package:flutter_app/common/ui/screen_app_bar.dart';
 import 'package:flutter_app/features/animals/models/animals_model.dart';
+import 'package:flutter_app/features/animals/ui/search_bar.dart';
 import 'package:provider/provider.dart';
 
 import 'animal_card.dart';
 
-class AnimalOverviewScreen extends StatefulWidget {
-  const AnimalOverviewScreen({Key? key}) : super(key: key);
-
-  @override
-  State<AnimalOverviewScreen> createState() => _AnimalOverviewScreenState();
-}
-
-class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
-  Icon customIcon = const Icon(Icons.search);
-  Widget customSearchBar = const Text('');
-  String name = '';
+class AnimalOverviewScreen extends StatelessWidget {
+  AnimalOverviewScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: customSearchBar,
-        leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            onPressed: () => {
-                  context.read<AnimalsModel>().search = '',
-                  Navigator.of(context).pop(),
-                }),
-        actions: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                if (customIcon.icon == Icons.search) {
-                  customIcon = const Icon(Icons.cancel);
-                  customSearchBar = ListTile(
-                    leading: const Icon(
-                      Icons.search,
-                      color: Colors.black,
-                      size: 28,
-                    ),
-                    title: TextFormField(
-                      initialValue: "",
-                      onChanged: (text) {
-                        context.read<AnimalsModel>().search = text;
-                      },
-                      decoration: const InputDecoration(
-                        hintText: 'Søg efter dyr',
-                        hintStyle: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontStyle: FontStyle.italic,
-                        ),
-                        border: InputBorder.none,
-                      ),
-                      style: const TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                  );
-                } else {
-                  context.read<AnimalsModel>().search = '';
-                  customIcon = const Icon(Icons.search);
-                  customSearchBar = Text(name);
-                }
-              });
-            },
-            icon: customIcon,
-            color: Colors.black,
-          )
-        ],
-        centerTitle: true,
-      ),
-      body: const AnimalsOverviewList(),
+    return Consumer<AnimalsModel>(
+      builder: (context, animalsModel, child) {
+        return Scaffold(
+          appBar: (animalsModel.isSearching
+              ? SearchBar(
+                  actions: [
+                    CancelButton(onPressed: () {
+                      context.read<AnimalsModel>().stopSearching();
+                    }),
+                  ],
+                )
+              : ScreenAppBar(
+                  actions: [buildSearchIcon(context)],
+                ) as PreferredSizeWidget),
+          body: const AnimalsOverviewList(),
+        );
+      },
+    );
+  }
+
+  IconButton buildSearchIcon(BuildContext context) {
+    Icon customIcon = const Icon(Icons.search);
+    Widget customSearchBar = const Text('');
+
+    return IconButton(
+      onPressed: () {
+        context.read<AnimalsModel>().startSearching();
+      },
+      icon: customIcon,
+      color: Colors.black,
     );
   }
 }
