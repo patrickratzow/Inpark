@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class RouteBox extends StatelessWidget {
   final String route;
@@ -39,7 +39,7 @@ class RouteBox extends StatelessWidget {
                 Row(
                   children: [
                     Image.asset(
-                      'assets/menu_icons/' + iconName + '.png',
+                      "assets/menu_icons/$iconName.png",
                     ),
                     const SizedBox(
                       width: 8,
@@ -51,7 +51,7 @@ class RouteBox extends StatelessWidget {
                           color: Colors.black,
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins'),
+                          fontFamily: "Poppins"),
                     ),
                   ],
                 ),
@@ -61,7 +61,7 @@ class RouteBox extends StatelessWidget {
                   style: const TextStyle(
                       color: Color.fromARGB(255, 102, 102, 102),
                       fontSize: 12,
-                      fontFamily: 'Inter'),
+                      fontFamily: "Inter"),
                 ),
               ],
             ),

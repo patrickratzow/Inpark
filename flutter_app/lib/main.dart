@@ -1,20 +1,13 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter_app/features/animals/models/animals_model.dart';
-import 'package:flutter_app/features/animals/ui/animal_overview_screen.dart';
-import 'package:flutter_app/features/animals/ui/animal_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_app/routes.dart';
-import 'package:provider/provider.dart';
-import 'common/ioc.dart';
-import 'features/home/models/home_model.dart';
-import 'features/home/ui/home.dart';
-import 'firebase_options.dart';
-import 'package:flutter_app/features/home/models/home_model.dart';
-import 'package:flutter_app/features/home/ui/route_box.dart';
-import '../../../common/ui/home_app_bar.dart';
-import '../../../common/ui/title_bar.dart';
-import 'package:flutter/foundation.dart' show kDebugMode;
+import "dart:io";
+import "package:flutter/material.dart";
+import "package:flutter_app/features/animals/models/animals_model.dart";
+import "package:firebase_core/firebase_core.dart";
+import "package:flutter_app/routes.dart";
+import "package:provider/provider.dart";
+import "common/ioc.dart";
+import "features/home/models/home_model.dart";
+import "firebase_options.dart";
+import "package:flutter_app/features/home/models/home_model.dart";
 
 // ...
 
@@ -55,7 +48,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Zoo App',
+        title: "Zoo App",
         initialRoute: "/home",
         routes: Routes().build(context),
         theme: ThemeData(

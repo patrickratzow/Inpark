@@ -24,8 +24,10 @@ class AnimalScreen extends StatelessWidget {
           const SliverAppBar(
             pinned: false,
             snap: false,
+            automaticallyImplyLeading: false,
             elevation: 0,
-            shadowColor: Colors.transparent,
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.white,
             floating: true,
             flexibleSpace: ScreenAppBar(),
           ),

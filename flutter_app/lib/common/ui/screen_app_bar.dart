@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
+import "package:flutter/material.dart";
+import "dart:io" show Platform;
 
 class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? name;
@@ -36,7 +36,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
-                  fontFamily: 'Poppins',
+                  fontFamily: "Poppins",
                 ),
               )
             : null,
@@ -58,7 +58,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                         color: Colors.black,
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Poppins',
+                        fontFamily: "Poppins",
                       ),
                     ),
                     alignment: Alignment.centerLeft,

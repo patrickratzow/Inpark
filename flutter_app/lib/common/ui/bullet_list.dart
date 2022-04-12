@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class BulletList extends StatelessWidget {
   final List<Widget> children;
@@ -17,7 +17,7 @@ class BulletList extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                '\u2022',
+                "\u2022",
                 style: TextStyle(
                   fontSize: 16,
                   height: 1.55,

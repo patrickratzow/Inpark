@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
+import "package:flutter/material.dart";
+import "dart:io" show Platform;
 
 class CancelButton extends StatelessWidget {
   final VoidCallback onPressed;

@@ -1,9 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_app/common/colors.dart';
-import 'package:flutter_app/features/animals/ui/animal_category.dart';
-import 'package:flutter_app/generated_code/zooinator.swagger.dart';
+import "package:cached_network_image/cached_network_image.dart";
+import "package:flutter/material.dart";
+import "package:flutter_app/features/animals/ui/animal_category.dart";
+import "package:flutter_app/generated_code/zooinator.swagger.dart";
 
 class AnimalCard extends StatelessWidget {
   const AnimalCard({
@@ -91,7 +89,7 @@ class AnimalCard extends StatelessWidget {
                     animal.name.displayName.trim(),
                     style: const TextStyle(
                         fontSize: 18,
-                        fontFamily: 'Poppins',
+                        fontFamily: "Poppins",
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -102,7 +100,7 @@ class AnimalCard extends StatelessWidget {
                     animal.name.latinName,
                     style: const TextStyle(
                       height: 1.5,
-                      fontFamily: 'Poppins',
+                      fontFamily: "Poppins",
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: Colors.white,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String route;
@@ -18,7 +18,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: const ImageIcon(
-          AssetImage('assets/zoo_logo.png'),
+          AssetImage("assets/zoo_logo.png"),
           size: 12,
           color: Colors.green,
         ),
@@ -30,7 +30,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 color: Colors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                fontFamily: 'Poppins',
+                fontFamily: "Poppins",
                 height: 16 / 14,
               ),
             ),

@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_app/common/ioc.dart';
-import 'package:flutter_app/generated_code/zooinator.swagger.dart';
+import "package:flutter/cupertino.dart";
+import "package:flutter_app/common/ioc.dart";
+import "package:flutter_app/generated_code/zooinator.swagger.dart";
 
-import '../repositories/animals_repository.dart';
+import "../repositories/animals_repository.dart";
 
 class AnimalsModel extends ChangeNotifier {
   List<Animal> _animals = List.empty();
-  String _search = '';
+  String _search = "";
   String error = "";
   bool isSearching = false;
   bool loading = false;
@@ -61,9 +61,11 @@ class AnimalsModel extends ChangeNotifier {
     var animals = _animals;
     if (search.isNotEmpty) {
       animals = animals
-          .where((animal) => animal.name.displayName
-              .toLowerCase()
-              .contains(search.toLowerCase()))
+          .where(
+            (animal) => animal.name.displayName
+                .toLowerCase()
+                .contains(search.toLowerCase()),
+          )
           .toList();
     }
 

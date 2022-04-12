@@ -1,6 +1,6 @@
-import 'package:flutter_app/common/ioc.dart';
-import 'package:flutter_app/common/result.dart';
-import 'package:flutter_app/generated_code/zooinator.swagger.dart';
+import "package:flutter_app/common/ioc.dart";
+import "package:flutter_app/common/result.dart";
+import "package:flutter_app/generated_code/zooinator.swagger.dart";
 
 class AnimalsRepository {
   late final Zooinator _apiClient;

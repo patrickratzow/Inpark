@@ -21,7 +21,7 @@ class SearchBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
         child: Row(
           children: <Widget>[
             const Icon(Icons.search),
