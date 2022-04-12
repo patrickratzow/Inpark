@@ -1,17 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_app/common/ui/cancel_button.dart';
-import 'dart:io' show Platform;
-
-import 'package:provider/provider.dart';
-
-import '../models/animals_model.dart';
+import "package:flutter/material.dart";
+import "package:flutter_app/common/ui/cancel_button.dart";
+import "dart:io" show Platform;
 
 class SearchBar extends StatelessWidget implements PreferredSizeWidget {
-  final List<Widget>? actions;
+  final VoidCallback onCancel;
+  final ValueChanged<String> onChanged;
 
   const SearchBar({
     Key? key,
-    this.actions,
+    required this.onCancel,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -31,23 +29,18 @@ class SearchBar extends StatelessWidget implements PreferredSizeWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 4),
                 child: TextField(
-                  style: const TextStyle(
-                    fontSize: 16,
-                  ),
-                  decoration: const InputDecoration(
-                    hintText: "Søg her",
-                    hintStyle: TextStyle(color: Color(0xff72777a)),
-                    border: InputBorder.none,
-                  ),
-                  onChanged: (text) {
-                    context.read<AnimalsModel>().search = text;
-                  },
-                ),
+                    style: const TextStyle(
+                      fontSize: 16,
+                    ),
+                    decoration: const InputDecoration(
+                      hintText: "Søg her",
+                      hintStyle: TextStyle(color: Color(0xff72777a)),
+                      border: InputBorder.none,
+                    ),
+                    onChanged: onChanged),
               ),
             ),
-            CancelButton(onPressed: () {
-              context.read<AnimalsModel>().stopSearching();
-            })
+            CancelButton(onPressed: onCancel),
           ],
         ),
       ),

@@ -17,7 +17,7 @@ class Routes {
       case '/zooMainView>':
         return MaterialPageRoute(builder: (_) => const ZooMainView());
       case '/animals':
-        return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
+        return MaterialPageRoute(builder: (_) => AnimalOverviewScreen());
       default:
         return _errorRoute();
     }

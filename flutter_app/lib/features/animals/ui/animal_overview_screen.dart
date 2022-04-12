@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_app/common/ui/cancel_button.dart';
-import 'package:flutter_app/common/ui/screen_app_bar.dart';
-import 'package:flutter_app/features/animals/models/animals_model.dart';
-import 'package:flutter_app/features/animals/ui/search_bar.dart';
-import 'package:provider/provider.dart';
+import "package:flutter/material.dart";
+import "package:flutter_app/common/ui/screen_app_bar.dart";
+import "package:flutter_app/features/animals/models/animals_model.dart";
+import "package:flutter_app/features/animals/ui/search_bar.dart";
+import "package:provider/provider.dart";
 
-import 'animal_card.dart';
+import "animal_card.dart";
 
 class AnimalOverviewScreen extends StatelessWidget {
   AnimalOverviewScreen({Key? key}) : super(key: key);
@@ -18,11 +16,10 @@ class AnimalOverviewScreen extends StatelessWidget {
         return Scaffold(
           appBar: (animalsModel.isSearching
               ? SearchBar(
-                  actions: [
-                    CancelButton(onPressed: () {
-                      context.read<AnimalsModel>().stopSearching();
-                    }),
-                  ],
+                  onCancel: animalsModel.stopSearching,
+                  onChanged: (text) {
+                    animalsModel.search = text;
+                  },
                 )
               : ScreenAppBar(
                   actions: [buildSearchIcon(context)],
@@ -35,7 +32,7 @@ class AnimalOverviewScreen extends StatelessWidget {
 
   IconButton buildSearchIcon(BuildContext context) {
     Icon customIcon = const Icon(Icons.search);
-    Widget customSearchBar = const Text('');
+    Widget customSearchBar = const Text("");
 
     return IconButton(
       onPressed: () {
