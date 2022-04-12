@@ -17,7 +17,6 @@ class RouteBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
       margin: const EdgeInsets.fromLTRB(16, 5, 16, 5),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(4)),
