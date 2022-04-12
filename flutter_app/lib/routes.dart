@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/zoomain.dart';
 import 'package:flutter_app/screens/zooview.dart';
+import 'features/animals/ui/animal_overview_screen.dart';
 import 'main.dart';
 
 class Routes {
@@ -15,6 +16,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const ZooPage(title: "Zoo"));
       case '/zooMainView>':
         return MaterialPageRoute(builder: (_) => const ZooMainView());
+      case '/animals':
+        return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
       default:
         return _errorRoute();
     }
