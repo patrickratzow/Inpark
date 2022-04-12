@@ -68,47 +68,49 @@ class AnimalsOverviewList extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<AnimalsModel>().fetchAnimals();
 
-    return Consumer<AnimalsModel>(builder: (context, animalsModel, child) {
-      if (animalsModel.loading) {
-        return SliverFillRemaining(
-          child: _loadingIndicator(),
-        );
-      }
+    return Consumer<AnimalsModel>(
+      builder: (context, animalsModel, child) {
+        if (animalsModel.loading) {
+          return SliverFillRemaining(
+            child: _loadingIndicator(),
+          );
+        }
 
-      if (animalsModel.hasError) {
-        return SliverFillRemaining(
-          child: Center(
-            child: Text("An error happened: " + animalsModel.error),
+        if (animalsModel.hasError) {
+          return SliverFillRemaining(
+            child: Center(
+              child: Text("An error happened: " + animalsModel.error),
+            ),
+          );
+        }
+
+        return SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              if (index >= animalsModel.animals.length) {
+                return null;
+              }
+
+              final animal = animalsModel.animals[index];
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                child: TextButton(
+                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      "/animals/id",
+                      arguments: animal,
+                    );
+                  },
+                  child: AnimalCard(animal: animal),
+                ),
+              );
+            },
           ),
         );
-      }
-
-      return SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            if (index >= animalsModel.animals.length) {
-              return null;
-            }
-
-            final animal = animalsModel.animals[index];
-            return Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              child: TextButton(
-                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    "/animals/id",
-                    arguments: animal,
-                  );
-                },
-                child: AnimalCard(animal: animal),
-              ),
-            );
-          },
-        ),
-      );
-    });
+      },
+    );
   }
 
   Widget _loadingIndicator() =>

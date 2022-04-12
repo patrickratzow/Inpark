@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_app/common/ui/screen_app_bar.dart';
-import '../common/ui/home_app_bar.dart';
-import '../entermodal.dart';
+import "package:flutter/material.dart";
+import "package:flutter_app/common/ui/screen_app_bar.dart";
+import "../common/ui/home_app_bar.dart";
+import "../entermodal.dart";
 
 class ZooView extends StatelessWidget {
   const ZooView({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class ZooView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Flutter Demo",
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -23,7 +23,7 @@ class ZooView extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const ZooPage(title: 'Aalborg Zoo Dyr'),
+      home: const ZooPage(title: "Aalborg Zoo Dyr"),
     );
   }
 }
@@ -65,40 +65,45 @@ class _ZooPageState extends State<ZooPage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/tiger.jpg'), fit: BoxFit.cover)),
-            child: Column(
-              // Column is also a layout widget. It takes a list of children and
-              // arranges them vertically. By default, it sizes itself to fit its
-              // children horizontally, and tries to be as tall as its parent.
-              //
-              // Invoke "debug painting" (press "p" in the console, choose the
-              // "Toggle Debug Paint" action from the Flutter Inspector in Android
-              // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-              // to see the wireframe for each widget.
-              //
-              // Column has various properties to control how it sizes itself and
-              // how it positions its children. Here we use mainAxisAlignment to
-              // center the children vertically; the main axis here is the vertical
-              // axis because Columns are vertical (the cross axis would be
-              // horizontal).
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                Text(
-                  'Welcome to the most awesome zoo app ever',
-                  style: TextStyle(
-                      color: Colors.white,
-                      backgroundColor: Colors.black,
-                      fontSize: 40),
-                  textAlign: TextAlign.center,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/tiger.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const <Widget>[
+              Text(
+                "Welcome to the most awesome zoo app ever",
+                style: TextStyle(
+                  color: Colors.white,
+                  backgroundColor: Colors.black,
+                  fontSize: 40,
                 ),
-                SizedBox(height: 100),
-                Center(
-                  child: MyStatelessWidget(),
-                ),
-              ],
-            )),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 100),
+              Center(
+                child: MyStatelessWidget(),
+              ),
+            ],
+          ),
+        ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );

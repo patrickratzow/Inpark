@@ -88,10 +88,11 @@ class AnimalCard extends StatelessWidget {
                   child: Text(
                     animal.name.displayName.trim(),
                     style: const TextStyle(
-                        fontSize: 18,
-                        fontFamily: "Poppins",
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                      fontSize: 18,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 Align(

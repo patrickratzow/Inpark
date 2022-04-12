@@ -207,7 +207,7 @@ class AnimalScreen extends StatelessWidget {
       var children =
           content.children.where((child) => child.type == "listitem");
 
-      return BulletList(children.map(_buildContent).toList());
+      return BulletList(children: children.map(_buildContent).toList());
     }
     if (content.type == "listitem") {
       return Column(

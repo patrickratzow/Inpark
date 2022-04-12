@@ -1,6 +1,6 @@
-import 'package:flutter_app/features/animals/models/animals_model.dart';
-import 'package:flutter_app/generated_code/zooinator.swagger.dart';
-import 'package:flutter_test/flutter_test.dart';
+import "package:flutter_app/features/animals/models/animals_model.dart";
+import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "package:flutter_test/flutter_test.dart";
 
 void main() {
   late List<Animal> animals;
@@ -8,24 +8,24 @@ void main() {
   setUp(() {
     animals = [
       Animal(
-        name: AnimalName(displayName: 'Floppa', latinName: 'Big floppa'),
-        category: 'Pattedyr',
-        image: AnimalImage(fullscreenUrl: '', previewUrl: ''),
-        id: '5',
+        name: AnimalName(displayName: "Floppa", latinName: "Big floppa"),
+        category: "Pattedyr",
+        image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
+        id: "5",
         contents: List.empty(),
       ),
       Animal(
-        name: AnimalName(displayName: 'Bingus', latinName: 'BB'),
-        category: 'Pattedyr',
-        image: AnimalImage(fullscreenUrl: '', previewUrl: ''),
-        id: '5',
+        name: AnimalName(displayName: "Bingus", latinName: "BB"),
+        category: "Pattedyr",
+        image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
+        id: "5",
         contents: List.empty(),
       )
     ];
   });
 
   test(
-    'animals returns backing field',
+    "animals returns backing field",
     () {
       // Arrange
       AnimalsModel model = AnimalsModel.withAnimals(animals);
@@ -41,34 +41,34 @@ void main() {
   );
 
   test(
-    'animals returns animals that matches search string',
+    "animals returns animals that matches search string",
     () {
       // Arrange
       AnimalsModel model = AnimalsModel.withAnimals(animals);
 
       // Act
-      model.search = 'Fl';
+      model.search = "Fl";
       var result = model.animals;
 
       // Assert
       expect(result.length, 1);
-      expect(result.first.name.displayName, 'Floppa');
+      expect(result.first.name.displayName, "Floppa");
     },
   );
 
   test(
-    'animals search is case insensitive',
+    "animals search is case insensitive",
     () {
       // Arrange
       AnimalsModel model = AnimalsModel.withAnimals(animals);
 
       // Act
-      model.search = 'fl';
+      model.search = "fl";
       var result = model.animals;
 
       // Assert
       expect(result.length, 1);
-      expect(result.first.name.displayName, 'Floppa');
+      expect(result.first.name.displayName, "Floppa");
     },
   );
 }

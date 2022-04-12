@@ -1,6 +1,6 @@
-import 'dart:math' as math;
+import "dart:math" as math;
 
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class MyArc extends StatelessWidget {
   final double diameter;

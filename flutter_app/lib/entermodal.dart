@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/zoomain.dart';
+import "package:flutter/material.dart";
+import "package:flutter_app/screens/zoomain.dart";
 
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
@@ -8,7 +8,7 @@ class MyStatelessWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-        child: const Text('Enter Zoo'),
+        child: const Text("Enter Zoo"),
         onPressed: () {
           showModalBottomSheet<Widget>(
             shape: const RoundedRectangleBorder(
@@ -31,44 +31,45 @@ class MyStatelessWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
                       const Text(
-                        'Aalborg Zoo',
+                        "Aalborg Zoo",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
-                          fontFamily: 'Inter',
+                          fontFamily: "Inter",
                         ),
                       ),
                       const Text(
-                        'Lorem ipsum dolor sit amet, '
-                        'consectetur adipiscing elit. '
-                        'Morbi convallis justo at mi ultricies sollicitudin.',
+                        "Lorem ipsum dolor sit amet, "
+                        "consectetur adipiscing elit. "
+                        "Morbi convallis justo at mi ultricies sollicitudin.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
-                          fontFamily: 'Inter',
+                          fontFamily: "Inter",
                         ),
                       ),
                       Image.asset(
-                        'assets/zoo.png',
+                        "assets/zoo.png",
                         color: Colors.white,
                         scale: 0.6,
                       ),
                       ElevatedButton(
                         style: ButtonStyle(
-                          shape: MaterialStateProperty.all<
-                              RoundedRectangleBorder>(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(36.0),
                             ),
                           ),
                         ),
-                        child: const Text('Gå til park'),
+                        child: const Text("Gå til park"),
                         onPressed: () => Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
                               return const ZooMainPage(
-                                  title: 'Aalborg Zoo Dyr');
+                                title: "Aalborg Zoo Dyr",
+                              );
                             },
                           ),
                         ),

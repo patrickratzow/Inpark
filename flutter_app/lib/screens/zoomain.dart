@@ -1,10 +1,8 @@
-import 'dart:io';
+import "dart:io";
 
-import 'package:flutter/material.dart';
-import 'package:flutter_app/generated_code/client_index.dart';
-import 'package:flutter_app/generated_code/zooinator.swagger.dart';
-import '../entermodal.dart';
-import 'package:chopper/chopper.dart' as chopper;
+import "package:flutter/material.dart";
+import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "package:chopper/chopper.dart" as chopper;
 
 class ZooMainView extends StatelessWidget {
   const ZooMainView({Key? key}) : super(key: key);
@@ -13,7 +11,7 @@ class ZooMainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Flutter Demo",
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -26,7 +24,7 @@ class ZooMainView extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const ZooMainPage(title: 'Aalborg Zoo Dyr'),
+      home: const ZooMainPage(title: "Aalborg Zoo Dyr"),
     );
   }
 }
@@ -57,9 +55,10 @@ class _ZooPageState extends State<ZooMainPage> {
   @override
   Widget build(BuildContext context) {
     final zooApi = Zooinator.create(
-        baseUrl: Platform.isAndroid
-            ? "https://10.0.2.2:5000"
-            : "https://localhost:5000");
+      baseUrl: Platform.isAndroid
+          ? "https://10.0.2.2:5000"
+          : "https://localhost:5000",
+    );
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -67,60 +66,63 @@ class _ZooPageState extends State<ZooMainPage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.search))
-          ],
-          centerTitle: true,
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(
-            widget.title,
-            style: const TextStyle(
-              color: Colors.black,
-            ),
+      appBar: AppBar(
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+        centerTitle: true,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            color: Colors.black,
           ),
         ),
-        body: SafeArea(
-          child: Center(
-              // Center is a layout widget. It takes a single child and positions it
-              // in the middle of the parent.
-              child: FutureBuilder<chopper.Response<AnimalOverview>>(
-                  future: zooApi.getAnimalOverview(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<chopper.Response<AnimalOverview>>
-                          snapshot) {
-                    if (snapshot.hasData) {
-                      final List<Widget> rows = snapshot.data?.body?.animals
-                          .map((animal) => Center(
-                                child: Column(
-                                  children: [
-                                    const Padding(padding: EdgeInsets.all(5)),
-                                    Text(
-                                      animal.name.displayName,
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    const Padding(padding: EdgeInsets.all(5)),
-                                    Image.network(
-                                      animal.image.previewUrl,
-                                      width: 350,
-                                    ),
-                                    const Padding(padding: EdgeInsets.all(15))
-                                  ],
-                                ),
-                              ))
-                          .toList() as List<Widget>;
+      ),
+      body: SafeArea(
+        child: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: FutureBuilder<chopper.Response<AnimalOverview>>(
+            future: zooApi.getAnimalOverview(),
+            builder: (BuildContext context,
+                AsyncSnapshot<chopper.Response<AnimalOverview>> snapshot) {
+              if (snapshot.hasData) {
+                final List<Widget> rows = snapshot.data?.body?.animals
+                    .map(
+                      (animal) => Center(
+                        child: Column(
+                          children: [
+                            const Padding(padding: EdgeInsets.all(5)),
+                            Text(
+                              animal.name.displayName,
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                            const Padding(padding: EdgeInsets.all(5)),
+                            Image.network(
+                              animal.image.previewUrl,
+                              width: 350,
+                            ),
+                            const Padding(padding: EdgeInsets.all(15))
+                          ],
+                        ),
+                      ),
+                    )
+                    .toList() as List<Widget>;
 
-                      return Scrollbar(
-                          isAlwaysShown: true,
-                          hoverThickness: 300,
-                          showTrackOnHover: true,
-                          child: ListView(children: rows));
-                    }
+                return Scrollbar(
+                  isAlwaysShown: true,
+                  hoverThickness: 300,
+                  showTrackOnHover: true,
+                  child: ListView(children: rows),
+                );
+              }
 
-                    return const Text("oof");
-                  })),
-          // This trailing comma makes auto-formatting nicer for build methods.
-        ));
+              return const Text("oof");
+            },
+          ),
+        ),
+        // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+    );
   }
 }

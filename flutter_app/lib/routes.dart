@@ -11,7 +11,7 @@ class Routes {
       "/home": (context) => const Home(),
       "/zooView": (context) => const ZooView(),
       "/zooMainView": (context) => const ZooMainView(),
-      "/animals": (context) => AnimalOverviewScreen(),
+      "/animals": (context) => const AnimalOverviewScreen(),
       "/animals/id": (context) => const AnimalScreen(),
     };
   }
@@ -27,7 +27,7 @@ class Routes {
       case "/zooMainView>":
         return MaterialPageRoute(builder: (_) => const ZooMainView());
       case "/animals":
-        return MaterialPageRoute(builder: (_) => AnimalOverviewScreen());
+        return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
       case "/animals/id":
         return MaterialPageRoute(builder: (_) => const AnimalScreen());
       default:

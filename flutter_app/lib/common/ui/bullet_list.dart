@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 class BulletList extends StatelessWidget {
   final List<Widget> children;
 
-  const BulletList(this.children);
+  const BulletList({Key? key, required this.children}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
