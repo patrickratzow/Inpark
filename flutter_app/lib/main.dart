@@ -11,6 +11,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:provider/provider.dart';
 import 'common/ioc.dart';
+import 'features/home/models/home_model.dart';
+import 'features/home/ui/home.dart';
 import 'firebase_options.dart';
 
 // ...
@@ -40,7 +42,7 @@ class Routes {
   Map<String, WidgetBuilder> build(BuildContext context) {
     return {
       '/home': (context) => const MyHomePage(title: "Home Page"),
-      '/zooView': (context) => const ZooPage(title: "Zoo"),
+      '/zooView': (context) => const Home(),
       '/animals': (context) => AnimalOverviewScreen(),
       '/animals/id': (context) => const AnimalScreen(),
     };
@@ -58,6 +60,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<AnimalsModel>(
           create: (context) => AnimalsModel(),
         ),
+        ChangeNotifierProvider<HomeModel>(
+          create: (context) => HomeModel(),
+        ),
       ],
       child: MaterialApp(
         title: 'Zoo App',
@@ -73,7 +78,6 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
       ),
