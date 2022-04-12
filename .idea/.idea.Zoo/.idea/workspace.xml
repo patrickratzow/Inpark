@@ -9,10 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/AalborgZooAnimalProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/AalborgZooAnimalProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,53 +25,45 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/57c2d4282221452cad4df86bbd5d6fa0a1fc70/d7/cdbc9086/ICustomAttributeProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0b5567882521e02aa3d40a7bce81b7235ccac4db588866e3498e614c3bc/CastHelpers.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/117c4271f4cf1f303fc5478918ca595e5d22ce995d77101639578f06a323038/MethodInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1e5ac068a2e34999806b2fd1a32ca4bbcc270d732196da0cafe4cfa14cc9/MemberInfoExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/258df92a3a29662b2c26fe4d4f17fe801b845d960573376acb26fc19551bc/ServiceRegistrar.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4fdb7ce693216bf34d4e85b76b03c8589d722ff5dd2b39cf442731e6287c6a1/MemoryCacheExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/73f99b2224ed48b9259d785821221369b2e14b362cd79ca87512bb5b76dc/Where.SpeedOpt.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/74f096188b7b56260fc4373fd73b31d2b38c86294714275cf615a726a2372d/RequestPreProcessorBehavior.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/767db1e17d404f86c3c73c54c6b20b5ff9ec43b79ef47681ae34b40a6852cf9/Where.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/84e3a8ffdcd86e30276b61d16979c6967c974581cbca0107a2780ad211bddda/MemberInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/901d1d7676eb3381e6d72547d182730f1741ef6a8eee1df2d84431d2698028/MethodBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c09c2ce5107b877e7d30d6b1ce5e4c36cdd52749b6bedce0ba4056c294869653/Type.Helpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d1aac3b6cd62f44c8897851472612c95b5ee545b24a675c4ffb4f2b161faeb93/IMemoryCache.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5b9c140912e8295f69159adbf39ad664d070868f2c2ae42d7e7dd1d92a9d4/ServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f5a2ccf8d64e7aa05089a63a768244d9f2dc55854b3a5ab1b61126bdc8f7ebe2/ToCollection.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f8ae023a8ce35718f0d91b1fae3c91017ce594370dcfbabac8746af6e6ca/AppendPrepend.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Providers/AalborgZooAnimalProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalOverviewQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ClassesToGenerate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/MethodInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/MethodInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/ValueObjectTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations.ps1" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalOverview.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Animal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4fdb7ce693216bf34d4e85b76b03c8589d722ff5dd2b39cf442731e6287c6a1/MemoryCacheExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d1aac3b6cd62f44c8897851472612c95b5ee545b24a675c4ffb4f2b161faeb93/IMemoryCache.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -90,16 +79,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
     <configuration name="AspNetCore" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" />
