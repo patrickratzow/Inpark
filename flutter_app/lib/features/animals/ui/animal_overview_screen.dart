@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/ui/screen_app_bar.dart';
 import 'package:flutter_app/features/animals/models/animals_model.dart';
-import 'package:flutter_app/features/animals/ui/search_bar.dart';
 import 'package:provider/provider.dart';
 
 import 'animal_card.dart';
@@ -20,10 +19,20 @@ class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<AnimalsModel>().fetchAnimals();
     return Scaffold(
-      appBar: SearchBar(
-        name: customSearchBar,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: customSearchBar,
+        leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () => {
+                  context.read<AnimalsModel>().search = '',
+                  Navigator.of(context).pop(),
+                }),
         actions: [
           IconButton(
             onPressed: () {
@@ -56,7 +65,7 @@ class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
                     ),
                   );
                 } else {
-                  name = '';
+                  context.read<AnimalsModel>().search = '';
                   customIcon = const Icon(Icons.search);
                   customSearchBar = Text(name);
                 }
@@ -66,58 +75,53 @@ class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
             color: Colors.black,
           )
         ],
+        centerTitle: true,
       ),
-      body: Consumer<AnimalsModel>(
-        builder: (context, animalsModel, child) {
-          if (animalsModel.loading) {
-            return _loadingIndicator();
-          }
-
-          if (animalsModel.hasError) {
-            return Center(
-              child: Text("An error happened: " + animalsModel.error),
-            );
-          }
-
-          return Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-            child: ListView(
-              children: [
-                ...animalsModel.animals.map(
-                  (animal) => TextButton(
-                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        "/animals/id",
-                        arguments: animal,
-                      );
-                    },
-                    child: AnimalCard(animal: animal),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+      body: const AnimalsOverviewList(),
     );
   }
+}
 
-  Widget buildSearch(BuildContext context) {
-    return Column(
-      children: [
-        TextFormField(
-          initialValue: "",
-          onChanged: (text) {
-            context.read<AnimalsModel>().search = text;
-          },
-          style: TextStyle(
-            color: Colors.white,
+class AnimalsOverviewList extends StatelessWidget {
+  const AnimalsOverviewList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    context.read<AnimalsModel>().fetchAnimals();
+
+    return Consumer<AnimalsModel>(
+      builder: (context, animalsModel, child) {
+        if (animalsModel.loading) {
+          return _loadingIndicator();
+        }
+
+        if (animalsModel.hasError) {
+          return Center(
+            child: Text("An error happened: " + animalsModel.error),
+          );
+        }
+
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+          child: ListView(
+            children: [
+              ...animalsModel.animals.map(
+                (animal) => TextButton(
+                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      "/animals/id",
+                      arguments: animal,
+                    );
+                  },
+                  child: AnimalCard(animal: animal),
+                ),
+              ),
+            ],
           ),
-        ),
-        const SizedBox(height: 16),
-      ],
+        );
+      },
     );
   }
 
