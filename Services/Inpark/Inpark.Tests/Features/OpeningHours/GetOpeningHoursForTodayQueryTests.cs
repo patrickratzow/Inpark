@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DomainFixture;
 using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Entities;
 using Zoo.Inpark.Features.OpeningHours;
@@ -18,13 +19,11 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
         // Arrange
         var start = (DateTimeOffset)DateTime.Today;
         var end = start.AddDays(1);
+        var range = TimeRange.From(start, end);
         var openingHour = await Add(
-            OpeningHour.Create(
-                id: Guid.NewGuid(), 
-                name: "Test", 
-                range: TimeRange.From(start, end), 
-                open: true
-            )
+            Fixture.Valid<OpeningHour>()
+                .With(x => x.Range, range)
+                .Create()
         );
         var query = new GetOpeningHoursForTodayQuery();
 
@@ -50,13 +49,11 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
         // Arrange
         var start = (DateTimeOffset)DateTime.Today.AddDays(1);
         var end = start.AddDays(1);
+        var range = TimeRange.From(start, end);
         await Add(
-            OpeningHour.Create(
-                id: Guid.NewGuid(), 
-                name: "Test", 
-                range: TimeRange.From(start, end), 
-                open: true
-            )
+            Fixture.Valid<OpeningHour>()
+                .With(x => x.Range, range)
+                .Create()
         );
         var query = new GetOpeningHoursForTodayQuery();
 
@@ -75,13 +72,11 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
         // Arrange
         var start = (DateTimeOffset)DateTime.Today.AddDays(-1);
         var end = start.AddDays(1);
+        var range = TimeRange.From(start, end);
         await Add(
-            OpeningHour.Create(
-                id: Guid.NewGuid(), 
-                name: "Test", 
-                range: TimeRange.From(start, end), 
-                open: true
-            )
+            Fixture.Valid<OpeningHour>()
+                .With(x => x.Range, range)
+                .Create()
         );
         var query = new GetOpeningHoursForTodayQuery();
 
