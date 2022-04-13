@@ -298,4 +298,52 @@ public class DomainTests
         // Assert
         hasGeneratedFixtureTests.Should().BeTrue();
     }
+    
+    [TestCaseSource(nameof(GetAllEntities))]
+    public void Entity_MustHaveOnlyOneConstructor_AndItShouldBePrivate(Type entity)
+    {
+        // Arrange
+        var constructors = entity.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        var amountOfConstructors = constructors.Length;
+        var constructorIsPrivate = constructors.First().IsPrivate;
+        
+        // Assert
+        amountOfConstructors.Should().Be(1);
+        constructorIsPrivate.Should().BeTrue();
+    }
+    
+    [TestCaseSource(nameof(GetAllValueObjects))]
+    public void ValueObject_MustHaveOnlyOneConstructor_AndItShouldBePrivate(Type entity)
+    {
+        // Arrange
+        var constructors = entity.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        var amountOfConstructors = constructors.Length;
+        var constructorIsPrivate = constructors.First().IsPrivate;
+        
+        // Assert
+        amountOfConstructors.Should().Be(1);
+        constructorIsPrivate.Should().BeTrue();
+    }
+    
+    [TestCaseSource(nameof(GetAllEntities))]
+    public void Entity_MustHaveAStaticMethodCalled_Create(Type entity)
+    {
+        // Arrange
+        var method = entity.GetMethod("Create", BindingFlags.Public | BindingFlags.Static);
+        var hasStaticCreateMethod = method is not null;
+        
+        // Assert
+        hasStaticCreateMethod.Should().BeTrue();
+    }
+    
+    [TestCaseSource(nameof(GetAllValueObjects))]
+    public void ValueObject_MustHaveAStaticMethodCalled_From(Type entity)
+    {
+        // Arrange
+        var method = entity.GetMethod("From", BindingFlags.Public | BindingFlags.Static);
+        var hasStaticFromMethod = method is not null;
+        
+        // Assert
+        hasStaticFromMethod.Should().BeTrue();
+    }
 }
