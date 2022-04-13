@@ -10,14 +10,11 @@ import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "../../../common/colors.dart";
 
 class AnimalScreen extends StatelessWidget {
-  const AnimalScreen({
-    Key? key,
-  }) : super(key: key);
+  final Animal animal;
+  const AnimalScreen({Key? key, required this.animal}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Animal animal = ModalRoute.of(context)!.settings.arguments as Animal;
-
     return Scaffold(
       body: CustomScrollView(
         slivers: [

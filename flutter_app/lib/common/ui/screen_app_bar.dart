@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "dart:io" show Platform;
 
+import '../../routes.dart';
+
 class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? name;
   final List<Widget>? actions;
@@ -27,7 +29,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Routes.popPage(context),
         ),
         centerTitle: true,
         title: name != null
@@ -75,7 +77,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.black,
               size: 16,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Routes.popPage(context),
             alignment: Alignment.centerLeft,
           ),
         ),

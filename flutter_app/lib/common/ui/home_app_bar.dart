@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import '../../routes.dart';
+
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String route;
   final String name;
@@ -35,7 +37,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed(route);
+              Routes.goToRoute(context, route);
             },
           )
         ],

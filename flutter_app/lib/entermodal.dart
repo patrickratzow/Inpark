@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_app/routes.dart';
 import "package:flutter_app/screens/zoomain.dart";
 
 class MyStatelessWidget extends StatelessWidget {
@@ -64,16 +65,9 @@ class MyStatelessWidget extends StatelessWidget {
                           ),
                         ),
                         child: const Text("Gå til park"),
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const ZooMainPage(
-                                title: "Aalborg Zoo Dyr",
-                              );
-                            },
-                          ),
-                        ),
-                      )
+                        onPressed: () =>
+                            Routes.goToRoute(context, "zooMainView"),
+                      ),
                     ],
                   ),
                 ),

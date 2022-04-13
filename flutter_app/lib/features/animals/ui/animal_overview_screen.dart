@@ -4,6 +4,7 @@ import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:flutter_app/features/animals/ui/search_bar.dart";
 import "package:provider/provider.dart";
 
+import '../../../routes.dart';
 import "animal_card.dart";
 
 class AnimalOverviewScreen extends StatelessWidget {
@@ -97,11 +98,7 @@ class AnimalsOverviewList extends StatelessWidget {
                 child: TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      "/animals/id",
-                      arguments: animal,
-                    );
+                    Routes.goToAnimalScreen(context, animal);
                   },
                   child: AnimalCard(animal: animal),
                 ),
