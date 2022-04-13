@@ -4,6 +4,7 @@ import "package:flutter_app/screens/zooview.dart";
 import "features/animals/ui/animal_overview_screen.dart";
 import "features/animals/ui/animal_screen.dart";
 import "features/home/ui/home.dart";
+import 'generated_code/zooinator.swagger.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -18,11 +19,23 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const ZooMainView());
       case "/animals":
         return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
-      case "/animals/id":
-        return MaterialPageRoute(builder: (_) => const AnimalScreen());
       default:
         return _errorRoute();
     }
+  }
+
+  static void goToRoute(context, String route) {
+    Navigator.of(context).pushNamed(route);
+  }
+
+  static void popPage(context) {
+    Navigator.of(context).pop();
+  }
+
+  static void goToAnimalScreen(context, Animal animal) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => AnimalScreen(animal: animal)),
+    );
   }
 
   static Route<dynamic> _errorRoute() {

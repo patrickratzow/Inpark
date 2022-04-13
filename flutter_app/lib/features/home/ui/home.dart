@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
     return [
       const RouteBox(
         title: "Floris",
-        route: "Non",
+        route: "/settings",
         description: "Find us!",
         iconName: "map",
       ),

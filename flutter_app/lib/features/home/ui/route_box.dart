@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import '../../../routes.dart';
+
 class RouteBox extends StatelessWidget {
   final String route;
   final String title;
@@ -28,7 +30,7 @@ class RouteBox extends StatelessWidget {
         elevation: 1,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context).pushNamed(route);
+            Routes.goToRoute(context, route);
           },
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
