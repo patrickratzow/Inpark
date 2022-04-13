@@ -8,19 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="tests(inpark): setup dbs for tests &amp; more implementation tests">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AspNetCore/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Categories.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Categories.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalOverviewQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalOverviewQueryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Services/HtmlDocumentTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Services/HtmlDocumentTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/appsettings.Development.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +150,7 @@
       <workItem from="1649832353455" duration="810000" />
       <workItem from="1649853565498" duration="2132000" />
       <workItem from="1649855758178" duration="5676000" />
-      <workItem from="1649866602948" duration="2044000" />
+      <workItem from="1649866602948" duration="2870000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -204,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649607318078</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="tests(inpark): setup dbs for tests &amp; more implementation tests">
+      <created>1649869980276</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649869980276</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +231,8 @@
     <MESSAGE value="feat(inpark): crude version of aalborg zoo animal api provider" />
     <MESSAGE value="refactor(api): html transformer pogU" />
     <MESSAGE value="feat: basic HTML parsing" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: basic HTML parsing" />
+    <MESSAGE value="tests(inpark): setup dbs for tests &amp; more implementation tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests(inpark): setup dbs for tests &amp; more implementation tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

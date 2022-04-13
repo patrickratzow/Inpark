@@ -17,7 +17,7 @@ namespace Zoo.Inpark.Tests.ImplementationTests;
 [Category(Categories.Implementation)]
 public class HandlerTests
 {
-    private static readonly Assembly Assembly = typeof(Zoo.Common.Api.DependencyInjection).Assembly;
+    private static readonly Assembly Assembly = typeof(DependencyInjection).Assembly;
 
     private static IEnumerable<Type> GetAllHandlers()
     {
