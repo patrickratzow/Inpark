@@ -6,16 +6,6 @@ import "features/animals/ui/animal_screen.dart";
 import "features/home/ui/home.dart";
 
 class Routes {
-  Map<String, WidgetBuilder> build(BuildContext context) {
-    return {
-      "/home": (context) => const Home(),
-      "/zooView": (context) => const ZooView(),
-      "/zooMainView": (context) => const ZooMainView(),
-      "/animals": (context) => const AnimalOverviewScreen(),
-      "/animals/id": (context) => const AnimalScreen(),
-    };
-  }
-
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
 
