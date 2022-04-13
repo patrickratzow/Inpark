@@ -14,6 +14,7 @@ namespace Zoo.Inpark.Tests.ImplementationTests;
 /// </summary>
 [TestFixture]
 [Category(Categories.Unit)]
+[Category(Categories.Implementation)]
 public class HandlerTests
 {
     private static readonly Assembly Assembly = typeof(Zoo.Common.Api.DependencyInjection).Assembly;

@@ -3,6 +3,7 @@ using Zoo.Inpark.Services;
 namespace Zoo.Inpark.Tests.Services;
 
 [TestFixture]
+[Category(Categories.Unit)]
 public class HtmlDocumentTests
 {
     private IHtmlTransformer _transformer = null!;
