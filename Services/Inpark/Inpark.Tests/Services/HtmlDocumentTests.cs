@@ -1,5 +1,3 @@
-using FluentAssertions;
-using NUnit.Framework;
 using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark.Tests.Services;

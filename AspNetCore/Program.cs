@@ -11,7 +11,7 @@ using Zoo.Payments;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddPayments(builder.Configuration);
+//builder.Services.AddPayments(builder.Configuration);
 builder.Services.AddInpark(builder.Configuration);
 
 if (builder.Configuration["Azure:Insights:Enabled"] is "true")
@@ -84,7 +84,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseFluentValidationExceptionHandler();
 
-app.UsePayments();
+//app.UsePayments();
 app.UseInpark();
 
 app.UseHttpsRedirection();
