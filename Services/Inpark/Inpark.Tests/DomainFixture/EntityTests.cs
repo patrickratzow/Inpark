@@ -15,4 +15,11 @@ public class EntityTests
         new object[] { typeof(Animal), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
     )]
     public void AnimalTests(IEntityTester tester) => tester.Run();
+    
+    [TestCaseSource(
+        typeof(EntityTestSource),
+        nameof(EntityTestSource.Test),
+        new object[] { typeof(OpeningHour), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
+    )]
+    public void OpeningHourTests(IEntityTester tester) => tester.Run();
 }

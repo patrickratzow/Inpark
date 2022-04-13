@@ -102,6 +102,7 @@ public class DomainTests
                                                                            BindingFlags.SetProperty
                                                                            | BindingFlags.GetProperty)
                 .Where(p => p.CanRead && p.CanWrite)
+                .Where(p => p.PropertyType != typeof(bool))
                 .Select(p => p.Name)
                 .ToList();
 

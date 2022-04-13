@@ -10,6 +10,7 @@ public class InparkDbContext : DbContext
     public InparkDbContext(DbContextOptions<InparkDbContext> options) : base(options) { }
 
     public DbSet<Animal> Animals { get; set; } = null!;
+    public DbSet<OpeningHour> OpeningHours { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
