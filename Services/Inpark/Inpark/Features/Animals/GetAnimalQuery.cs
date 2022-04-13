@@ -21,7 +21,8 @@ public class GetAnimalQueryHandler : IRequestHandler<GetAnimalQuery, OneOf<Anima
 
     public async Task<OneOf<Animal, AnimalNotFound>> Handle(GetAnimalQuery request, CancellationToken cancellationToken)
     {
-        var animal = await _context.Animals.FirstOrDefaultAsync(x => x.Name.LatinName == request.LatinName, cancellationToken);
+        var animal = await _context.Animals
+            .FirstOrDefaultAsync(x => x.Name.LatinName == request.LatinName, cancellationToken);
         if (animal is null) return new AnimalNotFound(request.LatinName);
 
         return animal;

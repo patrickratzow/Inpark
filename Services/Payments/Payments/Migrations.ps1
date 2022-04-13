@@ -14,12 +14,12 @@ function Add-Migration {
         return;
     }
     
-    Invoke-Expression ("dotnet ef --startup-project ../../../AspNetCore migrations add '" + $Name + "'")
+    Invoke-Expression ("dotnet ef --startup-project ../../../AspNetCore migrations add '" + $Name + "' --context PaymentsDbContext")
 }
 
 function Remove-Migration
 {
-    Invoke-Expression ("dotnet ef --startup-project ../../../AspNetCore migrations remove")
+    Invoke-Expression ("dotnet ef --startup-project ../../../AspNetCore migrations remove --context PaymentsDbContext")
 }
 
 $command = $args[0];

@@ -8,10 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="tests(inpark): setup dbs for tests &amp; more implementation tests">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
-    </list>
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="test(inpark): point to the correct assembly for HandlerTests" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +147,7 @@
       <workItem from="1649832353455" duration="810000" />
       <workItem from="1649853565498" duration="2132000" />
       <workItem from="1649855758178" duration="5676000" />
-      <workItem from="1649866602948" duration="2870000" />
+      <workItem from="1649866602948" duration="3498000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -201,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649869980276</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="test(inpark): point to the correct assembly for HandlerTests">
+      <created>1649870796170</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649870796170</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +236,8 @@
     <MESSAGE value="refactor(api): html transformer pogU" />
     <MESSAGE value="feat: basic HTML parsing" />
     <MESSAGE value="tests(inpark): setup dbs for tests &amp; more implementation tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests(inpark): setup dbs for tests &amp; more implementation tests" />
+    <MESSAGE value="test(inpark): point to the correct assembly for HandlerTests" />
+    <option name="LAST_COMMIT_MESSAGE" value="test(inpark): point to the correct assembly for HandlerTests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

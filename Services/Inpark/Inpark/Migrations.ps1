@@ -19,7 +19,7 @@ function Add-Migration {
 
 function Remove-Migration
 {
-    Invoke-Expression ("dotnet ef --startup-project ../../../AspNetCore migrations --context InparkDbContext remove")
+    Invoke-Expression ("dotnet ef --startup-project ../../../AspNetCore migrations remove --context InparkDbContext")
 }
 
 $command = $args[0];
