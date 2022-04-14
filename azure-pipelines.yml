@@ -5,8 +5,6 @@ trigger:
 
 variables:
   buildConfiguration: 'Debug'
-  isDevelopment: $[contains(variables['build.sourceBranch'], 'development')]
-  isMain: $[contains(variables['build.sourceBranch'], 'main')]
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -19,20 +17,20 @@ stages:
       steps:
       - template: Pipelines/Api/Templates/build-test.yml
         parameters:
-          buildConfiguration:  variables.buildConfiguration
+          buildConfiguration:  $(buildConfiguration)
           projectsFilter: '**/*.csproj'
           publishArtifactFilter: '**/AspNetCore.csproj'
           testProjectsFilter: '**/*Tests.csproj'
-          runImplementationTests: true
-          runUnitTests: true
-          runIntegrationTests: $[or(eq(variables.isDevelopment, true), eq(variables.isMain, true))]
-          publishArtifact: $[or(eq(variables.isDevelopment, true), eq(variables.isMain, true))]
-          runSmokeTests: $[eq(variables.isMain, true)]
+          runImplementationTests: 'true'
+          runUnitTests: 'true'
+          runIntegrationTests: ${{ or(contains(variables['build.sourceBranch'], 'development'), contains(variables['build.sourceBranch'], 'main')) }}
+          runSmokeTests: ${{ contains(variables['build.sourceBranch'], 'main') }}
+          publishArtifact: ${{ or(contains(variables['build.sourceBranch'], 'development'), contains(variables['build.sourceBranch'], 'main')) }}
 
   - stage: deploy_dev
     dependsOn: build
-    condition: eq(variables.isDevelopment, true)
-    displayName: 'Deploy App to Dev Slot'
+    condition: and(succeeded(), contains(variables['build.sourceBranch'], 'development'))
+    displayName: 'Deploy API'
     jobs:
       - job:  deploy
         displayName: 'Deploy API'
