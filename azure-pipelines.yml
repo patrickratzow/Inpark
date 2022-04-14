@@ -5,8 +5,8 @@ trigger:
 
 variables:
   buildConfiguration: 'Debug'
-  isDevelopment: $[contains(variables['build.sourceBranch'], 'development')]
-  isMain: $[contains(variables['build.sourceBranch'], 'main')]
+  isDevelopment: $(contains(variables['build.sourceBranch'], 'development'))
+  isMain: $(contains(variables['build.sourceBranch'], 'main'))
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -17,11 +17,9 @@ stages:
     - job: 'api_build_and_test'
       displayName: 'API Build & Test'
       steps:
-      - script: echo $[variables.isDevelopment]
-      - script: echo $[$[eq(variables.isMain, true)]]
       - template: Pipelines/Api/Templates/build-test.yml
         parameters:
-          buildConfiguration:  variables.buildConfiguration
+          buildConfiguration:  $(buildConfiguration)
           projectsFilter: '**/*.csproj'
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: 'true'
@@ -29,7 +27,7 @@ stages:
 
   - stage: deploy_dev
     dependsOn: build
-    condition: eq(variables.isDevelopment, 'true')
+    condition: $(isDevelopment)
     displayName: 'Deploy App to Dev Slot'
     jobs:
       - job:  deploy
