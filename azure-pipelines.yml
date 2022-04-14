@@ -22,8 +22,9 @@ stages:
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: 'true'
           runUnitTests: 'true'
-          runIntegrationTests: or(contains(variables['build.sourceBranch'], 'development'), contains(variables['build.sourceBranch'], 'main'))
-          runSmokeTests: or(contains(variables['build.sourceBranch'], 'development'), contains(variables['build.sourceBranch'], 'main'))
+          runIntegrationTests: or(eq(contains(variables['build.sourceBranch'], 'development'), 'true'), eq(contains(variables['build.sourceBranch'], 'main'), 'true'))
+          runSmokeTests: eq(contains(variables['build.sourceBranch'], 'main'), 'true')
+          publishArtifact: or(eq(contains(variables['build.sourceBranch'], 'development'), 'true'), eq(contains(variables['build.sourceBranch'], 'main'), 'true'))
 
   - stage: deploy_dev
     dependsOn: build
