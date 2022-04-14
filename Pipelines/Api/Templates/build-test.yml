@@ -21,7 +21,9 @@ parameters:
 - name: publishArtifact
   type: boolean
   default: false
-
+- name: publishArtifactFilter
+  type: string
+  
 steps:
 - task: DotNetCoreCli@2
   displayName: Restore
@@ -79,7 +81,7 @@ steps:
     inputs:
       command: 'publish'
       publishWebProjects: false
-      projects: '${{ parameters.projectsFilter }}'
+      projects: '${{ parameters.publishArtifactFilter }}'
       arguments: '--configuration ${{ parameters.buildConfiguration }} --output $(Build.ArtifactStagingDirectory)'
       zipAfterPublish: true         
           

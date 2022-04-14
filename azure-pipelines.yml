@@ -21,6 +21,7 @@ stages:
         parameters:
           buildConfiguration:  variables.buildConfiguration
           projectsFilter: '**/*.csproj'
+          publishArtifactFilter: '**/AspNetCore.csproj'
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: true
           runUnitTests: true
@@ -52,4 +53,4 @@ stages:
             WebAppName: 'app-zoo-dev'
             deployToSlotOrASE: true
             ResourceGroupName: 'rg-zoo-dev'
-            packageForLinux: '$(System.DefaultWorkingDirectory)/drop/AspNetCore.zip'
+            packageForLinux: '$(System.ArtifactsDirectory)/drop/AspNetCore.zip'
