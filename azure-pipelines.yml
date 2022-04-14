@@ -29,7 +29,7 @@ stages:
 
   - stage: deploy_dev
     dependsOn: build
-    condition: and(succeded(), variables.isDevelopment)
+    condition: and(succeeded(), variables.isDevelopment)
     displayName: 'Deploy API'
     jobs:
       - job:  deploy
