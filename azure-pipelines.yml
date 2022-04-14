@@ -14,7 +14,8 @@ pool:
 stages:
   - stage: build
     jobs:
-    - job: 'API_Build_And_Test'
+    - job: 'api_build_and_test'
+      displayName: 'API Build & Test'
       steps:
       - template: Pipelines/Api/Templates/build-test.yml
         parameters:
@@ -30,27 +31,28 @@ stages:
           ${{ if or(eq(variables.isDevelopment, true), eq(variables.isMain, true)) }}:
             publishArtifact: true
 
-  - stage: deploy_dev
+ - stage: deploy_dev2
     dependsOn: build
     condition: eq(variables.isDevelopment, true)
+    displayName: 'Deploy App to Dev Slot'
     jobs:
-    - deployment: deploy
-      displayName: Deploy
-      strategy:
-        runOnce:
-          deploy:
-            steps:
-            - task: DownloadBuildArtifacts@0
-              inputs:
-                buildType: 'current'
-                downloadType: 'single'
-                artifactName: 'drop'
-                downloadPath: '$(System.ArtifactsDirectory)'
-            - task: AzureRmWebAppDeployment@4
-              displayName: 'Deploy API'
-              inputs:
-                ConnectionType: 'AzureRM'
-                azureSubscription: 'rg-zoo-dev'
-                appType: 'webApp'
-                WebAppName: 'app-zoo-dev'
-                packageForLinux: '$(System.ArtifactsDirectory)/drop/AspNetCore.zip'
+      - job:  deploy
+        displayName: 'Deploy API'
+        steps:
+        - task: DownloadBuildArtifacts@0
+          displayName: 'Download Artifacts'
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'drop'
+            downloadPath: '$(System.ArtifactsDirectory)'
+        - task: AzureRmWebAppDeployment@4
+          displayName: 'Deploy API'
+          inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'rg-zoo-devd'
+            appType: 'webApp'
+            WebAppName: 'app-zoo-dev'
+            deployToSlotOrASE: true
+            ResourceGroupName: 'rg-zoo-dev'
+            packageForLinux: '$(System.DefaultWorkingDirectory)/drop/AspNetCore.zip'
