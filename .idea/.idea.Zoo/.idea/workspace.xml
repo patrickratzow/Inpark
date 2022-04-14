@@ -8,12 +8,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Pipelines/Api/Templates/build-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Pipelines/Api/Templates/build-test.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs" afterDir="false" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="refactor: implementation tests are no longer unit tests">
+      <change afterPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/TestsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments.Tests/Categories.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/Categories.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/azure-pipelines.yml" beforeDir="false" afterPath="$PROJECT_DIR$/azure-pipelines.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649875484647</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="refactor: implementation tests are no longer unit tests">
+      <created>1649933485593</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1649933485593</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,14 +285,15 @@
     <MESSAGE value="test(inpark): point to the correct assembly for HandlerTests" />
     <MESSAGE value="chore: update scripts &amp; code style" />
     <MESSAGE value="feat(tests): add bunch of implementation tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(tests): add bunch of implementation tests" />
+    <MESSAGE value="refactor: implementation tests are no longer unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: implementation tests are no longer unit tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs</url>
-          <line>127</line>
+          <line>128</line>
           <properties documentPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainImplementationTests.cs" initialLine="127" containingFunctionPresentation="method 'ShouldMakeSureThatEveryPropertyIsValidatedForAnEntity'" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
