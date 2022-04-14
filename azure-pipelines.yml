@@ -36,7 +36,6 @@ stages:
     jobs:
     - deployment: deploy
       displayName: Deploy
-      environment: dev
       strategy:
         runOnce:
           deploy:
