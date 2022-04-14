@@ -4,7 +4,7 @@ trigger:
     - '*'
 
 variables:
-  buildConfiguration2: 'Debug'
+  buildConfiguration: 'Debug'
   isDevelopment: contains(variables['build.sourceBranch'], 'development')
   isMain: contains(variables['build.sourceBranch'], 'main')
 
@@ -17,11 +17,11 @@ stages:
     - job: 'api_build_and_test'
       displayName: 'API Build & Test'
       steps:
-      - script: echo ${{ variables.isDevelopment }}
-      - script: echo ${{ variables.isMain }}
+      - script: echo ${{ and(variables.isDevelopment) }}
+      - script: echo ${{ and(variables.isMain) }}
       - template: Pipelines/Api/Templates/build-test.yml
         parameters:
-          buildConfiguration:  $(buildConfiguration2)
+          buildConfiguration:  $(buildConfiguration)
           projectsFilter: '**/*.csproj'
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: 'true'
