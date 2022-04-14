@@ -50,5 +50,5 @@ stages:
             appType: 'webApp'
             WebAppName: 'app-zoo-dev'
             ResourceGroupName: 'rg-zoo-dev'
-            StartupCommand: "dotnet AspNetCore.dll"
+            StartupCommand: 'dotnet AspNetCore.dll'
             packageForLinux: '$(System.ArtifactsDirectory)/drop/AspNetCore.zip'
