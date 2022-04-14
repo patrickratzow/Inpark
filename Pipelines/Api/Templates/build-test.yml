@@ -45,7 +45,7 @@ steps:
     inputs:
       command: 'test'
       projects: '${{ parameters.testProjectsFilter }}'
-      arguments: '--logger trx --filter Category=Implementation --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      arguments: '--logger trx --filter Category=Implementation --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
       publishTestResults: true
 
 - ${{ if eq(parameters.runUnitTests, true) }}:
@@ -54,7 +54,7 @@ steps:
     inputs:
       command: 'test'
       projects: '${{ parameters.testProjectsFilter }}'
-      arguments: '--logger trx --filter Category=Unit --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      arguments: '--logger trx --filter Category=Unit --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
       publishTestResults: true
 
 - ${{ if eq(parameters.runIntegrationTests, true) }}:
@@ -63,7 +63,7 @@ steps:
     inputs:
       command: 'test'
       projects: '${{ parameters.testProjectsFilter }}'
-      arguments: '--logger trx --filter Category=Integration --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      arguments: '--logger trx --filter Category=Integration --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
       publishTestResults: true
 
 - ${{ if eq(parameters.runSmokeTests, true) }}:
@@ -72,7 +72,7 @@ steps:
     inputs:
       command: 'test'
       projects: '${{ parameters.testProjectsFilter }}'
-      arguments: '--logger trx --filter Category=Smoke --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      arguments: '--logger trx --filter Category=Smoke --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
       publishTestResults: true
   
 - ${{ if eq(parameters.publishArtifact, true) }}:
