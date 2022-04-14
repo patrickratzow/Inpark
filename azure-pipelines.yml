@@ -5,8 +5,14 @@ trigger:
 
 variables:
   buildConfiguration: 'Debug'
-  isDevelopment: contains(variables['build.sourceBranch'], 'development')
-  isMain: contains(variables['build.sourceBranch'], 'main')
+
+parameters:
+  - name: isDevelopment
+    default: contains(variables['build.sourceBranch'], 'development')
+    type: string
+  - name: isMain
+    default: contains(variables['build.sourceBranch'], 'main')
+    type: string
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -17,8 +23,8 @@ stages:
     - job: 'api_build_and_test'
       displayName: 'API Build & Test'
       steps:
-      - script: echo ${{ contains(variables['build.sourceBranch'], 'development') }}
-      - script: echo ${{ contains(variables['build.sourceBranch'], 'main') }}
+      - script: echo ${{ parameters.isDevelopment }}
+      - script: echo ${{ parameters.isMain }}
       - template: Pipelines/Api/Templates/build-test.yml
         parameters:
           buildConfiguration:  $(buildConfiguration)
@@ -29,7 +35,7 @@ stages:
 
   - stage: deploy_dev
     dependsOn: build
-    condition: and(succeeded(), variables.isDevelopment)
+    condition: and(succeeded(), parameters.isDevelopment)
     displayName: 'Deploy API'
     jobs:
       - job:  deploy
