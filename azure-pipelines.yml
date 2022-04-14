@@ -31,7 +31,7 @@ stages:
           ${{ if or(eq(variables.isDevelopment, true), eq(variables.isMain, true)) }}:
             publishArtifact: true
 
- - stage: deploy_dev2
+  - stage: deploy_dev
     dependsOn: build
     condition: eq(variables.isDevelopment, true)
     displayName: 'Deploy App to Dev Slot'
