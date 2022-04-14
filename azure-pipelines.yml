@@ -51,7 +51,7 @@ stages:
               displayName: 'Deploy API'
               inputs:
                 ConnectionType: 'AzureRM'
-                azureSubscription: 'COM-DEV-GOLD (31.04.2021)'
+                azureSubscription: 'rg-zoo-dev'
                 appType: 'webApp'
                 WebAppName: 'app-zoo-dev'
                 packageForLinux: '$(System.ArtifactsDirectory)/drop/AspNetCore.zip'
