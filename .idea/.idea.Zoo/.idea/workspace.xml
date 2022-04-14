@@ -8,29 +8,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="feat(tests): add bunch of implementation tests">
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/OpeningHourDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/OpeningHourConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/TimeRangeConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Entities/OpeningHour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220413201228_CreateOpeningHours.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220413201228_CreateOpeningHours.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" afterDir="false" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Pipelines/Api/Templates/build-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Pipelines/Api/Templates/build-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Groups.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Groups.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -42,12 +37,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/Traits.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0b5567882521e02aa3d40a7bce81b7235ccac4db588866e3498e614c3bc/CastHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e9155e2314e53237c75354e4ed99c91031eaa29c5f1447b7e8a5967862d9e/DateTimeOffset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/30c251e6c91e9e9c78c5afeb63e341e13b6dc2153c8e965dd9c8f5acea519332/LateBoundTestFramework.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/40af8279542cd9bbf48feb2f33ca3aacee7f4809d37f42a855801cd8b8542/TimeOnly.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4fdb7ce693216bf34d4e85b76b03c8589d722ff5dd2b39cf442731e6287c6a1/MemoryCacheExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5330988bfaacf93f15e30f9b3dd6018a768f89da3b38d874fda77299c62164/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a8d8fde6cd99394a9655923bcc454cdc35ba667433a46361ed53e8e591ac48/CategoryAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d1aac3b6cd62f44c8897851472612c95b5ee545b24a675c4ffb4f2b161faeb93/IMemoryCache.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d5f92893b4e362502fc4e02cf758f9ed02fdab36fa5d36b75d31416bdb3596/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ClassesToGenerate.cs" root0="FORCE_HIGHLIGHTING" />
@@ -60,6 +59,9 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Animal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalOverview.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalOverviewQuery.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,23 +106,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ReSpellerSettingsId",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "azure"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;azure&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
     <configuration name="AspNetCore" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" />
@@ -290,13 +292,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs</url>
-          <line>26</line>
+          <line>25</line>
           <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark.Tests\ImplementationTests\TestsTests.cs" initialLine="26" containingFunctionPresentation="method 'Test_ShouldHaveA_Category'">
             <startOffsets>
-              <option value="744" />
+              <option value="716" />
             </startOffsets>
             <endOffsets>
-              <option value="818" />
+              <option value="790" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="8" />

@@ -16,7 +16,6 @@ namespace Zoo.Inpark.Tests.ImplementationTests;
  */
 [TestFixture]
 [Category(Categories.Unit)]
-[Category(Categories.Implementation)]
 public class DomainTests
 {
     private static readonly Assembly Assembly = typeof(Entity).Assembly;

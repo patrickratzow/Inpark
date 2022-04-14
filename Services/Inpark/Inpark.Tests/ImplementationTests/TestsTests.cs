@@ -6,7 +6,6 @@ using System.Reflection;
 namespace Zoo.Inpark.Tests.ImplementationTests;
 
 [TestFixture]
-[Category(Categories.Unit)]
 [Category(Categories.Implementation)]
 public class TestsTests
 {
