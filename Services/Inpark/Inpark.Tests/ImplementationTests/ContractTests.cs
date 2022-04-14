@@ -15,7 +15,6 @@ namespace Zoo.Inpark.Tests.ImplementationTests;
  * It does not check if any implementation is "correct", merely that there is a implementation
  */
 [TestFixture]
-[Category(Categories.Unit)]
 [Category(Categories.Implementation)]
 public class ContractTests
 {

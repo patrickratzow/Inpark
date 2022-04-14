@@ -13,7 +13,6 @@ namespace Zoo.Inpark.Tests.ImplementationTests;
 /// It does not check if any implementation is "correct", merely that there is a implementation 
 /// </summary>
 [TestFixture]
-[Category(Categories.Unit)]
 [Category(Categories.Implementation)]
 public class HandlerTests
 {

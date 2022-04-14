@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Zoo.Inpark.Tests.ImplementationTests;
+namespace Zoo.Payments.Tests.ImplementationTests;
 
 [TestFixture]
 [Category(Categories.Implementation)]
