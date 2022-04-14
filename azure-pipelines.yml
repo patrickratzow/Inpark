@@ -23,12 +23,12 @@ stages:
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: true
           runUnitTests: true
-          runIntegrationTests: or(variables.isDevelopment, variables.isMain)
-          runSmokeTests: eq(variables.isMain, 'true')
-          publishArtifact: or(variables.isDevelopment, variables.isMain)
+          runIntegrationTests: or(eq(variables.isDevelopment, true), eq(variables.isMain, true))
+          runSmokeTests: eq(variables.isMain, true)
+          publishArtifact: or(eq(variables.isDevelopment, true), eq(variables.isMain, true))
 
   - stage: DeployToDev
-    condition: eq(variables.isDevelopment, 'true')
+    condition: eq(variables.isDevelopment, true)
     jobs:
     - deployment: deploy
       displayName: Deploy
