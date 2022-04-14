@@ -35,7 +35,7 @@ stages:
 
   - stage: deploy_dev
     dependsOn: build
-    condition: and(succeeded(), parameters.isDevelopment)
+    condition: and(succeeded(), contains(variables['build.sourceBranch'], 'development'))
     displayName: 'Deploy API'
     jobs:
       - job:  deploy
