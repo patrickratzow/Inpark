@@ -138,7 +138,7 @@ class ConservationStatus extends StatelessWidget {
           "Ikke \nTruet",
           style: TextStyle(color: Color(0xff698665)),
           textAlign: TextAlign.center,
-        )
+        ),
       ],
     );
   }
