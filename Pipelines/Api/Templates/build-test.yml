@@ -18,7 +18,7 @@ parameters:
 - name: runSmokeTests
   type: boolean
   default: false
-- name: publishArtficat
+- name: publishArtifact
   type: boolean
   default: false
 
