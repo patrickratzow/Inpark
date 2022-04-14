@@ -6,8 +6,18 @@ parameters:
   type: string
 - name: testProjectsFilter
   type: string
-- name: testCategory
-  type: string
+- name: runImplementationTests
+  type: boolean
+  default: false
+- name: runUnitTests
+  type: boolean
+  default: false
+- name: runIntegrationTests
+  type: boolean
+  default: false
+- name: runSmokeTests
+  type: boolean
+  default: false
 - name: publishToDirectory
   type: string
   default: ''
@@ -27,10 +37,39 @@ steps:
     projects: '${{ parameters.projectsFilter }}'
     arguments: '--configuration ${{ parameters.buildConfiguration }} --no-restore'
 
-- task: DotNetCoreCLI@2
-  displayName: 'UnitTest'
-  inputs:
-    command: 'test'
-    projects: '${{ parameters.testProjectsFilter }}'
-    arguments: '--logger trx --configuration ${{ parameters.buildConfiguration }} --filter Category=${{ parameters.testCategory }} --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
-    publishTestResults: true
+- ${{ if eq(parameters.runImplementationTests, true) }}:
+  - task: DotNetCoreCLI@2
+    displayName: 'Implementation Tests'
+    inputs:
+      command: 'test'
+      projects: '${{ parameters.testProjectsFilter }}'
+      arguments: '--logger trx --filter Category=Implementation --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      publishTestResults: true
+
+- ${{ if eq(parameters.runUnitTests, true) }}:
+  - task: DotNetCoreCLI@2
+    displayName: 'Unit Tests'
+    inputs:
+      command: 'test'
+      projects: '${{ parameters.testProjectsFilter }}'
+      arguments: '--logger trx --filter Category=Unit --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      publishTestResults: true
+
+- ${{ if eq(parameters.runIntegrationTests, true) }}:
+  - task: DotNetCoreCLI@2
+    displayName: 'Integration Tests'
+    inputs:
+      command: 'test'
+      projects: '${{ parameters.testProjectsFilter }}'
+      arguments: '--logger trx --filter Category=Integration --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      publishTestResults: true
+
+- ${{ if eq(parameters.runSmokeTests, true) }}:
+  - task: DotNetCoreCLI@2
+    displayName: 'Smoke Tests'
+    inputs:
+      command: 'test'
+      projects: '${{ parameters.testProjectsFilter }}'
+      arguments: '--logger trx --filter Category=Smoke --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      publishTestResults: true
+
