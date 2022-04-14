@@ -4,7 +4,7 @@ trigger:
     - '*'
 
 variables:
-  buildConfiguration: 'Debug'
+  buildConfiguration: 'Release'
 
 pool:
   vmImage: 'ubuntu-latest'

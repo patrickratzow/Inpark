@@ -8,7 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="ci: fix deploy">
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="ci: fix not all artifacts being deployed">
       <change beforePath="$PROJECT_DIR$/azure-pipelines.yml" beforeDir="false" afterPath="$PROJECT_DIR$/azure-pipelines.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -269,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649936535214</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="ci: fix not all artifacts being deployed">
+      <created>1649937432359</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1649937432359</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +314,8 @@
     <MESSAGE value="fix: add missing tests" />
     <MESSAGE value="ci: update build-test.yml" />
     <MESSAGE value="ci: fix deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="ci: fix deploy" />
+    <MESSAGE value="ci: fix not all artifacts being deployed" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci: fix not all artifacts being deployed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
