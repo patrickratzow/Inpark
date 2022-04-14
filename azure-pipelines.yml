@@ -5,8 +5,8 @@ trigger:
 
 variables:
   buildConfiguration: 'Debug'
-  isDevelopment: $(contains(variables['build.sourceBranch'], 'development'))
-  isMain: $(contains(variables['build.sourceBranch'], 'main'))
+  isDevelopment: ${{ contains(variables['build.sourceBranch'], 'development') }}
+  isMain: ${{ contains(variables['build.sourceBranch'], 'main') }}
 
 pool:
   vmImage: 'ubuntu-latest'
