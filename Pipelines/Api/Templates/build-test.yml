@@ -18,9 +18,9 @@ parameters:
 - name: runSmokeTests
   type: boolean
   default: false
-- name: publishToDirectory
-  type: string
-  default: ''
+- name: publishArtficat
+  type: boolean
+  default: false
 
 steps:
 - task: DotNetCoreCli@2
@@ -43,7 +43,7 @@ steps:
     inputs:
       command: 'test'
       projects: '${{ parameters.testProjectsFilter }}'
-      arguments: '--logger trx --filter Category=Implementation --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      arguments: '--logger trx --filter Category=Implementation --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
       publishTestResults: true
 
 - ${{ if eq(parameters.runUnitTests, true) }}:
@@ -52,7 +52,7 @@ steps:
     inputs:
       command: 'test'
       projects: '${{ parameters.testProjectsFilter }}'
-      arguments: '--logger trx --filter Category=Unit --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      arguments: '--logger trx --filter Category=Unit --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
       publishTestResults: true
 
 - ${{ if eq(parameters.runIntegrationTests, true) }}:
@@ -61,7 +61,7 @@ steps:
     inputs:
       command: 'test'
       projects: '${{ parameters.testProjectsFilter }}'
-      arguments: '--logger trx --filter Category=Integration --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      arguments: '--logger trx --filter Category=Integration --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
       publishTestResults: true
 
 - ${{ if eq(parameters.runSmokeTests, true) }}:
@@ -70,6 +70,23 @@ steps:
     inputs:
       command: 'test'
       projects: '${{ parameters.testProjectsFilter }}'
-      arguments: '--logger trx --filter Category=Smoke --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+      arguments: '--logger trx --filter Category=Smoke --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
       publishTestResults: true
+  
+- ${{ if eq(parameters.publishArtifact, true) }}:
+  - task: DotNetCoreCLI@2
+    displayName: "Publish"
+    inputs:
+      command: 'publish'
+      publishWebProjects: false
+      projects: '${{ parameters.projectsFilter }}'
+      arguments: '--configuration ${{ parameters.buildConfiguration }} --output $(Build.ArtifactStagingDirectory)'
+      zipAfterPublish: true         
+          
+  - task: PublishBuildArtifacts@1
+    displayName: "Upload Artifacts"
+    inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+
+
 
