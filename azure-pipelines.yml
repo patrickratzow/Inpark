@@ -17,8 +17,8 @@ stages:
     - job: 'api_build_and_test'
       displayName: 'API Build & Test'
       steps:
-      - script: echo ${{ and(variables.isDevelopment) }}
-      - script: echo ${{ and(variables.isMain) }}
+      - script: echo ${{ contains(variables['build.sourceBranch'], 'development') }}
+      - script: echo ${{ contains(variables['build.sourceBranch'], 'main')) }}
       - template: Pipelines/Api/Templates/build-test.yml
         parameters:
           buildConfiguration:  $(buildConfiguration2)
