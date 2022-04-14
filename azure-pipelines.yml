@@ -24,9 +24,8 @@ stages:
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: 'true'
           runUnitTests: 'true'
-          runIntegrationTests: $[or(eq(variables.isDevelopment, 'true'), eq(variables.isMain, 'true'))]
-          publishArtifact: $[or(eq(variables.isDevelopment, 'true'), eq(variables.isMain, 'true'))]
-          runSmokeTests: $[eq(variables.isMain, 'true')]
+      - script: echo $[variables.isDevelopment]
+      - script: echo $[$[eq(variables.isMain, true)]]
 
   - stage: deploy_dev
     dependsOn: build
