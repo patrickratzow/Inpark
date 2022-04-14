@@ -12,7 +12,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-  - stage: Build
+  - stage: build
     jobs:
     - job: 'API_Build_And_Test'
       steps:
@@ -23,11 +23,15 @@ stages:
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: true
           runUnitTests: true
-          runIntegrationTests: and(succeeded(), succeedor(eq(variables.isDevelopment, true), eq(variables.isMain, true)))
-          runSmokeTests: and(succeeded(), eq(variables.isMain, true))
-          publishArtifact: and(succeeded(), or(eq(variables.isDevelopment, true), eq(variables.isMain, true)))
+          ${{ if or(eq(variables.isDevelopment, true), eq(variables.isMain, true)) }}:
+            runIntegrationTests: true
+          ${{ if eq(variables.isMain, true) }}:
+            runSmokeTests: true
+          ${{ if or(eq(variables.isDevelopment, true), eq(variables.isMain, true)) }}:
+            publishArtifact: true
 
-  - stage: DeployToDev
+  - stage: deploy_dev
+    dependsOn: build
     condition: eq(variables.isDevelopment, true)
     jobs:
     - deployment: deploy
