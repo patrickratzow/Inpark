@@ -4,7 +4,7 @@ trigger:
     - '*'
 
 variables:
-  buildConfiguration: 'Debug'
+  buildConfiguration2: 'Debug'
   isDevelopment: contains(variables['build.sourceBranch'], 'development')
   isMain: contains(variables['build.sourceBranch'], 'main')
 
@@ -21,7 +21,7 @@ stages:
       - script: echo ${{ and(variables.isMain) }}
       - template: Pipelines/Api/Templates/build-test.yml
         parameters:
-          buildConfiguration:  $(buildConfiguration)
+          buildConfiguration:  $(buildConfiguration2)
           projectsFilter: '**/*.csproj'
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: 'true'
