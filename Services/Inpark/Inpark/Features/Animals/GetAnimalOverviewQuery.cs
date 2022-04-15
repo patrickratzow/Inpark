@@ -1,26 +1,55 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Features.Animals.Providers;
+using Zoo.Inpark.Entities;
+using Zoo.Inpark.Models;
 using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark.Features.Animals;
 
-public record GetAnimalOverviewQuery : IRequest<OneOf<AnimalOverview>>;
+public record GetAnimalOverviewQuery : IRequest<OneOf<List<AnimalDto>>>;
 
-public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQuery, OneOf<AnimalOverview>>
+public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQuery, OneOf<List<AnimalDto>>>
 {
-    private readonly IAnimalProvider _animalProvider;
+    private readonly InparkDbContext _context;
+    private readonly IAalborgZooAnimalContentMapper _mapper;
+    private readonly IMemoryCache _cache;
 
-    public GetAnimalOverviewQueryHandler(IAnimalProvider animalProvider)
+
+    public GetAnimalOverviewQueryHandler(InparkDbContext context, IAalborgZooAnimalContentMapper mapper, IMemoryCache cache)
     {
-        _animalProvider = animalProvider;
+        _context = context;
+        _mapper = mapper;
+        _cache = cache;
     }
 
-    public async Task<OneOf<AnimalOverview>> Handle(GetAnimalOverviewQuery request, CancellationToken cancellationToken)
+    public async Task<OneOf<List<AnimalDto>>> Handle(GetAnimalOverviewQuery request, CancellationToken cancellationToken)
     {
-        var overview = await _animalProvider.GetOverview();
-        if (overview is null) throw new Exception("No animals found");
+        return await _cache.GetOrCreateAsync("animals_overview", async (entry) =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+            var overview = await _context.Animals.ToListAsync(cancellationToken);
+            var dtos = overview.Select(x => new AnimalDto(
+                new AnimalNameDto(x.Name.Name, x.Name.LatinName),
+                x.Category,
+                new AnimalImageDto(x.Image.PreviewUrl, x.Image.FullscreenUrl),
+                (IUCNStatusDto) x.Status,
+                x.Id.ToString(),
+                //TODO Fix later on
+                _mapper.ParseContent(x.Content).AsT0.Value.Select(MapToContentDto).ToList()
+            ));
         
-        return overview;
+            return dtos.ToList();
+        });
+    }
+    
+    private static ContentDto MapToContentDto(IContent content)
+    {
+        return new(
+            content.Value,
+            content.Type,
+            content.Children.Select(MapToContentDto).ToList()
+        );
     }
 }
 

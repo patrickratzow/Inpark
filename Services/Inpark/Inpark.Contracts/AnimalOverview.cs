@@ -1,6 +1,6 @@
 namespace Zoo.Inpark.Contracts;
 
 public record AnimalOverview(
-    List<Animal> Animals,
+    List<AnimalDto> Animals,
     List<string> Categories
 );

@@ -1,16 +1,14 @@
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Polly;
 using Polly.Extensions.Http;
 using Zoo.Common.Api.Pipelines;
-using Zoo.Inpark.Features.Animals.Providers;
+using Zoo.Inpark.Features.Animals;
 using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark;
@@ -35,15 +33,16 @@ public static class DependencyInjection
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddPipelines();
 
-        services.AddSingleton<IAnimalProvider, AalborgZooAnimalProvider>();
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
-        services.AddHttpClient<IAnimalProvider, AalborgZooAnimalProvider>(httpClient =>
+
+        services.AddSingleton<IAalborgZooContentRepository, AalborgZooContentRepository>();
+        services.AddHttpClient<IAalborgZooContentRepository, AalborgZooContentRepository>(
+                httpClient =>
             {
                 httpClient.BaseAddress = new("https://api.aalborgzoo.dk/api/");
             })
             .AddPolicyHandler(GetRetryPolicy());
-        
-        
+        services.AddSingleton<IAalborgZooAnimalContentMapper, AalborgZooAnimalContentMapper>();
         services.AddResponseMapper();
     }
 

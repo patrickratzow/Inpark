@@ -1,6 +1,6 @@
 namespace Zoo.Inpark.Contracts;
 
-public record AnimalImage
+public record AnimalImageDto
 (
     string PreviewUrl,
     string FullscreenUrl

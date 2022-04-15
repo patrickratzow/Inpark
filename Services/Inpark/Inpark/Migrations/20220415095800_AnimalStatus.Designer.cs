@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zoo.Inpark;
 
@@ -11,9 +12,10 @@ using Zoo.Inpark;
 namespace Zoo.Inpark.Migrations
 {
     [DbContext(typeof(InparkDbContext))]
-    partial class InparkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220415095800_AnimalStatus")]
+    partial class AnimalStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,14 +29,6 @@ namespace Zoo.Inpark.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetimeoffset");
@@ -77,27 +71,6 @@ namespace Zoo.Inpark.Migrations
 
             modelBuilder.Entity("Zoo.Inpark.Entities.Animal", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalImage", "Image", b1 =>
-                        {
-                            b1.Property<Guid>("AnimalId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("FullscreenUrl")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("PreviewUrl")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("AnimalId");
-
-                            b1.ToTable("Animals");
-
-                            b1.WithOwner()
-                                .HasForeignKey("AnimalId");
-                        });
-
                     b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalName", "Name", b1 =>
                         {
                             b1.Property<Guid>("AnimalId")
@@ -118,9 +91,6 @@ namespace Zoo.Inpark.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("AnimalId");
                         });
-
-                    b.Navigation("Image")
-                        .IsRequired();
 
                     b.Navigation("Name")
                         .IsRequired();

@@ -40,4 +40,8 @@
         <ProjectReference Include="..\Inpark.Contracts\Inpark.Contracts.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\Animals\Providers" />
+    </ItemGroup>
+
 </Project>
