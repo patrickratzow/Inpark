@@ -1,9 +1,11 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using DomainFixture;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -49,6 +51,9 @@ public class Testing
         services.AddLogging();
         services.AddInpark(_configuration);
 
+        services.Remove(services.First(x => x.ServiceType == typeof(IMemoryCache)));
+        services.AddSingleton<IMemoryCache, TestMemoryCache>();
+
         _scopeFactory = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
 
         ResetScope();
@@ -86,4 +91,20 @@ public class Testing
 
     [OneTimeTearDown]
     public void RunAfterAnyTests() { }
+    
+    public class TestMemoryCache : IMemoryCache
+    {
+        public void Dispose() { }
+
+        public ICacheEntry CreateEntry(object key) { return new Mock<ICacheEntry>().Object; }
+
+        public void Remove(object key) {}
+
+        public bool TryGetValue(object key, out object value)
+        {
+            value = null!;
+        
+            return false; 
+        }
+    }
 }

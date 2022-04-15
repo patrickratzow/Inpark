@@ -1,0 +1,1 @@
+namespace Zoo.Inpark.Contracts;

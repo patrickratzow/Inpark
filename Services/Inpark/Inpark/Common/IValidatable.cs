@@ -1,4 +1,4 @@
-namespace Zoo.Payments.Common;
+namespace Zoo.Inpark.Common;
 
 public interface IValidatable
 {
