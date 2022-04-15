@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/bullet_list.dart";
 import "package:flutter_app/common/ui/fullscreen_image.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
+import 'package:flutter_app/features/animals/models/iucn_status.dart';
 import "package:flutter_app/features/animals/ui/animal_category.dart";
 import "package:flutter_app/features/animals/ui/conservation_status.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
@@ -71,7 +72,7 @@ class AnimalScreen extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.only(bottom: 16),
-            child: ConservationStatus(),
+            child: ConservationStatus(activeStatus: IUCNStatus.VU),
           ),
           Container(
             color: const Color(0xffE3E5E5),
