@@ -93,4 +93,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseResponseCaching();
+
 app.Run();

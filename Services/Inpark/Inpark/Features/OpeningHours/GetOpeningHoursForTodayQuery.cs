@@ -11,40 +11,31 @@ public class GetOpeningHoursForTodayQueryHandler
     : IRequestHandler<GetOpeningHoursForTodayQuery, OneOf<List<OpeningHourDto>>>
 {
     private readonly InparkDbContext _context;
-    private readonly IMemoryCache _cache;
     
-    public GetOpeningHoursForTodayQueryHandler(InparkDbContext context, IMemoryCache cache)
+    public GetOpeningHoursForTodayQueryHandler(InparkDbContext context)
     {
         _context = context;
-        _cache = cache;
     }
 
     public async Task<OneOf<List<OpeningHourDto>>> Handle(GetOpeningHoursForTodayQuery request,
             CancellationToken cancellationToken)
     {
-        var result = await _cache.GetOrCreateAsync("opening_hours_today", async entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
-            
-            // 30 min buffer on both sides
-            var today = DateTime.Today.AddMinutes(-30);
-            var tomorrow = DateTime.Today.AddDays(1).AddMinutes(30);
-            var range = TimeRange.From(today, tomorrow);
-            var openingHours = await _context.OpeningHours
-                .Where(x => x.Range.Start >= range.Start && x.Range.End <= range.End)
-                .Select(x => new OpeningHourDto(
-                    x.Name,
-                    x.Range.Start,
-                    x.Range.End,
-                    x.Open,
-                    (WeekDayDto)x.Days
-                ))
-                .ToListAsync(cancellationToken);
+        // 30 min buffer on both sides
+        var today = DateTime.Today.AddMinutes(-30);
+        var tomorrow = DateTime.Today.AddDays(1).AddMinutes(30);
+        var range = TimeRange.From(today, tomorrow);
+        var openingHours = await _context.OpeningHours
+            .Where(x => x.Range.Start >= range.Start && x.Range.End <= range.End)
+            .Select(x => new OpeningHourDto(
+                x.Name,
+                x.Range.Start,
+                x.Range.End,
+                x.Open,
+                (WeekDayDto)x.Days
+            ))
+            .ToListAsync(cancellationToken);
 
-            return openingHours;
-        });
-
-        return result;
+        return openingHours;
     }
 }
 
@@ -63,6 +54,7 @@ public partial class GetOpeningHoursTorTodayController : ZooController
     /// Gets today's opening hours
     /// </summary>
     [HttpGet("opening-hours/today")]
+    [ResponseCache(Duration = 3600)]
     public async partial Task<ActionResult> GetOpeningHoursForToday(CancellationToken cancellationToken)
     {
         var command = new GetOpeningHoursForTodayQuery();
