@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.ValueObjects;
+using Zoo.Inpark.Enums;
 
 namespace Zoo.Inpark.Features.OpeningHours;
 
@@ -20,22 +19,47 @@ public class GetOpeningHoursForTodayQueryHandler
     public async Task<OneOf<List<OpeningHourDto>>> Handle(GetOpeningHoursForTodayQuery request,
             CancellationToken cancellationToken)
     {
-        // 30 min buffer on both sides
-        var today = DateTime.Today.AddMinutes(-30);
-        var tomorrow = DateTime.Today.AddDays(1).AddMinutes(30);
-        var range = TimeRange.From(today, tomorrow);
+        var today = DateTime.Today;
+        var start = new DateTime(today.Year, today.Month, today.Day);
+        var end = start.AddDays(1);
         var openingHours = await _context.OpeningHours
-            .Where(x => x.Range.Start >= range.Start && x.Range.End <= range.End)
-            .Select(x => new OpeningHourDto(
-                x.Name,
-                x.Range.Start,
-                x.Range.End,
-                x.Open,
-                (WeekDayDto)x.Days
-            ))
+            .Where(x => x.Range.Start <= start && x.Range.End >= end)
             .ToListAsync(cancellationToken);
+        // Finds the closest start point to today that is not in the future
+        var closest = openingHours
+            .GroupBy(x => new DateTime(x.Range.Start.Year, x.Range.Start.Month, x.Range.Start.Day))
+            .Select(x => new
+            {
+                Date = x.Key,
+                Grouping = x.ToList(),
+                DayDifference = (today - x.Key).TotalDays
+            })
+            .Where(x => x.DayDifference >= 0)
+            .OrderBy(x => x.DayDifference)
+            .Select(x => x.Grouping)
+            .First();
+        
+        return closest.Select(x => new OpeningHourDto(
+            x.Name,
+            x.Range.Start,
+            x.Range.End,
+            x.Open,
+            MapToDays(x.Days)
+        )).ToList();
+    }
 
-        return openingHours;
+    private static List<string> MapToDays(WeekDay days)
+    {
+        var list = new List<string>();
+        if (days.HasFlag(WeekDay.Monday)) list.Add("Monday");
+        if (days.HasFlag(WeekDay.Tuesday)) list.Add("Tuesday");
+        if (days.HasFlag(WeekDay.Wednesday)) list.Add("Wednesday");
+        if (days.HasFlag(WeekDay.Thursday)) list.Add("Thursday");
+        if (days.HasFlag(WeekDay.Friday)) list.Add("Friday");
+        if (days.HasFlag(WeekDay.Saturday)) list.Add("Saturday");
+        if (days.HasFlag(WeekDay.Sunday)) list.Add("Sunday");
+
+        return list;
     }
 }
 

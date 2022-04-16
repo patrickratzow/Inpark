@@ -5,5 +5,5 @@ public record OpeningHourDto(
     DateTimeOffset Start,
     DateTimeOffset End,
     bool Open,
-    WeekDayDto Days
+    List<String> Days
 );
