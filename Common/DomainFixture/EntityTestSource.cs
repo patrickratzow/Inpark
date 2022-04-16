@@ -154,7 +154,7 @@ public static class EntityTestSource
                         (collection as IList)!.Add(value);
                     }
 
-                    value = collection;
+                    value = collection!;
                 }
                 else
                 {
@@ -238,7 +238,7 @@ public class EntityTester : IEntityTester
             if (!_shouldSucceed)
                 throw new Exception("Excepted to fail :(");
         }
-        catch (TargetInvocationException exception) //when (exception.InnerException is ValidationException)
+        catch (TargetInvocationException)
         {
             if (_shouldSucceed)
                 throw;

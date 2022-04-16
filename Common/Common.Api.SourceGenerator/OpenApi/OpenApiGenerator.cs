@@ -207,15 +207,15 @@ public class OpenApiGenerator : IIncrementalGenerator
 
                 var attributes = member.GetAttributes();
                 var hasHttpVerbAttribute =
-                    attributes.Any(x => HttpVerbAttributeRegex.Match(x.AttributeClass.ToString()).Success);
+                    attributes.Any(x => HttpVerbAttributeRegex.Match(x.AttributeClass!.ToString()).Success);
                 if (!hasHttpVerbAttribute) continue;
                 var successAttribute =
-                    attributes.FirstOrDefault(x => x.AttributeClass.ToString() == SuccessAttributePath);
+                    attributes.FirstOrDefault(x => x.AttributeClass!.ToString() == SuccessAttributePath);
 
                 var declarationMember = (MethodDeclarationSyntax)classDeclaration.Members[i];
                 var body = declarationMember.Body;
                 var localDeclarationStatements =
-                    body.Statements.Where(static x => x is LocalDeclarationStatementSyntax);
+                    body!.Statements.Where(static x => x is LocalDeclarationStatementSyntax);
 
                 ActionInfo? actionInfo = null;
                 foreach (var localDeclaration in localDeclarationStatements)
