@@ -25,6 +25,7 @@ public class GetOpeningHoursForTodayQueryHandler
         var openingHours = await _context.OpeningHours
             .Where(x => x.Range.Start <= start && x.Range.End >= end)
             .ToListAsync(cancellationToken);
+        
         // Finds the closest start point to today that is not in the future
         var closest = openingHours
             .GroupBy(x => new DateTime(x.Range.Start.Year, x.Range.Start.Month, x.Range.Start.Day))
@@ -37,15 +38,19 @@ public class GetOpeningHoursForTodayQueryHandler
             .Where(x => x.DayDifference >= 0)
             .OrderBy(x => x.DayDifference)
             .Select(x => x.Grouping)
-            .First();
-        
-        return closest.Select(x => new OpeningHourDto(
-            x.Name,
-            x.Range.Start,
-            x.Range.End,
-            x.Open,
-            MapToDays(x.Days)
-        )).ToList();
+            .FirstOrDefault();
+        // Map to DTO
+        var result = closest?
+            .Select(x => new OpeningHourDto(
+                x.Name,
+                x.Range.Start,
+                x.Range.End,
+                x.Open,
+                MapToDays(x.Days)
+            ))
+            .ToList();
+
+        return result ?? new List<OpeningHourDto>();
     }
 
     private static List<string> MapToDays(WeekDay days)
