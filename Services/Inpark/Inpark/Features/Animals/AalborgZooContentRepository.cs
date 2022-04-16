@@ -37,7 +37,7 @@ public class AalborgZooContentRepository : IAalborgZooContentRepository
             httpContent.Headers.ContentType = new("application/json");
             var response = await _client.PostAsync("Content/GetElementsBySearch", httpContent);
 
-            _logger.LogInformation("Got opening hours. Response status code: {StatusCode}", 
+            _logger.LogInformation("Got content. Response status code: {StatusCode}", 
                 response.StatusCode.ToString());
 
             if (response.StatusCode is not HttpStatusCode.OK)
@@ -53,7 +53,7 @@ public class AalborgZooContentRepository : IAalborgZooContentRepository
         catch (Exception ex)
         {
             _logger.LogError(
-                "Exception occured while getting open hours for Aalborg Zoo. Exception: {Exception}", ex);
+                "Exception occured while getting content for Aalborg Zoo. Exception: {Exception}", ex);
             
             return Result<string, string>.Error(ex.ToString());
         }
