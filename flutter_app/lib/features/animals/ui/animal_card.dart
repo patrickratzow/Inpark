@@ -86,7 +86,7 @@ class AnimalCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.displayName.trim(),
+                    animal.name.displayName,
                     style: const TextStyle(
                       fontSize: 18,
                       fontFamily: "Poppins",

@@ -148,7 +148,7 @@ class AnimalScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.displayName.trim(),
+                    animal.name.displayName,
                     style: const TextStyle(
                       fontSize: 20,
                       height: 18 / 20,
