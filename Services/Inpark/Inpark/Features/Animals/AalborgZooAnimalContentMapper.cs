@@ -12,7 +12,7 @@ namespace Zoo.Inpark.Features.Animals;
 public interface IAalborgZooAnimalContentMapper
 {
     Result<List<Animal>, string> ParseAnimalOverview(string input);
-    Result<IEnumerable<IContent>, string> ParseContent(string content);
+    Result<List<IContent>, string> ParseContent(string content);
 }
 
 public class AalborgZooAnimalContentMapper : IAalborgZooAnimalContentMapper
@@ -74,7 +74,7 @@ public class AalborgZooAnimalContentMapper : IAalborgZooAnimalContentMapper
         }
     }
 
-    public Result<IEnumerable<IContent>, string> ParseContent(string content)
+    public Result<List<IContent>, string> ParseContent(string content)
     {
         try
         {
@@ -123,8 +123,7 @@ public class AalborgZooAnimalContentMapper : IAalborgZooAnimalContentMapper
 
         return new Content(text, type);
     }
-    
-    
+
     private static ContentDto MapToContentDto(IContent content)
     {
         return new(
