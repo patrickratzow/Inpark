@@ -141,8 +141,7 @@ public class AalborgZooAnimalContentMapper : IAalborgZooAnimalContentMapper
         
         return animalName;
     }
-
-
+    
     private IContent TransformContent(IContent content)
     {
         return content.Type switch

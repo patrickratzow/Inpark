@@ -36,3 +36,4 @@ public class AnimalImageValidator : AbstractValidator<AnimalImage>
         RuleFor(x => x.FullscreenUrl).NotEmpty();
     }
 }
+

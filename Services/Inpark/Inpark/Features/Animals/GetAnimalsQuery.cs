@@ -7,23 +7,23 @@ using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark.Features.Animals;
 
-public record GetAnimalOverviewQuery : IRequest<OneOf<List<AnimalDto>>>;
+public record GetAnimalsQuery : IRequest<OneOf<List<AnimalDto>>>;
 
-public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQuery, OneOf<List<AnimalDto>>>
+public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<AnimalDto>>>
 {
     private readonly InparkDbContext _context;
     private readonly IAalborgZooAnimalContentMapper _mapper;
     private readonly IMemoryCache _cache;
 
 
-    public GetAnimalOverviewQueryHandler(InparkDbContext context, IAalborgZooAnimalContentMapper mapper, IMemoryCache cache)
+    public GetAnimalsHandler(InparkDbContext context, IAalborgZooAnimalContentMapper mapper, IMemoryCache cache)
     {
         _context = context;
         _mapper = mapper;
         _cache = cache;
     }
 
-    public async Task<OneOf<List<AnimalDto>>> Handle(GetAnimalOverviewQuery request, CancellationToken cancellationToken)
+    public async Task<OneOf<List<AnimalDto>>> Handle(GetAnimalsQuery request, CancellationToken cancellationToken)
     {
         return await _cache.GetOrCreateAsync("animals_overview", async (entry) =>
         {
@@ -36,7 +36,11 @@ public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQu
                 (IUCNStatusDto) x.Status,
                 x.Id.ToString(),
                 //TODO Fix later on
-                _mapper.ParseContent(x.Content).AsT0.Value.Select(MapToContentDto).ToList()
+                _mapper.ParseContent(x.Content)
+                    .AsT0
+                    .Value
+                    .Select(MapToContentDto)
+                    .ToList()
             ));
         
             return dtos.ToList();
@@ -55,22 +59,23 @@ public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQu
 
 [ApiController]
 [MethodGroup(Groups.Animals)]
-public partial class GetAnimalOverviewController : ZooController
+public partial class GetAnimalsController : ZooController
 {
     private readonly IMediator _mediator;
 
-    public GetAnimalOverviewController(IMediator mediator)
+    public GetAnimalsController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
     /// <summary>
-    /// Gets overview of all animals in the park.
+    /// Get all animals in the park.
     /// </summary>
-    [HttpGet("animals/overview")]
-    public async partial Task<ActionResult> GetAnimalOverview(CancellationToken cancellationToken)
+    [HttpGet("animals")]
+    [ResponseCache(Duration = 43200)]
+    public async partial Task<ActionResult> GetAnimals(CancellationToken cancellationToken)
     {
-        var command = new GetAnimalOverviewQuery();
+        var command = new GetAnimalsQuery();
         var result = await _mediator.Send(command, cancellationToken);
 
         return Map(result);
