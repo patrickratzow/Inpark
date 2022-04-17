@@ -13,38 +13,36 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
 {
     private readonly InparkDbContext _context;
     private readonly IAalborgZooAnimalContentMapper _mapper;
-    private readonly IMemoryCache _cache;
 
-
-    public GetAnimalsHandler(InparkDbContext context, IAalborgZooAnimalContentMapper mapper, IMemoryCache cache)
+    public GetAnimalsHandler(InparkDbContext context, IAalborgZooAnimalContentMapper mapper)
     {
         _context = context;
         _mapper = mapper;
-        _cache = cache;
     }
 
     public async Task<OneOf<List<AnimalDto>>> Handle(GetAnimalsQuery request, CancellationToken cancellationToken)
     {
-        return await _cache.GetOrCreateAsync("animals_overview", async (entry) =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
-            var overview = await _context.Animals.OrderBy(x => x.Name.Name).ToListAsync(cancellationToken);
-            var dtos = overview.Select(x => new AnimalDto(
-                new AnimalNameDto(x.Name.Name, x.Name.LatinName),
+        var animals = await _context.Animals
+            .OrderBy(x => x.Name.Name)
+            .ToListAsync(cancellationToken);
+        var animalDtos = animals.Select(x => {
+            var name = new AnimalNameDto(x.Name.Name, x.Name.LatinName);
+            var image = new AnimalImageDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
+            var status = (IUCNStatusDto) x.Status;
+            if (!_mapper.ParseContent(x.Content).IsSuccess(out var content))
+                throw new InvalidDataException("Unable to parse content");
+
+            return new AnimalDto(
+                name,
                 x.Category,
-                new AnimalImageDto(x.Image.PreviewUrl, x.Image.FullscreenUrl),
-                (IUCNStatusDto) x.Status,
+                image,
+                status,
                 x.Id.ToString(),
-                //TODO Fix later on
-                _mapper.ParseContent(x.Content)
-                    .AsT0
-                    .Value
-                    .Select(MapToContentDto)
-                    .ToList()
-            ));
-        
-            return dtos.ToList();
+                content!.Select(MapToContentDto).ToList()
+            );
         });
+    
+        return animalDtos.ToList();
     }
     
     private static ContentDto MapToContentDto(IContent content)
