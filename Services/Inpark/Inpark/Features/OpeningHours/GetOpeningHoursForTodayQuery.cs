@@ -10,16 +10,18 @@ public class GetOpeningHoursForTodayQueryHandler
     : IRequestHandler<GetOpeningHoursForTodayQuery, OneOf<List<OpeningHourDto>>>
 {
     private readonly InparkDbContext _context;
+    private readonly IClock _clock;
     
-    public GetOpeningHoursForTodayQueryHandler(InparkDbContext context)
+    public GetOpeningHoursForTodayQueryHandler(InparkDbContext context, IClock clock)
     {
         _context = context;
+        _clock = clock;
     }
 
     public async Task<OneOf<List<OpeningHourDto>>> Handle(GetOpeningHoursForTodayQuery request,
             CancellationToken cancellationToken)
     {
-        var today = DateTime.Today;
+        var today = _clock.Today;
         var start = new DateTime(today.Year, today.Month, today.Day);
         var end = start.AddDays(1);
         var openingHours = await _context.OpeningHours

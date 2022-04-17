@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Zoo.Common.Api;
 
-public static class DependencyInjection
+public static class ResponseMapperDependencyInjection
 {
     public static void AddResponseMapper(this IServiceCollection services)
     {

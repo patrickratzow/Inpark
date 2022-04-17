@@ -12,7 +12,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Polly;
 using Polly.Extensions.Http;
-using Zoo.Common.Api.Pipelines;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Features.Animals.Providers;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
@@ -40,6 +39,7 @@ public static class DependencyInjection
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddPipelines();
+        services.AddClock();
         services.AddHangFire(dbConnection);
         services.AddSingleton<IEventPublisher, EventPublisher>();
 

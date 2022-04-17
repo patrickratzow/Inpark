@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DomainFixture;
 using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Entities;
+using Zoo.Inpark.Enums;
 using Zoo.Inpark.Features.OpeningHours;
 using Zoo.Inpark.ValueObjects;
 
@@ -14,17 +15,13 @@ namespace Zoo.Inpark.Tests.Features.OpeningHours;
 public class GetOpeningHoursForTodayQueryTests : TestBase
 {
     [Test]
-    public async Task Handle_ShouldFindTestsFor_Today()
+    public async Task Handle_ShouldFindOpeningHoursFor_Today()
     {
         // Arrange
         var start = (DateTimeOffset)DateTime.Today;
         var end = start.AddDays(1);
         var range = TimeRange.From(start, end);
-        var openingHour = await Add(
-            Fixture.Valid<OpeningHour>()
-                .With(x => x.Range, range)
-                .Create()
-        );
+        var openingHour = await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
 
         // Act
@@ -44,17 +41,13 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     }
     
     [Test]
-    public async Task Handle_ShouldNotFindTestsFor_Tomorrow()
+    public async Task Handle_ShouldNotFindOpeningHoursFor_Tomorrow()
     {
         // Arrange
         var start = (DateTimeOffset)DateTime.Today.AddDays(1);
         var end = start.AddDays(1);
         var range = TimeRange.From(start, end);
-        await Add(
-            Fixture.Valid<OpeningHour>()
-                .With(x => x.Range, range)
-                .Create()
-        );
+        await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
 
         // Act
@@ -67,17 +60,13 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     }
     
     [Test]
-    public async Task Handle_ShouldNotFindTestsFor_Yesterday()
+    public async Task Handle_ShouldNotFindOpeningHoursFor_Yesterday()
     {
         // Arrange
         var start = (DateTimeOffset)DateTime.Today.AddDays(-1);
         var end = start.AddDays(1);
         var range = TimeRange.From(start, end);
-        await Add(
-            Fixture.Valid<OpeningHour>()
-                .With(x => x.Range, range)
-                .Create()
-        );
+        await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
 
         // Act
@@ -87,5 +76,15 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
         response.Value.Should().BeOfType<List<OpeningHourDto>>();
         var result = response.Value.As<List<OpeningHourDto>>();
         result.Should().BeEmpty();
+    }
+
+    private async Task<OpeningHour> AddOpeningHour(TimeRange range, WeekDay days = WeekDay.Monday | WeekDay.Tuesday | WeekDay.Wednesday | WeekDay.Thursday | WeekDay.Friday | WeekDay.Saturday | WeekDay.Sunday)
+    {
+        return await Add(
+            Fixture.Valid<OpeningHour>()
+                .With(x => x.Range, range)
+                .With(x => x.Days, days)
+                .Create()
+        );
     }
 }
