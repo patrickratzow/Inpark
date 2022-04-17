@@ -6,9 +6,9 @@ public enum IUCNStatusDto
 }
 
 public record AnimalDto(
-    AnimalNameDto NameDto,
+    AnimalNameDto Name,
     string Category,
-    AnimalImageDto ImageDto,
+    AnimalImageDto Image,
     IUCNStatusDto Status,
     string Id,
     List<ContentDto> Contents
