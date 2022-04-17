@@ -1,9 +1,7 @@
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Common;
 using Zoo.Inpark.Entities;
-using Zoo.Inpark.Features.OpeningHours.Events;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.ValueObjects;
 

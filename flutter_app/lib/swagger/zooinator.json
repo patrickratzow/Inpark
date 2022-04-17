@@ -6,65 +6,6 @@
     "version": "v1"
   },
   "paths": {
-    "/animals/overview": {
-      "get": {
-        "tags": [
-          "Animals"
-        ],
-        "operationId": "getAnimalOverview",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ZooInparkContractsAnimalOverview"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ZooInparkContractsAnimalOverview"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ZooInparkContractsAnimalOverview"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Request validation error",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/animals/{latinName}": {
       "get": {
         "tags": [
@@ -87,17 +28,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooInparkEntitiesAnimal"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooInparkEntitiesAnimal"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooInparkEntitiesAnimal"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
                 }
               }
             }
@@ -107,17 +48,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooInparkFeaturesAnimalsAnimalNotFound"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooInparkFeaturesAnimalsAnimalNotFound"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooInparkFeaturesAnimalsAnimalNotFound"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
                 }
               }
             }
@@ -129,7 +70,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -137,7 +78,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -145,7 +86,75 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/animals": {
+      "get": {
+        "tags": [
+          "Animals"
+        ],
+        "operationId": "getAnimals",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               }
@@ -166,7 +175,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/ZooPaymentsContractsCustomersCreateCustomerRequest"
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
                   }
                 ]
               }
@@ -175,7 +184,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/ZooPaymentsContractsCustomersCreateCustomerRequest"
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
                   }
                 ]
               }
@@ -184,7 +193,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/ZooPaymentsContractsCustomersCreateCustomerRequest"
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
                   }
                 ]
               }
@@ -203,7 +212,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -211,7 +220,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -219,7 +228,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               }
@@ -242,7 +251,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooInparkContractsOpeningHourDto"
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
                   }
                 }
               },
@@ -250,7 +259,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooInparkContractsOpeningHourDto"
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
                   }
                 }
               },
@@ -258,7 +267,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooInparkContractsOpeningHourDto"
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
                   }
                 }
               }
@@ -271,7 +280,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -279,7 +288,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -287,7 +296,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               }
@@ -308,7 +317,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/ZooPaymentsContractsCreateProductRequest"
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
                   }
                 ]
               }
@@ -317,7 +326,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/ZooPaymentsContractsCreateProductRequest"
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
                   }
                 ]
               }
@@ -326,7 +335,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/ZooPaymentsContractsCreateProductRequest"
+                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
                   }
                 ]
               }
@@ -345,7 +354,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -353,7 +362,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -361,7 +370,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               }
@@ -393,17 +402,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooPaymentsContractsProductDto"
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooPaymentsContractsProductDto"
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooPaymentsContractsProductDto"
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
                 }
               }
             }
@@ -413,17 +422,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooPaymentsContractsProductNotFound"
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooPaymentsContractsProductNotFound"
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ZooPaymentsContractsProductNotFound"
+                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
                 }
               }
             }
@@ -435,7 +444,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -443,7 +452,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               },
@@ -451,7 +460,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ZooCommonPropertyError"
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
                   }
                 }
               }
@@ -463,7 +472,7 @@
   },
   "components": {
     "schemas": {
-      "ZooCommonPropertyError": {
+      "Zoo.Common.PropertyError": {
         "required": [
           "errorMessage",
           "propertyName"
@@ -479,7 +488,7 @@
         },
         "additionalProperties": false
       },
-      "ZooInparkCommonDomainEvent": {
+      "Zoo.Inpark.Common.DomainEvent": {
         "required": [
           "dateOccurred",
           "isPublished"
@@ -498,20 +507,21 @@
         },
         "additionalProperties": false
       },
-      "ZooInparkContractsAnimal": {
+      "Zoo.Inpark.Contracts.AnimalDto": {
         "required": [
           "category",
           "contents",
           "id",
           "image",
-          "name"
+          "name",
+          "status"
         ],
         "type": "object",
         "properties": {
           "name": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/ZooInparkContractsAnimalName"
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalNameDto"
               }
             ]
           },
@@ -521,8 +531,25 @@
           "image": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/ZooInparkContractsAnimalImage"
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalImageDto"
               }
+            ]
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.IUCNStatusDto"
+              }
+            ],
+            "x-enumNames": [
+              "Unknown",
+              "EX",
+              "EW",
+              "CR",
+              "EN",
+              "VU",
+              "NT",
+              "LC"
             ]
           },
           "id": {
@@ -531,13 +558,13 @@
           "contents": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ZooInparkContractsContentDto"
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
             }
           }
         },
         "additionalProperties": false
       },
-      "ZooInparkContractsAnimalImage": {
+      "Zoo.Inpark.Contracts.AnimalImageDto": {
         "required": [
           "fullscreenUrl",
           "previewUrl"
@@ -553,7 +580,7 @@
         },
         "additionalProperties": false
       },
-      "ZooInparkContractsAnimalName": {
+      "Zoo.Inpark.Contracts.AnimalNameDto": {
         "required": [
           "displayName",
           "latinName"
@@ -569,29 +596,7 @@
         },
         "additionalProperties": false
       },
-      "ZooInparkContractsAnimalOverview": {
-        "required": [
-          "animals",
-          "categories"
-        ],
-        "type": "object",
-        "properties": {
-          "animals": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ZooInparkContractsAnimal"
-            }
-          },
-          "categories": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "ZooInparkContractsContentDto": {
+      "Zoo.Inpark.Contracts.ContentDto": {
         "required": [
           "children",
           "type",
@@ -606,13 +611,37 @@
           "children": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ZooInparkContractsContentDto"
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
             }
           }
         },
         "additionalProperties": false
       },
-      "ZooInparkContractsOpeningHourDto": {
+      "Zoo.Inpark.Contracts.IUCNStatusDto": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "type": "integer",
+        "format": "int32",
+        "x-enumNames": [
+          "Unknown",
+          "EX",
+          "EW",
+          "CR",
+          "EN",
+          "VU",
+          "NT",
+          "LC"
+        ]
+      },
+      "Zoo.Inpark.Contracts.OpeningHourDto": {
         "required": [
           "days",
           "end",
@@ -637,20 +666,59 @@
             "type": "boolean"
           },
           "days": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.WeekDayDto"
+              }
+            ],
+            "x-enumNames": [
+              "None",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ]
           }
         },
         "additionalProperties": false
       },
-      "ZooInparkEntitiesAnimal": {
+      "Zoo.Inpark.Contracts.WeekDayDto": {
+        "enum": [
+          0,
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "type": "integer",
+        "format": "int32",
+        "x-enumNames": [
+          "None",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ]
+      },
+      "Zoo.Inpark.Entities.Animal": {
         "required": [
+          "category",
+          "content",
           "createdAt",
           "domainEvents",
           "id",
+          "image",
           "name",
+          "status",
           "updatedAt"
         ],
         "type": "object",
@@ -668,7 +736,7 @@
           "domainEvents": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ZooInparkCommonDomainEvent"
+              "$ref": "#/components/schemas/Zoo.Inpark.Common.DomainEvent"
             },
             "readOnly": true
           },
@@ -680,15 +748,73 @@
           "name": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/ZooInparkValueObjectsAnimalName"
+                "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.AnimalName"
               }
             ],
+            "readOnly": true
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Entities.IUCNStatus"
+              }
+            ],
+            "readOnly": true,
+            "x-enumNames": [
+              "Unknown",
+              "EX",
+              "EW",
+              "CR",
+              "EN",
+              "VU",
+              "NT",
+              "LC"
+            ]
+          },
+          "image": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.AnimalImage"
+              }
+            ],
+            "readOnly": true
+          },
+          "category": {
+            "type": "string",
+            "readOnly": true
+          },
+          "content": {
+            "type": "string",
             "readOnly": true
           }
         },
         "additionalProperties": false
       },
-      "ZooInparkFeaturesAnimalsAnimalNotFound": {
+      "Zoo.Inpark.Entities.IUCNStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "type": "integer",
+        "format": "int32",
+        "x-enumNames": [
+          "Unknown",
+          "EX",
+          "EW",
+          "CR",
+          "EN",
+          "VU",
+          "NT",
+          "LC"
+        ]
+      },
+      "Zoo.Inpark.Features.Animals.AnimalNotFound": {
         "required": [
           "errorMessage",
           "name"
@@ -705,7 +831,25 @@
         },
         "additionalProperties": false
       },
-      "ZooInparkValueObjectsAnimalName": {
+      "Zoo.Inpark.ValueObjects.AnimalImage": {
+        "required": [
+          "fullscreenUrl",
+          "previewUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "previewUrl": {
+            "type": "string",
+            "readOnly": true
+          },
+          "fullscreenUrl": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.ValueObjects.AnimalName": {
         "required": [
           "latinName",
           "name"
@@ -723,7 +867,7 @@
         },
         "additionalProperties": false
       },
-      "ZooPaymentsContractsCreateProductRequest": {
+      "Zoo.Payments.Contracts.CreateProductRequest": {
         "required": [
           "name"
         ],
@@ -735,7 +879,7 @@
         },
         "additionalProperties": false
       },
-      "ZooPaymentsContractsCustomersCreateCustomerRequest": {
+      "Zoo.Payments.Contracts.Customers.CreateCustomerRequest": {
         "required": [
           "email",
           "name"
@@ -751,7 +895,7 @@
         },
         "additionalProperties": false
       },
-      "ZooPaymentsContractsProductDto": {
+      "Zoo.Payments.Contracts.ProductDto": {
         "required": [
           "id",
           "name"
@@ -768,7 +912,7 @@
         },
         "additionalProperties": false
       },
-      "ZooPaymentsContractsProductNotFound": {
+      "Zoo.Payments.Contracts.ProductNotFound": {
         "required": [
           "errorMessage",
           "id"

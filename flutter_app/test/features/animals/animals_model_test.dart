@@ -3,24 +3,26 @@ import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "package:flutter_test/flutter_test.dart";
 
 void main() {
-  late List<Animal> animals;
+  late List<AnimalDto> animals;
 
   setUp(() {
     animals = [
-      Animal(
-          name: AnimalName(displayName: "Floppa", latinName: "Big floppa"),
-          category: "Pattedyr",
-          image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
-          id: "5",
-          contents: List.empty(),
-          meme: WeekDayDto.friday),
-      Animal(
-          name: AnimalName(displayName: "Bingus", latinName: "BB"),
-          category: "Pattedyr",
-          image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
-          id: "5",
-          contents: List.empty(),
-          meme: WeekDayDto.friday)
+      AnimalDto(
+        name: AnimalNameDto(displayName: "Floppa", latinName: "Big floppa"),
+        category: "Pattedyr",
+        image: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
+        id: "5",
+        status: IUCNStatusDto.cr,
+        contents: List.empty(),
+      ),
+      AnimalDto(
+        name: AnimalNameDto(displayName: "Bingus", latinName: "BB"),
+        category: "Pattedyr",
+        image: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
+        id: "5",
+        status: IUCNStatusDto.en,
+        contents: List.empty(),
+      )
     ];
   });
 

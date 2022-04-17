@@ -19,6 +19,13 @@ public class ValueObjectTests
     [TestCaseSource(
         typeof(EntityTestSource),
         nameof(EntityTestSource.Test),
+        new object[] { typeof(AnimalImage), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
+    )]
+    public void AnimalImageTests(IEntityTester tester) => tester.Run();
+    
+    [TestCaseSource(
+        typeof(EntityTestSource),
+        nameof(EntityTestSource.Test),
         new object[] { typeof(TimeRange), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
     )]
     public void TimeRangeTests(IEntityTester tester) => tester.Run();

@@ -13,8 +13,8 @@ public class AnimalName : ValueObject
     {
         var instance = new AnimalName()
         {
-            Name = name,
-            LatinName = latinName
+            Name = name.Trim(),
+            LatinName = latinName.Trim()
         };
         instance.Validate();
 

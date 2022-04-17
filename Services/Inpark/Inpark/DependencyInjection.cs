@@ -9,11 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Polly;
 using Polly.Extensions.Http;
 using Zoo.Inpark.Common;
-using Zoo.Inpark.Features.Animals.Providers;
+using Zoo.Inpark.Features.Animals;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.Services;
@@ -43,10 +42,12 @@ public static class DependencyInjection
         services.AddHangFire(dbConnection);
         services.AddSingleton<IEventPublisher, EventPublisher>();
 
-        services.AddSingleton<IAnimalProvider, AalborgZooAnimalProvider>();
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
-        services.AddHttpClient<IAnimalProvider, AalborgZooAnimalProvider>(AalborgZooHttpClient)
+        
+        services.AddSingleton<IAalborgZooContentRepository, AalborgZooContentRepository>();
+        services.AddHttpClient<IAalborgZooContentRepository, AalborgZooContentRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<IAalborgZooAnimalContentMapper, AalborgZooAnimalContentMapper>();
 
         services.AddSingleton<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
         services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
@@ -74,6 +75,11 @@ public static class DependencyInjection
         }
         
         RecurringJob.AddOrUpdate<AalborgZooOpeningHoursJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
+        RecurringJob.AddOrUpdate<AalborgZooUpdateAnimalsJob>(
             x => x.Execute(),
             "* 3 * * *", // Every day at 3 AM 
             TimeZoneInfo.Local

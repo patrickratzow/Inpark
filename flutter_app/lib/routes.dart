@@ -32,7 +32,7 @@ class Routes {
     Navigator.of(context).pop();
   }
 
-  static void goToAnimalScreen(context, Animal animal) {
+  static void goToAnimalScreen(context, AnimalDto animal) {
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => AnimalScreen(animal: animal)),
     );
