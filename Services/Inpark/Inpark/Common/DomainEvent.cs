@@ -1,9 +1,15 @@
 namespace Zoo.Inpark.Common;
 
-public abstract class DomainEvent
+public abstract record DomainEvent
 {
-    protected DomainEvent() { DateOccurred = DateTimeOffset.Now; }
+    public bool IsPublished { get; private set; }
+    public DateTimeOffset DateOccurred { get; private set; } = DateTimeOffset.Now;
 
-    public bool IsPublished { get; set; }
-    public DateTimeOffset DateOccurred { get; protected set; }
+    public void Publish()
+    {
+        if (IsPublished) throw new InvalidOperationException("Cannot publish twice");
+        
+        DateOccurred = DateTimeOffset.Now;
+        IsPublished = true;
+    }
 }

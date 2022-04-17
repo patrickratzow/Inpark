@@ -4,7 +4,7 @@ import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:flutter_app/features/animals/ui/search_bar.dart";
 import "package:provider/provider.dart";
 
-import '../../../routes.dart';
+import "../../../routes.dart";
 import "animal_card.dart";
 
 class AnimalOverviewScreen extends StatelessWidget {

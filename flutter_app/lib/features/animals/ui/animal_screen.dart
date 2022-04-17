@@ -45,7 +45,7 @@ class AnimalScreen extends StatelessWidget {
 
   Widget _buildCard(BuildContext context, Animal animal) {
     return Card(
-      margin: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+      margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
       ),

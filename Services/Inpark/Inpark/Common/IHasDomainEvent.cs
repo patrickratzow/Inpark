@@ -1,5 +1,3 @@
-using Zoo.Payments.Common;
-
 namespace Zoo.Inpark.Common;
 
 public interface IHasDomainEvent

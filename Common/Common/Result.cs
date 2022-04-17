@@ -67,7 +67,7 @@ public class Result<TSuccess, TError> : OneOfBase<Success<TSuccess>, Error<TErro
             ? AsT0.Value
             : default;
 
-        return IsT1;
+        return IsT0;
     }
 
     public bool IsError() => IsT1;
