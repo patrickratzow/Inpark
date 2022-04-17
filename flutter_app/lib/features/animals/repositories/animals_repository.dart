@@ -17,14 +17,7 @@ class AnimalsRepository {
         return Result.error(response.error.toString());
       }
 
-      return Result.success(
-        response.body!.map((e) {
-          var newStatus = e.status.index + 1;
-          var animal = e.copyWith(status: IUCNStatusDto.values[newStatus]);
-
-          return animal;
-        }).toList(),
-      );
+      return Result.success(response.body!);
     } catch (ex) {
       return Result.error(ex.toString());
     }
