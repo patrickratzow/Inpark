@@ -17,6 +17,7 @@ stages:
       displayName: 'Build & Test API'
       steps:
       - task: fizzcode-discordhook@1
+        displayName: 'Discord Message - Push Message'
         inputs:
           DiscordChannelID: '964192752814420018'
           DiscordToken: 'ep33yQ0CzIFKKiN0Jmq-hB0vBO06w1Ac1Tkid6dB3v57Ru9WCmPDzo2k3su5cvk2fksR'
@@ -30,14 +31,15 @@ stages:
           testProjectsFilter: '**/*Tests.csproj'
           runImplementationTests: 'true'
           runUnitTests: 'true'
-          runIntegrationTests: ${{ or(contains(variables['System.PullRequest.TargetBranch'], 'development'), contains(variables['System.PullRequest.TargetBranch'], 'main'), contains(variables['build.sourceBranch'], 'development'), contains(variables['build.sourceBranch'], 'main')) }}
-          runSmokeTests: ${{ or(contains(variables['System.PullRequest.TargetBranch'], 'main'), contains(variables['build.sourceBranch'], 'main')) }}
+          runIntegrationTests: ${{ or(contains(variables['system.pullRequest.targetBranch'], 'development'), contains(variables['system.pullRequest.targetBranch'], 'main'), contains(variables['build.sourceBranch'], 'development'), contains(variables['build.sourceBranch'], 'main')) }}
+          runSmokeTests: ${{ or(contains(variables['system.pullRequest.targetBranch'], 'main'), contains(variables['build.sourceBranch'], 'main')) }}
           publishArtifact: ${{ or(contains(variables['build.sourceBranch'], 'development'), contains(variables['build.sourceBranch'], 'main')) }}
       - task: fizzcode-discordhook@1
+        displayName: 'Discord Message - Build Succeeded'
         inputs:
           DiscordChannelID: '964192752814420018'
           DiscordToken: 'ep33yQ0CzIFKKiN0Jmq-hB0vBO06w1Ac1Tkid6dB3v57Ru9WCmPDzo2k3su5cvk2fksR'
-          Title: '$Build $(Build.BuildNumber) succeeded ($(Build.Reason))'
+          Title: 'Build $(Build.BuildNumber) succeeded ($(Build.Reason))'
           Message: 'Succeeded at API build & testing'
 
   - stage: deploy_dev
