@@ -32,7 +32,7 @@ public class GetOpeningHoursForTodayQueryHandler
             .Select(x => new
             {
                 Date = x.Key,
-                Grouping = x.ToList(),
+                Grouping = x,
                 DayDifference = (today - x.Key).TotalDays
             })
             .Where(x => x.DayDifference >= 0)
@@ -47,10 +47,13 @@ public class GetOpeningHoursForTodayQueryHandler
                 x.Range.End,
                 x.Open,
                 MapToDays(x.Days)
-            ))
+            ));
+        // Filter out if day isn't today
+        var todayOpeningHours = result?
+            .Where(x => x.Days.Contains(today.DayOfWeek.ToString()))
             .ToList();
 
-        return result ?? new List<OpeningHourDto>();
+        return todayOpeningHours ?? new List<OpeningHourDto>();
     }
 
     private static List<string> MapToDays(WeekDay days)
