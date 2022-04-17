@@ -21,13 +21,10 @@ public class Animal : Entity
     public Guid Id { get; private set; }
     public AnimalName Name { get; private set; } = null!;
     public IUCNStatus Status { get; private set; }
-
     public AnimalImage Image { get; private set; } = null!;
-
     public string Category { get; private set; } = null!;
     public string Content { get; private set; } = null!;
-    
-    
+
     public static Animal Create(Guid id, AnimalName name, AnimalImage image, 
         string category, string content)
     {
@@ -81,7 +78,11 @@ public class AnimalConfiguration : IEntityTypeConfiguration<Animal>
 {
     public void Configure(EntityTypeBuilder<Animal> builder)
     {
-        builder.OwnsOne(x => x.Name);
+        builder.OwnsOne(x => x.Name, 
+            b =>
+            {
+                b.HasIndex(x => x.LatinName);
+            });
         builder.OwnsOne(x => x.Image);
         builder.Property(x => x.Content).HasColumnType("nvarchar(max)");
     }
