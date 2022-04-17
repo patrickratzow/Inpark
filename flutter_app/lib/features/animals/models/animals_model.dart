@@ -5,7 +5,7 @@ import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "../repositories/animals_repository.dart";
 
 class AnimalsModel extends ChangeNotifier {
-  List<Animal> _animals = List.empty();
+  List<AnimalDto> _animals = List.empty();
   String _search = "";
   String error = "";
   bool isSearching = false;
@@ -44,9 +44,7 @@ class AnimalsModel extends ChangeNotifier {
 
       var animalsResult = await animalsRepository.fetchAnimals();
       if (animalsResult.isSuccess) {
-        _animals = animalsResult.success!.animals;
-        _animals
-            .sort((a, b) => a.name.displayName.compareTo(b.name.displayName));
+        _animals = animalsResult.success as List<AnimalDto>;
       } else {
         error = animalsResult.error.toString();
       }
@@ -57,7 +55,7 @@ class AnimalsModel extends ChangeNotifier {
     }
   }
 
-  List<Animal> get animals {
+  List<AnimalDto> get animals {
     var animals = _animals;
     if (search.isNotEmpty) {
       animals = animals

@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/bullet_list.dart";
 import "package:flutter_app/common/ui/fullscreen_image.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
-import 'package:flutter_app/features/animals/models/iucn_status.dart';
 import "package:flutter_app/features/animals/ui/animal_category.dart";
 import "package:flutter_app/features/animals/ui/conservation_status.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
@@ -11,7 +10,7 @@ import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "../../../common/colors.dart";
 
 class AnimalScreen extends StatelessWidget {
-  final Animal animal;
+  final AnimalDto animal;
   const AnimalScreen({Key? key, required this.animal}) : super(key: key);
 
   @override
@@ -43,7 +42,7 @@ class AnimalScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCard(BuildContext context, Animal animal) {
+  Widget _buildCard(BuildContext context, AnimalDto animal) {
     return Card(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       shape: RoundedRectangleBorder(
@@ -67,20 +66,7 @@ class AnimalScreen extends StatelessWidget {
             },
             child: _buildImage(animal),
           ),
-          const Padding(
-            padding: EdgeInsets.all(8),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(bottom: 16),
-            child: ConservationStatus(activeStatus: IUCNStatus.VU),
-          ),
-          Container(
-            color: const Color(0xffE3E5E5),
-            child: const SizedBox(
-              height: 1,
-              width: double.infinity,
-            ),
-          ),
+          ..._buildConservationStatus(animal),
           Padding(
             padding: const EdgeInsets.all(8),
             child: _buildContents(animal.contents),
@@ -90,7 +76,32 @@ class AnimalScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildImage(Animal animal) {
+  List<Widget> _buildConservationStatus(AnimalDto animal) {
+    if (animal.status == IUCNStatusDto.unknown ||
+        animal.status == IUCNStatusDto.swaggerGeneratedUnknown) {
+      return [Container()];
+    }
+
+    return [
+      const Padding(
+        padding: EdgeInsets.all(8),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: ConservationStatus(activeStatus: animal.status),
+      ),
+      Container(
+        color: const Color(0xffE3E5E5),
+        child: const SizedBox(
+          height: 1,
+          width: double.infinity,
+        ),
+      ),
+      SizedBox(height: 8)
+    ];
+  }
+
+  Widget _buildImage(AnimalDto animal) {
     const Color softTextColor = Color(0xffDDF8DA);
 
     return Column(
@@ -137,7 +148,7 @@ class AnimalScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.displayName.trim(),
+                    animal.name.displayName,
                     style: const TextStyle(
                       fontSize: 20,
                       height: 18 / 20,

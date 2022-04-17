@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../generated_code/zooinator.enums.swagger.dart';
+
 class IUCNColorStatus {
   final Color color;
   final Color textColor;
@@ -8,21 +10,19 @@ class IUCNColorStatus {
   IUCNColorStatus({required this.color, required this.textColor});
 }
 
-enum IUCNStatus { EX, EW, CR, EN, VU, NT, LC }
-
-final Map<IUCNStatus, IUCNColorStatus> ucnStatusColorMap = {
-  IUCNStatus.EX:
+final Map<IUCNStatusDto, IUCNColorStatus> ucnStatusColorMap = {
+  IUCNStatusDto.ex:
       IUCNColorStatus(color: Colors.black, textColor: const Color(0xffC33131)),
-  IUCNStatus.EW:
+  IUCNStatusDto.ew:
       IUCNColorStatus(color: const Color(0xff1A1A1A), textColor: Colors.white),
-  IUCNStatus.CR: IUCNColorStatus(
+  IUCNStatusDto.cr: IUCNColorStatus(
       color: const Color(0xffCC3333), textColor: const Color(0xffFFCCCC)),
-  IUCNStatus.EN: IUCNColorStatus(
+  IUCNStatusDto.en: IUCNColorStatus(
       color: const Color(0xffCC6633), textColor: const Color(0xffFFCC99)),
-  IUCNStatus.VU: IUCNColorStatus(
+  IUCNStatusDto.vu: IUCNColorStatus(
       color: const Color(0xffCC9900), textColor: const Color(0xffFFFFCC)),
-  IUCNStatus.NT: IUCNColorStatus(
+  IUCNStatusDto.nt: IUCNColorStatus(
       color: const Color(0xff005050), textColor: const Color(0xff99CC99)),
-  IUCNStatus.LC:
+  IUCNStatusDto.lc:
       IUCNColorStatus(color: const Color(0xff006666), textColor: Colors.white)
 };
