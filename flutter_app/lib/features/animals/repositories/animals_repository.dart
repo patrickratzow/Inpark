@@ -4,25 +4,25 @@ import "package:flutter_app/generated_code/zooinator.swagger.dart";
 
 class AnimalsRepository {
   late final Zooinator _apiClient;
-  AnimalOverview? _animalOverview;
 
   AnimalsRepository() {
     _apiClient = locator.get<Zooinator>();
-    _animalOverview = null;
   }
 
-  Future<Result<AnimalOverview, String>> fetchAnimals() async {
-    if (_animalOverview != null) {
-      return Result.success(_animalOverview!);
-    }
-
+  Future<Result<List<AnimalDto>, String>> fetchAnimals() async {
     var response = await _apiClient.getAnimalOverview();
 
     if (!response.isSuccessful) {
       return Result.error(response.error.toString());
     }
 
-    _animalOverview = response.body;
-    return Result.success(response.body!);
+    return Result.success(
+      response.body!.map((e) {
+        var newStatus = e.status.index + 1;
+        var animal = e.copyWith(status: IUCNStatusDto.values[newStatus]);
+
+        return animal;
+      }).toList(),
+    );
   }
 }

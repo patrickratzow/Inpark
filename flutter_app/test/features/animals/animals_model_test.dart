@@ -3,22 +3,24 @@ import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "package:flutter_test/flutter_test.dart";
 
 void main() {
-  late List<Animal> animals;
+  late List<AnimalDto> animals;
 
   setUp(() {
     animals = [
-      Animal(
-        name: AnimalName(displayName: "Floppa", latinName: "Big floppa"),
+      AnimalDto(
+        nameDto: AnimalNameDto(displayName: "Floppa", latinName: "Big floppa"),
         category: "Pattedyr",
-        image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
+        imageDto: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
+        status: IUCNStatusDto.cr,
         contents: List.empty(),
       ),
-      Animal(
-        name: AnimalName(displayName: "Bingus", latinName: "BB"),
+      AnimalDto(
+        nameDto: AnimalNameDto(displayName: "Bingus", latinName: "BB"),
         category: "Pattedyr",
-        image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
+        imageDto: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
+        status: IUCNStatusDto.en,
         contents: List.empty(),
       )
     ];
@@ -52,7 +54,7 @@ void main() {
 
       // Assert
       expect(result.length, 1);
-      expect(result.first.name.displayName, "Floppa");
+      expect(result.first.nameDto.displayName, "Floppa");
     },
   );
 
@@ -68,7 +70,7 @@ void main() {
 
       // Assert
       expect(result.length, 1);
-      expect(result.first.name.displayName, "Floppa");
+      expect(result.first.nameDto.displayName, "Floppa");
     },
   );
 }

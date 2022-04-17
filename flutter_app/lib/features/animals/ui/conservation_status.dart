@@ -1,20 +1,21 @@
 import 'package:flutter/foundation.dart';
 import "package:flutter/material.dart";
 
+import '../../../generated_code/zooinator.enums.swagger.dart';
 import '../models/iucn_status.dart';
 
 class ConservationStatus extends StatelessWidget {
-  final IUCNStatus activeStatus;
+  final IUCNStatusDto activeStatus;
 
   const ConservationStatus({
     Key? key,
     required this.activeStatus,
   }) : super(key: key);
 
-  Widget _buildConservationCircle(IUCNStatus status) {
+  Widget _buildConservationCircle(IUCNStatusDto status) {
     var color = ucnStatusColorMap[status]!;
     return ConservationCircle(
-      text: describeEnum(status),
+      text: describeEnum(status).toUpperCase(),
       color: color.color,
       textColor: color.textColor,
       active: status == activeStatus,
@@ -55,7 +56,7 @@ class ConservationStatus extends StatelessWidget {
     return [
       Column(
         children: [
-          _buildConservationCircle(IUCNStatus.EX),
+          _buildConservationCircle(IUCNStatusDto.ex),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 4, 0, 2),
             child: Container(
@@ -75,7 +76,7 @@ class ConservationStatus extends StatelessWidget {
       const SizedBox(width: 12),
       Column(
         children: [
-          _buildConservationCircle(IUCNStatus.EW),
+          _buildConservationCircle(IUCNStatusDto.ew),
         ],
       ),
     ];
@@ -86,11 +87,11 @@ class ConservationStatus extends StatelessWidget {
       children: [
         Row(
           children: [
-            _buildConservationCircle(IUCNStatus.CR),
+            _buildConservationCircle(IUCNStatusDto.cr),
             SizedBox(width: 12),
-            _buildConservationCircle(IUCNStatus.EN),
+            _buildConservationCircle(IUCNStatusDto.en),
             SizedBox(width: 12),
-            _buildConservationCircle(IUCNStatus.VU)
+            _buildConservationCircle(IUCNStatusDto.vu)
           ],
         ),
         Padding(
@@ -110,13 +111,13 @@ class ConservationStatus extends StatelessWidget {
     return [
       Column(
         children: [
-          _buildConservationCircle(IUCNStatus.NT),
+          _buildConservationCircle(IUCNStatusDto.nt),
         ],
       ),
       const SizedBox(width: 12),
       Column(
         children: [
-          _buildConservationCircle(IUCNStatus.LC),
+          _buildConservationCircle(IUCNStatusDto.lc),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 4, 0, 2),
             child: Container(

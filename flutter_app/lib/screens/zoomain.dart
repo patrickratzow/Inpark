@@ -59,13 +59,14 @@ class _ZooPageState extends State<ZooMainPage> {
           ? "https://10.0.2.2:5000"
           : "https://localhost:5000",
     );
+    return Container();
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
         centerTitle: true,
@@ -82,10 +83,10 @@ class _ZooPageState extends State<ZooMainPage> {
         child: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
-          child: FutureBuilder<chopper.Response<AnimalOverview>>(
+          child: FutureBuilder<chopper.Response<AnimalDto>>(
             future: zooApi.getAnimalOverview(),
             builder: (BuildContext context,
-                AsyncSnapshot<chopper.Response<AnimalOverview>> snapshot) {
+                AsyncSnapshot<chopper.Response<AnimalDto>> snapshot) {
               if (snapshot.hasData) {
                 final List<Widget> rows = snapshot.data?.body?.animals
                     .map(
@@ -124,5 +125,6 @@ class _ZooPageState extends State<ZooMainPage> {
         // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
+    */
   }
 }

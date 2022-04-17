@@ -9,7 +9,7 @@ class AnimalCard extends StatelessWidget {
     required this.animal,
   }) : super(key: key);
 
-  final Animal animal;
+  final AnimalDto animal;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class AnimalCard extends StatelessWidget {
     return Positioned.fill(
       child: CachedNetworkImage(
         fit: BoxFit.cover,
-        imageUrl: animal.image.previewUrl,
+        imageUrl: animal.imageDto.previewUrl,
         colorBlendMode: BlendMode.darken,
         placeholder: (context, url) {
           return const Center(
@@ -86,7 +86,7 @@ class AnimalCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.displayName.trim(),
+                    animal.nameDto.displayName.trim(),
                     style: const TextStyle(
                       fontSize: 18,
                       fontFamily: "Poppins",
@@ -98,7 +98,7 @@ class AnimalCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.latinName,
+                    animal.nameDto.latinName,
                     style: const TextStyle(
                       height: 1.5,
                       fontFamily: "Poppins",

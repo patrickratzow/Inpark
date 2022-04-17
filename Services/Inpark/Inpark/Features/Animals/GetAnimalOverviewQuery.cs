@@ -28,7 +28,7 @@ public class GetAnimalOverviewQueryHandler : IRequestHandler<GetAnimalOverviewQu
         return await _cache.GetOrCreateAsync("animals_overview", async (entry) =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
-            var overview = await _context.Animals.ToListAsync(cancellationToken);
+            var overview = await _context.Animals.OrderBy(x => x.Name.Name).ToListAsync(cancellationToken);
             var dtos = overview.Select(x => new AnimalDto(
                 new AnimalNameDto(x.Name.Name, x.Name.LatinName),
                 x.Category,
