@@ -16,17 +16,13 @@ class AnimalsRepository {
       return Result.success(_animalOverview!);
     }
 
-    try {
-      var response = await _apiClient.getAnimalOverview();
+    var response = await _apiClient.getAnimalOverview();
 
-      if (!response.isSuccessful) {
-        return Result.error(response.error.toString());
-      }
-
-      _animalOverview = response.body;
-      return Result.success(response.body!);
-    } catch (ex) {
-      return Result.error(ex.toString());
+    if (!response.isSuccessful) {
+      return Result.error(response.error.toString());
     }
+
+    _animalOverview = response.body;
+    return Result.success(response.body!);
   }
 }

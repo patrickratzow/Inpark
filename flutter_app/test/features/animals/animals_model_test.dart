@@ -8,19 +8,19 @@ void main() {
   setUp(() {
     animals = [
       Animal(
-        name: AnimalName(displayName: "Floppa", latinName: "Big floppa"),
-        category: "Pattedyr",
-        image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
-        id: "5",
-        contents: List.empty(),
-      ),
+          name: AnimalName(displayName: "Floppa", latinName: "Big floppa"),
+          category: "Pattedyr",
+          image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
+          id: "5",
+          contents: List.empty(),
+          meme: WeekDayDto.friday),
       Animal(
-        name: AnimalName(displayName: "Bingus", latinName: "BB"),
-        category: "Pattedyr",
-        image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
-        id: "5",
-        contents: List.empty(),
-      )
+          name: AnimalName(displayName: "Bingus", latinName: "BB"),
+          category: "Pattedyr",
+          image: AnimalImage(fullscreenUrl: "", previewUrl: ""),
+          id: "5",
+          contents: List.empty(),
+          meme: WeekDayDto.friday)
     ];
   });
 

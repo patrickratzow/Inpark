@@ -18,17 +18,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalOverview"
+                  "$ref": "#/components/schemas/ZooInparkContractsAnimalOverview"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalOverview"
+                  "$ref": "#/components/schemas/ZooInparkContractsAnimalOverview"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalOverview"
+                  "$ref": "#/components/schemas/ZooInparkContractsAnimalOverview"
                 }
               }
             }
@@ -40,7 +40,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -48,7 +48,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -56,7 +56,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               }
@@ -87,17 +87,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+                  "$ref": "#/components/schemas/ZooInparkEntitiesAnimal"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+                  "$ref": "#/components/schemas/ZooInparkEntitiesAnimal"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+                  "$ref": "#/components/schemas/ZooInparkEntitiesAnimal"
                 }
               }
             }
@@ -107,17 +107,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
+                  "$ref": "#/components/schemas/ZooInparkFeaturesAnimalsAnimalNotFound"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
+                  "$ref": "#/components/schemas/ZooInparkFeaturesAnimalsAnimalNotFound"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
+                  "$ref": "#/components/schemas/ZooInparkFeaturesAnimalsAnimalNotFound"
                 }
               }
             }
@@ -129,7 +129,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -137,7 +137,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -145,7 +145,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               }
@@ -166,7 +166,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
+                    "$ref": "#/components/schemas/ZooPaymentsContractsCustomersCreateCustomerRequest"
                   }
                 ]
               }
@@ -175,7 +175,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
+                    "$ref": "#/components/schemas/ZooPaymentsContractsCustomersCreateCustomerRequest"
                   }
                 ]
               }
@@ -184,7 +184,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.Customers.CreateCustomerRequest"
+                    "$ref": "#/components/schemas/ZooPaymentsContractsCustomersCreateCustomerRequest"
                   }
                 ]
               }
@@ -203,7 +203,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -211,7 +211,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -219,7 +219,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               }
@@ -242,7 +242,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
+                    "$ref": "#/components/schemas/ZooInparkContractsOpeningHourDto"
                   }
                 }
               },
@@ -250,7 +250,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
+                    "$ref": "#/components/schemas/ZooInparkContractsOpeningHourDto"
                   }
                 }
               },
@@ -258,7 +258,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
+                    "$ref": "#/components/schemas/ZooInparkContractsOpeningHourDto"
                   }
                 }
               }
@@ -271,7 +271,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -279,7 +279,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -287,7 +287,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               }
@@ -308,7 +308,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
+                    "$ref": "#/components/schemas/ZooPaymentsContractsCreateProductRequest"
                   }
                 ]
               }
@@ -317,7 +317,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
+                    "$ref": "#/components/schemas/ZooPaymentsContractsCreateProductRequest"
                   }
                 ]
               }
@@ -326,7 +326,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Payments.Contracts.CreateProductRequest"
+                    "$ref": "#/components/schemas/ZooPaymentsContractsCreateProductRequest"
                   }
                 ]
               }
@@ -345,7 +345,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -353,7 +353,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -361,7 +361,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               }
@@ -393,17 +393,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
+                  "$ref": "#/components/schemas/ZooPaymentsContractsProductDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
+                  "$ref": "#/components/schemas/ZooPaymentsContractsProductDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductDto"
+                  "$ref": "#/components/schemas/ZooPaymentsContractsProductDto"
                 }
               }
             }
@@ -413,17 +413,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
+                  "$ref": "#/components/schemas/ZooPaymentsContractsProductNotFound"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
+                  "$ref": "#/components/schemas/ZooPaymentsContractsProductNotFound"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
+                  "$ref": "#/components/schemas/ZooPaymentsContractsProductNotFound"
                 }
               }
             }
@@ -435,7 +435,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -443,7 +443,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               },
@@ -451,7 +451,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                    "$ref": "#/components/schemas/ZooCommonPropertyError"
                   }
                 }
               }
@@ -463,7 +463,7 @@
   },
   "components": {
     "schemas": {
-      "Zoo.Common.PropertyError": {
+      "ZooCommonPropertyError": {
         "required": [
           "errorMessage",
           "propertyName"
@@ -479,7 +479,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Common.DomainEvent": {
+      "ZooInparkCommonDomainEvent": {
         "required": [
           "dateOccurred",
           "isPublished"
@@ -498,7 +498,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Contracts.Animal": {
+      "ZooInparkContractsAnimal": {
         "required": [
           "category",
           "contents",
@@ -511,7 +511,7 @@
           "name": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalName"
+                "$ref": "#/components/schemas/ZooInparkContractsAnimalName"
               }
             ]
           },
@@ -521,7 +521,7 @@
           "image": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalImage"
+                "$ref": "#/components/schemas/ZooInparkContractsAnimalImage"
               }
             ]
           },
@@ -531,13 +531,13 @@
           "contents": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
+              "$ref": "#/components/schemas/ZooInparkContractsContentDto"
             }
           }
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Contracts.AnimalImage": {
+      "ZooInparkContractsAnimalImage": {
         "required": [
           "fullscreenUrl",
           "previewUrl"
@@ -553,7 +553,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Contracts.AnimalName": {
+      "ZooInparkContractsAnimalName": {
         "required": [
           "displayName",
           "latinName"
@@ -569,7 +569,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Contracts.AnimalOverview": {
+      "ZooInparkContractsAnimalOverview": {
         "required": [
           "animals",
           "categories"
@@ -579,7 +579,7 @@
           "animals": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.Animal"
+              "$ref": "#/components/schemas/ZooInparkContractsAnimal"
             }
           },
           "categories": {
@@ -591,7 +591,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Contracts.ContentDto": {
+      "ZooInparkContractsContentDto": {
         "required": [
           "children",
           "type",
@@ -606,13 +606,13 @@
           "children": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
+              "$ref": "#/components/schemas/ZooInparkContractsContentDto"
             }
           }
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Contracts.OpeningHourDto": {
+      "ZooInparkContractsOpeningHourDto": {
         "required": [
           "days",
           "end",
@@ -645,7 +645,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Entities.Animal": {
+      "ZooInparkEntitiesAnimal": {
         "required": [
           "createdAt",
           "domainEvents",
@@ -668,7 +668,7 @@
           "domainEvents": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.Common.DomainEvent"
+              "$ref": "#/components/schemas/ZooInparkCommonDomainEvent"
             },
             "readOnly": true
           },
@@ -680,7 +680,7 @@
           "name": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.AnimalName"
+                "$ref": "#/components/schemas/ZooInparkValueObjectsAnimalName"
               }
             ],
             "readOnly": true
@@ -688,7 +688,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Features.Animals.AnimalNotFound": {
+      "ZooInparkFeaturesAnimalsAnimalNotFound": {
         "required": [
           "errorMessage",
           "name"
@@ -705,7 +705,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.ValueObjects.AnimalName": {
+      "ZooInparkValueObjectsAnimalName": {
         "required": [
           "latinName",
           "name"
@@ -723,7 +723,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Payments.Contracts.CreateProductRequest": {
+      "ZooPaymentsContractsCreateProductRequest": {
         "required": [
           "name"
         ],
@@ -735,7 +735,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Payments.Contracts.Customers.CreateCustomerRequest": {
+      "ZooPaymentsContractsCustomersCreateCustomerRequest": {
         "required": [
           "email",
           "name"
@@ -751,7 +751,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Payments.Contracts.ProductDto": {
+      "ZooPaymentsContractsProductDto": {
         "required": [
           "id",
           "name"
@@ -768,7 +768,7 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Payments.Contracts.ProductNotFound": {
+      "ZooPaymentsContractsProductNotFound": {
         "required": [
           "errorMessage",
           "id"
