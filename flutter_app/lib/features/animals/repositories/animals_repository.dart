@@ -9,9 +9,9 @@ class AnimalsRepository {
     _apiClient = locator.get<Zooinator>();
   }
 
-  Future<Result<List<AnimalDto>, String>> fetchAnimals() async { 
+  Future<Result<List<AnimalDto>, String>> fetchAnimals() async {
     try {
-      var response = await _apiClient.getAnimalOverview();
+      var response = await _apiClient.getAnimals();
 
       if (!response.isSuccessful) {
         return Result.error(response.error.toString());

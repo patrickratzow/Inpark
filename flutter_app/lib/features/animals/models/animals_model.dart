@@ -45,8 +45,6 @@ class AnimalsModel extends ChangeNotifier {
       var animalsResult = await animalsRepository.fetchAnimals();
       if (animalsResult.isSuccess) {
         _animals = animalsResult.success as List<AnimalDto>;
-        _animals.sort(
-            (a, b) => a.nameDto.displayName.compareTo(b.nameDto.displayName));
       } else {
         error = animalsResult.error.toString();
       }
@@ -62,7 +60,7 @@ class AnimalsModel extends ChangeNotifier {
     if (search.isNotEmpty) {
       animals = animals
           .where(
-            (animal) => animal.nameDto.displayName
+            (animal) => animal.name.displayName
                 .toLowerCase()
                 .contains(search.toLowerCase()),
           )

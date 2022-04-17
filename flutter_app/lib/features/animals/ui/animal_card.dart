@@ -36,7 +36,7 @@ class AnimalCard extends StatelessWidget {
     return Positioned.fill(
       child: CachedNetworkImage(
         fit: BoxFit.cover,
-        imageUrl: animal.imageDto.previewUrl,
+        imageUrl: animal.image.previewUrl,
         colorBlendMode: BlendMode.darken,
         placeholder: (context, url) {
           return const Center(
@@ -86,7 +86,7 @@ class AnimalCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.nameDto.displayName.trim(),
+                    animal.name.displayName.trim(),
                     style: const TextStyle(
                       fontSize: 18,
                       fontFamily: "Poppins",
@@ -98,7 +98,7 @@ class AnimalCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.nameDto.latinName,
+                    animal.name.latinName,
                     style: const TextStyle(
                       height: 1.5,
                       fontFamily: "Poppins",

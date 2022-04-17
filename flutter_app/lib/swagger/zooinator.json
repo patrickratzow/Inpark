@@ -6,74 +6,6 @@
     "version": "v1"
   },
   "paths": {
-    "/animals/overview": {
-      "get": {
-        "tags": [
-          "Animals"
-        ],
-        "operationId": "getAnimalOverview",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
-                  }
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Request validation error",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/animals/{latinName}": {
       "get": {
         "tags": [
@@ -164,14 +96,40 @@
       }
     },
     "/animals": {
-      "post": {
+      "get": {
         "tags": [
           "Animals"
         ],
-        "operationId": "insertAnimals",
+        "operationId": "getAnimals",
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalDto"
+                  }
+                }
+              }
+            }
           },
           "422": {
             "description": "Request validation error",
@@ -538,7 +496,8 @@
         "type": "object",
         "properties": {
           "isPublished": {
-            "type": "boolean"
+            "type": "boolean",
+            "readOnly": true
           },
           "dateOccurred": {
             "type": "string",
@@ -553,13 +512,13 @@
           "category",
           "contents",
           "id",
-          "imageDto",
-          "nameDto",
+          "image",
+          "name",
           "status"
         ],
         "type": "object",
         "properties": {
-          "nameDto": {
+          "name": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalNameDto"
@@ -569,7 +528,7 @@
           "category": {
             "type": "string"
           },
-          "imageDto": {
+          "image": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalImageDto"
@@ -684,6 +643,7 @@
       },
       "Zoo.Inpark.Contracts.OpeningHourDto": {
         "required": [
+          "days",
           "end",
           "name",
           "open",
@@ -704,9 +664,50 @@
           },
           "open": {
             "type": "boolean"
+          },
+          "days": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.WeekDayDto"
+              }
+            ],
+            "x-enumNames": [
+              "None",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ]
           }
         },
         "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.WeekDayDto": {
+        "enum": [
+          0,
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "type": "integer",
+        "format": "int32",
+        "x-enumNames": [
+          "None",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ]
       },
       "Zoo.Inpark.Entities.Animal": {
         "required": [

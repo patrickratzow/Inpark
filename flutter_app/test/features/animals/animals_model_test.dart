@@ -8,17 +8,17 @@ void main() {
   setUp(() {
     animals = [
       AnimalDto(
-        nameDto: AnimalNameDto(displayName: "Floppa", latinName: "Big floppa"),
+        name: AnimalNameDto(displayName: "Floppa", latinName: "Big floppa"),
         category: "Pattedyr",
-        imageDto: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
+        image: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
         status: IUCNStatusDto.cr,
         contents: List.empty(),
       ),
       AnimalDto(
-        nameDto: AnimalNameDto(displayName: "Bingus", latinName: "BB"),
+        name: AnimalNameDto(displayName: "Bingus", latinName: "BB"),
         category: "Pattedyr",
-        imageDto: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
+        image: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
         status: IUCNStatusDto.en,
         contents: List.empty(),
@@ -54,7 +54,7 @@ void main() {
 
       // Assert
       expect(result.length, 1);
-      expect(result.first.nameDto.displayName, "Floppa");
+      expect(result.first.name.displayName, "Floppa");
     },
   );
 
@@ -70,7 +70,7 @@ void main() {
 
       // Assert
       expect(result.length, 1);
-      expect(result.first.nameDto.displayName, "Floppa");
+      expect(result.first.name.displayName, "Floppa");
     },
   );
 }

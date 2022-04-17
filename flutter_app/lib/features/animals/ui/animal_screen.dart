@@ -57,9 +57,9 @@ class AnimalScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => FullScreenImage(
-                    imageUrl: animal.imageDto.fullscreenUrl,
+                    imageUrl: animal.image.fullscreenUrl,
                     tag: "animal-${animal.id}",
-                    title: animal.nameDto.displayName,
+                    title: animal.name.displayName,
                   ),
                 ),
               ),
@@ -108,7 +108,7 @@ class AnimalScreen extends StatelessWidget {
       children: [
         Stack(
           children: [
-            CachedNetworkImage(imageUrl: animal.imageDto.previewUrl),
+            CachedNetworkImage(imageUrl: animal.image.previewUrl),
             Padding(
               padding: const EdgeInsets.fromLTRB(9, 6, 9, 6),
               child: AnimalCategory(
@@ -148,7 +148,7 @@ class AnimalScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.nameDto.displayName.trim(),
+                    animal.name.displayName.trim(),
                     style: const TextStyle(
                       fontSize: 20,
                       height: 18 / 20,
@@ -164,7 +164,7 @@ class AnimalScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.nameDto.latinName,
+                    animal.name.latinName,
                     style: const TextStyle(
                       height: 1.5,
                       fontFamily: "Poppins",
