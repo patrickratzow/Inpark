@@ -1,5 +1,4 @@
 using FluentValidation;
-using Zoo.Payments.Common;
 
 namespace Zoo.Inpark.Common;
 

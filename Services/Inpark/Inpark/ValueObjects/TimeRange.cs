@@ -27,6 +27,8 @@ public class TimeRange : ValueObject
         yield return Start;
         yield return End;
     }
+
+    public override string ToString() => $"{Start}-{End}";
 }
 
 public class TimeRangeValidator : AbstractValidator<TimeRange>

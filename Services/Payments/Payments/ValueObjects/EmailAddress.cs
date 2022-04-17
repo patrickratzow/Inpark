@@ -7,7 +7,6 @@ public class EmailAddress : ValueObject
     private EmailAddress() { }
 
     public string Email { get; private set; } = null!;
-    
 
     public static EmailAddress From(string emailAddress)
     {
