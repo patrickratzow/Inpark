@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
 import "package:flutter_app/common/ui/bullet_list.dart";
 import "package:flutter_app/common/ui/fullscreen_image.dart";
 import "package:flutter_app/common/ui/navigation_bar.dart";
@@ -120,10 +117,6 @@ class AnimalScreen extends StatelessWidget {
   }
 
   Widget _buildConservationStatus(AnimalDto animal) {
-    var rng = Random();
-    animal = animal.copyWith(
-      status: IUCNStatusDto.values[2 + rng.nextInt(6)],
-    );
     if (animal.status == IUCNStatusDto.unknown ||
         animal.status == IUCNStatusDto.swaggerGeneratedUnknown) {
       return Container();
