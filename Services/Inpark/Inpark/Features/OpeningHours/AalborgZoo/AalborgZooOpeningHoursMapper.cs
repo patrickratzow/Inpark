@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Zoo.Inpark.Entities;
@@ -34,7 +35,10 @@ public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
 
                 foreach (var time in times!)
                 {
-                    var timeRange = TimeRange.From(time.Start, time.End);
+                    var timeZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Copenhagen");
+                    var start = CorrectTimeZoneOffset(time.Start, timeZone);
+                    var end = CorrectTimeZoneOffset(time.End, timeZone);
+                    var timeRange = TimeRange.From(start, end);
                     var open = time.OpenClosed is "open";
                     var header = time.Header.Replace("Aalborg Zoo -", "").Trim();
                     var days = time.WeekDays.ToHashSet();
@@ -57,6 +61,14 @@ public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
         }
     }
 
+    private static DateTimeOffset CorrectTimeZoneOffset(DateTimeOffset dateTime, TimeZoneInfo timeZone)
+    {
+        var baseOffset = timeZone.BaseUtcOffset;
+        var isDst = timeZone.IsDaylightSavingTime(dateTime);
+        
+        return dateTime.ToOffset(baseOffset + (isDst ? TimeSpan.FromHours(1) : TimeSpan.Zero));
+    }
+    
     private static WeekDay MapDays(IReadOnlySet<string> days)
     {
         var day = WeekDay.None;
