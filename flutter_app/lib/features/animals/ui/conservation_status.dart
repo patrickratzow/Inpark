@@ -1,8 +1,8 @@
-import 'package:flutter/foundation.dart';
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 
-import '../../../generated_code/zooinator.enums.swagger.dart';
-import '../models/iucn_status.dart';
+import "../../../generated_code/zooinator.enums.swagger.dart";
+import "../models/iucn_status.dart";
 
 class ConservationStatus extends StatelessWidget {
   final IUCNStatusDto activeStatus;
@@ -27,7 +27,7 @@ class ConservationStatus extends StatelessWidget {
     return Column(
       children: [
         const Padding(
-          padding: EdgeInsets.only(bottom: 20),
+          padding: EdgeInsets.only(bottom: 16),
           child: Text(
             "Bevaringsstatus",
             style: TextStyle(
@@ -88,9 +88,9 @@ class ConservationStatus extends StatelessWidget {
         Row(
           children: [
             _buildConservationCircle(IUCNStatusDto.cr),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             _buildConservationCircle(IUCNStatusDto.en),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             _buildConservationCircle(IUCNStatusDto.vu)
           ],
         ),
@@ -130,7 +130,10 @@ class ConservationStatus extends StatelessWidget {
           ),
           const Text(
             "Ikke \nTruet",
-            style: TextStyle(color: Color(0xff698665)),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Color(0xff698665),
+            ),
           )
         ],
       )

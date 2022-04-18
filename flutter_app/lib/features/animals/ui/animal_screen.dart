@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 import "package:flutter_app/common/ui/bullet_list.dart";
 import "package:flutter_app/common/ui/fullscreen_image.dart";
+import "package:flutter_app/common/ui/navigation_bar.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/ui/animal_category.dart";
 import "package:flutter_app/features/animals/ui/conservation_status.dart";
@@ -43,62 +47,89 @@ class AnimalScreen extends StatelessWidget {
   }
 
   Widget _buildCard(BuildContext context, AnimalDto animal) {
-    return Card(
-      margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(6),
-      ),
-      clipBehavior: Clip.hardEdge,
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FullScreenImage(
-                    imageUrl: animal.image.fullscreenUrl,
-                    tag: "animal-${animal.id}",
-                    title: animal.name.displayName,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.13),
+              offset: const Offset(0, 0),
+              blurRadius: 4,
+            ),
+          ],
+        ),
+        child: Card(
+          margin: const EdgeInsets.all(0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+          ),
+          clipBehavior: Clip.hardEdge,
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FullScreenImage(
+                        imageUrl: animal.image.fullscreenUrl,
+                        tag: "animal-${animal.id}",
+                        title: animal.name.displayName,
+                      ),
+                    ),
                   ),
-                ),
+                },
+                child: _buildImage(animal),
               ),
-            },
-            child: _buildImage(animal),
+              ZooinatorNavigationBar(
+                tabs: [
+                  ZooinatorNavigationTab(
+                    text: "Information",
+                    icon: Icons.menu,
+                    builder: (context) => Column(
+                      children: [
+                        FittedBox(
+                          fit: BoxFit.contain,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                            child: _buildConservationStatus(animal),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                          child: _buildContents(animal.contents),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ZooinatorNavigationTab(
+                    text: "Oversigt",
+                    icon: Icons.dashboard,
+                    builder: (context) => const Text("local"),
+                  ),
+                ],
+              ),
+            ],
           ),
-          ..._buildConservationStatus(animal),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: _buildContents(animal.contents),
-          ),
-        ],
+        ),
       ),
     );
   }
 
-  List<Widget> _buildConservationStatus(AnimalDto animal) {
+  Widget _buildConservationStatus(AnimalDto animal) {
+    var rng = Random();
+    animal = animal.copyWith(
+      status: IUCNStatusDto.values[2 + rng.nextInt(6)],
+    );
     if (animal.status == IUCNStatusDto.unknown ||
         animal.status == IUCNStatusDto.swaggerGeneratedUnknown) {
-      return [Container()];
+      return Container();
     }
 
-    return [
-      const Padding(
-        padding: EdgeInsets.all(8),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(bottom: 16),
-        child: ConservationStatus(activeStatus: animal.status),
-      ),
-      Container(
-        color: const Color(0xffE3E5E5),
-        child: const SizedBox(
-          height: 1,
-          width: double.infinity,
-        ),
-      ),
-      SizedBox(height: 8)
-    ];
+    return ConservationStatus(activeStatus: animal.status);
   }
 
   Widget _buildImage(AnimalDto animal) {
@@ -203,14 +234,14 @@ class AnimalScreen extends StatelessWidget {
         textAlign: TextAlign.left,
         softWrap: true,
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 14,
           color: Colors.black.withOpacity(0.6),
-          height: 1.55,
+          height: 1.35,
         ),
       );
     }
     if (content.type == "spacer") {
-      return const SizedBox(height: 8);
+      return const SizedBox(height: 4);
     }
     if (content.type == "list") {
       var children =
