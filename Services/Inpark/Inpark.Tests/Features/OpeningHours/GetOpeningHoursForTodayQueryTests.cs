@@ -20,9 +20,8 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     public async Task Handle_ShouldFindOpeningHoursFor_Today()
     {
         // Arrange
-        var start = (DateTimeOffset)DateTime.Today;
-        var end = start.AddDays(1);
-        var range = TimeRange.From(start, end);
+        var time = (DateTimeOffset)DateTime.Today;
+        var range = TimeRange.From(time, time);
         var openingHour = await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
 
@@ -46,9 +45,8 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     public async Task Handle_ShouldNotFindOpeningHoursFor_Tomorrow()
     {
         // Arrange
-        var start = (DateTimeOffset)DateTime.Today.AddDays(1);
-        var end = start.AddDays(1);
-        var range = TimeRange.From(start, end);
+        var time = (DateTimeOffset)DateTime.Today.AddDays(1);
+        var range = TimeRange.From(time, time);
         await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
 
@@ -65,9 +63,8 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     public async Task Handle_ShouldNotFindOpeningHoursFor_Yesterday()
     {
         // Arrange
-        var start = (DateTimeOffset)DateTime.Today.AddDays(-1);
-        var end = start.AddDays(1);
-        var range = TimeRange.From(start, end);
+        var time = (DateTimeOffset)DateTime.Today.AddDays(-1);
+        var range = TimeRange.From(time, time);
         await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
 
