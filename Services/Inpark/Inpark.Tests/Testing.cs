@@ -30,7 +30,7 @@ public class Testing
     {
         FluentTests.AddBase(typeof(Entity));
         FluentTests.AddBase(typeof(ValueObject));
-        FluentTests.AddAssembly(typeof(Zoo.Common.Api.DependencyInjection).Assembly);
+        FluentTests.AddAssembly(typeof(Zoo.Common.Api.ResponseMapperDependencyInjection).Assembly);
 
         var path = Directory.GetCurrentDirectory();
         var builder = new ConfigurationBuilder()

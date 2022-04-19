@@ -16,7 +16,7 @@ public class TestsTests
         return Assembly
             .GetExportedTypes()
             .Where(t => t.GetCustomAttribute<TestFixtureAttribute>() is not null 
-                        || (bool)t.FullName?.EndsWith("Tests"));
+                        || t.FullName?.EndsWith("Tests") is true);
     }
 
     [TestCaseSource(nameof(GetTestFixturesTests))]
@@ -33,7 +33,7 @@ public class TestsTests
     {
         return Assembly
             .GetExportedTypes()
-            .Where(t => (bool)t.FullName?.EndsWith("Tests"));
+            .Where(t => t.FullName?.EndsWith("Tests") is true);
     }
     
     [TestCaseSource(nameof(GetTests))]

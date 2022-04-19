@@ -3,7 +3,6 @@ using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +10,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
-using Zoo.Common.Api.Pipelines;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Features.Animals;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
@@ -39,6 +37,7 @@ public static class DependencyInjection
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddPipelines();
+        services.AddClock();
         services.AddHangFire(dbConnection);
         services.AddSingleton<IEventPublisher, EventPublisher>();
 

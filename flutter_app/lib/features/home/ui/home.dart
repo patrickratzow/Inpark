@@ -37,12 +37,42 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var model = context.read<HomeModel>();
+    context.read<HomeModel>().fetchOpeningHoursForToday();
+
     return Scaffold(
       appBar: const HomeAppBar(name: "Menu", route: "Route"),
       body: Column(
         children: [
-          TitleBar(name: model.greetingText()),
+          Consumer<HomeModel>(
+            builder: (context, value, child) {
+              if (value.loading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (value.error.isNotEmpty) {
+                return Center(
+                  child: Text("Error ${value.error}"),
+                );
+              }
+
+              return Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    value.openingHours,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
           Expanded(
             child: ListView(
               children: [

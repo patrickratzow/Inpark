@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Entities;
 using Zoo.Inpark.Models;
-using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark.Features.Animals;
 

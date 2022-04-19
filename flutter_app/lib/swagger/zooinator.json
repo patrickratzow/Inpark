@@ -536,21 +536,7 @@
             ]
           },
           "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.IUCNStatusDto"
-              }
-            ],
-            "x-enumNames": [
-              "Unknown",
-              "EX",
-              "EW",
-              "CR",
-              "EN",
-              "VU",
-              "NT",
-              "LC"
-            ]
+            "$ref": "#/components/schemas/Zoo.Inpark.Contracts.IUCNStatusDto"
           },
           "id": {
             "type": "string"
@@ -666,48 +652,13 @@
             "type": "boolean"
           },
           "days": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.WeekDayDto"
-              }
-            ],
-            "x-enumNames": [
-              "None",
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-              "Sunday"
-            ]
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "additionalProperties": false
-      },
-      "Zoo.Inpark.Contracts.WeekDayDto": {
-        "enum": [
-          0,
-          1,
-          2,
-          4,
-          8,
-          16,
-          32,
-          64
-        ],
-        "type": "integer",
-        "format": "int32",
-        "x-enumNames": [
-          "None",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ]
       },
       "Zoo.Inpark.Entities.Animal": {
         "required": [
@@ -754,22 +705,7 @@
             "readOnly": true
           },
           "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Zoo.Inpark.Entities.IUCNStatus"
-              }
-            ],
-            "readOnly": true,
-            "x-enumNames": [
-              "Unknown",
-              "EX",
-              "EW",
-              "CR",
-              "EN",
-              "VU",
-              "NT",
-              "LC"
-            ]
+            "$ref": "#/components/schemas/Zoo.Inpark.Entities.IUCNStatus"
           },
           "image": {
             "allOf": [

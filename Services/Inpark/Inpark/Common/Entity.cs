@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace Zoo.Inpark.Common;
 
 public abstract class Entity : IValidatable, IHasDomainEvent

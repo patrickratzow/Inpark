@@ -1,7 +1,5 @@
 using System.Net;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark.Features.Animals;
 

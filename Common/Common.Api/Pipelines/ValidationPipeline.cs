@@ -1,7 +1,7 @@
 using FluentValidation;
 using MediatR;
 
-namespace Zoo.Common.Api.Pipelines;
+namespace Zoo.Common.Api;
 
 public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>

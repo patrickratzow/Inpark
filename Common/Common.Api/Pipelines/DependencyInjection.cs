@@ -1,9 +1,9 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Zoo.Common.Api.Pipelines;
+namespace Zoo.Common.Api;
 
-public static class DependencyInjection
+public static class PipelinesDependencyInjection
 {
     public static void AddPipelines(this IServiceCollection services)
     {

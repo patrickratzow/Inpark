@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using Zoo.Inpark.Common;
-using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
 
 namespace Zoo.Inpark.Features.Animals;
 
