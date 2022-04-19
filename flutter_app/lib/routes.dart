@@ -1,10 +1,11 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/features/settings/ui/settings.dart";
 import "package:flutter_app/screens/zoomain.dart";
 import "package:flutter_app/screens/zooview.dart";
 import "features/animals/ui/animal_overview_screen.dart";
 import "features/animals/ui/animal_screen.dart";
 import "features/home/ui/home.dart";
-import 'generated_code/zooinator.swagger.dart';
+import "generated_code/zooinator.swagger.dart";
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -19,6 +20,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const ZooMainView());
       case "/animals":
         return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
+      case "/settings":
+        return MaterialPageRoute(builder: (_) => const Settings());
       default:
         return _errorRoute();
     }
