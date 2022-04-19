@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
     context.read<HomeModel>().fetchOpeningHoursForToday();
 
     return Scaffold(
-      appBar: const HomeAppBar(name: "Menu", route: "Route"),
+      appBar: const HomeAppBar(title: "Hello Patrick!"),
       body: Column(
         children: [
           Consumer<HomeModel>(
