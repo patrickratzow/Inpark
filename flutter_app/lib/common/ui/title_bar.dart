@@ -4,27 +4,28 @@ class TitleBar extends StatelessWidget {
   const TitleBar({
     Key? key,
     required this.name,
+    required this.fontSize,
+    this.color,
   }) : super(key: key);
 
   final String name;
+  final double fontSize;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-      child: Align(
-        child: Text(
-          name,
-          textAlign: TextAlign.left,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            fontFamily: "Poppins",
-          ),
+    return Align(
+      child: Text(
+        name,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          color: color,
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+          fontFamily: "Poppins",
         ),
-        alignment: Alignment.centerLeft,
       ),
+      alignment: Alignment.centerLeft,
     );
   }
 }
