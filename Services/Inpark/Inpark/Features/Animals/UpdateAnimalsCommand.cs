@@ -2,6 +2,7 @@ using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Zoo.Inpark.Entities;
+using Zoo.Inpark.Features.Animals.Interfaces;
 
 namespace Zoo.Inpark.Features.Animals;
 
@@ -10,13 +11,13 @@ public record UpdateAnimalsCommand : IRequest<OneOf<Unit>>;
 
 public class UpdateAnimalsCommandHandler : IRequestHandler<UpdateAnimalsCommand, OneOf<Unit>>
 {
-    private readonly IAalborgZooContentRepository _contentRepository;
-    private readonly IAalborgZooAnimalContentMapper _contentMapper;
+    private readonly IContentRepository _contentRepository;
+    private readonly IAnimalContentMapper _contentMapper;
     private readonly ILogger<UpdateAnimalsCommandHandler> _logger;
     private readonly InparkDbContext _context;
 
-    public UpdateAnimalsCommandHandler(IAalborgZooContentRepository contentRepository, 
-        IAalborgZooAnimalContentMapper contentMapper, ILogger<UpdateAnimalsCommandHandler> logger, InparkDbContext context)
+    public UpdateAnimalsCommandHandler(IContentRepository contentRepository, 
+        IAnimalContentMapper contentMapper, ILogger<UpdateAnimalsCommandHandler> logger, InparkDbContext context)
     {
         _contentRepository = contentRepository;
         _contentMapper = contentMapper;

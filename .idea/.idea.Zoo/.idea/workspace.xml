@@ -10,9 +10,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220419071556_AddIndexOnAnimal.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220419071556_AddIndexOnAnimal.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/SpeakConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/SpeakTimeConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepositoryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Extensions/DateTimeOffsetExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalContentMapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IContentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksMapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/Interfaces/ISpeakRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/Interfaces/ISpeaksMapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220419101426_AddSpeaks.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220419101426_AddSpeaks.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/SpeakTime.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Enums/WeekDay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Enums/WeekDay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZooAnimalContentMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalContentMapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZooContentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooContentRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZooUpdateAnimalsJob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooUpdateAnimalsJob.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/UpdateAnimalsCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/UpdateAnimalsCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Groups.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Groups.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +65,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Enums/WeekDay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" root0="FORCE_HIGHLIGHTING" />
@@ -45,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,6 +95,7 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2e5a78beee0f4abd8ed7ef3636048cf1a20268/f6/44e1ee92/DateTimeOffset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
@@ -97,7 +127,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="RiderCSharpLiveTemplatesSettingsId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
@@ -333,12 +363,6 @@
           <line>25</line>
           <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark.Tests\ImplementationTests\TestsTests.cs" initialLine="26" containingFunctionPresentation="method 'Test_ShouldHaveA_Category'" />
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/UpdateAalborgZooOpeningHoursCommand.cs</url>
-          <line>69</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark\Features\OpeningHours\AalborgZoo\UpdateAalborgZooOpeningHoursCommand.cs" initialLine="69" containingFunctionPresentation="method 'UpdateOpeningHours'" />
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

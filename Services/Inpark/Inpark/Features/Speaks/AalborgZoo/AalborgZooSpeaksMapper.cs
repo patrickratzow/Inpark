@@ -3,32 +3,34 @@ using Microsoft.Extensions.Logging;
 using Zoo.Inpark.Entities;
 using Zoo.Inpark.Enums;
 using Zoo.Inpark.Extensions;
-using Zoo.Inpark.Features.OpeningHours.Interfaces;
+using Zoo.Inpark.Features.Speaks.Interfaces;
 using Zoo.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.OpeningHours.AalborgZoo;
+namespace Zoo.Inpark.Features.Speaks.AalborgZoo;
 
-public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
+public class AalborgZooSpeaksMapper : ISpeaksMapper
 {
-    private readonly ILogger<AalborgZooOpeningHoursMapper> _logger;
-    
-    public AalborgZooOpeningHoursMapper(ILogger<AalborgZooOpeningHoursMapper> logger)
+    private readonly ILogger<AalborgZooSpeaksMapper> _logger;
+
+    public AalborgZooSpeaksMapper(ILogger<AalborgZooSpeaksMapper> logger)
     {
         _logger = logger;
     }
-
-    public Result<List<OpeningHour>, string> Parse(string input)
+    
+    public Result<List<Speak>, string> Parse(string input)
     {
         try
         {
-            var openingHours = new List<OpeningHour>();
+            var speaks = new List<Speak>();
+            var speakTimes = new List<SpeakTime>();
             using var json = JsonDocument.Parse(input);
             var items = json.RootElement.GetProperty("items");
             foreach (var itemObj in items.EnumerateArray())
             {
                 var item = itemObj.GetProperty("item");
+                var title = item.GetProperty("title").ToString();
                 var properties = item.GetProperty("properties");
-                var times = properties.GetProperty("times").Deserialize<List<OpeningTime>>(new JsonSerializerOptions
+                var times = properties.GetProperty("times").Deserialize<List<SpeakDto>>(new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 });;
@@ -39,17 +41,17 @@ public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
                     var start = time.Start.ToTimeZoneOffset(timeZone);
                     var end = time.End.ToTimeZoneOffset(timeZone);
                     var timeRange = TimeRange.From(start, end);
-                    var open = time.OpenClosed is "open";
                     var header = time.Header.Replace("Aalborg Zoo -", "").Trim();
                     var days = time.WeekDays.ToHashSet();
                     var day = days.ToWeekDay();
 
-                    var openingHour = OpeningHour.Create(Guid.NewGuid(), header, timeRange, day, open);
-                    
-                    openingHours.Add(openingHour);
+                    speakTimes.Add(SpeakTime.From(header, day, timeRange));
                 }
+                
+                speaks.Add(Speak.Create(Guid.NewGuid(), title, speakTimes));
             }
-            return openingHours;
+            
+            return speaks;
         }
         catch (Exception ex)
         {
@@ -59,13 +61,12 @@ public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
         }
     }
 
-    private class OpeningTime
-    {
-        public bool Special { get; set; }
-        public string OpenClosed { get; set; } = null!;
-        public List<string> WeekDays { get; set; } = new();
-        public DateTimeOffset Start { get; set; }
-        public string Header { get; set; } = null!;
-        public DateTimeOffset End { get; set; }
-    }
+    private class SpeakDto
+      {
+          public List<string> WeekDays { get; set; } = new();
+          public DateTimeOffset Start { get; set; }
+          public string Header { get; set; } = null!;
+          public DateTimeOffset End { get; set; }
+      }
 }
+

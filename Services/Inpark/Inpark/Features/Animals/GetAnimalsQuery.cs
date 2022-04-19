@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Zoo.Inpark.Contracts;
+using Zoo.Inpark.Features.Animals.Interfaces;
 using Zoo.Inpark.Models;
 
 namespace Zoo.Inpark.Features.Animals;
@@ -9,9 +10,9 @@ public record GetAnimalsQuery : IRequest<OneOf<List<AnimalDto>>>;
 public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<AnimalDto>>>
 {
     private readonly InparkDbContext _context;
-    private readonly IAalborgZooAnimalContentMapper _mapper;
+    private readonly IAnimalContentMapper _mapper;
 
-    public GetAnimalsHandler(InparkDbContext context, IAalborgZooAnimalContentMapper mapper)
+    public GetAnimalsHandler(InparkDbContext context, IAnimalContentMapper mapper)
     {
         _context = context;
         _mapper = mapper;

@@ -12,6 +12,7 @@ using Polly;
 using Polly.Extensions.Http;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Features.Animals;
+using Zoo.Inpark.Features.Animals.Interfaces;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.Services;
@@ -43,10 +44,10 @@ public static class DependencyInjection
 
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
         
-        services.AddSingleton<IAalborgZooContentRepository, AalborgZooContentRepository>();
-        services.AddHttpClient<IAalborgZooContentRepository, AalborgZooContentRepository>(AalborgZooHttpClient)
+        services.AddSingleton<IContentRepository, AalborgZooContentRepository>();
+        services.AddHttpClient<IContentRepository, AalborgZooContentRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
-        services.AddSingleton<IAalborgZooAnimalContentMapper, AalborgZooAnimalContentMapper>();
+        services.AddSingleton<IAnimalContentMapper, AalborgZooAnimalContentMapper>();
 
         services.AddSingleton<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
         services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
