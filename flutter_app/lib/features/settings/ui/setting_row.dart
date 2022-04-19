@@ -1,19 +1,20 @@
 import "package:flutter/material.dart";
 
-import '../../../common/ui/switch.dart';
 import "../../../routes.dart";
 
-class SettingRowToggle extends StatelessWidget {
-  SettingRowToggle({
+class SettingRow extends StatelessWidget {
+  const SettingRow({
     Key? key,
     required this.iconName,
     required this.name,
     required this.route,
+    required this.widget,
   }) : super(key: key);
 
   final String name;
   final String iconName;
   final String route;
+  final Widget widget;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class SettingRowToggle extends StatelessWidget {
                 ),
               ],
             ),
-            StatefullSwitch(),
+            widget,
           ],
         ),
       ),

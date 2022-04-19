@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/features/settings/ui/setting_row_route.dart';
-import 'package:flutter_app/features/settings/ui/setting_row_toggle.dart';
+import "package:flutter_app/features/settings/ui/setting_row.dart";
 import "package:flutter_app/features/settings/ui/settings_title_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
+import "../../../common/ui/switch.dart";
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
@@ -16,31 +16,52 @@ class Settings extends StatelessWidget {
         child: Column(
           children: [
             const SettingsTitleBar(name: "Account"),
-            const SettingRowRoute(
+            const SettingRow(
               iconName: "avatar",
               name: "Profile",
               route: "non",
+              widget: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black,
+                size: 16.0,
+              ),
             ),
-            const SettingRowRoute(
+            const SettingRow(
               iconName: "ticketCollerless",
               name: "My Tickets",
               route: "non",
+              widget: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black,
+                size: 16.0,
+              ),
             ),
-            const SettingRowRoute(
+            const SettingRow(
               iconName: "notifications",
               name: "Notifications",
               route: "non",
+              widget: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black,
+                size: 16.0,
+              ),
             ),
             const SettingsTitleBar(name: "More"),
-            const SettingRowRoute(
+            const SettingRow(
               iconName: "help",
               name: "Help",
               route: "non",
+              widget: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black,
+                size: 16.0,
+              ),
             ),
-            SettingRowToggle(
+            SettingRow(
               iconName: "help",
               name: "Lightmode",
               route: "non",
+              widget: StatefullSwitch(),
             ),
           ],
         ),
