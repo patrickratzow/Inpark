@@ -34,7 +34,7 @@ public class TimeRangeValidator : AbstractValidator<TimeRange>
 {
     public TimeRangeValidator()
     {
-        RuleFor(x => x.End).NotEmpty().GreaterThan(x => x.Start);
-        RuleFor(x => x.Start).NotEmpty().LessThan(x => x.End);
+        RuleFor(x => x.End).NotEmpty().GreaterThanOrEqualTo(x => x.Start);
+        RuleFor(x => x.Start).NotEmpty().LessThanOrEqualTo(x => x.End);
     }
 }

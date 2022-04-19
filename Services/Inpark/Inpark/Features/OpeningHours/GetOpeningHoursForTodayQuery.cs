@@ -22,10 +22,15 @@ public class GetOpeningHoursForTodayQueryHandler
             CancellationToken cancellationToken)
     {
         var today = _clock.Today;
-        var start = new DateTime(today.Year, today.Month, today.Day);
-        var end = start.AddDays(1);
+        var day = new DateTime(today.Year, today.Month, today.Day);
         var openingHours = await _context.OpeningHours
-            .Where(x => x.Range.Start <= start && x.Range.End >= end)
+            .Where(x => 
+                x.Range.Start.Year <= day.Year &&
+                x.Range.Start.Month <= day.Month &&
+                x.Range.Start.Day <= day.Day &&
+                x.Range.End.Year >= day.Year &&
+                x.Range.End.Month >= day.Month &&
+                x.Range.End.Day >= day.Day)
             .ToListAsync(cancellationToken);
         
         // Finds the closest start point to today that is not in the future

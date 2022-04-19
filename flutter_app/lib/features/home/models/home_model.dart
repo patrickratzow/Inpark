@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_app/common/extensions/iterable.dart';
 import "package:flutter_app/common/ioc.dart";
 import "package:flutter_app/features/home/repositories/home_repository.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
@@ -22,16 +23,20 @@ class HomeModel extends ChangeNotifier {
     return "Goddag";
   }
 
-  // TODO: Support multiple opening hours
   String get openingHours {
     if (_openingHours.isEmpty) {
       return "Vi har lukket i dag";
     }
 
-    final openingHour = _openingHours.first;
-    final start = openingHour.start.hour;
-    final end = openingHour.end.hour;
-    return "Vi har åbent i dag fra kl. $start - $end";
+    final hours = _openingHours
+        .where((x) => x.open)
+        .groupBy((x) => x.start)
+        .entries
+        .map((x) => x.value.maxBy((x) => x.end))
+        .map((x) => x.start.hour.toString() + "-" + x.end.hour.toString())
+        .toList();
+
+    return "Åben i dag fra kl. " + hours.join(" og ");
   }
 
   Future<void> fetchOpeningHoursForToday() async {

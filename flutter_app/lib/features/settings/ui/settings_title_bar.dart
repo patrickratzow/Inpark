@@ -1,16 +1,12 @@
 import "package:flutter/material.dart";
 
-class TitleBar extends StatelessWidget {
-  const TitleBar({
+class SettingsTitleBar extends StatelessWidget {
+  const SettingsTitleBar({
     Key? key,
     required this.name,
-    required this.fontSize,
-    this.color,
   }) : super(key: key);
 
   final String name;
-  final double fontSize;
-  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +14,11 @@ class TitleBar extends StatelessWidget {
       child: Text(
         name,
         textAlign: TextAlign.left,
-        style: TextStyle(
-          color: color,
-          fontSize: fontSize,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
-          fontFamily: "Poppins",
+          fontFamily: "Inter",
         ),
       ),
       alignment: Alignment.centerLeft,
