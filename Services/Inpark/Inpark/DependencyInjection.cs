@@ -15,6 +15,8 @@ using Zoo.Inpark.Features.Animals;
 using Zoo.Inpark.Features.Animals.Interfaces;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
+using Zoo.Inpark.Features.Speaks.AalborgZoo;
+using Zoo.Inpark.Features.Speaks.Interfaces;
 using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark;
@@ -53,6 +55,11 @@ public static class DependencyInjection
         services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
+
+        services.AddSingleton<ISpeakRepository, AalborgZooSpeaksRepository>();
+        services.AddHttpClient<ISpeakRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
+            .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<ISpeaksMapper, AalborgZooSpeaksMapper>();
         
         services.AddResponseMapper();
     }

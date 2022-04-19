@@ -32,9 +32,10 @@ public class TimeRange : ValueObject
 
 public class TimeRangeValidator : AbstractValidator<TimeRange>
 {
+    //TODO has been outcommented due to errors in Aalborg Zoo's data.
     public TimeRangeValidator()
     {
-        RuleFor(x => x.End).NotEmpty().GreaterThanOrEqualTo(x => x.Start);
-        RuleFor(x => x.Start).NotEmpty().LessThanOrEqualTo(x => x.End);
+        RuleFor(x => x.End).NotEmpty();//.GreaterThanOrEqualTo(x => x.Start);
+        RuleFor(x => x.Start).NotEmpty(); //.LessThanOrEqualTo(x => x.End);
     }
 }

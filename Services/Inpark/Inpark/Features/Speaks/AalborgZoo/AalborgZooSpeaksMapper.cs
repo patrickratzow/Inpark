@@ -33,22 +33,23 @@ public class AalborgZooSpeaksMapper : ISpeaksMapper
                 var times = properties.GetProperty("times").Deserialize<List<SpeakDto>>(new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                });;
+                });
 
-                foreach (var time in times!)
+                foreach (var speak in times!)
                 {
                     var timeZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Copenhagen");
-                    var start = time.Start.ToTimeZoneOffset(timeZone);
-                    var end = time.End.ToTimeZoneOffset(timeZone);
+                    var start = speak.Start.ToTimeZoneOffset(timeZone);
+                    var end = speak.End.ToTimeZoneOffset(timeZone);
                     var timeRange = TimeRange.From(start, end);
-                    var header = time.Header.Replace("Aalborg Zoo -", "").Trim();
-                    var days = time.WeekDays.ToHashSet();
+                    var header = speak.Header;
+                    var days = speak.WeekDays.ToHashSet();
                     var day = days.ToWeekDay();
 
                     speakTimes.Add(SpeakTime.From(header, day, timeRange));
-                }
+                }                    
                 
                 speaks.Add(Speak.Create(Guid.NewGuid(), title, speakTimes));
+                speakTimes.Clear();
             }
             
             return speaks;
