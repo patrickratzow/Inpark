@@ -19,8 +19,8 @@ class BulletList extends StatelessWidget {
               const Text(
                 "\u2022",
                 style: TextStyle(
-                  fontSize: 16,
-                  height: 1.55,
+                  fontSize: 14,
+                  height: 1.35,
                 ),
               ),
               const SizedBox(

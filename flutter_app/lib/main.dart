@@ -1,5 +1,7 @@
 import "dart:io";
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
+import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter_app/routes.dart";
@@ -22,6 +24,10 @@ void main() async {
   setupIoC();
 
   runApp(const MyApp());
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+    statusBarColor: Colors.white,
+  ));
 }
 
 class MyHttpOverrides extends HttpOverrides {
