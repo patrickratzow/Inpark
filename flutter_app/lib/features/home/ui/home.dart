@@ -6,6 +6,8 @@ import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
 import "package:flutter/foundation.dart" show kDebugMode;
 
+import 'openng_hours.dart';
+
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -56,19 +58,11 @@ class Home extends StatelessWidget {
                 );
               }
 
-              return Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16),
+              return const Padding(
+                padding: EdgeInsets.only(left: 16, right: 16),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    value.openingHours,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: OpeningHours(),
                 ),
               );
             },
