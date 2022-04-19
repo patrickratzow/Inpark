@@ -1,4 +1,6 @@
-﻿namespace DomainFixture.Setup.Conventions;
+﻿using System.Reflection;
+
+namespace DomainFixture.Setup.Conventions;
 
 internal class EnumPropertyConventionScanner : IPropertyConventionScanner
 {
@@ -34,6 +36,7 @@ internal class EnumPropertyConventionScanner : IPropertyConventionScanner
     {
         var propertyType = applyPropertyConvention.PropertyInfo.PropertyType;
         if (!propertyType.IsEnum) return;
+        if (propertyType.GetCustomAttribute<FlagsAttribute>() is not null) return;
         var filteredConventions = applyPropertyConvention.Conventions
             .SelectMany(c => c.Value)
             .Where(c => c.GetType().IsAssignableTo(typeof(IEnumPropertyConvention)));
@@ -55,7 +58,7 @@ internal class EnumPropertyConventionScanner : IPropertyConventionScanner
                 applyPropertyConvention.PropertyInfo, propertyBuilder
             });
 
-            applyPropertyConvention.EntityBuilder.PropertyBuilders.Add(propertyBuilder);
+           applyPropertyConvention.EntityBuilder.PropertyBuilders.Add(propertyBuilder);
         }
 
         //throw new NotImplementedException();

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Zoo.Inpark.Contracts;
+using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Features.OpeningHours;
 
@@ -9,21 +11,27 @@ public class GetOpeningHoursForTodayQueryHandler
     : IRequestHandler<GetOpeningHoursForTodayQuery, OneOf<List<OpeningHourDto>>>
 {
     private readonly InparkDbContext _context;
-
-    public GetOpeningHoursForTodayQueryHandler(InparkDbContext context) { _context = context; }
+    
+    public GetOpeningHoursForTodayQueryHandler(InparkDbContext context)
+    {
+        _context = context;
+    }
 
     public async Task<OneOf<List<OpeningHourDto>>> Handle(GetOpeningHoursForTodayQuery request,
             CancellationToken cancellationToken)
     {
-        var today = (DateTimeOffset)DateOnly.FromDateTime(DateTime.Now).ToDateTime(TimeOnly.MinValue);
-        var tomorrow = today.AddDays(1);
+        // 30 min buffer on both sides
+        var today = DateTime.Today.AddMinutes(-30);
+        var tomorrow = DateTime.Today.AddDays(1).AddMinutes(30);
+        var range = TimeRange.From(today, tomorrow);
         var openingHours = await _context.OpeningHours
-            .Where(x => x.Range.Start >= today && x.Range.End <= tomorrow)
+            .Where(x => x.Range.Start >= range.Start && x.Range.End <= range.End)
             .Select(x => new OpeningHourDto(
                 x.Name,
                 x.Range.Start,
                 x.Range.End,
-                x.Open
+                x.Open,
+                (WeekDayDto)x.Days
             ))
             .ToListAsync(cancellationToken);
 
@@ -46,6 +54,7 @@ public partial class GetOpeningHoursTorTodayController : ZooController
     /// Gets today's opening hours
     /// </summary>
     [HttpGet("opening-hours/today")]
+    [ResponseCache(Duration = 3600)]
     public async partial Task<ActionResult> GetOpeningHoursForToday(CancellationToken cancellationToken)
     {
         var command = new GetOpeningHoursForTodayQuery();

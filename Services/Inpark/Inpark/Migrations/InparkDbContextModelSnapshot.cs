@@ -28,8 +28,19 @@ namespace Zoo.Inpark.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("datetimeoffset");
@@ -47,6 +58,9 @@ namespace Zoo.Inpark.Migrations
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -66,6 +80,27 @@ namespace Zoo.Inpark.Migrations
 
             modelBuilder.Entity("Zoo.Inpark.Entities.Animal", b =>
                 {
+                    b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalImage", "Image", b1 =>
+                        {
+                            b1.Property<Guid>("AnimalId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("FullscreenUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("PreviewUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("AnimalId");
+
+                            b1.ToTable("Animals");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AnimalId");
+                        });
+
                     b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalName", "Name", b1 =>
                         {
                             b1.Property<Guid>("AnimalId")
@@ -87,6 +122,9 @@ namespace Zoo.Inpark.Migrations
                                 .HasForeignKey("AnimalId");
                         });
 
+                    b.Navigation("Image")
+                        .IsRequired();
+
                     b.Navigation("Name")
                         .IsRequired();
                 });
@@ -107,6 +145,8 @@ namespace Zoo.Inpark.Migrations
                                 .HasColumnName("TimeRange_Start");
 
                             b1.HasKey("OpeningHourId");
+
+                            b1.HasIndex("Start", "End");
 
                             b1.ToTable("OpeningHours");
 

@@ -85,12 +85,14 @@ if (app.Environment.IsDevelopment())
 app.UseFluentValidationExceptionHandler();
 
 //app.UsePayments();
-app.UseInpark();
+app.UseInpark(builder.Environment);
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseResponseCaching();
 
 app.Run();

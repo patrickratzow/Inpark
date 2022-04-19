@@ -9,13 +9,12 @@ public class AnimalName : ValueObject
     public string Name { get; private set; } = null!;
     public string LatinName { get; private set; } = null!;
     
-
     public static AnimalName From(string name, string latinName)
     {
         var instance = new AnimalName()
         {
-            Name = name,
-            LatinName = latinName
+            Name = name.Trim(),
+            LatinName = latinName.Trim()
         };
         instance.Validate();
 

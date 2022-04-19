@@ -1,16 +1,21 @@
 using System.Reflection;
+using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Polly;
 using Polly.Extensions.Http;
 using Zoo.Common.Api.Pipelines;
-using Zoo.Inpark.Features.Animals.Providers;
+using Zoo.Inpark.Common;
+using Zoo.Inpark.Features.Animals;
+using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
+using Zoo.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark;
@@ -34,26 +39,71 @@ public static class DependencyInjection
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddPipelines();
+        services.AddHangFire(dbConnection);
+        services.AddSingleton<IEventPublisher, EventPublisher>();
 
-        services.AddSingleton<IAnimalProvider, AalborgZooAnimalProvider>();
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
-        services.AddHttpClient<IAnimalProvider, AalborgZooAnimalProvider>(httpClient =>
-            {
-                httpClient.BaseAddress = new("https://api.aalborgzoo.dk/api/");
-            })
-            .AddPolicyHandler(GetRetryPolicy());
         
+        services.AddSingleton<IAalborgZooContentRepository, AalborgZooContentRepository>();
+        services.AddHttpClient<IAalborgZooContentRepository, AalborgZooContentRepository>(AalborgZooHttpClient)
+            .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<IAalborgZooAnimalContentMapper, AalborgZooAnimalContentMapper>();
+
+        services.AddSingleton<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
+        services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
+            .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
         
         services.AddResponseMapper();
     }
 
-    public static void UseInpark(this IApplicationBuilder app)
+    public static void UseInpark(this IApplicationBuilder app, IWebHostEnvironment env)
     {
         app.UseResponseMapper();
         
         RunMigrations(app.ApplicationServices);
+
+        if (env.IsDevelopment())
+        {
+            app.UseHangfireDashboard();
+        }
+        else
+        {
+            // Force JobStorage to be resolved outside development
+            // Not having JobStorage setup will cause RecurringJob to fail
+            app.ApplicationServices.GetRequiredService<JobStorage>();
+        }
+        
+        RecurringJob.AddOrUpdate<AalborgZooOpeningHoursJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
+        RecurringJob.AddOrUpdate<AalborgZooUpdateAnimalsJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
     }
 
+    private static IServiceCollection AddHangFire(this IServiceCollection services, string connectionString)
+    {
+        // Add Hangfire services.
+        services.AddHangfire(configuration => configuration
+            .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseRecommendedSerializerSettings()
+            .UseSqlServerStorage(connectionString, new SqlServerStorageOptions
+            {
+           
+            }));
+
+        // Add the processing server as IHostedService
+        services.AddHangfireServer();
+
+        return services;
+    }
+    
     private static void RunMigrations(IServiceProvider provider)
     {
         using var scope = provider.CreateScope();
@@ -86,5 +136,10 @@ public static class DependencyInjection
             .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
             .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2,
                 retryAttempt)));
+    }
+
+    private static void AalborgZooHttpClient(HttpClient client)
+    {
+        client.BaseAddress = new("https://api.aalborgzoo.dk/api/");
     }
 }

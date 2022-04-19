@@ -4,5 +4,6 @@ public record OpeningHourDto(
     string Name,
     DateTimeOffset Start,
     DateTimeOffset End,
-    bool Open
+    bool Open,
+    WeekDayDto Days
 );

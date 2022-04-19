@@ -9,7 +9,7 @@ class AnimalCard extends StatelessWidget {
     required this.animal,
   }) : super(key: key);
 
-  final Animal animal;
+  final AnimalDto animal;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class AnimalCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.displayName.trim(),
+                    animal.name.displayName,
                     style: const TextStyle(
                       fontSize: 18,
                       fontFamily: "Poppins",

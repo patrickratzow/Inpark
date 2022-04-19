@@ -1,9 +1,26 @@
+import 'package:flutter/foundation.dart';
 import "package:flutter/material.dart";
 
+import '../../../generated_code/zooinator.enums.swagger.dart';
+import '../models/iucn_status.dart';
+
 class ConservationStatus extends StatelessWidget {
+  final IUCNStatusDto activeStatus;
+
   const ConservationStatus({
     Key? key,
+    required this.activeStatus,
   }) : super(key: key);
+
+  Widget _buildConservationCircle(IUCNStatusDto status) {
+    var color = ucnStatusColorMap[status]!;
+    return ConservationCircle(
+      text: describeEnum(status).toUpperCase(),
+      color: color.color,
+      textColor: color.textColor,
+      active: status == activeStatus,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +42,10 @@ class ConservationStatus extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ..._buildExtinctSection(),
-            const SizedBox(width: 16),
+            const SizedBox(width: 12),
             _buildThreatenedSection(),
-            const SizedBox(width: 16),
-            _buildNotThreatenedSection(),
+            const SizedBox(width: 12),
+            ..._buildLeastConcernedSection(),
           ],
         ),
       ],
@@ -39,12 +56,7 @@ class ConservationStatus extends StatelessWidget {
     return [
       Column(
         children: [
-          const ConservationCircle(
-            text: "EX",
-            color: Colors.black,
-            textColor: Color(0xffC33131),
-            active: false,
-          ),
+          _buildConservationCircle(IUCNStatusDto.ex),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 4, 0, 2),
             child: Container(
@@ -61,15 +73,10 @@ class ConservationStatus extends StatelessWidget {
           )
         ],
       ),
-      const SizedBox(width: 16),
+      const SizedBox(width: 12),
       Column(
-        children: const [
-          ConservationCircle(
-            text: "EW",
-            color: Color(0xff1A1A1A),
-            textColor: Colors.white,
-            active: false,
-          ),
+        children: [
+          _buildConservationCircle(IUCNStatusDto.ew),
         ],
       ),
     ];
@@ -79,27 +86,12 @@ class ConservationStatus extends StatelessWidget {
     return Column(
       children: [
         Row(
-          children: const [
-            ConservationCircle(
-              text: "CR",
-              color: Color(0xffCC3333),
-              textColor: Color(0xffFFCCCC),
-              active: false,
-            ),
-            SizedBox(width: 16),
-            ConservationCircle(
-              text: "EN",
-              color: Color(0xffCC6633),
-              textColor: Color(0xffFFCC99),
-              active: false,
-            ),
-            SizedBox(width: 16),
-            ConservationCircle(
-              text: "VU",
-              color: Color(0xffCC9900),
-              textColor: Color(0xffFFFFCC),
-              active: false,
-            )
+          children: [
+            _buildConservationCircle(IUCNStatusDto.cr),
+            SizedBox(width: 12),
+            _buildConservationCircle(IUCNStatusDto.en),
+            SizedBox(width: 12),
+            _buildConservationCircle(IUCNStatusDto.vu)
           ],
         ),
         Padding(
@@ -115,32 +107,34 @@ class ConservationStatus extends StatelessWidget {
     );
   }
 
-  Widget _buildNotThreatenedSection() {
-    return Column(
-      children: [
-        const ConservationCircle(
-          text: "NT",
-          color: Color(0xff006666),
-          textColor: Color(0xff99CC99),
-          active: true,
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 4, 0, 2),
-          child: Container(
-            color: const Color(0xff698665),
-            child: const SizedBox(
-              width: 1,
-              height: 10,
+  List<Widget> _buildLeastConcernedSection() {
+    return [
+      Column(
+        children: [
+          _buildConservationCircle(IUCNStatusDto.nt),
+        ],
+      ),
+      const SizedBox(width: 12),
+      Column(
+        children: [
+          _buildConservationCircle(IUCNStatusDto.lc),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 4, 0, 2),
+            child: Container(
+              color: const Color(0xff698665),
+              child: const SizedBox(
+                width: 1,
+                height: 10,
+              ),
             ),
           ),
-        ),
-        const Text(
-          "Ikke \nTruet",
-          style: TextStyle(color: Color(0xff698665)),
-          textAlign: TextAlign.center,
-        )
-      ],
-    );
+          const Text(
+            "Ikke \nTruet",
+            style: TextStyle(color: Color(0xff698665)),
+          )
+        ],
+      )
+    ];
   }
 }
 
