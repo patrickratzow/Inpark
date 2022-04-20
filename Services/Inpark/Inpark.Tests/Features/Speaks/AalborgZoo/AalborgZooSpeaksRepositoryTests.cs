@@ -47,7 +47,7 @@ public class AalborgZooSpeaksRepositoryTests
                 Content = new StringContent("{}")
             })
             .Verifiable();
-        var start = DateTimeOffset.Now;
+        var start = DateTime.Now;
         var end = start.AddDays(1);
         var timeRange = TimeRange.From(start, end);
 

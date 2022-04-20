@@ -12,7 +12,7 @@ public class SpeakTimeConfiguration : FixtureConfiguration<SpeakTime>
             .Length(1).IsValid()
             .Empty().IsInvalid();
         
-        Property(x => x.Day)
+        Property(x => x.Days)
             .Valid(
                 WeekDay.None, 
                 WeekDay.Monday, 

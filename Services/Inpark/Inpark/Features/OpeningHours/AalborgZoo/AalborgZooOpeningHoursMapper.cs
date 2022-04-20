@@ -35,9 +35,8 @@ public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
 
                 foreach (var time in times!)
                 {
-                    var timeZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Copenhagen");
-                    var start = time.Start.ToTimeZoneOffset(timeZone);
-                    var end = time.End.ToTimeZoneOffset(timeZone);
+                    var start = time.Start;
+                    var end = time.End;
                     var timeRange = TimeRange.From(start, end);
                     var open = time.OpenClosed is "open";
                     var header = time.Header.Replace("Aalborg Zoo -", "").Trim();
@@ -64,8 +63,8 @@ public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
         public bool Special { get; set; }
         public string OpenClosed { get; set; } = null!;
         public List<string> WeekDays { get; set; } = new();
-        public DateTimeOffset Start { get; set; }
+        public DateTime Start { get; set; }
         public string Header { get; set; } = null!;
-        public DateTimeOffset End { get; set; }
+        public DateTime End { get; set; }
     }
 }

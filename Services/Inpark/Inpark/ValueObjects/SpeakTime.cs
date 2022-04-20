@@ -10,7 +10,7 @@ public class SpeakTime : ValueObject
     private SpeakTime() { }
     
     public string Title { get; private set; } = null!;
-    public WeekDay Day { get; private set; }
+    public WeekDay Days { get; private set; }
     public TimeRange Range { get; private set; } = null!;
 
     public static SpeakTime From(string title, WeekDay day, TimeRange range)
@@ -18,7 +18,7 @@ public class SpeakTime : ValueObject
         var instance = new SpeakTime()
         {
             Title = title,
-            Day = day,
+            Days = day,
             Range = range
         };
         instance.Validate();
@@ -29,7 +29,7 @@ public class SpeakTime : ValueObject
     protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Title;
-        yield return Day;
+        yield return Days;
         yield return Range;
     }
 }
@@ -39,7 +39,7 @@ public class SpeakTimeValidator : AbstractValidator<SpeakTime>
     public SpeakTimeValidator()
     {
         RuleFor(x => x.Title).NotEmpty();
-        RuleFor(x => x.Day).IsInEnum();
+        RuleFor(x => x.Days).IsInEnum();
         RuleFor(x => x.Range).NotNull();
     }
 }

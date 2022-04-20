@@ -30,16 +30,15 @@ public class AalborgZooSpeaksMapper : ISpeaksMapper
                 var item = itemObj.GetProperty("item");
                 var title = item.GetProperty("title").ToString();
                 var properties = item.GetProperty("properties");
-                var times = properties.GetProperty("times").Deserialize<List<SpeakDto>>(new JsonSerializerOptions
+                var times = properties.GetProperty("times").Deserialize<List<AalborgZooSpeakDto>>(new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 });
 
                 foreach (var speak in times!)
                 {
-                    var timeZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Copenhagen");
-                    var start = speak.Start.ToTimeZoneOffset(timeZone);
-                    var end = speak.End.ToTimeZoneOffset(timeZone);
+                    var start = speak.Start;
+                    var end = speak.End;
                     var timeRange = TimeRange.From(start, end);
                     var header = speak.Header;
                     var days = speak.WeekDays.ToHashSet();
@@ -62,12 +61,12 @@ public class AalborgZooSpeaksMapper : ISpeaksMapper
         }
     }
 
-    private class SpeakDto
+    private class AalborgZooSpeakDto
       {
           public List<string> WeekDays { get; set; } = new();
-          public DateTimeOffset Start { get; set; }
+          public DateTime Start { get; set; }
           public string Header { get; set; } = null!;
-          public DateTimeOffset End { get; set; }
+          public DateTime End { get; set; }
       }
 }
 

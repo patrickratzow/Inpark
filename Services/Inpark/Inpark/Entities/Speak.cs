@@ -30,6 +30,8 @@ public class Speak : Entity
         
         return instance;
     }
+    
+    public void Update(Guid title) {}
 }
 
 public class SpeakValidator : AbstractValidator<Speak>

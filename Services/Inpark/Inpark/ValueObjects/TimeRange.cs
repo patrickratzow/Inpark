@@ -7,10 +7,10 @@ public class TimeRange : ValueObject
 {
     private TimeRange() { }
 
-    public DateTimeOffset Start { get; private set; }
-    public DateTimeOffset End { get; private set; }
+    public DateTime Start { get; private set; }
+    public DateTime End { get; private set; }
 
-    public static TimeRange From(DateTimeOffset start, DateTimeOffset end)
+    public static TimeRange From(DateTime start, DateTime end)
     {
         var instance = new TimeRange
         {

@@ -5,7 +5,7 @@ using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Features.Speaks.AalborgZoo;
 
-public class AalborgZooSpeaksRepository : ISpeakRepository
+public class AalborgZooSpeaksRepository : ISpeaksRepository
 {
     private readonly HttpClient _client;
     private readonly ILogger<AalborgZooSpeaksRepository> _logger;

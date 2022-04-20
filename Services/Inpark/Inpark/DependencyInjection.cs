@@ -56,8 +56,8 @@ public static class DependencyInjection
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
 
-        services.AddSingleton<ISpeakRepository, AalborgZooSpeaksRepository>();
-        services.AddHttpClient<ISpeakRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
+        services.AddSingleton<ISpeaksRepository, AalborgZooSpeaksRepository>();
+        services.AddHttpClient<ISpeaksRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<ISpeaksMapper, AalborgZooSpeaksMapper>();
         
@@ -87,6 +87,11 @@ public static class DependencyInjection
             TimeZoneInfo.Local
         );
         RecurringJob.AddOrUpdate<AalborgZooUpdateAnimalsJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
+        RecurringJob.AddOrUpdate<AalborgZooUpdateSpeaksJob>(
             x => x.Execute(),
             "* 3 * * *", // Every day at 3 AM 
             TimeZoneInfo.Local
