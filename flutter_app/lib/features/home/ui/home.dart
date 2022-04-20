@@ -6,6 +6,8 @@ import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
 import "package:flutter/foundation.dart" show kDebugMode;
 
+import 'opening_hours.dart';
+
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -41,76 +43,54 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       appBar: const HomeAppBar(title: "Hello Patrick!"),
-      body: Column(
-        children: [
-          Consumer<HomeModel>(
-            builder: (context, value, child) {
-              if (value.loading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (value.error.isNotEmpty) {
-                return Center(
-                  child: Text("Error ${value.error}"),
-                );
-              }
-
-              return Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    value.openingHours,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-          Expanded(
-            child: ListView(
-              children: [
-                ..._buildDebugRoutes(context),
-                const RouteBox(
-                  title: "Vores Dyr",
-                  route: "/animals",
-                  description: "Se alle de dyr vi har!",
-                  iconName: "pawprint",
-                ),
-                const RouteBox(
-                  title: "Billetter",
-                  route: "Non",
-                  description: "Køb din billet i dag!",
-                  iconName: "ticket",
-                ),
-                const RouteBox(
-                  title: "Arrangementer",
-                  route: "Non",
-                  description: "Se vores nuværende og fremtidige arrangementer",
-                  iconName: "calendar",
-                ),
-                const RouteBox(
-                  title: "News",
-                  route: "Non",
-                  description: "Læs vores nyhedsbrev",
-                  iconName: "newspaper",
-                ),
-                const RouteBox(
-                  title: "Kort",
-                  route: "Non",
-                  description: "Få et kort over hele parken!",
-                  iconName: "map",
-                ),
-              ],
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        child: Column(
+          children: [
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: OpeningHours(),
             ),
-          ),
-        ],
+            Expanded(
+              child: ListView(
+                children: [
+                  ..._buildDebugRoutes(context),
+                  const RouteBox(
+                    title: "Vores Dyr",
+                    route: "/animals",
+                    description: "Se alle de dyr vi har!",
+                    iconName: "pawprint",
+                  ),
+                  const RouteBox(
+                    title: "Billetter",
+                    route: "Non",
+                    description: "Køb din billet i dag!",
+                    iconName: "ticket",
+                  ),
+                  const RouteBox(
+                    title: "Arrangementer",
+                    route: "Non",
+                    description:
+                        "Se vores nuværende og fremtidige arrangementer",
+                    iconName: "calendar",
+                  ),
+                  const RouteBox(
+                    title: "News",
+                    route: "Non",
+                    description: "Læs vores nyhedsbrev",
+                    iconName: "newspaper",
+                  ),
+                  const RouteBox(
+                    title: "Kort",
+                    route: "Non",
+                    description: "Få et kort over hele parken!",
+                    iconName: "map",
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
