@@ -6,6 +6,8 @@ import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
 import "package:flutter/foundation.dart" show kDebugMode;
 
+import 'navigation_link.dart';
+import 'navigation_link_list.dart';
 import 'opening_hours.dart';
 
 class Home extends StatelessWidget {
@@ -47,13 +49,43 @@ class Home extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         child: Column(
           children: [
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: OpeningHours(),
-            ),
             Expanded(
               child: ListView(
                 children: [
+                  OpeningHours(),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                    child: NavigationLinkList(
+                      navLinkArr: [
+                        NavigationLink(
+                          iconName: "ticket",
+                          text: "Ticket",
+                          route: "non",
+                        ),
+                        NavigationLink(
+                          iconName: "calendar",
+                          text: "Activities calendar",
+                          route: "non",
+                        ),
+                        NavigationLink(
+                          iconName: "map",
+                          text: "Address",
+                          route: "non",
+                        ),
+                        NavigationLink(
+                          iconName: "pawprint",
+                          text: "Animals",
+                          route: "/animals",
+                        ),
+                        NavigationLink(
+                          iconName: "newspaper",
+                          text: "News",
+                          route: "non",
+                        ),
+                      ],
+                      title: "Tasks",
+                    ),
+                  ),
                   ..._buildDebugRoutes(context),
                   const RouteBox(
                     title: "Vores Dyr",
