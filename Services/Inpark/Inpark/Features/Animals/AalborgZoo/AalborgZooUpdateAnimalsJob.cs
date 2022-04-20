@@ -1,8 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Zoo.Inpark.Common;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zoo.Inpark.Features.Animals.AalborgZoo;
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public class AalborgZooUpdateAnimalsJob : IJob<UpdateAnimalsCommand>
 {
     private readonly IServiceScopeFactory  _scopeFactory;

@@ -1,6 +1,6 @@
 namespace Zoo.Inpark.Features.Animals.Interfaces;
 
-public interface IContentRepository
+public interface IAnimalRepository
 {
     ValueTask<Result<string, string>> GetContent();
 }

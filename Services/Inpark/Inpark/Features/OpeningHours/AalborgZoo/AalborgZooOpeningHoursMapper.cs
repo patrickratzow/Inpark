@@ -2,7 +2,6 @@ using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Zoo.Inpark.Entities;
 using Zoo.Inpark.Enums;
-using Zoo.Inpark.Extensions;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.ValueObjects;
 

@@ -63,6 +63,9 @@ public class GetAnimalSpeaksForTodayQueryHandler :
     }
 }
 
+/// <summary>
+/// Get all speaks in the park.
+/// </summary>
 [ApiController]
 [MethodGroup(Groups.Speaks)]
 public partial class GetSpeaksForTodayController : ZooController

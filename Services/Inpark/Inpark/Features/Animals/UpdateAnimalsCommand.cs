@@ -11,23 +11,23 @@ public record UpdateAnimalsCommand : IRequest<OneOf<Unit>>;
 
 public class UpdateAnimalsCommandHandler : IRequestHandler<UpdateAnimalsCommand, OneOf<Unit>>
 {
-    private readonly IContentRepository _contentRepository;
-    private readonly IAnimalContentMapper _contentMapper;
+    private readonly IAnimalRepository _animalRepository;
+    private readonly IAnimalMapper _mapper;
     private readonly ILogger<UpdateAnimalsCommandHandler> _logger;
     private readonly InparkDbContext _context;
 
-    public UpdateAnimalsCommandHandler(IContentRepository contentRepository, 
-        IAnimalContentMapper contentMapper, ILogger<UpdateAnimalsCommandHandler> logger, InparkDbContext context)
+    public UpdateAnimalsCommandHandler(IAnimalRepository animalRepository, 
+        IAnimalMapper mapper, ILogger<UpdateAnimalsCommandHandler> logger, InparkDbContext context)
     {
-        _contentRepository = contentRepository;
-        _contentMapper = contentMapper;
+        _animalRepository = animalRepository;
+        _mapper = mapper;
         _logger = logger;
         _context = context;
     }
     
     public async Task<OneOf<Unit>> Handle(UpdateAnimalsCommand request, CancellationToken cancellationToken)
     {
-        var animalOverview = await _contentRepository.GetContent();
+        var animalOverview = await _animalRepository.GetContent();
         if (!animalOverview.IsSuccess(out var animalsData))
         {
             _logger.LogError("Failed to insert animals because the Zoo API didn't give the expected result");
@@ -35,7 +35,7 @@ public class UpdateAnimalsCommandHandler : IRequestHandler<UpdateAnimalsCommand,
             return Unit.Value;
         }
         
-        var mapAnimal = _contentMapper.ParseAnimalOverview(animalsData!);
+        var mapAnimal = _mapper.ParseAnimalOverview(animalsData!);
         if (!mapAnimal.IsSuccess(out var animals))
         {
             _logger.LogError("Failed parsing animal overview");

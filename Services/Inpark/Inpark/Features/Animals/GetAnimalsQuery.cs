@@ -10,9 +10,9 @@ public record GetAnimalsQuery : IRequest<OneOf<List<AnimalDto>>>;
 public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<AnimalDto>>>
 {
     private readonly InparkDbContext _context;
-    private readonly IAnimalContentMapper _mapper;
+    private readonly IAnimalMapper _mapper;
 
-    public GetAnimalsHandler(InparkDbContext context, IAnimalContentMapper mapper)
+    public GetAnimalsHandler(InparkDbContext context, IAnimalMapper mapper)
     {
         _context = context;
         _mapper = mapper;

@@ -8,14 +8,14 @@ using Zoo.Inpark.Models;
 using Zoo.Inpark.Services;
 using Zoo.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zoo.Inpark.Features.Animals.AalborgZoo;
 
-public class AalborgZooAnimalContentMapper : IAnimalContentMapper
+public class AalborgZooAnimalMapper : IAnimalMapper
 {
     private readonly IHtmlTransformer _htmlTransformer;
-    private readonly ILogger<AalborgZooAnimalContentMapper> _logger;
+    private readonly ILogger<AalborgZooAnimalMapper> _logger;
     
-    public AalborgZooAnimalContentMapper(IHtmlTransformer htmlTransformer, ILogger<AalborgZooAnimalContentMapper> logger)
+    public AalborgZooAnimalMapper(IHtmlTransformer htmlTransformer, ILogger<AalborgZooAnimalMapper> logger)
     {
         _htmlTransformer = htmlTransformer;
         _logger = logger;
