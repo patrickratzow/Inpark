@@ -19,7 +19,7 @@ class TitleBar extends StatelessWidget {
         name,
         textAlign: TextAlign.left,
         style: TextStyle(
-          color: color,
+          color: color ?? Colors.black,
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
           fontFamily: "Poppins",
