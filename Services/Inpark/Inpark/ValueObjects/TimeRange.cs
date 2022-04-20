@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Zoo.Inpark.Common;
 
 namespace Zoo.Inpark.ValueObjects;
@@ -32,10 +33,16 @@ public class TimeRange : ValueObject
 
 public class TimeRangeValidator : AbstractValidator<TimeRange>
 {
-    //TODO has been outcommented due to errors in Aalborg Zoo's data.
     public TimeRangeValidator()
     {
-        RuleFor(x => x.End).NotEmpty();//.GreaterThanOrEqualTo(x => x.Start);
-        RuleFor(x => x.Start).NotEmpty(); //.LessThanOrEqualTo(x => x.End);
+        RuleFor(x => x.Start).NotEmpty();
+        RuleFor(x => x.End).NotEmpty();
+        RuleFor(x => x).Must(x =>
+        {
+            var start = new DateOnly(x.Start.Year, x.Start.Month, x.Start.Day);
+            var end = new DateOnly(x.End.Year, x.End.Month, x.End.Day);
+
+            return end >= start;
+        });
     }
 }
