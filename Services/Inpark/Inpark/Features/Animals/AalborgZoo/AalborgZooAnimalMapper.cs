@@ -3,24 +3,19 @@ using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Entities;
+using Zoo.Inpark.Features.Animals.Interfaces;
 using Zoo.Inpark.Models;
 using Zoo.Inpark.Services;
 using Zoo.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zoo.Inpark.Features.Animals.AalborgZoo;
 
-public interface IAalborgZooAnimalContentMapper
-{
-    Result<List<Animal>, string> ParseAnimalOverview(string input);
-    Result<List<IContent>, string> ParseContent(string content);
-}
-
-public class AalborgZooAnimalContentMapper : IAalborgZooAnimalContentMapper
+public class AalborgZooAnimalMapper : IAnimalMapper
 {
     private readonly IHtmlTransformer _htmlTransformer;
-    private readonly ILogger<AalborgZooAnimalContentMapper> _logger;
+    private readonly ILogger<AalborgZooAnimalMapper> _logger;
     
-    public AalborgZooAnimalContentMapper(IHtmlTransformer htmlTransformer, ILogger<AalborgZooAnimalContentMapper> logger)
+    public AalborgZooAnimalMapper(IHtmlTransformer htmlTransformer, ILogger<AalborgZooAnimalMapper> logger)
     {
         _htmlTransformer = htmlTransformer;
         _logger = logger;

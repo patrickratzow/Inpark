@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zoo.Inpark;
 
@@ -11,9 +12,10 @@ using Zoo.Inpark;
 namespace Zoo.Inpark.Migrations
 {
     [DbContext(typeof(InparkDbContext))]
-    partial class InparkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220419101426_AddSpeaks")]
+    partial class AddSpeaks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,12 +162,12 @@ namespace Zoo.Inpark.Migrations
                             b1.Property<Guid>("OpeningHourId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<DateTime>("End")
-                                .HasColumnType("datetime2")
+                            b1.Property<DateTimeOffset>("End")
+                                .HasColumnType("datetimeoffset")
                                 .HasColumnName("TimeRange_End");
 
-                            b1.Property<DateTime>("Start")
-                                .HasColumnType("datetime2")
+                            b1.Property<DateTimeOffset>("Start")
+                                .HasColumnType("datetimeoffset")
                                 .HasColumnName("TimeRange_Start");
 
                             b1.HasKey("OpeningHourId");
@@ -190,7 +192,7 @@ namespace Zoo.Inpark.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<int>("Days")
+                            b1.Property<int>("Day")
                                 .HasColumnType("int");
 
                             b1.Property<Guid>("SpeakId")
@@ -214,12 +216,12 @@ namespace Zoo.Inpark.Migrations
                                     b2.Property<Guid>("SpeakTimeId")
                                         .HasColumnType("uniqueidentifier");
 
-                                    b2.Property<DateTime>("End")
-                                        .HasColumnType("datetime2")
+                                    b2.Property<DateTimeOffset>("End")
+                                        .HasColumnType("datetimeoffset")
                                         .HasColumnName("TimeRange_End");
 
-                                    b2.Property<DateTime>("Start")
-                                        .HasColumnType("datetime2")
+                                    b2.Property<DateTimeOffset>("Start")
+                                        .HasColumnType("datetimeoffset")
                                         .HasColumnName("TimeRange_Start");
 
                                     b2.HasKey("SpeakTimeId");

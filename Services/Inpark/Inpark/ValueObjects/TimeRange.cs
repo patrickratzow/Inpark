@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Zoo.Inpark.Common;
 
 namespace Zoo.Inpark.ValueObjects;
@@ -6,10 +7,10 @@ public class TimeRange : ValueObject
 {
     private TimeRange() { }
 
-    public DateTimeOffset Start { get; private set; }
-    public DateTimeOffset End { get; private set; }
+    public DateTime Start { get; private set; }
+    public DateTime End { get; private set; }
 
-    public static TimeRange From(DateTimeOffset start, DateTimeOffset end)
+    public static TimeRange From(DateTime start, DateTime end)
     {
         var instance = new TimeRange
         {
@@ -34,7 +35,14 @@ public class TimeRangeValidator : AbstractValidator<TimeRange>
 {
     public TimeRangeValidator()
     {
-        RuleFor(x => x.End).NotEmpty().GreaterThanOrEqualTo(x => x.Start);
-        RuleFor(x => x.Start).NotEmpty().LessThanOrEqualTo(x => x.End);
+        RuleFor(x => x.Start).NotEmpty();
+        RuleFor(x => x.End).NotEmpty();
+        RuleFor(x => x).Must(x =>
+        {
+            var start = new DateOnly(x.Start.Year, x.Start.Month, x.Start.Day);
+            var end = new DateOnly(x.End.Year, x.End.Month, x.End.Day);
+
+            return end >= start;
+        });
     }
 }

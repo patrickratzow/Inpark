@@ -53,7 +53,7 @@ public class GetOpeningHoursForTodayQueryHandler
                 x.Range.Start,
                 x.Range.End,
                 x.Open,
-                MapToDays(x.Days)
+                x.Days.ToDays()
             ));
         // Filter out if day isn't today
         var todayOpeningHours = result?
@@ -61,20 +61,6 @@ public class GetOpeningHoursForTodayQueryHandler
             .ToList();
 
         return todayOpeningHours ?? new List<OpeningHourDto>();
-    }
-
-    private static List<string> MapToDays(WeekDay days)
-    {
-        var list = new List<string>();
-        if (days.HasFlag(WeekDay.Monday)) list.Add("Monday");
-        if (days.HasFlag(WeekDay.Tuesday)) list.Add("Tuesday");
-        if (days.HasFlag(WeekDay.Wednesday)) list.Add("Wednesday");
-        if (days.HasFlag(WeekDay.Thursday)) list.Add("Thursday");
-        if (days.HasFlag(WeekDay.Friday)) list.Add("Friday");
-        if (days.HasFlag(WeekDay.Saturday)) list.Add("Saturday");
-        if (days.HasFlag(WeekDay.Sunday)) list.Add("Sunday");
-
-        return list;
     }
 }
 

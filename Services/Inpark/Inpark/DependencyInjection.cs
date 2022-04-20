@@ -12,8 +12,12 @@ using Polly;
 using Polly.Extensions.Http;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Features.Animals;
+using Zoo.Inpark.Features.Animals.AalborgZoo;
+using Zoo.Inpark.Features.Animals.Interfaces;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
+using Zoo.Inpark.Features.Speaks.AalborgZoo;
+using Zoo.Inpark.Features.Speaks.Interfaces;
 using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark;
@@ -43,15 +47,20 @@ public static class DependencyInjection
 
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
         
-        services.AddSingleton<IAalborgZooContentRepository, AalborgZooContentRepository>();
-        services.AddHttpClient<IAalborgZooContentRepository, AalborgZooContentRepository>(AalborgZooHttpClient)
+        services.AddSingleton<IAnimalRepository, AalborgZooAnimalRepository>();
+        services.AddHttpClient<IAnimalRepository, AalborgZooAnimalRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
-        services.AddSingleton<IAalborgZooAnimalContentMapper, AalborgZooAnimalContentMapper>();
+        services.AddSingleton<IAnimalMapper, AalborgZooAnimalMapper>();
 
         services.AddSingleton<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
         services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
+
+        services.AddSingleton<ISpeaksRepository, AalborgZooSpeaksRepository>();
+        services.AddHttpClient<ISpeaksRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
+            .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<ISpeaksMapper, AalborgZooSpeaksMapper>();
         
         services.AddResponseMapper();
     }
@@ -79,6 +88,11 @@ public static class DependencyInjection
             TimeZoneInfo.Local
         );
         RecurringJob.AddOrUpdate<AalborgZooUpdateAnimalsJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
+        RecurringJob.AddOrUpdate<AalborgZooUpdateSpeaksJob>(
             x => x.Execute(),
             "* 3 * * *", // Every day at 3 AM 
             TimeZoneInfo.Local

@@ -1,13 +1,12 @@
 using Microsoft.Extensions.DependencyInjection;
-using Zoo.Inpark.Common;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zoo.Inpark.Features.Speaks.AalborgZoo;
 
-public class AalborgZooUpdateAnimalsJob : IJob<UpdateAnimalsCommand>
+public class AalborgZooUpdateSpeaksJob
 {
     private readonly IServiceScopeFactory  _scopeFactory;
     
-    public AalborgZooUpdateAnimalsJob(IServiceScopeFactory scopeFactory)
+    public AalborgZooUpdateSpeaksJob(IServiceScopeFactory scopeFactory)
     {
         _scopeFactory = scopeFactory;
     }
@@ -16,7 +15,7 @@ public class AalborgZooUpdateAnimalsJob : IJob<UpdateAnimalsCommand>
     {
         using var scope = _scopeFactory.CreateScope();
         var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-        var command = new UpdateAnimalsCommand();
+        var command = new UpdateAalborgZooSpeaksCommand();
 
         await mediator.Send(command, CancellationToken.None);
     }
