@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
       ),
       const RouteBox(
         title: "Patrick",
-        route: "Non",
+        route: "/animals/conservation-status-overview",
         description: "Find us!",
         iconName: "map",
       ),
@@ -52,7 +52,7 @@ class Home extends StatelessWidget {
               }
               if (value.error.isNotEmpty) {
                 return Center(
-                  child: Text("Error ${value.error}"),
+                  child: Text("Fejl"),
                 );
               }
 

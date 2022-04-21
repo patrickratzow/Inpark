@@ -1,6 +1,5 @@
 import "package:flutter/widgets.dart";
-
-import "../../../common/colors.dart";
+import 'package:flutter_app/common/colors.dart';
 
 class AnimalCategory extends StatelessWidget {
   final String text;

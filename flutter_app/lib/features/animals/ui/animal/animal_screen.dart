@@ -1,14 +1,15 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/common/ui/bullet_list.dart";
 import "package:flutter_app/common/ui/fullscreen_image.dart";
 import "package:flutter_app/common/ui/navigation_bar.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/features/animals/ui/animal_category.dart";
-import "package:flutter_app/features/animals/ui/conservation_status.dart";
+import 'package:flutter_app/features/animals/ui/conservation/conservation_status.dart';
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import 'package:flutter_app/routes.dart';
 
-import "../../../common/colors.dart";
+import 'animal_category.dart';
 
 class AnimalScreen extends StatelessWidget {
   final AnimalDto animal;
@@ -88,11 +89,18 @@ class AnimalScreen extends StatelessWidget {
                     icon: Icons.menu,
                     builder: (context) => Column(
                       children: [
-                        FittedBox(
-                          fit: BoxFit.contain,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                            child: _buildConservationStatus(animal),
+                        InkWell(
+                          onTap: () => Routes.goToConversationOverviewScreen(
+                            context,
+                            animal.status,
+                          ),
+                          splashColor: Theme.of(context).primaryColor,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                              child: _buildConservationStatus(animal),
+                            ),
                           ),
                         ),
                         Padding(
@@ -105,7 +113,10 @@ class AnimalScreen extends StatelessWidget {
                   ZooinatorNavigationTab(
                     text: "Oversigt",
                     icon: Icons.dashboard,
-                    builder: (context) => const Text("local"),
+                    builder: (context) => Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text("Arbejder på mere :)"),
+                    ),
                   ),
                 ],
               ),
