@@ -9,9 +9,9 @@ public class TimeRangeConfiguration : FixtureConfiguration<TimeRange>
     public override void Configure()
     {
         Property(x => x.Start)
-            .Valid(DateTimeOffset.Now.AddDays(-1));
+            .Valid(DateTime.Now.AddDays(-1));
 
         Property(x => x.End)
-            .Valid(DateTimeOffset.Now.AddDays(1));
+            .Valid(DateTime.Now.AddDays(1));
     }
 }

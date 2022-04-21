@@ -47,7 +47,7 @@ public class AalborgZooOpeningHoursRepositoryTests
                 Content = new StringContent("{}")
             })
             .Verifiable();
-        var start = DateTimeOffset.Now;
+        var start = DateTime.Now;
         var end = start.AddDays(1);
         var timeRange = TimeRange.From(start, end);
 
@@ -76,7 +76,7 @@ public class AalborgZooOpeningHoursRepositoryTests
                 StatusCode = HttpStatusCode.Accepted
             })
             .Verifiable();
-        var start = DateTimeOffset.Now;
+        var start = DateTime.Now;
         var end = start.AddDays(1);
         var timeRange = TimeRange.From(start, end);
 
@@ -101,7 +101,7 @@ public class AalborgZooOpeningHoursRepositoryTests
             )
             .ThrowsAsync(new HttpRequestException())
             .Verifiable();
-        var start = DateTimeOffset.Now;
+        var start = DateTime.Now;
         var end = start.AddDays(1);
         var timeRange = TimeRange.From(start, end);
 

@@ -1,22 +1,18 @@
 using System.Net;
 using Microsoft.Extensions.Logging;
+using Zoo.Inpark.Features.Animals.Interfaces;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zoo.Inpark.Features.Animals.AalborgZoo;
 
-public interface IAalborgZooContentRepository
-{
-    ValueTask<Result<string, string>> GetContent();
-}
-
-public class AalborgZooContentRepository : IAalborgZooContentRepository
+public class AalborgZooAnimalRepository : IAnimalRepository
 {
     private const string Query =
         "{\"area\":{\"areaId\":\"marketing\",\"languageCode\":\"da-DK\",\"currencyCode\":\"DKK\"},\"facets\":[{\"type\":\"CheckboxOr\",\"field\":\"data.properties.category\"}],\"skip\":0,\"take\":1000,\"search\":{\"type\":\"and\",\"queries\":[],\"weighted\":false},\"lookupTemplate\":\"animal\",\"sorting\":[]}";
     
     private readonly HttpClient _client;
-    private readonly ILogger<AalborgZooContentRepository> _logger;
+    private readonly ILogger<AalborgZooAnimalRepository> _logger;
 
-    public AalborgZooContentRepository(HttpClient client, ILogger<AalborgZooContentRepository> logger)
+    public AalborgZooAnimalRepository(HttpClient client, ILogger<AalborgZooAnimalRepository> logger)
     {
         _client = client;
         _logger = logger;

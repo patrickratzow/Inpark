@@ -20,7 +20,7 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     public async Task Handle_ShouldFindOpeningHoursFor_Today()
     {
         // Arrange
-        var time = (DateTimeOffset)DateTime.Today;
+        var time = DateTime.Today;
         var range = TimeRange.From(time, time);
         var openingHour = await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
@@ -45,7 +45,7 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     public async Task Handle_ShouldNotFindOpeningHoursFor_Tomorrow()
     {
         // Arrange
-        var time = (DateTimeOffset)DateTime.Today.AddDays(1);
+        var time = DateTime.Today.AddDays(1);
         var range = TimeRange.From(time, time);
         await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
@@ -63,7 +63,7 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     public async Task Handle_ShouldNotFindOpeningHoursFor_Yesterday()
     {
         // Arrange
-        var time = (DateTimeOffset)DateTime.Today.AddDays(-1);
+        var time = DateTime.Today.AddDays(-1);
         var range = TimeRange.From(time, time);
         await AddOpeningHour(range);
         var query = new GetOpeningHoursForTodayQuery();
@@ -81,7 +81,7 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     public async Task Handle_ShouldNotFindOpeningHoursForTodayWhen_TheCurrentDayIsNotADayItCountsFor()
     {
         // Arrange
-        var start = (DateTimeOffset)DateTime.Today.AddDays(-1);
+        var start = DateTime.Today.AddDays(-1);
         var end = start.AddDays(7);
         var range = TimeRange.From(start, end);
         await AddOpeningHour(range, WeekDay.Saturday | WeekDay.Sunday);
@@ -107,12 +107,12 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
     {
         // Arrange
         var monthRange = TimeRange.From(
-            new(new DateTime(2022, 04, 01), TimeSpan.FromHours(2)),
-            new(new DateTime(2022, 04, 30), TimeSpan.FromHours(2))
+            new DateTime(2022, 04, 01),
+            new DateTime(2022, 04, 30)
         );
         var weekRange = TimeRange.From(
-            new(new DateTime(2022, 04, 11), TimeSpan.FromHours(2)),
-            new(new DateTime(2022, 04, 18), TimeSpan.FromHours(2))
+            new DateTime(2022, 04, 11),
+            new DateTime(2022, 04, 18)
         );
         var today = new DateTime(2022, 04, 15);
         await AddOpeningHour(monthRange);
@@ -136,6 +136,30 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
                 first.Start.Should().Be(weekRange.Start);
                 first.End.Should().Be(weekRange.End);
             });
+        clockMock.VerifyAll();
+    }
+    
+    [Test]
+    public async Task Handle_ShouldFindOpeningHours_WhenTheMonthIsLowerThanTodaysMonth()
+    {
+        // Arrange
+        var today = new DateTime(2022, 04, 15);
+        var clockMock = new Mock<IClock>();
+        clockMock.Setup(x => x.Today)
+            .Returns(today);
+        var range = TimeRange.From(new(2021, 06, 18), today);
+        await AddOpeningHour(range);
+        var context = GetRequiredService<InparkDbContext>();
+        var query = new GetOpeningHoursForTodayQuery();
+        var handler = new GetOpeningHoursForTodayQueryHandler(context, clockMock.Object);
+        
+        // Act
+        var response = await handler.Handle(query, CancellationToken.None);
+        
+        // Assert
+        response.Value.Should().BeOfType<List<OpeningHourDto>>();
+        var result = response.Value.As<List<OpeningHourDto>>();
+        result.Should().NotBeEmpty();
         clockMock.VerifyAll();
     }
 
