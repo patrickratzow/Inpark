@@ -62,18 +62,18 @@ class ConservationStatusExplainer extends HookWidget {
       padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
       child: Column(
         children: [
-          Text(
+          const Text(
             "LC - Ikke truet",
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
           ),
-          SizedBox(height: 4),
-          Text(
+          const SizedBox(height: 4),
+          const Text(
             "Almindelige arter, samt arter hvor der måske er grund til bekymring, selvom arten ikke i øjeblikket er direkte truet.",
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.normal,
               color: Colors.black87,
             ),
@@ -106,15 +106,28 @@ class ConservationStatus extends HookWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(bottom: 16),
-          child: Text(
-            "Bevaringsstatus",
-            style: TextStyle(
-              fontSize: 16,
-              color: Color(0xff698665),
-              fontFamily: "Poppins",
-            ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Row(
+            children: const [
+              Text(
+                "Bevaringsstatus",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xff698665),
+                  fontFamily: "Poppins",
+                ),
+              ),
+              SizedBox(width: 2),
+              Padding(
+                padding: EdgeInsets.only(top: 1),
+                child: Icon(
+                  Icons.info_outlined,
+                  size: 16,
+                  color: Color(0xff698665),
+                ),
+              ),
+            ],
           ),
         ),
         Row(
