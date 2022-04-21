@@ -44,35 +44,6 @@ class Home extends StatelessWidget {
     context.read<HomeModel>().fetchOpeningHoursForToday();
 
     return Scaffold(
-<<<<<<< HEAD
-      appBar: const HomeAppBar(name: "Menu", route: "Route"),
-      body: Column(
-        children: [
-          Consumer<HomeModel>(
-            builder: (context, value, child) {
-              if (value.loading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (value.error.isNotEmpty) {
-                return Center(
-                  child: Text("Fejl"),
-                );
-              }
-
-              return Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    value.openingHours,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-=======
       appBar: const HomeAppBar(title: "Hello Patrick!"),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
@@ -113,7 +84,6 @@ class Home extends StatelessWidget {
                         ),
                       ],
                       title: "Tasks",
->>>>>>> origin/development
                     ),
                   ),
                   ..._buildDebugRoutes(context),
