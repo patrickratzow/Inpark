@@ -138,6 +138,30 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
             });
         clockMock.VerifyAll();
     }
+    
+    [Test]
+    public async Task Handle_ShouldFindOpeningHours_WhenTheMonthIsLowerThanTodaysMonth()
+    {
+        // Arrange
+        var today = new DateTime(2022, 04, 15);
+        var clockMock = new Mock<IClock>();
+        clockMock.Setup(x => x.Today)
+            .Returns(today);
+        var range = TimeRange.From(new(2021, 06, 18), today);
+        await AddOpeningHour(range);
+        var context = GetRequiredService<InparkDbContext>();
+        var query = new GetOpeningHoursForTodayQuery();
+        var handler = new GetOpeningHoursForTodayQueryHandler(context, clockMock.Object);
+        
+        // Act
+        var response = await handler.Handle(query, CancellationToken.None);
+        
+        // Assert
+        response.Value.Should().BeOfType<List<OpeningHourDto>>();
+        var result = response.Value.As<List<OpeningHourDto>>();
+        result.Should().NotBeEmpty();
+        clockMock.VerifyAll();
+    }
 
     private async Task<OpeningHour> AddOpeningHour(TimeRange range, WeekDay days = WeekDay.Monday | WeekDay.Tuesday | WeekDay.Wednesday | WeekDay.Thursday | WeekDay.Friday | WeekDay.Saturday | WeekDay.Sunday)
     {
