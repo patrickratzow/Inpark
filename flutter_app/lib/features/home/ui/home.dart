@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
+import 'package:flutter_app/features/home/ui/speaks_preview.dart';
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
@@ -86,6 +87,7 @@ class Home extends StatelessWidget {
                       title: "Tasks",
                     ),
                   ),
+                  SpeaksPreview(),
                   ..._buildDebugRoutes(context),
                   const RouteBox(
                     title: "Vores Dyr",
