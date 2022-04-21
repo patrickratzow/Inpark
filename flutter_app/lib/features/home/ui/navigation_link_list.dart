@@ -21,13 +21,16 @@ class NavigationLinkList extends StatelessWidget {
           fontSize: 16,
           name: "Tasks:",
         ),
-        SizedBox(
-          height: 120,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              ...navLinkArr,
-            ],
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+          child: SizedBox(
+            height: 120,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                ...navLinkArr,
+              ],
+            ),
           ),
         ),
       ],

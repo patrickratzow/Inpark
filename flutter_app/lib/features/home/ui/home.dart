@@ -1,14 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
+import "package:flutter_app/features/home/ui/event..dart";
+import "package:flutter_app/features/home/ui/event_containter.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
 import "package:flutter/foundation.dart" show kDebugMode;
 
-import 'navigation_link.dart';
-import 'navigation_link_list.dart';
-import 'opening_hours.dart';
+import "navigation_link.dart";
+import "navigation_link_list.dart";
+import "opening_hours.dart";
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -51,10 +53,13 @@ class Home extends StatelessWidget {
           children: [
             Expanded(
               child: ListView(
-                children: [
-                  OpeningHours(),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+                    child: OpeningHours(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
                     child: NavigationLinkList(
                       navLinkArr: [
                         NavigationLink(
@@ -86,37 +91,37 @@ class Home extends StatelessWidget {
                       title: "Tasks",
                     ),
                   ),
-                  ..._buildDebugRoutes(context),
-                  const RouteBox(
-                    title: "Vores Dyr",
-                    route: "/animals",
-                    description: "Se alle de dyr vi har!",
-                    iconName: "pawprint",
-                  ),
-                  const RouteBox(
-                    title: "Billetter",
-                    route: "Non",
-                    description: "Køb din billet i dag!",
-                    iconName: "ticket",
-                  ),
-                  const RouteBox(
-                    title: "Arrangementer",
-                    route: "Non",
-                    description:
-                        "Se vores nuværende og fremtidige arrangementer",
-                    iconName: "calendar",
-                  ),
-                  const RouteBox(
-                    title: "News",
-                    route: "Non",
-                    description: "Læs vores nyhedsbrev",
-                    iconName: "newspaper",
-                  ),
-                  const RouteBox(
-                    title: "Kort",
-                    route: "Non",
-                    description: "Få et kort over hele parken!",
-                    iconName: "map",
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                    child: EventContainer(
+                      title: "Today´s events:",
+                      eventArr: [
+                        Event(
+                          title: "Tiger besøg",
+                          description:
+                              "Træt af dine børn, nu kan du smide dem ind til tigerne!wqoiej qoiwje qiowje qwoijeq oiwjeqoiwjeqowije qiwojeqiowjeqowiejqoiwejqoiwjeoiqwjeoiqwje oqiwjeoiqwje oiqjeoqwije",
+                          imageUrl:
+                              "https://cms.aalborgzoo.dk/media/k23kerj1/for-bes%C3%B8gende-700x350.jpg",
+                          route: "non",
+                        ),
+                        Event(
+                          title: "Abe besøg",
+                          description:
+                              "Træt af dine børn, nu kan du smide dem ind til aberne!",
+                          imageUrl:
+                              "https://cms.aalborgzoo.dk/media/j0ej4iqh/fest-i-vilde-omgivelser-700x350.jpg",
+                          route: "non",
+                        ),
+                        Event(
+                          title: "Søløve besøg",
+                          description:
+                              "Træt af dine børn, nu kan du smide dem ind til søløverne!",
+                          imageUrl:
+                              "https://cms.aalborgzoo.dk/media/yz1pdqpt/nyhedsbrev-700x350.jpg",
+                          route: "non",
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

@@ -11,58 +11,57 @@ class OpeningHours extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 32, 0, 0),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          padding: EdgeInsets.zero,
-        ),
-        onPressed: () {},
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const TitleBar(
-                  fontSize: 16,
-                  name: "Åbningstider:",
-                ),
-                Consumer<HomeModel>(
-                  builder: (context, value, child) {
-                    if (value.loading) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    if (value.error.isNotEmpty) {
-                      return Center(
-                        child: Text("Error ${value.error}"),
-                      );
-                    }
-
-                    return Align(
-                      alignment: Alignment.centerLeft,
+    return TextButton(
+      style: TextButton.styleFrom(
+        padding: EdgeInsets.zero,
+      ),
+      onPressed: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const TitleBar(
+                fontSize: 16,
+                name: "Åbningstider:",
+              ),
+              Consumer<HomeModel>(
+                builder: (context, value, child) {
+                  if (value.loading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (value.error.isNotEmpty) {
+                    return const Center(
                       child: Text(
-                        value.openingHours,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontFamily: "Poppins",
-                        ),
+                        "Ingen åbningstider tilgængelig, prøv igen senere",
                       ),
                     );
-                  },
-                ),
-              ],
-            ),
-            const Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.black,
-              size: 16.0,
-            ),
-          ],
-        ),
+                  }
+
+                  return Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      value.openingHours,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          const Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.black,
+            size: 16.0,
+          ),
+        ],
       ),
     );
   }
