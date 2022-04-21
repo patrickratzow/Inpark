@@ -1,7 +1,8 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/features/animals/ui/animal_category.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
+
+import 'animal_category.dart';
 
 class AnimalCard extends StatelessWidget {
   const AnimalCard({

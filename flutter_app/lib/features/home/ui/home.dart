@@ -26,7 +26,7 @@ class Home extends StatelessWidget {
       ),
       const RouteBox(
         title: "Patrick",
-        route: "Non",
+        route: "/animals/conservation-status-overview",
         description: "Find us!",
         iconName: "map",
       ),
