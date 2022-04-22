@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
 import 'package:flutter_app/features/home/ui/speaks_preview.dart';
@@ -88,6 +89,16 @@ class Home extends StatelessWidget {
                     ),
                   ),
                   SpeaksPreview(),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: CustomColor.green.lightest,
+                      padding: const EdgeInsets.all(8.0),
+                      primary: CustomColor.green.darkest,
+                      textStyle: const TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {},
+                    child: const Text("Vis alle speaks for dagen"),
+                  ),
                   ..._buildDebugRoutes(context),
                   const RouteBox(
                     title: "Vores Dyr",

@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_app/generated_code/zooinator.models.swagger.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
 
-import "../../../common/ioc.dart";
-import "../repositories/home_repository.dart";
+import '../../../common/ioc.dart';
+import '../repositories/speak_repository.dart';
 
 class SpeakModel extends ChangeNotifier {
   List<SpeakDto> _speaks = List.empty();
@@ -23,7 +23,7 @@ class SpeakModel extends ChangeNotifier {
   List<SpeakDto> get speaks => _speaks;
 
   Future<void> fetchSpeaksForToday() async {
-    final homeRepository = locator.get<HomeRepository>();
+    final homeRepository = locator.get<SpeakRepository>();
 
     try {
       loading = true;
