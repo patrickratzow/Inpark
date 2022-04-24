@@ -36,15 +36,16 @@ public class GetAnimalSpeaksForTodayQueryHandler :
                     )
                     // ReSharper disable once SimplifyLinqExpressionUseMinByAndMaxBy
                     .OrderByDescending(x => x.Range.Start)
-                    .First()
+                    .FirstOrDefault()
             })
+            .Where(x => x.SpeakTime != null)
             .OrderBy(x => x.SpeakTime)
             .ToListAsync(cancellationToken);
             
         return speaks
             .Select(x => new SpeakDto(
                 x.Title,
-                x.SpeakTime.Range.Start,
+                x.SpeakTime!.Range.Start,
                 x.SpeakTime.Range.End,
                 x.SpeakTime.Days.ToDays()
             ))
