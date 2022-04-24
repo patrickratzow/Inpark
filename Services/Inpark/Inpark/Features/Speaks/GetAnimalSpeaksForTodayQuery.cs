@@ -20,45 +20,34 @@ public class GetAnimalSpeaksForTodayQueryHandler :
 
     public async Task<OneOf<List<SpeakDto>>> Handle(GetAnimalSpeaksForTodayQuery request, CancellationToken cancellationToken)
     {
-        var day = new DateOnly(_clock.Today.Year, _clock.Today.Month, _clock.Today.Day);
+        var today = new DateOnly(_clock.Today.Year, _clock.Today.Month, _clock.Today.Day);
+        var dateTime = today.ToDateTime(TimeOnly.MinValue);
+        var value = (int)Enum.Parse(typeof(WeekDay), today.DayOfWeek.ToString());
         var speaks = await _context.Speaks
-            .Include(s => s.SpeakTimes)
-            .Where(s => s.SpeakTimes.Any(x =>
-                x.Range.End.Year >= day.Year &&
-                x.Range.End.Month >= day.Month &&
-                x.Range.End.Day >= day.Day
-            ))
-            .ToListAsync(cancellationToken);
-
-        return speaks
-            .Where(s => s.SpeakTimes.Any())
+            .AsNoTracking()
             .Select(s => new
             {
                 s.Title,
                 SpeakTime = s.SpeakTimes
-                    .Where(x =>  x.Days.ToDays().Contains(day.DayOfWeek.ToString()))
+                    .Where(x => 
+                        x.Range.Start.Date <= dateTime.Date && 
+                        x.Range.End.Date >= dateTime.Date && 
+                        ((int)x.Days & value) != 0
+                    )
+                    // ReSharper disable once SimplifyLinqExpressionUseMinByAndMaxBy
                     .OrderByDescending(x => x.Range.Start)
-                    .Where(x =>
-                    {
-                        var rangeStart = x.Range.Start;
-                        var rangeEnd = x.Range.End;
-                        var dateStart = new DateOnly(rangeStart.Year, rangeStart.Month, rangeStart.Day);
-                        var dateEnd = new DateOnly(rangeEnd.Year, rangeEnd.Month, rangeEnd.Day);
-
-                        // Today should be between dateStart & dateEnd
-                        return dateStart <= day && dateEnd >= day;
-                    })
-                    // Since it's sorted, a way to take the closest SpeakTIme to today is taking the first
-                    .FirstOrDefault()
+                    .First()
             })
-            .Where(x => x.SpeakTime is not null)
+            .OrderBy(x => x.SpeakTime)
+            .ToListAsync(cancellationToken);
+            
+        return speaks
             .Select(x => new SpeakDto(
                 x.Title,
-                x.SpeakTime!.Range.Start,
+                x.SpeakTime.Range.Start,
                 x.SpeakTime.Range.End,
                 x.SpeakTime.Days.ToDays()
             ))
-            .OrderBy(x => new TimeOnly(x.Start.Hour, x.Start.Minute, x.Start.Second))
             .ToList();
     }
 }
