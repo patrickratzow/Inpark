@@ -86,12 +86,12 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
 
   @override
   EdgeInsetsGeometry get dimensions {
-    return new EdgeInsets.all(biggestWidth);
+    return EdgeInsets.all(biggestWidth);
   }
 
   @override
   ShapeBorder scale(double t) {
-    return new CustomRoundedRectangleBorder(
+    return CustomRoundedRectangleBorder(
       topSide: topSide?.scale(t),
       leftSide: leftSide?.scale(t),
       bottomSide: bottomSide?.scale(t),
@@ -108,7 +108,7 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
   ShapeBorder? lerpFrom(ShapeBorder? a, double t) {
     assert(t != null);
     if (a is CustomRoundedRectangleBorder) {
-      return new CustomRoundedRectangleBorder(
+      return CustomRoundedRectangleBorder(
         topSide:
             topSide == null ? null : BorderSide.lerp(a.topSide!, topSide!, t),
         leftSide: leftSide == null
@@ -144,7 +144,7 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
   ShapeBorder? lerpTo(ShapeBorder? b, double t) {
     assert(t != null);
     if (b is CustomRoundedRectangleBorder) {
-      return new CustomRoundedRectangleBorder(
+      return CustomRoundedRectangleBorder(
         topSide:
             topSide == null ? null : BorderSide.lerp(topSide!, b.topSide!, t),
         leftSide: leftSide == null
@@ -178,7 +178,7 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
-    return new Path()
+    return Path()
       ..addRRect(borderRadius
           .resolve(textDirection)
           .toRRect(rect)
@@ -187,8 +187,7 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
 
   @override
   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    return new Path()
-      ..addRRect(borderRadius.resolve(textDirection).toRRect(rect));
+    return Path()..addRRect(borderRadius.resolve(textDirection).toRRect(rect));
   }
 
   @override
@@ -211,14 +210,14 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
     if (paint != null) {
       canvas.drawLine(
           rect.topLeft +
-              new Offset(
+              Offset(
                   borderRadius.topLeft.x +
                       (borderRadius.topLeft.x == 0
                           ? (leftSide?.width ?? 0.0)
                           : 0.0),
                   (topSide?.width ?? 0.0) / 2),
           rect.topRight +
-              new Offset(-borderRadius.topRight.x, (topSide?.width ?? 0.0) / 2),
+              Offset(-borderRadius.topRight.x, (topSide?.width ?? 0.0) / 2),
           paint);
     }
 
@@ -238,14 +237,14 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
     if (paint != null) {
       canvas.drawLine(
           rect.topRight +
-              new Offset(
+              Offset(
                   -1 * (rightSide?.width ?? 0.0) / 2,
                   borderRadius.topRight.y +
                       (borderRadius.topRight.x == 0
                           ? (topSide?.width ?? 0.0)
                           : 0.0)),
           rect.bottomRight +
-              new Offset(-1 * (rightSide?.width ?? 0.0) / 2,
+              Offset(-1 * (rightSide?.width ?? 0.0) / 2,
                   -borderRadius.bottomRight.y),
           paint);
     }
@@ -266,7 +265,7 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
     if (paint != null) {
       canvas.drawLine(
           rect.bottomRight +
-              new Offset(
+              Offset(
                 -borderRadius.bottomRight.x -
                     (borderRadius.bottomRight.x == 0
                         ? (rightSide?.width ?? 0.0)
@@ -274,7 +273,7 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
                 -1 * (bottomSide?.width ?? 0.0) / 2,
               ),
           rect.bottomLeft +
-              new Offset(borderRadius.bottomLeft.x,
+              Offset(borderRadius.bottomLeft.x,
                   -1 * (bottomSide?.width ?? 0.0) / 2),
           paint);
     }
@@ -295,14 +294,14 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
     if (paint != null) {
       canvas.drawLine(
           rect.bottomLeft +
-              new Offset(
+              Offset(
                   (leftSide?.width ?? 0.0) / 2,
                   -borderRadius.bottomLeft.y -
                       (borderRadius.bottomLeft.x == 0
                           ? (bottomSide?.width ?? 0.0)
                           : 0.0)),
           rect.topLeft +
-              new Offset((leftSide?.width ?? 0.0) / 2, borderRadius.topLeft.y),
+              Offset((leftSide?.width ?? 0.0) / 2, borderRadius.topLeft.y),
           paint);
     }
   }
@@ -326,7 +325,7 @@ class CustomRoundedRectangleBorder extends ShapeBorder {
   Paint? createPaintForBorder(BorderSide? side) {
     if (side == null) return null;
 
-    return new Paint()
+    return Paint()
       ..style = PaintingStyle.stroke
       ..color = side.color
       ..strokeWidth = side.width;

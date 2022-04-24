@@ -1,35 +1,34 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class DolDurmaClipper extends CustomClipper<Path> {
-  DolDurmaClipper({
-    required this.radius,
-  });
+  DolDurmaClipper({required this.right, required this.radius});
 
+  final double right;
   final double radius;
 
   @override
   Path getClip(Size size) {
     final path = Path()
       ..moveTo(0, 0)
-      ..lineTo(size.width - radius, 0)
+      ..lineTo(size.width - right - radius, 0.0)
       ..arcToPoint(
-        Offset(size.width, 0),
+        Offset(size.width - right, 0),
         clockwise: false,
-        radius: Radius.circular(1),
+        radius: const Radius.circular(1),
       )
       ..lineTo(size.width, 0.0)
       ..lineTo(size.width, size.height)
-      ..lineTo(size.width, size.height)
+      ..lineTo(size.width - right, size.height)
       ..arcToPoint(
-        Offset(size.width - radius, size.height),
+        Offset(size.width - right - radius, size.height),
         clockwise: false,
-        radius: Radius.circular(1),
+        radius: const Radius.circular(1),
       );
 
     path.lineTo(0.0, size.height);
 
     path.close();
-
     return path;
   }
 
@@ -44,34 +43,90 @@ class MyPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    double fromLeft = 60;
+
     final path = Path()
       ..moveTo(0, 0)
+      ..arcTo(
+        Rect.fromPoints(
+          size.topLeft(Offset(0, radius)),
+          size.topLeft(Offset(radius, 0)),
+        ),
+        pi * 1,
+        pi * 0.5,
+        true,
+      )
+      ..lineTo(fromLeft - 4, 0)
+      //Here we make the half circle
       ..arcToPoint(
-        Offset(size.width, 0),
+        Offset(fromLeft, 0),
         clockwise: false,
         radius: const Radius.circular(1),
       )
-      ..moveTo(size.width, 0)
-      ..moveTo(size.width, size.height)
+      ..arcTo(
+        Rect.fromPoints(
+          size.topRight(Offset(-radius, 0)),
+          size.topRight(Offset(0, radius)),
+        ),
+        pi * 1.5,
+        pi * 0.5,
+        false,
+      )
+      ..arcTo(
+        Rect.fromPoints(
+          size.bottomRight(Offset(0, -radius)),
+          size.bottomRight(Offset(-radius, 0)),
+        ),
+        pi * 0,
+        pi * 0.5,
+        false,
+      )
+      ..lineTo(fromLeft, size.height)
       ..arcToPoint(
-        Offset(0, size.height),
+        Offset(fromLeft - 4, size.height),
         clockwise: false,
         radius: const Radius.circular(1),
       )
-      ..moveTo(0, size.height);
+      ..arcTo(
+        Rect.fromPoints(
+          size.bottomLeft(Offset(radius, 0)),
+          size.bottomLeft(Offset(0, -radius)),
+        ),
+        pi * 0.5,
+        pi * 0.5,
+        false,
+      )
+      ..close();
+
+    /*
+      ..lineTo(size.width - right - radius, 0)
+      //Here we make the half circle
+      ..arcToPoint(
+        Offset(size.width - right, 0),
+        clockwise: false,
+        radius: const Radius.circular(1),
+      )
+      ..lineTo(size.width, 0.0)
+      ..lineTo(size.width, size.height)
+      ..lineTo(size.width - right, size.height)
+      ..arcToPoint(
+        Offset(size.width - right - radius, size.height),
+        clockwise: false,
+        radius: const Radius.circular(1),
+      )
+      ..lineTo(0.0, size.height);
+      */
 
     path.close();
 
-    Paint paint = Paint()
+    var paint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.0
-      ..color = Colors.red;
+      ..strokeWidth = 1
+      ..color = Color(0xffF6F6F6);
 
     canvas.drawPath(path, paint);
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
-  }
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

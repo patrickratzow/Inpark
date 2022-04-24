@@ -179,7 +179,10 @@
       <workItem from="1650526082898" duration="302000" />
       <workItem from="1650526766987" duration="3762000" />
       <workItem from="1650557471875" duration="633000" />
-      <workItem from="1650609643857" duration="3149000" />
+      <workItem from="1650609643857" duration="3153000" />
+      <workItem from="1650655575988" duration="685000" />
+      <workItem from="1650727401594" duration="2356000" />
+      <workItem from="1650789486886" duration="7804000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -335,6 +338,32 @@
           <line>128</line>
           <properties documentPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainImplementationTests.cs" initialLine="127" containingFunctionPresentation="method 'ShouldMakeSureThatEveryPropertyIsValidatedForAnEntity'" />
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs</url>
+          <line>108</line>
+          <properties documentPath="C:\Users\Nikol\OneDrive\Dokumenter\GitHub\Zoo\Services\Inpark\Inpark.Tests\Features\Speaks\AalborgZoo\GetAnimalSpeaksForTodayQueryTests.cs" initialLine="108" containingFunctionPresentation="method 'Handle_ShouldNotReturnASpeak_WithoutAnySpeakTimes'">
+            <startOffsets>
+              <option value="3535" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3578" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs</url>
+          <line>116</line>
+          <properties documentPath="C:\Users\Nikol\OneDrive\Dokumenter\GitHub\Zoo\Services\Inpark\Inpark.Tests\Features\Speaks\AalborgZoo\GetAnimalSpeaksForTodayQueryTests.cs" initialLine="116" containingFunctionPresentation="method 'Handle_ShouldNotReturnASpeak_WithoutAnySpeakTimes'">
+            <startOffsets>
+              <option value="3786" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3835" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

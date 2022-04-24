@@ -34,13 +34,12 @@ class SpeaksPreview extends StatelessWidget {
                 );
               }
 
-              /*
               var speaks = value.topThreeSpeaks;
               if (speaks.isEmpty) {
                 return const Center(
                   child: Text("Alle speaks for i dag er ovre :)"),
                 );
-              }*/
+              }
 
               return Column(
                 children: value.topThreeSpeaks
