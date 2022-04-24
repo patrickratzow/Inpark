@@ -46,88 +46,71 @@ class Home extends StatelessWidget {
     context.read<HomeModel>().fetchOpeningHoursForToday();
 
     return Scaffold(
-      appBar: const HomeAppBar(title: "Hello Patrick!"),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
-                    child: OpeningHours(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    child: NavigationLinkList(
-                      navLinkArr: [
-                        NavigationLink(
-                          iconName: "ticket",
-                          text: "Ticket",
-                          route: "non",
-                        ),
-                        NavigationLink(
-                          iconName: "calendar",
-                          text: "Activities calendar",
-                          route: "non",
-                        ),
-                        NavigationLink(
-                          iconName: "map",
-                          text: "Address",
-                          route: "non",
-                        ),
-                        NavigationLink(
-                          iconName: "pawprint",
-                          text: "Animals",
-                          route: "/animals",
-                        ),
-                        NavigationLink(
-                          iconName: "newspaper",
-                          text: "News",
-                          route: "non",
-                        ),
-                      ],
-                      title: "Tasks",
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    child: EventContainer(
-                      title: "Today´s events:",
-                      eventArr: [
-                        Event(
-                          title: "Tiger besøg",
-                          description:
-                              "Træt af dine børn, nu kan du smide dem ind til tigerne!wqoiej qoiwje qiowje qwoijeq oiwjeqoiwjeqowije qiwojeqiowjeqowiejqoiwejqoiwjeoiqwjeoiqwje oqiwjeoiqwje oiqjeoqwije",
-                          imageUrl:
-                              "https://cms.aalborgzoo.dk/media/k23kerj1/for-bes%C3%B8gende-700x350.jpg",
-                          route: "non",
-                        ),
-                        Event(
-                          title: "Abe besøg",
-                          description:
-                              "Træt af dine børn, nu kan du smide dem ind til aberne!",
-                          imageUrl:
-                              "https://cms.aalborgzoo.dk/media/j0ej4iqh/fest-i-vilde-omgivelser-700x350.jpg",
-                          route: "non",
-                        ),
-                        Event(
-                          title: "Søløve besøg",
-                          description:
-                              "Træt af dine børn, nu kan du smide dem ind til søløverne!",
-                          imageUrl:
-                              "https://cms.aalborgzoo.dk/media/yz1pdqpt/nyhedsbrev-700x350.jpg",
-                          route: "non",
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+      appBar: const HomeAppBar(),
+      body: ListView(
+        children: const [
+          OpeningHours(),
+          Padding(
+            padding: EdgeInsets.fromLTRB(16, 14, 0, 0),
+            child: NavigationLinkList(
+              children: [
+                NavigationLink(
+                  iconName: "ticket",
+                  text: "Billetter",
+                  route: "non",
+                ),
+                NavigationLink(
+                  iconName: "calendar",
+                  text: "Aktivitets\nkalender",
+                  route: "non",
+                ),
+                NavigationLink(
+                  iconName: "pawprint",
+                  text: "Vores Dyr",
+                  route: "/animals",
+                ),
+                NavigationLink(
+                  iconName: "newspaper",
+                  text: "Nyheder",
+                  route: "non",
+                ),
+              ],
+              title: "Tasks",
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(16, 14, 16, 0),
+            child: EventContainer(
+              title: "Kommende arrangementer",
+              eventArr: [
+                Event(
+                  title: "Tiger besøg",
+                  description:
+                      "Træt af dine børn, nu kan du smide dem ind til tigerne!",
+                  imageUrl:
+                      "https://cms.aalborgzoo.dk/media/k23kerj1/for-bes%C3%B8gende-700x350.jpg",
+                  route: "non",
+                ),
+                Event(
+                  title: "Abe besøg",
+                  description:
+                      "Træt af dine børn, nu kan du smide dem ind til aberne!",
+                  imageUrl:
+                      "https://cms.aalborgzoo.dk/media/j0ej4iqh/fest-i-vilde-omgivelser-700x350.jpg",
+                  route: "non",
+                ),
+                Event(
+                  title: "Søløve besøg",
+                  description:
+                      "Træt af dine børn, nu kan du smide dem ind til søløverne!",
+                  imageUrl:
+                      "https://cms.aalborgzoo.dk/media/yz1pdqpt/nyhedsbrev-700x350.jpg",
+                  route: "non",
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

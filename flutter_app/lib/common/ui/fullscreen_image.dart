@@ -16,13 +16,12 @@ class FullScreenImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-      statusBarColor: Colors.black,
-    ));
-
     return Scaffold(
       backgroundColor: Colors.black87,
       appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.black,
+        ),
         title: Text(title),
         backgroundColor: Colors.black87,
         leading: IconButton(
@@ -31,11 +30,7 @@ class FullScreenImage extends StatelessWidget {
             color: Colors.white,
           ),
           onPressed: () => {
-            SystemChrome.setSystemUIOverlayStyle(
-                SystemUiOverlayStyle.dark.copyWith(
-              statusBarColor: Colors.white,
-            )),
-            Navigator.pop(context)
+            Navigator.pop(context),
           },
         ),
       ),
