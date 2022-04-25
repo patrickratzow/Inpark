@@ -19,45 +19,38 @@ class NavigationLink extends StatelessWidget {
     return Align(
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: TextButton(
-              onPressed: () {
-                Routes.goToRoute(context, route);
-              },
-              child: Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: CustomColor.green.icon,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      "assets/menu_icons/$iconName.png",
-                    ),
-                  ],
-                ),
+          GestureDetector(
+            onTap: () {
+              Routes.goToRoute(context, route);
+            },
+            child: Container(
+              width: 64,
+              height: 64,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: CustomColor.green.icon,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    "assets/menu_icons/$iconName.png",
+                  ),
+                ],
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 3, 0, 0),
-            child: SizedBox(
-              width: 64,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Text(
-                  text,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: "Poppins",
-                  ),
-                ),
+          const SizedBox(height: 3),
+          SizedBox(
+            width: 64,
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+                fontFamily: "Poppins",
               ),
             ),
           )

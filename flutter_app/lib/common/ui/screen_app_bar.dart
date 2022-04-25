@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 import "dart:io" show Platform;
 
 import '../../routes.dart';
@@ -22,6 +23,9 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     if (isAndroid) {
       return AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
