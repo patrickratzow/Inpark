@@ -13,6 +13,22 @@ class SpeakRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final DateFormat formatter = DateFormat("HH:mm");
 
+    return CustomPaintBorder(formatter: formatter, speak: speak);
+  }
+}
+
+class CustomPaintBorder extends StatelessWidget {
+  const CustomPaintBorder({
+    Key? key,
+    required this.formatter,
+    required this.speak,
+  }) : super(key: key);
+
+  final DateFormat formatter;
+  final SpeakDto speak;
+
+  @override
+  Widget build(BuildContext context) {
     return CustomPaint(
       painter: MyPainter(radius: 8),
       child: Row(
@@ -47,7 +63,7 @@ class SpeakRow extends StatelessWidget {
                 Text(speak.title),
                 Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                   decoration: const BoxDecoration(
                     color: Color(0xffE4E8DE),
                     borderRadius: BorderRadius.only(
@@ -55,7 +71,14 @@ class SpeakRow extends StatelessWidget {
                       bottomRight: Radius.circular(4),
                     ),
                   ),
-                  child: const Text("Speak"),
+                  child: const Text(
+                    "Speak",
+                    style: TextStyle(
+                      fontSize: 11,
+                      height: 16 / 11,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
                 ),
               ],
             ),

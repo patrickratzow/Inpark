@@ -1,10 +1,31 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/common/ui/screen_app_bar.dart";
+import 'package:flutter_app/features/home/ui/speaks_preview.dart';
+import "package:flutter_app/features/speaks/models/speak_model.dart";
+import 'package:flutter_app/generated_code/zooinator.swagger.dart';
+import "package:provider/provider.dart";
 
 class SpeaksOverviewScreen extends StatelessWidget {
-  const SpeaksOverviewScreen({Key? key}) : super(key: key);
+  final List<SpeakDto> speaks;
+  const SpeaksOverviewScreen({
+    Key? key,
+    required this.speaks,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    context.read<SpeakModel>().fetchSpeaksForToday();
+
+    return Scaffold(
+      appBar: const ScreenAppBar(name: "Alle Aktiviteter og Speaks"),
+      body: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            SpeaksList(speaks: speaks),
+          ],
+        ),
+      ),
+    );
   }
 }

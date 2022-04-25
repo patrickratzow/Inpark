@@ -3,11 +3,13 @@ import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
 import 'package:flutter_app/features/home/ui/speaks_preview.dart';
+import 'package:flutter_app/features/speaks/models/speak_model.dart';
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
 import "package:flutter/foundation.dart" show kDebugMode;
 
+import '../../../routes.dart';
 import 'navigation_link.dart';
 import 'navigation_link_list.dart';
 import 'opening_hours.dart';
@@ -44,6 +46,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<HomeModel>().fetchOpeningHoursForToday();
+    context.read<SpeakModel>().fetchSpeaksForToday();
 
     return Scaffold(
       appBar: const HomeAppBar(title: "Hello Patrick!"),
@@ -88,17 +91,7 @@ class Home extends StatelessWidget {
                       title: "Tasks",
                     ),
                   ),
-                  SpeaksPreview(),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      backgroundColor: CustomColor.green.lightest,
-                      padding: const EdgeInsets.all(8.0),
-                      primary: CustomColor.green.darkest,
-                      textStyle: const TextStyle(fontSize: 18),
-                    ),
-                    onPressed: () {},
-                    child: const Text("Vis alle speaks for dagen"),
-                  ),
+                  _buildSpeaks(context),
                   ..._buildDebugRoutes(context),
                   const RouteBox(
                     title: "Vores Dyr",
@@ -137,6 +130,49 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildSpeaks(BuildContext context) {
+    return Consumer<SpeakModel>(
+      builder: (context, value, child) {
+        if (value.loading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (value.error.isNotEmpty) {
+          return const Center(
+            child: Text("Der skete desværre en fejl"),
+          );
+        }
+
+        List<Widget> widgets = [
+          const TitleBar(
+            fontSize: 16,
+            name: "Aktiviteter & Speaks i dag",
+          ),
+          SpeaksList(speaks: value.topThreeSpeaks),
+          /*
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: CustomColor.green.lightest,
+              padding: const EdgeInsets.all(8.0),
+              primary: CustomColor.green.darkest,
+              textStyle: const TextStyle(fontSize: 18),
+            ),
+            onPressed: () {
+              Routes.goToSpeaksScreen(context, value.speaks);
+            },
+            child: const Text("Vis alle speaks for dagen"),
+            );
+           */
+        ];
+
+        return Column(
+          children: widgets,
+        );
+      },
     );
   }
 }

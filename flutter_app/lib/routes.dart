@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/features/settings/ui/settings.dart";
+import 'package:flutter_app/features/speaks/ui/speak_overview_screen.dart';
 import "package:flutter_app/screens/zoomain.dart";
 import "package:flutter_app/screens/zooview.dart";
 import "features/animals/ui/animal_overview_screen.dart";
@@ -38,6 +39,12 @@ class Routes {
   static void goToAnimalScreen(context, AnimalDto animal) {
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => AnimalScreen(animal: animal)),
+    );
+  }
+
+  static void goToSpeaksScreen(context, List<SpeakDto> speaks) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => SpeaksOverviewScreen(speaks: speaks)),
     );
   }
 
