@@ -84,21 +84,20 @@ class Home extends StatelessWidget {
               title: "Kommende arrangementer",
               eventArr: [
                 Event(
-                  title: "Tiger besøg",
-                  description:
-                      "Træt af dine børn, nu kan du smide dem ind til tigerne!",
+                  title: "Dyrepasser for en dag",
+                  description: "30. april 2022 - 1. maj 2022",
                   imageUrl:
-                      "https://cms.aalborgzoo.dk/media/k23kerj1/for-bes%C3%B8gende-700x350.jpg",
+                      "https://cms.aalborgzoo.dk/media/b3slg21y/efter%C3%A5rsferie-700x350.jpg?width=592",
                   route: "non",
                 ),
                 Event(
-                  title: "Abe besøg",
-                  description:
-                      "Træt af dine børn, nu kan du smide dem ind til aberne!",
+                  title: "Morgenrundvisning",
+                  description: "22. maj 2022",
                   imageUrl:
-                      "https://cms.aalborgzoo.dk/media/j0ej4iqh/fest-i-vilde-omgivelser-700x350.jpg",
+                      "https://cms.aalborgzoo.dk/media/ijkpfwi0/vinterferie_2021-700x350.jpg?width=592",
                   route: "non",
                 ),
+                /*
                 Event(
                   title: "Søløve besøg",
                   description:
@@ -107,6 +106,7 @@ class Home extends StatelessWidget {
                       "https://cms.aalborgzoo.dk/media/yz1pdqpt/nyhedsbrev-700x350.jpg",
                   route: "non",
                 ),
+                */
               ],
             ),
           ),

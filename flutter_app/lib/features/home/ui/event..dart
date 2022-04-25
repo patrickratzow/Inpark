@@ -51,36 +51,33 @@ class Event extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(4, 4, 0, 0),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: TitleBar(
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 6, 8, 8),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TitleBar(
+                      fontSize: 12,
+                      name: title,
+                      color: CustomColor.green.middle,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      description,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                      softWrap: true,
+                      style: TextStyle(
                         fontSize: 10,
-                        name: title,
                         color: CustomColor.green.middle,
+                        fontFamily: "Poppins",
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        description,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 3,
-                        softWrap: true,
-                        style: TextStyle(
-                          fontSize: 8,
-                          color: CustomColor.green.middle,
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_app/routes.dart';
 import "package:provider/provider.dart";
 
 import "../../../common/ui/title_bar.dart";
@@ -14,7 +15,9 @@ class OpeningHours extends StatelessWidget {
     return InkWell(
       highlightColor: Colors.transparent,
       splashColor: Theme.of(context).splashColor,
-      onTap: () {},
+      onTap: () {
+        Routes.goToRoute(context, "opening-hours");
+      },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
         child: Row(
@@ -25,7 +28,7 @@ class OpeningHours extends StatelessWidget {
               children: [
                 const TitleBar(
                   fontSize: 16,
-                  name: "Åbningstider:",
+                  name: "Åbningstider",
                 ),
                 Consumer<HomeModel>(
                   builder: (context, value, child) {

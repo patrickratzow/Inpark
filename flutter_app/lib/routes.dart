@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_app/common/ui/screen_app_bar.dart';
 import 'package:flutter_app/features/animals/ui/animal/animal_overview_screen.dart';
 import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
 import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
@@ -58,11 +59,9 @@ class Routes {
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
-        appBar: AppBar(
-          title: const Text("ERROR"),
-        ),
+        appBar: ScreenAppBar(name: "Side ikke fundet"),
         body: const Center(
-          child: Text("ERROR"),
+          child: Text("Vi arbejder på at få tilføjet det :)"),
         ),
       );
     });

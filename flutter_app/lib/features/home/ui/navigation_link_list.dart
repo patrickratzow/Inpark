@@ -30,7 +30,7 @@ class NavigationLinkList extends StatelessWidget {
       children: [
         const TitleBar(
           fontSize: 16,
-          name: "Tasks:",
+          name: "Sider",
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
