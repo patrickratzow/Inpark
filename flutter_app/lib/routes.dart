@@ -5,8 +5,6 @@ import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
 import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
 import "package:flutter_app/features/settings/ui/settings.dart";
 import 'package:flutter_app/features/speaks/ui/speak_overview_screen.dart';
-import "package:flutter_app/screens/zoomain.dart";
-import "package:flutter_app/screens/zooview.dart";
 import "features/home/ui/home.dart";
 import "generated_code/zooinator.swagger.dart";
 
@@ -17,10 +15,6 @@ class Routes {
     switch (settings.name) {
       case "/home":
         return MaterialPageRoute(builder: (_) => const Home());
-      case "/zooView":
-        return MaterialPageRoute(builder: (_) => const ZooPage(title: "Zoo"));
-      case "/zooMainView>":
-        return MaterialPageRoute(builder: (_) => const ZooMainView());
       case "/animals":
         return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
       case "/settings":

@@ -19,11 +19,10 @@ class SpeakRepository {
         return Result.error(response.error.toString());
       }
 
-      // Map all times to local time for ease of use outside this
       var speaks = response.body!.map((speak) {
         return speak.copyWith(
           title: speak.title,
-          start: speak.start.toLocal(),
+          start: speak.start,
           days: speak.days,
         );
       }).toList();
