@@ -1,10 +1,10 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:flutter_app/features/animals/models/iucn_status.dart";
+import "package:flutter_app/generated_code/zooinator.enums.swagger.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-import "../../../generated_code/zooinator.enums.swagger.dart";
-import "../models/iucn_status.dart";
-
-class ConservationStatus extends StatelessWidget {
+class ConservationStatus extends HookWidget {
   final IUCNStatusDto activeStatus;
 
   const ConservationStatus({
@@ -26,15 +26,28 @@ class ConservationStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(bottom: 16),
-          child: Text(
-            "Bevaringsstatus",
-            style: TextStyle(
-              fontSize: 16,
-              color: Color(0xff698665),
-              fontFamily: "Poppins",
-            ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Row(
+            children: const [
+              Text(
+                "Bevaringsstatus",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xff698665),
+                  fontFamily: "Poppins",
+                ),
+              ),
+              SizedBox(width: 2),
+              Padding(
+                padding: EdgeInsets.only(top: 1),
+                child: Icon(
+                  Icons.info_outlined,
+                  size: 16,
+                  color: Color(0xff698665),
+                ),
+              ),
+            ],
           ),
         ),
         Row(
@@ -165,12 +178,16 @@ class ConservationCircle extends StatelessWidget {
           shape: BoxShape.circle,
           color: color,
         ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: textColor,
-            height: 16 / 12,
-            fontSize: 12,
+        child: FittedBox(
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+                height: 16 / 12,
+                fontSize: 12,
+              ),
+            ),
           ),
         ),
       ),

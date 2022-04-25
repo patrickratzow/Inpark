@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/home/models/home_model.dart";
+import "package:flutter_app/features/home/ui/event..dart";
+import "package:flutter_app/features/home/ui/event_containter.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
 import 'package:flutter_app/features/home/ui/speaks_preview.dart';
 import 'package:flutter_app/features/speaks/models/speak_model.dart';
@@ -30,7 +32,7 @@ class Home extends StatelessWidget {
       ),
       const RouteBox(
         title: "Patrick",
-        route: "Non",
+        route: "/animals/conservation-status-overview",
         description: "Find us!",
         iconName: "map",
       ),
@@ -49,86 +51,71 @@ class Home extends StatelessWidget {
     context.read<SpeakModel>().fetchSpeaksForToday();
 
     return Scaffold(
-      appBar: const HomeAppBar(title: "Hello Patrick!"),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                children: [
-                  OpeningHours(),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                    child: NavigationLinkList(
-                      navLinkArr: [
-                        NavigationLink(
-                          iconName: "ticket",
-                          text: "Ticket",
-                          route: "non",
-                        ),
-                        NavigationLink(
-                          iconName: "calendar",
-                          text: "Activities calendar",
-                          route: "non",
-                        ),
-                        NavigationLink(
-                          iconName: "map",
-                          text: "Address",
-                          route: "non",
-                        ),
-                        NavigationLink(
-                          iconName: "pawprint",
-                          text: "Animals",
-                          route: "/animals",
-                        ),
-                        NavigationLink(
-                          iconName: "newspaper",
-                          text: "News",
-                          route: "non",
-                        ),
-                      ],
-                      title: "Tasks",
-                    ),
-                  ),
-                  _buildSpeaks(context),
-                  ..._buildDebugRoutes(context),
-                  const RouteBox(
-                    title: "Vores Dyr",
-                    route: "/animals",
-                    description: "Se alle de dyr vi har!",
-                    iconName: "pawprint",
-                  ),
-                  const RouteBox(
-                    title: "Billetter",
-                    route: "Non",
-                    description: "Køb din billet i dag!",
-                    iconName: "ticket",
-                  ),
-                  const RouteBox(
-                    title: "Arrangementer",
-                    route: "Non",
-                    description:
-                        "Se vores nuværende og fremtidige arrangementer",
-                    iconName: "calendar",
-                  ),
-                  const RouteBox(
-                    title: "News",
-                    route: "Non",
-                    description: "Læs vores nyhedsbrev",
-                    iconName: "newspaper",
-                  ),
-                  const RouteBox(
-                    title: "Kort",
-                    route: "Non",
-                    description: "Få et kort over hele parken!",
-                    iconName: "map",
-                  ),
-                ],
-              ),
+      appBar: const HomeAppBar(),
+      body: ListView(
+        children: const [
+          OpeningHours(),
+          Padding(
+            padding: EdgeInsets.fromLTRB(16, 14, 0, 0),
+            child: NavigationLinkList(
+              children: [
+                NavigationLink(
+                  iconName: "ticket",
+                  text: "Billetter",
+                  route: "non",
+                ),
+                NavigationLink(
+                  iconName: "calendar",
+                  text: "Aktivitets\nkalender",
+                  route: "non",
+                ),
+                NavigationLink(
+                  iconName: "pawprint",
+                  text: "Vores Dyr",
+                  route: "/animals",
+                ),
+                NavigationLink(
+                  iconName: "newspaper",
+                  text: "Nyheder",
+                  route: "non",
+                ),
+              ],
+              title: "Tasks",
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(16, 14, 16, 0),
+            child: EventContainer(
+              title: "Kommende arrangementer",
+              eventArr: [
+                Event(
+                  title: "Tiger besøg",
+                  description:
+                      "Træt af dine børn, nu kan du smide dem ind til tigerne!",
+                  imageUrl:
+                      "https://cms.aalborgzoo.dk/media/k23kerj1/for-bes%C3%B8gende-700x350.jpg",
+                  route: "non",
+                ),
+                Event(
+                  title: "Abe besøg",
+                  description:
+                      "Træt af dine børn, nu kan du smide dem ind til aberne!",
+                  imageUrl:
+                      "https://cms.aalborgzoo.dk/media/j0ej4iqh/fest-i-vilde-omgivelser-700x350.jpg",
+                  route: "non",
+                ),
+                Event(
+                  title: "Søløve besøg",
+                  description:
+                      "Træt af dine børn, nu kan du smide dem ind til søløverne!",
+                  imageUrl:
+                      "https://cms.aalborgzoo.dk/media/yz1pdqpt/nyhedsbrev-700x350.jpg",
+                  route: "non",
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

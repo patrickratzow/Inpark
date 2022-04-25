@@ -25,10 +25,6 @@ void main() async {
   setupIoC();
 
   runApp(const MyApp());
-
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-    statusBarColor: Colors.white,
-  ));
 }
 
 class MyHttpOverrides extends HttpOverrides {
@@ -59,6 +55,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: "Zoo App",
         initialRoute: "/home",
         onGenerateRoute: Routes.generateRoute,

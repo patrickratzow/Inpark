@@ -1,10 +1,11 @@
 import "package:flutter/material.dart";
+import 'package:flutter_app/features/animals/ui/animal/animal_overview_screen.dart';
+import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
+import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
 import "package:flutter_app/features/settings/ui/settings.dart";
 import 'package:flutter_app/features/speaks/ui/speak_overview_screen.dart';
 import "package:flutter_app/screens/zoomain.dart";
 import "package:flutter_app/screens/zooview.dart";
-import "features/animals/ui/animal_overview_screen.dart";
-import "features/animals/ui/animal_screen.dart";
 import "features/home/ui/home.dart";
 import "generated_code/zooinator.swagger.dart";
 
@@ -23,6 +24,10 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
       case "/settings":
         return MaterialPageRoute(builder: (_) => const Settings());
+      case "/animals/conservation-status-overview":
+        return MaterialPageRoute(
+          builder: (_) => const ConservationStatusOverviewScreen(),
+        );
       default:
         return _errorRoute();
     }
@@ -44,7 +49,18 @@ class Routes {
 
   static void goToSpeaksScreen(context, List<SpeakDto> speaks) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => SpeaksOverviewScreen(speaks: speaks)),
+      MaterialPageRoute(
+        builder: (_) => SpeaksOverviewScreen(speaks: speaks),
+      ),
+    );
+  }
+
+  static void goToConversationOverviewScreen(context, IUCNStatusDto status) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) =>
+            ConservationStatusOverviewScreen(highlightedStatus: status),
+      ),
     );
   }
 

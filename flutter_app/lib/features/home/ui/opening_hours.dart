@@ -11,13 +11,12 @@ class OpeningHours extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 32, 0, 0),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          padding: EdgeInsets.zero,
-        ),
-        onPressed: () {},
+    return InkWell(
+      highlightColor: Colors.transparent,
+      splashColor: Theme.of(context).splashColor,
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -36,8 +35,10 @@ class OpeningHours extends StatelessWidget {
                       );
                     }
                     if (value.error.isNotEmpty) {
-                      return Center(
-                        child: Text("Error ${value.error}"),
+                      return const Center(
+                        child: Text(
+                          "Ingen åbningstider tilgængelig, prøv igen senere",
+                        ),
                       );
                     }
 

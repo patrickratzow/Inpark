@@ -1,14 +1,15 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/common/ui/bullet_list.dart";
 import "package:flutter_app/common/ui/fullscreen_image.dart";
 import "package:flutter_app/common/ui/navigation_bar.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/features/animals/ui/animal_category.dart";
-import "package:flutter_app/features/animals/ui/conservation_status.dart";
+import 'package:flutter_app/features/animals/ui/conservation/conservation_status.dart';
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import 'package:flutter_app/routes.dart';
 
-import "../../../common/colors.dart";
+import 'animal_category.dart';
 
 class AnimalScreen extends StatelessWidget {
   final AnimalDto animal;
@@ -88,16 +89,23 @@ class AnimalScreen extends StatelessWidget {
                     icon: Icons.menu,
                     builder: (context) => Column(
                       children: [
-                        FittedBox(
-                          fit: BoxFit.contain,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                            child: _buildConservationStatus(animal),
+                        InkWell(
+                          onTap: () => Routes.goToConversationOverviewScreen(
+                            context,
+                            animal.status,
+                          ),
+                          splashColor: Theme.of(context).primaryColor,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                              child: _buildConservationStatus(animal),
+                            ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                          child: _buildContents(animal.contents),
+                          padding: const EdgeInsets.all(8),
+                          child: _buildContent(animal.contents[0]),
                         ),
                       ],
                     ),
@@ -105,7 +113,10 @@ class AnimalScreen extends StatelessWidget {
                   ZooinatorNavigationTab(
                     text: "Oversigt",
                     icon: Icons.dashboard,
-                    builder: (context) => const Text("local"),
+                    builder: (context) => Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: _buildTriviaContent(animal.contents[1]),
+                    ),
                   ),
                 ],
               ),
@@ -114,6 +125,62 @@ class AnimalScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildTriviaContent(ContentDto content) {
+    var items = content.children.first.children
+        .where((child) => child.type == "listitem");
+
+    var i = 0;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: items.map(
+        (item) {
+          i++;
+          final split = item.children.first.value.split(": ");
+          final title = split[0];
+          final body = split.skip(1).join(": ");
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xff7C7C7C),
+                  height: 18 / 10,
+                  fontFamily: "Poppins",
+                ),
+              ),
+              Text(
+                body,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.black,
+                  height: 18 / 14,
+                  fontFamily: "Poppins",
+                ),
+              ),
+              i == items.length ? Container() : const SizedBox(height: 16),
+            ],
+          );
+        },
+      ).toList(),
+    );
+
+    if (content.type == "list") {
+      var children =
+          content.children.where((child) => child.type == "listitem");
+
+      return BulletList(children: children.map(_buildContent).toList());
+    }
+    if (content.type == "listitem") {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: content.children.map(_buildContent).toList(),
+      );
+    }
   }
 
   Widget _buildConservationStatus(AnimalDto animal) {
@@ -235,18 +302,6 @@ class AnimalScreen extends StatelessWidget {
     }
     if (content.type == "spacer") {
       return const SizedBox(height: 4);
-    }
-    if (content.type == "list") {
-      var children =
-          content.children.where((child) => child.type == "listitem");
-
-      return BulletList(children: children.map(_buildContent).toList());
-    }
-    if (content.type == "listitem") {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: content.children.map(_buildContent).toList(),
-      );
     }
     /*if (content.type == "image") {
       return CachedNetworkImage(
