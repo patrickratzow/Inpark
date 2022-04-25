@@ -53,10 +53,10 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: const HomeAppBar(),
       body: ListView(
-        children: const [
-          OpeningHours(),
-          Padding(
-            padding: EdgeInsets.fromLTRB(16, 14, 0, 0),
+        children: [
+          const OpeningHours(),
+          const Padding(
+            padding: const EdgeInsets.fromLTRB(16, 14, 0, 0),
             child: NavigationLinkList(
               children: [
                 NavigationLink(
@@ -84,6 +84,10 @@ class Home extends StatelessWidget {
             ),
           ),
           Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: _buildSpeaks(context),
+          ),
+          const Padding(
             padding: EdgeInsets.fromLTRB(16, 14, 16, 0),
             child: EventContainer(
               title: "Kommende arrangementer",
@@ -135,9 +139,12 @@ class Home extends StatelessWidget {
         }
 
         List<Widget> widgets = [
-          const TitleBar(
-            fontSize: 16,
-            name: "Aktiviteter & Speaks i dag",
+          const Padding(
+            padding: EdgeInsets.only(left: 8),
+            child: TitleBar(
+              fontSize: 16,
+              name: "Aktiviteter & Speaks i dag",
+            ),
           ),
           SpeaksList(speaks: value.topThreeSpeaks),
           /*

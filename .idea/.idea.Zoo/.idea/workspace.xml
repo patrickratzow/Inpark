@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/speaks_preview.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/speaks_preview.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/routes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
