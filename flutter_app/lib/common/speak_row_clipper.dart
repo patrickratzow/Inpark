@@ -1,45 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class DolDurmaClipper extends CustomClipper<Path> {
-  DolDurmaClipper({required this.right, required this.radius});
-
-  final double right;
-  final double radius;
-
-  @override
-  Path getClip(Size size) {
-    final path = Path()
-      ..moveTo(0, 0)
-      ..lineTo(size.width - right - radius, 0.0)
-      ..arcToPoint(
-        Offset(size.width - right, 0),
-        clockwise: false,
-        radius: const Radius.circular(1),
-      )
-      ..lineTo(size.width, 0.0)
-      ..lineTo(size.width, size.height)
-      ..lineTo(size.width - right, size.height)
-      ..arcToPoint(
-        Offset(size.width - right - radius, size.height),
-        clockwise: false,
-        radius: const Radius.circular(1),
-      );
-
-    path.lineTo(0.0, size.height);
-
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(DolDurmaClipper oldClipper) => true;
-}
-
-class MyPainter extends CustomPainter {
+class SpeakRowClipper extends CustomPainter {
   double radius;
 
-  MyPainter({required this.radius});
+  SpeakRowClipper({required this.radius});
 
   @override
   void paint(Canvas canvas, Size size) {

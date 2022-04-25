@@ -147,20 +147,6 @@ class Home extends StatelessWidget {
             ),
           ),
           SpeaksList(speaks: value.topThreeSpeaks),
-          /*
-          TextButton(
-            style: TextButton.styleFrom(
-              backgroundColor: CustomColor.green.lightest,
-              padding: const EdgeInsets.all(8.0),
-              primary: CustomColor.green.darkest,
-              textStyle: const TextStyle(fontSize: 18),
-            ),
-            onPressed: () {
-              Routes.goToSpeaksScreen(context, value.speaks);
-            },
-            child: const Text("Vis alle speaks for dagen"),
-            );
-           */
         ];
 
         return Column(

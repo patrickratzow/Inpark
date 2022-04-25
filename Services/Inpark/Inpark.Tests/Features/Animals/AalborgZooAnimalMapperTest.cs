@@ -10,8 +10,7 @@ namespace Zoo.Inpark.Tests.Features.Animals;
 
 [TestFixture]
 [Category(Categories.Unit)]
-//TODO rename class name
-public class AalborgZooContentMapperTest : TestBase
+public class AalborgZooAnimalMapperTest : TestBase
 {
     private Content Spacer()
     {

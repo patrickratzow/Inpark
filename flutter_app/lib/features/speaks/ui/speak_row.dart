@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:intl/intl.dart";
 
 import "../../../common/dashed_vertical_line.dart";
-import "../../../common/half_circle_clipper.dart";
+import "../../../common/speak_row_clipper.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
 
 class SpeakRow extends StatelessWidget {
@@ -13,24 +13,8 @@ class SpeakRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final DateFormat formatter = DateFormat("HH:mm");
 
-    return CustomPaintBorder(formatter: formatter, speak: speak);
-  }
-}
-
-class CustomPaintBorder extends StatelessWidget {
-  const CustomPaintBorder({
-    Key? key,
-    required this.formatter,
-    required this.speak,
-  }) : super(key: key);
-
-  final DateFormat formatter;
-  final SpeakDto speak;
-
-  @override
-  Widget build(BuildContext context) {
     return CustomPaint(
-      painter: MyPainter(radius: 8),
+      painter: SpeakRowClipper(radius: 8),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [

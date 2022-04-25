@@ -10,7 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status_explaination_row.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status_overview_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/event..dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/event_containter.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/OpeningHourDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/OpeningHourDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/azure-pipelines.yml" beforeDir="false" afterPath="$PROJECT_DIR$/azure-pipelines.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/colors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/fullscreen_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/fullscreen_image.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/home_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/home_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/screen_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/screen_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/switch.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/switch.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/iucn_status.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/iucn_status.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal_category.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_category.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal_overview_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_overview_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation_status.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/opening_hours.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/opening_hours.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/routes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
