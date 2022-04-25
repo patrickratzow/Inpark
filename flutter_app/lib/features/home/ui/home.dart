@@ -91,10 +91,10 @@ class Home extends StatelessWidget {
                   route: "non",
                 ),
                 Event(
-                  title: "Abe besøg",
-                  description: "3. maj 2022",
+                  title: "Morgenrundvisning",
+                  description: "22. maj 2022",
                   imageUrl:
-                      "https://cms.aalborgzoo.dk/media/j0ej4iqh/fest-i-vilde-omgivelser-700x350.jpg",
+                      "https://cms.aalborgzoo.dk/media/ijkpfwi0/vinterferie_2021-700x350.jpg?width=592",
                   route: "non",
                 ),
                 /*
