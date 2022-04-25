@@ -35,15 +35,18 @@ public class GetOpeningHoursForTodayQueryHandler
             .ToListAsync(cancellationToken);
         
         return openingHours
-            .Select(x => new OpeningHourDto(
-                x.Name,
-                x.Range.Start,
-                x.Range.End,
-                x.Open,
-                x.Days.ToDays()
-            ))
-            .ToList();
+            .ToLookup(x => x.Range.Start.TimeOfDay)
+            .Select(start => start.MaxBy(x => x.Range.End.TimeOfDay))
+            .Select(longestOpeningHour => new OpeningHourDto(
+                    longestOpeningHour!.Name, 
+                    longestOpeningHour.Range.Start, 
+                    longestOpeningHour.Range.End, 
+                    longestOpeningHour.Open, 
+                    longestOpeningHour.Days.ToDays()
+                )
+            ).ToList();
     }
+}
 
 [ApiController]
 [MethodGroup(Groups.OpeningHours)]

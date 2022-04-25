@@ -2,8 +2,8 @@ namespace Zoo.Inpark.Contracts;
 
 public record OpeningHourDto(
     string Name,
-    DateTimeOffset Start,
-    DateTimeOffset End,
+    DateTime Start,
+    DateTime End,
     bool Open,
-    List<String> Days
+    List<string> Days
 );
