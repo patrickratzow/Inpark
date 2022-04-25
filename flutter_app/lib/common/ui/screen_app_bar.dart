@@ -23,7 +23,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     if (isAndroid) {
       return AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: Colors.white,
         ),
         backgroundColor: Colors.white,

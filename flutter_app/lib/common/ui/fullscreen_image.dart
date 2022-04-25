@@ -19,7 +19,7 @@ class FullScreenImage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black87,
       appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: Colors.black,
         ),
         title: Text(title),

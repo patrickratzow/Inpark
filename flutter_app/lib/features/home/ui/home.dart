@@ -88,7 +88,7 @@ class Home extends StatelessWidget {
             child: _buildSpeaks(context),
           ),
           const Padding(
-            padding: EdgeInsets.fromLTRB(16, 14, 16, 0),
+            padding: EdgeInsets.fromLTRB(16, 14, 16, 16),
             child: EventContainer(
               title: "Kommende arrangementer",
               eventArr: [
@@ -143,10 +143,10 @@ class Home extends StatelessWidget {
             padding: EdgeInsets.only(left: 8),
             child: TitleBar(
               fontSize: 16,
-              name: "Aktiviteter & Speaks i dag",
+              name: "Dagens speaks",
             ),
           ),
-          SpeaksList(speaks: value.topThreeSpeaks),
+          SpeaksList(speaks: value.speaks),
         ];
 
         return Column(

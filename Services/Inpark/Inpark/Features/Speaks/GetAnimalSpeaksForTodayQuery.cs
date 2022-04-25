@@ -39,7 +39,7 @@ public class GetAnimalSpeaksForTodayQueryHandler :
                     .FirstOrDefault()
             })
             .Where(x => x.SpeakTime != null)
-            .OrderBy(x => x.SpeakTime)
+            .OrderBy(x => x.SpeakTime!.Range.Start.TimeOfDay)
             .ToListAsync(cancellationToken);
             
         return speaks
