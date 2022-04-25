@@ -25,7 +25,7 @@ class OpeningHours extends StatelessWidget {
               children: [
                 const TitleBar(
                   fontSize: 16,
-                  name: "Åbningstider:",
+                  name: "Åbningstider",
                 ),
                 Consumer<HomeModel>(
                   builder: (context, value, child) {
