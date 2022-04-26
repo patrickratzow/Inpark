@@ -5,6 +5,7 @@ import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
 import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
 import "package:flutter_app/features/settings/ui/settings.dart";
 import 'package:flutter_app/features/speaks/ui/speak_overview_screen.dart';
+import 'package:flutter_app/features/tickets/ui/ticket_view.dart';
 import "features/home/ui/home.dart";
 import "generated_code/zooinator.swagger.dart";
 
@@ -22,6 +23,10 @@ class Routes {
       case "/animals/conservation-status-overview":
         return MaterialPageRoute(
           builder: (_) => const ConservationStatusOverviewScreen(),
+        );
+      case "/tickets":
+        return MaterialPageRoute(
+          builder: (_) => TicketView(),
         );
       default:
         return _errorRoute();

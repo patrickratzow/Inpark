@@ -6,6 +6,7 @@ import "package:flutter_app/features/home/ui/event_containter.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
 import 'package:flutter_app/features/home/ui/speaks_preview.dart';
 import 'package:flutter_app/features/speaks/models/speak_model.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
@@ -55,26 +56,26 @@ class Home extends StatelessWidget {
       body: ListView(
         children: [
           const OpeningHours(),
-          const Padding(
+          Padding(
             padding: const EdgeInsets.fromLTRB(16, 14, 0, 0),
             child: NavigationLinkList(
               children: [
                 NavigationLink(
                   iconName: "ticket",
                   text: "Billetter",
-                  route: "non",
+                  onPressed: () => _launchURL(context),
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "calendar",
                   text: "Aktivitets\nkalender",
                   route: "non",
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "pawprint",
                   text: "Vores Dyr",
                   route: "/animals",
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "newspaper",
                   text: "Nyheder",
                   route: "non",
@@ -122,6 +123,36 @@ class Home extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _launchURL(BuildContext context) async {
+    try {
+      await launch(
+        'https://shop.aalborgzoo.dk/entrebilletter',
+        customTabsOption: CustomTabsOption(
+          toolbarColor: CustomColor.green.lightest,
+          enableDefaultShare: true,
+          enableUrlBarHiding: true,
+          showPageTitle: true,
+          extraCustomTabs: const <String>[
+            // ref. https://play.google.com/store/apps/details?id=org.mozilla.firefox
+            'org.mozilla.firefox',
+            // ref. https://play.google.com/store/apps/details?id=com.microsoft.emmx
+            'com.microsoft.emmx',
+          ],
+        ),
+        safariVCOption: SafariViewControllerOption(
+          preferredBarTintColor: Theme.of(context).primaryColor,
+          preferredControlTintColor: Colors.white,
+          barCollapsingEnabled: true,
+          entersReaderIfAvailable: false,
+          dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
+        ),
+      );
+    } catch (e) {
+      // An exception is thrown if browser app is not installed on Android device.
+      debugPrint(e.toString());
+    }
   }
 
   Widget _buildSpeaks(BuildContext context) {
