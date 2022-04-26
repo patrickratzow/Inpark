@@ -24,10 +24,6 @@ class Routes {
         return MaterialPageRoute(
           builder: (_) => const ConservationStatusOverviewScreen(),
         );
-      case "/tickets":
-        return MaterialPageRoute(
-          builder: (_) => TicketView(),
-        );
       default:
         return _errorRoute();
     }
