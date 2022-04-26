@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_app/common/colors.dart';
+import 'package:flutter_app/common/launch_url.dart';
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/home/ui/event..dart";
 import "package:flutter_app/features/home/ui/event_containter.dart";
@@ -63,7 +64,10 @@ class Home extends StatelessWidget {
                 NavigationLink(
                   iconName: "ticket",
                   text: "Billetter",
-                  onPressed: () => _launchURL(context),
+                  onPressed: () => Url.launchUrl(
+                    context,
+                    "https://shop.aalborgzoo.dk/entrebilletter",
+                  ),
                 ),
                 const NavigationLink(
                   iconName: "calendar",
@@ -123,36 +127,6 @@ class Home extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  void _launchURL(BuildContext context) async {
-    try {
-      await launch(
-        'https://shop.aalborgzoo.dk/entrebilletter',
-        customTabsOption: CustomTabsOption(
-          toolbarColor: CustomColor.green.lightest,
-          enableDefaultShare: true,
-          enableUrlBarHiding: true,
-          showPageTitle: true,
-          extraCustomTabs: const <String>[
-            // ref. https://play.google.com/store/apps/details?id=org.mozilla.firefox
-            'org.mozilla.firefox',
-            // ref. https://play.google.com/store/apps/details?id=com.microsoft.emmx
-            'com.microsoft.emmx',
-          ],
-        ),
-        safariVCOption: SafariViewControllerOption(
-          preferredBarTintColor: Theme.of(context).primaryColor,
-          preferredControlTintColor: Colors.white,
-          barCollapsingEnabled: true,
-          entersReaderIfAvailable: false,
-          dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
-        ),
-      );
-    } catch (e) {
-      // An exception is thrown if browser app is not installed on Android device.
-      debugPrint(e.toString());
-    }
   }
 
   Widget _buildSpeaks(BuildContext context) {
