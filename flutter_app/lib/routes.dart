@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/ui/screen_app_bar.dart';
-import 'package:flutter_app/features/animals/ui/animal/animal_overview_screen.dart';
-import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
-import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
+import "package:flutter_app/common/ui/screen_app_bar.dart";
+import "package:flutter_app/features/animals/ui/animal/animal_overview_screen.dart";
+import "package:flutter_app/features/animals/ui/animal/animal_screen.dart";
+import "package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart";
 import "package:flutter_app/features/settings/ui/settings.dart";
-import 'package:flutter_app/features/speaks/ui/speak_overview_screen.dart';
+import "package:flutter_app/features/speaks/ui/speak_overview_screen.dart";
 import "features/home/ui/home.dart";
 import "generated_code/zooinator.swagger.dart";
 
