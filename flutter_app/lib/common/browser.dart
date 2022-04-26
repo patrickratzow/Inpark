@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import "package:flutter_app/common/colors.dart";
 import "package:flutter_custom_tabs/flutter_custom_tabs.dart";
 
-class Url {
-  static void launchUrl(BuildContext context, String url) async {
+class Browser {
+  static void openUrl(BuildContext context, String url) async {
     try {
       await launch(
         url,

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_app/common/colors.dart';
-import 'package:flutter_app/common/launch_url.dart';
+import 'package:flutter_app/common/browser.dart';
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/home/ui/event..dart";
 import "package:flutter_app/features/home/ui/event_containter.dart";
@@ -64,7 +64,7 @@ class Home extends StatelessWidget {
                 NavigationLink(
                   iconName: "ticket",
                   text: "Billetter",
-                  onPressed: () => Url.launchUrl(
+                  onPressed: () => Browser.openUrl(
                     context,
                     "https://shop.aalborgzoo.dk/entrebilletter",
                   ),
