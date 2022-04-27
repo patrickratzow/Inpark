@@ -1,10 +1,13 @@
 import "package:flutter/material.dart";
+import 'package:flutter_app/common/colors.dart';
+import 'package:flutter_app/common/browser.dart';
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/home/ui/event..dart";
 import "package:flutter_app/features/home/ui/event_containter.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
-import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/features/home/ui/speaks_list.dart";
+import 'package:flutter_app/features/home/ui/speaks_list.dart';
+import 'package:flutter_app/features/speaks/models/speak_model.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
@@ -53,26 +56,29 @@ class Home extends StatelessWidget {
       body: ListView(
         children: [
           const OpeningHours(),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 14, 0, 0),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 14, 0, 0),
             child: NavigationLinkList(
               children: [
                 NavigationLink(
                   iconName: "ticket",
                   text: "Billetter",
-                  route: "non",
+                  onPressed: () => Browser.openUrl(
+                    context,
+                    "https://shop.aalborgzoo.dk/entrebilletter",
+                  ),
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "calendar",
                   text: "Aktivitets\nkalender",
                   route: "non",
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "pawprint",
                   text: "Vores Dyr",
                   route: "/animals",
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "newspaper",
                   text: "Nyheder",
                   route: "non",
