@@ -4,7 +4,7 @@ import "package:flutter_app/common/colors.dart";
 import "package:flutter_custom_tabs/flutter_custom_tabs.dart";
 
 class Browser {
-  static void openUrl(BuildContext context, String url) async {
+  static Future openUrl(BuildContext context, String url) async {
     try {
       await launch(
         url,
@@ -29,8 +29,11 @@ class Browser {
         ),
       );
     } catch (e) {
-      // An exception is thrown if browser app is not installed on Android device.
-      debugPrint(e.toString());
+      const snackBar = SnackBar(
+        content: Text('Kunne ikke tilgå billetsiden på nuværende tidspunkt'),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 }
