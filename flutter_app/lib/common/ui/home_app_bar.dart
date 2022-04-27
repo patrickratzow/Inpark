@@ -54,10 +54,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
               title != null
-                  ? TitleBar(
-                      name: title!,
-                      fontSize: 16,
-                      color: CustomColor.green.text,
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: TitleBar(
+                        name: title!,
+                        fontSize: 16,
+                        color: CustomColor.green.text,
+                      ),
                     )
                   : Container(),
             ],

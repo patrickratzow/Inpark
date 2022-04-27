@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/features/animals/ui/animal/animal_overview_screen.dart";
-import "package:flutter_app/features/animals/ui/animal/animal_screen.dart";
-import "package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart";
+import 'package:flutter_app/common/ui/screen_app_bar.dart';
+import 'package:flutter_app/features/animals/ui/animal/animal_overview_screen.dart';
+import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
+import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
+import 'package:flutter_app/features/calendar/calendar_screen.dart';
 import "package:flutter_app/features/settings/ui/settings.dart";
 import "package:flutter_app/features/speaks/ui/speak_overview_screen.dart";
 import "features/home/ui/home.dart";
@@ -23,6 +24,8 @@ class Routes {
         return MaterialPageRoute(
           builder: (_) => const ConservationStatusOverviewScreen(),
         );
+      case "/calendar":
+        return MaterialPageRoute(builder: (_) => const CalendarScreen());
       default:
         return _errorRoute();
     }
@@ -62,7 +65,7 @@ class Routes {
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
-        appBar: ScreenAppBar(name: "Side ikke fundet"),
+        appBar: ScreenAppBar(title: "Side ikke fundet"),
         body: const Center(
           child: Text("Vi arbejder på at få tilføjet det :)"),
         ),

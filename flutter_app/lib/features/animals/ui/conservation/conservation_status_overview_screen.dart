@@ -15,7 +15,7 @@ class ConservationStatusOverviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const ScreenAppBar(name: "Bevaringsstatuser"),
+      appBar: const ScreenAppBar(title: "Bevaringsstatuser"),
       body: ListView(
         children: [
           const SizedBox(height: 12),

@@ -17,7 +17,7 @@ class SpeaksOverviewScreen extends StatelessWidget {
     context.read<SpeakModel>().fetchSpeaksForToday();
 
     return Scaffold(
-      appBar: const ScreenAppBar(name: "Alle Aktiviteter og Speaks"),
+      appBar: const ScreenAppBar(title: "Alle Aktiviteter og Speaks"),
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(

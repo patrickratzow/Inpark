@@ -13,10 +13,9 @@ import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
 import "package:flutter/foundation.dart" show kDebugMode;
 
-import '../../../routes.dart';
-import 'navigation_link.dart';
-import 'navigation_link_list.dart';
-import 'opening_hours.dart';
+import "navigation_link.dart";
+import "navigation_link_list.dart";
+import "opening_hours.dart";
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

@@ -10,7 +10,7 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const ScreenAppBar(name: "Settings"),
+      appBar: const ScreenAppBar(title: "Settings"),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         child: Column(
