@@ -16,7 +16,7 @@ class OpeningHours extends StatelessWidget {
       highlightColor: Colors.transparent,
       splashColor: Theme.of(context).splashColor,
       onTap: () {
-        Routes.goToRoute(context, "opening-hours");
+        Routes.goToRoute(context, "/calendar");
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
