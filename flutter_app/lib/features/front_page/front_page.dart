@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import "package:flutter_app/common/colors.dart";
 import 'package:flutter_app/routes.dart';
-import 'package:flutter_app/video_player.dart';
+import 'package:flutter_app/features/front_page/video_player.dart';
 import "package:flutter_svg/flutter_svg.dart";
 
 class FrontPage extends StatelessWidget {

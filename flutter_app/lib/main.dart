@@ -5,7 +5,7 @@ import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:firebase_core/firebase_core.dart";
 import 'package:flutter_app/features/speaks/models/speak_model.dart';
-import 'package:flutter_app/front_page.dart';
+import 'package:flutter_app/features/front_page/front_page.dart';
 import "package:flutter_app/routes.dart";
 import "package:provider/provider.dart";
 import "common/ioc.dart";
