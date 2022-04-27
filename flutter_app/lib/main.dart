@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Zoo App",
-        initialRoute: "/frontPage",
+        initialRoute: "/front-page",
         onGenerateRoute: Routes.generateRoute,
         theme: ThemeData(
           fontFamily: "Inter",
