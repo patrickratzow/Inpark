@@ -21,7 +21,7 @@ function Get-Spec {
 
 function Start-CodeGeneration {
   $path = Get-WorkingPath
-  if (Test-Path -Path "$path\lib\generated_code" -PathType Leaf) {
+  if (Test-Path -Path "$path\lib\generated_code\client_index.dart" -PathType Leaf) {
     Remove-Item "$path\lib\generated_code" -Recurse
   }
   Invoke-Expression "flutter pub run build_runner build"

@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:flutter_app/features/animals/ui/search_bar.dart";
+import 'package:flutter_app/features/calendar/calendar_screen.dart';
 import 'package:flutter_app/routes.dart';
 import "package:provider/provider.dart";
 
@@ -43,6 +44,7 @@ class AnimalOverviewScreen extends StatelessWidget {
                 },
               )
             : ScreenAppBar(
+                title: "Vores Dyr",
                 actions: [buildSearchIcon(context)],
               );
 
@@ -93,8 +95,9 @@ class AnimalsOverviewList extends StatelessWidget {
               }
 
               final animal = animalsModel.animals[index];
+              final double topPadding = index == 0 ? 16 : 0;
               return Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                padding: EdgeInsets.fromLTRB(16, topPadding, 16, 0),
                 child: TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: () {
