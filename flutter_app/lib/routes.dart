@@ -24,7 +24,7 @@ class Routes {
         return MaterialPageRoute(
           builder: (_) => const ConservationStatusOverviewScreen(),
         );
-      case "/frontPage":
+      case "/front-page":
         return MaterialPageRoute(
           builder: (_) => FrontPage(),
         );
