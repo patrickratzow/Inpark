@@ -46,6 +46,7 @@ dependencies:
   flutter_hooks: ^0.18.3
   intl: ^0.17.0
   flutter_svg: ^1.0.3
+  video_player:
 
 dev_dependencies:
   build_runner: ^2.1.7
