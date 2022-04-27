@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
-
-import '../../../common/colors.dart';
-import '../../../routes.dart';
+import "../../../common/colors.dart";
+import "../../../routes.dart";
 
 class NavigationLink extends StatelessWidget {
   const NavigationLink({
