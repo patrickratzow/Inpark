@@ -29,11 +29,11 @@ class Browser {
         ),
       );
     } catch (e) {
-      const snackBar = SnackBar(
-        content: Text('Kunne ikke tilgå billetsiden på nuværende tidspunkt'),
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Kunne ikke tilgå billetsiden på nuværende tidspunkt"),
+        ),
       );
-
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 }
