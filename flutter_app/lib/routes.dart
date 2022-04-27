@@ -65,7 +65,7 @@ class Routes {
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
-        appBar: ScreenAppBar(name: "Side ikke fundet"),
+        appBar: ScreenAppBar(title: "Side ikke fundet"),
         body: const Center(
           child: Text("Vi arbejder på at få tilføjet det :)"),
         ),
