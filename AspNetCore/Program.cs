@@ -9,7 +9,7 @@ using Zoo.Inpark;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddPayments(builder.Configuration);
+builder.Services.AddTenantManager();
 builder.Services.AddInpark(builder.Configuration);
 
 if (builder.Configuration["Azure:Insights:Enabled"] is "true")
@@ -79,6 +79,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseTenantManagerSession();
 
 app.UseFluentValidationExceptionHandler();
 

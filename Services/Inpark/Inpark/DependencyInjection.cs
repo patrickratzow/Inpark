@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
 using Zoo.Inpark.Common;
-using Zoo.Inpark.Features.Animals;
 using Zoo.Inpark.Features.Animals.AalborgZoo;
 using Zoo.Inpark.Features.Animals.Interfaces;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
@@ -47,21 +46,37 @@ public static class DependencyInjection
 
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
         
-        services.AddSingleton<IAnimalRepository, AalborgZooAnimalRepository>();
+        // Aalborg zoo
+        services.AddSingleton<IAnimalRepository>(sp =>
+        {
+            var tenant = sp.GetRequiredService<ITenantManager>().Tenant;
+            if (tenant.AnimalProvider is AnimalProvider.Umbraco)
+            {
+                return new AalborgZooAnimalRepository(
+                    sp.GetRequiredService<HttpClient>(),
+                    sp.GetRequiredService<ILogger<AalborgZooAnimalRepository>>()
+                );
+            }
+
+            throw new NotSupportedException();
+        });
+        services.AddScoped<IAnimalMapper, AalborgZooAnimalMapper>();
+
+        services.AddScoped<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
+        services.AddScoped<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
+
+        services.AddScoped<ISpeaksRepository, AalborgZooSpeaksRepository>();
+        services.AddScoped<ISpeaksMapper, AalborgZooSpeaksMapper>();
+        
         services.AddHttpClient<IAnimalRepository, AalborgZooAnimalRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
-        services.AddSingleton<IAnimalMapper, AalborgZooAnimalMapper>();
-
-        services.AddSingleton<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
         services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
-        services.AddSingleton<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
-
-        services.AddSingleton<ISpeaksRepository, AalborgZooSpeaksRepository>();
         services.AddHttpClient<ISpeaksRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
-        services.AddSingleton<ISpeaksMapper, AalborgZooSpeaksMapper>();
         
+        services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
+            .AddPolicyHandler(GetRetryPolicy());
         services.AddResponseMapper();
     }
 
