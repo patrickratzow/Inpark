@@ -27,6 +27,7 @@ class CalendarScreen extends HookWidget {
               children: [
                 _buildHeaderRow(),
                 _buildDaysRow(),
+                _buildDates(),
               ],
             ),
           ),
@@ -50,7 +51,7 @@ class CalendarScreen extends HookWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.fromLTRB(16, 20, 16, 12),
           child: Text(
             "Oktober 2022",
             style: TextStyle(
@@ -93,7 +94,7 @@ class CalendarScreen extends HookWidget {
     final days = ["Man", "Tir", "Ons", "Tor", "Fre", "Lør", "Søn"];
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: days
@@ -109,5 +110,79 @@ class CalendarScreen extends HookWidget {
             .toList(),
       ),
     );
+  }
+
+  Widget _buildDates() {
+    var date = CalendarDate(2022, 10, 1);
+    var days = date.daysInMonth;
+    var amountOfRows = (days / 7).ceil();
+    var rows = <Row>[];
+    for (var i = 0; i < amountOfRows; i++) {
+      var row = Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          for (var j = 0; j < 7; j++)
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 2,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  date.day.toString(),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color(0xff0A0A0A),
+                  ),
+                ),
+              ),
+            ),
+        ],
+      );
+      rows.add(row);
+    }
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
+      child: Column(children: rows),
+    );
+  }
+}
+
+class CalendarDate {
+  int year;
+  int month;
+  int day;
+
+  CalendarDate(this.year, this.month, this.day);
+
+  int get daysInMonth => difference(1).inDays;
+  int get daysInPreviousMonth => difference(-1).inDays;
+
+  Duration difference(int months) {
+    assert(months != 0);
+
+    var current = DateTime(year, month);
+    DateTime next;
+    if (months > 0) {
+      // If the month is december go to next year
+      next = month == DateTime.december
+          ? DateTime(year + 1, 1)
+          : DateTime(year, month + 1);
+    } else {
+      next = month == DateTime.january
+          ? DateTime(year - 1, 12)
+          : DateTime(year, month - 1);
+    }
+
+    return next.toUtc().difference(current);
   }
 }
