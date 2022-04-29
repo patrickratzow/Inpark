@@ -14,6 +14,8 @@ using Zoo.Inpark.Common;
 using Zoo.Inpark.Features.Animals;
 using Zoo.Inpark.Features.Animals.AalborgZoo;
 using Zoo.Inpark.Features.Animals.Interfaces;
+using Zoo.Inpark.Features.Events.AalborgZoo;
+using Zoo.Inpark.Features.Events.Interfaces;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.Features.Speaks.AalborgZoo;
@@ -61,7 +63,12 @@ public static class DependencyInjection
         services.AddHttpClient<ISpeaksRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<ISpeaksMapper, AalborgZooSpeaksMapper>();
-        
+
+        services.AddSingleton<IParkEventRepository, AalborgZooParkEventRepository>();
+        services.AddHttpClient<IParkEventRepository, AalborgZooParkEventRepository>(AalborgZooHttpClient)
+            .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<IParkEventMapper, AalborgZooParkEventMapper>();
+
         services.AddResponseMapper();
     }
 
@@ -81,7 +88,11 @@ public static class DependencyInjection
             // Not having JobStorage setup will cause RecurringJob to fail
             app.ApplicationServices.GetRequiredService<JobStorage>();
         }
-        
+        RecurringJob.AddOrUpdate<AalborgZooParkEventsJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
         RecurringJob.AddOrUpdate<AalborgZooOpeningHoursJob>(
             x => x.Execute(),
             "* 3 * * *", // Every day at 3 AM 

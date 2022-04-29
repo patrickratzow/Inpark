@@ -6,6 +6,8 @@ import 'package:flutter_app/features/home/repositories/home_repository.dart';
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "package:get_it/get_it.dart";
 
+import '../features/home/repositories/park_event_repository.dart';
+
 final locator = GetIt.instance;
 
 void setupIoC() {
@@ -21,4 +23,6 @@ void setupIoC() {
   setupAnimalsIoC(locator);
 
   locator.registerLazySingleton<HomeRepository>(() => HomeRepository());
+  locator
+      .registerLazySingleton<ParkEventRepository>(() => ParkEventRepository());
 }

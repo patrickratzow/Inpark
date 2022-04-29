@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/extensions/iterable.dart';
+import "package:flutter_app/common/extensions/iterable.dart";
 import "package:flutter_app/common/ioc.dart";
 import "package:flutter_app/features/home/repositories/home_repository.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";

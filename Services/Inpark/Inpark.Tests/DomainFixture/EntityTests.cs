@@ -29,4 +29,11 @@ public class EntityTests
         new object[] { typeof(Speak), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
     )]
     public void SpeakTests(IEntityTester tester) => tester.Run();
+
+    [TestCaseSource(
+        typeof(EntityTestSource),
+        nameof(EntityTestSource.Test),
+        new object[] { typeof(ParkEvent), new[] { typeof(Entity), typeof(ValueObject) }, new Type[] { } }
+    )]
+    public void ParkEventTests(IEntityTester tester) => tester.Run();
 }

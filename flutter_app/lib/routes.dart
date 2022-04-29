@@ -6,6 +6,7 @@ import "package:flutter_app/features/settings/ui/settings.dart";
 import "package:flutter_app/screens/zoomain.dart";
 import "package:flutter_app/screens/zooview.dart";
 import "features/home/ui/home.dart";
+import 'features/home/ui/park_event_screen.dart';
 import "generated_code/zooinator.swagger.dart";
 
 class Routes {
@@ -43,6 +44,12 @@ class Routes {
   static void goToAnimalScreen(context, AnimalDto animal) {
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => AnimalScreen(animal: animal)),
+    );
+  }
+
+  static void goToParkEventScreen(context, ParkEventDto parkEvent) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => ParkEventScreen(parkEvent: parkEvent)),
     );
   }
 

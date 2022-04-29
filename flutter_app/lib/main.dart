@@ -7,6 +7,7 @@ import "package:firebase_core/firebase_core.dart";
 import "package:flutter_app/routes.dart";
 import "package:provider/provider.dart";
 import "common/ioc.dart";
+import 'features/home/models/event_model.dart';
 import "features/home/models/home_model.dart";
 import 'features/home/ui/home.dart';
 import "firebase_options.dart";
@@ -52,6 +53,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<HomeModel>(
           create: (context) => HomeModel(),
+        ),
+        ChangeNotifierProvider<ParkEventModel>(
+          create: (context) => ParkEventModel(),
         ),
       ],
       child: MaterialApp(

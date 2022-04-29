@@ -77,7 +77,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
             var root = json.RootElement;
 
             var contents = new List<IContent>();
-            foreach (
+            foreach ( 
                 var animalArrayContent in
                 from itemContentJson in root.EnumerateArray()
                 select itemContentJson.GetProperty("content")
@@ -95,7 +95,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
                     "header" => GetContentValue(animalContent, type, "header"),
                     "image" => GetContentValue(animalContent, type, "image"),
                     _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown animal type")
-                };
+                }; 
                 var parsedContent = TransformContent(contentObject);
                 
                 contents.Add(parsedContent);

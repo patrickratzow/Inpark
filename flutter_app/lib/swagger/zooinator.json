@@ -305,6 +305,74 @@
         }
       }
     },
+    "/park-events": {
+      "get": {
+        "tags": [
+          "ParkEvents"
+        ],
+        "operationId": "getParkEvents",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ParkEventDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ParkEventDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ParkEventDto"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products": {
       "post": {
         "tags": [
@@ -433,6 +501,74 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Zoo.Payments.Contracts.ProductNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/speaks/today": {
+      "get": {
+        "tags": [
+          "Speaks"
+        ],
+        "operationId": "getSpeaksForToday",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.SpeakDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.SpeakDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.SpeakDto"
+                  }
                 }
               }
             }
@@ -650,6 +786,84 @@
           },
           "open": {
             "type": "boolean"
+          },
+          "days": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.ParkEventDto": {
+        "required": [
+          "descriptionContent",
+          "end",
+          "id",
+          "image",
+          "programContent",
+          "start",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "image": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalImageDto"
+              }
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "descriptionContent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
+            }
+          },
+          "programContent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.SpeakDto": {
+        "required": [
+          "days",
+          "end",
+          "start",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
           },
           "days": {
             "type": "array",

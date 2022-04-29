@@ -93,35 +93,7 @@ class Home extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    child: EventContainer(
-                      title: "Today´s events:",
-                      eventArr: [
-                        Event(
-                          title: "Tiger besøg",
-                          description:
-                              "Træt af dine børn, nu kan du smide dem ind til tigerne!wqoiej qoiwje qiowje qwoijeq oiwjeqoiwjeqowije qiwojeqiowjeqowiejqoiwejqoiwjeoiqwjeoiqwje oqiwjeoiqwje oiqjeoqwije",
-                          imageUrl:
-                              "https://cms.aalborgzoo.dk/media/k23kerj1/for-bes%C3%B8gende-700x350.jpg",
-                          route: "non",
-                        ),
-                        Event(
-                          title: "Abe besøg",
-                          description:
-                              "Træt af dine børn, nu kan du smide dem ind til aberne!",
-                          imageUrl:
-                              "https://cms.aalborgzoo.dk/media/j0ej4iqh/fest-i-vilde-omgivelser-700x350.jpg",
-                          route: "non",
-                        ),
-                        Event(
-                          title: "Søløve besøg",
-                          description:
-                              "Træt af dine børn, nu kan du smide dem ind til søløverne!",
-                          imageUrl:
-                              "https://cms.aalborgzoo.dk/media/yz1pdqpt/nyhedsbrev-700x350.jpg",
-                          route: "non",
-                        ),
-                      ],
-                    ),
+                    child: EventContainer(title: "Kommende arrangementer:"),
                   ),
                 ],
               ),
