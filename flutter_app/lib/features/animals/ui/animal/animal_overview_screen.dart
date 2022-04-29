@@ -7,9 +7,14 @@ import "package:provider/provider.dart";
 
 import "animal_card.dart";
 
-class AnimalOverviewScreen extends StatelessWidget {
+class AnimalOverviewScreen extends StatefulWidget {
   const AnimalOverviewScreen({Key? key}) : super(key: key);
 
+  @override
+  State<AnimalOverviewScreen> createState() => _AnimalOverviewScreenState();
+}
+
+class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +22,9 @@ class AnimalOverviewScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(58), child: Container()),
+              preferredSize: const Size.fromHeight(50),
+              child: Container(),
+            ),
             pinned: false,
             snap: false,
             automaticallyImplyLeading: false,
@@ -49,6 +56,26 @@ class AnimalOverviewScreen extends StatelessWidget {
                 actions: [
                   buildSearchIcon(context),
                 ],
+                flexibleSpace: Row(
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Text("Alle"),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text("Pattedyr"),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text("Krybdyr"),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text("Fugl"),
+                    ),
+                  ],
+                ),
               );
 
         return widget;
