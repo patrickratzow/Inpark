@@ -101,7 +101,9 @@ public class AalborgZooAnimalMapper : IAnimalMapper
                 contents.Add(parsedContent);
             }
             
-            return contents.Skip(1).ToList();
+            return contents
+                .SkipWhile(x => x.Type is ContentType.HeadLine)
+                .ToList();
         }
         catch (Exception ex)
         {

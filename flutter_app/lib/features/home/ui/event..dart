@@ -83,6 +83,7 @@ class Event extends StatelessWidget {
                   ),
                 ),
               ],
+
             ),
           ),
         ),

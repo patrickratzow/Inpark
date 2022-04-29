@@ -19,40 +19,32 @@ public class GetOpeningHoursForTodayQueryHandler
     }
 
     public async Task<OneOf<List<OpeningHourDto>>> Handle(GetOpeningHoursForTodayQuery request,
-            CancellationToken cancellationToken)
+        CancellationToken cancellationToken)
     {
         var today = new DateOnly(_clock.Today.Year, _clock.Today.Month, _clock.Today.Day);
+        var dateTime = today.ToDateTime(TimeOnly.MinValue);
         var value = (int)Enum.Parse(typeof(WeekDay), today.DayOfWeek.ToString());
         var openingHours = await _context.OpeningHours
+            .AsNoTracking()
             .Where(x => 
-                x.Range.End.Year >= today.Year &&
-                x.Range.End.Month >= today.Month &&
-                x.Range.End.Day >= today.Day)
-            .Where(x => ((int)x.Days & value) != 0)
+                x.Range.Start.Date <= dateTime.Date && 
+                x.Range.End.Date >= dateTime.Date && 
+                ((int)x.Days & value) != 0
+            )
+            .OrderByDescending(x => x.Range.Start)
             .ToListAsync(cancellationToken);
         
-        // Finds the closest start point to today that is not in the future
         return openingHours
-            .Where(o =>
-            {
-                var rangeStart = o.Range.Start;
-                var rangeEnd = o.Range.End;
-                var dateStart = new DateOnly(rangeStart.Year, rangeStart.Month, rangeStart.Day);
-                var dateEnd = new DateOnly(rangeEnd.Year, rangeEnd.Month, rangeEnd.Day);
-
-                // Today should be between dateStart & dateEnd
-                return dateStart <= today && dateEnd >= today;
-            })
-            .OrderByDescending(o => o.Range.Start)
-            .Take(1)
-            .Select(x => new OpeningHourDto(
-                x.Name,
-                x.Range.Start,
-                x.Range.End,
-                x.Open,
-                x.Days.ToDays()
-            ))
-            .ToList();
+            .ToLookup(x => x.Range.Start.TimeOfDay)
+            .Select(start => start.MaxBy(x => x.Range.End.TimeOfDay))
+            .Select(longestOpeningHour => new OpeningHourDto(
+                    longestOpeningHour!.Name, 
+                    longestOpeningHour.Range.Start, 
+                    longestOpeningHour.Range.End, 
+                    longestOpeningHour.Open, 
+                    longestOpeningHour.Days.ToDays()
+                )
+            ).ToList();
     }
 }
 

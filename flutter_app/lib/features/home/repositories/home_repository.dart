@@ -18,11 +18,10 @@ class HomeRepository {
         return Result.error(response.error.toString());
       }
 
-      // Map all times to local time for ease of use outside this
       var openingHours = response.body!.map((openingHour) {
         return openingHour.copyWith(
-          start: openingHour.start.toLocal(),
-          end: openingHour.end.toLocal(),
+          start: openingHour.start,
+          end: openingHour.end,
         );
       }).toList();
       return Result.success(openingHours);
