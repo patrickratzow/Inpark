@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:flutter_app/common/colors.dart';
+import 'package:flutter_app/common/ui/cancel_button.dart';
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:flutter_app/features/animals/ui/search_bar.dart";
@@ -7,15 +9,7 @@ import "package:provider/provider.dart";
 
 import "animal_card.dart";
 
-class AnimalOverviewScreen extends StatefulWidget {
-  const AnimalOverviewScreen({Key? key}) : super(key: key);
-
-  @override
-  State<AnimalOverviewScreen> createState() => _AnimalOverviewScreenState();
-}
-
-class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
-  @override
+class AnimalOverviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
@@ -44,43 +38,86 @@ class _AnimalOverviewScreenState extends State<AnimalOverviewScreen> {
   Widget _buildAppBar() {
     return Consumer<AnimalsModel>(
       builder: (context, animalsModel, child) {
-        final widget = animalsModel.isSearching
-            ? TestBar(
-                onCancel: animalsModel.stopSearching,
-                onChanged: (text) {
-                  animalsModel.search = text;
-                },
-              )
-            : ScreenAppBar(
-                title: "Vores Dyr",
-                actions: [
-                  buildSearchIcon(context),
-                ],
-                flexibleSpace: Row(
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text("Alle"),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text("Pattedyr"),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text("Krybdyr"),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text("Fugl"),
-                    ),
-                  ],
+        final isSearching = animalsModel.isSearching;
+        final List<Widget> actions;
+        final Widget? leading;
+        final String? title;
+        if (isSearching) {
+          leading = Row(
+            children: [
+              IconButton(
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(
+                  minHeight: 56,
+                  minWidth: 48,
                 ),
-              );
+                icon: Icon(
+                  Icons.search,
+                  color: CustomColor.green.middle,
+                  size: 28,
+                ),
+                onPressed: () => Routes.popPage(context),
+              ),
+              SizedBox(
+                width: 150,
+                child: TextField(
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                  decoration: const InputDecoration(
+                    hintText: "Søg her",
+                    hintStyle: TextStyle(color: Color(0xff72777a)),
+                    border: InputBorder.none,
+                  ),
+                  onChanged: (text) {
+                    animalsModel.search = text;
+                  },
+                ),
+              ),
+            ],
+          );
+          title = null;
+          actions = [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.mic_rounded),
+            ),
+            CancelButton(onPressed: animalsModel.stopSearching)
+          ];
+        } else {
+          leading = null;
+          title = "Vores dyr";
+          actions = [
+            buildSearchIcon(context),
+          ];
+        }
 
-        return widget;
+        return ScreenAppBar(
+          title: title,
+          actions: actions,
+          leading: leading,
+          automaticallyImplyLeading: leading == null,
+          flexibleSpace: _buildCategories(animalsModel),
+        );
       },
     );
+  }
+
+  Widget _buildCategories(AnimalsModel model) {
+    return Row(children: [
+      const SizedBox(width: 8),
+      ...model.animals
+          .map((x) => x.category)
+          .toSet()
+          .map(
+            (x) => TextButton(
+              onPressed: () {},
+              child: Text(x),
+            ),
+          )
+          .cast<Widget>()
+          .toList(),
+    ]);
   }
 
   Widget buildSearchIcon(BuildContext context) {

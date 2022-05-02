@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
+import "package:flutter/services.dart";
 import "package:flutter_app/common/colors.dart";
-import 'package:flutter_app/routes.dart';
-import 'package:flutter_app/features/front_page/video_player.dart';
+import "package:flutter_app/routes.dart";
+import "package:flutter_app/features/front_page/video_player.dart";
 import "package:flutter_svg/flutter_svg.dart";
 
 class FrontPage extends StatelessWidget {
@@ -11,21 +11,20 @@ class FrontPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        systemOverlayStyle: SystemUiOverlayStyle.light
-            .copyWith(statusBarColor: Colors.transparent),
-      ),
-      body: Column(
-        children: [
-          _buildVideo(),
-          _buildSvg(),
-          _buildGetStartedButton(context),
-        ],
-      ),
-    );
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          systemOverlayStyle: SystemUiOverlayStyle.light
+              .copyWith(statusBarColor: Colors.transparent),
+        ),
+        body: Column(
+          children: [
+            _buildVideo(),
+            _buildSvg(),
+            _buildGetStartedButton(context),
+          ],
+        ));
   }
 
   Widget _buildVideo() {
@@ -36,6 +35,13 @@ class FrontPage extends StatelessWidget {
           const CustomVideoPlayer(),
           Container(
             decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: CustomColor.green.middle,
+                  width: 1,
+                  style: BorderStyle.solid,
+                ),
+              ),
               gradient: LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,

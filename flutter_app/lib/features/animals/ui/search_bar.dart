@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/common/ui/cancel_button.dart";
 import 'package:flutter_app/common/ui/screen_app_bar.dart';
+import 'package:flutter_app/routes.dart';
 
 class SearchBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onCancel;
@@ -99,9 +100,21 @@ class TestBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       leading: Row(
         children: [
-          Icon(Icons.search),
+          IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(
+              minHeight: 56,
+              minWidth: 48,
+            ),
+            icon: Icon(
+              Icons.search,
+              color: CustomColor.green.middle,
+              size: 28,
+            ),
+            onPressed: () => Routes.popPage(context),
+          ),
           SizedBox(
-            width: 250,
+            width: 150,
             child: TextField(
               style: const TextStyle(
                 fontSize: 16,

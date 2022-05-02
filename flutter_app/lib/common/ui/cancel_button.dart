@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "dart:io" show Platform;
 
+import 'package:flutter_app/common/colors.dart';
+
 class CancelButton extends StatelessWidget {
   final VoidCallback onPressed;
   const CancelButton({
@@ -10,19 +12,25 @@ class CancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Platform.isAndroid
-          ? const Icon(
-              Icons.cancel,
-            )
-          : const Text(
-              "Cancel",
-              style: TextStyle(
-                fontSize: 16,
-                color: Color(0xff090a0a),
-              ),
-            ),
-    );
+    if (Platform.isAndroid) {
+      return IconButton(
+        icon: Icon(
+          Icons.close,
+          color: CustomColor.green.middle,
+        ),
+        onPressed: onPressed,
+      );
+    } else {
+      return TextButton(
+        onPressed: onPressed,
+        child: Text(
+          "Cancel",
+          style: TextStyle(
+            fontSize: 16,
+            color: CustomColor.green.middle,
+          ),
+        ),
+      );
+    }
   }
 }
