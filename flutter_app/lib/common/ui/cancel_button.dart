@@ -17,11 +17,15 @@ class CancelButton extends StatelessWidget {
         icon: Icon(
           Icons.close,
           color: CustomColor.green.middle,
+          size: 28,
         ),
         onPressed: onPressed,
       );
     } else {
       return TextButton(
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.fromLTRB(8, 8, 16, 8),
+        ),
         onPressed: onPressed,
         child: Text(
           "Cancel",

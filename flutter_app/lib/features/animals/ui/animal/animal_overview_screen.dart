@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/colors.dart';
-import 'package:flutter_app/common/ui/cancel_button.dart';
+import "package:flutter_app/common/colors.dart";
+import "package:flutter_app/common/ui/cancel_button.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
-import "package:flutter_app/features/animals/ui/search_bar.dart";
 import "package:flutter_app/routes.dart";
+import 'package:flutter_hooks/flutter_hooks.dart';
 import "package:provider/provider.dart";
 
 import "animal_card.dart";
@@ -16,7 +16,7 @@ class AnimalOverviewScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(50),
+              preferredSize: const Size.fromHeight(60),
               child: Container(),
             ),
             pinned: false,
@@ -56,17 +56,18 @@ class AnimalOverviewScreen extends StatelessWidget {
                   color: CustomColor.green.middle,
                   size: 28,
                 ),
-                onPressed: () => Routes.popPage(context),
+                onPressed: () {},
               ),
               SizedBox(
                 width: 150,
                 child: TextField(
                   style: const TextStyle(
                     fontSize: 16,
+                    height: 18 / 16,
                   ),
                   decoration: const InputDecoration(
-                    hintText: "Søg her",
-                    hintStyle: TextStyle(color: Color(0xff72777a)),
+                    hintText: "Søg her...",
+                    hintStyle: TextStyle(color: Color(0xff93A990)),
                     border: InputBorder.none,
                   ),
                   onChanged: (text) {
@@ -79,8 +80,12 @@ class AnimalOverviewScreen extends StatelessWidget {
           title = null;
           actions = [
             IconButton(
+              constraints: BoxConstraints(minHeight: 48, minWidth: 30),
+              padding: EdgeInsets.only(top: 2),
               onPressed: () {},
-              icon: const Icon(Icons.mic_rounded),
+              icon: const Icon(Icons.mic_none),
+              color: CustomColor.green.middle,
+              iconSize: 24,
             ),
             CancelButton(onPressed: animalsModel.stopSearching)
           ];
@@ -104,20 +109,23 @@ class AnimalOverviewScreen extends StatelessWidget {
   }
 
   Widget _buildCategories(AnimalsModel model) {
-    return Row(children: [
-      const SizedBox(width: 8),
-      ...model.animals
-          .map((x) => x.category)
-          .toSet()
-          .map(
-            (x) => TextButton(
-              onPressed: () {},
-              child: Text(x),
-            ),
-          )
-          .cast<Widget>()
-          .toList(),
-    ]);
+    return Row(
+      children: [
+        const SizedBox(width: 8),
+        ...model.categories
+            .map(
+              (x) => _BuildCategoryButton(
+                categoryName: x.name,
+                enabled: x.enabled,
+                onPressed: () {
+                  model.toggleCategory(x);
+                },
+              ),
+            )
+            .cast<Widget>()
+            .toList(),
+      ],
+    );
   }
 
   Widget buildSearchIcon(BuildContext context) {
@@ -127,6 +135,47 @@ class AnimalOverviewScreen extends StatelessWidget {
       },
       icon: const Icon(Icons.search),
       color: Colors.black,
+    );
+  }
+}
+
+class _BuildCategoryButton extends StatelessWidget {
+  final String categoryName;
+  final bool enabled;
+  final VoidCallback onPressed;
+
+  const _BuildCategoryButton({
+    required this.enabled,
+    required this.categoryName,
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          backgroundColor:
+              enabled ? CustomColor.green.lightest : const Color(0xffFFE5E5),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ).copyWith(
+            side: enabled ? BorderSide(color: CustomColor.green.darkest) : null,
+          ),
+        ),
+        onPressed: onPressed,
+        child: Text(
+          categoryName,
+          style: TextStyle(
+            fontSize: 16,
+            color:
+                enabled ? CustomColor.green.darkest : const Color(0xffD3180C),
+          ),
+        ),
+      ),
     );
   }
 }
