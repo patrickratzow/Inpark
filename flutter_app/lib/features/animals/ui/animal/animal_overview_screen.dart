@@ -113,7 +113,7 @@ class AnimalOverviewScreen extends StatelessWidget {
         const SizedBox(width: 8),
         ...model.categories
             .map(
-              (x) => _BuildCategoryButton(
+              (x) => CategoryButton(
                 categoryName: x.name,
                 enabled: x.enabled,
                 onPressed: () {
@@ -138,12 +138,12 @@ class AnimalOverviewScreen extends StatelessWidget {
   }
 }
 
-class _BuildCategoryButton extends StatelessWidget {
+class CategoryButton extends StatelessWidget {
   final String categoryName;
   final bool enabled;
   final VoidCallback onPressed;
 
-  const _BuildCategoryButton({
+  const CategoryButton({
     required this.enabled,
     required this.categoryName,
     required this.onPressed,
