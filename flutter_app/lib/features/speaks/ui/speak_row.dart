@@ -112,12 +112,12 @@ class NotifyButton extends HookWidget {
       animation: animationController,
       builder: (context, child) {
         const shakeCount = 1;
-        const shakeOffset = 2;
+        const shakeOffset = 1;
         final sineValue = sin(shakeCount * 2 * pi * animationController.value);
 
         return IconButton(
           icon: Transform.rotate(
-            angle: deg2rad(sineValue * 10),
+            angle: deg2rad(sineValue * 3),
             child: Transform.translate(
               offset: Offset(sineValue * shakeOffset, 0),
               child: Stack(
@@ -131,11 +131,19 @@ class NotifyButton extends HookWidget {
                   Transform.translate(
                     offset: Offset(
                       3 - (animationController.value * 3),
-                      3 - (animationController.value * 6),
+                      1 - (animationController.value * 4),
                     ),
                     child: SvgPicture.asset(
                       "assets/clock_bow.svg",
                       width: (8 + (animationController.value * 4)) * 1.5,
+                      color: colorTween.value,
+                    ),
+                  ),
+                  Transform.rotate(
+                    angle: deg2rad(sineValue * 10),
+                    child: SvgPicture.asset(
+                      "assets/clock_dingle.svg",
+                      width: 12 * 1.5,
                       color: colorTween.value,
                     ),
                   ),
