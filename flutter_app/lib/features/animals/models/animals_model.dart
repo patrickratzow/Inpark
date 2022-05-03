@@ -15,7 +15,13 @@ class AnimalsModel extends ChangeNotifier {
   bool get hasError => error.isNotEmpty;
 
   AnimalsModel();
-  AnimalsModel.withAnimals(this._animals);
+  AnimalsModel.withAnimals(this._animals) {
+    _animalCategories = _animals
+        .map((animal) => animal.category)
+        .toSet()
+        .map((category) => AnimalCategory(category))
+        .toSet();
+  }
 
   String get search => _search;
   set search(String value) {
