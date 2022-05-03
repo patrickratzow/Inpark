@@ -1,6 +1,8 @@
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Enums;
+using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Features.Speaks;
 
@@ -28,6 +30,7 @@ public class GetAnimalSpeaksForTodayQueryHandler :
             .Select(s => new
             {
                 s.Title,
+                ImagePair = s.Image,
                 SpeakTime = s.SpeakTimes
                     .Where(x => 
                         x.Range.Start.Date <= dateTime.Date && 
@@ -47,6 +50,7 @@ public class GetAnimalSpeaksForTodayQueryHandler :
                 x.Title,
                 x.SpeakTime!.Range.Start,
                 x.SpeakTime.Range.End,
+                new ImagePairDto(x.ImagePair.PreviewUrl, x.ImagePair.FullscreenUrl),
                 x.SpeakTime.Days.ToDays()
             ))
             .ToList();

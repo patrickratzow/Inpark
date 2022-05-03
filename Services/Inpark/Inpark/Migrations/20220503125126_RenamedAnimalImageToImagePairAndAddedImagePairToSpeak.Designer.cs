@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zoo.Inpark;
 
@@ -11,9 +12,10 @@ using Zoo.Inpark;
 namespace Zoo.Inpark.Migrations
 {
     [DbContext(typeof(InparkDbContext))]
-    partial class InparkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220503125126_RenamedAnimalImageToImagePairAndAddedImagePairToSpeak")]
+    partial class RenamedAnimalImageToImagePairAndAddedImagePairToSpeak
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,7 +104,7 @@ namespace Zoo.Inpark.Migrations
 
             modelBuilder.Entity("Zoo.Inpark.Entities.Animal", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "Image", b1 =>
+                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "ImagePair", b1 =>
                         {
                             b1.Property<Guid>("AnimalId")
                                 .HasColumnType("uniqueidentifier");
@@ -146,7 +148,7 @@ namespace Zoo.Inpark.Migrations
                                 .HasForeignKey("AnimalId");
                         });
 
-                    b.Navigation("Image")
+                    b.Navigation("ImagePair")
                         .IsRequired();
 
                     b.Navigation("Name")
@@ -184,7 +186,7 @@ namespace Zoo.Inpark.Migrations
 
             modelBuilder.Entity("Zoo.Inpark.Entities.Speak", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "Image", b1 =>
+                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "ImagePair", b1 =>
                         {
                             b1.Property<Guid>("SpeakId")
                                 .HasColumnType("uniqueidentifier");
@@ -257,7 +259,7 @@ namespace Zoo.Inpark.Migrations
                                 .IsRequired();
                         });
 
-                    b.Navigation("Image")
+                    b.Navigation("ImagePair")
                         .IsRequired();
 
                     b.Navigation("SpeakTimes");

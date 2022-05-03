@@ -3,7 +3,7 @@ using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Tests.DomainFixture.Configurations.ValueObjects;
 
-public class AnimalImageConfiguration : FixtureConfiguration<AnimalImage>
+public class AnimalImageConfiguration : FixtureConfiguration<ImagePair>
 {
     public override void Configure()
     {
