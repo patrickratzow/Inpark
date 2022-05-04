@@ -18,7 +18,7 @@ class Routes {
       case "/home":
         return MaterialPageRoute(builder: (_) => const Home());
       case "/animals":
-        return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
+        return MaterialPageRoute(builder: (_) => AnimalOverviewScreen());
       case "/settings":
         return MaterialPageRoute(builder: (_) => const Settings());
       case "/animals/conservation-status-overview":

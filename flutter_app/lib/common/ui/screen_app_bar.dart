@@ -78,7 +78,6 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       appBar = Column(
         children: [
           appBar,
-          const SizedBox(height: 2),
           flexibleSpace!,
         ],
       );
