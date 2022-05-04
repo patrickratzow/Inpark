@@ -12,18 +12,8 @@ class SpeaksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: speaks
-            .map(
-              (s) => Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: SpeakRow(speak: s),
-              ),
-            )
-            .toList(),
-      ),
+    return Column(
+      children: speaks.map((speak) => SpeakRow(speak: speak)).toList(),
     );
   }
 }

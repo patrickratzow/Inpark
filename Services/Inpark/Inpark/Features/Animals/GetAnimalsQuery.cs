@@ -25,7 +25,7 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
             .ToListAsync(cancellationToken);
         var animalDtos = animals.Select(x => {
             var name = new AnimalNameDto(x.Name.Name, x.Name.LatinName);
-            var image = new AnimalImageDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
+            var image = new ImagePairDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
             var status = (IUCNStatusDto) x.Status;
             if (!_mapper.ParseContent(x.Content).IsSuccess(out var content))
                 throw new InvalidDataException("Unable to parse content");

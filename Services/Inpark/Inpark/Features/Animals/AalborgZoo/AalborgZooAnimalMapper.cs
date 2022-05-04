@@ -43,7 +43,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
                     .GetProperty("umbracoFile")
                     .GetProperty("src");
                 var baseUrl = "https://cms.aalborgzoo.dk";
-                var image = AnimalImage.From(
+                var image = ImagePair.From(
                     $"{baseUrl}{previewImage}",
                     $"{baseUrl}{fullscreenImage}"
                 );
