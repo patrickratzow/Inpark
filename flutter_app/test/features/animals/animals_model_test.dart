@@ -26,7 +26,7 @@ void main() {
       AnimalDto(
         name: AnimalNameDto(displayName: "Snek", latinName: "Snaike"),
         category: "Krybdyr",
-        image: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
+        image: ImagePairDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
         status: IUCNStatusDto.en,
         contents: List.empty(),
