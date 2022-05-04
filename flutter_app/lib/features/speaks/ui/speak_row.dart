@@ -1,10 +1,10 @@
-import 'dart:math';
+import "dart:math";
 
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/colors.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import "package:flutter_app/routes.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
+import "package:flutter_svg/flutter_svg.dart";
 import "package:intl/intl.dart";
 
 import "../../../generated_code/zooinator.models.swagger.dart";
@@ -18,7 +18,9 @@ class SpeakRow extends StatelessWidget {
     final DateFormat formatter = DateFormat("HH:mm");
     //formatter.format(speak.start),
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Routes.goToRoute(context, "/next");
+      },
       child: Padding(
         padding: EdgeInsets.only(top: 4, bottom: 4),
         child: Row(
