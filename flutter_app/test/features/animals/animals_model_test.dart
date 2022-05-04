@@ -10,7 +10,7 @@ void main() {
       AnimalDto(
         name: AnimalNameDto(displayName: "Floppa", latinName: "Big floppa"),
         category: "Pattedyr",
-        image: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
+        image: ImagePairDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
         status: IUCNStatusDto.cr,
         contents: List.empty(),
@@ -18,7 +18,7 @@ void main() {
       AnimalDto(
         name: AnimalNameDto(displayName: "Bingus", latinName: "BB"),
         category: "Pattedyr",
-        image: AnimalImageDto(fullscreenUrl: "", previewUrl: ""),
+        image: ImagePairDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
         status: IUCNStatusDto.en,
         contents: List.empty(),
