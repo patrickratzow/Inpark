@@ -18,9 +18,7 @@ class SpeakRow extends StatelessWidget {
     final DateFormat formatter = DateFormat("HH:mm");
     //formatter.format(speak.start),
     return InkWell(
-      onTap: () {
-        print("xd");
-      },
+      onTap: () {},
       child: Padding(
         padding: EdgeInsets.only(top: 4, bottom: 4),
         child: Row(
