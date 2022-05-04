@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter/widgets.dart";
+import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/animals/models/iucn_status.dart";
 import "package:flutter_app/generated_code/zooinator.enums.swagger.dart";
 
@@ -17,64 +18,81 @@ class ConservationStatusExplainationRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const opacity = 0.6;
     var statusColor = ucnStatusColorMap[status]!;
+    var containerColor =
+        highlight ? statusColor.color.withOpacity(opacity) : Color(0xffF5F5F5);
+    var containerTextColor = highlight
+        ? (ThemeData.estimateBrightnessForColor(containerColor) ==
+                Brightness.light
+            ? Colors.black
+            : Colors.white)
+        : Colors.black.withOpacity(0.46);
+    highlight ? statusColor.color.withOpacity(opacity) : Color(0xffF5F5F5);
+    var headerColor =
+        highlight ? statusColor.color.withOpacity(opacity) : Color(0xffDEDEDE);
+    var headerTextColor = highlight
+        ? (ThemeData.estimateBrightnessForColor(headerColor) == Brightness.light
+            ? Colors.black
+            : Colors.white)
+        : Colors.black.withOpacity(0.46);
 
     return Container(
-      color:
-          highlight ? statusColor.color.withOpacity(0.25) : Colors.transparent,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: ConservationCircle(
-                      text: status.name.toUpperCase(),
-                      color: statusColor.color,
-                      textColor: statusColor.textColor,
-                      active: true,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          statusColor.name,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Poppins",
-                          ),
-                        ),
-                        Text(
-                          statusColor.description,
-                          textAlign: TextAlign.left,
-                          softWrap: true,
-                          style: TextStyle(
-                            color: Colors.black.withOpacity(0.8),
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+      decoration: BoxDecoration(
+        color: containerColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(4),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: headerColor,
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(4),
+                topLeft: Radius.circular(4),
               ),
             ),
-            const SizedBox(
-              height: 12,
-            )
-          ],
-        ),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ConservationCircle(
+                    text: status.name.toUpperCase(),
+                    color: statusColor.color,
+                    textColor: statusColor.textColor,
+                    active: highlight,
+                    disabledOpacity: 0.6,
+                  ),
+                ),
+                Text(
+                  statusColor.name,
+                  style: TextStyle(
+                    color: headerTextColor,
+                    fontSize: 14,
+                    height: 18 / 14,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Poppins",
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+            child: Text(
+              statusColor.description,
+              softWrap: true,
+              style: TextStyle(
+                color: containerTextColor,
+                fontSize: 11,
+                height: 18 / 11,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

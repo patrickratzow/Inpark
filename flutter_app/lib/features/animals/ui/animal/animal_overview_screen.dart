@@ -133,7 +133,7 @@ class AnimalOverviewScreen extends StatelessWidget {
         context.read<AnimalsModel>().startSearching();
       },
       icon: const Icon(Icons.search),
-      color: Colors.black,
+      color: CustomColor.green.middle,
     );
   }
 }
