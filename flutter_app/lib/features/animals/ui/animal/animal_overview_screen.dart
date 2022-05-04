@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:flutter_app/features/animals/ui/search_bar.dart";
-import 'package:flutter_app/features/calendar/calendar_screen.dart';
-import 'package:flutter_app/routes.dart';
+import "package:flutter_app/features/calendar/calendar_screen.dart";
+import "package:flutter_app/routes.dart";
 import "package:provider/provider.dart";
 
 import "animal_card.dart";
