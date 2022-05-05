@@ -17,8 +17,11 @@ namespace Zoo.Inpark.Tests.DomainFixture.Configurations.Entities
                 .Empty().IsInvalid();
 
             Property(x => x.Content)
-                .Length(1).IsValid()
-                .Empty().IsInvalid();
+                .Empty().IsInvalid()
+                .Valid("[]");
+
+            Property(x => x.Range.Start)
+                .Valid(DateTime.Now.AddDays(100));
         }
     }
 }
