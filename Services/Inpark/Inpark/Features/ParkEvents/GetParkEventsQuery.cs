@@ -30,7 +30,8 @@ public class GetParkEventsQueryQueryHandler :
             .OrderBy(x => x.Range.Start)
             .ToListAsync(cancellationToken);
 
-        var parkEventDtos = parkEvents.Select(x => {
+        var parkEventDtos = parkEvents.Select(x =>
+        {
             var image = new AnimalImageDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
 
             if (!_mapper.ParseContent(x.Content).IsSuccess(out var content))
@@ -52,6 +53,8 @@ public class GetParkEventsQueryQueryHandler :
                 }
             }
 
+            var asd = parkEventDescription!.Select(MapToContentDto).ToList();
+            var sdf = parkEventProgram!.Select(MapToContentDto).ToList();
             return new ParkEventDto(
                 Guid.NewGuid(),
                 image,
@@ -61,7 +64,7 @@ public class GetParkEventsQueryQueryHandler :
                 parkEventDescription!.Select(MapToContentDto).ToList(),
                 parkEventProgram!.Select(MapToContentDto).ToList()
             );
-        });
+        }).Where(x => x.Start >= DateTime.Today);
 
         return parkEventDtos.ToList();
     }

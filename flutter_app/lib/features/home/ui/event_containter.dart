@@ -19,9 +19,12 @@ class EventContainer extends StatelessWidget {
     context.read<ParkEventModel>().fetchParkEvents();
 
     return Column(children: [
-      TitleBar(
-        fontSize: 16,
-        name: title,
+      Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+        child: TitleBar(
+          fontSize: 16,
+          name: title,
+        ),
       ),
       Padding(
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
@@ -39,19 +42,23 @@ class EventContainer extends StatelessWidget {
                 ),
               );
             }
-            return Padding(
-              padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-              child: SizedBox(
-                height: 147,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: List.generate(
-                    parkEvent.parkEvents.length,
-                    (index) => Event(
-                      parkEvent: parkEvent.parkEvents[index],
+            return SizedBox(
+              height: 147,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                    child: Row(
+                      children: List.generate(
+                        parkEvent.parkEvents.length,
+                        (index) => Event(
+                          parkEvent: parkEvent.parkEvents[index],
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             );
           },

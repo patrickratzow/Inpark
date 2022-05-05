@@ -13,20 +13,20 @@ class Event extends StatelessWidget {
   final df = DateFormat("d MMM yy");
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: CustomColor.green.superLight,
-      ),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          padding: EdgeInsets.zero,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: CustomColor.green.superLight,
         ),
-        onPressed: () {
-          Routes.goToParkEventScreen(context, parkEvent);
-        },
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+        child: TextButton(
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+          ),
+          onPressed: () {
+            Routes.goToParkEventScreen(context, parkEvent);
+          },
           child: SizedBox(
             width: 154,
             height: 147,
@@ -65,9 +65,7 @@ class Event extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            df.format(parkEvent.start) +
-                                " - " +
-                                df.format(parkEvent.end),
+                            df.format(parkEvent.start),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                             softWrap: true,
@@ -83,7 +81,6 @@ class Event extends StatelessWidget {
                   ),
                 ),
               ],
-
             ),
           ),
         ),

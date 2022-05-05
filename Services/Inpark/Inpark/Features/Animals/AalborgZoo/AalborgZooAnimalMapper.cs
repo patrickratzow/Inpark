@@ -153,7 +153,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
     private IContent ParseText(IContent content)
     {
         if (content.Value is not string str) throw new InvalidOperationException($"Value must be a string");
-        
+
         var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
         var isHtml = regex.IsMatch(str);
         if (!isHtml) return new Content(str, content.Type);

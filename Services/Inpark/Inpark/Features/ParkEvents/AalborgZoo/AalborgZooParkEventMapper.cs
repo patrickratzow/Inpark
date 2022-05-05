@@ -57,7 +57,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
                 var title = item.GetProperty("content")[0].GetProperty("content")[0][0].GetProperty("text").ToString();
                 var range = TimeRange.From(times[0].Start, times[0].End); // Time is an array, but all examples have just one element?
                 var description = item.GetProperty("properties");
-                var content = item.GetProperty("content").GetProperty("content").ToString();
+                var content = item.GetProperty("content")[1].GetProperty("content").ToString();
 
                 var parkEvent = ParkEvent.Create(
                     Guid.NewGuid(),
@@ -87,20 +87,14 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         {
             using var json = JsonDocument.Parse(content);
             var root = json.RootElement;
+            var temp = root.EnumerateArray();
 
             var contents = new List<IContent>();
             // What we want: additional images, descriptions of the event and a program for the event.
-            foreach (
-                var parkEventArrayContent in
-                from itemContentJson in root.EnumerateArray()
-                select itemContentJson.GetProperty("content")
-                into parkEventContentJson
-                from parkEventArrayContent in parkEventContentJson.EnumerateArray()
-                select parkEventArrayContent
-            )
+            foreach (var item in root.EnumerateArray())
             {
-                var parkEventContent = parkEventArrayContent.EnumerateArray();
-                foreach (var park in parkEventContent)
+                var parkEventContent = item.EnumerateArray();
+                foreach (var park in item.EnumerateArray())
                 {
                     var type = park.GetProperty("type").GetString();
                     var contentObject = type switch
@@ -152,8 +146,8 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
         var isHtml = regex.IsMatch(str);
         if (!isHtml) return new Content(str, content.Type);
-        var temp = _htmlTransformer.Load(str).Parse();
-        return _htmlTransformer.Load(str).Parse();
+
+        return _htmlTransformer.Load(str.Replace("&amp;", "&")).Parse();
     }
 
     private static IContent ParseImage(IContent content)

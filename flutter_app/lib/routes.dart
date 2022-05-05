@@ -53,7 +53,12 @@ class Routes {
 
   static void goToParkEventScreen(context, ParkEventDto parkEvent) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => ParkEventScreen(parkEvent: parkEvent)),
+      MaterialPageRoute(
+          builder: (_) =>
+              ParkEventScreen(context: context, parkEvent: parkEvent)),
+    );
+  }
+
   static void goToSpeaksScreen(context, List<SpeakDto> speaks) {
     Navigator.of(context).push(
       MaterialPageRoute(

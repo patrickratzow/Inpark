@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ParkEventModel>(
           create: (context) => ParkEventModel(),
+        ),
         ChangeNotifierProvider<SpeakModel>(
           create: (context) => SpeakModel(),
         ),
