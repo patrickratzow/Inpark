@@ -286,7 +286,7 @@ class ParkEventScreen extends StatelessWidget {
             ),
             onPressed: () => Browser.openUrl(
               context,
-              "https://shop.aalborgzoo.dk/entrebilletter",
+              "https://shop.aalborgzoo.dk/arrangementer",
             ),
           ),
         ),

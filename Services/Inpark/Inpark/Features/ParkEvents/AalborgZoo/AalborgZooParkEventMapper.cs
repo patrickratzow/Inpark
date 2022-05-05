@@ -87,7 +87,6 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         {
             using var json = JsonDocument.Parse(content);
             var root = json.RootElement;
-            var temp = root.EnumerateArray();
 
             var contents = new List<IContent>();
             // What we want: additional images, descriptions of the event and a program for the event.
