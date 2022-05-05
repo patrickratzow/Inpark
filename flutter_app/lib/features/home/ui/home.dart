@@ -19,6 +19,32 @@ import "opening_hours.dart";
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
+  List<Widget> _buildDebugRoutes(BuildContext context) {
+    if (!kDebugMode) {
+      return List.empty();
+    }
+    return [
+      const RouteBox(
+        title: "Floris",
+        route: "/settings",
+        description: "Find us!",
+        iconName: "map",
+      ),
+      const RouteBox(
+        title: "Patrick",
+        route: "/animals/conservation-status-overview",
+        description: "Find us!",
+        iconName: "map",
+      ),
+      const RouteBox(
+        title: "Nikolaj",
+        route: "Non",
+        description: "Find us!",
+        iconName: "map",
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     context.read<HomeModel>().fetchOpeningHoursForToday();
@@ -29,36 +55,37 @@ class Home extends StatelessWidget {
       body: ListView(
         children: [
           const OpeningHours(),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 14, 0, 0),
-            child: NavigationLinkList(
-              children: [
-                NavigationLink(
-                  iconName: "ticket",
-                  text: "Billetter",
-                  onPressed: () => Browser.openUrl(
-                    context,
-                    "https://shop.aalborgzoo.dk/arrangementer",
-                  ),
+          NavigationLinkList(
+            children: [
+              NavigationLink(
+                iconName: "ticket",
+                text: "Billetter",
+                onPressed: () => Browser.openUrl(
+                  context,
+                  "https://shop.aalborgzoo.dk/entrebilletter",
                 ),
-                const NavigationLink(
-                  iconName: "calendar",
-                  text: "Aktivitets\nkalender",
-                  route: "non",
-                ),
-                const NavigationLink(
-                  iconName: "pawprint",
-                  text: "Vores Dyr",
-                  route: "/animals",
-                ),
-                const NavigationLink(
-                  iconName: "newspaper",
-                  text: "Nyheder",
-                  route: "non",
-                ),
-              ],
-              title: "Tasks",
-            ),
+              ),
+              const NavigationLink(
+                iconName: "calendar",
+                text: "Aktivitets\nkalender",
+                route: "non",
+              ),
+              const NavigationLink(
+                iconName: "pawprint",
+                text: "Vores Dyr",
+                route: "/animals",
+              ),
+              const NavigationLink(
+                iconName: "newspaper",
+                text: "Nyheder",
+                route: "non",
+              ),
+            ],
+            title: "Tasks",
+          ),
+          _buildSpeaks(context),
+          const EventContainer(
+            title: "Kommende arrangementer",
           ),
         ],
       ),

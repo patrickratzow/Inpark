@@ -52,9 +52,6 @@ public class GetParkEventsQueryQueryHandler :
                     i++;
                 }
             }
-
-            var asd = parkEventDescription!.Select(MapToContentDto).ToList();
-            var sdf = parkEventProgram!.Select(MapToContentDto).ToList();
             return new ParkEventDto(
                 Guid.NewGuid(),
                 image,
