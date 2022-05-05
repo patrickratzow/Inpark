@@ -158,11 +158,11 @@ class CategoryButton extends StatelessWidget {
         style: TextButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           backgroundColor:
-              enabled ? CustomColor.green.lightest : const Color(0xffFFE5E5),
+              enabled ? CustomColor.green.middle : const Color(0xffEEF2EE),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           ).copyWith(
-            side: enabled ? BorderSide(color: CustomColor.green.darkest) : null,
+            side: enabled ? null : BorderSide(color: CustomColor.green.darkest),
           ),
         ),
         onPressed: onPressed,
@@ -170,8 +170,9 @@ class CategoryButton extends StatelessWidget {
           categoryName,
           style: TextStyle(
             fontSize: 16,
-            color:
-                enabled ? CustomColor.green.darkest : const Color(0xffD3180C),
+            color: enabled
+                ? CustomColor.green.lightest
+                : CustomColor.green.darkest,
           ),
         ),
       ),
