@@ -815,7 +815,7 @@
           "image": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalImageDto"
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ImagePairDto"
               }
             ]
           },

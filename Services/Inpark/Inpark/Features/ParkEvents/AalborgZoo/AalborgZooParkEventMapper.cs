@@ -49,7 +49,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 });
 
-                var image = AnimalImage.From(
+                var image = ImagePair.From(
                    $"{baseUrl}{previewImage}",
                    $"{baseUrl}{fullscreenImage}"
                );

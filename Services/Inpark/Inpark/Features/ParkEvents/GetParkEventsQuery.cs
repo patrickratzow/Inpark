@@ -32,7 +32,7 @@ public class GetParkEventsQueryQueryHandler :
 
         var parkEventDtos = parkEvents.Select(x =>
         {
-            var image = new AnimalImageDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
+            var image = new ImagePairDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
 
             if (!_mapper.ParseContent(x.Content).IsSuccess(out var content))
                 throw new InvalidDataException("Unable to parse content");

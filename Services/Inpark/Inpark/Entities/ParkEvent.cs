@@ -13,7 +13,7 @@ namespace Zoo.Inpark.Entities;
 public class ParkEvent : Entity
 {
     public Guid Id { get; private set; }
-    public AnimalImage Image { get; private set; } = null!;
+    public ImagePair Image { get; private set; } = null!;
     public string Title { get; private set; } = null!;
     public TimeRange Range { get; private set; } = null!;
     public string Content { get; private set; } = null!;
@@ -22,7 +22,7 @@ public class ParkEvent : Entity
     {
 
     }
-    public static ParkEvent Create(Guid id, AnimalImage image, string title, TimeRange range, string content)
+    public static ParkEvent Create(Guid id, ImagePair image, string title, TimeRange range, string content)
     {
         var instance = new ParkEvent
         {

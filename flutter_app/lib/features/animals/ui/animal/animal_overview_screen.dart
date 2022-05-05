@@ -3,7 +3,6 @@ import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/common/ui/cancel_button.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
-import "package:flutter_app/features/animals/ui/search_bar.dart";
 import "package:flutter_app/routes.dart";
 import "package:provider/provider.dart";
 

@@ -8,7 +8,7 @@ namespace Zoo.Inpark.Contracts;
 
 public record ParkEventDto(
     Guid Id,
-    AnimalImageDto Image,
+    ImagePairDto Image,
     string Title,
     DateTime Start,
     DateTime End,
