@@ -1,12 +1,11 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/browser.dart';
+import "package:flutter_app/common/browser.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/home/ui/event..dart";
 import "package:flutter_app/features/home/ui/event_containter.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
-import 'package:flutter_app/features/speaks/models/speak_model.dart';
-import 'package:flutter_app/features/speaks/ui/speaks_list.dart';
-import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
+import "package:flutter_app/features/speaks/models/speak_model.dart";
+import "package:flutter_app/features/speaks/ui/speaks_list.dart";
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";

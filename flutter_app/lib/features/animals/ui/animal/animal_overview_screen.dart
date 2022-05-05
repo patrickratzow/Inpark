@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import "package:flutter/material.dart";
 import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/common/ui/cancel_button.dart";
@@ -15,7 +17,7 @@ class AnimalOverviewScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(60),
+              preferredSize: const Size.fromHeight(48),
               child: Container(),
             ),
             pinned: false,
@@ -152,26 +154,33 @@ class CategoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8.0),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          backgroundColor:
-              enabled ? CustomColor.green.lightest : const Color(0xffFFE5E5),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ).copyWith(
-            side: enabled ? BorderSide(color: CustomColor.green.darkest) : null,
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+          maxHeight: 36 * MediaQuery.of(context).textScaleFactor),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: TextButton(
+          style: TextButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            backgroundColor:
+                enabled ? CustomColor.green.middle : const Color(0xffEEF2EE),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ).copyWith(
+              side:
+                  enabled ? null : BorderSide(color: CustomColor.green.darkest),
+            ),
           ),
-        ),
-        onPressed: onPressed,
-        child: Text(
-          categoryName,
-          style: TextStyle(
-            fontSize: 16,
-            color:
-                enabled ? CustomColor.green.darkest : const Color(0xffD3180C),
+          onPressed: onPressed,
+          child: Text(
+            categoryName,
+            style: TextStyle(
+              fontSize: 14,
+              height: 16 / 14,
+              color: enabled
+                  ? CustomColor.green.lightest
+                  : CustomColor.green.darkest,
+            ),
           ),
         ),
       ),
