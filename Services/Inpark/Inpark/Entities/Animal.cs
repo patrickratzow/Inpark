@@ -20,11 +20,11 @@ public class Animal : Entity
     public Guid Id { get; private set; }
     public AnimalName Name { get; private set; } = null!;
     public IUCNStatus Status { get; private set; }
-    public AnimalImage Image { get; private set; } = null!;
+    public ImagePair Image { get; private set; } = null!;
     public string Category { get; private set; } = null!;
     public string Content { get; private set; } = null!;
 
-    public static Animal Create(Guid id, AnimalName name, AnimalImage image, 
+    public static Animal Create(Guid id, AnimalName name, ImagePair imagePair, 
         string category, string content)
     {
         var instance = new Animal
@@ -32,7 +32,7 @@ public class Animal : Entity
             Id = id,
             Name = name,
             Status = IUCNStatus.Unknown,
-            Image = image,
+            Image = imagePair,
             Category = category,
             Content = content
         };
@@ -41,12 +41,12 @@ public class Animal : Entity
         return instance;
     }
 
-    public Result<Error> Update(AnimalName name, AnimalImage image, string category, string content)
+    public Result<Error> Update(AnimalName name, ImagePair imagePair, string category, string content)
     {
         try
         {
             Name = name;
-            Image = image;
+            Image = imagePair;
             Category = category;
             Content = content;
             

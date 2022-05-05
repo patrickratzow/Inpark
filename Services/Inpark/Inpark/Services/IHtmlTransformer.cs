@@ -76,9 +76,8 @@ public class HtmlDocument : IHtmlDocument
                 contents.Add(parent);
             }
         }
-
+        
         return contents;
-
     }
 }
 

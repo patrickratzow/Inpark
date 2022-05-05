@@ -19,7 +19,7 @@ class Routes {
       case "/home":
         return MaterialPageRoute(builder: (_) => const Home());
       case "/animals":
-        return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
+        return MaterialPageRoute(builder: (_) => AnimalOverviewScreen());
       case "/settings":
         return MaterialPageRoute(builder: (_) => const Settings());
       case "/animals/conservation-status-overview":
@@ -28,7 +28,7 @@ class Routes {
         );
       case "/front-page":
         return MaterialPageRoute(
-          builder: (_) => FrontPage(),
+          builder: (_) => const FrontPage(),
         );
       case "/calendar":
         return MaterialPageRoute(builder: (_) => const CalendarScreen());
@@ -78,9 +78,9 @@ class Routes {
 
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(builder: (_) {
-      return Scaffold(
+      return const Scaffold(
         appBar: ScreenAppBar(title: "Side ikke fundet"),
-        body: const Center(
+        body: Center(
           child: Text("Vi arbejder på at få tilføjet det :)"),
         ),
       );

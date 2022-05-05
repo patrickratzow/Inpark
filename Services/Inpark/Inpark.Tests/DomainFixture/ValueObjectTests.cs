@@ -19,9 +19,9 @@ public class ValueObjectTests
     [TestCaseSource(
         typeof(EntityTestSource),
         nameof(EntityTestSource.Test),
-        new object[] { typeof(AnimalImage), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
+        new object[] { typeof(ImagePair), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
     )]
-    public void AnimalImageTests(IEntityTester tester) => tester.Run();
+    public void ImagePairTests(IEntityTester tester) => tester.Run();
     
     [TestCaseSource(
         typeof(EntityTestSource),

@@ -29,6 +29,17 @@ public class AalborgZooSpeaksMapper : ISpeaksMapper
                 var item = itemObj.GetProperty("item");
                 var title = item.GetProperty("title").ToString();
                 var properties = item.GetProperty("properties");
+                var previewImage = properties.GetProperty("image")
+                    .GetProperty("umbracoFile")
+                    .GetProperty("src");
+                var fullscreenImage = properties.GetProperty("imageFullscreen")
+                    .GetProperty("umbracoFile")
+                    .GetProperty("src");
+                var baseUrl = "https://cms.aalborgzoo.dk";
+                var image = ImagePair.From(
+                    $"{baseUrl}{previewImage}",
+                    $"{baseUrl}{fullscreenImage}"
+                );
                 var times = properties.GetProperty("times").Deserialize<List<AalborgZooSpeakDto>>(new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
@@ -46,7 +57,7 @@ public class AalborgZooSpeaksMapper : ISpeaksMapper
                     speakTimes.Add(SpeakTime.From(header, day, timeRange));
                 }                    
                 
-                speaks.Add(Speak.Create(Guid.NewGuid(), title, speakTimes));
+                speaks.Add(Speak.Create(Guid.NewGuid(), title, speakTimes, image));
                 speakTimes.Clear();
             }
             

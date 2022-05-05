@@ -8,12 +8,20 @@ class AnimalsModel extends ChangeNotifier {
   List<AnimalDto> _animals = List.empty();
   String _search = "";
   String error = "";
+  Set<AnimalCategory> _animalCategories = {};
   bool isSearching = false;
+
   bool loading = false;
   bool get hasError => error.isNotEmpty;
 
   AnimalsModel();
-  AnimalsModel.withAnimals(this._animals);
+  AnimalsModel.withAnimals(this._animals) {
+    _animalCategories = _animals
+        .map((animal) => animal.category)
+        .toSet()
+        .map((category) => AnimalCategory(category))
+        .toSet();
+  }
 
   String get search => _search;
   set search(String value) {
@@ -45,6 +53,11 @@ class AnimalsModel extends ChangeNotifier {
       var animalsResult = await animalsRepository.fetchAnimals();
       if (animalsResult.isSuccess) {
         _animals = animalsResult.success as List<AnimalDto>;
+        _animalCategories = _animals
+            .map((animal) => animal.category)
+            .toSet()
+            .map((category) => AnimalCategory(category))
+            .toSet();
       } else {
         error = animalsResult.error.toString();
       }
@@ -56,17 +69,44 @@ class AnimalsModel extends ChangeNotifier {
   }
 
   List<AnimalDto> get animals {
-    var animals = _animals;
+    Iterable<AnimalDto> animals = _animals;
+
+    var enabledCategories = _animalCategories
+        .where((animalCategory) => animalCategory.enabled)
+        .map((animalCategory) => animalCategory.name)
+        .toSet();
+
+    animals = animals.where(
+      (animal) => enabledCategories.contains(animal.category),
+    );
+
     if (search.isNotEmpty) {
-      animals = animals
-          .where(
-            (animal) => animal.name.displayName
-                .toLowerCase()
-                .contains(search.toLowerCase()),
-          )
-          .toList();
+      animals = animals.where(
+        (animal) => animal.name.displayName
+            .toLowerCase()
+            .contains(search.toLowerCase()),
+      );
     }
 
-    return animals;
+    return animals.toList();
   }
+
+  void toggleCategory(AnimalCategory animalCategory) {
+    animalCategory.enabled = !animalCategory.enabled;
+
+    notifyListeners();
+  }
+
+  Set<AnimalCategory> get categories {
+    return _animalCategories;
+  }
+
+  void getAnimalsByCategory() {}
+}
+
+class AnimalCategory {
+  final String name;
+  bool enabled = true;
+
+  AnimalCategory(this.name);
 }
