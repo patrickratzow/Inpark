@@ -13,7 +13,7 @@ class CalendarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const ScreenAppBar(
-        title: "Kalendar",
+        title: "Kalender",
       ),
       body: Consumer<CalendarModel>(
         builder: (context, date, child) => SingleChildScrollView(
