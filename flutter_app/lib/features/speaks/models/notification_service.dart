@@ -17,7 +17,7 @@ class NotificationService {
 
   NotificationService._internal();
 
-  static const channelId = "123";
+  static const channelId = "zooinator_notifications";
 
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
