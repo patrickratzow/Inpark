@@ -21,14 +21,37 @@ public class FixtureWithConfiguration<TFixture, TProperty> : IFixtureConfigurati
         if (_propertyExpression.Body is not MemberExpression memberExpression)
             throw new ArgumentException(nameof(_propertyExpression));
 
-        // Figure out the name automatically if no name is supplied
-        var name = memberExpression.Member.Name;
-        var property = instance.GetType()
-            .GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-        if (property is null) throw new ArgumentException("Unable to get property", nameof(_propertyExpression));
+        var accessors = new List<string> { memberExpression.Member.Name };
+        var expression = memberExpression;
+        while (expression.Expression is MemberExpression childExpression)
+        {
+            accessors.Add(childExpression.Member.Name);
+            expression = childExpression;
+        }
+        // The accessors are in reverse order, so we need to reverse them
+        accessors.Reverse();
+
+        object obj = instance;
+        PropertyInfo property = null!;
+        for (var i = 0; i < accessors.Count; i++)
+        {
+            var accessor = accessors[i];
+            var temp = obj;
+            property = temp.GetType().GetProperty(accessor,
+                           BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                       ?? throw new InvalidOperationException();
+            
+            // Dont set for last
+            if (i < accessors.Count - 1)
+            {
+                obj = property.GetValue(obj) ?? throw new InvalidOperationException();
+            }
+        }
+
+        if (obj is null) throw new ArgumentException("Unable to get property", nameof(_propertyExpression));
 
         var value = GetValue(instance);
-        property.SetValue(instance, value);
+        property!.SetValue(obj, value);
 
         return instance;
     }
