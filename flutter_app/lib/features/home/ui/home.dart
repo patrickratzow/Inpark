@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/browser.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
-import 'package:flutter_app/features/park_events/ui/event..dart';
+import 'package:flutter_app/features/park_events/ui/event.dart';
 import 'package:flutter_app/features/park_events/ui/event_containter.dart';
 import "package:flutter_app/features/home/ui/route_box.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
@@ -67,7 +67,7 @@ class Home extends StatelessWidget {
               const NavigationLink(
                 iconName: "calendar",
                 text: "Aktivitets\nkalender",
-                route: "non",
+                route: "/calendar",
               ),
               const NavigationLink(
                 iconName: "pawprint",
