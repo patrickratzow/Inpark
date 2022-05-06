@@ -49,16 +49,15 @@ class NavigationLink extends StatelessWidget {
           const SizedBox(height: 3),
           SizedBox(
             width: 64,
-            child: FittedBox(
-              child: Text(
-                text,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 12,
-                  fontFamily: "Poppins",
-                ),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+                fontFamily: "Poppins",
               ),
+              textScaleFactor: 1,
             ),
           )
         ],

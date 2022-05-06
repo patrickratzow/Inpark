@@ -29,11 +29,18 @@ public class ValueObjectTests
         new object[] { typeof(TimeRange), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
     )]
     public void TimeRangeTests(IEntityTester tester) => tester.Run();
-    
+
     [TestCaseSource(
         typeof(EntityTestSource),
         nameof(EntityTestSource.Test),
-        new object[] { typeof(SpeakTime), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
+        new object[] { typeof(SpeakTime), new[] { typeof(Entity), typeof(ValueObject) }, new Type[] { } }
     )]
     public void SpeakTimeTests(IEntityTester tester) => tester.Run();
+
+    [TestCaseSource(
+    typeof(EntityTestSource),
+    nameof(EntityTestSource.Test),
+    new object[] { typeof(ProgramEvent), new[] { typeof(Entity), typeof(ValueObject) }, new Type[] { } }
+)]
+    public void ProgramEventTests(IEntityTester tester) => tester.Run();
 }

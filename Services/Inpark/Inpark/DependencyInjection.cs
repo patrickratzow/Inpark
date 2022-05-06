@@ -13,6 +13,8 @@ using Polly.Extensions.Http;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Features.Animals.AalborgZoo;
 using Zoo.Inpark.Features.Animals.Interfaces;
+using Zoo.Inpark.Features.Events.AalborgZoo;
+using Zoo.Inpark.Features.Events.Interfaces;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.Features.Speaks.AalborgZoo;
@@ -23,18 +25,12 @@ namespace Zoo.Inpark;
 
 public static class DependencyInjection
 {
-    private static readonly ILoggerFactory EfLoggerFactory = LoggerFactory.Create(builder =>
-    {
-        builder.AddConsole();
-    });
-    
     public static void AddInpark(this IServiceCollection services, IConfiguration configuration)
     {
         var dbConnection = configuration.GetConnectionString("InparkConnection");
         services.AddDbContext<InparkDbContext>(options =>
         {
             options.UseSqlServer(dbConnection);
-            options.UseLoggerFactory(EfLoggerFactory);
         });
         services.AddMemoryCache();
         services.AddMediatR(Assembly.GetExecutingAssembly());
@@ -60,7 +56,12 @@ public static class DependencyInjection
         services.AddHttpClient<ISpeaksRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<ISpeaksMapper, AalborgZooSpeaksMapper>();
-        
+
+        services.AddSingleton<IParkEventRepository, AalborgZooParkEventRepository>();
+        services.AddHttpClient<IParkEventRepository, AalborgZooParkEventRepository>(AalborgZooHttpClient)
+            .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<IParkEventMapper, AalborgZooParkEventMapper>();
+
         services.AddResponseMapper();
     }
 
@@ -80,7 +81,11 @@ public static class DependencyInjection
             // Not having JobStorage setup will cause RecurringJob to fail
             app.ApplicationServices.GetRequiredService<JobStorage>();
         }
-        
+        RecurringJob.AddOrUpdate<AalborgZooParkEventsJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
         RecurringJob.AddOrUpdate<AalborgZooOpeningHoursJob>(
             x => x.Execute(),
             "* 3 * * *", // Every day at 3 AM 

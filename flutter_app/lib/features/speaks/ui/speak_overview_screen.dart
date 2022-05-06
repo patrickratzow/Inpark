@@ -1,12 +1,13 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
+import 'package:flutter_app/features/speaks/models/speak.dart';
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import 'package:flutter_app/features/speaks/ui/speaks_list.dart';
 import 'package:flutter_app/generated_code/zooinator.swagger.dart';
 import "package:provider/provider.dart";
 
 class SpeaksOverviewScreen extends StatelessWidget {
-  final List<SpeakDto> speaks;
+  final List<Speak> speaks;
   const SpeaksOverviewScreen({
     Key? key,
     required this.speaks,

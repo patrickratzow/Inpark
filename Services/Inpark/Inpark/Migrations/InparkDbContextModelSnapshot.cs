@@ -78,6 +78,31 @@ namespace Zoo.Inpark.Migrations
                     b.ToTable("OpeningHours");
                 });
 
+            modelBuilder.Entity("Zoo.Inpark.Entities.ParkEvent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ParkEvents");
+                });
+
             modelBuilder.Entity("Zoo.Inpark.Entities.Speak", b =>
                 {
                     b.Property<Guid>("Id")
@@ -177,6 +202,59 @@ namespace Zoo.Inpark.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("OpeningHourId");
                         });
+
+                    b.Navigation("Range")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Zoo.Inpark.Entities.ParkEvent", b =>
+                {
+                    b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalImage", "Image", b1 =>
+                        {
+                            b1.Property<Guid>("ParkEventId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("FullscreenUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("PreviewUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ParkEventId");
+
+                            b1.ToTable("ParkEvents");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ParkEventId");
+                        });
+
+                    b.OwnsOne("Zoo.Inpark.ValueObjects.TimeRange", "Range", b1 =>
+                        {
+                            b1.Property<Guid>("ParkEventId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<DateTime>("End")
+                                .HasColumnType("datetime2")
+                                .HasColumnName("TimeRange_End");
+
+                            b1.Property<DateTime>("Start")
+                                .HasColumnType("datetime2")
+                                .HasColumnName("TimeRange_Start");
+
+                            b1.HasKey("ParkEventId");
+
+                            b1.HasIndex("Start", "End");
+
+                            b1.ToTable("ParkEvents");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ParkEventId");
+                        });
+
+                    b.Navigation("Image")
+                        .IsRequired();
 
                     b.Navigation("Range")
                         .IsRequired();

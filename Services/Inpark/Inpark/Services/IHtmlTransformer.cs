@@ -55,7 +55,7 @@ public class HtmlDocument : IHtmlDocument
 
                 contents.Add(parent);
             }
-            else if (childNode is { Name:  "li" } )
+            else if (childNode is { Name: "li" })
             {
                 var children = ParseChildren(childNode);
                 var parent = new Content(string.Empty, ContentType.ListItem)
@@ -65,8 +65,17 @@ public class HtmlDocument : IHtmlDocument
 
                 contents.Add(parent);
             }
+            else if (childNode is { Name: "strong" })
+            {
+                var children = ParseChildren(childNode);
+                var parent = new Content(string.Empty, ContentType.Strong)
+                {
+                    Children = children
+                };
+
+                contents.Add(parent);
+            }
         }
-        
         return contents;
     }
 }
