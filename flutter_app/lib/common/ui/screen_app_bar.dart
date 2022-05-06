@@ -152,16 +152,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   List<Widget> _buildActions(BuildContext context) {
-    return actions ??
-        [
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: CustomColor.green.icon,
-            ),
-            onPressed: () {},
-          ),
-        ];
+    return actions ?? [];
   }
 
   @override
