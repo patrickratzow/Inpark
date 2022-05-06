@@ -69,21 +69,6 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: _buildLeading(context),
         ),
-        if (title != null && Platform.isIOS)
-          Padding(
-            padding: EdgeInsets.only(right: actionsLength == 1 ? 8 : 56),
-            child: Flexible(
-              child: Text(
-                title!,
-                style: const TextStyle(
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Color(0xff718D6D),
-                ),
-              ),
-            ),
-          ),
         Row(
           children: _buildActions(context),
         )
@@ -147,7 +132,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     if (leading != null) {
       results.add(leading!);
     }
-    if (title != null && !Platform.isIOS) {
+    if (title != null) {
       results.add(
         Padding(
           padding: const EdgeInsets.only(top: 2),

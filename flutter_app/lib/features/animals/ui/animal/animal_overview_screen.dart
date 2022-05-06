@@ -75,6 +75,7 @@ class AnimalOverviewScreen extends StatelessWidget {
               SizedBox(
                 width: 150,
                 child: TextField(
+                  autofocus: true,
                   style: const TextStyle(
                     fontSize: 16,
                     height: 18 / 16,

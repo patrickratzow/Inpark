@@ -27,7 +27,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(child: VideoPlayer(_controller));
+    return VideoPlayer(_controller);
   }
 
   @override

@@ -37,19 +37,17 @@ class Event extends StatelessWidget {
               children: [
                 AspectRatio(
                   aspectRatio: 100 / 62,
-                  child: Expanded(
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                    ),
+                    child: Image(
+                      image: CachedNetworkImageProvider(
+                        parkEvent.image.previewUrl,
                       ),
-                      child: Image(
-                        image: CachedNetworkImageProvider(
-                          parkEvent.image.previewUrl,
-                        ),
-                        fit: BoxFit.cover,
-                        colorBlendMode: BlendMode.darken,
-                      ),
+                      fit: BoxFit.cover,
+                      colorBlendMode: BlendMode.darken,
                     ),
                   ),
                 ),
