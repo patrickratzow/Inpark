@@ -88,7 +88,7 @@ class FrontPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(
           top: 16,
-          bottom: 16,
+          bottom: 40,
           left: 24,
           right: 24,
         ),
