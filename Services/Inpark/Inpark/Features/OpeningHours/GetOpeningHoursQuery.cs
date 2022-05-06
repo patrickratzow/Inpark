@@ -51,6 +51,7 @@ public partial class GetOpeningHoursController : ZooController
     /// Gets all opening hours
     /// </summary>
     [HttpGet("opening-hours")]
+    [ResponseCache(Duration = 43200)]
     public async partial Task<ActionResult> GetOpeningHours(CancellationToken cancellationToken)
     {
         var command = new GetOpeningHoursQuery();

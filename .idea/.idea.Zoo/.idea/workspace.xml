@@ -10,48 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ParkEventDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/ParkEventConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/ProgramEventConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/AalborgZooParkEventMapperTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/GetParkEventsQueryTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Entities/ParkEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventsJob.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/UpdateAalborgZooEventsCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/Interfaces/IParkEventMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/Interfaces/IParkEventRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220423152220_AddParkEvent.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220423152220_AddParkEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/EventProgram.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/models/event_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/repositories/park_event_repository.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/event..dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/event_containter.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/park_event_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalMapper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Groups.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Groups.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Models/Content.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Models/Content.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ioc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ioc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/models/home_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/models/home_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/event..dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/event_containter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link_list.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/route_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/route_box.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -68,6 +68,7 @@ public partial class GetAnimalsController : ZooController
     /// Get all animals in the park.
     /// </summary>
     [HttpGet("animals")]
+    [ResponseCache(Duration = 43200)]
     public async partial Task<ActionResult> GetAnimals(CancellationToken cancellationToken)
     {
         var command = new GetAnimalsQuery();
