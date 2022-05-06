@@ -5,6 +5,8 @@ import "../../../common/ioc.dart";
 import '../models/speak_model.dart';
 
 class SpeakRepository {
+  List<Speak>? _speaks;
+
   Future<List<Speak>> fetchSpeaksForToday() async {
     var apiClient = locator.get<Zooinator>();
 
@@ -24,7 +26,7 @@ class SpeakRepository {
         );
       }).toList();
 
-      return speaks;
+      return _speaks ??= speaks;
     } catch (ex) {
       return Future.error(ex.toString());
     }

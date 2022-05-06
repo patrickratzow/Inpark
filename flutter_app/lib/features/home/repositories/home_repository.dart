@@ -3,16 +3,15 @@ import "package:flutter_app/common/result.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
 
 class HomeRepository {
-  late final Zooinator _apiClient;
-
-  HomeRepository() {
-    _apiClient = locator.get<Zooinator>();
-  }
+  List<OpeningHourDto>? _openingHours;
 
   Future<Result<List<OpeningHourDto>, String>>
       fetchOpeningHoursForToday() async {
+    if (_openingHours != null) return Result.success(_openingHours!);
+
     try {
-      var response = await _apiClient.getOpeningHoursForToday();
+      var apiClient = locator.get<Zooinator>();
+      var response = await apiClient.getOpeningHoursForToday();
 
       if (!response.isSuccessful) {
         return Result.error(response.error.toString());
@@ -24,6 +23,7 @@ class HomeRepository {
           end: openingHour.end,
         );
       }).toList();
+      _openingHours = openingHours;
       return Result.success(openingHours);
     } catch (ex) {
       return Result.error(ex.toString());

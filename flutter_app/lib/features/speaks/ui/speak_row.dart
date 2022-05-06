@@ -179,7 +179,7 @@ class NotifyButton extends HookWidget {
             ),
           ),
           onPressed: () {
-            var success = onPressed(state.value);
+            var success = onPressed(!state.value);
             if (success) {
               state.value = !state.value;
 
