@@ -1,10 +1,11 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/common/browser.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/home/ui/event..dart";
 import "package:flutter_app/features/home/ui/event_containter.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/features/home/ui/speaks_list.dart";
+import "package:flutter_app/features/speaks/ui/speaks_list.dart";
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
@@ -53,26 +54,29 @@ class Home extends StatelessWidget {
       body: ListView(
         children: [
           const OpeningHours(),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 14, 0, 0),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 14, 0, 0),
             child: NavigationLinkList(
               children: [
                 NavigationLink(
                   iconName: "ticket",
                   text: "Billetter",
-                  route: "non",
+                  onPressed: () => Browser.openUrl(
+                    context,
+                    "https://shop.aalborgzoo.dk/entrebilletter",
+                  ),
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "calendar",
                   text: "Aktivitets\nkalender",
                   route: "non",
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "pawprint",
                   text: "Vores Dyr",
                   route: "/animals",
                 ),
-                NavigationLink(
+                const NavigationLink(
                   iconName: "newspaper",
                   text: "Nyheder",
                   route: "non",
@@ -81,10 +85,7 @@ class Home extends StatelessWidget {
               title: "Tasks",
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: _buildSpeaks(context),
-          ),
+          _buildSpeaks(context),
           const Padding(
             padding: EdgeInsets.fromLTRB(16, 14, 16, 16),
             child: EventContainer(
@@ -136,19 +137,18 @@ class Home extends StatelessWidget {
           );
         }
 
-        List<Widget> widgets = [
-          const Padding(
-            padding: EdgeInsets.only(left: 8),
-            child: TitleBar(
-              fontSize: 16,
-              name: "Dagens speaks",
-            ),
+        return Padding(
+          padding: EdgeInsets.fromLTRB(0, 14, 0, 16),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: TitleBar(name: "Dagens speaks", fontSize: 16),
+              ),
+              SizedBox(height: 4),
+              SpeaksList(speaks: value.speaks),
+            ],
           ),
-          SpeaksList(speaks: value.speaks),
-        ];
-
-        return Column(
-          children: widgets,
         );
       },
     );

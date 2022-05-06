@@ -5,7 +5,8 @@ import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
 import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
 import 'package:flutter_app/features/calendar/ui/calendar_screen.dart';
 import "package:flutter_app/features/settings/ui/settings.dart";
-import 'package:flutter_app/features/speaks/ui/speak_overview_screen.dart';
+import "package:flutter_app/features/speaks/ui/speak_overview_screen.dart";
+import 'package:flutter_app/features/front_page/front_page.dart';
 import "features/home/ui/home.dart";
 import "generated_code/zooinator.swagger.dart";
 
@@ -17,12 +18,16 @@ class Routes {
       case "/home":
         return MaterialPageRoute(builder: (_) => const Home());
       case "/animals":
-        return MaterialPageRoute(builder: (_) => const AnimalOverviewScreen());
+        return MaterialPageRoute(builder: (_) => AnimalOverviewScreen());
       case "/settings":
         return MaterialPageRoute(builder: (_) => const Settings());
       case "/animals/conservation-status-overview":
         return MaterialPageRoute(
           builder: (_) => const ConservationStatusOverviewScreen(),
+        );
+      case "/front-page":
+        return MaterialPageRoute(
+          builder: (_) => const FrontPage(),
         );
       case "/calendar":
         return MaterialPageRoute(builder: (_) => const CalendarScreen());
@@ -64,9 +69,9 @@ class Routes {
 
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(builder: (_) {
-      return Scaffold(
+      return const Scaffold(
         appBar: ScreenAppBar(title: "Side ikke fundet"),
-        body: const Center(
+        body: Center(
           child: Text("Vi arbejder på at få tilføjet det :)"),
         ),
       );

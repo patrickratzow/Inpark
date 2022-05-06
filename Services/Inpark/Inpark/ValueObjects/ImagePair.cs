@@ -2,16 +2,16 @@ using Zoo.Inpark.Common;
 
 namespace Zoo.Inpark.ValueObjects;
 
-public class AnimalImage : ValueObject
+public class ImagePair : ValueObject
 {
-    private AnimalImage(){}
+    private ImagePair(){}
 
     public string PreviewUrl { get; private set; } = null!;
     public string FullscreenUrl { get; private set; } = null!;
 
-    public static AnimalImage From(string previewUrl, string fullscreenUrl)
+    public static ImagePair From(string previewUrl, string fullscreenUrl)
     {
-        var instance = new AnimalImage()
+        var instance = new ImagePair()
         {
             PreviewUrl = previewUrl,
             FullscreenUrl = fullscreenUrl
@@ -28,7 +28,7 @@ public class AnimalImage : ValueObject
 }
 
 
-public class AnimalImageValidator : AbstractValidator<AnimalImage>
+public class AnimalImageValidator : AbstractValidator<ImagePair>
 {
     public AnimalImageValidator()
     {

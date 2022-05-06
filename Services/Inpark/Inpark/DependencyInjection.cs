@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
 using Zoo.Inpark.Common;
-using Zoo.Inpark.Features.Animals;
 using Zoo.Inpark.Features.Animals.AalborgZoo;
 using Zoo.Inpark.Features.Animals.Interfaces;
 using Zoo.Inpark.Features.OpeningHours.AalborgZoo;

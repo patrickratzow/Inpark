@@ -12,19 +12,21 @@ public class Speak : Entity
     public Guid Id { get; private set; }
     public string Title { get; private set; } = null!;
     private List<SpeakTime> _speakTimes = new List<SpeakTime>();
+    public ImagePair Image { get; private set; } = null!;
     public IReadOnlyCollection<SpeakTime> SpeakTimes
     {
         get => _speakTimes;
         private set => _speakTimes = value.ToList();
     }
-   
-    public static Speak Create(Guid id, string title, List<SpeakTime> speakTimes)
+
+    public static Speak Create(Guid id, string title, List<SpeakTime> speakTimes, ImagePair imagePair)
     {
         var instance = new Speak()
         {
             Id = id,
             Title = title,
-            SpeakTimes = speakTimes
+            SpeakTimes = speakTimes,
+            Image = imagePair,
         };
         instance.Validate();
         
@@ -41,6 +43,7 @@ public class SpeakValidator : AbstractValidator<Speak>
         RuleFor(x => x.Id).NotEmpty();
         RuleFor(x => x.Title).NotEmpty();
         RuleFor(x => x.SpeakTimes).NotNull();
+        RuleFor(x => x.Image).NotNull();
     }
 }
 
@@ -68,5 +71,7 @@ public class SpeakConfiguration : IEntityTypeConfiguration<Speak>
             b.Property<Guid>("SpeakId");
             b.WithOwner().HasForeignKey("SpeakId");
         } );
+
+        builder.OwnsOne(x => x.Image);
     }
 }

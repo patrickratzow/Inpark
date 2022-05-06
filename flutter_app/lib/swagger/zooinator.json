@@ -667,7 +667,7 @@
           "image": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalImageDto"
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ImagePairDto"
               }
             ]
           },
@@ -682,22 +682,6 @@
             "items": {
               "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
             }
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.Contracts.AnimalImageDto": {
-        "required": [
-          "fullscreenUrl",
-          "previewUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "previewUrl": {
-            "type": "string"
-          },
-          "fullscreenUrl": {
-            "type": "string"
           }
         },
         "additionalProperties": false
@@ -763,6 +747,22 @@
           "LC"
         ]
       },
+      "Zoo.Inpark.Contracts.ImagePairDto": {
+        "required": [
+          "fullscreenUrl",
+          "previewUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "previewUrl": {
+            "type": "string"
+          },
+          "fullscreenUrl": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "Zoo.Inpark.Contracts.OpeningHourDto": {
         "required": [
           "days",
@@ -800,6 +800,7 @@
         "required": [
           "days",
           "end",
+          "image",
           "start",
           "title"
         ],
@@ -815,6 +816,13 @@
           "end": {
             "type": "string",
             "format": "date-time"
+          },
+          "image": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ImagePairDto"
+              }
+            ]
           },
           "days": {
             "type": "array",
@@ -875,7 +883,7 @@
           "image": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.AnimalImage"
+                "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.ImagePair"
               }
             ],
             "readOnly": true
@@ -932,24 +940,6 @@
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.ValueObjects.AnimalImage": {
-        "required": [
-          "fullscreenUrl",
-          "previewUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "previewUrl": {
-            "type": "string",
-            "readOnly": true
-          },
-          "fullscreenUrl": {
-            "type": "string",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
       "Zoo.Inpark.ValueObjects.AnimalName": {
         "required": [
           "latinName",
@@ -962,6 +952,24 @@
             "readOnly": true
           },
           "latinName": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.ValueObjects.ImagePair": {
+        "required": [
+          "fullscreenUrl",
+          "previewUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "previewUrl": {
+            "type": "string",
+            "readOnly": true
+          },
+          "fullscreenUrl": {
             "type": "string",
             "readOnly": true
           }
