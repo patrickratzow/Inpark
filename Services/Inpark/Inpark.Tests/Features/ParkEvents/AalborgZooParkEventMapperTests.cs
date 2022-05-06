@@ -11,6 +11,8 @@ using Zoo.Inpark.Services;
 
 namespace Zoo.Inpark.Tests.Features.ParkEvents;
 
+[TestFixture]
+[Category(Categories.Unit)]
 public class AalborgZooParkEventMapperTests : TestBase
 {
     private Content Spacer()
