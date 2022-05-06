@@ -16,17 +16,21 @@ public class GetParkEventsQueryQueryHandler :
     IRequestHandler<GetParkEventsQuery, OneOf<List<ParkEventDto>>>
 {
     private readonly InparkDbContext _context;
+    private readonly IClock _clock;
     private readonly IParkEventMapper _mapper;
 
-    public GetParkEventsQueryQueryHandler(InparkDbContext context, IParkEventMapper mapper)
+    public GetParkEventsQueryQueryHandler(InparkDbContext context, IClock clock, IParkEventMapper mapper)
     {
         _context = context;
+        _clock = clock;
         _mapper = mapper;
     }
 
     public async Task<OneOf<List<ParkEventDto>>> Handle(GetParkEventsQuery request, CancellationToken cancellationToken)
     {
+        var today = _clock.Today;
         var parkEvents = await _context.ParkEvents
+            .Where(x => x.Range.End >= today.Date)
             .OrderBy(x => x.Range.Start)
             .ToListAsync(cancellationToken);
 
@@ -53,7 +57,7 @@ public class GetParkEventsQueryQueryHandler :
                 }
             }
             return new ParkEventDto(
-                Guid.NewGuid(),
+                x.Id,
                 image,
                 x.Title,
                 x.Range.Start,
@@ -61,7 +65,7 @@ public class GetParkEventsQueryQueryHandler :
                 parkEventDescription!.Select(MapToContentDto).ToList(),
                 parkEventProgram!.Select(MapToContentDto).ToList()
             );
-        }).Where(x => x.Start >= DateTime.Today);
+        });
 
         return parkEventDtos.ToList();
     }
