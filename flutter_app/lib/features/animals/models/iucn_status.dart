@@ -63,6 +63,6 @@ final Map<IUCNStatusDto, IUCNStatus> ucnStatusColorMap = {
     textColor: Colors.white,
     name: "Ikke truet",
     description:
-        "Almindelige arter samt arter hvor der måske er grund til bekymring, selvom arten ikke i øjeblikket er direkte truet.  Eksempler på dyr i denne kategori kunne være leoparden og spækhuggeren.",
+        "Almindelige arter samt arter hvor der måske er grund til bekymring, selvom arten ikke i øjeblikket er direkte truet.  Eksempler på dyr i denne kategori kunne være kapivar og spækhuggeren.",
   )
 };

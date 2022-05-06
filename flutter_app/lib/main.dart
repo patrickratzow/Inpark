@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:firebase_core/firebase_core.dart";
+import 'package:flutter_app/features/speaks/models/notification_service.dart';
 import 'package:flutter_app/features/speaks/models/speak_model.dart';
 import 'package:flutter_app/features/front_page/front_page.dart';
 import "package:flutter_app/routes.dart";
@@ -28,6 +29,8 @@ void main() async {
 
   initializeDateFormatting();
   setupIoC();
+
+  await NotificationService().init();
 
   runApp(const MyApp());
 }
