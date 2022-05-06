@@ -17,6 +17,7 @@ public class InparkDbContext : DbContext
     public DbSet<Animal> Animals { get; set; } = null!;
     public DbSet<OpeningHour> OpeningHours { get; set; } = null!;
     public DbSet<Speak> Speaks { get; set; } = null!;
+    public DbSet<ParkEvent> ParkEvents { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

@@ -28,17 +28,25 @@ class NavigationLinkList extends StatelessWidget {
 
     return Column(
       children: [
-        const TitleBar(
-          fontSize: 16,
-          name: "Sider",
+        const Padding(
+          padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+          child: TitleBar(
+            fontSize: 16,
+            name: "Sider",
+          ),
         ),
         Padding(
-          padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+          padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
           child: SizedBox(
             height: 120,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: links,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 0, 0),
+                  child: Row(children: links),
+                ),
+              ],
             ),
           ),
         ),

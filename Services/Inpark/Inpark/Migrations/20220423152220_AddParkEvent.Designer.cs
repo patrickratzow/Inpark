@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zoo.Inpark;
 
@@ -11,9 +12,10 @@ using Zoo.Inpark;
 namespace Zoo.Inpark.Migrations
 {
     [DbContext(typeof(InparkDbContext))]
-    partial class InparkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220423152220_AddParkEvent")]
+    partial class AddParkEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,7 +129,7 @@ namespace Zoo.Inpark.Migrations
 
             modelBuilder.Entity("Zoo.Inpark.Entities.Animal", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "Image", b1 =>
+                    b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalImage", "Image", b1 =>
                         {
                             b1.Property<Guid>("AnimalId")
                                 .HasColumnType("uniqueidentifier");
@@ -262,27 +264,6 @@ namespace Zoo.Inpark.Migrations
 
             modelBuilder.Entity("Zoo.Inpark.Entities.Speak", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "Image", b1 =>
-                        {
-                            b1.Property<Guid>("SpeakId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("FullscreenUrl")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("PreviewUrl")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("SpeakId");
-
-                            b1.ToTable("Speaks");
-
-                            b1.WithOwner()
-                                .HasForeignKey("SpeakId");
-                        });
-
                     b.OwnsMany("Zoo.Inpark.ValueObjects.SpeakTime", "SpeakTimes", b1 =>
                         {
                             b1.Property<Guid>("Id")
@@ -334,9 +315,6 @@ namespace Zoo.Inpark.Migrations
                             b1.Navigation("Range")
                                 .IsRequired();
                         });
-
-                    b.Navigation("Image")
-                        .IsRequired();
 
                     b.Navigation("SpeakTimes");
                 });

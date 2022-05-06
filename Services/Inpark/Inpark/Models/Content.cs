@@ -7,6 +7,8 @@ public static class ContentType
     public const string Image = "image";
     public const string Header = "header";
     public const string ListItem = "listitem";
+    public const string Strong = "strong";
+    public const string CallToAction = "callToAction";
 }
 
 public static class LayoutType
