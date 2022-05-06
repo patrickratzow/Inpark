@@ -1,26 +1,25 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import "package:flutter/material.dart";
+import 'package:flutter_app/features/speaks/models/notification_service.dart';
+import 'package:flutter_app/features/speaks/models/speak.dart';
 import "package:flutter_app/generated_code/zooinator.models.swagger.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:localstorage/localstorage.dart';
 
 import '../../../common/ioc.dart';
 import '../repositories/speak_repository.dart';
 
 class SpeakModel extends ChangeNotifier {
-  List<SpeakDto> _speaks = List.empty();
+  List<Speak> _speaks = List.empty();
   String error = "";
   bool loading = false;
+  List<Speak> get speaks => _speaks;
 
-  List<SpeakDto> get topThreeSpeaks {
-    //if there are no more talk for the day, then it should display
-    var now = _getSeconds(DateTime.now());
-
-    return _speaks
-        .where((speak) => _getSeconds(speak.start) >= now)
-        .take(3)
-        .toList();
-  }
-
-  List<SpeakDto> get speaks => _speaks;
+  LocalStorage _localStorage = LocalStorage("speaks.json");
+  NotificationService _notificationService = NotificationService();
 
   Future<void> fetchSpeaksForToday() async {
     final homeRepository = locator.get<SpeakRepository>();
@@ -29,11 +28,9 @@ class SpeakModel extends ChangeNotifier {
       loading = true;
 
       var speaksResult = await homeRepository.fetchSpeaksForToday();
-      if (speaksResult.isSuccess) {
-        _speaks = speaksResult.success!;
-      } else {
-        error = speaksResult.error.toString();
-      }
+      _speaks = speaksResult;
+    } catch (ex) {
+      error = ex.toString();
     } finally {
       loading = false;
 
@@ -41,12 +38,74 @@ class SpeakModel extends ChangeNotifier {
     }
   }
 
-  int _getSeconds(DateTime dateTime) {
-    var seconds = 0;
-    seconds += dateTime.hour * (60 * 60);
-    seconds += dateTime.minute * 60;
-    seconds += dateTime.second;
+  bool toggleNotification(Speak speak) {
+    var isToggled = this.isToggled(speak);
 
-    return seconds;
+    if (isToggled) {
+      cancelNotification(speak);
+      cacheState(speak, false);
+
+      return false;
+    }
+
+    scheduleNotification(speak);
+    cacheState(speak, true);
+
+    return true;
+  }
+
+  void scheduleNotification(Speak speak) {
+    var seconds = secondsToNotification(speak.start);
+
+    _notificationService.showNotification(
+      speak.id,
+      "Fodring om lidt!",
+      "Fodring for " + speak.title + "begynder om 15 minutter",
+      seconds,
+    );
+  }
+
+  void cancelNotification(Speak speak) {
+    _notificationService.cancelNotifications(speak.id);
+  }
+
+  int secondsToNotification(DateTime time) {
+    var now = DateTime.now();
+    var normalizedTime = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      time.hour,
+      time.minute,
+      time.second,
+    );
+
+    return normalizedTime
+        .subtract(
+          const Duration(minutes: 15),
+        )
+        .difference(now)
+        .inSeconds;
+  }
+
+  void cacheState(Speak speak, bool state) {
+    var id = speak.id;
+
+    if (state) {
+      _localStorage.setItem(id.toString(), state.toString());
+
+      return;
+    }
+
+    _localStorage.deleteItem(id.toString());
+  }
+
+  bool isToggled(Speak speak) {
+    if (speak.hasBegun()) return false;
+
+    var id = speak.id.toString();
+    var item = _localStorage.getItem(id);
+
+    return item != null;
   }
 }

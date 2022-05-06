@@ -5,9 +5,11 @@ import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
 import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
 import 'package:flutter_app/features/calendar/calendar_screen.dart';
 import "package:flutter_app/features/settings/ui/settings.dart";
+import 'package:flutter_app/features/speaks/models/speak_model.dart';
 import "package:flutter_app/features/speaks/ui/speak_overview_screen.dart";
 import 'package:flutter_app/features/front_page/front_page.dart';
 import "features/home/ui/home.dart";
+import 'features/speaks/models/speak.dart';
 import "generated_code/zooinator.swagger.dart";
 
 class Routes {
@@ -50,7 +52,7 @@ class Routes {
     );
   }
 
-  static void goToSpeaksScreen(context, List<SpeakDto> speaks) {
+  static void goToSpeaksScreen(context, List<Speak> speaks) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => SpeaksOverviewScreen(speaks: speaks),
