@@ -2,12 +2,12 @@ import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:intl/intl.dart";
 
-import "../../../common/browser.dart";
-import "../../../common/colors.dart";
-import "../../../common/ui/fullscreen_image.dart";
-import "../../../common/ui/navigation_bar.dart";
-import "../../../common/ui/screen_app_bar.dart";
-import "../../../generated_code/zooinator.models.swagger.dart";
+import '../../../common/browser.dart';
+import '../../../common/colors.dart';
+import '../../../common/ui/fullscreen_image.dart';
+import '../../../common/ui/navigation_bar.dart';
+import '../../../common/ui/screen_app_bar.dart';
+import '../../../generated_code/zooinator.models.swagger.dart';
 
 class ParkEventScreen extends StatelessWidget {
   ParkEventScreen({Key? key, required this.parkEvent, required this.context})

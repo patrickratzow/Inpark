@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_app/common/ui/title_bar.dart';
-import 'package:flutter_app/features/home/ui/event..dart';
+import 'package:flutter_app/features/park_events/ui/event..dart';
 import 'package:flutter_app/features/home/ui/navigation_link.dart';
 import 'package:provider/provider.dart';
 

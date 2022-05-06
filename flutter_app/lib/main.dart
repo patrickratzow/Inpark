@@ -6,7 +6,7 @@ import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/routes.dart";
 import "package:provider/provider.dart";
 import "common/ioc.dart";
-import "features/home/models/event_model.dart";
+import 'features/park_events/models/event_model.dart';
 import "features/home/models/home_model.dart";
 import "firebase_options.dart";
 import "package:flutter_app/features/home/models/home_model.dart";

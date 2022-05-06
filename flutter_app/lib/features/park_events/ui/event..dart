@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/title_bar.dart";
 import "package:flutter_app/routes.dart";
 import "package:intl/intl.dart";
-import "../../../common/colors.dart";
-import "../../../generated_code/zooinator.models.swagger.dart";
+import '../../../common/colors.dart';
+import '../../../generated_code/zooinator.models.swagger.dart';
 
 class Event extends StatelessWidget {
   final ParkEventDto parkEvent;

@@ -8,7 +8,7 @@ import "package:flutter_app/features/settings/ui/settings.dart";
 import "package:flutter_app/features/speaks/ui/speak_overview_screen.dart";
 import 'package:flutter_app/features/front_page/front_page.dart';
 import "features/home/ui/home.dart";
-import 'features/home/ui/park_event_screen.dart';
+import 'features/park_events/ui/park_event_screen.dart';
 import "generated_code/zooinator.swagger.dart";
 
 class Routes {
