@@ -1,12 +1,12 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import 'package:intl/intl.dart';
+import "package:intl/intl.dart";
 
-import '../../../common/browser.dart';
+import "../../../common/browser.dart";
 import "../../../common/colors.dart";
 import "../../../common/ui/fullscreen_image.dart";
 import "../../../common/ui/navigation_bar.dart";
-import '../../../common/ui/screen_app_bar.dart';
+import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
 
 class ParkEventScreen extends StatelessWidget {
@@ -16,7 +16,7 @@ class ParkEventScreen extends StatelessWidget {
   final ParkEventDto parkEvent;
   //This value is used to ensure no double spacers are used.
   bool wasLastNodeSpacer = false;
-  final DateFormat formatter = DateFormat("dd-MMM-yyyy");
+  final DateFormat formatter = DateFormat("dd-MMM-yyyy", "da");
   final BuildContext context;
   @override
   Widget build(BuildContext context) {

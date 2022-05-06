@@ -1,19 +1,16 @@
 import "dart:io";
 import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
-import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:firebase_core/firebase_core.dart";
-import 'package:flutter_app/features/speaks/models/speak_model.dart';
-import 'package:flutter_app/features/front_page/front_page.dart';
+import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/routes.dart";
 import "package:provider/provider.dart";
 import "common/ioc.dart";
-import 'features/home/models/event_model.dart';
+import "features/home/models/event_model.dart";
 import "features/home/models/home_model.dart";
-import 'features/home/ui/home.dart';
 import "firebase_options.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
+import "package:intl/date_symbol_data_local.dart";
 
 // ...
 
@@ -24,6 +21,7 @@ void main() async {
   );
   HttpOverrides.global = MyHttpOverrides();
 
+  initializeDateFormatting();
   setupIoC();
 
   runApp(const MyApp());

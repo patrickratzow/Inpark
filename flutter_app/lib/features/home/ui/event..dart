@@ -10,7 +10,7 @@ class Event extends StatelessWidget {
   final ParkEventDto parkEvent;
   Event({Key? key, required this.parkEvent}) : super(key: key);
 
-  final df = DateFormat("d MMM yy");
+  final DateFormat formatter = DateFormat("dd-MMM-yyyy", "da");
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -65,7 +65,7 @@ class Event extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            df.format(parkEvent.start),
+                            formatter.format(parkEvent.start),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                             softWrap: true,

@@ -62,7 +62,7 @@ class Home extends StatelessWidget {
                 text: "Billetter",
                 onPressed: () => Browser.openUrl(
                   context,
-                  "https://shop.aalborgzoo.dk/entrebilletter",
+                  "https://shop.aalborgzoo.dk",
                 ),
               ),
               const NavigationLink(
