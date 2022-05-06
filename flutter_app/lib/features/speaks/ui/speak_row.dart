@@ -94,8 +94,8 @@ class SpeakRow extends StatelessWidget {
 
   void showSnackBar(bool state, BuildContext context) {
     var text = state
-        ? "You have turned notifications on"
-        : "You have turned notifications off";
+        ? "Du er blevet oprettet til at modtage notifikationer for denne speak"
+        : "Du er blevet fjernet fra at modtage notifikationer for denne speak";
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

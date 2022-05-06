@@ -59,8 +59,8 @@ class SpeakModel extends ChangeNotifier {
 
     _notificationService.showNotification(
       speak.id,
-      "Fodring om lidt!",
-      "Fodring for " + speak.title + "begynder om 15 minutter",
+      "${speak.title} fodring",
+      "${speak.title} bliver fodret om 15 minutter",
       seconds,
     );
   }
