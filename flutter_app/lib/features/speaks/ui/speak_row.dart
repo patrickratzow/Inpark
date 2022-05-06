@@ -16,7 +16,6 @@ class SpeakRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DateFormat formatter = DateFormat("HH:mm");
-    //formatter.format(speak.start),
     return InkWell(
       onTap: () {
         Routes.goToRoute(context, "/next");

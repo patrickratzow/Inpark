@@ -159,6 +159,7 @@ class ConservationCircle extends StatelessWidget {
   final Color color;
   final Color textColor;
   final bool active;
+  final double? disabledOpacity;
 
   const ConservationCircle({
     Key? key,
@@ -166,12 +167,13 @@ class ConservationCircle extends StatelessWidget {
     required this.color,
     required this.textColor,
     required this.active,
+    this.disabledOpacity,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: active ? 1 : 0.25,
+      opacity: active ? 1 : (disabledOpacity ?? 0.25),
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(

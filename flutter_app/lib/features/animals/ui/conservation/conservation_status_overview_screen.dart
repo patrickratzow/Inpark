@@ -16,27 +16,45 @@ class ConservationStatusOverviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const ScreenAppBar(title: "Bevaringsstatuser"),
-      body: ListView(
-        children: [
-          const SizedBox(height: 12),
-          _buildRow(IUCNStatusDto.lc),
-          _buildRow(IUCNStatusDto.nt),
-          _buildRow(IUCNStatusDto.vu),
-          _buildRow(IUCNStatusDto.en),
-          _buildRow(IUCNStatusDto.cr),
-          _buildRow(IUCNStatusDto.ew),
-          _buildRow(IUCNStatusDto.ex),
-        ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+          child: Column(
+            children: [
+              _buildRow(IUCNStatusDto.lc),
+              _buildRow(IUCNStatusDto.nt),
+              _buildRow(IUCNStatusDto.vu),
+              _buildRow(IUCNStatusDto.en),
+              _buildRow(IUCNStatusDto.cr),
+              _buildRow(IUCNStatusDto.ew),
+              _buildRow(IUCNStatusDto.ex),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  ConservationStatusExplainationRow _buildRow(IUCNStatusDto status) {
+  Widget _buildRow(IUCNStatusDto status) {
     final isActive = status == highlightedStatus;
-
-    return ConservationStatusExplainationRow(
-      status: status,
-      highlight: isActive,
+    final key = GlobalKey();
+    final row = Padding(
+      key: key,
+      padding: EdgeInsets.only(top: 16),
+      child: ConservationStatusExplainationRow(
+        status: status,
+        highlight: isActive,
+      ),
     );
+
+    if (isActive) {
+      Future.delayed(const Duration(milliseconds: 100), () {
+        if (key.currentContext == null) return;
+
+        Scrollable.ensureVisible(key.currentContext!);
+      });
+    }
+
+    return row;
   }
 }
