@@ -1,17 +1,27 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/features/home/ui/home.dart";
+import "package:flutter_app/features/home/models/home_model.dart";
+import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_app/navigation/navigation_model.dart";
 import "package:flutter_app/features/front_page/video_player.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 
-class FrontPage extends StatelessWidget {
+class FrontPage extends HookWidget {
   const FrontPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final navigation = useProvider<NavigationModel>();
+    useProvider<HomeModel>(
+      onInit: (provider) => provider.fetchOpeningHoursForToday(),
+    );
+    useProvider<SpeakModel>(
+      onInit: (provider) => provider.fetchSpeaksForToday(),
+    );
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -24,7 +34,7 @@ class FrontPage extends StatelessWidget {
         children: [
           _buildVideo(),
           _buildSvg(),
-          _buildGetStartedButton(context),
+          _buildGetStartedButton(context, navigation),
         ],
       ),
     );
@@ -84,9 +94,8 @@ class FrontPage extends StatelessWidget {
     );
   }
 
-  Widget _buildGetStartedButton(BuildContext context) {
-    final navigation = useProvider<NavigationModel>();
-
+  Widget _buildGetStartedButton(
+      BuildContext context, NavigationModel navigation) {
     return Container(
       width: double.infinity,
       color: CustomColor.green.middle,
@@ -98,7 +107,7 @@ class FrontPage extends StatelessWidget {
           right: 24,
         ),
         child: TextButton(
-          onPressed: () => navigation.replace(context, const HomeScreen()),
+          onPressed: () => navigation.pushHome(context),
           style: ButtonStyle(
             backgroundColor:
                 MaterialStateProperty.all(CustomColor.green.lightest),

@@ -10,17 +10,25 @@ class CustomVideoPlayer extends HookWidget {
     var controller = useState(
       VideoPlayerController.network("https://i.imgur.com/0sx7vpa.mp4"),
     );
+    var isLoading = useState(true);
 
     useEffect(
       () {
-        setupController(controller.value);
+        if (isLoading.value) {
+          setupController(controller.value)
+              .then((value) => isLoading.value = false);
+        }
 
         return controller.dispose;
       },
-      const [],
+      [],
     );
 
-    return VideoPlayer(controller.value);
+    return isLoading.value
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : VideoPlayer(controller.value);
   }
 
   Future setupController(VideoPlayerController controller) async {

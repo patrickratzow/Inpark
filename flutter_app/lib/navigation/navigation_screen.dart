@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/browser.dart";
+import "package:flutter_app/features/front_page/front_page.dart";
 import "package:flutter_app/features/home/ui/home.dart";
 import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
@@ -14,6 +15,10 @@ class NavigationScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final navigation = useProvider<NavigationModel>(watch: true);
+
+    if (!navigation.isPastIntro) {
+      return const Scaffold(body: FrontPage());
+    }
 
     Widget _buildOffstageNavigator(String tabItem) {
       return Offstage(
@@ -67,49 +72,46 @@ class NavigationScreen extends HookWidget {
             _buildOffstageNavigator("Page3"),
           ],
         ),
-        bottomNavigationBar: !navigation.showNavbar
-            ? null
-            : NavigationBarTheme(
-                data: NavigationBarThemeData(
-                  labelTextStyle: MaterialStateProperty.all(
-                    GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-                child: NavigationBar(
-                  labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-                  height: 48,
-                  onDestinationSelected: (index) =>
-                      selectTab(index, pageKeys[index]),
-                  selectedIndex: navigation.selectedIndex,
-                  destinations: [
-                    const NavigationDestination(
-                      icon: Icon(Icons.home_outlined),
-                      label: "Hjem",
-                    ),
-                    NavigationDestination(
-                      icon: SvgPicture.asset(
-                        "assets/menu_icons/ticket.svg",
-                        color: Colors.black,
-                        width: 31.5,
-                        height: 24,
-                      ),
-                      label: "Billetter",
-                    ),
-                    NavigationDestination(
-                      icon: SvgPicture.asset(
-                        "assets/menu_icons/paw_print.svg",
-                        color: Colors.black,
-                        width: 31.5,
-                        height: 24,
-                      ),
-                      label: "Vores Dyr",
-                    ),
-                  ],
-                ),
+        bottomNavigationBar: NavigationBarTheme(
+          data: NavigationBarThemeData(
+            labelTextStyle: MaterialStateProperty.all(
+              GoogleFonts.poppins(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
               ),
+            ),
+          ),
+          child: NavigationBar(
+            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+            height: 48,
+            onDestinationSelected: (index) => selectTab(index, pageKeys[index]),
+            selectedIndex: navigation.selectedIndex,
+            destinations: [
+              const NavigationDestination(
+                icon: Icon(Icons.home_outlined),
+                label: "Hjem",
+              ),
+              NavigationDestination(
+                icon: SvgPicture.asset(
+                  "assets/menu_icons/ticket.svg",
+                  color: Colors.black,
+                  width: 31.5,
+                  height: 24,
+                ),
+                label: "Billetter",
+              ),
+              NavigationDestination(
+                icon: SvgPicture.asset(
+                  "assets/menu_icons/paw_print.svg",
+                  color: Colors.black,
+                  width: 31.5,
+                  height: 24,
+                ),
+                label: "Vores Dyr",
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

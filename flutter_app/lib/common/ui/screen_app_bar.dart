@@ -52,6 +52,8 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navigation = useProvider<NavigationModel>();
+
     // If the toolbar is allocated less than toolbarHeight make it
     // appear to scroll upwards within its shrinking container.
     Widget appBar = ClipRect(
@@ -67,7 +69,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: _buildLeading(context),
+          children: _buildLeading(context, navigation),
         ),
         Row(
           children: _buildActions(context),
@@ -115,9 +117,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     );
   }
 
-  List<Widget> _buildLeading(BuildContext context) {
-    final navigation = useProvider<NavigationModel>();
-
+  List<Widget> _buildLeading(BuildContext context, NavigationModel navigation) {
     List<Widget> results = [];
     if (automaticallyImplyLeading) {
       results.add(

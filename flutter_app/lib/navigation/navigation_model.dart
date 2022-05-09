@@ -9,6 +9,8 @@ final Map<String, GlobalKey<NavigatorState>> navigatorKeys = {
 };
 
 class NavigationModel extends ChangeNotifier {
+  bool _isPastIntro = false;
+  bool get isPastIntro => _isPastIntro;
   bool _showNavbar = true;
   bool get showNavbar => _showNavbar;
   int _selectedIndex = 0;
@@ -29,6 +31,12 @@ class NavigationModel extends ChangeNotifier {
 
   void show() {
     _showNavbar = true;
+
+    notifyListeners();
+  }
+
+  void pushHome(BuildContext context) {
+    _isPastIntro = true;
 
     notifyListeners();
   }
