@@ -75,11 +75,25 @@ class SpeakRow extends HookWidget {
                   : NotifyButton(
                       time: speak.start,
                       initialState: isToggled,
-                      onPressed: (state) {
-                        speakModel.toggleNotification(speak);
-                        showSnackBar(state, context);
+                      onPressed: (state) async {
+                        try {
+                          final turnedOn =
+                              await speakModel.toggleNotification(speak);
+                          final text = turnedOn
+                              ? "You have turned notifications on"
+                              : "You have turned notifications off";
 
-                        return true;
+                          showSnackBar(text, context);
+
+                          return true;
+                        } catch (e) {
+                          showSnackBar(
+                            "Du har ikke givet tilladelse til notifikationer",
+                            context,
+                          );
+
+                          return false;
+                        }
                       },
                     ),
             ),
@@ -89,14 +103,10 @@ class SpeakRow extends HookWidget {
     );
   }
 
-  void showSnackBar(bool state, BuildContext context) {
-    var text = state
-        ? "Du er blevet oprettet til at modtage notifikationer for denne speak"
-        : "Du er blevet fjernet fra at modtage notifikationer for denne speak";
-
+  void showSnackBar(String text, BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: const Duration(seconds: 1),
+        duration: const Duration(seconds: 4),
         content: Text(text),
       ),
     );
@@ -104,7 +114,7 @@ class SpeakRow extends HookWidget {
 }
 
 class NotifyButton extends HookWidget {
-  final bool Function(bool active) onPressed;
+  final Future<bool> Function(bool active) onPressed;
   final bool initialState;
   final Color offColor;
   final Color onColor;
@@ -175,8 +185,8 @@ class NotifyButton extends HookWidget {
               ),
             ),
           ),
-          onPressed: () {
-            var success = onPressed(!state.value);
+          onPressed: () async {
+            var success = await onPressed(state.value);
             if (success) {
               state.value = !state.value;
 

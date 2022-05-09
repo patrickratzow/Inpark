@@ -38,7 +38,6 @@ class Event extends HookWidget {
               minHeight: 151,
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 AspectRatio(
                   aspectRatio: 100 / 62,

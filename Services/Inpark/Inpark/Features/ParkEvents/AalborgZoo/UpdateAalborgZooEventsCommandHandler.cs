@@ -12,6 +12,7 @@ using Zoo.Inpark.Features.Events.Interfaces;
 namespace Zoo.Inpark.Features.Events.AalborgZoo;
 
 public record UpdateAalborgZooParkEventsCommand : IRequest<OneOf<Unit>>;
+
 public class UpdateAalborgZooParkEventsCommandHandler : IRequestHandler<UpdateAalborgZooParkEventsCommand, OneOf<Unit>>
 {
     private readonly IParkEventRepository _repository;

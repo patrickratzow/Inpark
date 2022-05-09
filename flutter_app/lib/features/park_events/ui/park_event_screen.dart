@@ -2,7 +2,6 @@ import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
 import "package:intl/intl.dart";
-
 import "../../../common/browser.dart";
 import "../../../common/colors.dart";
 import "../../../common/ui/fullscreen_image.dart";
