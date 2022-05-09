@@ -2,15 +2,14 @@ import "dart:math";
 
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import 'package:flutter_app/features/speaks/models/speak.dart';
-import 'package:flutter_app/features/speaks/models/speak_model.dart';
-import "package:flutter_app/routes.dart";
+import "package:flutter_app/features/speaks/models/speak.dart";
+import "package:flutter_app/features/speaks/models/speak_model.dart";
+import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:intl/intl.dart";
-import 'package:provider/provider.dart';
 
-class SpeakRow extends StatelessWidget {
+class SpeakRow extends HookWidget {
   final Speak speak;
   final int id;
   const SpeakRow({Key? key, required this.speak, required this.id})
@@ -18,13 +17,11 @@ class SpeakRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var speakModel = context.read<SpeakModel>();
-    var isToggled = speakModel.isToggled(speak);
+    final speakModel = useProvider<SpeakModel>();
+    final isToggled = speakModel.isToggled(speak);
 
     return InkWell(
-      onTap: () {
-        Routes.goToRoute(context, "/next");
-      },
+      onTap: () {},
       child: Padding(
         padding: const EdgeInsets.only(top: 4, bottom: 4),
         child: Row(
@@ -64,7 +61,7 @@ class SpeakRow extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "Kl. " + DateTimeFormatter.format(speak.start),
+                        "Kl. " + DateFormat("HH:mm").format(speak.start),
                       )
                     ],
                   ),
@@ -109,7 +106,7 @@ class SpeakRow extends StatelessWidget {
   void showSnackBar(String text, BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: Duration(seconds: 4),
+        duration: const Duration(seconds: 4),
         content: Text(text),
       ),
     );
@@ -203,12 +200,5 @@ class NotifyButton extends HookWidget {
         );
       },
     );
-  }
-}
-
-class DateTimeFormatter {
-  static String format(DateTime date) {
-    final DateFormat formatter = DateFormat("HH:mm");
-    return formatter.format(date);
   }
 }

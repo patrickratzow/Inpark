@@ -1,5 +1,6 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import "package:flutter_app/common/screen.dart";
 import "package:intl/intl.dart";
 import "../../../common/browser.dart";
 import "../../../common/colors.dart";
@@ -8,15 +9,14 @@ import "../../../common/ui/navigation_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
 
-class ParkEventScreen extends StatelessWidget {
-  ParkEventScreen({Key? key, required this.parkEvent, required this.context})
-      : super(key: key);
+class ParkEventScreen extends StatelessWidget implements Screen {
+  ParkEventScreen({Key? key, required this.parkEvent}) : super(key: key);
 
   final ParkEventDto parkEvent;
   //This value is used to ensure no double spacers are used.
   bool wasLastNodeSpacer = false;
   final DateFormat formatter = DateFormat("dd-MMM-yyyy", "da");
-  final BuildContext context;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +70,9 @@ class ParkEventScreen extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                                 child: _buildContents(
-                                    parkEvent.descriptionContent),
+                                  parkEvent.descriptionContent,
+                                  context,
+                                ),
                               ),
                             ],
                           ),
@@ -192,7 +194,8 @@ class ParkEventScreen extends StatelessWidget {
       children: [
         RichText(
           text: TextSpan(
-              children: [...contents[1].children.map(_buildTriviaContent)]),
+            children: [...contents[1].children.map(_buildTriviaContent)],
+          ),
         )
       ],
     );
@@ -244,13 +247,13 @@ class ParkEventScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildContents(List<ContentDto> contents) {
+  Widget _buildContents(List<ContentDto> contents, BuildContext context) {
     return Column(
-      children: contents.map(_buildContent).toList(),
+      children: contents.map((x) => _buildContent(x, context)).toList(),
     );
   }
 
-  Widget _buildContent(ContentDto content) {
+  Widget _buildContent(ContentDto content, BuildContext context) {
     if (content.type == "container") {
       return RichText(
         text: TextSpan(children: [...content.children.map(_buildText)]),
@@ -264,7 +267,7 @@ class ParkEventScreen extends StatelessWidget {
     if (content.type == "callToAction") {
       return Padding(
         padding: const EdgeInsets.only(top: 32, bottom: 16),
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: TextButton(
             style: ButtonStyle(

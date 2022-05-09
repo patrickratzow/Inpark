@@ -1,13 +1,14 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
-import 'package:flutter_app/features/speaks/models/speak.dart';
+import "package:flutter_app/features/speaks/models/speak.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
-import 'package:flutter_app/features/speaks/ui/speaks_list.dart';
-import 'package:flutter_app/generated_code/zooinator.swagger.dart';
-import "package:provider/provider.dart";
+import "package:flutter_app/features/speaks/ui/speaks_list.dart";
+import "package:flutter_app/hooks/use_provider.dart";
 
-class SpeaksOverviewScreen extends StatelessWidget {
+class SpeaksOverviewScreen extends StatelessWidget implements Screen {
   final List<Speak> speaks;
+
   const SpeaksOverviewScreen({
     Key? key,
     required this.speaks,
@@ -15,7 +16,9 @@ class SpeaksOverviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<SpeakModel>().fetchSpeaksForToday();
+    useProvider<SpeakModel>(
+      onInit: (provider) => provider.fetchSpeaksForToday(),
+    );
 
     return Scaffold(
       appBar: const ScreenAppBar(title: "Alle Aktiviteter og Speaks"),

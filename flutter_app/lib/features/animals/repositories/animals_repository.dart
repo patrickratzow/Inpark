@@ -15,9 +15,8 @@ class AnimalsRepository {
       if (!response.isSuccessful) {
         return Result.error(response.error.toString());
       }
-      _animals = response.body;
 
-      return Result.success(_animals);
+      return Result.success(_animals ??= response.body);
     } catch (ex) {
       return Result.error(ex.toString());
     }

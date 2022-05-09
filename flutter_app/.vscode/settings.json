@@ -1,0 +1,8 @@
+{
+  "svg.preview.background": "editor",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll": true
+  },
+}

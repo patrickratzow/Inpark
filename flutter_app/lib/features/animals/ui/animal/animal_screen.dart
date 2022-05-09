@@ -1,22 +1,28 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/colors.dart';
+import "package:flutter_app/common/colors.dart";
+import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/ui/bullet_list.dart";
 import "package:flutter_app/common/ui/fullscreen_image.dart";
 import "package:flutter_app/common/ui/navigation_bar.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
-import 'package:flutter_app/features/animals/ui/conservation/conservation_status.dart';
+import "package:flutter_app/features/animals/ui/conservation/conservation_status.dart";
+import "package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
-import 'package:flutter_app/routes.dart';
+import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/navigation/navigation_model.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-import 'animal_category.dart';
+import "animal_category.dart";
 
-class AnimalScreen extends StatelessWidget {
+class AnimalScreen extends HookWidget implements Screen {
   final AnimalDto animal;
   const AnimalScreen({Key? key, required this.animal}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final navigation = useProvider<NavigationModel>();
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -35,7 +41,7 @@ class AnimalScreen extends StatelessWidget {
               (context, index) {
                 if (index != 0) return null;
 
-                return _buildCard(context, animal);
+                return _buildCard(context, animal, navigation);
               },
             ),
           ),
@@ -44,86 +50,59 @@ class AnimalScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCard(BuildContext context, AnimalDto animal) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.13),
-              offset: const Offset(0, 0),
-              blurRadius: 4,
+  Widget _buildCard(
+      BuildContext context, AnimalDto animal, NavigationModel navigation) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () => {
+            navigation.hide(),
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FullScreenImage(
+                  imageUrl: animal.image.fullscreenUrl,
+                  tag: "animal-${animal.id}",
+                  title: animal.name.displayName,
+                ),
+              ),
             ),
-          ],
+          },
+          child: _buildImage(animal),
         ),
-        child: Card(
-          margin: const EdgeInsets.all(0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
-          ),
-          clipBehavior: Clip.hardEdge,
-          child: Column(
-            children: [
-              GestureDetector(
-                onTap: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FullScreenImage(
-                        imageUrl: animal.image.fullscreenUrl,
-                        tag: "animal-${animal.id}",
-                        title: animal.name.displayName,
+        ZooinatorNavigationBar(
+          tabs: [
+            ZooinatorNavigationTab(
+              text: "Information",
+              icon: Icons.menu,
+              builder: (context) => Column(
+                children: [
+                  InkWell(
+                    onTap: () => navigation.push(
+                      context,
+                      ConservationStatusOverviewScreen(
+                        highlightedStatus: animal.status,
                       ),
                     ),
+                    child: _buildConservationStatus(animal),
                   ),
-                },
-                child: _buildImage(animal),
-              ),
-              ZooinatorNavigationBar(
-                tabs: [
-                  ZooinatorNavigationTab(
-                    text: "Information",
-                    icon: Icons.menu,
-                    builder: (context) => Column(
-                      children: [
-                        InkWell(
-                          onTap: () => Routes.goToConversationOverviewScreen(
-                            context,
-                            animal.status,
-                          ),
-                          splashColor: Theme.of(context).primaryColor,
-                          child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                              child: _buildConservationStatus(animal),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: _buildContent(animal.contents[0]),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ZooinatorNavigationTab(
-                    text: "Oversigt",
-                    icon: Icons.dashboard,
-                    builder: (context) => Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: _buildTriviaContent(animal.contents[1]),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                    child: _buildContent(animal.contents[0]),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+            ZooinatorNavigationTab(
+              text: "Oversigt",
+              icon: Icons.dashboard,
+              builder: (context) => Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: _buildTriviaContent(animal.contents[1]),
+              ),
+            ),
+          ],
         ),
-      ),
+      ],
     );
   }
 

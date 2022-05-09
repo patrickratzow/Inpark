@@ -1,30 +1,43 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/routes.dart";
+import "package:flutter_app/features/home/models/home_model.dart";
+import "package:flutter_app/features/speaks/models/speak_model.dart";
+import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/navigation/navigation_model.dart";
 import "package:flutter_app/features/front_page/video_player.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 
-class FrontPage extends StatelessWidget {
+class FrontPage extends HookWidget {
   const FrontPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final navigation = useProvider<NavigationModel>();
+    useProvider<HomeModel>(
+      onInit: (provider) => provider.fetchOpeningHoursForToday(),
+    );
+    useProvider<SpeakModel>(
+      onInit: (provider) => provider.fetchSpeaksForToday(),
+    );
+
     return Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          systemOverlayStyle: SystemUiOverlayStyle.light
-              .copyWith(statusBarColor: Colors.transparent),
-        ),
-        body: Column(
-          children: [
-            _buildVideo(),
-            _buildSvg(),
-            _buildGetStartedButton(context),
-          ],
-        ));
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        systemOverlayStyle: SystemUiOverlayStyle.light
+            .copyWith(statusBarColor: Colors.transparent),
+      ),
+      body: Column(
+        children: [
+          _buildVideo(),
+          _buildSvg(),
+          _buildGetStartedButton(context, navigation),
+        ],
+      ),
+    );
   }
 
   Widget _buildVideo() {
@@ -81,7 +94,8 @@ class FrontPage extends StatelessWidget {
     );
   }
 
-  Widget _buildGetStartedButton(BuildContext context) {
+  Widget _buildGetStartedButton(
+      BuildContext context, NavigationModel navigation) {
     return Container(
       width: double.infinity,
       color: CustomColor.green.middle,
@@ -93,9 +107,7 @@ class FrontPage extends StatelessWidget {
           right: 24,
         ),
         child: TextButton(
-          onPressed: () {
-            Routes.goToRoute(context, "/home");
-          },
+          onPressed: () => navigation.pushHome(context),
           style: ButtonStyle(
             backgroundColor:
                 MaterialStateProperty.all(CustomColor.green.lightest),

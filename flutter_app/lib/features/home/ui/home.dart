@@ -1,64 +1,40 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/browser.dart";
+import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/park_events/ui/event_container.dart";
-import "package:flutter_app/features/home/ui/route_box.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/features/speaks/ui/speaks_list.dart";
+import "package:flutter_app/hooks/use_provider.dart";
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
-import "package:flutter/foundation.dart" show kDebugMode;
 
-import "navigation_link.dart";
-import "navigation_link_list.dart";
 import "opening_hours.dart";
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget implements Screen {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    context.read<HomeModel>().fetchOpeningHoursForToday();
-    context.read<SpeakModel>().fetchSpeaksForToday();
+    useProvider<HomeModel>(
+      onInit: (provider) => provider.fetchOpeningHoursForToday(),
+    );
+    useProvider<SpeakModel>(
+      onInit: (provider) => provider.fetchSpeaksForToday(),
+    );
 
     return Scaffold(
       appBar: const HomeAppBar(),
       body: ListView(
         children: [
           const OpeningHours(),
-          NavigationLinkList(
-            children: [
-              NavigationLink(
-                iconName: "ticket",
-                text: "Billetter",
-                onPressed: () => Browser.openUrl(
-                  context,
-                  "https://shop.aalborgzoo.dk",
-                ),
-              ),
-              const NavigationLink(
-                iconName: "calendar",
-                text: "Aktivitets\nkalender",
-                route: "/calendar",
-              ),
-              const NavigationLink(
-                iconName: "pawprint",
-                text: "Vores Dyr",
-                route: "/animals",
-              ),
-              const NavigationLink(
-                iconName: "newspaper",
-                text: "Nyheder",
-                route: "non",
-              ),
-            ],
-            title: "Tasks",
-          ),
-          _buildSpeaks(context),
+          const SizedBox(height: 24),
           const EventContainer(
             title: "Kommende arrangementer",
           ),
+          const SizedBox(height: 24),
+          _buildSpeaks(context),
+          const SizedBox(height: 16),
         ],
       ),
     );
@@ -78,18 +54,15 @@ class Home extends StatelessWidget {
           );
         }
 
-        return Padding(
-          padding: EdgeInsets.fromLTRB(0, 14, 0, 16),
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: TitleBar(name: "Dagens speaks", fontSize: 16),
-              ),
-              const SizedBox(height: 4),
-              SpeaksList(speaks: value.speaks),
-            ],
-          ),
+        return Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: TitleBar(name: "Dagens speaks", fontSize: 16),
+            ),
+            const SizedBox(height: 4),
+            SpeaksList(speaks: value.speaks),
+          ],
         );
       },
     );
