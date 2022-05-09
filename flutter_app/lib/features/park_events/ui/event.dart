@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/title_bar.dart";
 import "package:flutter_app/routes.dart";
 import "package:intl/intl.dart";
-import '../../../common/colors.dart';
-import '../../../generated_code/zooinator.models.swagger.dart';
+import "../../../common/colors.dart";
+import "../../../generated_code/zooinator.models.swagger.dart";
 
 class Event extends StatelessWidget {
   final ParkEventDto parkEvent;
@@ -49,31 +49,24 @@ class Event extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 4, 0, 0),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: TitleBar(
-                            fontSize: 10,
-                            name: parkEvent.title,
-                            color: CustomColor.green.middle,
-                          ),
+                        TitleBar(
+                          fontSize: 12,
+                          name: parkEvent.title,
+                          color: CustomColor.green.middle,
                         ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            formatter.format(parkEvent.start),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 3,
-                            softWrap: true,
-                            style: TextStyle(
-                              fontSize: 8,
-                              color: CustomColor.green.middle,
-                              fontFamily: "Poppins",
-                            ),
+                        Text(
+                          formatter.format(parkEvent.start),
+                          softWrap: true,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: CustomColor.green.middle,
+                            fontFamily: "Poppins",
                           ),
                         ),
                       ],

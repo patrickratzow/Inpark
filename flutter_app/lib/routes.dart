@@ -1,14 +1,15 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/ui/screen_app_bar.dart';
-import 'package:flutter_app/features/animals/ui/animal/animal_overview_screen.dart';
-import 'package:flutter_app/features/animals/ui/animal/animal_screen.dart';
-import 'package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart';
-import 'package:flutter_app/features/calendar/calendar_screen.dart';
+import "package:flutter_app/common/ui/screen_app_bar.dart";
+import "package:flutter_app/features/animals/ui/animal/animal_overview_screen.dart";
+import "package:flutter_app/features/animals/ui/animal/animal_screen.dart";
+import "package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart";
+import "package:flutter_app/features/calendar/ui/calendar_screen.dart";
 import "package:flutter_app/features/settings/ui/settings.dart";
 import "package:flutter_app/features/speaks/ui/speak_overview_screen.dart";
-import 'package:flutter_app/features/front_page/front_page.dart';
+import "package:flutter_app/features/front_page/front_page.dart";
 import "features/home/ui/home.dart";
-import 'features/park_events/ui/park_event_screen.dart';
+import "features/speaks/models/speak.dart";
+import "features/park_events/ui/park_event_screen.dart";
 import "generated_code/zooinator.swagger.dart";
 
 class Routes {
@@ -54,12 +55,12 @@ class Routes {
   static void goToParkEventScreen(context, ParkEventDto parkEvent) {
     Navigator.of(context).push(
       MaterialPageRoute(
-          builder: (_) =>
-              ParkEventScreen(context: context, parkEvent: parkEvent)),
+        builder: (_) => ParkEventScreen(context: context, parkEvent: parkEvent),
+      ),
     );
   }
 
-  static void goToSpeaksScreen(context, List<SpeakDto> speaks) {
+  static void goToSpeaksScreen(context, List<Speak> speaks) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => SpeaksOverviewScreen(speaks: speaks),

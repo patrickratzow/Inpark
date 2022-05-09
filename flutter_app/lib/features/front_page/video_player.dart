@@ -15,7 +15,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   void initState() {
     super.initState();
     _controller =
-        VideoPlayerController.network("https://i.imgur.com/0sx7vpa.mp4 ")
+        VideoPlayerController.network("https://i.imgur.com/0sx7vpa.mp4")
           ..initialize().then((_) {
             // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
             setState(() {});
@@ -27,7 +27,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return VideoPlayer(_controller);
+    return Flexible(child: VideoPlayer(_controller));
   }
 
   @override

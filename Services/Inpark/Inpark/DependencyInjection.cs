@@ -25,18 +25,12 @@ namespace Zoo.Inpark;
 
 public static class DependencyInjection
 {
-    private static readonly ILoggerFactory EfLoggerFactory = LoggerFactory.Create(builder =>
-    {
-        builder.AddConsole();
-    });
-    
     public static void AddInpark(this IServiceCollection services, IConfiguration configuration)
     {
         var dbConnection = configuration.GetConnectionString("InparkConnection");
         services.AddDbContext<InparkDbContext>(options =>
         {
             options.UseSqlServer(dbConnection);
-            options.UseLoggerFactory(EfLoggerFactory);
         });
         services.AddMemoryCache();
         services.AddMediatR(Assembly.GetExecutingAssembly());

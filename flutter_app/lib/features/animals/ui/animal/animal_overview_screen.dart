@@ -5,6 +5,8 @@ import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/common/ui/cancel_button.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
+import 'package:flutter_app/features/calendar/ui/calendar_screen.dart';
+import 'package:flutter_app/routes.dart';
 import "package:flutter_app/routes.dart";
 import "package:provider/provider.dart";
 
@@ -12,26 +14,36 @@ import "animal_card.dart";
 
 class AnimalOverviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
+    context.read<AnimalsModel>().fetchAnimals();
+
+    const list = AnimalsOverviewList();
+
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(48),
-              child: Container(),
-            ),
-            pinned: false,
-            snap: false,
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            shadowColor: Colors.transparent,
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.white,
-            floating: true,
-            flexibleSpace: _buildAppBar(),
-          ),
-          const AnimalsOverviewList()
-        ],
+      body: Consumer<AnimalsModel>(
+        builder: (context, model, child) {
+          var isLoading = model.loading || model.hasError;
+
+          return CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                bottom: PreferredSize(
+                  preferredSize: Size.fromHeight(isLoading ? 0 : 48),
+                  child: Container(),
+                ),
+                pinned: false,
+                snap: false,
+                automaticallyImplyLeading: false,
+                elevation: 0,
+                shadowColor: Colors.transparent,
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.white,
+                floating: true,
+                flexibleSpace: _buildAppBar(),
+              ),
+              list
+            ],
+          );
+        },
       ),
     );
   }
@@ -39,6 +51,7 @@ class AnimalOverviewScreen extends StatelessWidget {
   Widget _buildAppBar() {
     return Consumer<AnimalsModel>(
       builder: (context, animalsModel, child) {
+        final isLoading = animalsModel.loading || animalsModel.hasError;
         final isSearching = animalsModel.isSearching;
         final List<Widget> actions;
         final Widget? leading;
@@ -103,7 +116,7 @@ class AnimalOverviewScreen extends StatelessWidget {
           actions: actions,
           leading: leading,
           automaticallyImplyLeading: leading == null,
-          flexibleSpace: _buildCategories(animalsModel),
+          flexibleSpace: isLoading ? null : _buildCategories(animalsModel),
         );
       },
     );
@@ -193,8 +206,6 @@ class AnimalsOverviewList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<AnimalsModel>().fetchAnimals();
-
     return Consumer<AnimalsModel>(
       builder: (context, animalsModel, child) {
         if (animalsModel.loading) {

@@ -3,21 +3,21 @@ import "package:flutter_app/common/result.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
 
 class AnimalsRepository {
-  late final Zooinator _apiClient;
-
-  AnimalsRepository() {
-    _apiClient = locator.get<Zooinator>();
-  }
+  List<AnimalDto>? _animals;
 
   Future<Result<List<AnimalDto>, String>> fetchAnimals() async {
+    if (_animals != null) return Result.success(_animals);
+
     try {
-      var response = await _apiClient.getAnimals();
+      var apiClient = locator.get<Zooinator>();
+      var response = await apiClient.getAnimals();
 
       if (!response.isSuccessful) {
         return Result.error(response.error.toString());
       }
+      _animals = response.body;
 
-      return Result.success(response.body!);
+      return Result.success(_animals);
     } catch (ex) {
       return Result.error(ex.toString());
     }

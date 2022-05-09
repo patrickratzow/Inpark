@@ -2,31 +2,36 @@ import "dart:math";
 
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import 'package:flutter_app/features/speaks/models/speak.dart';
+import 'package:flutter_app/features/speaks/models/speak_model.dart';
 import "package:flutter_app/routes.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:intl/intl.dart";
-
-import "../../../generated_code/zooinator.models.swagger.dart";
+import 'package:provider/provider.dart';
 
 class SpeakRow extends StatelessWidget {
-  final SpeakDto speak;
-  const SpeakRow({Key? key, required this.speak}) : super(key: key);
+  final Speak speak;
+  final int id;
+  const SpeakRow({Key? key, required this.speak, required this.id})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final DateFormat formatter = DateFormat("HH:mm");
+    var speakModel = context.read<SpeakModel>();
+    var isToggled = speakModel.isToggled(speak);
+
     return InkWell(
       onTap: () {
         Routes.goToRoute(context, "/next");
       },
       child: Padding(
-        padding: EdgeInsets.only(top: 4, bottom: 4),
+        padding: const EdgeInsets.only(top: 4, bottom: 4),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.only(left: 16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
@@ -59,35 +64,58 @@ class SpeakRow extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "Kl. " + formatter.format(speak.start),
+                        "Kl. " + DateTimeFormatter.format(speak.start),
                       )
                     ],
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                 ],
               ),
             ),
-            NotifyButton(
-              initialState: false,
-              onPressed: (state) {
-                print("State is $state");
-              },
-            )
+            Container(
+              child: speak.hasBegun()
+                  ? null
+                  : NotifyButton(
+                      time: speak.start,
+                      initialState: isToggled,
+                      onPressed: (state) {
+                        speakModel.toggleNotification(speak);
+                        showSnackBar(state, context);
+
+                        return true;
+                      },
+                    ),
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  void showSnackBar(bool state, BuildContext context) {
+    var text = state
+        ? "You have turned notifications on"
+        : "You have turned notifications off";
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text(text),
       ),
     );
   }
 }
 
 class NotifyButton extends HookWidget {
-  final Function(bool active) onPressed;
+  final bool Function(bool active) onPressed;
   final bool initialState;
   final Color offColor;
   final Color onColor;
+  final DateTime time;
 
-  NotifyButton({
+  const NotifyButton({
     Key? key,
+    required this.time,
     required this.onPressed,
     required this.initialState,
     this.offColor = const Color(0xffA3A3A3),
@@ -151,17 +179,26 @@ class NotifyButton extends HookWidget {
             ),
           ),
           onPressed: () {
-            state.value = !state.value;
-            if (state.value) {
-              animationController.forward();
-            } else {
-              animationController.reverse();
-            }
+            var success = onPressed(state.value);
+            if (success) {
+              state.value = !state.value;
 
-            onPressed(state.value);
+              if (state.value) {
+                animationController.forward();
+              } else {
+                animationController.reverse();
+              }
+            }
           },
         );
       },
     );
+  }
+}
+
+class DateTimeFormatter {
+  static String format(DateTime date) {
+    final DateFormat formatter = DateFormat("HH:mm");
+    return formatter.format(date);
   }
 }

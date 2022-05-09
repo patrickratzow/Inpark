@@ -96,6 +96,7 @@ public partial class ParkEventsController : ZooController
     /// Get all events in the park.
     /// </summary>
     [HttpGet("park-events")]
+    [ResponseCache(Duration = 43200)]
     public async partial Task<ActionResult> GetParkEvents(CancellationToken cancellationToken)
     {
         var command = new GetParkEventsQuery();

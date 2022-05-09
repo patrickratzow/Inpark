@@ -1,5 +1,6 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Entities;
 
@@ -7,12 +8,21 @@ namespace Zoo.Inpark;
 
 public class InparkDbContext : DbContext
 {
-    public InparkDbContext(DbContextOptions<InparkDbContext> options) : base(options) { }
+    private readonly ILoggerFactory _loggerFactory;
+    public InparkDbContext(DbContextOptions<InparkDbContext> options, ILoggerFactory loggerFactory) : base(options)
+    {
+        _loggerFactory = loggerFactory;
+    }
 
     public DbSet<Animal> Animals { get; set; } = null!;
     public DbSet<OpeningHour> OpeningHours { get; set; } = null!;
     public DbSet<Speak> Speaks { get; set; } = null!;
     public DbSet<ParkEvent> ParkEvents { get; set; } = null!;
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseLoggerFactory(_loggerFactory);
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

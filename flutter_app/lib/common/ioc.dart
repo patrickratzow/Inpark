@@ -2,6 +2,7 @@ import "dart:io";
 
 import "package:flutter/foundation.dart" show kDebugMode;
 import "package:flutter_app/features/animals/ioc.dart";
+import 'package:flutter_app/features/calendar/repository/calendar_repository.dart';
 import 'package:flutter_app/features/home/repositories/home_repository.dart';
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "package:get_it/get_it.dart";
@@ -27,4 +28,5 @@ void setupIoC() {
   locator
       .registerLazySingleton<ParkEventRepository>(() => ParkEventRepository());
   locator.registerLazySingleton<SpeakRepository>(() => SpeakRepository());
+  locator.registerLazySingleton<CalendarRepository>(() => CalendarRepository());
 }

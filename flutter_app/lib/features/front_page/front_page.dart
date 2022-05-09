@@ -87,8 +87,8 @@ class FrontPage extends StatelessWidget {
       color: CustomColor.green.middle,
       child: Padding(
         padding: const EdgeInsets.only(
-          top: 40,
-          bottom: 16,
+          top: 16,
+          bottom: 40,
           left: 24,
           right: 24,
         ),

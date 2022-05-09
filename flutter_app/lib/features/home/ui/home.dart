@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/browser.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
-import 'package:flutter_app/features/park_events/ui/event.dart';
-import 'package:flutter_app/features/park_events/ui/event_container.dart';
+import "package:flutter_app/features/park_events/ui/event_container.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/features/speaks/ui/speaks_list.dart";
@@ -17,32 +16,6 @@ import "opening_hours.dart";
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-
-  List<Widget> _buildDebugRoutes(BuildContext context) {
-    if (!kDebugMode) {
-      return List.empty();
-    }
-    return [
-      const RouteBox(
-        title: "Floris",
-        route: "/settings",
-        description: "Find us!",
-        iconName: "map",
-      ),
-      const RouteBox(
-        title: "Patrick",
-        route: "/animals/conservation-status-overview",
-        description: "Find us!",
-        iconName: "map",
-      ),
-      const RouteBox(
-        title: "Nikolaj",
-        route: "Non",
-        description: "Find us!",
-        iconName: "map",
-      ),
-    ];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +40,7 @@ class Home extends StatelessWidget {
               const NavigationLink(
                 iconName: "calendar",
                 text: "Aktivitets\nkalender",
-                route: "non",
+                route: "/calendar",
               ),
               const NavigationLink(
                 iconName: "pawprint",
@@ -109,11 +82,11 @@ class Home extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(0, 14, 0, 16),
           child: Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: TitleBar(name: "Dagens speaks", fontSize: 16),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               SpeaksList(speaks: value.speaks),
             ],
           ),
