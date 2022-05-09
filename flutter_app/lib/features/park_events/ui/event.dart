@@ -10,7 +10,7 @@ class Event extends StatelessWidget {
   final ParkEventDto parkEvent;
   Event({Key? key, required this.parkEvent}) : super(key: key);
 
-  final DateFormat formatter = DateFormat("dd. MMMM yyyy", "da");
+  final DateFormat formatter = DateFormat("dd-MMM-yyyy", "da");
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,29 +27,24 @@ class Event extends StatelessWidget {
           onPressed: () {
             Routes.goToParkEventScreen(context, parkEvent);
           },
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 154,
-              minHeight: 151,
-            ),
+          child: SizedBox(
+            width: 154,
+            height: 147,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                AspectRatio(
-                  aspectRatio: 100 / 62,
-                  child: Expanded(
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
+                Expanded(
+                  flex: 2,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                    ),
+                    child: Image(
+                      image: CachedNetworkImageProvider(
+                        parkEvent.image.previewUrl,
                       ),
-                      child: Image(
-                        image: CachedNetworkImageProvider(
-                          parkEvent.image.previewUrl,
-                        ),
-                        fit: BoxFit.cover,
-                        colorBlendMode: BlendMode.darken,
-                      ),
+                      fit: BoxFit.cover,
+                      colorBlendMode: BlendMode.darken,
                     ),
                   ),
                 ),

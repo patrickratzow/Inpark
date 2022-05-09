@@ -39,6 +39,7 @@ public class GetAnimalQueryValidator : AbstractValidator<GetAnimalQuery>
 
 [ApiController]
 [MethodGroup(Groups.Animals)]
+[ResponseCache(Duration = 43200)]
 public partial class GetAnimalController : ZooController
 {
     private readonly IMediator _mediator;
