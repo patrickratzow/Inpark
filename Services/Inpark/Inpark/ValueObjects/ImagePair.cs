@@ -28,9 +28,9 @@ public class ImagePair : ValueObject
 }
 
 
-public class AnimalImageValidator : AbstractValidator<ImagePair>
+public class ImagePairValidator : AbstractValidator<ImagePair>
 {
-    public AnimalImageValidator()
+    public ImagePairValidator()
     {
         RuleFor(x => x.PreviewUrl).NotEmpty();
         RuleFor(x => x.FullscreenUrl).NotEmpty();

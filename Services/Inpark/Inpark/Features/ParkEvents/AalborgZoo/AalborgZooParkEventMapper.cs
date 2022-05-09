@@ -25,6 +25,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         _htmlTransformer = htmlTransformer;
         _logger = logger;
     }
+
     public Result<List<ParkEvent>, string> ParseParkEvent(string input)
     {
         try
@@ -76,10 +77,9 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         {
             _logger.LogError("Unable to get overview of park events. Exception: {Exception}", ex);
 
-            return "Failed to map the content of the animal";
+            return "Failed to map the content of the park event";
         }
     }
-
 
     public Result<List<IContent>, string> ParseContent(string content)
     {

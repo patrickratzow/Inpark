@@ -82,6 +82,7 @@ public class GetParkEventsQueryQueryHandler :
 
 [ApiController]
 [MethodGroup(Groups.ParkEvents)]
+[ResponseCache(Duration = 43200)]
 public partial class ParkEventsController : ZooController
 {
     private readonly IMediator _mediator;
