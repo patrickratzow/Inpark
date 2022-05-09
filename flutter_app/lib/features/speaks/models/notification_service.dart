@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
 import "package:flutter_local_notifications/flutter_local_notifications.dart";
 import "package:timezone/data/latest.dart" as tz;
 import "package:timezone/timezone.dart" as tz;
-
-import '../../../generated_code/zooinator.models.swagger.dart';
 
 class NotificationService {
   //NotificationService a singleton object
@@ -17,27 +14,13 @@ class NotificationService {
 
   NotificationService._internal();
 
-  static const channelId = "zooinator_notifications";
+  static const channelId = "zooinator_notification";
 
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
   Future<void> init() async {
-    final AndroidInitializationSettings initializationSettingsAndroid =
-        const AndroidInitializationSettings("@drawable/ic_stat_alarm_on");
-
-    final IOSInitializationSettings initializationSettingsIOS =
-        const IOSInitializationSettings(
-      requestSoundPermission: false,
-      requestBadgePermission: false,
-      requestAlertPermission: false,
-    );
-
-    final InitializationSettings initializationSettings =
-        InitializationSettings(
-            android: initializationSettingsAndroid,
-            iOS: initializationSettingsIOS,
-            macOS: null);
+    InitializationSettings initializationSettings = _initializeSettings();
 
     tz.initializeTimeZones();
 
@@ -45,15 +28,26 @@ class NotificationService {
         onSelectNotification: selectNotification);
   }
 
-  final AndroidNotificationDetails _androidNotificationDetails =
-      const AndroidNotificationDetails(
-    "channel ID",
-    "channel name",
-    channelDescription: "Channel description",
-    playSound: true,
-    priority: Priority.high,
-    importance: Importance.high,
-  );
+  InitializationSettings _initializeSettings() {
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings("@drawable/ic_stat_alarm_on");
+
+    const IOSInitializationSettings initializationSettingsIOS =
+        IOSInitializationSettings(
+      requestSoundPermission: false,
+      requestBadgePermission: false,
+      requestAlertPermission: false,
+    );
+
+    const InitializationSettings initializationSettings =
+        InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+      macOS: null,
+    );
+
+    return initializationSettings;
+  }
 
   Future<void> showNotification(
     int id,
@@ -66,34 +60,36 @@ class NotificationService {
       title,
       body,
       tz.TZDateTime.now(tz.local).add(Duration(seconds: seconds)),
-      const NotificationDetails(
-        android: AndroidNotificationDetails("main_channel", "Main Channel",
-            importance: Importance.max,
-            priority: Priority.max,
-            icon: "@drawable/ic_stat_alarm_on"),
-        iOS: IOSNotificationDetails(
-          sound: "default.wav",
-          presentAlert: true,
-          presentBadge: true,
-          presentSound: true,
-        ),
-      ),
+      _platformNotificationDetails(),
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
       androidAllowWhileIdle: true,
     );
   }
 
-  Future<void> scheduleNotifications() async {
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        0,
-        "Notification Title",
-        "This is the Notification Body!",
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-        NotificationDetails(android: _androidNotificationDetails),
-        androidAllowWhileIdle: true,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime);
+  NotificationDetails _platformNotificationDetails() {
+    AndroidNotificationDetails _androidNotificationDetails =
+        const AndroidNotificationDetails(
+      "main_channel",
+      "Main Channel",
+      playSound: true,
+      importance: Importance.max,
+      priority: Priority.max,
+      icon: "@drawable/ic_stat_alarm_on",
+    );
+
+    IOSNotificationDetails _iOSNotificationDetails =
+        const IOSNotificationDetails(
+      sound: "default.wav",
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
+
+    return NotificationDetails(
+      android: _androidNotificationDetails,
+      iOS: _iOSNotificationDetails,
+    );
   }
 
   Future<void> cancelNotifications(int id) async {
