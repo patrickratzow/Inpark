@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import "package:flutter_local_notifications/flutter_local_notifications.dart";
 import "package:timezone/data/latest.dart" as tz;
 import "package:timezone/timezone.dart" as tz;
@@ -55,6 +57,8 @@ class NotificationService {
     String body,
     int seconds,
   ) async {
+    await _requestPermissions();
+
     await flutterLocalNotificationsPlugin.zonedSchedule(
       id,
       title,
@@ -99,9 +103,22 @@ class NotificationService {
   Future<void> cancelAllNotifications() async {
     await flutterLocalNotificationsPlugin.cancelAll();
   }
-}
 
-void compareTime(DateTime startTime) {}
+  Future<bool> _requestPermissions() async {
+    if (!Platform.isIOS) return true;
+
+    final bool? result = await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin>()
+        ?.requestPermissions(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+
+    return result ?? false;
+  }
+}
 
 Future selectNotification(String? payload) async {
   //handle your logic here

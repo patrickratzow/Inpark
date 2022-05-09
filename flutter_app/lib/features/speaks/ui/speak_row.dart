@@ -81,7 +81,6 @@ class SpeakRow extends StatelessWidget {
                       onPressed: (state) {
                         speakModel.toggleNotification(speak);
                         showSnackBar(state, context);
-
                         return true;
                       },
                     ),
