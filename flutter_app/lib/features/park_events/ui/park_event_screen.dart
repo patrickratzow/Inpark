@@ -1,7 +1,10 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
+import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 import "package:intl/intl.dart";
+
 import "../../../common/browser.dart";
 import "../../../common/colors.dart";
 import "../../../common/ui/fullscreen_image.dart";
@@ -9,83 +12,58 @@ import "../../../common/ui/navigation_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
 
-class ParkEventScreen extends StatelessWidget implements Screen {
+class ParkEventScreen extends HookWidget implements Screen {
   ParkEventScreen({Key? key, required this.parkEvent}) : super(key: key);
 
   final ParkEventDto parkEvent;
   //This value is used to ensure no double spacers are used.
   bool wasLastNodeSpacer = false;
-  final DateFormat formatter = DateFormat("dd-MMM-yyyy", "da");
+  final DateFormat formatter = DateFormat("d. MMMM yyyy", "da");
 
   @override
   Widget build(BuildContext context) {
+    final navigator = useNavigator();
+
     return Scaffold(
       appBar: const ScreenAppBar(title: "Arrangement"),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.13),
-                    offset: const Offset(0, 0),
-                    blurRadius: 4,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () => {
+                navigator.push(
+                  context,
+                  FullScreenImage(
+                    imageUrl: parkEvent.image.fullscreenUrl,
+                    tag: "event-${parkEvent.title}",
+                    title: parkEvent.title.toString(),
                   ),
-                ],
-              ),
-              child: Card(
-                margin: const EdgeInsets.all(0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6),
                 ),
-                clipBehavior: Clip.hardEdge,
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () => {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FullScreenImage(
-                              imageUrl: parkEvent.image.fullscreenUrl,
-                              tag: "event-${parkEvent.title}",
-                              title: parkEvent.title.toString(),
-                            ),
-                          ),
-                        ),
-                      },
-                      child: _buildImage(parkEvent),
-                    ),
-                    ZooinatorNavigationBar(
-                      tabs: [
-                        ZooinatorNavigationTab(
-                          text: "Information",
-                          icon: Icons.menu,
-                          builder: (context) => Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                                child: _buildContents(
-                                  parkEvent.descriptionContent,
-                                  context,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        ..._getProgramTab(parkEvent),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              },
+              child: _buildImage(parkEvent),
             ),
-          ),
-        ],
+            ZooinatorNavigationBar(
+              tabs: [
+                ZooinatorNavigationTab(
+                  text: "Information",
+                  icon: Icons.menu,
+                  builder: (context) => Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: _buildContents(
+                          parkEvent.descriptionContent,
+                          context,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                ..._getProgramTab(parkEvent),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -101,7 +79,7 @@ class ParkEventScreen extends StatelessWidget implements Screen {
           builder: (context) => Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                padding: const EdgeInsets.all(16),
                 child: _buildTriviaContents(
                   parkEvent.programContent,
                 ),

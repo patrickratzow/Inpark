@@ -5,7 +5,6 @@ import "package:flutter_app/common/ui/cancel_button.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:flutter_app/hooks/use_provider.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 
@@ -211,7 +210,7 @@ class AnimalsOverviewList extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var navigation = useProvider<NavigationModel>();
+    var navigation = useNavigator();
 
     return Consumer<AnimalsModel>(
       builder: (context, animalsModel, child) {
@@ -242,8 +241,11 @@ class AnimalsOverviewList extends HookWidget {
                 padding: EdgeInsets.fromLTRB(16, topPadding, 16, 0),
                 child: TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                  onPressed: () =>
-                      navigation.push(context, AnimalScreen(animal: animal)),
+                  onPressed: () => navigation.push(
+                    context,
+                    AnimalScreen(animal: animal),
+                    hide: true,
+                  ),
                   child: AnimalCard(animal: animal),
                 ),
               );

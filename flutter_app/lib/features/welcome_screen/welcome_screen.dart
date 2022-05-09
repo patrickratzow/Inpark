@@ -3,11 +3,12 @@ import "package:flutter/services.dart";
 import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/features/welcome_screen/video_player.dart";
 import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_app/navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
+
+import "video_player.dart";
 
 class WelcomeScreen extends HookWidget {
   const WelcomeScreen({Key? key}) : super(key: key);

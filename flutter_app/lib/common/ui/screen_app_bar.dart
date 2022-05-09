@@ -52,7 +52,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final navigation = useProvider<NavigationModel>();
+    final navigation = useNavigator();
 
     // If the toolbar is allocated less than toolbarHeight make it
     // appear to scroll upwards within its shrinking container.

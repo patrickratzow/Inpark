@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/features/calendar/ui/calendar_screen.dart";
 import "package:flutter_app/hooks/use_provider.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 
@@ -15,7 +14,7 @@ class OpeningHours extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var navigation = useProvider<NavigationModel>();
+    var navigation = useNavigator();
 
     return InkWell(
       highlightColor: Colors.transparent,

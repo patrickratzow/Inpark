@@ -12,13 +12,13 @@ class CustomVideoPlayer extends HookWidget {
     );
     var isLoading = useState(true);
 
+    if (isLoading.value) {
+      setupController(controller.value)
+          .then((value) => isLoading.value = false);
+    }
+
     useEffect(
       () {
-        if (isLoading.value) {
-          setupController(controller.value)
-              .then((value) => isLoading.value = false);
-        }
-
         return controller.dispose;
       },
       [],

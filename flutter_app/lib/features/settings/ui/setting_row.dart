@@ -5,28 +5,31 @@ class SettingRow extends StatelessWidget {
     Key? key,
     required this.iconName,
     required this.name,
-    required this.route,
     required this.widget,
+    this.onPressed,
   }) : super(key: key);
 
   final String name;
   final String iconName;
-  final String route;
   final Widget widget;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-      child: TextButton(
-        onPressed: () {},
+    return SizedBox(
+      height: 56,
+      child: InkWell(
+        onTap: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
-                Image.asset(
-                  "assets/menu_icons/$iconName.png",
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Image.asset(
+                    "assets/menu_icons/$iconName.png",
+                  ),
                 ),
                 const SizedBox(
                   width: 8,
@@ -41,7 +44,10 @@ class SettingRow extends StatelessWidget {
                 ),
               ],
             ),
-            widget,
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: widget,
+            ),
           ],
         ),
       ),

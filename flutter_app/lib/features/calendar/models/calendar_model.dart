@@ -20,7 +20,8 @@ class CalendarModel extends ChangeNotifier {
       : year = date.year,
         month = date.month,
         day = date.day,
-        selectedDay = date.day {
+        selectedDay = date.day,
+        lastSelectedDate = date {
     var repository = locator.get<CalendarRepository>();
     repository.fetchEvents().then(
           (value) => {

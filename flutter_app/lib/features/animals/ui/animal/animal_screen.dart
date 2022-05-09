@@ -21,12 +21,12 @@ class AnimalScreen extends HookWidget implements Screen {
 
   @override
   Widget build(BuildContext context) {
-    final navigation = useProvider<NavigationModel>();
+    final navigation = useNavigator();
 
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar(
+          SliverAppBar(
             pinned: false,
             snap: false,
             automaticallyImplyLeading: false,
@@ -34,7 +34,9 @@ class AnimalScreen extends HookWidget implements Screen {
             backgroundColor: Colors.white,
             foregroundColor: Colors.white,
             floating: true,
-            flexibleSpace: ScreenAppBar(),
+            flexibleSpace: ScreenAppBar(
+              title: animal.name.displayName,
+            ),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -56,14 +58,12 @@ class AnimalScreen extends HookWidget implements Screen {
       children: [
         GestureDetector(
           onTap: () => {
-            navigation.hide(),
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => FullScreenImage(
-                  imageUrl: animal.image.fullscreenUrl,
-                  tag: "animal-${animal.id}",
-                  title: animal.name.displayName,
-                ),
+            navigation.push(
+              context,
+              FullScreenImage(
+                imageUrl: animal.image.fullscreenUrl,
+                tag: "animal-${animal.id}",
+                title: animal.name.displayName,
               ),
             ),
           },
@@ -268,14 +268,17 @@ class AnimalScreen extends HookWidget implements Screen {
       );
     }
     if (content.type == "text") {
-      return Text(
-        content.value.toString(),
-        textAlign: TextAlign.left,
-        softWrap: true,
-        style: TextStyle(
-          fontSize: 14,
-          color: Colors.black.withOpacity(0.6),
-          height: 1.35,
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          content.value.toString(),
+          textAlign: TextAlign.left,
+          softWrap: true,
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black.withOpacity(0.6),
+            height: 1.35,
+          ),
         ),
       );
     }

@@ -7,9 +7,9 @@ import "package:flutter_app/features/speaks/ui/speaks_list.dart";
 import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
+
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
-
 import "opening_hours.dart";
 
 class HomeScreen extends HookWidget implements Screen {
@@ -26,17 +26,19 @@ class HomeScreen extends HookWidget implements Screen {
 
     return Scaffold(
       appBar: const HomeAppBar(),
-      body: ListView(
-        children: [
-          const OpeningHours(),
-          const SizedBox(height: 24),
-          const EventContainer(
-            title: "Kommende arrangementer",
-          ),
-          const SizedBox(height: 24),
-          _buildSpeaks(context),
-          const SizedBox(height: 16),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const OpeningHours(),
+            const SizedBox(height: 24),
+            const EventContainer(
+              title: "Kommende arrangementer",
+            ),
+            const SizedBox(height: 24),
+            _buildSpeaks(context),
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }
