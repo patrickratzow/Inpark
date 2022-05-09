@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/browser.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
-import "package:flutter_app/features/home/ui/event..dart";
-import "package:flutter_app/features/home/ui/event_containter.dart";
+import "package:flutter_app/features/park_events/ui/event_container.dart";
 import "package:flutter_app/features/home/ui/route_box.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/features/speaks/ui/speaks_list.dart";
@@ -18,32 +17,6 @@ import "opening_hours.dart";
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
-  List<Widget> _buildDebugRoutes(BuildContext context) {
-    if (!kDebugMode) {
-      return List.empty();
-    }
-    return [
-      const RouteBox(
-        title: "Floris",
-        route: "/settings",
-        description: "Find us!",
-        iconName: "map",
-      ),
-      const RouteBox(
-        title: "Patrick",
-        route: "/animals/conservation-status-overview",
-        description: "Find us!",
-        iconName: "map",
-      ),
-      const RouteBox(
-        title: "Nikolaj",
-        route: "Non",
-        description: "Find us!",
-        iconName: "map",
-      ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     context.read<HomeModel>().fetchOpeningHoursForToday();
@@ -54,69 +27,37 @@ class Home extends StatelessWidget {
       body: ListView(
         children: [
           const OpeningHours(),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 14, 0, 0),
-            child: NavigationLinkList(
-              children: [
-                NavigationLink(
-                  iconName: "ticket",
-                  text: "Billetter",
-                  onPressed: () => Browser.openUrl(
-                    context,
-                    "https://shop.aalborgzoo.dk/entrebilletter",
-                  ),
+          NavigationLinkList(
+            children: [
+              NavigationLink(
+                iconName: "ticket",
+                text: "Billetter",
+                onPressed: () => Browser.openUrl(
+                  context,
+                  "https://shop.aalborgzoo.dk",
                 ),
-                const NavigationLink(
-                  iconName: "calendar",
-                  text: "Aktivitets\nkalender",
-                  route: "non",
-                ),
-                const NavigationLink(
-                  iconName: "pawprint",
-                  text: "Vores Dyr",
-                  route: "/animals",
-                ),
-                const NavigationLink(
-                  iconName: "newspaper",
-                  text: "Nyheder",
-                  route: "non",
-                ),
-              ],
-              title: "Tasks",
-            ),
+              ),
+              const NavigationLink(
+                iconName: "calendar",
+                text: "Aktivitets\nkalender",
+                route: "/calendar",
+              ),
+              const NavigationLink(
+                iconName: "pawprint",
+                text: "Vores Dyr",
+                route: "/animals",
+              ),
+              const NavigationLink(
+                iconName: "newspaper",
+                text: "Nyheder",
+                route: "non",
+              ),
+            ],
+            title: "Tasks",
           ),
           _buildSpeaks(context),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 14, 16, 16),
-            child: EventContainer(
-              title: "Kommende arrangementer",
-              eventArr: [
-                Event(
-                  title: "Dyrepasser for en dag",
-                  description: "30. april 2022 - 1. maj 2022",
-                  imageUrl:
-                      "https://cms.aalborgzoo.dk/media/b3slg21y/efter%C3%A5rsferie-700x350.jpg?width=592",
-                  route: "non",
-                ),
-                Event(
-                  title: "Morgenrundvisning",
-                  description: "22. maj 2022",
-                  imageUrl:
-                      "https://cms.aalborgzoo.dk/media/ijkpfwi0/vinterferie_2021-700x350.jpg?width=592",
-                  route: "non",
-                ),
-                /*
-                Event(
-                  title: "Søløve besøg",
-                  description:
-                      "Træt af dine børn, nu kan du smide dem ind til søløverne!",
-                  imageUrl:
-                      "https://cms.aalborgzoo.dk/media/yz1pdqpt/nyhedsbrev-700x350.jpg",
-                  route: "non",
-                ),
-                */
-              ],
-            ),
+          const EventContainer(
+            title: "Kommende arrangementer",
           ),
         ],
       ),
@@ -141,11 +82,11 @@ class Home extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(0, 14, 0, 16),
           child: Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: TitleBar(name: "Dagens speaks", fontSize: 16),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               SpeaksList(speaks: value.speaks),
             ],
           ),

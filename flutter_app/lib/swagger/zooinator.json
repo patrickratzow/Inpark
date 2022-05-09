@@ -305,6 +305,74 @@
         }
       }
     },
+    "/park-events": {
+      "get": {
+        "tags": [
+          "Park Events"
+        ],
+        "operationId": "getParkEvents",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ParkEventDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ParkEventDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ParkEventDto"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products": {
       "post": {
         "tags": [
@@ -723,6 +791,55 @@
             "type": "array",
             "items": {
               "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Contracts.ParkEventDto": {
+        "required": [
+          "descriptionContent",
+          "end",
+          "id",
+          "image",
+          "programContent",
+          "start",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "image": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ImagePairDto"
+              }
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "descriptionContent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
+            }
+          },
+          "programContent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
             }
           }
         },
