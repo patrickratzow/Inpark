@@ -38,7 +38,7 @@ class SpeakModel extends ChangeNotifier {
     }
   }
 
-  bool toggleNotification(Speak speak) {
+  Future<bool> toggleNotification(Speak speak) async {
     var isToggled = this.isToggled(speak);
 
     if (isToggled) {
@@ -48,16 +48,20 @@ class SpeakModel extends ChangeNotifier {
       return false;
     }
 
-    scheduleNotification(speak);
+    var scheduleNotification = await this.scheduleNotification(speak);
+    if (!scheduleNotification) {
+      return Future.error("no_permission");
+    }
+
     cacheState(speak, true);
 
     return true;
   }
 
-  void scheduleNotification(Speak speak) {
+  Future<bool> scheduleNotification(Speak speak) {
     var seconds = secondsToNotification(speak.start);
 
-    _notificationService.showNotification(
+    return _notificationService.showNotification(
       speak.id,
       "Fodring om lidt!",
       "Fodring for " + speak.title + "begynder om 15 minutter",

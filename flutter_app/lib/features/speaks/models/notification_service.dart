@@ -51,13 +51,15 @@ class NotificationService {
     return initializationSettings;
   }
 
-  Future<void> showNotification(
+  Future<bool> showNotification(
     int id,
     String title,
     String body,
     int seconds,
   ) async {
-    await _requestPermissions();
+    var response = await _requestPermissions();
+
+    if (!response) return false;
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
       id,
@@ -69,6 +71,8 @@ class NotificationService {
           UILocalNotificationDateInterpretation.absoluteTime,
       androidAllowWhileIdle: true,
     );
+
+    return true;
   }
 
   NotificationDetails _platformNotificationDetails() {
