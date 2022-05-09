@@ -1,10 +1,12 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
 
 import "conservation_status_explaination_row.dart";
 
-class ConservationStatusOverviewScreen extends StatelessWidget {
+class ConservationStatusOverviewScreen extends StatelessWidget
+    implements Screen {
   final IUCNStatusDto? highlightedStatus;
 
   const ConservationStatusOverviewScreen({
@@ -18,7 +20,7 @@ class ConservationStatusOverviewScreen extends StatelessWidget {
       appBar: const ScreenAppBar(title: "Bevaringsstatuser"),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           child: Column(
             children: [
               _buildRow(IUCNStatusDto.lc),
@@ -40,7 +42,7 @@ class ConservationStatusOverviewScreen extends StatelessWidget {
     final key = GlobalKey();
     final row = Padding(
       key: key,
-      padding: EdgeInsets.only(top: 16),
+      padding: const EdgeInsets.only(top: 16),
       child: ConservationStatusExplainationRow(
         status: status,
         highlight: isActive,

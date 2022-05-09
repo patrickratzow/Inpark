@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
-import 'package:flutter_app/common/colors.dart';
+import "package:flutter/services.dart";
+import "package:flutter_app/common/colors.dart";
+import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/navigation/navigation_model.dart";
 import "dart:io" show Platform;
 
-import '../../routes.dart';
+import "package:flutter_hooks/flutter_hooks.dart";
 
 class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
   const _ToolbarContainerLayout(this.toolbarHeight);
@@ -30,7 +32,7 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
       toolbarHeight != oldDelegate.toolbarHeight;
 }
 
-class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
+class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
   final String? title;
   final bool automaticallyImplyLeading;
   final Widget? leading;
@@ -60,8 +62,6 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
 
     // Add leading icons & actions
-    final double actionsLength = (actions?.length ?? 0).toDouble();
-    final double leadingLength = automaticallyImplyLeading ? 1 : 0;
     appBar = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -103,7 +103,12 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           shadowColor: Colors.transparent,
           child: Semantics(
             explicitChildNodes: true,
-            child: appBar,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                minHeight: kToolbarHeight + 48,
+              ),
+              child: appBar,
+            ),
           ),
         ),
       ),
@@ -111,6 +116,8 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   List<Widget> _buildLeading(BuildContext context) {
+    final navigation = useProvider<NavigationModel>();
+
     List<Widget> results = [];
     if (automaticallyImplyLeading) {
       results.add(
@@ -125,7 +132,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: CustomColor.green.middle,
             size: 18,
           ),
-          onPressed: () => Routes.popPage(context),
+          onPressed: () => navigation.pop(context),
         ),
       );
     }
@@ -133,9 +140,13 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       results.add(leading!);
     }
     if (title != null) {
+      final padding = automaticallyImplyLeading
+          ? const EdgeInsets.only(left: 2)
+          // Hack for sizing when no back button
+          : const EdgeInsets.fromLTRB(16, 20, 0, 20);
       results.add(
         Padding(
-          padding: const EdgeInsets.only(top: 2),
+          padding: padding,
           child: Text(
             title!,
             style: const TextStyle(

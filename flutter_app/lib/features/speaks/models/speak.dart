@@ -1,10 +1,7 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:flutter/material.dart';
+import "../../../generated_code/zooinator.models.swagger.dart";
 
-import '../../../generated_code/zooinator.models.swagger.dart';
-
-@immutable
 class Speak {
   final String title;
   final DateTime start;
@@ -19,7 +16,13 @@ class Speak {
   bool hasBegun() {
     var now = DateTime.now();
     var normalizedTime = DateTime(
-        start.year, start.month, start.day, now.hour, now.minute, now.second);
+      start.year,
+      start.month,
+      start.day,
+      now.hour,
+      now.minute,
+      now.second,
+    );
 
     // True if it has begun
     return start.compareTo(normalizedTime) != 1;

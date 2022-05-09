@@ -1,22 +1,28 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/colors.dart';
+import "package:flutter_app/common/colors.dart";
+import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/ui/bullet_list.dart";
 import "package:flutter_app/common/ui/fullscreen_image.dart";
 import "package:flutter_app/common/ui/navigation_bar.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
-import 'package:flutter_app/features/animals/ui/conservation/conservation_status.dart';
+import "package:flutter_app/features/animals/ui/conservation/conservation_status.dart";
+import "package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
-import 'package:flutter_app/routes.dart';
+import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/navigation/navigation_model.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-import 'animal_category.dart';
+import "animal_category.dart";
 
-class AnimalScreen extends StatelessWidget {
+class AnimalScreen extends HookWidget implements Screen {
   final AnimalDto animal;
   const AnimalScreen({Key? key, required this.animal}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final navigation = useProvider<NavigationModel>();
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -35,7 +41,7 @@ class AnimalScreen extends StatelessWidget {
               (context, index) {
                 if (index != 0) return null;
 
-                return _buildCard(context, animal);
+                return _buildCard(context, animal, navigation);
               },
             ),
           ),
@@ -44,7 +50,8 @@ class AnimalScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCard(BuildContext context, AnimalDto animal) {
+  Widget _buildCard(
+      BuildContext context, AnimalDto animal, NavigationModel navigation) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
       child: Container(
@@ -69,8 +76,8 @@ class AnimalScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () => {
-                  Navigator.push(
-                    context,
+                  navigation.hide(),
+                  Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => FullScreenImage(
                         imageUrl: animal.image.fullscreenUrl,
@@ -90,9 +97,11 @@ class AnimalScreen extends StatelessWidget {
                     builder: (context) => Column(
                       children: [
                         InkWell(
-                          onTap: () => Routes.goToConversationOverviewScreen(
+                          onTap: () => navigation.push(
                             context,
-                            animal.status,
+                            ConservationStatusOverviewScreen(
+                              highlightedStatus: animal.status,
+                            ),
                           ),
                           splashColor: Theme.of(context).primaryColor,
                           child: FittedBox(

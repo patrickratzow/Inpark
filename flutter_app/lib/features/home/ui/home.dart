@@ -1,48 +1,19 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/browser.dart";
+import "package:flutter_app/common/screen.dart";
+import "package:flutter_app/common/ui/screen_app_bar.dart";
+import "package:flutter_app/features/animals/ui/animal/animals_page.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
-import 'package:flutter_app/features/park_events/ui/event.dart';
-import 'package:flutter_app/features/park_events/ui/event_containter.dart';
-import "package:flutter_app/features/home/ui/route_box.dart";
+import "package:flutter_app/features/park_events/ui/event_containter.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/features/speaks/ui/speaks_list.dart";
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
-import "package:flutter/foundation.dart" show kDebugMode;
 
-import "navigation_link.dart";
-import "navigation_link_list.dart";
 import "opening_hours.dart";
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  List<Widget> _buildDebugRoutes(BuildContext context) {
-    if (!kDebugMode) {
-      return List.empty();
-    }
-    return [
-      const RouteBox(
-        title: "Floris",
-        route: "/settings",
-        description: "Find us!",
-        iconName: "map",
-      ),
-      const RouteBox(
-        title: "Patrick",
-        route: "/animals/conservation-status-overview",
-        description: "Find us!",
-        iconName: "map",
-      ),
-      const RouteBox(
-        title: "Nikolaj",
-        route: "Non",
-        description: "Find us!",
-        iconName: "map",
-      ),
-    ];
-  }
+class HomeScreen extends StatelessWidget implements Screen {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,38 +25,13 @@ class Home extends StatelessWidget {
       body: ListView(
         children: [
           const OpeningHours(),
-          NavigationLinkList(
-            children: [
-              NavigationLink(
-                iconName: "ticket",
-                text: "Billetter",
-                onPressed: () => Browser.openUrl(
-                  context,
-                  "https://shop.aalborgzoo.dk",
-                ),
-              ),
-              const NavigationLink(
-                iconName: "calendar",
-                text: "Aktivitets\nkalender",
-                route: "/calendar",
-              ),
-              const NavigationLink(
-                iconName: "pawprint",
-                text: "Vores Dyr",
-                route: "/animals",
-              ),
-              const NavigationLink(
-                iconName: "newspaper",
-                text: "Nyheder",
-                route: "non",
-              ),
-            ],
-            title: "Tasks",
-          ),
-          _buildSpeaks(context),
+          const SizedBox(height: 24),
           const EventContainer(
             title: "Kommende arrangementer",
           ),
+          const SizedBox(height: 24),
+          _buildSpeaks(context),
+          const SizedBox(height: 16),
         ],
       ),
     );
@@ -105,18 +51,59 @@ class Home extends StatelessWidget {
           );
         }
 
-        return Padding(
-          padding: EdgeInsets.fromLTRB(0, 14, 0, 16),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: TitleBar(name: "Dagens speaks", fontSize: 16),
+        return Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: TitleBar(name: "Dagens speaks", fontSize: 16),
+            ),
+            const SizedBox(height: 4),
+            SpeaksList(speaks: value.speaks),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class TabNavigator extends StatelessWidget {
+  final GlobalKey<NavigatorState> navigatorKey;
+  final String tabItem;
+
+  const TabNavigator({
+    Key? key,
+    required this.navigatorKey,
+    required this.tabItem,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Widget child;
+    if (tabItem == "Page1") {
+      child = const HomeScreen();
+    } else if (tabItem == "Page2") {
+      child = const Text("Page 2");
+    } else {
+      child = const AnimalsScreen();
+    }
+
+    return Navigator(
+      key: navigatorKey,
+      onGenerateRoute: (routeSettings) {
+        return MaterialPageRoute(
+          builder: (context) => child,
+        );
+      },
+      onUnknownRoute: (routeSettings) {
+        return MaterialPageRoute(
+          builder: (_) {
+            return const Scaffold(
+              appBar: ScreenAppBar(title: "Side ikke fundet"),
+              body: Center(
+                child: Text("Vi arbejder på at få tilføjet det :)"),
               ),
-              SizedBox(height: 4),
-              SpeaksList(speaks: value.speaks),
-            ],
-          ),
+            );
+          },
         );
       },
     );

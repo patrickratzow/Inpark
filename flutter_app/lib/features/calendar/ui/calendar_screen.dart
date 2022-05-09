@@ -1,12 +1,13 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:provider/provider.dart";
 
-import '../models/calendar_model.dart';
-import 'calendar_events.dart';
-import 'calendar_month.dart';
+import "../models/calendar_model.dart";
+import "calendar_events.dart";
+import "calendar_month.dart";
 
-class CalendarScreen extends StatelessWidget {
+class CalendarScreen extends StatelessWidget implements Screen {
   const CalendarScreen({Key? key}) : super(key: key);
 
   @override

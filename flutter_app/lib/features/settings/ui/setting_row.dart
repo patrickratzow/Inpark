@@ -1,7 +1,5 @@
 import "package:flutter/material.dart";
 
-import "../../../routes.dart";
-
 class SettingRow extends StatelessWidget {
   const SettingRow({
     Key? key,
@@ -21,9 +19,7 @@ class SettingRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
       child: TextButton(
-        onPressed: () {
-          Routes.goToRoute(context, route);
-        },
+        onPressed: () {},
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

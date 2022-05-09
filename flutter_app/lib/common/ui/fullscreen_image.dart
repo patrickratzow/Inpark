@@ -1,8 +1,11 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
+import "package:flutter/services.dart";
+import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/navigation/navigation_model.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-class FullScreenImage extends StatelessWidget {
+class FullScreenImage extends HookWidget {
   final String imageUrl;
   final String tag;
   final String title;
@@ -16,6 +19,8 @@ class FullScreenImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navigation = useProvider<NavigationModel>();
+
     return Scaffold(
       backgroundColor: Colors.black87,
       appBar: AppBar(
@@ -30,6 +35,7 @@ class FullScreenImage extends StatelessWidget {
             color: Colors.white,
           ),
           onPressed: () => {
+            navigation.show(),
             Navigator.pop(context),
           },
         ),

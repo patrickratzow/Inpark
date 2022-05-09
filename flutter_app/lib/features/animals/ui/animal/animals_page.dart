@@ -1,22 +1,25 @@
-import 'dart:ui';
-
 import "package:flutter/material.dart";
 import "package:flutter_app/common/colors.dart";
+import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/ui/cancel_button.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
-import 'package:flutter_app/features/calendar/ui/calendar_screen.dart';
-import 'package:flutter_app/routes.dart';
-import "package:flutter_app/routes.dart";
+import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/navigation/navigation_model.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 
 import "animal_card.dart";
+import "animal_screen.dart";
 
-class AnimalOverviewScreen extends StatelessWidget {
+class AnimalsScreen extends HookWidget implements Screen {
+  const AnimalsScreen({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
-    context.read<AnimalsModel>().fetchAnimals();
-
-    const list = AnimalsOverviewList();
+    useProvider<AnimalsModel>(
+      onInit: (provider) => provider.fetchAnimals(),
+    );
 
     return Scaffold(
       body: Consumer<AnimalsModel>(
@@ -40,7 +43,7 @@ class AnimalOverviewScreen extends StatelessWidget {
                 floating: true,
                 flexibleSpace: _buildAppBar(),
               ),
-              list
+              const AnimalsOverviewList()
             ],
           );
         },
@@ -95,8 +98,8 @@ class AnimalOverviewScreen extends StatelessWidget {
           title = null;
           actions = [
             IconButton(
-              constraints: BoxConstraints(minHeight: 48, minWidth: 30),
-              padding: EdgeInsets.only(top: 2),
+              constraints: const BoxConstraints(minHeight: 48, minWidth: 30),
+              padding: const EdgeInsets.only(top: 2),
               onPressed: () {},
               icon: const Icon(Icons.mic_none),
               color: CustomColor.green.middle,
@@ -108,7 +111,7 @@ class AnimalOverviewScreen extends StatelessWidget {
           leading = null;
           title = "Vores dyr";
           actions = [
-            buildSearchIcon(context),
+            buildSearchIcon(animalsModel),
           ];
         }
 
@@ -116,7 +119,7 @@ class AnimalOverviewScreen extends StatelessWidget {
           title: title,
           actions: actions,
           leading: leading,
-          automaticallyImplyLeading: leading == null,
+          automaticallyImplyLeading: false,
           flexibleSpace: isLoading ? null : _buildCategories(animalsModel),
         );
       },
@@ -143,10 +146,10 @@ class AnimalOverviewScreen extends StatelessWidget {
     );
   }
 
-  Widget buildSearchIcon(BuildContext context) {
+  Widget buildSearchIcon(AnimalsModel model) {
     return IconButton(
       onPressed: () {
-        context.read<AnimalsModel>().startSearching();
+        model.startSearching();
       },
       icon: const Icon(Icons.search),
       color: CustomColor.green.middle,
@@ -170,7 +173,8 @@ class CategoryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-          maxHeight: 36 * MediaQuery.of(context).textScaleFactor),
+        maxHeight: 36 * MediaQuery.of(context).textScaleFactor,
+      ),
       child: Padding(
         padding: const EdgeInsets.only(left: 8.0),
         child: TextButton(
@@ -202,11 +206,13 @@ class CategoryButton extends StatelessWidget {
   }
 }
 
-class AnimalsOverviewList extends StatelessWidget {
+class AnimalsOverviewList extends HookWidget {
   const AnimalsOverviewList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var navigation = useProvider<NavigationModel>();
+
     return Consumer<AnimalsModel>(
       builder: (context, animalsModel, child) {
         if (animalsModel.loading) {
@@ -236,9 +242,8 @@ class AnimalsOverviewList extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(16, topPadding, 16, 0),
                 child: TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                  onPressed: () {
-                    Routes.goToAnimalScreen(context, animal);
-                  },
+                  onPressed: () =>
+                      navigation.push(context, AnimalScreen(animal: animal)),
                   child: AnimalCard(animal: animal),
                 ),
               );

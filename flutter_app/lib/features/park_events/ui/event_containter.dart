@@ -1,10 +1,9 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/ui/title_bar.dart';
-import 'package:flutter_app/features/park_events/ui/event.dart';
-import 'package:flutter_app/features/home/ui/navigation_link.dart';
-import 'package:provider/provider.dart';
+import "package:flutter_app/common/ui/title_bar.dart";
+import "package:flutter_app/features/park_events/ui/event.dart";
+import "package:provider/provider.dart";
 
-import '../models/event_model.dart';
+import "../models/event_model.dart";
 
 class EventContainer extends StatelessWidget {
   const EventContainer({
@@ -18,9 +17,8 @@ class EventContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<ParkEventModel>().fetchParkEvents();
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Column(children: [
+    return Column(
+      children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
           child: TitleBar(
@@ -66,7 +64,7 @@ class EventContainer extends StatelessWidget {
             },
           ),
         ),
-      ]),
+      ],
     );
   }
 }
