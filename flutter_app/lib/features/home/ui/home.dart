@@ -5,13 +5,14 @@ import "package:flutter_app/features/park_events/ui/event_container.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/features/speaks/ui/speaks_list.dart";
 import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 import "../../../common/ui/home_app_bar.dart";
 import "../../../common/ui/title_bar.dart";
 
 import "opening_hours.dart";
 
-class HomeScreen extends StatelessWidget implements Screen {
+class HomeScreen extends HookWidget implements Screen {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
