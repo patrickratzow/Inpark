@@ -24,44 +24,48 @@ class ConservationStatus extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: Row(
-            children: const [
-              Text(
-                "Bevaringsstatus",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xff698665),
-                  fontFamily: "Poppins",
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  "Bevaringsstatus",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0xff698665),
+                    fontFamily: "Poppins",
+                  ),
                 ),
-              ),
-              SizedBox(width: 2),
-              Padding(
-                padding: EdgeInsets.only(top: 1),
-                child: Icon(
-                  Icons.info_outlined,
-                  size: 16,
-                  color: Color(0xff698665),
+                SizedBox(width: 2),
+                Padding(
+                  padding: EdgeInsets.only(top: 1),
+                  child: Icon(
+                    Icons.info_outlined,
+                    size: 16,
+                    color: Color(0xff698665),
+                  ),
                 ),
-              ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ..._buildExtinctSection(),
+              const SizedBox(width: 12),
+              _buildThreatenedSection(),
+              const SizedBox(width: 12),
+              ..._buildLeastConcernedSection(),
             ],
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ..._buildExtinctSection(),
-            const SizedBox(width: 12),
-            _buildThreatenedSection(),
-            const SizedBox(width: 12),
-            ..._buildLeastConcernedSection(),
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 

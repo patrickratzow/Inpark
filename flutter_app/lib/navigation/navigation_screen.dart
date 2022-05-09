@@ -72,46 +72,49 @@ class NavigationScreen extends HookWidget {
             _buildOffstageNavigator("Page3"),
           ],
         ),
-        bottomNavigationBar: NavigationBarTheme(
-          data: NavigationBarThemeData(
-            labelTextStyle: MaterialStateProperty.all(
-              GoogleFonts.poppins(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          child: NavigationBar(
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            height: 48,
-            onDestinationSelected: (index) => selectTab(index, pageKeys[index]),
-            selectedIndex: navigation.selectedIndex,
-            destinations: [
-              const NavigationDestination(
-                icon: Icon(Icons.home_outlined),
-                label: "Hjem",
-              ),
-              NavigationDestination(
-                icon: SvgPicture.asset(
-                  "assets/menu_icons/ticket.svg",
-                  color: Colors.black,
-                  width: 31.5,
-                  height: 24,
+        bottomNavigationBar: !navigation.showNavbar
+            ? null
+            : NavigationBarTheme(
+                data: NavigationBarThemeData(
+                  labelTextStyle: MaterialStateProperty.all(
+                    GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
-                label: "Billetter",
-              ),
-              NavigationDestination(
-                icon: SvgPicture.asset(
-                  "assets/menu_icons/paw_print.svg",
-                  color: Colors.black,
-                  width: 31.5,
-                  height: 24,
+                child: NavigationBar(
+                  labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+                  height: 48,
+                  onDestinationSelected: (index) =>
+                      selectTab(index, pageKeys[index]),
+                  selectedIndex: navigation.selectedIndex,
+                  destinations: [
+                    const NavigationDestination(
+                      icon: Icon(Icons.home_outlined),
+                      label: "Hjem",
+                    ),
+                    NavigationDestination(
+                      icon: SvgPicture.asset(
+                        "assets/menu_icons/ticket.svg",
+                        color: Colors.black,
+                        width: 31.5,
+                        height: 24,
+                      ),
+                      label: "Billetter",
+                    ),
+                    NavigationDestination(
+                      icon: SvgPicture.asset(
+                        "assets/menu_icons/paw_print.svg",
+                        color: Colors.black,
+                        width: 31.5,
+                        height: 24,
+                      ),
+                      label: "Vores Dyr",
+                    ),
+                  ],
                 ),
-                label: "Vores Dyr",
               ),
-            ],
-          ),
-        ),
       ),
     );
   }

@@ -72,7 +72,6 @@ class MyApp extends HookWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Zoo App",
         home: const NavigationScreen(),
         theme: ThemeData(
           fontFamily: "Inter",
