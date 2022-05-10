@@ -85,7 +85,6 @@ class NavigationScreen extends HookWidget {
           height: navigator.showNavbar ? 48 : 0,
           child: NavigationBarTheme(
             data: NavigationBarThemeData(
-              backgroundColor: CustomColor.green.lightest,
               labelTextStyle: MaterialStateProperty.all(
                 GoogleFonts.poppins(
                   fontSize: 12,

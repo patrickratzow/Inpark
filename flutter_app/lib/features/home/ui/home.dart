@@ -31,9 +31,7 @@ class HomeScreen extends HookWidget implements Screen {
           children: [
             const OpeningHours(),
             const SizedBox(height: 24),
-            const EventContainer(
-              title: "Kommende arrangementer",
-            ),
+            const EventContainer(title: "Kommende arrangementer"),
             const SizedBox(height: 24),
             _buildSpeaks(context),
             const SizedBox(height: 16),

@@ -4,8 +4,14 @@ import "package:flutter_app/common/colors.dart";
 import "package:flutter_custom_tabs/flutter_custom_tabs.dart";
 
 class Browser {
+  static bool _isOpening = false;
+
   static Future openUrl(BuildContext context, String url) async {
+    if (_isOpening) return;
+
     try {
+      _isOpening = true;
+
       await launch(
         url,
         customTabsOption: CustomTabsOption(
@@ -34,6 +40,8 @@ class Browser {
           content: Text("Kunne ikke tilgå billetsiden på nuværende tidspunkt"),
         ),
       );
+    } finally {
+      _isOpening = false;
     }
   }
 }

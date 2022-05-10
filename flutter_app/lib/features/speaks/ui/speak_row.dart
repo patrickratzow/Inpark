@@ -1,13 +1,16 @@
-import "dart:math";
+import 'dart:async';
+import 'dart:math';
 
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/features/speaks/models/speak.dart";
-import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:flutter_svg/flutter_svg.dart";
+import 'package:flutter_svg/flutter_svg.dart';
 import "package:intl/intl.dart";
+
+import '../../../hooks/use_memoized_value.dart';
+import '../../../hooks/use_provider.dart';
+import '../models/speak_model.dart';
 
 class SpeakRow extends HookWidget {
   final Speak speak;
@@ -17,9 +20,6 @@ class SpeakRow extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final speakModel = useProvider<SpeakModel>();
-    final isToggled = speakModel.isToggled(speak);
-
     return InkWell(
       onTap: () {},
       child: Padding(
@@ -69,38 +69,76 @@ class SpeakRow extends HookWidget {
                 ],
               ),
             ),
-            Container(
-              child: speak.hasBegun()
-                  ? null
-                  : NotifyButton(
-                      time: speak.start,
-                      initialState: isToggled,
-                      onPressed: (state) async {
-                        try {
-                          final turnedOn =
-                              await speakModel.toggleNotification(speak);
-                          final text = turnedOn
-                              ? "You have turned notifications on"
-                              : "You have turned notifications off";
-
-                          showSnackBar(text, context);
-
-                          return true;
-                        } catch (e) {
-                          showSnackBar(
-                            "Du har ikke givet tilladelse til notifikationer",
-                            context,
-                          );
-
-                          return false;
-                        }
-                      },
-                    ),
-            ),
+            SpeakRowActions(speak),
           ],
         ),
       ),
     );
+  }
+}
+
+class SpeakRowActions extends HookWidget {
+  final Speak speak;
+
+  const SpeakRowActions(this.speak);
+
+  @override
+  Widget build(BuildContext context) {
+    final model = useProvider<SpeakModel>();
+    final isToggled = model.isToggled(speak);
+    final state = useMemoizedValue<SpeakState>(
+      const Duration(seconds: 1),
+      () => speak.state,
+    );
+
+    Widget notifyButton() {
+      return NotifyButton(
+        time: speak.start,
+        initialState: isToggled,
+        onPressed: (state) async {
+          try {
+            final turnedOn = await model.toggleNotification(speak);
+            final text = turnedOn
+                ? "Du får en notifikation 15 minutter før ${speak.title} speak starter"
+                : "Du er afmeldt notifikationer for ${speak.title}";
+
+            showSnackBar(text, context);
+
+            return true;
+          } catch (e) {
+            showSnackBar(
+              "Du har ikke givet tilladelse til notifikationer",
+              context,
+            );
+
+            return false;
+          }
+        },
+      );
+    }
+
+    Widget text(String text) {
+      return Padding(
+        padding: EdgeInsets.only(right: 16.0),
+        child: Text(
+          text,
+          textAlign: TextAlign.left,
+        ),
+      );
+    }
+
+    Widget content() {
+      if (state.value == SpeakState.upcoming) return notifyButton();
+      if (state.value == SpeakState.happeningSoon) {
+        return text("Starter lige om lidt");
+      }
+      if (state.value == SpeakState.happening) return text("Er startet");
+      if (state.value == SpeakState.over) return text("Ovre for i dag");
+
+      return Container();
+    }
+
+    return Container(child: content());
   }
 
   void showSnackBar(String text, BuildContext context) {

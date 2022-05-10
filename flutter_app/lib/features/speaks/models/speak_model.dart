@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import "package:flutter/material.dart";
+import 'package:flutter_app/extensions/datetime.dart';
 import 'package:flutter_app/features/speaks/models/notification_service.dart';
 import 'package:flutter_app/features/speaks/models/speak.dart';
 import "package:flutter_app/generated_code/zooinator.models.swagger.dart";
@@ -73,24 +74,13 @@ class SpeakModel extends ChangeNotifier {
     _notificationService.cancelNotifications(speak.id);
   }
 
-  int secondsToNotification(DateTime time) {
-    var now = DateTime.now();
-    var normalizedTime = DateTime(
-      now.year,
-      now.month,
-      now.day,
-      time.hour,
-      time.minute,
-      time.second,
-    );
-
-    return normalizedTime
-        .subtract(
-          const Duration(minutes: 15),
-        )
-        .difference(now)
-        .inSeconds;
-  }
+  int secondsToNotification(DateTime time) => time
+      .asToday()
+      .subtract(
+        const Duration(minutes: 15),
+      )
+      .difference(DateTime.now())
+      .inSeconds;
 
   void cacheState(Speak speak, bool state) {
     var id = speak.id;
