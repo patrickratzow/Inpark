@@ -129,102 +129,106 @@ class AnimalsScreen extends HookWidget implements Screen {
   @override
   Widget build(BuildContext context) {
     return Consumer<AnimalsModel>(
-      builder: (context, model, child) {
-        final isLoading = model.loading || model.hasError;
-        final isSearching = model.isSearching;
-        final controller = useAnimationController();
-        final Animation<Offset> animation = Tween<Offset>(
-          begin: Offset.zero,
-          end: Offset(MediaQuery.of(context).size.width, 0.0),
-        ).animate(CurvedAnimation(
-          parent: controller,
-          curve: Curves.elasticIn,
-        ));
+        builder: (context, model, child) {
+          final isLoading = model.loading || model.hasError;
+          final isSearching = model.isSearching;
+          final controller = useAnimationController();
+          final Animation<Offset> animation = Tween<Offset>(
+            begin: Offset.zero,
+            end: Offset(MediaQuery
+                .of(context)
+                .size
+                .width, 0.0),
+          ).animate(CurvedAnimation(
+            parent: controller,
+            curve: Curves.elasticIn,
+          ));
 
-        useEffect(
-          () {
-            model.fetchAnimals();
-          },
-          [],
-        );
+          useEffect(
+                () {
+              model.fetchAnimals();
+            },
+            [],
+          );
 
-        useEffect(
-          () {
-            print("Searching is $isSearching");
+          useEffect(
+                () {
+              print("Searching is $isSearching");
 
-            controller.animateTo(
-              isSearching ? 1 : 0,
-              duration: Duration(milliseconds: 300),
-            );
-          },
-          [model.isSearching],
-        );
+              controller.animateTo(
+                isSearching ? 1 : 0,
+                duration: Duration(milliseconds: 300),
+              );
+            },
+            [model.isSearching],
+          );
 
-        return Scaffold(
-          body: CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                pinned: false,
-                snap: false,
-                automaticallyImplyLeading: false,
-                elevation: 0,
-                expandedHeight: 56 + (isLoading ? 0 : 48),
-                toolbarHeight: 56 + (isLoading ? 0 : 48),
-                shadowColor: Colors.transparent,
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.white,
-                floating: true,
-                flexibleSpace: Column(
-                  children: [
-                    SizedBox(
-                      height: 56,
-                      child: Stack(
-                        children: [
-                          ScreenAppBar(
-                            title: "Vores dyr",
-                            actions: [
-                              IconButton(
-                                onPressed: () {
-                                  model.startSearching();
-                                },
-                                icon: const Icon(Icons.search),
-                                color: CustomColor.green.middle,
-                              ),
-                            ],
-                            automaticallyImplyLeading: false,
-                          ),
-                          AnimatedBuilder(
-                            animation: controller,
-                            builder: (context, child) {
-                              return SlideTransition(
-                                position: animation,
-                                child: const SearchAppBar(),
-                              );
-                            },
-                          ),
-                        ],
+          return Scaffold(
+            body: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  pinned: false,
+                  snap: false,
+                  automaticallyImplyLeading: false,
+                  elevation: 0,
+                  expandedHeight: 56 + (isLoading ? 0 : 48),
+                  toolbarHeight: 56 + (isLoading ? 0 : 48),
+                  shadowColor: Colors.transparent,
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.white,
+                  floating: true,
+                  flexibleSpace: Column(
+                    children: [
+                      SizedBox(
+                        height: 56,
+                        child: Stack(
+                          children: [
+                            ScreenAppBar(
+                              title: "Vores dyr",
+                              actions: [
+                                IconButton(
+                                  onPressed: () {
+                                    model.startSearching();
+                                  },
+                                  icon: const Icon(Icons.search),
+                                  color: CustomColor.green.middle,
+                                ),
+                              ],
+                              automaticallyImplyLeading: false,
+                            ),
+                            AnimatedBuilder(
+                              animation: controller,
+                              builder: (context, child) {
+                                return SlideTransition(
+                                  position: animation,
+                                  child: const SearchAppBar(),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Flexible(
-                      child: Container(
-                        color: CustomColor.green.lightest,
-                        child: isLoading
-                            ? null
-                            : const Padding(
-                                padding: const EdgeInsets.only(bottom: 16),
-                                child: const AnimalsCategories(),
-                              ),
+                      Flexible(
+                        child: Container(
+                          color: CustomColor.green.lightest,
+                          child: isLoading
+                              ? null
+                              : const Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: const AnimalsCategories(),
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              const AnimalsOverviewList()
-            ],
-          ),
-        );
-      }
+                const AnimalsOverviewList()
+              ],
+            ),
+          );
+        }
     );
+  }
 }
 
 class CategoryButton extends StatelessWidget {
