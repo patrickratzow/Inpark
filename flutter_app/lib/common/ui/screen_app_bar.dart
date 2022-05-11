@@ -38,6 +38,9 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
   final Widget? leading;
   final List<Widget>? actions;
   final Widget? flexibleSpace;
+  final SystemUiOverlayStyle? systemUiOverlayStyle;
+  final Color? backgroundColor;
+  final Color? backColor;
 
   const ScreenAppBar({
     Key? key,
@@ -46,6 +49,9 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     this.leading,
     this.actions,
     this.flexibleSpace,
+    this.systemUiOverlayStyle,
+    this.backgroundColor,
+    this.backColor,
   }) : super(key: key);
 
   bool get isMaterial => !Platform.isIOS;
@@ -96,11 +102,12 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     return Semantics(
       container: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.dark.copyWith(
-          statusBarColor: CustomColor.green.lightest,
-        ),
+        value: systemUiOverlayStyle ??
+            SystemUiOverlayStyle.dark.copyWith(
+              statusBarColor: CustomColor.green.lightest,
+            ),
         child: Material(
-          color: CustomColor.green.lightest,
+          color: backgroundColor ?? CustomColor.green.lightest,
           elevation: 0,
           shadowColor: Colors.transparent,
           child: Semantics(
@@ -129,7 +136,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
           ),
           icon: Icon(
             isMaterial ? Icons.arrow_back : Icons.arrow_back_ios,
-            color: CustomColor.green.middle,
+            color: backColor ?? CustomColor.green.middle,
             size: 18,
           ),
           onPressed: () => navigation.pop(context),

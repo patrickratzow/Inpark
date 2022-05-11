@@ -34,7 +34,7 @@ class ParkEventScreen extends HookWidget implements Screen {
                 navigator.push(
                   context,
                   FullScreenImage(
-                    imageUrl: parkEvent.image.fullscreenUrl,
+                    imageUrl: parkEvent.image.previewUrl,
                     tag: "event-${parkEvent.title}",
                     title: parkEvent.title.toString(),
                   ),

@@ -12,7 +12,7 @@ class SettingsScreen extends HookWidget implements Screen {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const ScreenAppBar(title: "Settings"),
+      appBar: const ScreenAppBar(title: "Indstillinger"),
       body: Column(
         children: [
           const SettingsTitleBar(name: "Account"),

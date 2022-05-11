@@ -108,7 +108,7 @@ class WelcomeScreen extends HookWidget {
           right: 24,
         ),
         child: TextButton(
-          onPressed: () => navigation.pushHome(context),
+          onPressed: () => navigation.hasSeenWelcomeScreen(),
           style: ButtonStyle(
             backgroundColor:
                 MaterialStateProperty.all(CustomColor.green.lightest),

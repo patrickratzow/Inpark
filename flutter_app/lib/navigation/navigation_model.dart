@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
-import 'package:localstorage/localstorage.dart';
+import "package:localstorage/localstorage.dart";
 
 final List<String> pageKeys = ["Page1", "Page2", "Page3"];
 final Map<String, GlobalKey<NavigatorState>> navigatorKeys = {
@@ -10,18 +10,23 @@ final Map<String, GlobalKey<NavigatorState>> navigatorKeys = {
 };
 
 class NavigationModel extends ChangeNotifier {
-  final LocalStorage _localStorage = LocalStorage("navigator.json");
+  static final LocalStorage _localStorage = LocalStorage("navigator.json");
 
-  bool _isPastWelcomeScreen = false;
-  bool get isPastWelcomeScreen =>
-      _isPastWelcomeScreen ||
-      _localStorage.getItem("past_welcome_screen") != null;
+  bool _shouldSeeWelcomeScreen = false;
+  bool get shouldSeeWelcomeScreen => _shouldSeeWelcomeScreen;
   bool _showNavbar = true;
   bool get showNavbar => _showNavbar;
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
   String get currentPage => pageKeys[selectedIndex];
   int? _hiddenStackIndex;
+
+  NavigationModel() {
+    _localStorage.ready.then((_) {
+      _shouldSeeWelcomeScreen =
+          _localStorage.getItem("has_seen_welcome_screen") == null;
+    });
+  }
 
   void selectTab(int index) {
     _selectedIndex = index;
@@ -43,9 +48,9 @@ class NavigationModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void pushHome(BuildContext context) {
-    _isPastWelcomeScreen = true;
-    _localStorage.setItem("past_welcome_screen", true);
+  void hasSeenWelcomeScreen() {
+    _shouldSeeWelcomeScreen = false;
+    _localStorage.setItem("has_seen_welcome_screen", true);
 
     notifyListeners();
   }
@@ -73,7 +78,8 @@ class NavigationModel extends ChangeNotifier {
                   show();
 
                   return true;
-                })
+                },
+              )
             : screen,
       ),
     );
