@@ -11,6 +11,7 @@ import "../../../common/ui/fullscreen_image.dart";
 import "../../../common/ui/navigation_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
+import '../../../hooks/use_date_range.dart';
 
 class ParkEventScreen extends HookWidget implements Screen {
   ParkEventScreen({Key? key, required this.parkEvent}) : super(key: key);
@@ -18,7 +19,10 @@ class ParkEventScreen extends HookWidget implements Screen {
   final ParkEventDto parkEvent;
   //This value is used to ensure no double spacers are used.
   bool wasLastNodeSpacer = false;
-  final DateFormat formatter = DateFormat("d. MMMM yyyy", "da");
+  final DateFormat endFormatter = DateFormat("d. MMMM yyyy", "da");
+  final DateFormat startFormatter = DateFormat("d. MMMM", "da");
+  final DateFormat soloStartFormatter = DateFormat("d. MMMM yyyy", "da");
+  Color softTextColor = const Color(0xffDDF8DA);
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +96,6 @@ class ParkEventScreen extends HookWidget implements Screen {
   }
 
   Widget _buildImage(ParkEventDto parkEvent) {
-    const Color softTextColor = Color(0xffDDF8DA);
-
     return Column(
       children: [
         Stack(
@@ -131,7 +133,7 @@ class ParkEventScreen extends HookWidget implements Screen {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     parkEvent.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 20,
                       height: 18 / 20,
                       fontFamily: "Poppins",
@@ -143,18 +145,24 @@ class ParkEventScreen extends HookWidget implements Screen {
                 const SizedBox(
                   height: 5,
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    formatter.format(parkEvent.start),
-                    style: const TextStyle(
-                      height: 1.5,
-                      fontFamily: "Poppins",
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: softTextColor,
-                    ),
-                  ),
+                HookBuilder(
+                  builder: (BuildContext context) {
+                    final date = useDateRange(parkEvent.start, parkEvent.end);
+
+                    return Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        date,
+                        style: TextStyle(
+                          height: 1.5,
+                          fontFamily: "Poppins",
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: softTextColor,
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 const Padding(
                   padding: EdgeInsets.only(bottom: 4),

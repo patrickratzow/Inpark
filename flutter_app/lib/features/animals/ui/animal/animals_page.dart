@@ -11,121 +11,13 @@ import "package:provider/provider.dart";
 import "animal_card.dart";
 import "animal_screen.dart";
 
-class AnimalsScreen extends HookWidget implements Screen {
-  const AnimalsScreen({Key? key}) : super(key: key);
+class AnimalsCategories extends HookWidget {
+  const AnimalsCategories({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    useProvider<AnimalsModel>(
-      onInit: (provider) => provider.fetchAnimals(),
-    );
+    final model = useProvider<AnimalsModel>(watch: true);
 
-    return Scaffold(
-      body: Consumer<AnimalsModel>(
-        builder: (context, model, child) {
-          var isLoading = model.loading || model.hasError;
-
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(isLoading ? 0 : 48),
-                  child: Container(),
-                ),
-                pinned: false,
-                snap: false,
-                automaticallyImplyLeading: false,
-                elevation: 0,
-                shadowColor: Colors.transparent,
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.white,
-                floating: true,
-                flexibleSpace: _buildAppBar(),
-              ),
-              const AnimalsOverviewList()
-            ],
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildAppBar() {
-    return Consumer<AnimalsModel>(
-      builder: (context, animalsModel, child) {
-        final isLoading = animalsModel.loading || animalsModel.hasError;
-        final isSearching = animalsModel.isSearching;
-        final List<Widget> actions;
-        final Widget? leading;
-        final String? title;
-        if (isSearching) {
-          leading = Row(
-            children: [
-              IconButton(
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(
-                  minHeight: 56,
-                  minWidth: 48,
-                ),
-                icon: Icon(
-                  Icons.search,
-                  color: CustomColor.green.middle,
-                  size: 28,
-                ),
-                onPressed: () {},
-              ),
-              SizedBox(
-                width: 150,
-                child: TextField(
-                  autofocus: true,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    height: 18 / 16,
-                  ),
-                  decoration: const InputDecoration(
-                    hintText: "Søg her...",
-                    hintStyle: TextStyle(color: Color(0xff93A990)),
-                    border: InputBorder.none,
-                  ),
-                  onChanged: (text) {
-                    animalsModel.search = text;
-                  },
-                ),
-              ),
-            ],
-          );
-          title = null;
-          actions = [
-            IconButton(
-              constraints: const BoxConstraints(minHeight: 48, minWidth: 30),
-              padding: const EdgeInsets.only(top: 2),
-              onPressed: () {},
-              icon: const Icon(Icons.mic_none),
-              color: CustomColor.green.middle,
-              iconSize: 24,
-            ),
-            CancelButton(onPressed: animalsModel.stopSearching)
-          ];
-        } else {
-          leading = null;
-          title = "Vores dyr";
-          actions = [
-            buildSearchIcon(animalsModel),
-          ];
-        }
-
-        return ScreenAppBar(
-          title: title,
-          actions: actions,
-          leading: leading,
-          automaticallyImplyLeading: false,
-          flexibleSpace: isLoading ? null : _buildCategories(animalsModel),
-        );
-      },
-    );
-  }
-
-  Widget _buildCategories(AnimalsModel model) {
     return Row(
       children: [
         const SizedBox(width: 8),
@@ -144,16 +36,195 @@ class AnimalsScreen extends HookWidget implements Screen {
       ],
     );
   }
+}
 
-  Widget buildSearchIcon(AnimalsModel model) {
-    return IconButton(
-      onPressed: () {
-        model.startSearching();
+class SearchAppBar extends HookWidget {
+  final Widget? flexibleSpace;
+
+  const SearchAppBar({
+    Key? key,
+    this.flexibleSpace,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final focusNode = useFocusNode();
+    final model = useProvider<AnimalsModel>(watch: true);
+
+    useEffect(
+      () {
+        if (model.isSearching) {
+          focusNode.requestFocus();
+        }
+
+        return null;
       },
-      icon: const Icon(Icons.search),
-      color: CustomColor.green.middle,
+      [model.isSearching],
+    );
+
+    Widget _leading() {
+      return Row(
+        children: [
+          IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(
+              minHeight: 56,
+              minWidth: 48,
+            ),
+            icon: Icon(
+              Icons.search,
+              color: CustomColor.green.middle,
+              size: 28,
+            ),
+            onPressed: () {},
+          ),
+          SizedBox(
+            width: 150,
+            child: TextField(
+              focusNode: focusNode,
+              style: const TextStyle(
+                fontSize: 16,
+                height: 18 / 16,
+              ),
+              decoration: const InputDecoration(
+                hintText: "Søg her...",
+                hintStyle: TextStyle(color: Color(0xff93A990)),
+                border: InputBorder.none,
+              ),
+              onChanged: (text) {
+                model.search = text;
+              },
+            ),
+          ),
+        ],
+      );
+    }
+
+    List<Widget> _actions() {
+      return [
+        IconButton(
+          constraints: const BoxConstraints(minHeight: 48, minWidth: 30),
+          padding: const EdgeInsets.only(top: 2),
+          onPressed: () {},
+          icon: const Icon(Icons.mic_none),
+          color: CustomColor.green.middle,
+          iconSize: 24,
+        ),
+        CancelButton(onPressed: model.stopSearching)
+      ];
+    }
+
+    return ScreenAppBar(
+      leading: _leading(),
+      actions: _actions(),
+      automaticallyImplyLeading: false,
+      flexibleSpace: flexibleSpace,
     );
   }
+}
+
+class AnimalsScreen extends HookWidget implements Screen {
+  const AnimalsScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AnimalsModel>(
+      builder: (context, model, child) {
+        final isLoading = model.loading || model.hasError;
+        final isSearching = model.isSearching;
+        final controller = useAnimationController();
+        final Animation<Offset> animation = Tween<Offset>(
+          begin: Offset.zero,
+          end: Offset(MediaQuery.of(context).size.width, 0.0),
+        ).animate(CurvedAnimation(
+          parent: controller,
+          curve: Curves.elasticIn,
+        ));
+
+        useEffect(
+          () {
+            model.fetchAnimals();
+          },
+          [],
+        );
+
+        useEffect(
+          () {
+            print("Searching is $isSearching");
+
+            controller.animateTo(
+              isSearching ? 1 : 0,
+              duration: Duration(milliseconds: 300),
+            );
+          },
+          [model.isSearching],
+        );
+
+        return Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                pinned: false,
+                snap: false,
+                automaticallyImplyLeading: false,
+                elevation: 0,
+                expandedHeight: 56 + (isLoading ? 0 : 48),
+                toolbarHeight: 56 + (isLoading ? 0 : 48),
+                shadowColor: Colors.transparent,
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.white,
+                floating: true,
+                flexibleSpace: Column(
+                  children: [
+                    SizedBox(
+                      height: 56,
+                      child: Stack(
+                        children: [
+                          ScreenAppBar(
+                            title: "Vores dyr",
+                            actions: [
+                              IconButton(
+                                onPressed: () {
+                                  model.startSearching();
+                                },
+                                icon: const Icon(Icons.search),
+                                color: CustomColor.green.middle,
+                              ),
+                            ],
+                            automaticallyImplyLeading: false,
+                          ),
+                          AnimatedBuilder(
+                            animation: controller,
+                            builder: (context, child) {
+                              return SlideTransition(
+                                position: animation,
+                                child: const SearchAppBar(),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        color: CustomColor.green.lightest,
+                        child: isLoading
+                            ? null
+                            : const Padding(
+                                padding: const EdgeInsets.only(bottom: 16),
+                                child: const AnimalsCategories(),
+                              ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const AnimalsOverviewList()
+            ],
+          ),
+        );
+      }
+    );
 }
 
 class CategoryButton extends StatelessWidget {
