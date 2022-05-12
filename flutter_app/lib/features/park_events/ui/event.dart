@@ -2,7 +2,7 @@ import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/title_bar.dart";
 import "package:flutter_app/features/park_events/ui/park_event_screen.dart";
-import 'package:flutter_app/hooks/use_date_range.dart';
+import "package:flutter_app/hooks/use_date_range.dart";
 import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:intl/intl.dart";
@@ -13,7 +13,7 @@ import "../../../generated_code/zooinator.models.swagger.dart";
 class Event extends HookWidget {
   final ParkEventDto parkEvent;
 
-  Event({
+  const Event({
     Key? key,
     required this.parkEvent,
   }) : super(key: key);
@@ -73,10 +73,12 @@ class Event extends HookWidget {
                           fontSize: 12,
                           name: parkEvent.title,
                           color: CustomColor.green.middle,
+                          textScaleFactor: 1,
                         ),
                         Text(
                           date,
                           softWrap: true,
+                          textScaleFactor: 1,
                           style: TextStyle(
                             fontSize: 10,
                             color: CustomColor.green.middle,
