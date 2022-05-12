@@ -137,7 +137,7 @@ class SpeakRow extends HookWidget {
           Colors.grey,
         );
       },
-      [],
+      [state.value],
     );
 
     return InkWell(
