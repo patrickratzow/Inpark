@@ -1,25 +1,143 @@
-import 'dart:async';
-import 'dart:math';
+import "dart:async";
+import "dart:math";
 
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/features/speaks/models/speak.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import 'package:flutter_svg/flutter_svg.dart';
+import "package:flutter_svg/flutter_svg.dart";
 import "package:intl/intl.dart";
 
-import '../../../hooks/use_memoized_value.dart';
-import '../../../hooks/use_provider.dart';
-import '../models/speak_model.dart';
+import "../../../hooks/use_memoized_value.dart";
+import "../../../hooks/use_provider.dart";
+import "../models/speak_model.dart";
+
+class SpeakRowImage extends StatelessWidget {
+  final String imageUrl;
+  final SpeakState state;
+  final SpeakColorPair color;
+
+  const SpeakRowImage({
+    Key? key,
+    required this.imageUrl,
+    required this.state,
+    required this.color,
+  }) : super(key: key);
+
+  ImageWidgetBuilder? _imageBuilder() {
+    if (state == SpeakState.over || state == SpeakState.upcoming) return null;
+
+    return ((context, imageProvider) {
+      return Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Container(
+              height: 19,
+              width: 19,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(6),
+                  bottomRight: Radius.circular(6),
+                ),
+                color: color.backgroundColor,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(1.5),
+                child: SvgPicture.asset(
+                  "assets/clock.svg",
+                  color: color.iconColor,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 48,
+      width: 48,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(6),
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.cover,
+          imageBuilder: _imageBuilder(),
+        ),
+      ),
+    );
+  }
+}
+
+@immutable
+class SpeakColorPair {
+  final Color iconColor;
+  final Color backgroundColor;
+
+  const SpeakColorPair(this.iconColor, this.backgroundColor);
+}
 
 class SpeakRow extends HookWidget {
   final Speak speak;
   final int id;
-  const SpeakRow({Key? key, required this.speak, required this.id})
-      : super(key: key);
+
+  const SpeakRow({
+    Key? key,
+    required this.speak,
+    required this.id,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final state = useMemoizedValue<SpeakState>(
+      const Duration(seconds: 1),
+      () => speak.state,
+    );
+    final stateColor = useMemoized(
+      () {
+        /*
+        if (state.value == SpeakState.over) {
+          return const SpeakColorPair(
+            Color(0xffFF8686),
+            Color(0xffFFDBDD),
+          );
+        }
+        */
+        if (state.value == SpeakState.happening) {
+          return SpeakColorPair(
+            CustomColor.green.middle,
+            CustomColor.green.lightest,
+          );
+        }
+        if (state.value == SpeakState.happeningSoon) {
+          return SpeakColorPair(
+            CustomColor.green.middle,
+            CustomColor.green.lightest,
+          );
+        }
+
+        return const SpeakColorPair(
+          Colors.grey,
+          Colors.grey,
+        );
+      },
+      [state.value],
+    );
+
     return InkWell(
       onTap: () {},
       child: Padding(
@@ -33,16 +151,10 @@ class SpeakRow extends HookWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  SizedBox(
-                    height: 48,
-                    width: 48,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: CachedNetworkImage(
-                        imageUrl: speak.image.previewUrl,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  SpeakRowImage(
+                    imageUrl: speak.image.previewUrl,
+                    state: state.value,
+                    color: stateColor,
                   ),
                   const SizedBox(
                     width: 8,
@@ -62,6 +174,9 @@ class SpeakRow extends HookWidget {
                       ),
                       Text(
                         "Kl. " + DateFormat("HH:mm").format(speak.start),
+                        style: TextStyle(
+                          color: stateColor.iconColor,
+                        ),
                       )
                     ],
                   ),
@@ -69,7 +184,7 @@ class SpeakRow extends HookWidget {
                 ],
               ),
             ),
-            SpeakRowActions(speak),
+            SpeakRowActions(speak: speak),
           ],
         ),
       ),
@@ -80,7 +195,10 @@ class SpeakRow extends HookWidget {
 class SpeakRowActions extends HookWidget {
   final Speak speak;
 
-  const SpeakRowActions(this.speak);
+  const SpeakRowActions({
+    Key? key,
+    required this.speak,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +237,7 @@ class SpeakRowActions extends HookWidget {
 
     Widget text(String text) {
       return Padding(
-        padding: EdgeInsets.only(right: 16.0),
+        padding: const EdgeInsets.only(right: 16.0),
         child: Text(
           text,
           textAlign: TextAlign.left,
@@ -154,8 +272,8 @@ class SpeakRowActions extends HookWidget {
 class NotifyButton extends HookWidget {
   final Future<bool> Function(bool active) onPressed;
   final bool initialState;
-  final Color offColor;
-  final Color onColor;
+  final SpeakColorPair offColor;
+  final SpeakColorPair onColor;
   final DateTime time;
 
   const NotifyButton({
@@ -163,8 +281,8 @@ class NotifyButton extends HookWidget {
     required this.time,
     required this.onPressed,
     required this.initialState,
-    this.offColor = const Color(0xffA3A3A3),
-    this.onColor = const Color(0xff698665),
+    this.offColor = const SpeakColorPair(Color(0xff8E8E8E), Color(0xffEEF2EE)),
+    this.onColor = const SpeakColorPair(Color(0xffECFCE5), Color(0xff698665)),
   }) : super(key: key);
 
   static double deg2rad(double deg) => deg * (pi / 180);
@@ -175,9 +293,13 @@ class NotifyButton extends HookWidget {
     final animationController = useAnimationController(
       duration: const Duration(milliseconds: 300),
     );
-    final colorTween = ColorTween(
-      begin: initialState ? onColor : offColor,
-      end: !initialState ? onColor : offColor,
+    final iconTween = ColorTween(
+      begin: initialState ? onColor.iconColor : offColor.iconColor,
+      end: !initialState ? onColor.iconColor : offColor.iconColor,
+    ).animate(animationController);
+    final backgroundTween = ColorTween(
+      begin: initialState ? onColor.backgroundColor : offColor.backgroundColor,
+      end: !initialState ? onColor.backgroundColor : offColor.backgroundColor,
     ).animate(animationController);
 
     return AnimatedBuilder(
@@ -187,54 +309,65 @@ class NotifyButton extends HookWidget {
         const shakeOffset = 1;
         final sineValue = sin(shakeCount * 2 * pi * animationController.value);
 
-        return IconButton(
-          icon: Transform.rotate(
-            angle: deg2rad(sineValue * 3),
-            child: Transform.translate(
-              offset: Offset(sineValue * shakeOffset, 0),
-              child: Stack(
-                children: [
-                  SvgPicture.asset(
-                    "assets/clock_icon.svg",
-                    height: 14 * 1.5,
-                    width: 12 * 1.5,
-                    color: colorTween.value,
-                  ),
-                  Transform.translate(
-                    offset: Offset(
-                      3 - (animationController.value * 3),
-                      1 - (animationController.value * 4),
+        return Padding(
+          padding: const EdgeInsets.only(right: 16.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(6),
+            child: Container(
+              width: 27 * 1.5,
+              height: 27 * 1.5,
+              color: backgroundTween.value,
+              child: IconButton(
+                icon: Transform.rotate(
+                  angle: deg2rad(sineValue * 3),
+                  child: Transform.translate(
+                    offset: Offset(sineValue * shakeOffset, 0),
+                    child: Stack(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/clock_icon.svg",
+                          height: 14 * 1.5,
+                          width: 12 * 1.5,
+                          color: iconTween.value,
+                        ),
+                        Transform.translate(
+                          offset: Offset(
+                            3 - (animationController.value * 3),
+                            1 - (animationController.value * 3.5),
+                          ),
+                          child: SvgPicture.asset(
+                            "assets/clock_bow.svg",
+                            width: (8 + (animationController.value * 4)) * 1.5,
+                            color: iconTween.value,
+                          ),
+                        ),
+                        Transform.rotate(
+                          angle: deg2rad(sineValue * 10),
+                          child: SvgPicture.asset(
+                            "assets/clock_dingle.svg",
+                            width: 12 * 1.5,
+                            color: iconTween.value,
+                          ),
+                        ),
+                      ],
                     ),
-                    child: SvgPicture.asset(
-                      "assets/clock_bow.svg",
-                      width: (8 + (animationController.value * 4)) * 1.5,
-                      color: colorTween.value,
-                    ),
                   ),
-                  Transform.rotate(
-                    angle: deg2rad(sineValue * 10),
-                    child: SvgPicture.asset(
-                      "assets/clock_dingle.svg",
-                      width: 12 * 1.5,
-                      color: colorTween.value,
-                    ),
-                  ),
-                ],
+                ),
+                onPressed: () async {
+                  var success = await onPressed(state.value);
+                  if (success) {
+                    state.value = !state.value;
+
+                    if (state.value) {
+                      animationController.forward();
+                    } else {
+                      animationController.reverse();
+                    }
+                  }
+                },
               ),
             ),
           ),
-          onPressed: () async {
-            var success = await onPressed(state.value);
-            if (success) {
-              state.value = !state.value;
-
-              if (state.value) {
-                animationController.forward();
-              } else {
-                animationController.reverse();
-              }
-            }
-          },
         );
       },
     );

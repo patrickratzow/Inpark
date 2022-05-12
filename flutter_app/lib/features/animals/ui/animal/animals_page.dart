@@ -51,16 +51,15 @@ class SearchAppBar extends HookWidget {
     final focusNode = useFocusNode();
     final model = useProvider<AnimalsModel>(watch: true);
 
-    useEffect(
-      () {
-        if (model.isSearching) {
-          focusNode.requestFocus();
-        }
+    useValueChanged(model.isSearching, (_, __) {
+      if (model.isSearching) {
+        focusNode.requestFocus();
+      } else if (focusNode.hasFocus) {
+        focusNode.unfocus();
+      }
 
-        return null;
-      },
-      [model.isSearching],
-    );
+      return model.isSearching;
+    });
 
     Widget _leading() {
       return Row(
@@ -102,15 +101,7 @@ class SearchAppBar extends HookWidget {
 
     List<Widget> _actions() {
       return [
-        IconButton(
-          constraints: const BoxConstraints(minHeight: 48, minWidth: 30),
-          padding: const EdgeInsets.only(top: 2),
-          onPressed: () {},
-          icon: const Icon(Icons.mic_none),
-          color: CustomColor.green.middle,
-          iconSize: 24,
-        ),
-        CancelButton(onPressed: model.stopSearching)
+        CancelButton(onPressed: model.stopSearching),
       ];
     }
 
@@ -128,105 +119,102 @@ class AnimalsScreen extends HookWidget implements Screen {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AnimalsModel>(
-        builder: (context, model, child) {
-          final isLoading = model.loading || model.hasError;
-          final isSearching = model.isSearching;
-          final controller = useAnimationController();
-          final Animation<Offset> animation = Tween<Offset>(
-            begin: Offset.zero,
-            end: Offset(MediaQuery
-                .of(context)
-                .size
-                .width, 0.0),
-          ).animate(CurvedAnimation(
-            parent: controller,
-            curve: Curves.elasticIn,
-          ));
+    final model = useProvider<AnimalsModel>(watch: true);
+    final isLoading = model.loading || model.hasError;
+    final isSearching = model.isSearching;
+    final controller = useAnimationController();
+    final Animation<Offset> animation = Tween<Offset>(
+      begin: const Offset(0, 0.8),
+      end: const Offset(0, 0),
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Curves.decelerate,
+      ),
+    );
 
-          useEffect(
-                () {
-              model.fetchAnimals();
-            },
-            [],
-          );
+    useEffect(
+      () {
+        model.fetchAnimals();
 
-          useEffect(
-                () {
-              print("Searching is $isSearching");
+        return null;
+      },
+      [],
+    );
+    useEffect(
+      () {
+        controller.animateTo(
+          isSearching ? 1 : 0,
+          duration: const Duration(milliseconds: 200),
+        );
 
-              controller.animateTo(
-                isSearching ? 1 : 0,
-                duration: Duration(milliseconds: 300),
-              );
-            },
-            [model.isSearching],
-          );
+        return null;
+      },
+      [model.isSearching],
+    );
 
-          return Scaffold(
-            body: CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  pinned: false,
-                  snap: false,
-                  automaticallyImplyLeading: false,
-                  elevation: 0,
-                  expandedHeight: 56 + (isLoading ? 0 : 48),
-                  toolbarHeight: 56 + (isLoading ? 0 : 48),
-                  shadowColor: Colors.transparent,
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.white,
-                  floating: true,
-                  flexibleSpace: Column(
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: false,
+            snap: false,
+            automaticallyImplyLeading: false,
+            elevation: 0,
+            expandedHeight: 56 + (isLoading ? 0 : 48),
+            toolbarHeight: 56 + (isLoading ? 0 : 48),
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.white,
+            floating: true,
+            flexibleSpace: Column(
+              children: [
+                SizedBox(
+                  height: 56,
+                  child: Stack(
                     children: [
-                      SizedBox(
-                        height: 56,
-                        child: Stack(
-                          children: [
-                            ScreenAppBar(
-                              title: "Vores dyr",
-                              actions: [
-                                IconButton(
-                                  onPressed: () {
-                                    model.startSearching();
-                                  },
-                                  icon: const Icon(Icons.search),
-                                  color: CustomColor.green.middle,
-                                ),
-                              ],
-                              automaticallyImplyLeading: false,
-                            ),
-                            AnimatedBuilder(
-                              animation: controller,
-                              builder: (context, child) {
-                                return SlideTransition(
-                                  position: animation,
-                                  child: const SearchAppBar(),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          color: CustomColor.green.lightest,
-                          child: isLoading
-                              ? null
-                              : const Padding(
-                            padding: const EdgeInsets.only(bottom: 16),
-                            child: const AnimalsCategories(),
+                      ScreenAppBar(
+                        title: "Vores dyr",
+                        actions: [
+                          IconButton(
+                            onPressed: () {
+                              model.startSearching();
+                            },
+                            icon: const Icon(Icons.search),
+                            color: CustomColor.green.middle,
                           ),
-                        ),
+                        ],
+                        automaticallyImplyLeading: false,
+                      ),
+                      AnimatedBuilder(
+                        animation: controller,
+                        builder: (context, child) {
+                          return SlideTransition(
+                            position: animation,
+                            child: const SearchAppBar(),
+                          );
+                        },
                       ),
                     ],
                   ),
                 ),
-                const AnimalsOverviewList()
+                Flexible(
+                  child: Container(
+                    color: CustomColor.green.lightest,
+                    child: isLoading
+                        ? null
+                        : const Padding(
+                            padding: EdgeInsets.only(bottom: 16),
+                            child: AnimalsCategories(),
+                          ),
+                  ),
+                ),
               ],
             ),
-          );
-        }
+          ),
+          const AnimalsOverviewList()
+        ],
+      ),
     );
   }
 }

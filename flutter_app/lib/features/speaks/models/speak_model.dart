@@ -1,26 +1,28 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import "package:flutter/material.dart";
-import 'package:flutter_app/extensions/datetime.dart';
-import 'package:flutter_app/features/speaks/models/notification_service.dart';
-import 'package:flutter_app/features/speaks/models/speak.dart';
-import "package:flutter_app/generated_code/zooinator.models.swagger.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:localstorage/localstorage.dart';
+import "package:flutter_app/extensions/datetime.dart";
+import "package:flutter_app/features/speaks/models/notification_service.dart";
+import "package:flutter_app/features/speaks/models/speak.dart";
+import "package:localstorage/localstorage.dart";
 
-import '../../../common/ioc.dart';
-import '../repositories/speak_repository.dart';
+import "../../../common/ioc.dart";
+import "../repositories/speak_repository.dart";
 
 class SpeakModel extends ChangeNotifier {
   List<Speak> _speaks = List.empty();
   String error = "";
   bool loading = false;
-  List<Speak> get speaks => _speaks;
+  List<Speak> get speaks => [
+        Speak(
+          "test",
+          DateTime.now().add(const Duration(minutes: 25)),
+          _speaks.first.image,
+          _speaks.first.days,
+        ),
+        ..._speaks
+      ];
 
-  LocalStorage _localStorage = LocalStorage("speaks.json");
-  NotificationService _notificationService = NotificationService();
+  final LocalStorage _localStorage = LocalStorage("speaks.json");
+  final NotificationService _notificationService = NotificationService();
 
   Future<void> fetchSpeaksForToday() async {
     final homeRepository = locator.get<SpeakRepository>();
