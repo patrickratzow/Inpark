@@ -15,7 +15,8 @@ class SettingsScreen extends HookWidget implements Screen {
       appBar: const ScreenAppBar(title: "Indstillinger"),
       body: Column(
         children: [
-          const SettingsTitleBar(name: "Account"),
+          const SettingsTitleBar(name: "Generelt"),
+          /*
           const SettingRow(
             iconName: "avatar",
             name: "Profile",
@@ -34,9 +35,10 @@ class SettingsScreen extends HookWidget implements Screen {
               size: 16.0,
             ),
           ),
+          */
           const SettingRow(
             iconName: "notifications",
-            name: "Notifications",
+            name: "Notifikationer",
             widget: Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
@@ -51,7 +53,7 @@ class SettingsScreen extends HookWidget implements Screen {
               context: context,
               applicationIcon: const FlutterLogo(),
               applicationName: "Zooinator",
-              applicationVersion: "0.3.0",
+              applicationVersion: "0.4.0",
               applicationLegalese:
                   "Zooinator er en app for alle dine oplevelser i zoo! Lær mere om dyrene, bestil mad gennem appen og spring køen over, eller gem dit årskort hvor du nemt kan finde det samt meget mere!",
             ),
