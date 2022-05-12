@@ -1,7 +1,6 @@
 import "dart:convert";
-import 'dart:math';
 
-import 'package:flutter_app/extensions/datetime.dart';
+import "package:flutter_app/extensions/datetime.dart";
 
 import "../../../generated_code/zooinator.models.swagger.dart";
 
@@ -19,8 +18,7 @@ class Speak {
   String get fullscreenImage => image.fullscreenUrl;
 
   bool hasBegun() {
-    // True if it has begun
-    return start.compareTo(start.asToday()) != 1;
+    return start.asToday().isBefore(DateTime.now());
   }
 
   int? _id;

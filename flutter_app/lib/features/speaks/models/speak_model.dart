@@ -11,15 +11,7 @@ class SpeakModel extends ChangeNotifier {
   List<Speak> _speaks = List.empty();
   String error = "";
   bool loading = false;
-  List<Speak> get speaks => [
-        Speak(
-          "test",
-          DateTime.now().add(const Duration(minutes: 25)),
-          _speaks.first.image,
-          _speaks.first.days,
-        ),
-        ..._speaks
-      ];
+  List<Speak> get speaks => _speaks;
 
   final LocalStorage _localStorage = LocalStorage("speaks.json");
   final NotificationService _notificationService = NotificationService();
@@ -42,11 +34,11 @@ class SpeakModel extends ChangeNotifier {
   }
 
   Future<bool> toggleNotification(Speak speak) async {
-    var isToggled = this.isToggled(speak);
+    var isToggled = await this.isToggled(speak);
 
     if (isToggled) {
       cancelNotification(speak);
-      cacheState(speak, false);
+      await cacheState(speak, false);
 
       return false;
     }
@@ -56,7 +48,7 @@ class SpeakModel extends ChangeNotifier {
       return Future.error("no_permission");
     }
 
-    cacheState(speak, true);
+    await cacheState(speak, true);
 
     return true;
   }
@@ -84,24 +76,35 @@ class SpeakModel extends ChangeNotifier {
       .difference(DateTime.now())
       .inSeconds;
 
-  void cacheState(Speak speak, bool state) {
+  Future cacheState(Speak speak, bool state) async {
+    await _initStorage();
+
     var id = speak.id;
 
     if (state) {
-      _localStorage.setItem(id.toString(), state.toString());
+      await _localStorage.setItem(todaysId(speak), state.toString());
 
       return;
     }
 
-    _localStorage.deleteItem(id.toString());
+    await _localStorage.deleteItem(todaysId(speak));
   }
 
-  bool isToggled(Speak speak) {
+  String todaysId(Speak speak) {
+    return "${speak.id}_${DateTime.now().day}";
+  }
+
+  Future<bool> isToggled(Speak speak) async {
+    await _initStorage();
+
     if (speak.hasBegun()) return false;
 
-    var id = speak.id.toString();
-    var item = _localStorage.getItem(id);
+    var item = _localStorage.getItem(todaysId(speak));
 
     return item != null;
+  }
+
+  Future _initStorage() async {
+    return await _localStorage.ready;
   }
 }

@@ -5,8 +5,10 @@ import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/features/speaks/models/speak.dart";
+import "package:flutter_app/hooks/use_interval_minute.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import "package:flutter_use/flutter_use.dart";
 import "package:intl/intl.dart";
 
 import "../../../hooks/use_memoized_value.dart";
@@ -125,7 +127,7 @@ class SpeakRow extends HookWidget {
         }
         if (state.value == SpeakState.happeningSoon) {
           return SpeakColorPair(
-            CustomColor.green.middle,
+            const Color(0xfff1c40f),
             CustomColor.green.lightest,
           );
         }
@@ -135,7 +137,7 @@ class SpeakRow extends HookWidget {
           Colors.grey,
         );
       },
-      [state.value],
+      [],
     );
 
     return InkWell(
@@ -174,9 +176,6 @@ class SpeakRow extends HookWidget {
                       ),
                       Text(
                         "Kl. " + DateFormat("HH:mm").format(speak.start),
-                        style: TextStyle(
-                          color: stateColor.iconColor,
-                        ),
                       )
                     ],
                   ),
@@ -208,29 +207,46 @@ class SpeakRowActions extends HookWidget {
       const Duration(seconds: 1),
       () => speak.state,
     );
+    useIntervalMinute();
 
     Widget notifyButton() {
-      return NotifyButton(
-        time: speak.start,
-        initialState: isToggled,
-        onPressed: (state) async {
-          try {
-            final turnedOn = await model.toggleNotification(speak);
-            final text = turnedOn
-                ? "Du får en notifikation 15 minutter før ${speak.title} speak starter"
-                : "Du er afmeldt notifikationer for ${speak.title}";
-
-            showSnackBar(text, context);
-
-            return true;
-          } catch (e) {
-            showSnackBar(
-              "Du har ikke givet tilladelse til notifikationer",
-              context,
+      return FutureBuilder(
+        future: isToggled,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text("Der opstod en fejl"),
             );
-
-            return false;
           }
+          if (snapshot.hasData) {
+            return NotifyButton(
+              time: speak.start,
+              initialState: snapshot.data!,
+              onPressed: (state) async {
+                try {
+                  final turnedOn = await model.toggleNotification(speak);
+                  final text = turnedOn
+                      ? "Du får en notifikation 15 minutter før ${speak.title} speak starter"
+                      : "Du er afmeldt notifikationer for ${speak.title}";
+
+                  showSnackBar(text, context);
+
+                  return true;
+                } catch (e) {
+                  showSnackBar(
+                    "Du har ikke givet tilladelse til notifikationer",
+                    context,
+                  );
+
+                  return false;
+                }
+              },
+            );
+          }
+
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       );
     }
@@ -248,10 +264,16 @@ class SpeakRowActions extends HookWidget {
     Widget content() {
       if (state.value == SpeakState.upcoming) return notifyButton();
       if (state.value == SpeakState.happeningSoon) {
-        return text("Starter lige om lidt");
+        final now = DateTime.now();
+        final start = speak.start;
+        final diff = start.difference(now);
+        final minutes = diff.inMinutes;
+        final minutesText = minutes == 1 ? "minut" : "minutter";
+
+        return text("Starter om $minutes $minutesText");
       }
-      if (state.value == SpeakState.happening) return text("Er startet");
-      if (state.value == SpeakState.over) return text("Ovre for i dag");
+      if (state.value == SpeakState.happening) return text("Startet");
+      if (state.value == SpeakState.over) return text("Ovre");
 
       return Container();
     }
@@ -294,13 +316,25 @@ class NotifyButton extends HookWidget {
       duration: const Duration(milliseconds: 300),
     );
     final iconTween = ColorTween(
-      begin: initialState ? onColor.iconColor : offColor.iconColor,
-      end: !initialState ? onColor.iconColor : offColor.iconColor,
+      begin: offColor.iconColor,
+      end: onColor.iconColor,
     ).animate(animationController);
     final backgroundTween = ColorTween(
-      begin: initialState ? onColor.backgroundColor : offColor.backgroundColor,
-      end: !initialState ? onColor.backgroundColor : offColor.backgroundColor,
+      begin: offColor.backgroundColor,
+      end: onColor.backgroundColor,
     ).animate(animationController);
+    useEffectOnce(
+      () {
+        if (initialState) {
+          animationController.animateTo(
+            1.0,
+            duration: const Duration(milliseconds: 0),
+          );
+        }
+
+        return null;
+      },
+    );
 
     return AnimatedBuilder(
       animation: animationController,

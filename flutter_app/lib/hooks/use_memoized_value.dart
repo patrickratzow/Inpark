@@ -4,7 +4,7 @@ import "package:flutter_hooks/flutter_hooks.dart";
 
 ValueNotifier<T> useMemoizedValue<T>(Duration duration, T Function() getState) {
   final state = useState(getState());
-  useMemoized(
+  final timer = useMemoized(
     () => Timer.periodic(
       duration,
       (timer) {
@@ -14,6 +14,12 @@ ValueNotifier<T> useMemoizedValue<T>(Duration duration, T Function() getState) {
         }
       },
     ),
+  );
+  useEffect(
+    () {
+      return () => timer.cancel();
+    },
+    [duration, getState],
   );
 
   return state;
