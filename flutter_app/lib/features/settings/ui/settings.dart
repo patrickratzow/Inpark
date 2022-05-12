@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
+import "package:flutter_app/common/web_view.dart";
 import "package:flutter_app/features/settings/ui/setting_row.dart";
 import "package:flutter_app/features/settings/ui/settings_title_bar.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
@@ -46,6 +47,25 @@ class SettingsScreen extends HookWidget implements Screen {
             ),
           ),
           const SettingsTitleBar(name: "Andet"),
+          SettingRow(
+            iconName: "help",
+            name: "Privatlivspolitik",
+            onPressed: () => {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: ((context) => const CustomWebView(
+                        title: "Privatlivspolitik",
+                        url: "https://job.aalborgzoo.dk/privacy-policy",
+                      )),
+                ),
+              ),
+            },
+            widget: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.black,
+              size: 16.0,
+            ),
+          ),
           SettingRow(
             iconName: "help",
             name: "Om App",
