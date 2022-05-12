@@ -2,13 +2,13 @@ import "dart:io";
 
 import "package:flutter/foundation.dart" show kDebugMode;
 import "package:flutter_app/features/animals/ioc.dart";
-import 'package:flutter_app/features/calendar/repository/calendar_repository.dart';
-import 'package:flutter_app/features/home/repositories/home_repository.dart';
+import "package:flutter_app/features/calendar/repository/calendar_repository.dart";
+import "package:flutter_app/features/home/repositories/home_repository.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "package:get_it/get_it.dart";
 
-import '../features/park_events/repositories/park_event_repository.dart';
-import '../features/speaks/repositories/speak_repository.dart';
+import "../features/park_events/repositories/park_event_repository.dart";
+import "../features/speaks/repositories/speak_repository.dart";
 
 final locator = GetIt.instance;
 

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "dart:io" show Platform;
 
-import 'package:flutter_app/common/colors.dart';
+import "package:flutter_app/common/colors.dart";
 
 class CancelButton extends StatelessWidget {
   final VoidCallback onPressed;

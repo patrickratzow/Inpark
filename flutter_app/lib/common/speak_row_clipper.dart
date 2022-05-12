@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'dart:math';
+import "package:flutter/material.dart";
+import "dart:math";
 
 class SpeakRowClipper extends CustomPainter {
   double radius;
@@ -87,7 +87,7 @@ class SpeakRowClipper extends CustomPainter {
     var paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1
-      ..color = Color(0xffF6F6F6);
+      ..color = const Color(0xffF6F6F6);
 
     canvas.drawPath(path, paint);
   }
