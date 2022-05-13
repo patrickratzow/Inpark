@@ -31,7 +31,6 @@ class OpeningHours extends HookWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const TitleBar(
-                  fontSize: 16,
                   name: "Åbningstider",
                 ),
                 Consumer<HomeModel>(

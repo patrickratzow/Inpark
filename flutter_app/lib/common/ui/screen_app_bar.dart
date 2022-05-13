@@ -3,7 +3,6 @@ import "package:flutter/services.dart";
 import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_app/navigation/navigation_model.dart";
-import "dart:io" show Platform;
 
 import "package:flutter_hooks/flutter_hooks.dart";
 
@@ -53,8 +52,6 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.backColor,
   }) : super(key: key);
-
-  bool get isMaterial => !Platform.isIOS;
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +121,12 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     );
   }
 
-  List<Widget> _buildLeading(BuildContext context, NavigationModel navigation) {
+  List<Widget> _buildLeading(
+    BuildContext context,
+    NavigationModel navigation,
+  ) {
+    final policies = usePolicies();
+
     List<Widget> results = [];
     if (automaticallyImplyLeading) {
       results.add(
@@ -135,7 +137,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
             minWidth: 48,
           ),
           icon: Icon(
-            isMaterial ? Icons.arrow_back : Icons.arrow_back_ios,
+            policies.appBarBackButton,
             color: backColor ?? CustomColor.green.middle,
             size: 18,
           ),

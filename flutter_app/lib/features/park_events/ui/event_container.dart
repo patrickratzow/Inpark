@@ -26,7 +26,6 @@ class EventContainer extends HookWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
           child: TitleBar(
-            fontSize: 16,
             name: title,
           ),
         ),

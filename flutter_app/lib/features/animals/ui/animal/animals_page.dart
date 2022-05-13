@@ -120,7 +120,9 @@ class AnimalsScreen extends HookWidget implements Screen {
   @override
   Widget build(BuildContext context) {
     final model = useProvider<AnimalsModel>(watch: true);
-    final isLoading = model.loading || model.hasError;
+    final isLoading = model.loading ||
+        model.hasError ||
+        (!model.isSearching && model.animals.isEmpty);
     final isSearching = model.isSearching;
     final controller = useAnimationController();
     final Animation<Offset> animation = Tween<Offset>(
@@ -153,6 +155,8 @@ class AnimalsScreen extends HookWidget implements Screen {
       [model.isSearching],
     );
 
+    final scale = MediaQuery.of(context).textScaleFactor;
+    final height = 40 + (isLoading ? 0 : 48) + (16 * scale);
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -161,11 +165,9 @@ class AnimalsScreen extends HookWidget implements Screen {
             snap: false,
             automaticallyImplyLeading: false,
             elevation: 0,
-            expandedHeight: 56 + (isLoading ? 0 : 48),
-            toolbarHeight: 56 + (isLoading ? 0 : 48),
+            expandedHeight: height,
+            toolbarHeight: height,
             shadowColor: Colors.transparent,
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.white,
             floating: true,
             flexibleSpace: Column(
               children: [
@@ -176,24 +178,29 @@ class AnimalsScreen extends HookWidget implements Screen {
                       ScreenAppBar(
                         title: "Vores dyr",
                         actions: [
-                          IconButton(
-                            onPressed: () {
-                              model.startSearching();
-                            },
-                            icon: const Icon(Icons.search),
-                            color: CustomColor.green.middle,
-                          ),
+                          if (!isLoading)
+                            IconButton(
+                              onPressed: () {
+                                model.startSearching();
+                              },
+                              icon: const Icon(Icons.search),
+                              color: CustomColor.green.middle,
+                            ),
                         ],
                         automaticallyImplyLeading: false,
                       ),
-                      AnimatedBuilder(
-                        animation: controller,
-                        builder: (context, child) {
-                          return SlideTransition(
-                            position: animation,
-                            child: const SearchAppBar(),
-                          );
-                        },
+                      Container(
+                        child: isLoading
+                            ? null
+                            : AnimatedBuilder(
+                                animation: controller,
+                                builder: (context, child) {
+                                  return SlideTransition(
+                                    position: animation,
+                                    child: const SearchAppBar(),
+                                  );
+                                },
+                              ),
                       ),
                     ],
                   ),

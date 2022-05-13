@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/features/speaks/models/speak.dart";
 import "package:flutter_app/hooks/use_interval_minute.dart";
+import "package:flutter_app/hooks/use_theme.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:flutter_use/flutter_use.dart";
@@ -21,11 +22,11 @@ class SpeakRowImage extends StatelessWidget {
   final SpeakColorPair color;
 
   const SpeakRowImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.state,
     required this.color,
-  }) : super(key: key);
+  });
 
   ImageWidgetBuilder? _imageBuilder() {
     if (state == SpeakState.over || state == SpeakState.upcoming) return null;
@@ -98,10 +99,10 @@ class SpeakRow extends HookWidget {
   final int id;
 
   const SpeakRow({
-    Key? key,
+    super.key,
     required this.speak,
     required this.id,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -139,53 +140,50 @@ class SpeakRow extends HookWidget {
       },
       [state.value],
     );
+    final theme = useTheme();
 
-    return InkWell(
-      onTap: () {},
-      child: Padding(
-        padding: const EdgeInsets.only(top: 4, bottom: 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  SpeakRowImage(
-                    imageUrl: speak.image.previewUrl,
-                    state: state.value,
-                    color: stateColor,
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        speak.title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                          height: 20 / 14,
-                        ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 4, bottom: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SpeakRowImage(
+                  imageUrl: speak.image.previewUrl,
+                  state: state.value,
+                  color: stateColor,
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      speak.title,
+                      style: theme.textTheme.headline5?.copyWith(
+                        height: 1.428,
                       ),
-                      Text(
-                        "Kl. " + DateFormat("HH:mm").format(speak.start),
-                      )
-                    ],
-                  ),
-                  const SizedBox(width: 8),
-                ],
-              ),
+                    ),
+                    Text(
+                      "Kl. " + DateFormat("HH:mm").format(speak.start),
+                      style: theme.textTheme.bodyText2,
+                    )
+                  ],
+                ),
+                const SizedBox(width: 8),
+              ],
             ),
-            SpeakRowActions(speak: speak),
-          ],
-        ),
+          ),
+          SpeakRowActions(speak: speak),
+        ],
       ),
     );
   }

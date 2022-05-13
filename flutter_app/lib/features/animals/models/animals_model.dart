@@ -50,6 +50,8 @@ class AnimalsModel extends ChangeNotifier {
     try {
       loading = true;
 
+      await Future.delayed(const Duration(milliseconds: 50000));
+
       var animalsResult = await animalsRepository.fetchAnimals();
       if (animalsResult.isSuccess) {
         _animals = animalsResult.success as List<AnimalDto>;

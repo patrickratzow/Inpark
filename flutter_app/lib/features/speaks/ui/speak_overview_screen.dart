@@ -10,9 +10,9 @@ class SpeaksOverviewScreen extends StatelessWidget implements Screen {
   final List<Speak> speaks;
 
   const SpeaksOverviewScreen({
-    Key? key,
+    super.key,
     required this.speaks,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

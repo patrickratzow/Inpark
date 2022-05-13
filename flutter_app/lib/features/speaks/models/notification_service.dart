@@ -1,5 +1,6 @@
-import 'dart:io';
+import "dart:io";
 
+import "package:flutter_app/hooks/use_provider.dart";
 import "package:flutter_local_notifications/flutter_local_notifications.dart";
 import "package:timezone/data/latest.dart" as tz;
 import "package:timezone/timezone.dart" as tz;
@@ -26,8 +27,10 @@ class NotificationService {
 
     tz.initializeTimeZones();
 
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: selectNotification);
+    await flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+      onSelectNotification: selectNotification,
+    );
   }
 
   InitializationSettings _initializeSettings() {
@@ -109,7 +112,8 @@ class NotificationService {
   }
 
   Future<bool> _requestPermissions() async {
-    if (!Platform.isIOS) return true;
+    final capabilities = useCapabilities();
+    if (!capabilities.shouldRequestPermissionsForNotifications) return true;
 
     final bool? result = await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<

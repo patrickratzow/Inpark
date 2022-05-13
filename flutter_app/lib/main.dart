@@ -6,6 +6,7 @@ import "package:flutter_app/features/speaks/models/notification_service.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/navigation/navigation_screen.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
+import "package:google_fonts/google_fonts.dart";
 import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
 import "common/ioc.dart";
@@ -68,14 +69,51 @@ class MyApp extends HookWidget {
         ),
         ChangeNotifierProvider<NavigationModel>(
           create: (context) => NavigationModel(),
-        ),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: const NavigationScreen(),
         theme: ThemeData(
-          fontFamily: "Inter",
+          brightness: Brightness.light,
+          primaryColor: const Color(0xffECFCE5),
+          fontFamily: GoogleFonts.poppins().fontFamily,
           primarySwatch: Colors.green,
+          textTheme: const TextTheme(
+            headline1: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
+            headline2: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+            headline3: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            headline4: TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+            headline5: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+            headline6: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+            ),
+            bodyText1: TextStyle(
+              fontSize: 14,
+            ),
+            bodyText2: TextStyle(
+              fontSize: 12,
+            ),
+          ),
           scaffoldBackgroundColor: Colors.white,
         ),
       ),

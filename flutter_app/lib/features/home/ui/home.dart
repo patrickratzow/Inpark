@@ -59,7 +59,7 @@ class HomeScreen extends HookWidget implements Screen {
           children: [
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
-              child: TitleBar(name: "Dagens speaks", fontSize: 16),
+              child: TitleBar(name: "Dagens speaks"),
             ),
             const SizedBox(height: 4),
             SpeaksList(speaks: value.speaks),

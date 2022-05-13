@@ -10,7 +10,7 @@ import "navigation_model.dart";
 import "tab_navigator.dart";
 
 class NavigationScreen extends HookWidget {
-  const NavigationScreen({Key? key}) : super(key: key);
+  const NavigationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,10 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/common/ui/title_bar.dart";
 import "package:flutter_app/features/park_events/ui/park_event_screen.dart";
 import "package:flutter_app/hooks/use_date_range.dart";
 import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/use_theme.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:intl/intl.dart";
 
 import "../../../common/colors.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
@@ -22,6 +21,7 @@ class Event extends HookWidget {
   Widget build(BuildContext context) {
     final navigation = useNavigator();
     final date = useDateRange(parkEvent.start, parkEvent.end, fullMonth: false);
+    final theme = useTheme();
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
@@ -69,20 +69,26 @@ class Event extends HookWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TitleBar(
-                          fontSize: 12,
-                          name: parkEvent.title,
-                          color: CustomColor.green.middle,
-                          textScaleFactor: 1,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            parkEvent.title,
+                            style: theme.textTheme.headline6?.copyWith(
+                              color: CustomColor.green.middle,
+                            ),
+                          ),
                         ),
-                        Text(
-                          date,
-                          softWrap: true,
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: CustomColor.green.middle,
-                            fontFamily: "Poppins",
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            date,
+                            softWrap: true,
+                            textScaleFactor: 1,
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: CustomColor.green.middle,
+                              fontFamily: "Poppins",
+                            ),
                           ),
                         ),
                       ],

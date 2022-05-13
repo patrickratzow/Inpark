@@ -1,4 +1,7 @@
+import "package:flutter_app/common/ioc.dart";
 import "package:flutter_app/navigation/navigation_model.dart";
+import "package:flutter_app/services/capability_service.dart";
+import "package:flutter_app/services/policy_service.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 
@@ -20,3 +23,6 @@ T useProvider<T>({
     [T],
   );
 }
+
+PolicyService usePolicies() => locator.get<PolicyService>();
+CapabilityService useCapabilities() => locator.get<CapabilityService>();
