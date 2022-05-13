@@ -8,7 +8,7 @@ import "package:flutter_hooks/flutter_hooks.dart";
 import "../../../common/ui/screen_app_bar.dart";
 
 class SettingsScreen extends HookWidget implements Screen {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
