@@ -3,7 +3,7 @@ import "package:flutter/services.dart";
 import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_app/navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
@@ -16,12 +16,8 @@ class WelcomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final navigation = useNavigator();
-    useProvider<HomeModel>(
-      onInit: (provider) => provider.fetchOpeningHoursForToday(),
-    );
-    useProvider<SpeakModel>(
-      onInit: (provider) => provider.fetchSpeaksForToday(),
-    );
+    useProvider<HomeModel>().fetchOpeningHoursForToday();
+    useProvider<SpeakModel>().fetchSpeaksForToday();
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -96,7 +92,9 @@ class WelcomeScreen extends HookWidget {
   }
 
   Widget _buildGetStartedButton(
-      BuildContext context, NavigationModel navigation) {
+    BuildContext context,
+    NavigationModel navigation,
+  ) {
     return Container(
       width: double.infinity,
       color: CustomColor.green.middle,

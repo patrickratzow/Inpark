@@ -1,5 +1,4 @@
-import "package:flutter_hooks/flutter_hooks.dart";
-import "package:intl/intl.dart";
+part of "hooks.dart";
 
 String useDateRange(
   DateTime startTime,

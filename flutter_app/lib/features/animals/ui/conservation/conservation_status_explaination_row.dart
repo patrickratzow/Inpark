@@ -1,6 +1,4 @@
 import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
-import 'package:flutter_app/common/colors.dart';
 import "package:flutter_app/features/animals/models/iucn_status.dart";
 import "package:flutter_app/generated_code/zooinator.enums.swagger.dart";
 
@@ -11,26 +9,30 @@ class ConservationStatusExplainationRow extends StatelessWidget {
   final bool highlight;
 
   const ConservationStatusExplainationRow({
-    Key? key,
+    super.key,
     required this.status,
     required this.highlight,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     const opacity = 0.6;
     var statusColor = ucnStatusColorMap[status]!;
-    var containerColor =
-        highlight ? statusColor.color.withOpacity(opacity) : Color(0xffF5F5F5);
+    var containerColor = highlight
+        ? statusColor.color.withOpacity(opacity)
+        : const Color(0xffF5F5F5);
     var containerTextColor = highlight
         ? (ThemeData.estimateBrightnessForColor(containerColor) ==
                 Brightness.light
             ? Colors.black
             : Colors.white)
         : Colors.black.withOpacity(0.46);
-    highlight ? statusColor.color.withOpacity(opacity) : Color(0xffF5F5F5);
-    var headerColor =
-        highlight ? statusColor.color.withOpacity(opacity) : Color(0xffDEDEDE);
+    highlight
+        ? statusColor.color.withOpacity(opacity)
+        : const Color(0xffF5F5F5);
+    var headerColor = highlight
+        ? statusColor.color.withOpacity(opacity)
+        : const Color(0xffDEDEDE);
     var headerTextColor = highlight
         ? (ThemeData.estimateBrightnessForColor(headerColor) == Brightness.light
             ? Colors.black
@@ -40,7 +42,7 @@ class ConservationStatusExplainationRow extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: containerColor,
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(4),
         ),
       ),

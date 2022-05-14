@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/title_bar.dart";
 import "package:flutter_app/features/park_events/ui/event.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 
@@ -17,9 +17,7 @@ class EventContainer extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    useProvider<ParkEventModel>(
-      onInit: (provider) => provider.fetchParkEvents(),
-    );
+    useProvider<ParkEventModel>().fetchParkEvents();
 
     return Column(
       children: [

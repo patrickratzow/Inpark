@@ -9,7 +9,7 @@ import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/animals/ui/conservation/conservation_status.dart";
 import "package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart";
 import "package:flutter_app/generated_code/zooinator.swagger.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_app/navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
@@ -17,7 +17,11 @@ import "animal_category.dart";
 
 class AnimalScreen extends HookWidget implements Screen {
   final AnimalDto animal;
-  const AnimalScreen({Key? key, required this.animal}) : super(key: key);
+
+  const AnimalScreen({
+    super.key,
+    required this.animal,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,10 @@ class AnimalScreen extends HookWidget implements Screen {
   }
 
   Widget _buildCard(
-      BuildContext context, AnimalDto animal, NavigationModel navigation) {
+    BuildContext context,
+    AnimalDto animal,
+    NavigationModel navigation,
+  ) {
     return Column(
       children: [
         GestureDetector(

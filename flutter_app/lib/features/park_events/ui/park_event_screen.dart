@@ -1,7 +1,7 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:intl/intl.dart";
 
@@ -11,7 +11,6 @@ import "../../../common/ui/fullscreen_image.dart";
 import "../../../common/ui/navigation_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
-import '../../../hooks/use_date_range.dart';
 
 class ParkEventScreen extends HookWidget implements Screen {
   ParkEventScreen({Key? key, required this.parkEvent}) : super(key: key);
@@ -22,7 +21,7 @@ class ParkEventScreen extends HookWidget implements Screen {
   final DateFormat endFormatter = DateFormat("d. MMMM yyyy", "da");
   final DateFormat startFormatter = DateFormat("d. MMMM", "da");
   final DateFormat soloStartFormatter = DateFormat("d. MMMM yyyy", "da");
-  Color softTextColor = const Color(0xffDDF8DA);
+  static const Color softTextColor = Color(0xffDDF8DA);
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +132,7 @@ class ParkEventScreen extends HookWidget implements Screen {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     parkEvent.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       height: 18 / 20,
                       fontFamily: "Poppins",
@@ -153,7 +152,7 @@ class ParkEventScreen extends HookWidget implements Screen {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         date,
-                        style: TextStyle(
+                        style: const TextStyle(
                           height: 1.5,
                           fontFamily: "Poppins",
                           fontSize: 12,

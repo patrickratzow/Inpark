@@ -1,10 +1,9 @@
 import "dart:convert";
 
 import "package:flutter_app/extensions/datetime.dart";
+import "package:flutter_app/generated_code/zooinator.models.swagger.dart";
 
-import "../../../generated_code/zooinator.models.swagger.dart";
-
-enum SpeakState { upcoming, happeningSoon, happening, over }
+import "speak_state.dart";
 
 class Speak {
   final String title;
@@ -16,10 +15,7 @@ class Speak {
 
   String get previewImage => image.previewUrl;
   String get fullscreenImage => image.fullscreenUrl;
-
-  bool hasBegun() {
-    return start.asToday().isBefore(DateTime.now());
-  }
+  bool get hasBegun => start.asToday().isBefore(DateTime.now());
 
   int? _id;
   int get id => _id ??= utf8.encode(title).reduce((curr, prev) => curr + prev);

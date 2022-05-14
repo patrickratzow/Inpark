@@ -79,8 +79,6 @@ class SpeakModel extends ChangeNotifier {
   Future cacheState(Speak speak, bool state) async {
     await _initStorage();
 
-    var id = speak.id;
-
     if (state) {
       await _localStorage.setItem(todaysId(speak), state.toString());
 
@@ -97,7 +95,7 @@ class SpeakModel extends ChangeNotifier {
   Future<bool> isToggled(Speak speak) async {
     await _initStorage();
 
-    if (speak.hasBegun()) return false;
+    if (speak.hasBegun) return false;
 
     var item = _localStorage.getItem(todaysId(speak));
 

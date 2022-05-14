@@ -1,9 +1,7 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/features/park_events/ui/park_event_screen.dart";
-import "package:flutter_app/hooks/use_date_range.dart";
-import "package:flutter_app/hooks/use_provider.dart";
-import "package:flutter_app/hooks/use_theme.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "../../../common/colors.dart";

@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/hooks/use_theme.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class TitleBar extends HookWidget {

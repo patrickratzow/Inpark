@@ -4,7 +4,7 @@ import "package:flutter_app/common/ui/screen_app_bar.dart";
 import "package:flutter_app/features/speaks/models/speak.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/features/speaks/ui/speaks_list.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 
 class SpeaksOverviewScreen extends StatelessWidget implements Screen {
   final List<Speak> speaks;
@@ -16,9 +16,7 @@ class SpeaksOverviewScreen extends StatelessWidget implements Screen {
 
   @override
   Widget build(BuildContext context) {
-    useProvider<SpeakModel>(
-      onInit: (provider) => provider.fetchSpeaksForToday(),
-    );
+    useProvider<SpeakModel>().fetchSpeaksForToday();
 
     return Scaffold(
       appBar: const ScreenAppBar(title: "Alle Aktiviteter og Speaks"),

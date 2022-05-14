@@ -4,7 +4,7 @@ import "package:flutter_app/features/home/models/home_model.dart";
 import "package:flutter_app/features/park_events/ui/event_container.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/features/speaks/ui/speaks_list.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 
@@ -17,12 +17,8 @@ class HomeScreen extends HookWidget implements Screen {
 
   @override
   Widget build(BuildContext context) {
-    useProvider<HomeModel>(
-      onInit: (provider) => provider.fetchOpeningHoursForToday(),
-    );
-    useProvider<SpeakModel>(
-      onInit: (provider) => provider.fetchSpeaksForToday(),
-    );
+    useProvider<HomeModel>().fetchOpeningHoursForToday();
+    useProvider<SpeakModel>().fetchSpeaksForToday();
 
     return Scaffold(
       appBar: const HomeAppBar(),

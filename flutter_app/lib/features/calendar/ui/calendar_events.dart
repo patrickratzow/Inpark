@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/features/calendar/models/calendar_model.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "calendar_event_row.dart";

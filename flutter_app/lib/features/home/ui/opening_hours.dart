@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/features/calendar/ui/calendar_screen.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 
