@@ -1,19 +1,16 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/common/feature.dart";
 import "package:flutter_app/common/ui/title_bar.dart";
 import "package:flutter_app/features/park_events/ui/event.dart";
 import "package:flutter_app/hooks/hooks.dart";
-import "package:flutter_hooks/flutter_hooks.dart";
 import "package:provider/provider.dart";
 
 import "../models/event_model.dart";
 
-class EventContainer extends HookWidget {
+class EventContainer extends FrontPageWidget {
   const EventContainer({
     Key? key,
-    required this.title,
   }) : super(key: key);
-
-  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +18,10 @@ class EventContainer extends HookWidget {
 
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
           child: TitleBar(
-            name: title,
+            name: "Kommende arrangementer",
           ),
         ),
         Padding(
@@ -68,4 +65,7 @@ class EventContainer extends HookWidget {
       ],
     );
   }
+
+  @override
+  bool shouldHide(BuildContext context) => false;
 }

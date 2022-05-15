@@ -1,14 +1,11 @@
 import "dart:io";
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
-import "package:flutter_app/common/colors.dart";
 import "package:flutter_app/features/animals/models/animals_model.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter_app/features/speaks/models/notification_service.dart";
 import "package:flutter_app/features/speaks/models/speak_model.dart";
 import "package:flutter_app/navigation/navigation_screen.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:flutter_use/flutter_use.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
@@ -53,16 +50,6 @@ class MyApp extends HookWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    useEffectOnce(() {
-      final style = SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: CustomColor.green.lightest,
-      );
-
-      SystemChrome.setSystemUIOverlayStyle(style);
-
-      return null;
-    });
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AnimalsModel>(

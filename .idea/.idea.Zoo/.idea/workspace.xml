@@ -10,6 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_categories.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/search_app_bar.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak_color_pair.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak_state.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/hooks.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_capabilities.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_policies.dart" afterDir="false" />
@@ -20,8 +24,10 @@
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/home_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/home_app_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/screen_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/screen_app_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/title_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/title_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/animals_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/animals_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status_explaination_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status_explaination_row.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_events.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_events.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/opening_hours.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/opening_hours.dart" afterDir="false" />
@@ -29,6 +35,7 @@
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/event_container.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/event_container.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/park_event_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/park_event_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/notification_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/notification_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speak_overview_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speak_overview_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speak_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speak_row.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speaks_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speaks_list.dart" afterDir="false" />

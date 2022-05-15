@@ -11,9 +11,9 @@ class Event extends HookWidget {
   final ParkEventDto parkEvent;
 
   const Event({
-    Key? key,
+    super.key,
     required this.parkEvent,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
