@@ -11,7 +11,7 @@ import "../../../common/ui/fullscreen_image.dart";
 import "../../../common/ui/navigation_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
-import '../../../hooks/use_date_range.dart';
+import "../../../hooks/use_date_range.dart";
 
 class ParkEventScreen extends HookWidget implements Screen {
   ParkEventScreen({Key? key, required this.parkEvent}) : super(key: key);
