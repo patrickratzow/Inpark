@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/feature.dart";
-import "package:flutter_app/features/calendar/ui/calendar_screen.dart";
-import "package:flutter_app/hooks/hooks.dart";
 
+import "../../../common/feature.dart";
 import "../../../common/ui/title_bar.dart";
+import "../../../hooks/hooks.dart";
+import "../../calendar/ui/calendar_screen.dart";
 import "../models/home_model.dart";
 
 class OpeningHours extends FrontPageWidget {
@@ -51,11 +51,7 @@ class OpeningHours extends FrontPageWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     home.openingHours,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: "Poppins",
-                    ),
+                    style: theme.textTheme.bodyLarge,
                   ),
                 ),
               ],
