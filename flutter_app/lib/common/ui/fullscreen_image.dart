@@ -1,11 +1,11 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/hooks/use_provider.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
+import "../screen.dart";
+import "screen_app_bar.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
-class FullScreenImage extends HookWidget {
+class FullScreenImage extends HookWidget implements Screen {
   final String imageUrl;
   final String tag;
   final String title;
@@ -19,30 +19,31 @@ class FullScreenImage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final navigation = useProvider<NavigationModel>();
+    final transformationController = useTransformationController();
+
+    useEffect(
+      () {
+        SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+
+        return () => SystemChrome.setEnabledSystemUIMode(
+              SystemUiMode.manual,
+              overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom],
+            );
+      },
+      [],
+    );
 
     return Scaffold(
-      backgroundColor: Colors.black87,
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-          statusBarColor: Colors.black,
-        ),
-        title: Text(title),
-        backgroundColor: Colors.black87,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () => {
-            navigation.show(),
-            Navigator.pop(context),
-          },
-        ),
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.black,
+      appBar: const ScreenAppBar(
+        backColor: Colors.white,
+        backgroundColor: Colors.transparent,
       ),
       body: Center(
         child: SizedBox.expand(
           child: InteractiveViewer(
+            transformationController: transformationController,
             maxScale: 7,
             child: CachedNetworkImage(
               imageUrl: imageUrl,

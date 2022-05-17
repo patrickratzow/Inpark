@@ -1,23 +1,25 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/common/ui/title_bar.dart";
-import "package:flutter_app/features/park_events/ui/park_event_screen.dart";
-import "package:flutter_app/hooks/use_provider.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
+import "park_event_screen.dart";
+import "../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:intl/intl.dart";
+
 import "../../../common/colors.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
 
 class Event extends HookWidget {
   final ParkEventDto parkEvent;
-  final DateFormat formatter = DateFormat("dd. MMMM yyyy", "da");
 
-  Event({Key? key, required this.parkEvent}) : super(key: key);
+  const Event({
+    super.key,
+    required this.parkEvent,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final navigation = useProvider<NavigationModel>();
+    final navigation = useNavigator();
+    final date = useDateRange(parkEvent.start, parkEvent.end, fullMonth: false);
+    final theme = useTheme();
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
@@ -30,12 +32,15 @@ class Event extends HookWidget {
           style: TextButton.styleFrom(
             padding: EdgeInsets.zero,
           ),
-          onPressed: () =>
-              navigation.push(context, ParkEventScreen(parkEvent: parkEvent)),
+          onPressed: () => navigation.push(
+            context,
+            ParkEventScreen(parkEvent: parkEvent),
+            hide: true,
+          ),
           child: ConstrainedBox(
             constraints: const BoxConstraints(
               maxWidth: 154,
-              minHeight: 151,
+              minHeight: 200,
             ),
             child: Column(
               children: [
@@ -62,18 +67,25 @@ class Event extends HookWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TitleBar(
-                          fontSize: 12,
-                          name: parkEvent.title,
-                          color: CustomColor.green.middle,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            parkEvent.title,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: CustomColor.green.middle,
+                            ),
+                          ),
                         ),
-                        Text(
-                          formatter.format(parkEvent.start),
-                          softWrap: true,
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: CustomColor.green.middle,
-                            fontFamily: "Poppins",
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            date,
+                            softWrap: true,
+                            textScaleFactor: 1,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: CustomColor.green.middle,
+                            ),
                           ),
                         ),
                       ],

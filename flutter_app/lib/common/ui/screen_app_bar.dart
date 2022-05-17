@@ -1,9 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/hooks/use_provider.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
-import "dart:io" show Platform;
+import "../colors.dart";
+import "../../hooks/hooks.dart";
+import "../../navigation/navigation_model.dart";
 
 import "package:flutter_hooks/flutter_hooks.dart";
 
@@ -38,6 +37,9 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
   final Widget? leading;
   final List<Widget>? actions;
   final Widget? flexibleSpace;
+  final SystemUiOverlayStyle? systemUiOverlayStyle;
+  final Color? backgroundColor;
+  final Color? backColor;
 
   const ScreenAppBar({
     Key? key,
@@ -46,13 +48,14 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     this.leading,
     this.actions,
     this.flexibleSpace,
+    this.systemUiOverlayStyle,
+    this.backgroundColor,
+    this.backColor,
   }) : super(key: key);
-
-  bool get isMaterial => !Platform.isIOS;
 
   @override
   Widget build(BuildContext context) {
-    final navigation = useProvider<NavigationModel>();
+    final navigation = useNavigator();
 
     // If the toolbar is allocated less than toolbarHeight make it
     // appear to scroll upwards within its shrinking container.
@@ -96,11 +99,12 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     return Semantics(
       container: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.dark.copyWith(
-          statusBarColor: CustomColor.green.lightest,
-        ),
+        value: systemUiOverlayStyle ??
+            SystemUiOverlayStyle.dark.copyWith(
+              statusBarColor: CustomColor.green.lightest,
+            ),
         child: Material(
-          color: CustomColor.green.lightest,
+          color: backgroundColor ?? CustomColor.green.lightest,
           elevation: 0,
           shadowColor: Colors.transparent,
           child: Semantics(
@@ -117,7 +121,13 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     );
   }
 
-  List<Widget> _buildLeading(BuildContext context, NavigationModel navigation) {
+  List<Widget> _buildLeading(
+    BuildContext context,
+    NavigationModel navigation,
+  ) {
+    final policies = usePolicies();
+    final theme = useTheme(context: context);
+
     List<Widget> results = [];
     if (automaticallyImplyLeading) {
       results.add(
@@ -128,8 +138,8 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
             minWidth: 48,
           ),
           icon: Icon(
-            isMaterial ? Icons.arrow_back : Icons.arrow_back_ios,
-            color: CustomColor.green.middle,
+            policies.appBarBackButton,
+            color: backColor ?? CustomColor.green.middle,
             size: 18,
           ),
           onPressed: () => navigation.pop(context),
@@ -149,12 +159,10 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
           padding: padding,
           child: Text(
             title!,
-            style: const TextStyle(
-              fontFamily: "Poppins",
+            style: theme.textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.bold,
-              fontSize: 14,
               height: 16 / 14,
-              color: Color(0xff718D6D),
+              color: const Color(0xff718D6D),
             ),
           ),
         ),

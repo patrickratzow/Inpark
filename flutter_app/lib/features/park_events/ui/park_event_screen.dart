@@ -1,91 +1,72 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/common/screen.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 import "package:intl/intl.dart";
+
 import "../../../common/browser.dart";
 import "../../../common/colors.dart";
+import "../../../common/screen.dart";
 import "../../../common/ui/fullscreen_image.dart";
 import "../../../common/ui/navigation_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
+import "../../../hooks/hooks.dart";
 
-class ParkEventScreen extends StatelessWidget implements Screen {
-  ParkEventScreen({Key? key, required this.parkEvent}) : super(key: key);
+class ParkEventScreen extends HookWidget implements Screen {
+  ParkEventScreen({super.key, required this.parkEvent});
 
   final ParkEventDto parkEvent;
   //This value is used to ensure no double spacers are used.
   bool wasLastNodeSpacer = false;
-  final DateFormat formatter = DateFormat("dd-MMM-yyyy", "da");
+  final DateFormat endFormatter = DateFormat("d. MMMM yyyy", "da");
+  final DateFormat startFormatter = DateFormat("d. MMMM", "da");
+  final DateFormat soloStartFormatter = DateFormat("d. MMMM yyyy", "da");
+  static const Color softTextColor = Color(0xffDDF8DA);
 
   @override
   Widget build(BuildContext context) {
+    final navigator = useNavigator();
+
     return Scaffold(
       appBar: const ScreenAppBar(title: "Arrangement"),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.13),
-                    offset: const Offset(0, 0),
-                    blurRadius: 4,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () => {
+                navigator.push(
+                  context,
+                  FullScreenImage(
+                    imageUrl: parkEvent.image.previewUrl,
+                    tag: "event-${parkEvent.title}",
+                    title: parkEvent.title.toString(),
                   ),
-                ],
-              ),
-              child: Card(
-                margin: const EdgeInsets.all(0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6),
                 ),
-                clipBehavior: Clip.hardEdge,
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () => {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FullScreenImage(
-                              imageUrl: parkEvent.image.fullscreenUrl,
-                              tag: "event-${parkEvent.title}",
-                              title: parkEvent.title.toString(),
-                            ),
-                          ),
-                        ),
-                      },
-                      child: _buildImage(parkEvent),
-                    ),
-                    ZooinatorNavigationBar(
-                      tabs: [
-                        ZooinatorNavigationTab(
-                          text: "Information",
-                          icon: Icons.menu,
-                          builder: (context) => Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                                child: _buildContents(
-                                  parkEvent.descriptionContent,
-                                  context,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        ..._getProgramTab(parkEvent),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              },
+              child: _buildImage(parkEvent),
             ),
-          ),
-        ],
+            ZooinatorNavigationBar(
+              tabs: [
+                ZooinatorNavigationTab(
+                  text: "Information",
+                  icon: Icons.menu,
+                  builder: (context) => Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: _buildContents(
+                          parkEvent.descriptionContent,
+                          context,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                ..._getProgramTab(parkEvent),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -101,7 +82,7 @@ class ParkEventScreen extends StatelessWidget implements Screen {
           builder: (context) => Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                padding: const EdgeInsets.all(16),
                 child: _buildTriviaContents(
                   parkEvent.programContent,
                 ),
@@ -114,78 +95,76 @@ class ParkEventScreen extends StatelessWidget implements Screen {
   }
 
   Widget _buildImage(ParkEventDto parkEvent) {
-    const Color softTextColor = Color(0xffDDF8DA);
+    return HookBuilder(
+      builder: (BuildContext context) {
+        final theme = useTheme();
+        final date = useDateRange(parkEvent.start, parkEvent.end);
 
-    return Column(
-      children: [
-        Stack(
+        return Column(
           children: [
-            CachedNetworkImage(imageUrl: parkEvent.image.previewUrl),
-            Positioned.fill(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.center,
-                          colors: [
-                            CustomColor.green.middle,
-                            CustomColor.green.middle.withOpacity(0),
-                          ],
+            Stack(
+              children: [
+                CachedNetworkImage(imageUrl: parkEvent.image.previewUrl),
+                Positioned.fill(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.center,
+                              colors: [
+                                CustomColor.green.middle,
+                                CustomColor.green.middle.withOpacity(0),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Container(
+              color: CustomColor.green.middle,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        parkEvent.title,
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                          height: 18 / 20,
+                          fontWeight: FontWeight.bold,
+                          color: softTextColor,
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        date,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          height: 1.5,
+                          color: softTextColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                  ],
+                ),
               ),
             )
           ],
-        ),
-        Container(
-          color: CustomColor.green.middle,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    parkEvent.title,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      height: 18 / 20,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-                      color: softTextColor,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    formatter.format(parkEvent.start),
-                    style: const TextStyle(
-                      height: 1.5,
-                      fontFamily: "Poppins",
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: softTextColor,
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 4),
-                ),
-              ],
-            ),
-          ),
-        )
-      ],
+        );
+      },
     );
   }
 
@@ -201,13 +180,19 @@ class ParkEventScreen extends StatelessWidget implements Screen {
     );
   }
 
+/*
+final transformer = useTransformer()
+  ..on("callToAction", (node, widget) {
+    return 
+  })
+*/
+
   InlineSpan _buildTriviaContent(ContentDto content) {
     if (content.type == "spacer" && wasLastNodeSpacer != true) {
       wasLastNodeSpacer = true;
       return const TextSpan(
         style: TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         text: "\n\n",
       );
@@ -220,7 +205,6 @@ class ParkEventScreen extends StatelessWidget implements Screen {
         text: "• ",
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         children: content.children.map(_buildText).toList(),
       );
@@ -229,7 +213,6 @@ class ParkEventScreen extends StatelessWidget implements Screen {
       return TextSpan(
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         children: content.children.map(_buildText).toList(),
       );
@@ -238,7 +221,6 @@ class ParkEventScreen extends StatelessWidget implements Screen {
       return TextSpan(
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         text: content.value,
       );
@@ -283,7 +265,6 @@ class ParkEventScreen extends StatelessWidget implements Screen {
               "Køb billet",
               style: TextStyle(
                 color: Colors.white,
-                fontFamily: "Poppins",
               ),
             ),
             onPressed: () => Browser.openUrl(
@@ -303,7 +284,6 @@ class ParkEventScreen extends StatelessWidget implements Screen {
       return const TextSpan(
         style: TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         text: "\n\n",
       );
@@ -316,7 +296,6 @@ class ParkEventScreen extends StatelessWidget implements Screen {
         text: "• ",
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         children: content.children.map(_buildText).toList(),
       );
@@ -326,7 +305,6 @@ class ParkEventScreen extends StatelessWidget implements Screen {
         style: const TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontFamily: "Poppins",
         ),
         children: content.children.map(_buildText).toList(),
       );
@@ -335,7 +313,6 @@ class ParkEventScreen extends StatelessWidget implements Screen {
       return TextSpan(
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         text: content.value,
       );

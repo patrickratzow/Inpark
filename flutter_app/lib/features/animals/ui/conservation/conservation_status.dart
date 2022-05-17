@@ -1,7 +1,8 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/features/animals/models/iucn_status.dart";
-import "package:flutter_app/generated_code/zooinator.enums.swagger.dart";
+import "../../models/iucn_status.dart";
+import "../../../../generated_code/zooinator.enums.swagger.dart";
+import "../../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class ConservationStatus extends HookWidget {
@@ -24,6 +25,8 @@ class ConservationStatus extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = useTheme();
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
@@ -32,17 +35,15 @@ class ConservationStatus extends HookWidget {
             padding: const EdgeInsets.only(bottom: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   "Bevaringsstatus",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Color(0xff698665),
-                    fontFamily: "Poppins",
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    color: const Color(0xff698665),
                   ),
                 ),
-                SizedBox(width: 2),
-                Padding(
+                const SizedBox(width: 2),
+                const Padding(
                   padding: EdgeInsets.only(top: 1),
                   child: Icon(
                     Icons.info_outlined,
@@ -57,11 +58,11 @@ class ConservationStatus extends HookWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ..._buildExtinctSection(),
+              ..._buildExtinctSection(theme),
               const SizedBox(width: 12),
-              _buildThreatenedSection(),
+              _buildThreatenedSection(theme),
               const SizedBox(width: 12),
-              ..._buildLeastConcernedSection(),
+              ..._buildLeastConcernedSection(theme),
             ],
           ),
         ],
@@ -69,7 +70,7 @@ class ConservationStatus extends HookWidget {
     );
   }
 
-  List<Widget> _buildExtinctSection() {
+  List<Widget> _buildExtinctSection(ThemeData theme) {
     return [
       Column(
         children: [
@@ -84,9 +85,11 @@ class ConservationStatus extends HookWidget {
               ),
             ),
           ),
-          const Text(
+          Text(
             "Uddød",
-            style: TextStyle(color: Color(0xff698665)),
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: const Color(0xff698665),
+            ),
           )
         ],
       ),
@@ -99,7 +102,7 @@ class ConservationStatus extends HookWidget {
     ];
   }
 
-  Widget _buildThreatenedSection() {
+  Widget _buildThreatenedSection(ThemeData theme) {
     return Column(
       children: [
         Row(
@@ -115,16 +118,18 @@ class ConservationStatus extends HookWidget {
           padding: const EdgeInsets.fromLTRB(0, 4, 0, 5),
           child: Image.asset("assets/bow_connector.png"),
         ),
-        const Text(
+        Text(
           "Truet",
-          style: TextStyle(color: Color(0xff698665)),
+          style: theme.textTheme.bodyLarge?.copyWith(
+            color: const Color(0xff698665),
+          ),
           textAlign: TextAlign.center,
         )
       ],
     );
   }
 
-  List<Widget> _buildLeastConcernedSection() {
+  List<Widget> _buildLeastConcernedSection(ThemeData theme) {
     return [
       Column(
         children: [
@@ -145,11 +150,11 @@ class ConservationStatus extends HookWidget {
               ),
             ),
           ),
-          const Text(
+          Text(
             "Ikke \nTruet",
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Color(0xff698665),
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: const Color(0xff698665),
             ),
           )
         ],
@@ -158,7 +163,7 @@ class ConservationStatus extends HookWidget {
   }
 }
 
-class ConservationCircle extends StatelessWidget {
+class ConservationCircle extends HookWidget {
   final String text;
   final Color color;
   final Color textColor;
@@ -176,6 +181,8 @@ class ConservationCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = useTheme();
+
     return Opacity(
       opacity: active ? 1 : (disabledOpacity ?? 0.25),
       child: Container(
@@ -188,10 +195,9 @@ class ConservationCircle extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: TextStyle(
+              style: theme.textTheme.bodyMedium?.copyWith(
                 color: textColor,
                 height: 16 / 12,
-                fontSize: 12,
               ),
             ),
           ),
