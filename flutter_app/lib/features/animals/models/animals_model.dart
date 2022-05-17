@@ -1,6 +1,6 @@
 import "package:flutter/cupertino.dart";
-import "package:flutter_app/common/ioc.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "../../../common/ioc.dart";
+import "../../../generated_code/zooinator.swagger.dart";
 
 import "../repositories/animals_repository.dart";
 
@@ -9,6 +9,7 @@ class AnimalsModel extends ChangeNotifier {
   String _search = "";
   String error = "";
   Set<AnimalCategory> _animalCategories = {};
+  Set<AnimalCategory> get categories => _animalCategories;
   bool isSearching = false;
 
   bool loading = false;
@@ -16,11 +17,8 @@ class AnimalsModel extends ChangeNotifier {
 
   AnimalsModel();
   AnimalsModel.withAnimals(this._animals) {
-    _animalCategories = _animals
-        .map((animal) => animal.category)
-        .toSet()
-        .map((category) => AnimalCategory(category))
-        .toSet();
+    _animalCategories =
+        _animals.map((animal) => AnimalCategory(animal.category)).toSet();
   }
 
   String get search => _search;
@@ -53,11 +51,8 @@ class AnimalsModel extends ChangeNotifier {
       var animalsResult = await animalsRepository.fetchAnimals();
       if (animalsResult.isSuccess) {
         _animals = animalsResult.success as List<AnimalDto>;
-        _animalCategories = _animals
-            .map((animal) => animal.category)
-            .toSet()
-            .map((category) => AnimalCategory(category))
-            .toSet();
+        _animalCategories =
+            _animals.map((animal) => AnimalCategory(animal.category)).toSet();
       } else {
         error = animalsResult.error.toString();
       }
@@ -96,12 +91,6 @@ class AnimalsModel extends ChangeNotifier {
 
     notifyListeners();
   }
-
-  Set<AnimalCategory> get categories {
-    return _animalCategories;
-  }
-
-  void getAnimalsByCategory() {}
 }
 
 class AnimalCategory {
@@ -109,4 +98,10 @@ class AnimalCategory {
   bool enabled = true;
 
   AnimalCategory(this.name);
+
+  @override
+  operator ==(other) => other is AnimalCategory && name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
 }

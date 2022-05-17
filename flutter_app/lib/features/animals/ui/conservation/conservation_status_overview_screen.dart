@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/screen.dart";
-import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "../../../../common/screen.dart";
+import "../../../../common/ui/screen_app_bar.dart";
+import "../../../../generated_code/zooinator.swagger.dart";
 
 import "conservation_status_explaination_row.dart";
 

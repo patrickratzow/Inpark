@@ -1,6 +1,6 @@
-import "package:flutter_app/common/ioc.dart";
-import "package:flutter_app/common/result.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "../../../common/ioc.dart";
+import "../../../common/result.dart";
+import "../../../generated_code/zooinator.swagger.dart";
 
 class AnimalsRepository {
   List<AnimalDto>? _animals;

@@ -1,47 +1,52 @@
 import "package:flutter/material.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-class SettingRow extends StatelessWidget {
+import "../../../hooks/hooks.dart";
+
+class SettingRow extends HookWidget {
   const SettingRow({
-    Key? key,
-    required this.iconName,
+    super.key,
+    required this.leading,
     required this.name,
-    required this.route,
-    required this.widget,
-  }) : super(key: key);
+    required this.trailing,
+    this.onPressed,
+  });
 
   final String name;
-  final String iconName;
-  final String route;
-  final Widget widget;
+  final Widget leading;
+  final Widget trailing;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-      child: TextButton(
-        onPressed: () {},
+    final theme = useTheme();
+
+    return SizedBox(
+      height: 56,
+      child: InkWell(
+        onTap: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
-                Image.asset(
-                  "assets/menu_icons/$iconName.png",
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: leading,
                 ),
                 const SizedBox(
                   width: 8,
                 ),
                 Text(
                   name,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: "Inter",
-                  ),
+                  style: theme.textTheme.headlineSmall,
                 ),
               ],
             ),
-            widget,
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: trailing,
+            ),
           ],
         ),
       ),

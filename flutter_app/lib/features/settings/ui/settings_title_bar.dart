@@ -1,27 +1,31 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/hooks/hooks.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-class SettingsTitleBar extends StatelessWidget {
-  const SettingsTitleBar({
-    Key? key,
-    required this.name,
-  }) : super(key: key);
-
+class SettingsTitleBar extends HookWidget {
   final String name;
+
+  const SettingsTitleBar({
+    super.key,
+    required this.name,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      child: Text(
-        name,
-        textAlign: TextAlign.left,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          fontFamily: "Inter",
+    final theme = useTheme();
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, top: 16),
+      child: Align(
+        child: Text(
+          name,
+          textAlign: TextAlign.left,
+          style: theme.textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
         ),
+        alignment: Alignment.centerLeft,
       ),
-      alignment: Alignment.centerLeft,
     );
   }
 }

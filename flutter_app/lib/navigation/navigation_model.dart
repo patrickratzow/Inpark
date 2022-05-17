@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/screen.dart";
+import "../common/screen.dart";
+import "package:localstorage/localstorage.dart";
 
 final List<String> pageKeys = ["Page1", "Page2", "Page3"];
 final Map<String, GlobalKey<NavigatorState>> navigatorKeys = {
@@ -9,13 +10,23 @@ final Map<String, GlobalKey<NavigatorState>> navigatorKeys = {
 };
 
 class NavigationModel extends ChangeNotifier {
-  bool _isPastIntro = false;
-  bool get isPastIntro => _isPastIntro;
+  static final LocalStorage _localStorage = LocalStorage("navigator.json");
+
+  bool _shouldSeeWelcomeScreen = false;
+  bool get shouldSeeWelcomeScreen => _shouldSeeWelcomeScreen;
   bool _showNavbar = true;
   bool get showNavbar => _showNavbar;
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
   String get currentPage => pageKeys[selectedIndex];
+  int? _hiddenStackIndex;
+
+  NavigationModel() {
+    _localStorage.ready.then((_) {
+      _shouldSeeWelcomeScreen =
+          _localStorage.getItem("has_seen_welcome_screen") == null;
+    });
+  }
 
   void selectTab(int index) {
     _selectedIndex = index;
@@ -24,24 +35,29 @@ class NavigationModel extends ChangeNotifier {
   }
 
   void hide() {
+    _hiddenStackIndex = 0;
     _showNavbar = false;
 
     notifyListeners();
   }
 
   void show() {
+    _hiddenStackIndex = null;
     _showNavbar = true;
 
     notifyListeners();
   }
 
-  void pushHome(BuildContext context) {
-    _isPastIntro = true;
+  void hasSeenWelcomeScreen() {
+    _shouldSeeWelcomeScreen = false;
+    _localStorage.setItem("has_seen_welcome_screen", true);
 
     notifyListeners();
   }
 
   void replace<T extends Screen>(BuildContext context, T screen) {
+    _hiddenStackIndex = null;
+
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) => screen,
@@ -49,15 +65,30 @@ class NavigationModel extends ChangeNotifier {
     );
   }
 
-  void push<T extends Screen>(BuildContext context, T screen) {
+  void push<T extends Screen>(BuildContext context, T screen, {hide = false}) {
+    if (hide) this.hide();
+    if (_hiddenStackIndex != null) _hiddenStackIndex = (_hiddenStackIndex! + 1);
+
     Navigator.of(context).push<T>(
       MaterialPageRoute(
-        builder: (context) => screen,
+        builder: (context) => hide
+            ? WillPopScope(
+                child: screen,
+                onWillPop: () async {
+                  show();
+
+                  return true;
+                },
+              )
+            : screen,
       ),
     );
   }
 
   void pop(BuildContext context) {
+    if (_hiddenStackIndex != null) _hiddenStackIndex = (_hiddenStackIndex! - 1);
+    if (_hiddenStackIndex == 0) show();
+
     Navigator.of(context).pop();
   }
 

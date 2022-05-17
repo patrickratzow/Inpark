@@ -1,16 +1,11 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import "package:flutter/material.dart";
-import 'package:flutter_app/features/speaks/models/notification_service.dart';
-import 'package:flutter_app/features/speaks/models/speak.dart';
-import "package:flutter_app/generated_code/zooinator.models.swagger.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:localstorage/localstorage.dart';
+import "../../../extensions/datetime.dart";
+import "notification_service.dart";
+import "speak.dart";
+import "package:localstorage/localstorage.dart";
 
-import '../../../common/ioc.dart';
-import '../repositories/speak_repository.dart';
+import "../../../common/ioc.dart";
+import "../repositories/speak_repository.dart";
 
 class SpeakModel extends ChangeNotifier {
   List<Speak> _speaks = List.empty();
@@ -18,8 +13,8 @@ class SpeakModel extends ChangeNotifier {
   bool loading = false;
   List<Speak> get speaks => _speaks;
 
-  LocalStorage _localStorage = LocalStorage("speaks.json");
-  NotificationService _notificationService = NotificationService();
+  final LocalStorage _localStorage = LocalStorage("speaks.json");
+  final NotificationService _notificationService = NotificationService();
 
   Future<void> fetchSpeaksForToday() async {
     final homeRepository = locator.get<SpeakRepository>();
@@ -39,11 +34,11 @@ class SpeakModel extends ChangeNotifier {
   }
 
   Future<bool> toggleNotification(Speak speak) async {
-    var isToggled = this.isToggled(speak);
+    var isToggled = await this.isToggled(speak);
 
     if (isToggled) {
       cancelNotification(speak);
-      cacheState(speak, false);
+      await cacheState(speak, false);
 
       return false;
     }
@@ -53,7 +48,7 @@ class SpeakModel extends ChangeNotifier {
       return Future.error("no_permission");
     }
 
-    cacheState(speak, true);
+    await cacheState(speak, true);
 
     return true;
   }
@@ -73,43 +68,41 @@ class SpeakModel extends ChangeNotifier {
     _notificationService.cancelNotifications(speak.id);
   }
 
-  int secondsToNotification(DateTime time) {
-    var now = DateTime.now();
-    var normalizedTime = DateTime(
-      now.year,
-      now.month,
-      now.day,
-      time.hour,
-      time.minute,
-      time.second,
-    );
+  int secondsToNotification(DateTime time) => time
+      .asToday()
+      .subtract(
+        const Duration(minutes: 15),
+      )
+      .difference(DateTime.now())
+      .inSeconds;
 
-    return normalizedTime
-        .subtract(
-          const Duration(minutes: 15),
-        )
-        .difference(now)
-        .inSeconds;
-  }
-
-  void cacheState(Speak speak, bool state) {
-    var id = speak.id;
+  Future cacheState(Speak speak, bool state) async {
+    await _initStorage();
 
     if (state) {
-      _localStorage.setItem(id.toString(), state.toString());
+      await _localStorage.setItem(todaysId(speak), state.toString());
 
       return;
     }
 
-    _localStorage.deleteItem(id.toString());
+    await _localStorage.deleteItem(todaysId(speak));
   }
 
-  bool isToggled(Speak speak) {
-    if (speak.hasBegun()) return false;
+  String todaysId(Speak speak) {
+    return "${speak.id}_${DateTime.now().day}";
+  }
 
-    var id = speak.id.toString();
-    var item = _localStorage.getItem(id);
+  Future<bool> isToggled(Speak speak) async {
+    await _initStorage();
+
+    if (speak.hasBegun) return false;
+
+    var item = _localStorage.getItem(todaysId(speak));
 
     return item != null;
+  }
+
+  Future _initStorage() async {
+    return await _localStorage.ready;
   }
 }

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/browser.dart";
-import "package:flutter_app/features/front_page/front_page.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "../common/browser.dart";
+import "../features/welcome_screen/welcome_screen.dart";
+import "../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:google_fonts/google_fonts.dart";
@@ -10,21 +10,21 @@ import "navigation_model.dart";
 import "tab_navigator.dart";
 
 class NavigationScreen extends HookWidget {
-  const NavigationScreen({Key? key}) : super(key: key);
+  const NavigationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final navigation = useProvider<NavigationModel>(watch: true);
+    final navigator = useNavigator(watch: true);
 
-    if (!navigation.isPastIntro) {
-      return const Scaffold(body: FrontPage());
+    if (navigator.shouldSeeWelcomeScreen) {
+      return const Scaffold(body: WelcomeScreen());
     }
 
     Widget _buildOffstageNavigator(String tabItem) {
       return Offstage(
-        offstage: navigation.currentPage != tabItem,
+        offstage: navigator.currentPage != tabItem,
         child: TabNavigator(
-          navigatorKey: navigation.getNavigatorKey(tabItem)!,
+          navigatorKey: navigator.getNavigatorKey(tabItem)!,
           tabItem: tabItem,
         ),
       );
@@ -44,77 +44,80 @@ class NavigationScreen extends HookWidget {
         return;
       }
 
-      navigation.selectTab(index);
+      navigator.selectTab(index);
     }
 
-    return WillPopScope(
-      onWillPop: () async {
-        final page = navigation.getNavigatorKey(navigation.currentPage);
-        if (page == null) return true;
-        final navigator = page.currentState;
-        if (navigator == null) return true;
-        final isFirstRouteInCurrentTab = !await navigator.maybePop();
-        if (isFirstRouteInCurrentTab) {
-          if (navigation.currentPage != "Page1") {
-            selectTab(0, "Page1");
+    return SafeArea(
+      child: WillPopScope(
+        onWillPop: () async {
+          final page = navigator.getNavigatorKey(navigator.currentPage);
+          if (page == null) return true;
+          final navigatorState = page.currentState;
+          if (navigatorState == null) return true;
+          final isFirstRouteInCurrentTab = !await navigatorState.maybePop();
+          if (isFirstRouteInCurrentTab) {
+            if (navigator.currentPage != "Page1") {
+              selectTab(0, "Page1");
 
-            return false;
+              return false;
+            }
           }
-        }
 
-        return isFirstRouteInCurrentTab;
-      },
-      child: Scaffold(
-        body: Stack(
-          children: [
-            _buildOffstageNavigator("Page1"),
-            _buildOffstageNavigator("Page2"),
-            _buildOffstageNavigator("Page3"),
-          ],
-        ),
-        bottomNavigationBar: !navigation.showNavbar
-            ? null
-            : NavigationBarTheme(
-                data: NavigationBarThemeData(
-                  labelTextStyle: MaterialStateProperty.all(
-                    GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
+          return isFirstRouteInCurrentTab;
+        },
+        child: Scaffold(
+          body: Stack(
+            children: [
+              _buildOffstageNavigator("Page1"),
+              _buildOffstageNavigator("Page2"),
+              _buildOffstageNavigator("Page3"),
+            ],
+          ),
+          bottomNavigationBar: AnimatedContainer(
+            duration: const Duration(milliseconds: 100),
+            height: navigator.showNavbar ? 56 : 0,
+            child: NavigationBarTheme(
+              data: NavigationBarThemeData(
+                labelTextStyle: MaterialStateProperty.all(
+                  const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-                child: NavigationBar(
-                  labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-                  height: 48,
-                  onDestinationSelected: (index) =>
-                      selectTab(index, pageKeys[index]),
-                  selectedIndex: navigation.selectedIndex,
-                  destinations: [
-                    const NavigationDestination(
-                      icon: Icon(Icons.home_outlined),
-                      label: "Hjem",
-                    ),
-                    NavigationDestination(
-                      icon: SvgPicture.asset(
-                        "assets/menu_icons/ticket.svg",
-                        color: Colors.black,
-                        width: 31.5,
-                        height: 24,
-                      ),
-                      label: "Billetter",
-                    ),
-                    NavigationDestination(
-                      icon: SvgPicture.asset(
-                        "assets/menu_icons/paw_print.svg",
-                        color: Colors.black,
-                        width: 31.5,
-                        height: 24,
-                      ),
-                      label: "Vores Dyr",
-                    ),
-                  ],
-                ),
               ),
+              child: NavigationBar(
+                labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+                onDestinationSelected: (index) =>
+                    selectTab(index, pageKeys[index]),
+                selectedIndex: navigator.selectedIndex,
+                destinations: [
+                  const NavigationDestination(
+                    icon: Icon(Icons.home_outlined, size: 27.6),
+                    label: "Hjem",
+                  ),
+                  NavigationDestination(
+                    icon: SvgPicture.asset(
+                      "assets/menu_icons/ticket.svg",
+                      color: Colors.black,
+                      width: 36.2,
+                      height: 27.6,
+                    ),
+                    label: "Billetter",
+                  ),
+                  NavigationDestination(
+                    icon: SvgPicture.asset(
+                      "assets/menu_icons/paw_print.svg",
+                      color: Colors.black,
+                      width: 36.2,
+                      height: 27.6,
+                    ),
+                    label: "Vores Dyr",
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
