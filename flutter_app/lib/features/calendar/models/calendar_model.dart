@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/common/extensions/iterable.dart';
-import 'package:flutter_app/common/ioc.dart';
-import 'package:flutter_app/features/calendar/repository/calendar_repository.dart';
+import '../../../common/extensions/iterable.dart';
+import '../../../common/ioc.dart';
+import '../repository/calendar_repository.dart';
 import "package:intl/intl.dart";
 
 import '../../../common/result.dart';

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/extensions/datetime.dart";
-import "package:flutter_app/features/speaks/models/notification_service.dart";
-import "package:flutter_app/features/speaks/models/speak.dart";
+import "../../../extensions/datetime.dart";
+import "notification_service.dart";
+import "speak.dart";
 import "package:localstorage/localstorage.dart";
 
 import "../../../common/ioc.dart";
@@ -79,8 +79,6 @@ class SpeakModel extends ChangeNotifier {
   Future cacheState(Speak speak, bool state) async {
     await _initStorage();
 
-    var id = speak.id;
-
     if (state) {
       await _localStorage.setItem(todaysId(speak), state.toString());
 
@@ -97,7 +95,7 @@ class SpeakModel extends ChangeNotifier {
   Future<bool> isToggled(Speak speak) async {
     await _initStorage();
 
-    if (speak.hasBegun()) return false;
+    if (speak.hasBegun) return false;
 
     var item = _localStorage.getItem(todaysId(speak));
 

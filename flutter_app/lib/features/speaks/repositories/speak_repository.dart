@@ -1,5 +1,5 @@
-import 'package:flutter_app/features/speaks/models/speak.dart';
-import "package:flutter_app/generated_code/client_index.dart";
+import '../models/speak.dart';
+import "../../../generated_code/client_index.dart";
 
 import "../../../common/ioc.dart";
 import '../models/speak_model.dart';

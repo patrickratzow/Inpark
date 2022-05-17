@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/common/ui/title_bar.dart";
-import "package:flutter_app/features/settings/ui/settings.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "../../features/settings/ui/settings.dart";
+import "../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "../colors.dart";
@@ -21,6 +20,7 @@ class HomeAppBar extends HookWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final navigator = useNavigator();
+    final theme = useTheme();
 
     return Container(
       decoration: BoxDecoration(
@@ -52,22 +52,16 @@ class HomeAppBar extends HookWidget implements PreferredSizeWidget {
                       const SettingsScreen(),
                     ),
                   ),
-                  // IconButton(
-                  //   icon: const Icon(
-                  //     Icons.login_outlined,
-                  //     color: CustomColor.green.icon,
-                  //   ),
-                  //   onPressed: () {},
-                  // ),
                 ],
               ),
               title != null
                   ? Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: TitleBar(
-                        name: title!,
-                        fontSize: 16,
-                        color: CustomColor.green.text,
+                      child: Text(
+                        title!,
+                        style: theme.textTheme.headlineSmall?.copyWith(
+                          color: CustomColor.green.text,
+                        ),
                       ),
                     )
                   : Container(),

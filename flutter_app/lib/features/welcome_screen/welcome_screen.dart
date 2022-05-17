@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/features/home/models/home_model.dart";
-import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/hooks/use_provider.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
+import "../../common/colors.dart";
+import "../../common/feature.dart";
+import "../../hooks/hooks.dart";
+import "../../navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import "package:flutter_use/flutter_use.dart";
 
 import "video_player.dart";
 
@@ -16,21 +16,27 @@ class WelcomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final navigation = useNavigator();
-    useProvider<HomeModel>(
-      onInit: (provider) => provider.fetchOpeningHoursForToday(),
-    );
-    useProvider<SpeakModel>(
-      onInit: (provider) => provider.fetchSpeaksForToday(),
-    );
+    // Start fetching data for front page
+    useRef(Features.setupAll(context));
+
+    useEffectOnce(() {
+      final style = SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.transparent,
+      );
+
+      SystemChrome.setSystemUIOverlayStyle(style);
+
+      return () {
+        SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle.dark.copyWith(
+            statusBarColor: CustomColor.green.lightest,
+          ),
+        );
+      };
+    });
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        systemOverlayStyle: SystemUiOverlayStyle.light
-            .copyWith(statusBarColor: Colors.transparent),
-      ),
       body: Column(
         children: [
           _buildVideo(),
@@ -96,14 +102,18 @@ class WelcomeScreen extends HookWidget {
   }
 
   Widget _buildGetStartedButton(
-      BuildContext context, NavigationModel navigation) {
+    BuildContext context,
+    NavigationModel navigation,
+  ) {
+    final hasBottomNotch = MediaQuery.of(context).viewPadding.bottom > 0;
+
     return Container(
       width: double.infinity,
       color: CustomColor.green.middle,
       child: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           top: 16,
-          bottom: 40,
+          bottom: hasBottomNotch ? 40 : 16,
           left: 24,
           right: 24,
         ),

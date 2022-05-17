@@ -3,29 +3,26 @@ import "dart:math";
 
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/features/speaks/models/speak.dart";
-import "package:flutter_app/hooks/use_interval_minute.dart";
+import "../models/speak.dart";
+import "../models/speak_color_pair.dart";
+import "../models/speak_state.dart";
+import "../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:flutter_use/flutter_use.dart";
 import "package:intl/intl.dart";
 
-import "../../../hooks/use_memoized_value.dart";
-import "../../../hooks/use_provider.dart";
 import "../models/speak_model.dart";
 
 class SpeakRowImage extends StatelessWidget {
   final String imageUrl;
   final SpeakState state;
-  final SpeakColorPair color;
 
   const SpeakRowImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.state,
-    required this.color,
-  }) : super(key: key);
+  });
 
   ImageWidgetBuilder? _imageBuilder() {
     if (state == SpeakState.over || state == SpeakState.upcoming) return null;
@@ -52,13 +49,13 @@ class SpeakRowImage extends StatelessWidget {
                   topLeft: Radius.circular(6),
                   bottomRight: Radius.circular(6),
                 ),
-                color: color.backgroundColor,
+                color: state.color.backgroundColor,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(1.5),
                 child: SvgPicture.asset(
                   "assets/clock.svg",
-                  color: color.iconColor,
+                  color: state.color.iconColor,
                 ),
               ),
             ),
@@ -85,23 +82,15 @@ class SpeakRowImage extends StatelessWidget {
   }
 }
 
-@immutable
-class SpeakColorPair {
-  final Color iconColor;
-  final Color backgroundColor;
-
-  const SpeakColorPair(this.iconColor, this.backgroundColor);
-}
-
 class SpeakRow extends HookWidget {
   final Speak speak;
   final int id;
 
   const SpeakRow({
-    Key? key,
+    super.key,
     required this.speak,
     required this.id,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -109,83 +98,53 @@ class SpeakRow extends HookWidget {
       const Duration(seconds: 1),
       () => speak.state,
     );
-    final stateColor = useMemoized(
-      () {
-        /*
-        if (state.value == SpeakState.over) {
-          return const SpeakColorPair(
-            Color(0xffFF8686),
-            Color(0xffFFDBDD),
-          );
-        }
-        */
-        if (state.value == SpeakState.happening) {
-          return SpeakColorPair(
-            CustomColor.green.middle,
-            CustomColor.green.lightest,
-          );
-        }
-        if (state.value == SpeakState.happeningSoon) {
-          return SpeakColorPair(
-            const Color(0xfff1c40f),
-            CustomColor.green.lightest,
-          );
-        }
+    final theme = useTheme();
 
-        return const SpeakColorPair(
-          Colors.grey,
-          Colors.grey,
-        );
-      },
-      [state.value],
-    );
-
-    return InkWell(
-      onTap: () {},
-      child: Padding(
-        padding: const EdgeInsets.only(top: 4, bottom: 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  SpeakRowImage(
-                    imageUrl: speak.image.previewUrl,
-                    state: state.value,
-                    color: stateColor,
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        speak.title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                          height: 20 / 14,
-                        ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 4, bottom: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SpeakRowImage(
+                  imageUrl: speak.image.previewUrl,
+                  state: state.value,
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      speak.title,
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        height: 1.428,
                       ),
-                      Text(
-                        "Kl. " + DateFormat("HH:mm").format(speak.start),
-                      )
-                    ],
-                  ),
-                  const SizedBox(width: 8),
-                ],
-              ),
+                    ),
+                    Text(
+                      "Kl. " + DateFormat("HH:mm").format(speak.start),
+                      style: theme.textTheme.bodyMedium,
+                    )
+                  ],
+                ),
+                const SizedBox(width: 8),
+              ],
             ),
-            SpeakRowActions(speak: speak),
-          ],
-        ),
+          ),
+          SpeakRowActions(
+            speak: speak,
+            state: state.value,
+          ),
+        ],
       ),
     );
   }
@@ -193,20 +152,18 @@ class SpeakRow extends HookWidget {
 
 class SpeakRowActions extends HookWidget {
   final Speak speak;
+  final SpeakState state;
 
   const SpeakRowActions({
-    Key? key,
+    super.key,
     required this.speak,
-  }) : super(key: key);
+    required this.state,
+  });
 
   @override
   Widget build(BuildContext context) {
     final model = useProvider<SpeakModel>();
     final isToggled = model.isToggled(speak);
-    final state = useMemoizedValue<SpeakState>(
-      const Duration(seconds: 1),
-      () => speak.state,
-    );
     useIntervalMinute();
 
     Widget notifyButton() {
@@ -262,8 +219,8 @@ class SpeakRowActions extends HookWidget {
     }
 
     Widget content() {
-      if (state.value == SpeakState.upcoming) return notifyButton();
-      if (state.value == SpeakState.happeningSoon) {
+      if (state == SpeakState.upcoming) return notifyButton();
+      if (state == SpeakState.happeningSoon) {
         final now = DateTime.now();
         final start = speak.start;
         final diff = start.difference(now);
@@ -272,8 +229,8 @@ class SpeakRowActions extends HookWidget {
 
         return text("Starter om $minutes $minutesText");
       }
-      if (state.value == SpeakState.happening) return text("Startet");
-      if (state.value == SpeakState.over) return text("Ovre");
+      if (state == SpeakState.happening) return text("Startet");
+      if (state == SpeakState.over) return text("Ovre");
 
       return Container();
     }

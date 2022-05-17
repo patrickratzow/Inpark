@@ -1,12 +1,19 @@
 import "package:flutter/material.dart";
+import "../../hooks/hooks.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-class BulletList extends StatelessWidget {
+class BulletList extends HookWidget {
   final List<Widget> children;
 
-  const BulletList({Key? key, required this.children}) : super(key: key);
+  const BulletList({
+    super.key,
+    required this.children,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final theme = useTheme();
+
     return Container(
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.fromLTRB(16, 15, 16, 16),
@@ -16,10 +23,9 @@ class BulletList extends StatelessWidget {
           return Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "\u2022",
-                style: TextStyle(
-                  fontSize: 14,
+                style: theme.textTheme.bodyLarge?.copyWith(
                   height: 1.35,
                 ),
               ),

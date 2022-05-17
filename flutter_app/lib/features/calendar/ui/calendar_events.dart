@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/features/calendar/models/calendar_model.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "../models/calendar_model.dart";
+import "../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "calendar_event_row.dart";
 
 class CalendarEvents extends HookWidget {
-  const CalendarEvents({Key? key}) : super(key: key);
+  const CalendarEvents({super.key});
 
   @override
   Widget build(BuildContext context) {
     final model = useProvider<CalendarModel>(watch: true);
     final result = model.getTodaysEvents();
+    final theme = useTheme();
 
     // Error = loading
     if (result.isError) {
@@ -33,10 +34,10 @@ class CalendarEvents extends HookWidget {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: events.isEmpty
-          ? const Center(
+          ? Center(
               child: Text(
                 "Lukket",
-                style: TextStyle(fontSize: 24),
+                style: theme.textTheme.headlineLarge,
               ),
             )
           : Wrap(

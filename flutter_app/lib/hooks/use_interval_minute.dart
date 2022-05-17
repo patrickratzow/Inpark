@@ -1,5 +1,4 @@
-import "package:flutter_hooks/flutter_hooks.dart";
-import "package:flutter_use/flutter_use.dart";
+part of "hooks.dart";
 
 void useIntervalMinute() {
   final now = DateTime.now();

@@ -12,14 +12,6 @@ extension Iterables<E> on Iterable<E> {
       );
 }
 
-extension ListExtensions<E> on List<E> {
-  Iterable<T> mapIndexed<T>(T Function(E e, int index, bool isLast) toElement) {
-    return asMap().entries.map(
-          (entry) => toElement(entry.value, entry.key, entry.key == length - 1),
-        );
-  }
-}
-
 extension IntIterables on Iterable<int> {
   int get max => reduce(math.max);
   int get min => reduce(math.min);

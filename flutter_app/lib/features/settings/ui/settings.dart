@@ -4,10 +4,13 @@ import "package:flutter_app/common/web_view_screen.dart";
 import "package:flutter_app/features/licenses/license_list.dart";
 import "package:flutter_app/features/settings/ui/setting_row.dart";
 import "package:flutter_app/features/settings/ui/settings_title_bar.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
+import "../../../common/screen.dart";
 import "../../../common/ui/screen_app_bar.dart";
+import "setting_row.dart";
+import "settings_title_bar.dart";
 
 class SettingsScreen extends HookWidget implements Screen {
   const SettingsScreen({super.key});
@@ -42,9 +45,13 @@ class SettingsScreen extends HookWidget implements Screen {
           ),
           */
           const SettingRow(
-            iconName: "notifications",
+            leading: Icon(
+              Icons.settings,
+              color: Colors.black,
+              size: 16.0,
+            ),
             name: "Notifikationer",
-            widget: Icon(
+            trailing: Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 16.0,
@@ -52,7 +59,11 @@ class SettingsScreen extends HookWidget implements Screen {
           ),
           const SettingsTitleBar(name: "Andet"),
           SettingRow(
-            iconName: "help",
+            leading: const Icon(
+              Icons.help,
+              color: Colors.black,
+              size: 16.0,
+            ),
             name: "Privatlivspolitik",
             onPressed: () => {
               {
@@ -65,14 +76,18 @@ class SettingsScreen extends HookWidget implements Screen {
                 ),
               }
             },
-            widget: const Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 16.0,
             ),
           ),
           SettingRow(
-            iconName: "help",
+            leading: const Icon(
+              Icons.help,
+              color: Colors.black,
+              size: 16.0,
+            ),
             name: "Om App",
             onPressed: () => {
               navigator.push(
@@ -80,7 +95,7 @@ class SettingsScreen extends HookWidget implements Screen {
                 const LicenseList(),
               )
             },
-            widget: const Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 16.0,

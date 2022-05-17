@@ -1,27 +1,23 @@
 import "package:flutter/material.dart";
-import "dart:io" show Platform;
-
 import "package:flutter_app/common/colors.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-class CancelButton extends StatelessWidget {
+import "../../hooks/hooks.dart";
+
+class CancelButton extends HookWidget {
   final VoidCallback onPressed;
+
   const CancelButton({
-    Key? key,
+    super.key,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
-      return IconButton(
-        icon: Icon(
-          Icons.close,
-          color: CustomColor.green.middle,
-          size: 28,
-        ),
-        onPressed: onPressed,
-      );
-    } else {
+    final policies = usePolicies();
+    final theme = useTheme();
+
+    if (policies.showCancelButtonAsText) {
       return TextButton(
         style: TextButton.styleFrom(
           padding: const EdgeInsets.fromLTRB(8, 8, 16, 8),
@@ -29,12 +25,20 @@ class CancelButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           "Cancel",
-          style: TextStyle(
-            fontSize: 16,
+          style: theme.textTheme.headlineSmall?.copyWith(
             color: CustomColor.green.middle,
           ),
         ),
       );
     }
+
+    return IconButton(
+      icon: Icon(
+        Icons.close,
+        color: CustomColor.green.middle,
+        size: 28,
+      ),
+      onPressed: onPressed,
+    );
   }
 }

@@ -1,33 +1,27 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/ui/title_bar.dart";
-import "package:flutter_app/features/park_events/ui/event.dart";
-import "package:flutter_app/hooks/use_provider.dart";
-import "package:flutter_hooks/flutter_hooks.dart";
+import "../../../common/feature.dart";
+import "../../../common/ui/title_bar.dart";
+import "event.dart";
+import "../../../hooks/hooks.dart";
 import "package:provider/provider.dart";
 
 import "../models/event_model.dart";
 
-class EventContainer extends HookWidget {
+class EventContainer extends FrontPageWidget {
   const EventContainer({
     Key? key,
-    required this.title,
   }) : super(key: key);
-
-  final String title;
 
   @override
   Widget build(BuildContext context) {
-    useProvider<ParkEventModel>(
-      onInit: (provider) => provider.fetchParkEvents(),
-    );
+    useProvider<ParkEventModel>().fetchParkEvents();
 
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
           child: TitleBar(
-            fontSize: 16,
-            name: title,
+            name: "Kommende arrangementer",
           ),
         ),
         Padding(
@@ -71,4 +65,7 @@ class EventContainer extends HookWidget {
       ],
     );
   }
+
+  @override
+  bool shouldHide(BuildContext context) => false;
 }
