@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/web_view_screen.dart";
-import "package:flutter_app/features/licenses/license_list.dart";
+import "package:flutter_app/features/settings/licenses/license_list.dart";
 import "package:flutter_app/features/settings/ui/setting_row.dart";
 import "package:flutter_app/features/settings/ui/settings_title_bar.dart";
 import "package:flutter_app/hooks/hooks.dart";
