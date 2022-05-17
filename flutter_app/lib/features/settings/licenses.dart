@@ -2,7 +2,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/hooks/use_provider.dart";
+import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:package_info_plus/package_info_plus.dart";
 
