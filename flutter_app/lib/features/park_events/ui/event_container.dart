@@ -41,7 +41,7 @@ class EventContainer extends FrontPageWidget {
                 );
               }
               return SizedBox(
-                height: 147,
+                height: 157,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
