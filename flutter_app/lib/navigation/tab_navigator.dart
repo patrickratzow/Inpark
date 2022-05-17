@@ -9,10 +9,10 @@ class TabNavigator extends StatelessWidget {
   final String tabItem;
 
   const TabNavigator({
-    Key? key,
+    super.key,
     required this.navigatorKey,
     required this.tabItem,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

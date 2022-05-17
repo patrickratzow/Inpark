@@ -1,17 +1,17 @@
 import "package:flutter/material.dart";
-import "../../../../common/colors.dart";
-import "../../../../common/screen.dart";
-import "../../../../common/ui/screen_app_bar.dart";
-import "../../models/animals_model.dart";
-import "search_app_bar.dart";
-import "../../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_use/flutter_use.dart";
 import "package:provider/provider.dart";
 
+import "../../../../common/colors.dart";
+import "../../../../common/screen.dart";
+import "../../../../common/ui/screen_app_bar.dart";
+import "../../../../hooks/hooks.dart";
+import "../../models/animals_model.dart";
 import "animal_card.dart";
 import "animal_screen.dart";
 import "animals_categories.dart";
+import "search_app_bar.dart";
 
 class AnimalsScreen extends HookWidget implements Screen {
   const AnimalsScreen({Key? key}) : super(key: key);
@@ -124,7 +124,7 @@ class AnimalsScreen extends HookWidget implements Screen {
 }
 
 class _AnimalsOverviewList extends HookWidget {
-  const _AnimalsOverviewList({Key? key}) : super(key: key);
+  const _AnimalsOverviewList({super.key});
 
   @override
   Widget build(BuildContext context) {

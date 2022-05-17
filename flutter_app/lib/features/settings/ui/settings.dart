@@ -7,7 +7,7 @@ import "setting_row.dart";
 import "settings_title_bar.dart";
 
 class SettingsScreen extends HookWidget implements Screen {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -13,7 +13,7 @@ import "../../../generated_code/zooinator.models.swagger.dart";
 import "../../../hooks/hooks.dart";
 
 class ParkEventScreen extends HookWidget implements Screen {
-  ParkEventScreen({Key? key, required this.parkEvent}) : super(key: key);
+  ParkEventScreen({super.key, required this.parkEvent});
 
   final ParkEventDto parkEvent;
   //This value is used to ensure no double spacers are used.
