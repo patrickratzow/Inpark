@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/feature.dart";
-import "package:flutter_app/common/ui/title_bar.dart";
-import "package:flutter_app/features/park_events/ui/event.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../../common/feature.dart";
+import "../../../common/ui/title_bar.dart";
+import "event.dart";
+import "../../../hooks/hooks.dart";
 import "package:provider/provider.dart";
 
 import "../models/event_model.dart";

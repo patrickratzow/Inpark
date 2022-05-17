@@ -3,10 +3,10 @@ import "dart:math";
 
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/features/speaks/models/speak.dart";
-import "package:flutter_app/features/speaks/models/speak_color_pair.dart";
-import "package:flutter_app/features/speaks/models/speak_state.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../models/speak.dart";
+import "../models/speak_color_pair.dart";
+import "../models/speak_state.dart";
+import "../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:flutter_use/flutter_use.dart";
@@ -125,13 +125,14 @@ class SpeakRow extends HookWidget {
                   children: [
                     Text(
                       speak.title,
-                      style: theme.textTheme.headline5?.copyWith(
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
                         height: 1.428,
                       ),
                     ),
                     Text(
                       "Kl. " + DateFormat("HH:mm").format(speak.start),
-                      style: theme.textTheme.bodyText2,
+                      style: theme.textTheme.bodyMedium,
                     )
                   ],
                 ),

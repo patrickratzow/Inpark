@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/screen.dart";
-import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/features/speaks/models/speak.dart";
-import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/features/speaks/ui/speaks_list.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../../common/screen.dart";
+import "../../../common/ui/screen_app_bar.dart";
+import "../models/speak.dart";
+import "../models/speak_model.dart";
+import "speaks_list.dart";
+import "../../../hooks/hooks.dart";
 
 class SpeaksOverviewScreen extends StatelessWidget implements Screen {
   final List<Speak> speaks;

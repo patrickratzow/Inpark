@@ -10,43 +10,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_categories.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/search_app_bar.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak_color_pair.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/hooks.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_capabilities.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_policies.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/help.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/newspaper.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/notifications.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/pawprint.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/ticket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/assets/menu_icons/ticketCollerless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Inter/Inter-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-BlackItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-ExtraLightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-MediumItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/fonts/Poppins/Poppins-ThinItalic.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/extensions/iterable.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/extensions/iterable.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/feature.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/feature.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/bullet_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/bullet_list.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/cancel_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/cancel_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/home_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/home_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/navigation_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/navigation_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/screen_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/screen_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/title_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/title_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/animals_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/animals_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_category.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_category.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/search_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/search_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status_explaination_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status_explaination_row.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_events.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_events.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_event_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_event_row.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/opening_hours.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/opening_hours.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/event.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/event_container.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/event_container.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/park_event_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/park_event_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/notification_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/notification_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speak_overview_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speak_overview_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speak_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speak_row.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/settings/ui/settings_title_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/settings/ui/settings_title_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speaks_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speaks_list.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/welcome_screen/welcome_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/welcome_screen/welcome_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/hooks/use_date_range.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_date_range.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/hooks/use_interval_minute.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_interval_minute.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/hooks/use_memoized_value.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_memoized_value.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/hooks/use_navigator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_navigator.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/hooks/use_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/hooks/use_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/hooks/use_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/navigation/navigation_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/navigation/navigation_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

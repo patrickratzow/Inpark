@@ -1,29 +1,33 @@
 import "package:flutter/widgets.dart";
-import 'package:flutter_app/common/colors.dart';
+import "../../../../common/colors.dart";
+import "../../../../hooks/hooks.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-class AnimalCategory extends StatelessWidget {
+class AnimalCategory extends HookWidget {
   final String text;
   final EdgeInsets padding;
   final double fontSize;
 
   const AnimalCategory({
-    Key? key,
+    super.key,
     required this.text,
     required this.padding,
     required this.fontSize,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    final theme = useTheme();
+
     return Container(
       decoration: BoxDecoration(
         color: CustomColor.green.lightest,
-        borderRadius: BorderRadius.circular(3),
+        borderRadius: BorderRadius.circular(4),
       ),
       padding: padding,
       child: Text(
         text,
-        style: TextStyle(
+        style: theme.textTheme.bodyLarge?.copyWith(
           height: (fontSize - 0.5) / fontSize,
           fontSize: fontSize,
           color: CustomColor.green.darkest,

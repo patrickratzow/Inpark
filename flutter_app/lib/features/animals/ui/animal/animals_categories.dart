@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/features/animals/models/animals_model.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../../../common/colors.dart";
+import "../../models/animals_model.dart";
+import "../../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class AnimalsCategories extends HookWidget {
@@ -31,20 +31,22 @@ class AnimalsCategories extends HookWidget {
   }
 }
 
-class _CategoryButton extends StatelessWidget {
+class _CategoryButton extends HookWidget {
   final String categoryName;
   final bool enabled;
   final VoidCallback onPressed;
 
   const _CategoryButton({
+    super.key,
     required this.enabled,
     required this.categoryName,
     required this.onPressed,
-    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = useTheme();
+
     return ConstrainedBox(
       constraints: BoxConstraints(
         maxHeight: 36 * MediaQuery.of(context).textScaleFactor,
@@ -58,16 +60,15 @@ class _CategoryButton extends StatelessWidget {
                 enabled ? CustomColor.green.middle : const Color(0xffEEF2EE),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
-            ).copyWith(
-              side:
-                  enabled ? null : BorderSide(color: CustomColor.green.darkest),
+              side: enabled
+                  ? BorderSide.none
+                  : BorderSide(color: CustomColor.green.darkest),
             ),
           ),
           onPressed: onPressed,
           child: Text(
             categoryName,
-            style: TextStyle(
-              fontSize: 14,
+            style: theme.textTheme.bodyLarge?.copyWith(
               height: 16 / 14,
               color: enabled
                   ? CustomColor.green.lightest

@@ -1,7 +1,8 @@
+import "package:collection_ext/iterables.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/common/extensions/iterable.dart";
-import "package:flutter_app/features/speaks/models/speak.dart";
-import "package:flutter_app/features/speaks/ui/speak_row.dart";
+import "../../../common/extensions/iterable.dart";
+import "../models/speak.dart";
+import "speak_row.dart";
 
 class SpeaksList extends StatelessWidget {
   final List<Speak> speaks;
@@ -16,7 +17,7 @@ class SpeaksList extends StatelessWidget {
     return Column(
       children: speaks
           .mapIndexed(
-            (speak, idx) => SpeakRow(speak: speak, id: idx),
+            (idx, speak) => SpeakRow(speak: speak, id: idx),
           )
           .toList(),
     );

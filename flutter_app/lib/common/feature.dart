@@ -1,7 +1,7 @@
 import "package:flutter/widgets.dart";
-import "package:flutter_app/features/home/opening_hours_feature.dart";
-import "package:flutter_app/features/park_events/park_events_feature.dart";
-import "package:flutter_app/features/speaks/speaks_feature.dart";
+import "../features/home/opening_hours_feature.dart";
+import "../features/park_events/park_events_feature.dart";
+import "../features/speaks/speaks_feature.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 abstract class Feature {
@@ -36,6 +36,15 @@ class Features {
 
       yield FrontPageFeature(feature);
     }
+  }
+
+  static Future setupAll(BuildContext context) {
+    return Future.wait(
+      features
+          .where((feature) => feature.isEnabled)
+          .map((feature) => feature.setup(context))
+          .toList(),
+    );
   }
 }
 

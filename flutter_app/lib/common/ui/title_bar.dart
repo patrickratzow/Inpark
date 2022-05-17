@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class TitleBar extends HookWidget {
@@ -21,7 +21,9 @@ class TitleBar extends HookWidget {
         name,
         textScaleFactor: textScaleFactor,
         textAlign: TextAlign.left,
-        style: theme.textTheme.headline4,
+        style: theme.textTheme.headlineMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
       ),
       alignment: Alignment.centerLeft,
     );

@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/screen.dart";
-import "package:flutter_app/features/settings/ui/setting_row.dart";
-import "package:flutter_app/features/settings/ui/settings_title_bar.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
+import "../../../common/screen.dart";
 import "../../../common/ui/screen_app_bar.dart";
+import "setting_row.dart";
+import "settings_title_bar.dart";
 
 class SettingsScreen extends HookWidget implements Screen {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -37,9 +37,13 @@ class SettingsScreen extends HookWidget implements Screen {
           ),
           */
           const SettingRow(
-            iconName: "notifications",
+            leading: Icon(
+              Icons.settings,
+              color: Colors.black,
+              size: 16.0,
+            ),
             name: "Notifikationer",
-            widget: Icon(
+            trailing: Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 16.0,
@@ -47,7 +51,11 @@ class SettingsScreen extends HookWidget implements Screen {
           ),
           const SettingsTitleBar(name: "Andet"),
           SettingRow(
-            iconName: "help",
+            leading: const Icon(
+              Icons.info,
+              color: Colors.black,
+              size: 16.0,
+            ),
             name: "Om App",
             onPressed: () => showAboutDialog(
               context: context,
@@ -57,7 +65,7 @@ class SettingsScreen extends HookWidget implements Screen {
               applicationLegalese:
                   "Zooinator er en app for alle dine oplevelser i zoo! Lær mere om dyrene, bestil mad gennem appen og spring køen over, eller gem dit årskort hvor du nemt kan finde det samt meget mere!",
             ),
-            widget: const Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 16.0,

@@ -1,7 +1,8 @@
+import "package:collection_ext/iterables.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/common/extensions/iterable.dart";
-import "package:flutter_app/common/feature.dart";
-import "package:flutter_app/common/screen.dart";
+import "../../../common/extensions/iterable.dart";
+import "../../../common/feature.dart";
+import "../../../common/screen.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "../../../common/ui/home_app_bar.dart";
@@ -12,11 +13,7 @@ class HomeScreen extends HookWidget implements Screen {
   @override
   Widget build(BuildContext context) {
     final frontPageFeatures = Features.frontPage.toList();
-    final futures = useRef(
-      Future.wait(
-        frontPageFeatures.map((e) => e.setup(context)),
-      ),
-    );
+    final futures = useRef(Features.setupAll(context));
     final future = useFuture(futures.value);
 
     Widget body;
@@ -51,7 +48,7 @@ class HomeScreen extends HookWidget implements Screen {
         .toList();
 
     return frontPageFeatures
-        .mapIndexed((feature, idx) {
+        .mapIndexed((idx, feature) {
           final widgets = <Widget>[
             Padding(
               padding: feature.frontPageMaterial!.padding,

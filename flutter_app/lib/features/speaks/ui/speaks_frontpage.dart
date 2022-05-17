@@ -1,10 +1,10 @@
 import "package:flutter/widgets.dart";
-import "package:flutter_app/common/feature.dart";
-import "package:flutter_app/common/ui/title_bar.dart";
-import "package:flutter_app/features/speaks/models/speak.dart";
-import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/features/speaks/ui/speaks_list.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../../common/feature.dart";
+import "../../../common/ui/title_bar.dart";
+import "../models/speak.dart";
+import "../models/speak_model.dart";
+import "speaks_list.dart";
+import "../../../hooks/hooks.dart";
 
 class SpeaksFrontPage extends FrontPageWidget {
   const SpeaksFrontPage({super.key});

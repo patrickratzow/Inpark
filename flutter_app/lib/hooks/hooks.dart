@@ -1,10 +1,10 @@
 import "dart:async";
 
 import "package:flutter/material.dart";
-import "package:flutter_app/common/ioc.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
-import "package:flutter_app/services/capability_service.dart";
-import "package:flutter_app/services/policy_service.dart";
+import "../common/ioc.dart";
+import "../navigation/navigation_model.dart";
+import "../services/capability_service.dart";
+import "../services/policy_service.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_use/flutter_use.dart";
 import "package:intl/intl.dart";

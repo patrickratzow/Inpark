@@ -1,16 +1,16 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/common/screen.dart";
-import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:intl/intl.dart";
 
 import "../../../common/browser.dart";
 import "../../../common/colors.dart";
+import "../../../common/screen.dart";
 import "../../../common/ui/fullscreen_image.dart";
 import "../../../common/ui/navigation_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
+import "../../../hooks/hooks.dart";
 
 class ParkEventScreen extends HookWidget implements Screen {
   ParkEventScreen({Key? key, required this.parkEvent}) : super(key: key);
@@ -95,82 +95,76 @@ class ParkEventScreen extends HookWidget implements Screen {
   }
 
   Widget _buildImage(ParkEventDto parkEvent) {
-    return Column(
-      children: [
-        Stack(
+    return HookBuilder(
+      builder: (BuildContext context) {
+        final theme = useTheme();
+        final date = useDateRange(parkEvent.start, parkEvent.end);
+
+        return Column(
           children: [
-            CachedNetworkImage(imageUrl: parkEvent.image.previewUrl),
-            Positioned.fill(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.center,
-                          colors: [
-                            CustomColor.green.middle,
-                            CustomColor.green.middle.withOpacity(0),
-                          ],
+            Stack(
+              children: [
+                CachedNetworkImage(imageUrl: parkEvent.image.previewUrl),
+                Positioned.fill(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.center,
+                              colors: [
+                                CustomColor.green.middle,
+                                CustomColor.green.middle.withOpacity(0),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            )
-          ],
-        ),
-        Container(
-          color: CustomColor.green.middle,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    parkEvent.title,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      height: 18 / 20,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-                      color: softTextColor,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                HookBuilder(
-                  builder: (BuildContext context) {
-                    final date = useDateRange(parkEvent.start, parkEvent.end);
-
-                    return Align(
+                )
+              ],
+            ),
+            Container(
+              color: CustomColor.green.middle,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        date,
-                        style: const TextStyle(
-                          height: 1.5,
-                          fontFamily: "Poppins",
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                        parkEvent.title,
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                          height: 18 / 20,
+                          fontWeight: FontWeight.bold,
                           color: softTextColor,
                         ),
                       ),
-                    );
-                  },
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        date,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          height: 1.5,
+                          color: softTextColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                  ],
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 4),
-                ),
-              ],
-            ),
-          ),
-        )
-      ],
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 
@@ -186,13 +180,19 @@ class ParkEventScreen extends HookWidget implements Screen {
     );
   }
 
+/*
+final transformer = useTransformer()
+  ..on("callToAction", (node, widget) {
+    return 
+  })
+*/
+
   InlineSpan _buildTriviaContent(ContentDto content) {
     if (content.type == "spacer" && wasLastNodeSpacer != true) {
       wasLastNodeSpacer = true;
       return const TextSpan(
         style: TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         text: "\n\n",
       );
@@ -205,7 +205,6 @@ class ParkEventScreen extends HookWidget implements Screen {
         text: "• ",
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         children: content.children.map(_buildText).toList(),
       );
@@ -214,7 +213,6 @@ class ParkEventScreen extends HookWidget implements Screen {
       return TextSpan(
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         children: content.children.map(_buildText).toList(),
       );
@@ -223,7 +221,6 @@ class ParkEventScreen extends HookWidget implements Screen {
       return TextSpan(
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         text: content.value,
       );
@@ -268,7 +265,6 @@ class ParkEventScreen extends HookWidget implements Screen {
               "Køb billet",
               style: TextStyle(
                 color: Colors.white,
-                fontFamily: "Poppins",
               ),
             ),
             onPressed: () => Browser.openUrl(
@@ -288,7 +284,6 @@ class ParkEventScreen extends HookWidget implements Screen {
       return const TextSpan(
         style: TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         text: "\n\n",
       );
@@ -301,7 +296,6 @@ class ParkEventScreen extends HookWidget implements Screen {
         text: "• ",
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         children: content.children.map(_buildText).toList(),
       );
@@ -311,7 +305,6 @@ class ParkEventScreen extends HookWidget implements Screen {
         style: const TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontFamily: "Poppins",
         ),
         children: content.children.map(_buildText).toList(),
       );
@@ -320,7 +313,6 @@ class ParkEventScreen extends HookWidget implements Screen {
       return TextSpan(
         style: const TextStyle(
           color: Colors.black,
-          fontFamily: "Poppins",
         ),
         text: content.value,
       );

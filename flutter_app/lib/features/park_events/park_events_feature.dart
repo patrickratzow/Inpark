@@ -1,8 +1,8 @@
 import "package:flutter/cupertino.dart";
-import "package:flutter_app/common/feature.dart";
-import "package:flutter_app/features/park_events/models/event_model.dart";
-import "package:flutter_app/features/park_events/ui/event_container.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../common/feature.dart";
+import "models/event_model.dart";
+import "ui/event_container.dart";
+import "../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class ParkEventsFeature extends Feature {

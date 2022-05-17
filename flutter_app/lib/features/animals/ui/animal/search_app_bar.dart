@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/common/ui/cancel_button.dart";
-import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/features/animals/models/animals_model.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../../../common/colors.dart";
+import "../../../../common/ui/cancel_button.dart";
+import "../../../../common/ui/screen_app_bar.dart";
+import "../../models/animals_model.dart";
+import "../../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class SearchAppBar extends HookWidget {
@@ -18,6 +18,7 @@ class SearchAppBar extends HookWidget {
   Widget build(BuildContext context) {
     final focusNode = useFocusNode();
     final model = useProvider<AnimalsModel>(watch: true);
+    final theme = useTheme();
 
     useValueChanged(model.isSearching, (_, __) {
       if (model.isSearching) {
@@ -49,13 +50,14 @@ class SearchAppBar extends HookWidget {
             width: 150,
             child: TextField(
               focusNode: focusNode,
-              style: const TextStyle(
-                fontSize: 16,
+              style: theme.textTheme.headlineMedium?.copyWith(
                 height: 18 / 16,
               ),
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: "Søg her...",
-                hintStyle: TextStyle(color: Color(0xff93A990)),
+                hintStyle: theme.textTheme.bodyLarge?.copyWith(
+                  color: const Color(0xff93A990),
+                ),
                 border: InputBorder.none,
               ),
               onChanged: (text) {

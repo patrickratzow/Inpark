@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/extensions/datetime.dart";
-import "package:flutter_app/features/speaks/models/notification_service.dart";
-import "package:flutter_app/features/speaks/models/speak.dart";
+import "../../../extensions/datetime.dart";
+import "notification_service.dart";
+import "speak.dart";
 import "package:localstorage/localstorage.dart";
 
 import "../../../common/ioc.dart";

@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/colors.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
+
+import "../../../common/colors.dart";
+import "../../../hooks/hooks.dart";
 
 class CalendarDay extends HookWidget {
   final bool isSelected;
@@ -8,15 +10,16 @@ class CalendarDay extends HookWidget {
   final VoidCallback onPressed;
 
   const CalendarDay({
-    Key? key,
+    super.key,
     required this.isSelected,
     required this.text,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    var controller = useAnimationController();
+    final theme = useTheme();
+    final controller = useAnimationController();
     useValueChanged(isSelected, (bool oldValue, oldResult) {
       return controller.animateTo(
         isSelected ? 1 : 0,
@@ -47,8 +50,7 @@ class CalendarDay extends HookWidget {
                 child: Text(
                   text,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
+                  style: theme.textTheme.headlineSmall?.copyWith(
                     color: Color.lerp(
                       const Color(0xff0A0A0A),
                       const Color(0xffECFCE5),

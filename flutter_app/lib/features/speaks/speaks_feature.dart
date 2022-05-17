@@ -1,8 +1,8 @@
 import "package:flutter/cupertino.dart";
-import "package:flutter_app/common/feature.dart";
-import "package:flutter_app/features/speaks/models/speak_model.dart";
-import "package:flutter_app/features/speaks/ui/speaks_frontpage.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../common/feature.dart";
+import "models/speak_model.dart";
+import "ui/speaks_frontpage.dart";
+import "../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class SpeaksFeature extends Feature {

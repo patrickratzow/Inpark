@@ -1,6 +1,6 @@
 import "package:flutter/cupertino.dart";
-import "package:flutter_app/common/ioc.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "../../../common/ioc.dart";
+import "../../../generated_code/zooinator.swagger.dart";
 
 import "../repositories/animals_repository.dart";
 

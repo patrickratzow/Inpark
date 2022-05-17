@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/screen.dart";
+import "../common/screen.dart";
 import "package:localstorage/localstorage.dart";
 
 final List<String> pageKeys = ["Page1", "Page2", "Page3"];

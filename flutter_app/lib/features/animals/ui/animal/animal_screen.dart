@@ -1,16 +1,16 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/common/screen.dart";
-import "package:flutter_app/common/ui/bullet_list.dart";
-import "package:flutter_app/common/ui/fullscreen_image.dart";
-import "package:flutter_app/common/ui/navigation_bar.dart";
-import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/features/animals/ui/conservation/conservation_status.dart";
-import "package:flutter_app/features/animals/ui/conservation/conservation_status_overview_screen.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
-import "package:flutter_app/hooks/hooks.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
+import "../../../../common/colors.dart";
+import "../../../../common/extensions/theme.dart";
+import "../../../../common/screen.dart";
+import "../../../../common/ui/fullscreen_image.dart";
+import "../../../../common/ui/navigation_bar.dart";
+import "../../../../common/ui/screen_app_bar.dart";
+import "../conservation/conservation_status.dart";
+import "../conservation/conservation_status_overview_screen.dart";
+import "../../../../generated_code/zooinator.swagger.dart";
+import "../../../../hooks/hooks.dart";
+import "../../../../navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "animal_category.dart";
@@ -26,6 +26,7 @@ class AnimalScreen extends HookWidget implements Screen {
   @override
   Widget build(BuildContext context) {
     final navigation = useNavigator();
+    final theme = useTheme();
 
     return Scaffold(
       body: CustomScrollView(
@@ -47,7 +48,7 @@ class AnimalScreen extends HookWidget implements Screen {
               (context, index) {
                 if (index != 0) return null;
 
-                return _buildCard(context, animal, navigation);
+                return _buildCard(context, animal, navigation, theme);
               },
             ),
           ),
@@ -60,6 +61,7 @@ class AnimalScreen extends HookWidget implements Screen {
     BuildContext context,
     AnimalDto animal,
     NavigationModel navigation,
+    ThemeData theme,
   ) {
     return Column(
       children: [
@@ -74,7 +76,7 @@ class AnimalScreen extends HookWidget implements Screen {
               ),
             ),
           },
-          child: _buildImage(animal),
+          child: _buildImage(animal, theme),
         ),
         ZooinatorNavigationBar(
           tabs: [
@@ -94,7 +96,7 @@ class AnimalScreen extends HookWidget implements Screen {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                    child: _buildContent(animal.contents[0]),
+                    child: _buildContent(animal.contents[0], theme),
                   ),
                 ],
               ),
@@ -104,7 +106,7 @@ class AnimalScreen extends HookWidget implements Screen {
               icon: Icons.dashboard,
               builder: (context) => Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: _buildTriviaContent(animal.contents[1]),
+                child: _buildTriviaContent(animal.contents[1], theme),
               ),
             ),
           ],
@@ -113,7 +115,7 @@ class AnimalScreen extends HookWidget implements Screen {
     );
   }
 
-  Widget _buildTriviaContent(ContentDto content) {
+  Widget _buildTriviaContent(ContentDto content, ThemeData theme) {
     var items = content.children.first.children
         .where((child) => child.type == "listitem");
 
@@ -132,29 +134,26 @@ class AnimalScreen extends HookWidget implements Screen {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Color(0xff7C7C7C),
+                style: theme.textTheme.bodyMedium?.copyWith(
                   height: 18 / 10,
-                  fontFamily: "Poppins",
+                  color: const Color(0xff7C7C7C),
                 ),
               ),
               Text(
                 body,
-                style: const TextStyle(
-                  fontSize: 14,
+                style: theme.textTheme.bodyLarge?.copyWith(
                   color: Colors.black,
                   height: 18 / 14,
-                  fontFamily: "Poppins",
                 ),
               ),
-              i == items.length ? Container() : const SizedBox(height: 16),
+              if (i != items.length) const SizedBox(height: 16),
             ],
           );
         },
       ).toList(),
     );
 
+    /*
     if (content.type == "list") {
       var children =
           content.children.where((child) => child.type == "listitem");
@@ -167,6 +166,7 @@ class AnimalScreen extends HookWidget implements Screen {
         children: content.children.map(_buildContent).toList(),
       );
     }
+    */
   }
 
   Widget _buildConservationStatus(AnimalDto animal) {
@@ -178,7 +178,7 @@ class AnimalScreen extends HookWidget implements Screen {
     return ConservationStatus(activeStatus: animal.status);
   }
 
-  Widget _buildImage(AnimalDto animal) {
+  Widget _buildImage(AnimalDto animal, ThemeData theme) {
     const Color softTextColor = Color(0xffDDF8DA);
 
     return Column(
@@ -226,10 +226,8 @@ class AnimalScreen extends HookWidget implements Screen {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     animal.name.displayName,
-                    style: const TextStyle(
-                      fontSize: 20,
+                    style: theme.textTheme.headlineMedium?.copyWith(
                       height: 18 / 20,
-                      fontFamily: "Poppins",
                       fontWeight: FontWeight.bold,
                       color: softTextColor,
                     ),
@@ -242,11 +240,8 @@ class AnimalScreen extends HookWidget implements Screen {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     animal.name.latinName,
-                    style: const TextStyle(
+                    style: theme.textTheme.bodyMedium?.copyWith(
                       height: 1.5,
-                      fontFamily: "Poppins",
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
                       color: softTextColor,
                     ),
                   ),
@@ -262,28 +257,32 @@ class AnimalScreen extends HookWidget implements Screen {
     );
   }
 
-  Widget _buildContents(List<ContentDto> contents) {
+  Widget _buildContents(List<ContentDto> contents, ThemeData theme) {
     return Column(
-      children: contents.map(_buildContent).toList(),
+      children: contents.map((x) => _buildContent(x, theme)).toList(),
     );
   }
 
-  Widget _buildContent(ContentDto content) {
+  Widget _buildContent(ContentDto content, ThemeData theme) {
     if (content.type == "container") {
       return Column(
-        children: content.children.map(_buildContent).toList(),
+        children: content.children.map((x) => _buildContent(x, theme)).toList(),
       );
     }
     if (content.type == "text") {
+      final textColor = theme.adjustColor(
+        light: Colors.black,
+        dark: Colors.white,
+      );
+
       return Align(
         alignment: Alignment.centerLeft,
         child: Text(
           content.value.toString(),
           textAlign: TextAlign.left,
           softWrap: true,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.black.withOpacity(0.6),
+          style: theme.textTheme.bodyLarge?.copyWith(
+            color: textColor.withOpacity(0.6),
             height: 1.35,
           ),
         ),

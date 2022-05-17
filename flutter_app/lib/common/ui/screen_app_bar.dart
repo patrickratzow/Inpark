@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/hooks/hooks.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
+import "../colors.dart";
+import "../../hooks/hooks.dart";
+import "../../navigation/navigation_model.dart";
 
 import "package:flutter_hooks/flutter_hooks.dart";
 
@@ -126,6 +126,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     NavigationModel navigation,
   ) {
     final policies = usePolicies();
+    final theme = useTheme(context: context);
 
     List<Widget> results = [];
     if (automaticallyImplyLeading) {
@@ -158,12 +159,10 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
           padding: padding,
           child: Text(
             title!,
-            style: const TextStyle(
-              fontFamily: "Poppins",
+            style: theme.textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.bold,
-              fontSize: 14,
               height: 16 / 14,
-              color: Color(0xff718D6D),
+              color: const Color(0xff718D6D),
             ),
           ),
         ),

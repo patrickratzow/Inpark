@@ -1,7 +1,7 @@
 import "dart:convert";
 
-import "package:flutter_app/extensions/datetime.dart";
-import "package:flutter_app/generated_code/zooinator.models.swagger.dart";
+import "../../../extensions/datetime.dart";
+import "../../../generated_code/zooinator.models.swagger.dart";
 
 import "speak_state.dart";
 

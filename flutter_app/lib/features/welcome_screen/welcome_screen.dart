@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/common/feature.dart";
-import "package:flutter_app/hooks/hooks.dart";
-import "package:flutter_app/navigation/navigation_model.dart";
+import "../../common/colors.dart";
+import "../../common/feature.dart";
+import "../../hooks/hooks.dart";
+import "../../navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:flutter_use/flutter_use.dart";
@@ -17,7 +17,7 @@ class WelcomeScreen extends HookWidget {
   Widget build(BuildContext context) {
     final navigation = useNavigator();
     // Start fetching data for front page
-    Features.frontPage.map((feature) => feature.setup(context));
+    useRef(Features.setupAll(context));
 
     useEffectOnce(() {
       final style = SystemUiOverlayStyle.light.copyWith(
@@ -26,11 +26,13 @@ class WelcomeScreen extends HookWidget {
 
       SystemChrome.setSystemUIOverlayStyle(style);
 
-      return () => SystemChrome.setSystemUIOverlayStyle(
-            SystemUiOverlayStyle.dark.copyWith(
-              statusBarColor: CustomColor.green.lightest,
-            ),
-          );
+      return () {
+        SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle.dark.copyWith(
+            statusBarColor: CustomColor.green.lightest,
+          ),
+        );
+      };
     });
 
     return Scaffold(

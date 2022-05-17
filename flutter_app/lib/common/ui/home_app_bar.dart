@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/features/settings/ui/settings.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../features/settings/ui/settings.dart";
+import "../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "../colors.dart";
@@ -59,7 +59,7 @@ class HomeAppBar extends HookWidget implements PreferredSizeWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
                         title!,
-                        style: theme.textTheme.headline4?.copyWith(
+                        style: theme.textTheme.headlineSmall?.copyWith(
                           color: CustomColor.green.text,
                         ),
                       ),

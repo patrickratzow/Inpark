@@ -1,7 +1,7 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/features/park_events/ui/park_event_screen.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "park_event_screen.dart";
+import "../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "../../../common/colors.dart";
@@ -71,7 +71,8 @@ class Event extends HookWidget {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             parkEvent.title,
-                            style: theme.textTheme.headline6?.copyWith(
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
                               color: CustomColor.green.middle,
                             ),
                           ),
@@ -82,10 +83,8 @@ class Event extends HookWidget {
                             date,
                             softWrap: true,
                             textScaleFactor: 1,
-                            style: TextStyle(
-                              fontSize: 10,
+                            style: theme.textTheme.bodySmall?.copyWith(
                               color: CustomColor.green.middle,
-                              fontFamily: "Poppins",
                             ),
                           ),
                         ),

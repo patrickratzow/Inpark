@@ -1,42 +1,43 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/features/animals/models/iucn_status.dart";
-import "package:flutter_app/generated_code/zooinator.enums.swagger.dart";
+import "../../models/iucn_status.dart";
+import "../../../../generated_code/zooinator.enums.swagger.dart";
+import "../../../../hooks/hooks.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
 import "conservation_status.dart";
 
-class ConservationStatusExplainationRow extends StatelessWidget {
-  final IUCNStatusDto status;
+class ConservationStatusExplainationRow extends HookWidget {
+  static const double opacity = 0.6;
+  final IUCNStatus status;
   final bool highlight;
 
-  const ConservationStatusExplainationRow({
+  ConservationStatusExplainationRow({
     super.key,
-    required this.status,
+    required IUCNStatusDto status,
     required this.highlight,
-  });
+  }) : status = ucnStatusColorMap[status]!;
+
+  Color brightnessCorrect(Color darkColor, Color lightColor) {
+    final headerColor =
+        highlight ? status.color.withOpacity(opacity) : const Color(0xffDEDEDE);
+
+    return ThemeData.estimateBrightnessForColor(headerColor) == Brightness.light
+        ? darkColor
+        : lightColor;
+  }
 
   @override
   Widget build(BuildContext context) {
-    const opacity = 0.6;
-    var statusColor = ucnStatusColorMap[status]!;
-    var containerColor = highlight
-        ? statusColor.color.withOpacity(opacity)
-        : const Color(0xffF5F5F5);
-    var containerTextColor = highlight
-        ? (ThemeData.estimateBrightnessForColor(containerColor) ==
-                Brightness.light
-            ? Colors.black
-            : Colors.white)
+    final theme = useTheme();
+    final containerColor =
+        highlight ? status.color.withOpacity(opacity) : const Color(0xffF5F5F5);
+    final containerTextColor = highlight
+        ? brightnessCorrect(Colors.black, Colors.white)
         : Colors.black.withOpacity(0.46);
-    highlight
-        ? statusColor.color.withOpacity(opacity)
-        : const Color(0xffF5F5F5);
-    var headerColor = highlight
-        ? statusColor.color.withOpacity(opacity)
-        : const Color(0xffDEDEDE);
-    var headerTextColor = highlight
-        ? (ThemeData.estimateBrightnessForColor(headerColor) == Brightness.light
-            ? Colors.black
-            : Colors.white)
+    final headerColor =
+        highlight ? status.color.withOpacity(opacity) : const Color(0xffDEDEDE);
+    final headerTextColor = highlight
+        ? brightnessCorrect(Colors.black, Colors.white)
         : Colors.black.withOpacity(0.46);
 
     return Container(
@@ -62,21 +63,19 @@ class ConservationStatusExplainationRow extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ConservationCircle(
-                    text: status.name.toUpperCase(),
-                    color: statusColor.color,
-                    textColor: statusColor.textColor,
+                    text: status.code,
+                    color: status.color,
+                    textColor: status.textColor,
                     active: highlight,
                     disabledOpacity: 0.6,
                   ),
                 ),
                 Text(
-                  statusColor.name,
-                  style: TextStyle(
+                  status.name,
+                  style: theme.textTheme.bodyLarge?.copyWith(
                     color: headerTextColor,
-                    fontSize: 14,
                     height: 18 / 14,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -85,12 +84,11 @@ class ConservationStatusExplainationRow extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
             child: Text(
-              statusColor.description,
+              status.description,
               softWrap: true,
-              style: TextStyle(
+              style: theme.textTheme.bodyMedium?.copyWith(
                 color: containerTextColor,
-                fontSize: 11,
-                height: 18 / 11,
+                height: 18 / 12,
               ),
             ),
           ),

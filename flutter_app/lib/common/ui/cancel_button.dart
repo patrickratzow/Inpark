@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-
 import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
+
+import "../../hooks/hooks.dart";
 
 class CancelButton extends HookWidget {
   final VoidCallback onPressed;
@@ -15,6 +15,7 @@ class CancelButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final policies = usePolicies();
+    final theme = useTheme();
 
     if (policies.showCancelButtonAsText) {
       return TextButton(
@@ -24,8 +25,7 @@ class CancelButton extends HookWidget {
         onPressed: onPressed,
         child: Text(
           "Cancel",
-          style: TextStyle(
-            fontSize: 16,
+          style: theme.textTheme.headlineSmall?.copyWith(
             color: CustomColor.green.middle,
           ),
         ),

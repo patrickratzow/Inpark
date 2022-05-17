@@ -1,8 +1,8 @@
 import "package:flutter/cupertino.dart";
-import "package:flutter_app/common/feature.dart";
-import "package:flutter_app/features/home/models/home_model.dart";
-import "package:flutter_app/features/home/ui/opening_hours.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../common/feature.dart";
+import "models/home_model.dart";
+import "ui/opening_hours.dart";
+import "../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class OpeningHoursFeature extends Feature {

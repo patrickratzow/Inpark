@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_app/common/screen.dart";
-import "package:flutter_app/common/ui/screen_app_bar.dart";
-import "package:flutter_app/features/animals/models/animals_model.dart";
-import "package:flutter_app/features/animals/ui/animal/search_app_bar.dart";
-import "package:flutter_app/hooks/hooks.dart";
+import "../../../../common/colors.dart";
+import "../../../../common/screen.dart";
+import "../../../../common/ui/screen_app_bar.dart";
+import "../../models/animals_model.dart";
+import "search_app_bar.dart";
+import "../../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_use/flutter_use.dart";
 import "package:provider/provider.dart";
