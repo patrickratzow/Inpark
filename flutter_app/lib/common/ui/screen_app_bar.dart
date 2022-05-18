@@ -153,7 +153,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
       final padding = automaticallyImplyLeading
           ? const EdgeInsets.only(left: 2, top: 2)
           // Hack for sizing when no back button
-          : const EdgeInsets.fromLTRB(16, 20, 0, 20);
+          : const EdgeInsets.fromLTRB(16, 22, 0, 20);
       results.add(
         Padding(
           padding: padding,

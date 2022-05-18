@@ -26,15 +26,6 @@ class SpeakModel extends ChangeNotifier {
 
       var speaksResult = await homeRepository.fetchSpeaksForToday();
       _speaks = speaksResult;
-      _speaks = [
-        Speak(
-          "Test",
-          DateTime.now().add(Duration(minutes: 16, seconds: 5)),
-          _speaks.first.image,
-          _speaks.first.days,
-        ),
-        ..._speaks,
-      ];
     } catch (ex) {
       error = ex.toString();
     } finally {
