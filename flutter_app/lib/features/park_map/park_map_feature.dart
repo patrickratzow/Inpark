@@ -4,7 +4,7 @@ import "../../common/feature.dart";
 
 class ParkMapFeature extends Feature {
   @override
-  String get featureId => "speaks";
+  String get featureId => "park_map";
 
   @override
   bool get isEnabled => true;
