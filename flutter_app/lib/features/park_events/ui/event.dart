@@ -28,75 +28,73 @@ class Event extends HookWidget {
           maxWidth: 154,
           minHeight: 200,
         ),
-        child: Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: CustomColor.green.superLight,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: CustomColor.green.superLight,
+          ),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
             ),
-            child: TextButton(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.zero,
-              ),
-              onPressed: () => navigation.push(
-                context,
-                ParkEventScreen(parkEvent: parkEvent),
-                hide: true,
-              ),
-              child: Column(
-                children: [
-                  AspectRatio(
-                    aspectRatio: 100 / 62,
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
+            onPressed: () => navigation.push(
+              context,
+              ParkEventScreen(parkEvent: parkEvent),
+              hide: true,
+            ),
+            child: Column(
+              children: [
+                AspectRatio(
+                  aspectRatio: 100 / 62,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                    ),
+                    child: Image(
+                      image: CachedNetworkImageProvider(
+                        parkEvent.image.previewUrl,
                       ),
-                      child: Image(
-                        image: CachedNetworkImageProvider(
-                          parkEvent.image.previewUrl,
+                      fit: BoxFit.cover,
+                      colorBlendMode: BlendMode.darken,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 6,
+                      horizontal: 6,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            parkEvent.title,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: CustomColor.green.middle,
+                            ),
+                          ),
                         ),
-                        fit: BoxFit.cover,
-                        colorBlendMode: BlendMode.darken,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 6,
-                        horizontal: 6,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              parkEvent.title,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: CustomColor.green.middle,
-                              ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            date,
+                            softWrap: true,
+                            textScaleFactor: 1,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: CustomColor.green.middle,
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              date,
-                              softWrap: true,
-                              textScaleFactor: 1,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: CustomColor.green.middle,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

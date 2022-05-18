@@ -1,3 +1,5 @@
+import "dart:collection";
+
 import "package:flutter/material.dart";
 import "../../../extensions/datetime.dart";
 import "notification_service.dart";
@@ -9,9 +11,9 @@ import "../repositories/speak_repository.dart";
 
 class SpeakModel extends ChangeNotifier {
   List<Speak> _speaks = List.empty();
+  UnmodifiableListView<Speak> get speaks => UnmodifiableListView(_speaks);
   String error = "";
   bool loading = false;
-  List<Speak> get speaks => _speaks;
 
   final LocalStorage _localStorage = LocalStorage("speaks.json");
   final NotificationService _notificationService = NotificationService();
@@ -24,6 +26,15 @@ class SpeakModel extends ChangeNotifier {
 
       var speaksResult = await homeRepository.fetchSpeaksForToday();
       _speaks = speaksResult;
+      _speaks = [
+        Speak(
+          "Test",
+          DateTime.now().add(Duration(minutes: 16, seconds: 5)),
+          _speaks.first.image,
+          _speaks.first.days,
+        ),
+        ..._speaks,
+      ];
     } catch (ex) {
       error = ex.toString();
     } finally {
