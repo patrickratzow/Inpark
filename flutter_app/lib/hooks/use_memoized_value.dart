@@ -2,8 +2,8 @@ part of "hooks.dart";
 
 ValueNotifier<T> useMemoizedValue<T>(Duration duration, T Function() getState) {
   final state = useState(getState());
-  final timer = useMemoized(
-    () => Timer.periodic(
+  final timer = useRef(
+    Timer.periodic(
       duration,
       (timer) {
         final currentState = getState();
@@ -13,12 +13,7 @@ ValueNotifier<T> useMemoizedValue<T>(Duration duration, T Function() getState) {
       },
     ),
   );
-  useEffect(
-    () {
-      return () => timer.cancel();
-    },
-    [duration, getState],
-  );
+  useEffectOnce(() => () => timer.value.cancel());
 
   return state;
 }
