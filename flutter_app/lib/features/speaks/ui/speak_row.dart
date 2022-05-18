@@ -9,7 +9,7 @@ import "package:flutter_use/flutter_use.dart";
 import "package:intl/intl.dart";
 
 import "../../../hooks/hooks.dart";
-import "../../../hooks/use_first_render.dart";
+import "../../../hooks/use_first_build.dart";
 import "../models/speak.dart";
 import "../models/speak_color_pair.dart";
 import "../models/speak_model.dart";
@@ -68,7 +68,7 @@ class SpeakRowImage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firstRender = useFirstRender();
+    final firstBuild = useFirstBuild();
 
     return SizedBox(
       height: 48,
@@ -76,7 +76,7 @@ class SpeakRowImage extends HookWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(6),
         child: CachedNetworkImage(
-          fadeInDuration: Duration(milliseconds: firstRender ? 500 : 0),
+          fadeInDuration: Duration(milliseconds: firstBuild ? 500 : 0),
           imageUrl: imageUrl,
           fit: BoxFit.cover,
           imageBuilder: _imageBuilder(),
