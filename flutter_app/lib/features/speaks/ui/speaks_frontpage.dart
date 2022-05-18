@@ -1,4 +1,5 @@
 import "package:flutter/widgets.dart";
+import "package:flutter_use/flutter_use.dart";
 
 import "../../../common/feature.dart";
 import "../../../common/ui/title_bar.dart";
@@ -13,13 +14,19 @@ class SpeaksFrontPage extends FrontPageWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = useProvider<SpeakModel>()..fetchSpeaksForToday();
+    final model = useProvider<SpeakModel>();
     final activeSpeaks = useMemoizedValue<List<Speak>>(
       const Duration(seconds: 1),
       () => model.speaks
           .where((speak) => speak.state != SpeakState.over)
           .toList(),
     );
+
+    useEffectOnce(() {
+      model.fetchSpeaksForToday();
+
+      return null;
+    });
 
     return Column(
       children: [

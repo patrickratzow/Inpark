@@ -3,18 +3,19 @@ import "dart:math";
 
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "../models/speak.dart";
-import "../models/speak_color_pair.dart";
-import "../models/speak_state.dart";
-import "../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:flutter_use/flutter_use.dart";
 import "package:intl/intl.dart";
 
+import "../../../hooks/hooks.dart";
+import "../../../hooks/use_first_build.dart";
+import "../models/speak.dart";
+import "../models/speak_color_pair.dart";
 import "../models/speak_model.dart";
+import "../models/speak_state.dart";
 
-class SpeakRowImage extends StatelessWidget {
+class SpeakRowImage extends HookWidget {
   final String imageUrl;
   final SpeakState state;
 
@@ -67,12 +68,15 @@ class SpeakRowImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final firstBuild = useFirstBuild();
+
     return SizedBox(
       height: 48,
       width: 48,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(6),
         child: CachedNetworkImage(
+          fadeInDuration: Duration(milliseconds: firstBuild ? 500 : 0),
           imageUrl: imageUrl,
           fit: BoxFit.cover,
           imageBuilder: _imageBuilder(),
@@ -201,8 +205,8 @@ class SpeakRowActions extends HookWidget {
             );
           }
 
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Center(
+            child: Container(),
           );
         },
       );
