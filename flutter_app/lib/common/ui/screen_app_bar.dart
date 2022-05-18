@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "../colors.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
+
 import "../../hooks/hooks.dart";
 import "../../navigation/navigation_model.dart";
-
-import "package:flutter_hooks/flutter_hooks.dart";
+import "../colors.dart";
 
 class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
   const _ToolbarContainerLayout(this.toolbarHeight);
@@ -151,7 +151,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     }
     if (title != null) {
       final padding = automaticallyImplyLeading
-          ? const EdgeInsets.only(left: 2)
+          ? const EdgeInsets.only(left: 2, top: 2)
           // Hack for sizing when no back button
           : const EdgeInsets.fromLTRB(16, 20, 0, 20);
       results.add(
@@ -159,9 +159,9 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
           padding: padding,
           child: Text(
             title!,
-            style: theme.textTheme.bodyLarge?.copyWith(
+            style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
-              height: 16 / 14,
+              height: 1.125,
               color: const Color(0xff718D6D),
             ),
           ),
