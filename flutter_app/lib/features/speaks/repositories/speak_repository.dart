@@ -1,8 +1,7 @@
-import '../models/speak.dart';
+import "../models/speak.dart";
 import "../../../generated_code/client_index.dart";
 
 import "../../../common/ioc.dart";
-import '../models/speak_model.dart';
 
 class SpeakRepository {
   List<Speak>? _speaks;

@@ -1,6 +1,5 @@
 import "package:collection_ext/iterables.dart";
 import "package:flutter/material.dart";
-import "../../../common/extensions/iterable.dart";
 import "../../../common/feature.dart";
 import "../../../common/screen.dart";
 import "package:flutter_hooks/flutter_hooks.dart";

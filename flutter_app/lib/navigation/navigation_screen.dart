@@ -4,7 +4,6 @@ import "../features/welcome_screen/welcome_screen.dart";
 import "../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
-import "package:google_fonts/google_fonts.dart";
 
 import "navigation_model.dart";
 import "tab_navigator.dart";
