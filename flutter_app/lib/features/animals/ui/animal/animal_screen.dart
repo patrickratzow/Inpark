@@ -1,5 +1,8 @@
+import "dart:math";
+
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import "package:flutter_app/features/animals/ui/animal/animal_map.dart";
 import "../../../../common/colors.dart";
 import "../../../../common/extensions/theme.dart";
 import "../../../../common/screen.dart";
@@ -107,6 +110,47 @@ class AnimalScreen extends HookWidget implements Screen {
               builder: (context) => Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: _buildTriviaContent(animal.contents[1], theme),
+              ),
+            ),
+            ZooinatorNavigationTab(
+              text: "Kort",
+              icon: Icons.map,
+              builder: (context) => AnimalMap(
+                data: [
+                  AnimalArea(
+                    color: Color(0xffff0000),
+                    points: [
+                      Point(45.19326065411298, 36.390977443609025),
+                      Point(39.841427155599604, 46.31578947368421),
+                      Point(52.82457879088206, 56.090225563909776),
+                      Point(58.57284440039643, 35.18796992481203),
+                      Point(49.45490584737364, 29.47368421052631),
+                      Point(45.094152626362735, 36.390977443609025)
+                    ],
+                  ),
+                  AnimalArea(
+                    color: Color(0xffff0000),
+                    points: [
+                      Point(77.89890981169475, 32.932330827067666),
+                      Point(72.15064420218039, 43.45864661654135),
+                      Point(74.33102081268584, 53.23308270676692),
+                      Point(89.69276511397423, 49.62406015037594),
+                      Point(88.10703666997026, 30.075187969924812),
+                      Point(77.60158572844401, 32.631578947368425)
+                    ],
+                  ),
+                  AnimalArea(
+                    color: Color(0xffff0000),
+                    points: [
+                      Point(67.59167492566898, 9.473684210526317),
+                      Point(57.18533201189297, 15.338345864661655),
+                      Point(61.64519326065411, 28.57142857142857),
+                      Point(75.5203171456888, 30.977443609022558),
+                      Point(84.73736372646185, 14.43609022556391),
+                      Point(66.99702675916748, 9.323308270676693)
+                    ],
+                  )
+                ],
               ),
             ),
           ],
