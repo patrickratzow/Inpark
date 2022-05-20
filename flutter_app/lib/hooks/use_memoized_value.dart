@@ -13,12 +13,7 @@ ValueNotifier<T> useMemoizedValue<T>(Duration duration, T Function() getState) {
       },
     ),
   );
-  useEffect(
-    () {
-      return () => timer.cancel();
-    },
-    [duration, getState],
-  );
+  useEffectOnce(() => () => timer.cancel());
 
   return state;
 }

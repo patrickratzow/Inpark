@@ -11,17 +11,18 @@ class Speak {
   final ImagePairDto image;
   final List<String> days;
 
-  Speak(this.title, this.start, this.image, this.days);
+  Speak(this.title, DateTime start, this.image, this.days)
+      : start = start.asToday();
 
   String get previewImage => image.previewUrl;
   String get fullscreenImage => image.fullscreenUrl;
-  bool get hasBegun => start.asToday().isBefore(DateTime.now());
+  bool get hasBegun => start.isBefore(DateTime.now());
 
   int? _id;
   int get id => _id ??= utf8.encode(title).reduce((curr, prev) => curr + prev);
 
   SpeakState get state {
-    final startTime = start.asToday();
+    final startTime = start;
     final difference = startTime.difference(DateTime.now());
     if (difference.inMinutes > 15) return SpeakState.upcoming;
     if (difference.inMinutes > 0) return SpeakState.happeningSoon;

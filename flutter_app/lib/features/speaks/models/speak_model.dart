@@ -1,3 +1,5 @@
+import "dart:collection";
+
 import "package:flutter/material.dart";
 import "../../../extensions/datetime.dart";
 import "notification_service.dart";
@@ -9,9 +11,9 @@ import "../repositories/speak_repository.dart";
 
 class SpeakModel extends ChangeNotifier {
   List<Speak> _speaks = List.empty();
+  UnmodifiableListView<Speak> get speaks => UnmodifiableListView(_speaks);
   String error = "";
   bool loading = false;
-  List<Speak> get speaks => _speaks;
 
   final LocalStorage _localStorage = LocalStorage("speaks.json");
   final NotificationService _notificationService = NotificationService();
