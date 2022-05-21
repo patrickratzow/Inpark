@@ -32,6 +32,7 @@ public static class DependencyInjection
         {
             options.UseSqlServer(dbConnection);
         });
+
         services.AddMemoryCache();
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
@@ -67,6 +68,12 @@ public static class DependencyInjection
 
     public static void UseInpark(this IApplicationBuilder app, IWebHostEnvironment env)
     {
+        app.UseCors(options =>
+            options.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+        );
+        
         app.UseResponseMapper();
         
         RunMigrations(app.ApplicationServices);

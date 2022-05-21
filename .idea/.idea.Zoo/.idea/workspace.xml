@@ -77,6 +77,7 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,6 +105,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\JetBrains Rider 2021.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
@@ -195,7 +197,9 @@
       <workItem from="1652478568447" duration="1534000" />
       <workItem from="1652764055652" duration="1302000" />
       <workItem from="1652831419269" duration="1554000" />
-      <workItem from="1652941969093" duration="1657000" />
+      <workItem from="1652941969093" duration="2824000" />
+      <workItem from="1653029221100" duration="17624000" />
+      <workItem from="1653126712478" duration="13943000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
