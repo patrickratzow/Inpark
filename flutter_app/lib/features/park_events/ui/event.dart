@@ -30,7 +30,7 @@ class Event extends HookWidget {
             hide: true,
           ),
           child: Card(
-            margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+            margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(6),
             ),
@@ -85,12 +85,9 @@ class Event extends HookWidget {
                             ],
                           ),
                         ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              height: 25,
-                            ),
-                          ],
+                        child: SizedBox(
+                          height: 25,
+                          width: double.infinity,
                         ),
                       ),
                       Container(
@@ -105,7 +102,7 @@ class Event extends HookWidget {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.fromLTRB(3, 0, 3, 3),
+                          padding: EdgeInsets.fromLTRB(6, 0, 6, 6),
                           child: Column(
                             children: [
                               Row(
@@ -113,10 +110,9 @@ class Event extends HookWidget {
                                   Flexible(
                                     child: Text(
                                       parkEvent.title,
-                                      style: theme.textTheme.headlineMedium
-                                          ?.copyWith(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 12,
+                                      style:
+                                          theme.textTheme.bodyMedium?.copyWith(
+                                        fontWeight: FontWeight.bold,
                                         color: selectedColor,
                                       ),
                                     ),

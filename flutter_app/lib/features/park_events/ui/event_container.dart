@@ -8,9 +8,9 @@ import "package:provider/provider.dart";
 import "../models/event_model.dart";
 
 class EventContainer extends FrontPageWidget {
-  const EventContainer({
-    Key? key,
-  }) : super(key: key);
+  final EdgeInsets padding = EdgeInsets.only(bottom: 8);
+
+  EventContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class EventContainer extends FrontPageWidget {
               );
             }
             return SizedBox(
-              height: 157,
+              height: 149,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
