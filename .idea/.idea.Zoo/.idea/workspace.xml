@@ -9,7 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/flutter_app/assets/zoo_oversigt.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/ui/park_map.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/ui/park_map_background.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/ui/park_map_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,7 +201,7 @@
       <workItem from="1652251042536" duration="3304000" />
       <workItem from="1652478568447" duration="1534000" />
       <workItem from="1652764055652" duration="1302000" />
-      <workItem from="1652831419269" duration="1554000" />
+      <workItem from="1652831419269" duration="2214000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>

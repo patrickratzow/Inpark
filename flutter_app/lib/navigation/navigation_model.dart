@@ -1,12 +1,14 @@
 import "package:flutter/material.dart";
-import "../common/screen.dart";
 import "package:localstorage/localstorage.dart";
 
-final List<String> pageKeys = ["Page1", "Page2", "Page3"];
+import "../common/screen.dart";
+
+final List<String> pageKeys = ["Page1", "Page2", "Page3", "Page4"];
 final Map<String, GlobalKey<NavigatorState>> navigatorKeys = {
   "Page1": GlobalKey<NavigatorState>(),
   "Page2": GlobalKey<NavigatorState>(),
   "Page3": GlobalKey<NavigatorState>(),
+  "Page4": GlobalKey<NavigatorState>(),
 };
 
 class NavigationModel extends ChangeNotifier {

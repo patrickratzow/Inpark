@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:provider/provider.dart';
+import "package:flutter/material.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
+import "package:provider/provider.dart";
 
-import '../models/calendar_date_counter.dart';
-import '../models/calendar_model.dart';
-import 'calendar_day.dart';
+import "../models/calendar_date_counter.dart";
+import "../models/calendar_model.dart";
+import "calendar_day.dart";
 
 class CalendarMonth extends HookWidget {
-  const CalendarMonth({Key? key}) : super(key: key);
+  const CalendarMonth({super.key});
 
   @override
   Widget build(BuildContext context) {

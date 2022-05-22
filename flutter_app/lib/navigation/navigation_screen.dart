@@ -1,11 +1,10 @@
 import "package:flutter/material.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
+import "package:flutter_svg/flutter_svg.dart";
+
 import "../common/browser.dart";
 import "../features/welcome_screen/welcome_screen.dart";
 import "../hooks/hooks.dart";
-import "package:flutter_hooks/flutter_hooks.dart";
-import "package:flutter_svg/flutter_svg.dart";
-import "package:google_fonts/google_fonts.dart";
-
 import "navigation_model.dart";
 import "tab_navigator.dart";
 
@@ -38,7 +37,7 @@ class NavigationScreen extends HookWidget {
     }
 
     void selectTab(int index, String tabItem) {
-      if (index == 1) {
+      if (index == 2) {
         _showTickets(context);
 
         return;
@@ -71,6 +70,7 @@ class NavigationScreen extends HookWidget {
               _buildOffstageNavigator("Page1"),
               _buildOffstageNavigator("Page2"),
               _buildOffstageNavigator("Page3"),
+              _buildOffstageNavigator("Page4"),
             ],
           ),
           bottomNavigationBar: AnimatedContainer(
@@ -94,6 +94,10 @@ class NavigationScreen extends HookWidget {
                   const NavigationDestination(
                     icon: Icon(Icons.home_outlined, size: 27.6),
                     label: "Hjem",
+                  ),
+                  const NavigationDestination(
+                    icon: Icon(Icons.map_outlined, size: 27.6),
+                    label: "Kort",
                   ),
                   NavigationDestination(
                     icon: SvgPicture.asset(

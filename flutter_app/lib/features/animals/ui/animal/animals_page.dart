@@ -156,8 +156,10 @@ class _AnimalsOverviewList extends HookWidget {
 
               final animal = animalsModel.animals[index];
               final double topPadding = index == 0 ? 16 : 0;
+              final double bottomPadding =
+                  index == animalsModel.animals.length - 1 ? 16 : 12;
               return Padding(
-                padding: EdgeInsets.fromLTRB(16, topPadding, 16, 0),
+                padding: EdgeInsets.fromLTRB(16, topPadding, 16, bottomPadding),
                 child: TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: () => navigation.push(
