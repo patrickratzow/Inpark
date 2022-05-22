@@ -102,14 +102,12 @@
             }
           }
         }
-      }
-    },
-    "/animals/{latinName}": {
-      "get": {
+      },
+      "put": {
         "tags": [
           "Animals"
         ],
-        "operationId": "getAnimal",
+        "operationId": "setAnimalArea",
         "parameters": [
           {
             "name": "latinName",
@@ -120,26 +118,37 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
                 }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
                 }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
                 }
               }
             }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
           },
           "404": {
             "description": "Not Found",
@@ -191,12 +200,14 @@
             }
           }
         }
-      },
-      "put": {
+      }
+    },
+    "/animals/{latinName}": {
+      "get": {
         "tags": [
           "Animals"
         ],
-        "operationId": "setAnimal",
+        "operationId": "getAnimal",
         "parameters": [
           {
             "name": "latinName",
@@ -207,37 +218,26 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
                 }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
                 }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
                 }
               }
             }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
           },
           "404": {
             "description": "Not Found",
