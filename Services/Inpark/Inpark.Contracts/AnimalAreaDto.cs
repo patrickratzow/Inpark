@@ -4,7 +4,7 @@ namespace Zoo.Inpark.Contracts;
 
 public record AnimalAreaDto(
     string Color,
-    List<PointDto> Points
-    );
+    double[] Points
+);
     
     

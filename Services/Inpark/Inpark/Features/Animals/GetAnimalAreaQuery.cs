@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Zoo.Inpark.Contracts;
+using Zoo.Inpark.Errors;
 
 namespace Zoo.Inpark.Features.Animals;
 
@@ -28,20 +29,29 @@ public class GetAnimalAreaQueryHandler : IRequestHandler<GetAnimalAreaQuery, One
             {
                 var color = area.Color;
                 var points = area.Points;
-
-                var pointsDto = points.Select(p =>
-
-                    new PointDto(
-                        p.X,
-                        p.Y
-                    )
-                ).ToList();
-
+                
+                var pointsArray = new double[points.Count * 2];
+                for (var i = 0; i < points.Count; i++)
+                {
+                    var pos = i * 2;
+                    var point = points[i];
+                    pointsArray[pos] = point.X;
+                    pointsArray[pos + 1] = point.Y;
+                }
+                
                 return new AnimalAreaDto(
                     color,
-                    pointsDto
+                    pointsArray
                 );
             }).ToList();
+    }
+}
+
+public class GetAnimalAreaQueryValidator : AbstractValidator<GetAnimalAreaQuery>
+{
+    public GetAnimalAreaQueryValidator()
+    {
+        RuleFor(x => x.LatinName).NotEmpty().MaximumLength(512);
     }
 }
 
@@ -59,7 +69,7 @@ public partial class GetAnimalAreaController : ZooController
     /// <summary>
     /// Get an animals areas in the park.
     /// </summary>
-    [HttpGet("{latinName}/areas")]
+    [HttpGet("animals/{latinName}/areas")]
     public async partial Task<ActionResult> GetAnimalAreas([FromRoute] string latinName, CancellationToken cancellationToken)
     {
         var command = new GetAnimalAreaQuery(latinName);

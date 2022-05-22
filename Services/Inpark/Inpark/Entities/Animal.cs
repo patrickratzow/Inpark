@@ -23,7 +23,12 @@ public class Animal : Entity
     public ImagePair Image { get; private set; } = null!;
     public string Category { get; private set; } = null!;
     public string Content { get; private set; } = null!;
-    public List<AnimalArea> Areas { get; private set; } = new();
+    private List<AnimalArea> _areas = new();
+    public IReadOnlyCollection<AnimalArea> Areas
+    {
+        get => _areas;
+        private set => _areas = value.ToList();
+    }
 
     public static Animal Create(Guid id, AnimalName name, ImagePair imagePair, 
         string category, string content)
@@ -58,6 +63,11 @@ public class Animal : Entity
         {
             return new Error();
         }
+    }
+
+    public void SetAreas(List<AnimalArea> areas)
+    {
+        Areas = areas;
     }
 }
 
