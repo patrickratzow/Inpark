@@ -1,10 +1,9 @@
-import { Prop } from "vue/types/options"
+import Link from "next/link"
 import Button from "../components/button"
-import { Configuration } from "../out"
-import { AnimalsApi } from "../out/apis/AnimalsApi"
+import { AnimalsApi, Configuration } from "../out"
 
-interface Animal{
-    name: string,
+interface Animal {
+  name: string
 }
 
 interface Props {
@@ -19,7 +18,18 @@ export default function Animals({ animals }: Props) {
         <p>Det her viser alle dyrene i parken!</p>
         <ul>
           {animals.map(animal => (
-            <li key={animal.name}>{animal.name}</li>
+            //We also want the route to be with the animal?
+            //Or just a store saving the clicked animal?
+            <Link href={"/map"}>            
+            <Button
+              onClick={() => {
+                console.log(animal.name);
+              }}
+            >
+              <li key={animal.name}>{animal.name}</li>
+            </Button>
+            </Link>
+
           ))}
         </ul>
       </div>
@@ -33,6 +43,7 @@ export async function getServerSideProps(context: any) {
       basePath: "https://localhost:5000"
     })
   )
+
   const animals = await api.getAnimals()
 
   const animalsMap: Animal[] = animals.map(animal => ({ name: animal.name!.displayName }))
