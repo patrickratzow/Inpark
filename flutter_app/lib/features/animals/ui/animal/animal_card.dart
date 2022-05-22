@@ -1,10 +1,10 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
+
 import "../../../../common/extensions/theme.dart";
 import "../../../../generated_code/zooinator.swagger.dart";
 import "../../../../hooks/hooks.dart";
-import "package:flutter_hooks/flutter_hooks.dart";
-
 import "animal_category.dart";
 
 class AnimalCard extends HookWidget {
@@ -22,7 +22,7 @@ class AnimalCard extends HookWidget {
     return AspectRatio(
       aspectRatio: 343 / 139,
       child: Card(
-        margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
         ),

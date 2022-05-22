@@ -54,7 +54,6 @@ dependencies:
   flutter_use: ^0.0.2
   webview_flutter: ^3.0.4
   package_info_plus: ^1.0.6
-  proj4dart: ^2.0.0
 
 dev_dependencies:
   build_runner: ^2.1.7

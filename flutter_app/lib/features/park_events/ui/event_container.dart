@@ -8,9 +8,9 @@ import "package:provider/provider.dart";
 import "../models/event_model.dart";
 
 class EventContainer extends FrontPageWidget {
-  const EventContainer({
-    Key? key,
-  }) : super(key: key);
+  final EdgeInsets padding = EdgeInsets.only(bottom: 8);
+
+  EventContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,43 +24,40 @@ class EventContainer extends FrontPageWidget {
             name: "Kommende arrangementer",
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-          child: Consumer<ParkEventModel>(
-            builder: (context, parkEvent, child) {
-              if (parkEvent.loading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (parkEvent.error.isNotEmpty) {
-                return const Center(
-                  child: Text(
-                    "Ingen tilgængelige arrangementer, prøv igen senere",
-                  ),
-                );
-              }
-              return SizedBox(
-                height: 157,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-                      child: Row(
-                        children: List.generate(
-                          parkEvent.parkEvents.length,
-                          (index) => Event(
-                            parkEvent: parkEvent.parkEvents[index],
-                          ),
+        Consumer<ParkEventModel>(
+          builder: (context, parkEvent, child) {
+            if (parkEvent.loading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (parkEvent.error.isNotEmpty) {
+              return const Center(
+                child: Text(
+                  "Ingen tilgængelige arrangementer, prøv igen senere",
+                ),
+              );
+            }
+            return SizedBox(
+              height: 149,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                    child: Row(
+                      children: List.generate(
+                        parkEvent.parkEvents.length,
+                        (index) => Event(
+                          parkEvent: parkEvent.parkEvents[index],
                         ),
                       ),
                     ),
-                  ],
-                ),
-              );
-            },
-          ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ],
     );

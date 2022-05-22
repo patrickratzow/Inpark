@@ -13,7 +13,7 @@ class ParkEventsFeature extends Feature {
   bool get isEnabled => true;
 
   @override
-  EventContainer get frontPageMaterial => const EventContainer();
+  EventContainer get frontPageMaterial => EventContainer();
 
   @override
   Future setup(BuildContext context) async {
