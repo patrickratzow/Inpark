@@ -6,6 +6,104 @@
     "version": "v1"
   },
   "paths": {
+    "/animals/{latinName}/areas": {
+      "get": {
+        "tags": [
+          "Animals"
+        ],
+        "operationId": "getAnimalAreas",
+        "parameters": [
+          {
+            "name": "latinName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/animals/{latinName}": {
       "get": {
         "tags": [
@@ -48,17 +146,115 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.Animals.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Animals"
+        ],
+        "operationId": "setAnimal",
+        "parameters": [
+          {
+            "name": "latinName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Contracts.AnimalAreaDto"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
                 }
               }
             }
@@ -243,6 +439,74 @@
           "Opening Hours"
         ],
         "operationId": "getOpeningHoursForToday",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Contracts.OpeningHourDto"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/opening-hours": {
+      "get": {
+        "tags": [
+          "Opening Hours"
+        ],
+        "operationId": "getOpeningHours",
         "responses": {
           "200": {
             "description": "Success",
@@ -643,10 +907,31 @@
         },
         "additionalProperties": false
       },
+      "Zoo.Inpark.Contracts.AnimalAreaDto": {
+        "required": [
+          "color",
+          "points"
+        ],
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
       "Zoo.Inpark.Contracts.AnimalDto": {
         "required": [
           "category",
           "contents",
+          "hasMap",
           "id",
           "image",
           "name",
@@ -682,6 +967,9 @@
             "items": {
               "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
             }
+          },
+          "hasMap": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -884,6 +1172,7 @@
       },
       "Zoo.Inpark.Entities.Animal": {
         "required": [
+          "areas",
           "category",
           "content",
           "createdAt",
@@ -944,6 +1233,13 @@
           "content": {
             "type": "string",
             "readOnly": true
+          },
+          "areas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.AnimalArea"
+            },
+            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -972,7 +1268,7 @@
           "LC"
         ]
       },
-      "Zoo.Inpark.Features.Animals.AnimalNotFound": {
+      "Zoo.Inpark.Errors.AnimalNotFound": {
         "required": [
           "errorMessage",
           "name"
@@ -984,6 +1280,27 @@
           },
           "errorMessage": {
             "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.ValueObjects.AnimalArea": {
+        "required": [
+          "color",
+          "points"
+        ],
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "readOnly": true
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.Point"
+            },
             "readOnly": true
           }
         },
@@ -1020,6 +1337,26 @@
           },
           "fullscreenUrl": {
             "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.ValueObjects.Point": {
+        "required": [
+          "x",
+          "y"
+        ],
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "y": {
+            "type": "number",
+            "format": "double",
             "readOnly": true
           }
         },

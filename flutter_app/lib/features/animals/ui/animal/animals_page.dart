@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_use/flutter_use.dart";
-import "package:provider/provider.dart";
 
 import "../../../../common/colors.dart";
 import "../../../../common/screen.dart";
@@ -14,7 +13,7 @@ import "animals_categories.dart";
 import "search_app_bar.dart";
 
 class AnimalsScreen extends HookWidget implements Screen {
-  const AnimalsScreen({Key? key}) : super(key: key);
+  const AnimalsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -128,50 +127,48 @@ class _AnimalsOverviewList extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var navigation = useNavigator();
+    final navigation = useNavigator();
+    final model = useProvider<AnimalsModel>(watch: true);
 
-    return Consumer<AnimalsModel>(
-      builder: (context, animalsModel, child) {
-        print(animalsModel.animals.length);
-        if (animalsModel.loading) {
-          return SliverFillRemaining(
-            child: _loadingIndicator(),
-          );
+    if (model.loading) {
+      return SliverFillRemaining(
+        child: _loadingIndicator(),
+      );
+    }
+
+    if (model.hasError) {
+      return SliverFillRemaining(
+        child: Center(
+          child: Text("An error happened: " + model.error),
+        ),
+      );
+    }
+
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
+        if (index >= model.animals.length) {
+          return null;
         }
 
-        if (animalsModel.hasError) {
-          return SliverFillRemaining(
-            child: Center(
-              child: Text("An error happened: " + animalsModel.error),
-            ),
-          );
-        }
-
-        return SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              if (index >= animalsModel.animals.length) {
-                return null;
-              }
-
-              final animal = animalsModel.animals[index];
-              final double topPadding = index == 0 ? 16 : 0;
-              return Padding(
-                padding: EdgeInsets.fromLTRB(16, topPadding, 16, 0),
-                child: TextButton(
-                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                  onPressed: () => navigation.push(
-                    context,
-                    AnimalScreen(animal: animal),
-                    hide: true,
-                  ),
-                  child: AnimalCard(animal: animal),
+        final animal = model.animals[index];
+        final double topPadding = index == 0 ? 16 : 0;
+        return Padding(
+          padding: EdgeInsets.fromLTRB(16, topPadding, 16, 0),
+          child: TextButton(
+            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+            onPressed: () => {
+              navigation.push(
+                context,
+                AnimalScreen(
+                  animal: animal,
                 ),
-              );
+                hide: true,
+              ),
             },
+            child: AnimalCard(animal: animal),
           ),
         );
-      },
+      }),
     );
   }
 

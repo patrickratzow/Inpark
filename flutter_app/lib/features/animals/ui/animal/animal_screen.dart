@@ -1,14 +1,14 @@
-import "dart:math";
-
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/features/animals/ui/animal/animal_map.dart";
+import "package:flutter_use/flutter_use.dart";
 import "../../../../common/colors.dart";
 import "../../../../common/extensions/theme.dart";
 import "../../../../common/screen.dart";
 import "../../../../common/ui/fullscreen_image.dart";
 import "../../../../common/ui/navigation_bar.dart";
 import "../../../../common/ui/screen_app_bar.dart";
+import "../../models/animals_model.dart";
 import "../conservation/conservation_status.dart";
 import "../conservation/conservation_status_overview_screen.dart";
 import "../../../../generated_code/zooinator.swagger.dart";
@@ -16,7 +16,7 @@ import "../../../../hooks/hooks.dart";
 import "../../../../navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
-import "animal_category.dart";
+import "animal_category.dart" as AnimalCategory;
 
 class AnimalScreen extends HookWidget implements Screen {
   final AnimalDto animal;
@@ -30,6 +30,13 @@ class AnimalScreen extends HookWidget implements Screen {
   Widget build(BuildContext context) {
     final navigation = useNavigator();
     final theme = useTheme();
+    final model = useProvider<AnimalsModel>(watch: true);
+
+    useEffectOnce(() {
+      model.fetchAnimalAreas(animal.name.latinName);
+
+      return null;
+    });
 
     return Scaffold(
       body: CustomScrollView(
@@ -51,7 +58,7 @@ class AnimalScreen extends HookWidget implements Screen {
               (context, index) {
                 if (index != 0) return null;
 
-                return _buildCard(context, animal, navigation, theme);
+                return _buildCard(context, animal, navigation, theme, model);
               },
             ),
           ),
@@ -65,6 +72,7 @@ class AnimalScreen extends HookWidget implements Screen {
     AnimalDto animal,
     NavigationModel navigation,
     ThemeData theme,
+    AnimalsModel model,
   ) {
     return Column(
       children: [
@@ -112,51 +120,14 @@ class AnimalScreen extends HookWidget implements Screen {
                 child: _buildTriviaContent(animal.contents[1], theme),
               ),
             ),
-            ZooinatorNavigationTab(
-              text: "Kort",
-              icon: Icons.map,
-              builder: (context) => AnimalMap(
-                data: [
-                  AnimalArea(
-                    color: Color(0xffff0000),
-                    points: [
-                      Point(46.9810379241517, 54.89973514945138),
-                      Point(44.93512974051897, 60.91562618236852),
-                      Point(48.37824351297405, 66.21263715474839),
-                      Point(53.84231536926147, 62.88308740068105),
-                      Point(52.59481037924152, 56.79152478244419),
-                      Point(46.95608782435129, 55.01324252743095)
-                    ],
-                  ),
-                  AnimalArea(
-                    color: Color(0xffff0000),
-                    points: [
-                      Point(54.69977197871801, 67.46062235881675),
-                      Point(52.47023055485178, 67.46062235881675),
-                      Point(51.43146693691412, 71.18709181713407),
-                      Point(53.30630858880162, 73.99154821359969),
-                      Point(55.13047884469218, 75.06723011909335),
-                      Point(55.71319989865721, 68.61313868613139)
-                    ],
-                  ),
-                  AnimalArea(
-                    color: Color(0xffff0000),
-                    points: [
-                      Point(54.5984291867241, 67.3069535151748),
-                      Point(53.737015454775786, 65.84709950057626),
-                      Point(54.39574360273626, 65.15558970418748),
-                      Point(55.48517861667089, 65.46292739147138),
-                      Point(56.16924246262984, 64.88666922781407),
-                      Point(56.39726374461617, 65.34767575873992),
-                      Point(56.27058525462376, 66.3465232424126),
-                      Point(56.751963516594884, 66.92278140606992),
-                      Point(56.57461363060552, 67.84479446792163),
-                      Point(55.662528502660244, 68.65155589704187)
-                    ],
-                  )
-                ],
+            if (animal.hasMap)
+              ZooinatorNavigationTab(
+                text: "Kort",
+                icon: Icons.map,
+                builder: (context) => AnimalMap(
+                  data: model.getAnimalAreas(animal.name.latinName) ?? [],
+                ),
               ),
-            ),
           ],
         ),
       ],
@@ -236,7 +207,7 @@ class AnimalScreen extends HookWidget implements Screen {
             CachedNetworkImage(imageUrl: animal.image.previewUrl),
             Padding(
               padding: const EdgeInsets.fromLTRB(9, 6, 9, 6),
-              child: AnimalCategory(
+              child: AnimalCategory.AnimalCategory(
                 fontSize: 10,
                 text: animal.category,
                 padding: const EdgeInsets.all(6),
