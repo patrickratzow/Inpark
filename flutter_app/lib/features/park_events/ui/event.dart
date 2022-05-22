@@ -1,9 +1,8 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "park_event_screen.dart";
+import "package:flutter_app/features/park_events/ui/park_event_screen.dart";
 import "../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-
 import "../../../common/colors.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
 
@@ -18,87 +17,134 @@ class Event extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final navigation = useNavigator();
-    final date = useDateRange(parkEvent.start, parkEvent.end, fullMonth: false);
-    final theme = useTheme();
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          maxWidth: 154,
-          minHeight: 200,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: CustomColor.green.superLight,
+      child: SizedBox(
+        width: 154,
+        height: 132,
+        child: InkWell(
+          onTap: () => navigation.push(
+            context,
+            ParkEventScreen(parkEvent: parkEvent),
+            hide: true,
           ),
-          child: TextButton(
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
+          child: Card(
+            margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6),
             ),
-            onPressed: () => navigation.push(
-              context,
-              ParkEventScreen(parkEvent: parkEvent),
-              hide: true,
-            ),
-            child: Column(
+            clipBehavior: Clip.antiAlias,
+            child: Stack(
               children: [
-                AspectRatio(
-                  aspectRatio: 100 / 62,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10),
-                    ),
-                    child: Image(
-                      image: CachedNetworkImageProvider(
-                        parkEvent.image.previewUrl,
-                      ),
-                      fit: BoxFit.cover,
-                      colorBlendMode: BlendMode.darken,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 6,
-                      horizontal: 6,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            parkEvent.title,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: CustomColor.green.middle,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            date,
-                            softWrap: true,
-                            textScaleFactor: 1,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: CustomColor.green.middle,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                _buildImage(parkEvent),
+                _buildText(parkEvent),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildImage(ParkEventDto parkEvent) {
+    return Positioned.fill(
+      child: CachedNetworkImage(
+        fit: BoxFit.cover,
+        imageUrl: parkEvent.image.previewUrl,
+      ),
+    );
+  }
+
+  Widget _buildText(ParkEventDto parkEvent) {
+    return HookBuilder(
+      builder: (BuildContext context) {
+        final theme = useTheme();
+        const selectedColor = Color(0xffDDF8DA);
+        final date =
+            useDateRange(parkEvent.start, parkEvent.end, fullMonth: false);
+
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Column(
+              children: [
+                Container(
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [
+                              CustomColor.green.middle.withOpacity(0.8),
+                              CustomColor.green.middle.withOpacity(0.0),
+                            ],
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 25,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [
+                              CustomColor.green.middle.withOpacity(1),
+                              CustomColor.green.middle.withOpacity(0.8),
+                            ],
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(3, 0, 3, 3),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      parkEvent.title,
+                                      style: theme.textTheme.headlineMedium
+                                          ?.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 12,
+                                        color: selectedColor,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    date,
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      color: selectedColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        );
+      },
     );
   }
 }
