@@ -1099,6 +1099,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
+  zooinator_content_rendering:
+    dependency: "direct main"
+    description:
+      path: "packages/zooinator_content_rendering"
+      relative: true
+    source: path
+    version: "0.0.1"
 sdks:
   dart: ">=2.17.0 <3.0.0"
   flutter: ">=2.10.0"
