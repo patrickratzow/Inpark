@@ -104,7 +104,9 @@ class ParkEventScreen extends HookWidget implements Screen {
           children: [
             Stack(
               children: [
-                CachedNetworkImage(imageUrl: parkEvent.image.previewUrl),
+                CachedNetworkImage(
+                  imageUrl: parkEvent.image.previewUrl,
+                ),
                 Positioned.fill(
                   child: Row(
                     children: [

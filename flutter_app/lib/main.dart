@@ -12,6 +12,7 @@ import "features/animals/models/animals_model.dart";
 import "features/calendar/models/calendar_model.dart";
 import "features/home/models/home_model.dart";
 import "features/park_events/models/event_model.dart";
+import "features/park_map/models/park_map_model.dart";
 import "features/speaks/models/notification_service.dart";
 import "features/speaks/models/speak_model.dart";
 import "firebase_options.dart";
@@ -69,7 +70,10 @@ class MyApp extends HookWidget {
         ),
         ChangeNotifierProvider<NavigationModel>(
           create: (context) => NavigationModel(),
-        )
+        ),
+        ChangeNotifierProvider<ParkMapModel>(
+          create: (context) => ParkMapModel(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

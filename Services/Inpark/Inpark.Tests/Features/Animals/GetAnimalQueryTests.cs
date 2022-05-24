@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using DomainFixture;
 using Zoo.Inpark.Entities;
+using Zoo.Inpark.Errors;
 using Zoo.Inpark.Features.Animals;
 
 namespace Zoo.Inpark.Tests.Features.Animals;

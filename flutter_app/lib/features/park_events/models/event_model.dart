@@ -2,7 +2,7 @@ import "package:flutter/cupertino.dart";
 import "../../../common/ioc.dart";
 import "../../../generated_code/zooinator.swagger.dart";
 
-import '../repositories/park_event_repository.dart';
+import "../repositories/park_event_repository.dart";
 
 class ParkEventModel extends ChangeNotifier {
   List<ParkEventDto> _parkEvents = List.empty();

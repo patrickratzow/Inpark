@@ -1,4 +1,5 @@
 import "package:flutter/cupertino.dart";
+import "package:flutter_app/features/animals/models/animal_area.dart";
 import "../../../common/ioc.dart";
 import "../../../generated_code/zooinator.swagger.dart";
 
@@ -6,6 +7,7 @@ import "../repositories/animals_repository.dart";
 
 class AnimalsModel extends ChangeNotifier {
   List<AnimalDto> _animals = List.empty();
+  Map<String, List<AnimalArea>> _animalAreas = {};
   String _search = "";
   String error = "";
   Set<AnimalCategory> _animalCategories = {};
@@ -62,6 +64,25 @@ class AnimalsModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future fetchAnimalAreas(String latinName) async {
+    final animalsRepository = locator.get<AnimalsRepository>();
+
+    try {
+      loading = true;
+
+      var animalAreasResult = await animalsRepository.getAnimalArea(latinName);
+      _animalAreas[latinName] = animalAreasResult;
+    } catch (ex) {
+      error = ex.toString();
+    } finally {
+      loading = false;
+
+      notifyListeners();
+    }
+  }
+
+  List<AnimalArea>? getAnimalAreas(String latinName) => _animalAreas[latinName];
 
   List<AnimalDto> get animals {
     Iterable<AnimalDto> animals = _animals;

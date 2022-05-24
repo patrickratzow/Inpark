@@ -11,5 +11,6 @@ public record AnimalDto(
     ImagePairDto Image,
     IUCNStatusDto Status,
     string Id,
-    List<ContentDto> Contents
+    List<ContentDto> Contents,
+    bool HasMap
 );

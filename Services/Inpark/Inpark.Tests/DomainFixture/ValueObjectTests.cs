@@ -43,4 +43,18 @@ public class ValueObjectTests
     new object[] { typeof(ProgramEvent), new[] { typeof(Entity), typeof(ValueObject) }, new Type[] { } }
 )]
     public void ProgramEventTests(IEntityTester tester) => tester.Run();
+    
+    [TestCaseSource(
+        typeof(EntityTestSource),
+        nameof(EntityTestSource.Test),
+        new object[] { typeof(AnimalArea), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
+    )]
+    public void AnimalAreaTests(IEntityTester tester) => tester.Run();
+    
+    [TestCaseSource(
+        typeof(EntityTestSource),
+        nameof(EntityTestSource.Test),
+        new object[] { typeof(Point), new [] { typeof(Entity), typeof(ValueObject) }, new Type[] {}}
+    )]
+    public void PointTests(IEntityTester tester) => tester.Run();
 }

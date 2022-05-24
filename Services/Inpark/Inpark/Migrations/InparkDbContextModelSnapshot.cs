@@ -148,6 +148,56 @@ namespace Zoo.Inpark.Migrations
                                 .HasForeignKey("AnimalId");
                         });
 
+                    b.OwnsMany("Zoo.Inpark.ValueObjects.AnimalArea", "Areas", b1 =>
+                        {
+                            b1.Property<Guid>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<Guid>("AnimalId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Color")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("AnimalId");
+
+                            b1.ToTable("AnimalArea");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AnimalId");
+
+                            b1.OwnsMany("Zoo.Inpark.ValueObjects.Point", "Points", b2 =>
+                                {
+                                    b2.Property<Guid>("Id")
+                                        .ValueGeneratedOnAdd()
+                                        .HasColumnType("uniqueidentifier");
+
+                                    b2.Property<Guid>("AnimalAreaId")
+                                        .HasColumnType("uniqueidentifier");
+
+                                    b2.Property<double>("X")
+                                        .HasColumnType("float");
+
+                                    b2.Property<double>("Y")
+                                        .HasColumnType("float");
+
+                                    b2.HasKey("Id");
+
+                                    b2.HasIndex("AnimalAreaId");
+
+                                    b2.ToTable("Point");
+
+                                    b2.WithOwner()
+                                        .HasForeignKey("AnimalAreaId");
+                                });
+
+                            b1.Navigation("Points");
+                        });
+
                     b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalName", "Name", b1 =>
                         {
                             b1.Property<Guid>("AnimalId")
@@ -170,6 +220,8 @@ namespace Zoo.Inpark.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("AnimalId");
                         });
+
+                    b.Navigation("Areas");
 
                     b.Navigation("Image")
                         .IsRequired();
@@ -209,7 +261,7 @@ namespace Zoo.Inpark.Migrations
 
             modelBuilder.Entity("Zoo.Inpark.Entities.ParkEvent", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalImage", "Image", b1 =>
+                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "Image", b1 =>
                         {
                             b1.Property<Guid>("ParkEventId")
                                 .HasColumnType("uniqueidentifier");

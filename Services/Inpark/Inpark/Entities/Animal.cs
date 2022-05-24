@@ -23,6 +23,12 @@ public class Animal : Entity
     public ImagePair Image { get; private set; } = null!;
     public string Category { get; private set; } = null!;
     public string Content { get; private set; } = null!;
+    private List<AnimalArea> _areas = new();
+    public IReadOnlyCollection<AnimalArea> Areas
+    {
+        get => _areas;
+        private set => _areas = value.ToList();
+    }
 
     public static Animal Create(Guid id, AnimalName name, ImagePair imagePair, 
         string category, string content)
@@ -58,6 +64,11 @@ public class Animal : Entity
             return new Error();
         }
     }
+
+    public void SetAreas(List<AnimalArea> areas)
+    {
+        Areas = areas;
+    }
 }
 
 public class AnimalValidator : AbstractValidator<Animal>
@@ -70,6 +81,7 @@ public class AnimalValidator : AbstractValidator<Animal>
         RuleFor(x => x.Image).NotNull();
         RuleFor(x => x.Category).NotEmpty();
         RuleFor(x => x.Content).NotEmpty();
+        RuleFor(x => x.Areas).NotNull();
     }
 }
 
@@ -84,5 +96,21 @@ public class AnimalConfiguration : IEntityTypeConfiguration<Animal>
             });
         builder.OwnsOne(x => x.Image);
         builder.Property(x => x.Content).HasColumnType("nvarchar(max)");
+        builder.OwnsMany(x => x.Areas, b =>
+        {
+            b.Property<Guid>("Id");
+            b.HasKey("Id");
+            
+            b.OwnsMany(x => x.Points, b =>
+            {
+                b.Property<Guid>("Id");
+                b.HasKey("Id");
+                b.Property<Guid>("AnimalAreaId");
+                b.WithOwner().HasForeignKey("AnimalAreaId");
+            });
+            
+            b.Property<Guid>("AnimalId");
+            b.WithOwner().HasForeignKey("AnimalId");
+        });
     }
 } 

@@ -39,10 +39,11 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
   final Widget? flexibleSpace;
   final SystemUiOverlayStyle? systemUiOverlayStyle;
   final Color? backgroundColor;
-  final Color? backColor;
+  final Color? leadingColor;
+  final double? height;
 
   const ScreenAppBar({
-    Key? key,
+    super.key,
     this.title,
     this.automaticallyImplyLeading = true,
     this.leading,
@@ -50,8 +51,9 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
     this.flexibleSpace,
     this.systemUiOverlayStyle,
     this.backgroundColor,
-    this.backColor,
-  }) : super(key: key);
+    this.leadingColor,
+    this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +141,7 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
           ),
           icon: Icon(
             policies.appBarBackButton,
-            color: backColor ?? CustomColor.green.middle,
+            color: leadingColor ?? CustomColor.green.middle,
             size: 18,
           ),
           onPressed: () => navigation.pop(context),
@@ -177,10 +179,5 @@ class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize {
-    double height = 56;
-    // Add a way to find the height when using flexible space
-
-    return Size.fromHeight(height);
-  }
+  Size get preferredSize => Size.fromHeight(height ?? 56);
 }
