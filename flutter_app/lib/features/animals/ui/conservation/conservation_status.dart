@@ -1,5 +1,6 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:flutter_svg/flutter_svg.dart";
 import "../../models/iucn_status.dart";
 import "../../../../generated_code/zooinator.enums.swagger.dart";
 import "../../../../hooks/hooks.dart";
@@ -9,9 +10,9 @@ class ConservationStatus extends HookWidget {
   final IUCNStatusDto activeStatus;
 
   const ConservationStatus({
-    Key? key,
+    super.key,
     required this.activeStatus,
-  }) : super(key: key);
+  });
 
   Widget _buildConservationCircle(IUCNStatusDto status) {
     var color = ucnStatusColorMap[status]!;
@@ -116,7 +117,9 @@ class ConservationStatus extends HookWidget {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 4, 0, 5),
-          child: Image.asset("assets/bow_connector.png"),
+          child: SvgPicture.asset(
+            "assets/bow_connector.svg",
+          ),
         ),
         Text(
           "Truet",

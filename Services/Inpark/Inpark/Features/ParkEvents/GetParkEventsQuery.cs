@@ -25,7 +25,7 @@ public class GetParkEventsQueryQueryHandler :
         _clock = clock;
         _mapper = mapper;
     }
-
+ 
     public async Task<OneOf<List<ParkEventDto>>> Handle(GetParkEventsQuery request, CancellationToken cancellationToken)
     {
         var today = _clock.Today;

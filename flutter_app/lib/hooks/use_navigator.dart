@@ -1,4 +1,10 @@
 part of "hooks.dart";
 
-NavigationModel useNavigator({bool watch = false}) =>
-    useProvider<NavigationModel>(watch: watch);
+NavigationModel useNavigator({
+  bool watch = false,
+  BuildContext? context = null,
+}) =>
+    useProvider<NavigationModel>(
+      watch: watch,
+      context: context,
+    );

@@ -2,13 +2,16 @@ import "dart:io";
 
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
+import "package:flutter_app/content/demo.dart";
+import "package:flutter_app/transformers/conservation_status.dart";
+import "package:flutter_app/transformers/pre/hook_transformer.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
+import "package:zooinator_content_rendering/transformers/transformer.dart";
 
 import "common/ioc.dart";
-import "content/demo.dart";
 import "features/animals/models/animals_model.dart";
 import "features/calendar/models/calendar_model.dart";
 import "features/home/models/home_model.dart";
@@ -18,7 +21,8 @@ import "features/speaks/models/notification_service.dart";
 import "features/speaks/models/speak_model.dart";
 import "firebase_options.dart";
 import "navigation/navigation_model.dart";
-import "navigation/navigation_screen.dart";
+import "transformers/navbar.dart";
+import "transformers/screen_app_bar.dart";
 
 // ...
 
@@ -34,6 +38,11 @@ void main() async {
 
   await NotificationService().init();
 
+  Transformer.preTransformers.add(HookPreTransformer());
+  Transformer.transformers.add(ScreenAppBarTransformer());
+  Transformer.transformers.add(NavbarTransformer());
+  Transformer.transformers.add(ConservationStatusTransformer());
+
   runApp(const MyApp());
 }
 
@@ -47,7 +56,7 @@ class MyHttpOverrides extends HttpOverrides {
 }
 
 class MyApp extends HookWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -78,7 +87,7 @@ class MyApp extends HookWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const ContentDemo(),
+        home: ContentDemo(),
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: const Color(0xffECFCE5),
