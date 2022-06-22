@@ -10,9 +10,7 @@ class ScreenAppBarTransformer extends Transformer {
 
   @override
   Widget transform(NodeElement element, BuildContext context) {
-    final title = element.find("title").isNotEmpty
-        ? element.find("title").first.innerText
-        : null;
+    final title = element.getAttribute("title")?.value;
     final automaticallyImplyLeading = getAutomaticallyImplyLeading(element);
 
     return ScreenAppBar(
@@ -22,9 +20,9 @@ class ScreenAppBarTransformer extends Transformer {
   }
 
   bool getAutomaticallyImplyLeading(NodeElement element) {
-    final attribute = element.find("automatically-imply-leading");
-    if (attribute.isEmpty) return true;
+    final attribute = element.getAttribute("automatically-imply-leading");
+    if (attribute == null) return true;
 
-    return attribute.first.innerText == "true";
+    return attribute.value == "true";
   }
 }

@@ -10,73 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ContentElementDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/IUCNStatusDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Contents/ContentXmlSerializerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Contents/ContentElement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Contents/ContentElementBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Contents/ContentXmlSerializer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/build-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development-fallback/0.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development-fallback/index.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/0.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/index.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/server-development/0.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/server-development/index.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/fallback-build-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/react-loadable-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/middleware-build-manifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/middleware-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/middleware-react-loadable-manifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages/_app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages/_document.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages/_error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/server/webpack-runtime.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/_error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/amp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/amp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/pages/_app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/pages/_error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/react-refresh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/webpack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/_app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/_error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/animals.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/polyfills.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/react-refresh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/webpack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/development/_buildManifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/development/_middlewareManifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/development/_ssgManifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/webpack/0519d2d523b20aa4.webpack.hot-update.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/webpack/6764acb706796f6c.webpack.hot-update.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/webpack/9c9edde95b2758f8.webpack.hot-update.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/webpack/webpack.0519d2d523b20aa4.hot-update.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/webpack/webpack.6764acb706796f6c.hot-update.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/static/webpack/webpack.9c9edde95b2758f8.hot-update.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/.next/trace" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/assets/bow_connector.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/transformers/screen_app_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/assets/bow_connector.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/navigation_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/navigation_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/screen_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/screen_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/content/demo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/content/demo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/services/policy_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/services/policy_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/GetParkEventsQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/GetParkEventsQueryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalMapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalMapper.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +48,6 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalMapper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/103ae790d238a01f8e6bada7e931fafa62b15caa2479045d77ec4f32e1d029/ISender.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff44a57136ecb6b1994155a6879d590993390d7b9606c337b761f6d1143da4b/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5330988bfaacf93f15e30f9b3dd6018a768f89da3b38d874fda77299c62164/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
@@ -267,6 +203,8 @@
       <workItem from="1652831419269" duration="2214000" />
       <workItem from="1653578475179" duration="6574000" />
       <workItem from="1653652685075" duration="3035000" />
+      <workItem from="1655001988434" duration="2252000" />
+      <workItem from="1655191956099" duration="9115000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>

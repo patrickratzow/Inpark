@@ -96,7 +96,7 @@ class AnimalScreen extends HookWidget implements Screen {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                    child: _buildContent(animal.contents[0], theme),
+                    child: _buildContent(animal.content[0], theme),
                   ),
                 ],
               ),
@@ -106,7 +106,7 @@ class AnimalScreen extends HookWidget implements Screen {
               icon: Icons.dashboard,
               builder: (context) => Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: _buildTriviaContent(animal.contents[1], theme),
+                child: _buildTriviaContent(animal.content[1], theme),
               ),
             ),
           ],
