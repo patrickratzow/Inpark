@@ -13,7 +13,7 @@ void main() {
         image: ImagePairDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
         status: IUCNStatusDto.cr,
-        content: List.empty(),
+        contents: List.empty(),
       ),
       AnimalDto(
         name: AnimalNameDto(displayName: "Bingus", latinName: "BB"),
@@ -21,7 +21,7 @@ void main() {
         image: ImagePairDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
         status: IUCNStatusDto.en,
-        content: List.empty(),
+        contents: List.empty(),
       ),
       AnimalDto(
         name: AnimalNameDto(displayName: "Snek", latinName: "Snaike"),
@@ -29,7 +29,7 @@ void main() {
         image: ImagePairDto(fullscreenUrl: "", previewUrl: ""),
         id: "5",
         status: IUCNStatusDto.en,
-        content: List.empty(),
+        contents: List.empty(),
       )
     ];
   });

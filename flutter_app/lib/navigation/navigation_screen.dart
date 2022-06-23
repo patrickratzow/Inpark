@@ -76,7 +76,7 @@ class NavigationScreen extends HookWidget {
           bottom: false,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
-            height: navigator.showNavbar ? 96 : 0,
+            height: navigator.showNavbar ? 56 : 0,
             child: NavigationBarTheme(
               data: NavigationBarThemeData(
                 labelTextStyle: MaterialStateProperty.all(

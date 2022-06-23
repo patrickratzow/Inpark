@@ -1,7 +1,8 @@
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:zooinator_content_rendering/elements/node_element.dart";
 import "package:flutter/src/widgets/framework.dart";
-import "package:zooinator_content_rendering/transformers/transformer.dart";
+
+import "../../sdui/elements/node_element.dart";
+import "../../sdui/transformers/transformer.dart";
 
 abstract class HookTransformer {}
 

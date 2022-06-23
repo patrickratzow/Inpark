@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import "package:zooinator_content_rendering/elements/node_element.dart";
-import "package:zooinator_content_rendering/transformers/transformer.dart";
 
 import "../common/ui/screen_app_bar.dart";
+import "../sdui/elements/node_element.dart";
+import "../sdui/transformers/transformer.dart";
 
 class ScreenAppBarTransformer extends Transformer {
   @override

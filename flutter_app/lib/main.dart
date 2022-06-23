@@ -10,7 +10,6 @@ import "package:flutter_hooks/flutter_hooks.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
-import "package:zooinator_content_rendering/transformers/transformer.dart";
 
 import "common/ioc.dart";
 import "features/animals/models/animals_model.dart";
@@ -22,6 +21,7 @@ import "features/speaks/models/notification_service.dart";
 import "features/speaks/models/speak_model.dart";
 import "firebase_options.dart";
 import "navigation/navigation_model.dart";
+import "sdui/transformers/transformer.dart";
 import "transformers/navbar.dart";
 import "transformers/screen_app_bar.dart";
 
