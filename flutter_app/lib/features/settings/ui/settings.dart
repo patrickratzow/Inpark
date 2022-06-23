@@ -47,7 +47,7 @@ class SettingsScreen extends HookWidget implements Screen {
           */
           const SettingRow(
             leading: Icon(
-              Icons.settings,
+              Icons.notifications,
               color: Colors.black,
               size: 16.0,
             ),
