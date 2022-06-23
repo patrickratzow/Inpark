@@ -7,5 +7,5 @@ namespace Zoo.Inpark.Features.Animals.Interfaces;
 public interface IAnimalMapper
 {
     Result<List<Animal>, string> ParseAnimalOverview(string input);
-    Result<ContentElement, string> ParseContent(string content);
+    Result<List<IContent>, string> ParseContent(string content);
 }

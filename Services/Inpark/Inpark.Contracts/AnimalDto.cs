@@ -6,5 +6,5 @@ public record AnimalDto(
     ImagePairDto Image,
     IUCNStatusDto Status,
     string Id,
-    ContentElementDto Content
+    List<ContentDto> Contents
 );

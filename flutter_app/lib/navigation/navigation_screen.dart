@@ -46,36 +46,37 @@ class NavigationScreen extends HookWidget {
       navigator.selectTab(index);
     }
 
-    return SafeArea(
-      child: WillPopScope(
-        onWillPop: () async {
-          final page = navigator.getNavigatorKey(navigator.currentPage);
-          if (page == null) return true;
-          final navigatorState = page.currentState;
-          if (navigatorState == null) return true;
-          final isFirstRouteInCurrentTab = !await navigatorState.maybePop();
-          if (isFirstRouteInCurrentTab) {
-            if (navigator.currentPage != "Page1") {
-              selectTab(0, "Page1");
+    return WillPopScope(
+      onWillPop: () async {
+        final page = navigator.getNavigatorKey(navigator.currentPage);
+        if (page == null) return true;
+        final navigatorState = page.currentState;
+        if (navigatorState == null) return true;
+        final isFirstRouteInCurrentTab = !await navigatorState.maybePop();
+        if (isFirstRouteInCurrentTab) {
+          if (navigator.currentPage != "Page1") {
+            selectTab(0, "Page1");
 
-              return false;
-            }
+            return false;
           }
+        }
 
-          return isFirstRouteInCurrentTab;
-        },
-        child: Scaffold(
-          body: Stack(
-            children: [
-              _buildOffstageNavigator("Page1"),
-              _buildOffstageNavigator("Page2"),
-              _buildOffstageNavigator("Page3"),
-              _buildOffstageNavigator("Page4"),
-            ],
-          ),
-          bottomNavigationBar: AnimatedContainer(
+        return isFirstRouteInCurrentTab;
+      },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            _buildOffstageNavigator("Page1"),
+            _buildOffstageNavigator("Page2"),
+            _buildOffstageNavigator("Page3"),
+            _buildOffstageNavigator("Page4"),
+          ],
+        ),
+        bottomNavigationBar: SafeArea(
+          bottom: false,
+          child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
-            height: navigator.showNavbar ? 56 : 0,
+            height: navigator.showNavbar ? 96 : 0,
             child: NavigationBarTheme(
               data: NavigationBarThemeData(
                 labelTextStyle: MaterialStateProperty.all(

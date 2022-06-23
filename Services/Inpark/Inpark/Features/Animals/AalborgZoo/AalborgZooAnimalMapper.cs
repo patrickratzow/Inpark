@@ -70,7 +70,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
         }
     }
 
-    public Result<ContentElement, string> ParseContent(string content)
+    public Result<List<IContent>, string> ParseContent(string content)
     {
         try
         {

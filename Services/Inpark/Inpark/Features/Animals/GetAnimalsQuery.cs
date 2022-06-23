@@ -37,20 +37,19 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
                 image,
                 status,
                 x.Id.ToString(),
-                MapToContentElementDto(content!)
+                content!.Select(MapToContentElementDto).ToList()
             );
         });
     
         return animalDtos.ToList();
     }
     
-    private static ContentElementDto MapToContentElementDto(ContentElement content)
+    private static ContentDto MapToContentElementDto(IContent content)
     {
         return new(
-            content.Name,
-            content.Attributes,
-            content.Children.Select(MapToContentElementDto).ToList(),
-            content.InnerText
+            content.Value,
+            content.Type,
+            content.Children.Select(MapToContentElementDto).ToList()
         );
     }
 }

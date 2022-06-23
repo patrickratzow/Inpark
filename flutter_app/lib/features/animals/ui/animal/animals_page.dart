@@ -65,55 +65,58 @@ class AnimalsScreen extends HookWidget implements Screen {
             expandedHeight: height,
             toolbarHeight: height,
             shadowColor: Colors.transparent,
+            backgroundColor: CustomColor.green.lightest,
             floating: true,
-            flexibleSpace: Column(
-              children: [
-                SizedBox(
-                  height: 56,
-                  child: Stack(
-                    children: [
-                      ScreenAppBar(
-                        title: "Vores dyr",
-                        actions: [
-                          if (!isLoading)
-                            IconButton(
-                              onPressed: () {
-                                model.startSearching();
-                              },
-                              icon: const Icon(Icons.search),
-                              color: CustomColor.green.middle,
-                            ),
-                        ],
-                        automaticallyImplyLeading: false,
-                      ),
-                      Container(
-                        child: isLoading
-                            ? null
-                            : AnimatedBuilder(
-                                animation: controller,
-                                builder: (context, child) {
-                                  return SlideTransition(
-                                    position: animation,
-                                    child: const SearchAppBar(),
-                                  );
+            flexibleSpace: SafeArea(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 56,
+                    child: Stack(
+                      children: [
+                        ScreenAppBar(
+                          title: "Vores dyr",
+                          actions: [
+                            if (!isLoading)
+                              IconButton(
+                                onPressed: () {
+                                  model.startSearching();
                                 },
+                                icon: const Icon(Icons.search),
+                                color: CustomColor.green.middle,
                               ),
-                      ),
-                    ],
+                          ],
+                          automaticallyImplyLeading: false,
+                        ),
+                        Container(
+                          child: isLoading
+                              ? null
+                              : AnimatedBuilder(
+                                  animation: controller,
+                                  builder: (context, child) {
+                                    return SlideTransition(
+                                      position: animation,
+                                      child: const SearchAppBar(),
+                                    );
+                                  },
+                                ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Flexible(
-                  child: Container(
-                    color: CustomColor.green.lightest,
-                    child: isLoading
-                        ? null
-                        : const Padding(
-                            padding: EdgeInsets.only(bottom: 16),
-                            child: AnimalsCategories(),
-                          ),
+                  Flexible(
+                    child: Container(
+                      color: CustomColor.green.lightest,
+                      child: isLoading
+                          ? null
+                          : const Padding(
+                              padding: EdgeInsets.only(bottom: 16),
+                              child: AnimalsCategories(),
+                            ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           const _AnimalsOverviewList()
