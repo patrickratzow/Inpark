@@ -10,16 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalMapper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/packages/zooinator_content_rendering/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/packages/zooinator_content_rendering/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/packages/zooinator_content_rendering/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/packages/zooinator_content_rendering/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/packages/zooinator_content_rendering/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/packages/zooinator_content_rendering/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/navigation/navigation_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/navigation/navigation_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/test/features/animals/animals_model_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/test/features/animals/animals_model_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +204,7 @@
       <workItem from="1653652685075" duration="3035000" />
       <workItem from="1655001988434" duration="2252000" />
       <workItem from="1655191956099" duration="9115000" />
-      <workItem from="1656012820637" duration="504000" />
+      <workItem from="1656012820637" duration="666000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>

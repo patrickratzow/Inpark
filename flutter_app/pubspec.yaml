@@ -57,7 +57,6 @@ dependencies:
   photo_view: ^0.13.0
   zooinator_content_rendering:
     path: ./packages/zooinator_content_rendering
-  shared_preferences: ^2.0.15
 
 dev_dependencies:
   build_runner: ^2.1.7

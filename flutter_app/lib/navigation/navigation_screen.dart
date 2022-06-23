@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
@@ -76,7 +78,7 @@ class NavigationScreen extends HookWidget {
           bottom: false,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
-            height: navigator.showNavbar ? 96 : 0,
+            height: navigator.showNavbar ? (Platform.isIOS ? 96 : 56) : 0,
             child: NavigationBarTheme(
               data: NavigationBarThemeData(
                 labelTextStyle: MaterialStateProperty.all(
