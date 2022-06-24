@@ -1,4 +1,4 @@
-import "../lib/expressions/tokenizer.dart";
+import "tokenizer.dart";
 
 class Lexer {
   Iterable<Token> lex(String input) sync* {
