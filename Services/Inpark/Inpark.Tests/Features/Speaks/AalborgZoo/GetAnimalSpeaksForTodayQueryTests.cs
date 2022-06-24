@@ -219,7 +219,6 @@ public class GetAnimalSpeaksForTodayQueryTests : TestBase
                 {
                     CreateSpeakTime(start, end, days)
                 });
-
     }
     
     private static SpeakTime CreateSpeakTime(DateTime start, DateTime end, WeekDay days = AllDays)

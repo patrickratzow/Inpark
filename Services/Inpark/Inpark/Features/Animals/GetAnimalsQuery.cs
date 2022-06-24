@@ -22,6 +22,7 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
     public async Task<OneOf<List<AnimalDto>>> Handle(GetAnimalsQuery request, CancellationToken cancellationToken)
     {
         var animals = await _context.Animals
+            .Include(x => x.Areas)
             .OrderBy(x => x.Name.Name)
             .ToListAsync(cancellationToken);
         var animalDtos = animals.Select(x => {
@@ -37,7 +38,8 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
                 image,
                 status,
                 x.Id.ToString(),
-                content!.Select(MapToContentElementDto).ToList()
+                content!.Select(MapToContentElementDto).ToList(),
+                x.Areas.Count != 0
             );
         });
     
@@ -69,7 +71,6 @@ public partial class GetAnimalsController : ZooController
     /// Get all animals in the park.
     /// </summary>
     [HttpGet("animals")]
-    [ResponseCache(Duration = 43200)]
     public async partial Task<ActionResult> GetAnimals(CancellationToken cancellationToken)
     {
         var command = new GetAnimalsQuery();
