@@ -28,7 +28,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   async:
     dependency: transitive
     description:
@@ -411,7 +411,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.6"
+    version: "2.2.0+1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -743,7 +743,7 @@ packages:
       name: petitparser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.4.0"
+    version: "5.0.0"
   photo_view:
     dependency: "direct main"
     description:
@@ -1086,26 +1086,19 @@ packages:
     source: hosted
     version: "0.2.0+1"
   xml:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: xml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.3.1"
+    version: "5.4.1"
   yaml:
     dependency: transitive
     description:
       name: yaml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.0"
-  zooinator_content_rendering:
-    dependency: "direct main"
-    description:
-      path: "packages/zooinator_content_rendering"
-      relative: true
-    source: path
-    version: "0.0.1"
+    version: "3.1.1"
 sdks:
   dart: ">=2.17.0 <3.0.0"
   flutter: ">=2.10.0"

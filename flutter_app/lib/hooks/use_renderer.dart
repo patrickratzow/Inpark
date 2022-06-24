@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_use/flutter_use.dart";
-import "package:zooinator_content_rendering/content_renderer.dart";
-import "package:zooinator_content_rendering/parser/parser.dart";
+
+import "../sdui/content_renderer.dart";
+import "../sdui/parser/parser.dart";
 
 RenderResult useRenderer<T extends HasContent>(T model) {
   final context = useContext();

@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/navigation_bar.dart";
-import "package:zooinator_content_rendering/elements/node_element.dart";
-import "package:zooinator_content_rendering/transformers/transformer.dart";
+
+import "../sdui/elements/node_element.dart";
+import "../sdui/transformers/transformer.dart";
 
 class NavbarTransformer extends Transformer {
   @override

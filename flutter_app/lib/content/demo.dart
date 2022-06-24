@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import "package:zooinator_content_rendering/content_renderer.dart";
-import "package:zooinator_content_rendering/parser/parser.dart";
 
 import "../common/screen.dart";
+import '../sdui/content_renderer.dart';
+import '../sdui/parser/parser.dart';
 
 class SDUIScreen extends StatelessWidget implements Screen {
   final String input;
