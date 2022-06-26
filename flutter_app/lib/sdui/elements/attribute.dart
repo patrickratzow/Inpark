@@ -24,4 +24,7 @@ class Attribute {
 
   @override
   int get hashCode => value.hashCode;
+
+  double toDouble({double? fallback}) =>
+      double.tryParse(value) ?? (fallback ?? 0);
 }

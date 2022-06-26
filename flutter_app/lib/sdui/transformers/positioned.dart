@@ -19,14 +19,12 @@ class PositionedTransformer extends Transformer {
       );
     }
 
-    final left = double.tryParse(element.getAttribute("left")?.value ?? "0");
-    final top = double.tryParse(element.getAttribute("top")?.value ?? "0");
-    final right = double.tryParse(element.getAttribute("right")?.value ?? "0");
-    final bottom =
-        double.tryParse(element.getAttribute("bottom")?.value ?? "0");
-    final width = double.tryParse(element.getAttribute("width")?.value ?? "0");
-    final height =
-        double.tryParse(element.getAttribute("height")?.value ?? "0");
+    final left = element.getAttribute("left")?.toDouble();
+    final top = element.getAttribute("top")?.toDouble();
+    final right = element.getAttribute("right")?.toDouble();
+    final bottom = element.getAttribute("bottom")?.toDouble();
+    final width = element.getAttribute("width")?.toDouble();
+    final height = element.getAttribute("height")?.toDouble();
 
     return Positioned(
       left: left,
