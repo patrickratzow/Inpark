@@ -1,6 +1,8 @@
 import "dart:io";
 
 import "package:flutter/foundation.dart" show kDebugMode;
+import "package:flutter_app/sdui/screen.dart";
+import "package:flutter_app/sdui/transformers/button.dart";
 import "package:get_it/get_it.dart";
 
 import "../features/animals/ioc.dart";
@@ -24,6 +26,10 @@ void setupIoC() {
     baseUrl = "https://app-zoo-dev.azurewebsites.net";
   }
   locator.registerSingleton<Zooinator>(Zooinator.create(baseUrl: baseUrl));
+
+  // SDUI
+  locator.registerLazySingleton<ActionService>(() => ActionService());
+  locator.registerLazySingleton<ScreenManager>(() => ScreenManager());
 
   setupAnimalsIoC(locator);
 

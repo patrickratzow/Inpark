@@ -113,18 +113,7 @@ class SettingsScreen extends HookWidget implements Screen {
             onPressed: () => {
               navigator.push(
                 context,
-                const SDUIScreen(
-                  input: """
-                    <Scaffold>
-                      <AppBar title="Bevaringsstatus demo" />
-                      <Body>
-                        <Container width="max" height="max">
-                          <ConservationStatus status="cr" />
-                        </Container>
-                      </Body>
-                    </Scaffold>
-                  """,
-                ),
+                const SDUIScreen(),
                 hide: true,
               )
             },
@@ -144,35 +133,7 @@ class SettingsScreen extends HookWidget implements Screen {
             onPressed: () => {
               navigator.push(
                 context,
-                const SDUIScreen(
-                  input: """
-                    <Scaffold>
-                      <AppBar title="Navbar demo" />
-                      <Body>  
-                        <Navbar>
-                          <Navtab text="Hello" icon="menu">
-                            <Padding all="8">
-                              <Column>
-                                <ConservationStatus status="cr" />
-
-                                <Text lang="en">Hello World</Text>
-                                <Text lang="da">Hej Verden</Text>
-                                <Container>
-                                  <Text size="32">Ekstra</Text>
-                                </Container>
-                              </Column>
-                            </Padding>
-                          </Navtab>
-                          <Navtab text="Foo" icon="menu">
-                            <Padding all="8">
-                              <Text size="64" weight="bold">FOOBAR</Text>
-                            </Padding>
-                          </Navtab>
-                        </Navbar>
-                      </Body>
-                    </Scaffold>
-                  """,
-                ),
+                const SDUIScreen(),
                 hide: true,
               )
             },

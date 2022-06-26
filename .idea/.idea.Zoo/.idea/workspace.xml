@@ -12,6 +12,7 @@
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +200,7 @@
       <workItem from="1655001988434" duration="2252000" />
       <workItem from="1655191956099" duration="9115000" />
       <workItem from="1656012820637" duration="504000" />
-      <workItem from="1656014663984" duration="1572000" />
+      <workItem from="1656014663984" duration="2331000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>

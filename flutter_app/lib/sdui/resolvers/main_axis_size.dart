@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../elements/attribute.dart';
-import 'attribute_resolver.dart';
+import "../elements/attribute.dart";
+import "attribute_resolver.dart";
 
 class MainAxisSizeResolver extends AttributeResolver<MainAxisSize> {
   @override
-  bool shouldResolve(Attribute attribute) => attribute.name == "mainAxisSize";
+  bool shouldResolve(Attribute attribute) => attribute.name == "main-axis-size";
 
   @override
   resolve(Attribute attribute, BuildContext context) {

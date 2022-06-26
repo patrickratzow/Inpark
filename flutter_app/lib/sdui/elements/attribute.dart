@@ -1,8 +1,23 @@
+import "../transformers/transformer.dart";
+
 class Attribute {
   final String name;
-  final String value;
+  final String _value;
 
-  const Attribute(this.name, this.value);
+  String get value {
+    final regex = RegExp(r"\${{(.*)}}");
+    if (regex.hasMatch(_value)) {
+      final match = regex.firstMatch(_value)!.group(1)!.trim();
+      final variable = Transformer.getVariable(match);
+      if (variable != null) {
+        return variable;
+      }
+    }
+
+    return _value;
+  }
+
+  const Attribute(this.name, this._value);
 
   @override
   bool operator ==(Object other) => other is Attribute && value == other.value;

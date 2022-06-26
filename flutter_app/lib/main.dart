@@ -3,7 +3,6 @@ import "dart:io";
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/content/demo.dart";
-import "package:flutter_app/navigation/navigation_screen.dart";
 import "package:flutter_app/transformers/conservation_status.dart";
 import "package:flutter_app/transformers/pre/hook_transformer.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
@@ -88,7 +87,7 @@ class MyApp extends HookWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: NavigationScreen(),
+        home: SDUIScreen(),
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: const Color(0xffECFCE5),

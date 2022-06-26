@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../elements/node_element.dart';
-import 'transformer.dart';
+import "../elements/node_element.dart";
+import "transformer.dart";
 
 class TextTransformer extends Transformer {
   @override
@@ -13,10 +13,14 @@ class TextTransformer extends Transformer {
     final style = getTextStyle(element, context) ?? const TextStyle();
     final fontSize = getFontSize(element, style);
     final fontWeight = getFontWeight(element, style);
+    final color = getColor(element, style);
+    final height = getHeight(element, style);
 
     return Text(
       value,
       style: style.copyWith(
+        height: height,
+        color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
       ),
@@ -31,11 +35,13 @@ class TextTransformer extends Transformer {
   }
 
   FontWeight? getFontWeight(NodeElement element, TextStyle? style) {
-    final fontWeight = element.getAttribute("weight");
+    final fontWeight = element.getAttribute("weight")?.value;
     if (fontWeight == null) return style?.fontWeight ?? FontWeight.normal;
+    if (fontWeight == "normal") return FontWeight.normal;
+    if (fontWeight == "bold") return FontWeight.bold;
 
     return FontWeight.values.firstWhere(
-      (f) => f.toString() == fontWeight.value,
+      (f) => f.toString() == fontWeight,
       orElse: () => FontWeight.normal,
     );
   }
@@ -67,5 +73,19 @@ class TextTransformer extends Transformer {
       default:
         return null;
     }
+  }
+
+  Color? getColor(NodeElement element, TextStyle? style) {
+    final color = element.getAttribute("color")?.value;
+    if (color == null) return style?.color;
+
+    return Color(int.parse(color.substring(1, 9), radix: 16) + 0x00000000);
+  }
+
+  double? getHeight(NodeElement element, TextStyle? style) {
+    final height = element.getAttribute("height")?.value;
+    if (height == null) return style?.height;
+
+    return double.tryParse(height);
   }
 }

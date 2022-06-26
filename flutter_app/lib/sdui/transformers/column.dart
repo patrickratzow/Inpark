@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../elements/node_element.dart';
-import 'transformer.dart';
+import "../elements/node_element.dart";
+import "transformer.dart";
 
 class ColumnTransformer extends Transformer {
   @override
@@ -10,12 +10,12 @@ class ColumnTransformer extends Transformer {
   @override
   Widget transform(NodeElement element, BuildContext context) {
     final mainAxisAlignment = element.resolveAttribute<MainAxisAlignment>(
-      "mainAxisAlignment",
+      "main-axis-alignment",
       context,
       MainAxisAlignment.start,
     );
     final mainAxisSize = element.resolveAttribute<MainAxisSize>(
-      "mainAxisSize",
+      "main-axis-size",
       context,
       MainAxisSize.max,
     );
