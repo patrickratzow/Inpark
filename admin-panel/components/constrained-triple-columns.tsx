@@ -9,6 +9,9 @@ interface Props {
 export default function ConstrainedTripleColumns({ left, middle, right }: Props) {
   return (
     <>
+    {
+      //This needs to not fill as much
+    }
       <div className="flex-grow w-full max-w-full h-full mx-auto lg:flex">
         {/* Left sidebar & main wrapper */}
         <div className="flex-1 min-w-0 bg-white xl:flex">

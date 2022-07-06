@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { AnimalsApi, Configuration, SetAnimalAreaRequest, ZooInparkContractsAnimalAreaDto } from "../../out"
 import useStore from "../../stores/map-store"
@@ -11,6 +12,8 @@ export default function MapActionBar() {
   const clearPoints = useStore(state => state.clearPoints)
   const clearPreviousPoint = useStore(state => state.clearPreviousPoint)
   const [animalName, setAnimalName] = useState("")
+  const router = useRouter();
+  const {animal} = router.query;
 
   //Export should send the exported points list to the API.
   async function saveMap(): Promise<void> {
@@ -43,7 +46,7 @@ export default function MapActionBar() {
 
   return (
     <div className={`flex flex-row space-x-4 p-4 bg-green-600`}>
-      <Button onClick={() => {}}>&lt; Tilbage</Button>
+      <Button onClick={() => {router.back()}}>&lt; Tilbage</Button>
       <Button onClick={saveMap}>Export</Button>
       <div>
         <input

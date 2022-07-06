@@ -77,12 +77,14 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/78d9ff5d6fa04ed28b13897863ee358618c00/65/3ab7ed8e/OneOf`8.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/26259b0a3c4b474b9f081864810b4654ba00/82/1f374e93/IRequestHandler`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -109,7 +111,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
@@ -201,7 +203,30 @@
       <workItem from="1652478568447" duration="1534000" />
       <workItem from="1652764055652" duration="1302000" />
       <workItem from="1652831419269" duration="2214000" />
-      <workItem from="1653287471327" duration="2439000" />
+      <workItem from="1653287471327" duration="4262000" />
+      <workItem from="1653373856632" duration="1259000" />
+      <workItem from="1653460109262" duration="1188000" />
+      <workItem from="1653639178151" duration="4240000" />
+      <workItem from="1653897133587" duration="2182000" />
+      <workItem from="1653983867130" duration="1022000" />
+      <workItem from="1654067578679" duration="1335000" />
+      <workItem from="1654689262694" duration="2265000" />
+      <workItem from="1654757073141" duration="7847000" />
+      <workItem from="1655145446583" duration="2662000" />
+      <workItem from="1655190292271" duration="8899000" />
+      <workItem from="1655276334289" duration="1372000" />
+      <workItem from="1655363368574" duration="613000" />
+      <workItem from="1655474844371" duration="1785000" />
+      <workItem from="1655713359897" duration="2672000" />
+      <workItem from="1656009908180" duration="166000" />
+      <workItem from="1656014972332" duration="1914000" />
+      <workItem from="1656336261502" duration="5984000" />
+      <workItem from="1656415998532" duration="3456000" />
+      <workItem from="1656509384478" duration="1480000" />
+      <workItem from="1656601735086" duration="1738000" />
+      <workItem from="1656862815205" duration="601000" />
+      <workItem from="1656930514915" duration="4322000" />
+      <workItem from="1657027681365" duration="1247000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>

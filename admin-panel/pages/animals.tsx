@@ -14,22 +14,22 @@ export default function Animals({ animals }: Props) {
   //List of animals, with
   return (
     <>
-      <div>
-        <p>Det her viser alle dyrene i parken!</p>
+      <div className="min-h-screen pl-8">
+        <p className="text-center pt-4">Det her viser alle dyrene i parken!</p>
         <ul>
           {animals.map(animal => (
             //We also want the route to be with the animal?
             //Or just a store saving the clicked animal?
-            <Link href={"/map"}>            
+            <li className="pb-4">
+            <Link href={`/animal/${animal.name}`}>            
             <Button
               onClick={() => {
-                console.log(animal.name);
               }}
             >
               <li key={animal.name}>{animal.name}</li>
             </Button>
             </Link>
-
+            </li>
           ))}
         </ul>
       </div>

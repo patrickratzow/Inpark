@@ -113,4 +113,4 @@ public class AnimalConfiguration : IEntityTypeConfiguration<Animal>
             b.WithOwner().HasForeignKey("AnimalId");
         });
     }
-} 
+}
