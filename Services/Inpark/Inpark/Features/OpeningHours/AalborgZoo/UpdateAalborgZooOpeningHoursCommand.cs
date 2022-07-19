@@ -42,7 +42,7 @@ public class UpdateAalborgZooOpeningHoursCommandHandler : IRequestHandler<Update
 
                 return Unit.Value;
             }
-            var openingHoursResponse = _mapper.Parse(rangeData!);
+            var openingHoursResponse = await _mapper.Parse(rangeData!);
             if (!openingHoursResponse.IsSuccess(out var openingHours))
             {
                 _logger.LogError("Failed to complete AalborgZooOpeningHoursJob because the Zoo API response couldn't be decoded properly");

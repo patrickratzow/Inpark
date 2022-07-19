@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zoo.Inpark;
 
@@ -11,9 +12,10 @@ using Zoo.Inpark;
 namespace Zoo.Inpark.Migrations
 {
     [DbContext(typeof(InparkDbContext))]
-    partial class InparkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220716163752_AddedFieldsToOpeningHours")]
+    partial class AddedFieldsToOpeningHours
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,35 +52,6 @@ namespace Zoo.Inpark.Migrations
                     b.ToTable("Animals");
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.HourRange", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasMaxLength(6)
-                        .HasColumnType("nchar(6)")
-                        .IsFixedLength();
-
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTime>("End")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Start")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTimeOffset>("UpdatedAt")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HourRanges");
-                });
-
             modelBuilder.Entity("Zoo.Inpark.Entities.OpeningHour", b =>
                 {
                     b.Property<Guid>("Id")
@@ -90,6 +63,10 @@ namespace Zoo.Inpark.Migrations
 
                     b.Property<int>("Days")
                         .HasColumnType("int");
+
+                    b.Property<string>("Fields")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -1,4 +1,5 @@
-import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:flutter/widgets.dart";
 import "package:intl/intl.dart";
 
 part "opening_hour_calendar_event.dart";
@@ -10,6 +11,7 @@ abstract class CalendarEvent {
   DateTime get start;
   DateTime? get end;
   bool get open;
+  Color? get color;
 
   const CalendarEvent();
 }

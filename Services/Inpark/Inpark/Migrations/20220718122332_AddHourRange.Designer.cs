@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zoo.Inpark;
 
@@ -11,9 +12,10 @@ using Zoo.Inpark;
 namespace Zoo.Inpark.Migrations
 {
     [DbContext(typeof(InparkDbContext))]
-    partial class InparkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220718122332_AddHourRange")]
+    partial class AddHourRange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,10 +68,10 @@ namespace Zoo.Inpark.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<DateTime>("End")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<DateTime>("Start")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("datetimeoffset");

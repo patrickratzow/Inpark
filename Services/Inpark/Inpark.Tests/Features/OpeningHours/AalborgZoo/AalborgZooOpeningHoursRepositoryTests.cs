@@ -27,7 +27,8 @@ public class AalborgZooOpeningHoursRepositoryTests
             BaseAddress = new("https://api.aalborgzoo.dk/api/")
         };
         var logger = new Mock<ILogger<AalborgZooOpeningHoursRepository>>();
-        _repository = new(httpClient, logger.Object);
+        var context = new Mock<InparkDbContext>();
+        _repository = new(httpClient, logger.Object, context.Object);
     }
 
     [Test]

@@ -85,15 +85,13 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
         var end = start.AddDays(7);
         var range = TimeRange.From(start, end);
         await AddOpeningHour(range, WeekDay.Saturday | WeekDay.Sunday);
-        var context = GetRequiredService<InparkDbContext>();
         var clockMock = new Mock<IClock>();
         clockMock.Setup(x => x.Today)
             .Returns(new DateTime(2022, 04, 15));
         var query = new GetOpeningHoursForTodayQuery();
-        var handler = new GetOpeningHoursForTodayQueryHandler(context, clockMock.Object);
         
         // Act
-        var response = await handler.Handle(query, CancellationToken.None);
+        var response = await Send(query, clockMock);
         
         // Assert
         response.Value.Should().BeOfType<List<OpeningHourDto>>();
@@ -118,14 +116,12 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
         await AddOpeningHour(monthRange);
         await AddOpeningHour(weekRange);
         
-        var context = GetRequiredService<InparkDbContext>();
         var clockMock = new Mock<IClock>();
         clockMock.Setup(x => x.Today).Returns(today);
         var query = new GetOpeningHoursForTodayQuery();
-        var handler = new GetOpeningHoursForTodayQueryHandler(context, clockMock.Object);
         
         // Act
-        var response = await handler.Handle(query, CancellationToken.None);
+        var response = await Send(query, clockMock);
         
         // Assert
         response.Value.Should().BeOfType<List<OpeningHourDto>>();
@@ -148,13 +144,13 @@ public class GetOpeningHoursForTodayQueryTests : TestBase
         clockMock.Setup(x => x.Today)
             .Returns(today);
         var range = TimeRange.From(new(2021, 06, 18), today);
+        
         await AddOpeningHour(range);
-        var context = GetRequiredService<InparkDbContext>();
+        
         var query = new GetOpeningHoursForTodayQuery();
-        var handler = new GetOpeningHoursForTodayQueryHandler(context, clockMock.Object);
         
         // Act
-        var response = await handler.Handle(query, CancellationToken.None);
+        var response = await Send(query, clockMock);
         
         // Assert
         response.Value.Should().BeOfType<List<OpeningHourDto>>();

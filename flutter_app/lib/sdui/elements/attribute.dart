@@ -27,4 +27,9 @@ class Attribute {
 
   double toDouble({double? fallback}) =>
       double.tryParse(value) ?? (fallback ?? 0);
+
+  @override
+  String toString() {
+    return "$name=\"$_value\"";
+  }
 }

@@ -32,7 +32,7 @@ class CalendarEventRow extends HookWidget {
           textAlign: TextAlign.left,
           style: theme.textTheme.bodyLarge?.copyWith(
             fontWeight: FontWeight.w500,
-            color: titleColor,
+            color: event.color ?? titleColor,
           ),
         ),
         const SizedBox(height: 6),

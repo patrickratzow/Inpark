@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/sdui/screen.dart";
-import "package:flutter_app/sdui/transformers/component.dart";
 
 import "../common/ioc.dart";
 import "../common/screen.dart";
@@ -30,75 +29,6 @@ class SDUIScreen extends StatelessWidget implements Screen {
 </Scaffold>
 """,
     );
-    ComponentTransformer.registerComponent(
-      "AnimalCard",
-      """
-<AspectRatio ratio="2.4676">
-  <Card border-radius="circular(6)" clip="antiAlias">
-    <Stack>
-      <Positioned fill="true">
-        <Image
-          fit="cover"
-          src="\${{ src }}"
-          blend-mode="darken"
-        />
-      </Positioned> 
-      <Positioned fill="true">
-        <Row>
-          <Expanded>
-            <Container>
-              <Decoration>
-                <LinearGradient begin="topCenter" end="bottomCenter">
-                  <Color>#87000000</Color>
-                  <Color>#00000000</Color>
-                </LinearGradient>
-              </Decoration>
-            </Container>
-          </Expanded>
-        </Row>
-      </Positioned>
-      <Positioned fill="true">
-        <Padding all="8">
-          <Column main-axis-alignment="spaceBetween" main-axis-size="max">
-            <Column>
-              <Align alignment="centerLeft">
-                <Text 
-                  color="#ffffffff" 
-                  style="headlineMedium" 
-                  weight="bold"
-                >
-                  \${{ title }}
-                </Text>
-              </Align>
-              <Align alignment="centerLeft">
-                <Text 
-                  color="#ffffffff" 
-                  style="bodyMedium" 
-                  weight="w500"
-                  height="1.5"
-                >
-                  \${{ subTitle }}
-                </Text>
-              </Align>
-            </Column>
-            <Row>
-              <Container padding="6,4,6,4">
-                <Decoration border-radius="circular(4)">
-                  <Color>#FFECFCE5</Color>
-                </Decoration>
-                <Text style="bodyLarge" color="#FF198155" size="8" height="0.9375">
-                  \${{ category }}
-                </Text>
-              </Container>
-            </Row>
-          </Column>
-        </Padding>
-      </Positioned>
-    </Stack>
-  </Card>
-</AspectRatio>
-""",
-    );
     const input = """
 <Scaffold>
   <AppBar
@@ -108,12 +38,15 @@ class SDUIScreen extends StatelessWidget implements Screen {
   <Body>
     <Container margin="10,10,10,10">
       <Column>
-        <AnimalCard 
-          :title= "Afrikansk dværgged"
-          :subTitle= "Capra aegagrus hircus"
-          :category="Pattedyr"
-          :src="https://cms.aalborgzoo.dk/media/cwulavws/dv%C3%A6rgged700x350.jpg"
-        />
+<Button action="navigateToScreen">
+  <ActionData><![CDATA[{"routeName":"animal_screen","name":{"displayName":"Hello","latinName":"World"},"category":"Pattedyr","image":{"previewUrl":"https://cms.aalborgzoo.dk/media/cwulavws/dv%C3%A6rgged700x350.jpg","fullscreenUrl":"https://cms.aalborgzoo.dk/media/cwulavws/dv%C3%A6rgged700x350.jpg"},"status":1,"id":"hey","contents":[{"type":"spacer","value":"","children":[]},{"type":"spacer","value":"","children":[]}],"hasMap":false}]]></ActionData>
+  <AnimalCard 
+    :title= "Afrikansk dværgged"
+    :subTitle= "Capra aegagrus hircus"
+    :category="Pattedyr"
+    :src="https://cms.aalborgzoo.dk/media/cwulavws/dv%C3%A6rgged700x350.jpg"
+  />
+</Button>
         <Container height="8" />
         <AnimalCard 
           :title= "Afrikansk elefant"

@@ -22,6 +22,25 @@ class NodeElement {
     return _innerText;
   }
 
+  @override
+  String toString() {
+    final buffer = new StringBuffer();
+    buffer.write("<$name");
+    for (final attribute in attributes) {
+      buffer.write(" ");
+      buffer.write(attribute.toString());
+    }
+    buffer.write(">");
+    buffer.write("\n");
+    for (final child in children) {
+      buffer.write(child.toString());
+    }
+    buffer.write("\n");
+    buffer.write("</$name>");
+
+    return buffer.toString();
+  }
+
   NodeElement? _parent;
   NodeElement? get parent => _parent;
   set parent(NodeElement? value) {

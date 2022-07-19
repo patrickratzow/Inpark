@@ -10,9 +10,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/IVersionService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/Version.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionNotSupportedException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersioningDependencyInjection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersioningPipeline.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Entities/HourRange.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AddHourColorCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Errors/TimeRangeAlreadyHasAColor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Models/OpeningHourFields.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220716163752_AddedFieldsToOpeningHours.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220716163752_AddedFieldsToOpeningHours.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220718122332_AddHourRange.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220718122332_AddHourRange.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220718124306_UseDateTimeForHourRange.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220718124306_UseDateTimeForHourRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/DomainFixture/EntityTestSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/DomainFixture/EntityTestSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/OpeningHourDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/OpeningHourDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/OpeningHourConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/OpeningHourConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapperTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapperTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepositoryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Entities/OpeningHour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Entities/OpeningHour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/UpdateAalborgZooOpeningHoursCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/UpdateAalborgZooOpeningHoursCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Interfaces/IOpeningHoursMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Interfaces/IOpeningHoursMapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Interfaces/IOpeningHoursRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Interfaces/IOpeningHoursRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/content/demo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/content/demo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/calendar_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/calendar_event.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/calendar_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/calendar_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/opening_hour_calendar_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/opening_hour_calendar_event.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/repository/calendar_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/repository/calendar_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_day.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_event_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_event_row.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_events.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_events.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_month.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/hooks/use_renderer.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/navigate_to_screen_action.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/navigate_to_screen_action.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/elements/attribute.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/elements/attribute.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/elements/node_element.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/elements/node_element.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/button.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +99,22 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ce4559e539d836695dd1cd2d81ab47b4515368c31d700e080d32cdb89e014/TimeOnlyTypeMapping.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/103ae790d238a01f8e6bada7e931fafa62b15caa2479045d77ec4f32e1d029/ISender.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/26259b0a3c4b474b9f081864810b4654ba00/2d/fa2575fb/RequestHandlerDelegate`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/88aad2351da4ddcda3141cb930c2903b7097652495f55dc23a07d738dcfd2f7/IRequestPreProcessor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,19 +132,16 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations.ps1" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/ValueObjectTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -98,6 +161,7 @@
   <component name="PropertiesComponent">
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.4742647" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -201,6 +265,13 @@
       <workItem from="1655191956099" duration="9115000" />
       <workItem from="1656012820637" duration="504000" />
       <workItem from="1656014663984" duration="2331000" />
+      <workItem from="1656353010735" duration="675000" />
+      <workItem from="1656412687630" duration="1940000" />
+      <workItem from="1657546721855" duration="3446000" />
+      <workItem from="1657743739563" duration="479000" />
+      <workItem from="1657744242765" duration="1878000" />
+      <workItem from="1657884510489" duration="13632000" />
+      <workItem from="1658135871757" duration="14931000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -380,6 +451,32 @@
           <line>52</line>
           <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\DomainFixture\FixtureBuilder\FixtureWithConfiguration.cs" initialLine="45" containingFunctionPresentation="method 'Apply'" />
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepository.cs</url>
+          <line>119</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark\Features\OpeningHours\AalborgZoo\AalborgZooOpeningHoursRepository.cs" initialLine="119" containingFunctionPresentation="method 'AddColors'">
+            <startOffsets>
+              <option value="4057" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4142" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Common/DomainFixture/EntityTestSource.cs</url>
+          <line>145</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\DomainFixture\EntityTestSource.cs" initialLine="109" containingFunctionPresentation="method 'MakeEntityValid'">
+            <startOffsets>
+              <option value="5553" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5642" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

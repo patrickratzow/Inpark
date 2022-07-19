@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DomainFixture;
 using Zoo.Inpark.Entities;
 using Zoo.Inpark.Enums;
@@ -23,5 +24,8 @@ public class OpeningHourConfiguration : FixtureConfiguration<OpeningHour>
                 WeekDay.Saturday, 
                 WeekDay.Sunday
             );
+
+        Property(x => x.Fields)
+            .Valid(new Dictionary<string, string>());
     }
 }

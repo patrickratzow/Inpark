@@ -1,4 +1,7 @@
-import "package:flutter/material.dart" show BuildContext, TextButton, Widget;
+import "dart:convert";
+
+import "package:flutter/material.dart"
+    show BuildContext, EdgeInsets, TextButton, Widget;
 import "package:flutter_app/extensions/string.dart";
 
 import "../../common/ioc.dart";
@@ -13,12 +16,21 @@ class ActionService {
   };
 
   Function()? getAction(BuildContext context, String name, dynamic data) {
+    final parsedData = parseData(data);
     final action = _actions.firstWhere(
       (action) => action.shouldRun(name),
       orElse: () => throw Exception("No action found for $name"),
     );
 
-    return () => action.run(context, data);
+    return () => action.run(context, parsedData);
+  }
+
+  dynamic parseData(dynamic data) {
+    try {
+      return jsonDecode(data);
+    } on FormatException {
+      return data;
+    }
   }
 }
 
@@ -29,11 +41,21 @@ class ButtonTransformer extends Transformer {
 
   @override
   Widget transform(NodeElement element, BuildContext context) {
+    final children =
+        element.children.where((child) => child.name != "ActionData").toList();
     final onPressed = getOnPressed(element, context) ?? () => {};
+    final padding = element.resolveAttribute<EdgeInsets?>(
+      "padding",
+      context,
+      null,
+    );
 
     return TextButton(
       onPressed: onPressed,
-      child: Transformer.transformOne(element.children.first, context)!,
+      style: TextButton.styleFrom(
+        padding: padding,
+      ),
+      child: Transformer.transformOne(children.first, context)!,
     );
   }
 
@@ -42,7 +64,11 @@ class ButtonTransformer extends Transformer {
     final action = element.getAttribute("action")?.value;
     if (action == null)
       throw Exception("Button element must have an action attribute");
-    final actionData = element.getAttribute("action-data")?.value;
+    dynamic actionData = element.getAttribute("action-data")?.value;
+    if (actionData == null) {
+      var actionDataNode = element.findFirst("ActionData");
+      actionData = actionDataNode?.innerText;
+    }
 
     return actionService.getAction(context, action, actionData);
   }

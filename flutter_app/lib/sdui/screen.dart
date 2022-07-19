@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/sdui/transformers/transformer.dart";
 
+import "../features/animals/ui/animal/animal_screen.dart";
+import "../generated_code/zooinator.models.swagger.dart";
 import "parser/parser.dart";
 
 class ScreenWrapper extends StatelessWidget implements Screen {
@@ -31,7 +33,15 @@ class ScreenManager {
     _screens[name.toLowerCase()] = builder;
   }
 
-  Screen Function(BuildContext context)? getScreen(String name) {
+  Screen Function(BuildContext context)? getScreen(String name, dynamic data) {
+    if (name == "animal_screen") {
+      final animalDto = AnimalDto.fromJson(data);
+
+      return (BuildContext context) {
+        return AnimalScreen(animal: animalDto);
+      };
+    }
+
     return _screens[name.toLowerCase()];
   }
 }

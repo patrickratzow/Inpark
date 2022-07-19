@@ -43,9 +43,9 @@ public class GetParkEventsQueryQueryHandler :
 
             var parkEventDescription = new List<IContent>();
             var parkEventProgram = new List<IContent>();
-
+            
             //Seperation of the description of and event and the program
-            for (int i = 0; i < content.Count(); i++)
+            for (var i = 0; i < content!.Count; i++)
             {
                 if (content[i].Value.ToString() != "Program")
                     parkEventDescription.Add(content[i]);

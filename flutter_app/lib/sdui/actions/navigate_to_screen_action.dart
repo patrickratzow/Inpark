@@ -15,9 +15,10 @@ class NavigateToScreenAction extends Action {
   void run(BuildContext context, input) {
     final screenManager = locator.get<ScreenManager>();
     final navigator = useNavigator(context: context);
-    final routeName = input is String ? input : input["routeName"];
-    final routeBuilder = screenManager.getScreen(routeName);
-    final hide = !(input is String) ? (input["hide"] as bool) : false;
+    final routeName = input is String ? input : input?["routeName"];
+    final routeBuilder = screenManager.getScreen(routeName, input);
+    final hide =
+        !(input is String) ? ((input?["hide"] ?? false) as bool) : false;
 
     if (routeBuilder == null)
       throw Exception("Unable to found route $routeName");
