@@ -9,17 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/tickets/ui/ticket_view.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/tickets/ui/web_view_appbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/navigation_link.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,54 +31,60 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Enums/WeekDay.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/ValueObjectTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6dd43c7bdc3d88f06457829633b93d61f4a6d2ed708ae62df66f5c3c4041b6/DateOnly.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ClassesToGenerate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/AnimalName.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/MethodInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations.ps1" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/30c251e6c91e9e9c78c5afeb63e341e13b6dc2153c8e965dd9c8f5acea519332/LateBoundTestFramework.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b780d9ef634df8733117ee737a8a38a2bb7da585e06e1f7e51cef6eb34211d6c/Mock`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations.ps1" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea95343b9387b73062a9b61b7538f826c54ce3529632b4472ba4494044d23/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1e8feaadf5c3fa14d36ea2a638c432a2e1a47b7837d8b83d88303c5d9c15cf/AsyncValueTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5330988bfaacf93f15e30f9b3dd6018a768f89da3b38d874fda77299c62164/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/MethodInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ClassesToGenerate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/103ae790d238a01f8e6bada7e931fafa62b15caa2479045d77ec4f32e1d029/ISender.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff44a57136ecb6b1994155a6879d590993390d7b9606c337b761f6d1143da4b/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/538811d0fba15c61b743814ea8b7193d48cfbb84a1a53c5db2512b1b329330/DbSet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/AnimalName.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Enums/WeekDay.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/ValueObjectTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1da7b6c7c71a954fe3eb2531c6476711b3e6d93a8d76795386d326bb9dbc/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -107,12 +103,13 @@
   <component name="PropertiesComponent">
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.49550897" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="RiderCSharpLiveTemplatesSettingsId" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
@@ -197,6 +194,14 @@
       <workItem from="1650727401594" duration="2356000" />
       <workItem from="1650789486886" duration="7804000" />
       <workItem from="1650955092589" duration="2490000" />
+      <workItem from="1651646147776" duration="312000" />
+      <workItem from="1651819461109" duration="467000" />
+      <workItem from="1652164951559" duration="1376000" />
+      <workItem from="1652251042536" duration="3304000" />
+      <workItem from="1652478568447" duration="1534000" />
+      <workItem from="1652764055652" duration="1302000" />
+      <workItem from="1652831419269" duration="2214000" />
+      <workItem from="1653287471327" duration="2439000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -354,16 +359,28 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs</url>
-          <line>108</line>
-          <properties documentPath="C:\Users\Nikol\OneDrive\Dokumenter\GitHub\Zoo\Services\Inpark\Inpark.Tests\Features\Speaks\AalborgZoo\GetAnimalSpeaksForTodayQueryTests.cs" initialLine="108" containingFunctionPresentation="method 'Handle_ShouldNotReturnASpeak_WithoutAnySpeakTimes'" />
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/Common/Common.Api/Pipelines/LoggingPipeline.cs</url>
+          <line>119</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\Common.Api\Pipelines\LoggingPipeline.cs" initialLine="112" containingFunctionPresentation="method 'AddProperty'" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs</url>
-          <line>116</line>
-          <properties documentPath="C:\Users\Nikol\OneDrive\Dokumenter\GitHub\Zoo\Services\Inpark\Inpark.Tests\Features\Speaks\AalborgZoo\GetAnimalSpeaksForTodayQueryTests.cs" initialLine="116" containingFunctionPresentation="method 'Handle_ShouldNotReturnASpeak_WithoutAnySpeakTimes'" />
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/Common/Common.Api/Pipelines/LoggingPipeline.cs</url>
+          <line>129</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\Common.Api\Pipelines\LoggingPipeline.cs" initialLine="122" containingFunctionPresentation="method 'AddProperty'" />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/TestBase.cs</url>
+          <line>64</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark.Tests\TestBase.cs" initialLine="48" containingFunctionPresentation="method 'Send'" />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Common/DomainFixture/FixtureBuilder/FixtureWithConfiguration.cs</url>
+          <line>52</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\DomainFixture\FixtureBuilder\FixtureWithConfiguration.cs" initialLine="45" containingFunctionPresentation="method 'Apply'" />
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

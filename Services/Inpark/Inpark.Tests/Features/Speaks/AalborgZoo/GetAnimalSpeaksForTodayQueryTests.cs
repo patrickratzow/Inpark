@@ -155,23 +155,23 @@ public class GetAnimalSpeaksForTodayQueryTests : TestBase
     [Test]
     public async Task Handle_ShouldReturnSpeaks_WhenTheyStartedInAnotherYear()
     {
-        //Arrange
+        // Arrange
         var today = new DateTime(2022, 04, 20);
-        await Add(SetupSpeakWithOneSpeakTime(
-            today.AddYears(-1).AddMonths(-1).AddDays(5), 
-            today.AddDays(30)
-        ).Create());
-        var context = GetRequiredService<InparkDbContext>();
+        await Add(
+            SetupSpeakWithOneSpeakTime(
+                today.AddYears(-1).AddMonths(-1).AddDays(5), 
+                today.AddDays(30)
+            ).Create()
+        );
         var clockMock = new Mock<IClock>();
         clockMock.Setup(x => x.Now)
             .Returns(today);
-        var handler = new GetAnimalSpeaksForTodayQueryHandler(context, clockMock.Object);
         var query = new GetAnimalSpeaksForTodayQuery();
         
-        //Act
-        var response = await handler.Handle(query, CancellationToken.None);
+        // Act
+        var response = await Send(query, clockMock);
         
-        //Assert
+        // Assert
         response.Value.Should().BeOfType<List<SpeakDto>>();
         var result = response.Value.As<List<SpeakDto>>();
         result.Should().BeEmpty();
@@ -193,15 +193,13 @@ public class GetAnimalSpeaksForTodayQueryTests : TestBase
             );
         await AddRange(speaks);
     
-        var context = GetRequiredService<InparkDbContext>();
         var clockMock = new Mock<IClock>();
         clockMock.Setup(x => x.Now)
             .Returns(today);
-        var handler = new GetAnimalSpeaksForTodayQueryHandler(context, clockMock.Object);
         var query = new GetAnimalSpeaksForTodayQuery();
         
         //Act
-        var response = await handler.Handle(query, CancellationToken.None);
+        var response = await Send(query, clockMock);
         
         //Assert
         response.Value.Should().BeOfType<List<SpeakDto>>();
@@ -221,7 +219,6 @@ public class GetAnimalSpeaksForTodayQueryTests : TestBase
                 {
                     CreateSpeakTime(start, end, days)
                 });
-
     }
     
     private static SpeakTime CreateSpeakTime(DateTime start, DateTime end, WeekDay days = AllDays)

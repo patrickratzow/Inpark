@@ -23,19 +23,14 @@ namespace Zoo.Inpark;
 
 public static class DependencyInjection
 {
-    private static readonly ILoggerFactory EfLoggerFactory = LoggerFactory.Create(builder =>
-    {
-        builder.AddConsole();
-    });
-    
     public static void AddInpark(this IServiceCollection services, IConfiguration configuration)
     {
         var dbConnection = configuration.GetConnectionString("InparkConnection");
         services.AddDbContext<InparkDbContext>(options =>
         {
             options.UseSqlServer(dbConnection);
-            options.UseLoggerFactory(EfLoggerFactory);
         });
+
         services.AddMemoryCache();
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
@@ -46,42 +41,37 @@ public static class DependencyInjection
 
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
         
-        // Aalborg zoo
-        services.AddSingleton<IAnimalRepository>(sp =>
-        {
-            var tenant = sp.GetRequiredService<ITenantManager>().Tenant;
-            if (tenant.AnimalProvider is AnimalProvider.Umbraco)
-            {
-                return new AalborgZooAnimalRepository(
-                    sp.GetRequiredService<HttpClient>(),
-                    sp.GetRequiredService<ILogger<AalborgZooAnimalRepository>>()
-                );
-            }
-
-            throw new NotSupportedException();
-        });
-        services.AddScoped<IAnimalMapper, AalborgZooAnimalMapper>();
-
-        services.AddScoped<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
-        services.AddScoped<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
-
-        services.AddScoped<ISpeaksRepository, AalborgZooSpeaksRepository>();
-        services.AddScoped<ISpeaksMapper, AalborgZooSpeaksMapper>();
-        
+        services.AddScoped<IAnimalRepository, AalborgZooAnimalRepository>();
         services.AddHttpClient<IAnimalRepository, AalborgZooAnimalRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<IAnimalMapper, AalborgZooAnimalMapper>();
+
+        services.AddScoped<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
         services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
+
+        services.AddScoped<ISpeaksRepository, AalborgZooSpeaksRepository>();
         services.AddHttpClient<ISpeaksRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
-        
-        services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
+        services.AddSingleton<ISpeaksMapper, AalborgZooSpeaksMapper>();
+
+        services.AddScoped<IParkEventRepository, AalborgZooParkEventRepository>();
+        services.AddHttpClient<IParkEventRepository, AalborgZooParkEventRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
+        services.AddSingleton<IParkEventMapper, AalborgZooParkEventMapper>();
+
         services.AddResponseMapper();
     }
 
     public static void UseInpark(this IApplicationBuilder app, IWebHostEnvironment env)
     {
+        app.UseCors(options =>
+            options.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+        );
+        
         app.UseResponseMapper();
         
         RunMigrations(app.ApplicationServices);
@@ -96,7 +86,11 @@ public static class DependencyInjection
             // Not having JobStorage setup will cause RecurringJob to fail
             app.ApplicationServices.GetRequiredService<JobStorage>();
         }
-        
+        RecurringJob.AddOrUpdate<AalborgZooParkEventsJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
         RecurringJob.AddOrUpdate<AalborgZooOpeningHoursJob>(
             x => x.Execute(),
             "* 3 * * *", // Every day at 3 AM 

@@ -1,18 +1,23 @@
 import "dart:io";
-import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
-import 'package:flutter_app/common/colors.dart';
-import "package:flutter_app/features/animals/models/animals_model.dart";
+
 import "package:firebase_core/firebase_core.dart";
-import 'package:flutter_app/features/speaks/models/speak_model.dart';
-import 'package:flutter_app/features/front_page/front_page.dart';
-import "package:flutter_app/routes.dart";
+import "package:flutter/material.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
+import "package:google_fonts/google_fonts.dart";
+import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
+
 import "common/ioc.dart";
+import "features/animals/models/animals_model.dart";
+import "features/calendar/models/calendar_model.dart";
 import "features/home/models/home_model.dart";
-import 'features/home/ui/home.dart';
+import "features/park_events/models/event_model.dart";
+import "features/park_map/models/park_map_model.dart";
+import "features/speaks/models/notification_service.dart";
+import "features/speaks/models/speak_model.dart";
 import "firebase_options.dart";
-import "package:flutter_app/features/home/models/home_model.dart";
+import "navigation/navigation_model.dart";
+import "navigation/navigation_screen.dart";
 
 // ...
 
@@ -23,7 +28,10 @@ void main() async {
   );
   HttpOverrides.global = MyHttpOverrides();
 
+  initializeDateFormatting();
   setupIoC();
+
+  await NotificationService().init();
 
   runApp(const MyApp());
 }
@@ -37,7 +45,7 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends HookWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
@@ -51,18 +59,71 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<HomeModel>(
           create: (context) => HomeModel(),
         ),
+        ChangeNotifierProvider<ParkEventModel>(
+          create: (context) => ParkEventModel(),
+        ),
         ChangeNotifierProvider<SpeakModel>(
           create: (context) => SpeakModel(),
+        ),
+        ChangeNotifierProvider<CalendarModel>(
+          create: (context) => CalendarModel(DateTime.now()),
+        ),
+        ChangeNotifierProvider<NavigationModel>(
+          create: (context) => NavigationModel(),
+        ),
+        ChangeNotifierProvider<ParkMapModel>(
+          create: (context) => ParkMapModel(),
         ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Zoo App",
-        initialRoute: "/front-page",
-        onGenerateRoute: Routes.generateRoute,
+        home: const NavigationScreen(),
         theme: ThemeData(
-          fontFamily: "Inter",
+          brightness: Brightness.light,
+          primaryColor: const Color(0xffECFCE5),
           primarySwatch: Colors.green,
+          textTheme: TextTheme(
+            displayLarge: GoogleFonts.poppins(
+              color: Colors.black,
+              fontSize: 48,
+              fontWeight: FontWeight.bold,
+            ),
+            displayMedium: GoogleFonts.poppins(
+              color: Colors.black,
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+            ),
+            displaySmall: GoogleFonts.poppins(
+              color: Colors.black,
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
+            headlineLarge: GoogleFonts.poppins(
+              color: Colors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+            headlineMedium: GoogleFonts.poppins(
+              color: Colors.black,
+              fontSize: 18,
+            ),
+            headlineSmall: GoogleFonts.poppins(
+              color: Colors.black,
+              fontSize: 16,
+            ),
+            bodyLarge: GoogleFonts.poppins(
+              fontSize: 14,
+              color: Colors.black,
+            ),
+            bodyMedium: GoogleFonts.poppins(
+              fontSize: 12,
+              color: Colors.black,
+            ),
+            bodySmall: GoogleFonts.poppins(
+              fontSize: 10,
+              color: Colors.black,
+            ),
+          ),
           scaffoldBackgroundColor: Colors.white,
         ),
       ),

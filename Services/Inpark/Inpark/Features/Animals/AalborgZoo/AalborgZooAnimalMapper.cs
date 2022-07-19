@@ -43,7 +43,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
                     .GetProperty("umbracoFile")
                     .GetProperty("src");
                 var baseUrl = "https://cms.aalborgzoo.dk";
-                var image = AnimalImage.From(
+                var image = ImagePair.From(
                     $"{baseUrl}{previewImage}",
                     $"{baseUrl}{fullscreenImage}"
                 );
@@ -77,7 +77,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
             var root = json.RootElement;
 
             var contents = new List<IContent>();
-            foreach (
+            foreach ( 
                 var animalArrayContent in
                 from itemContentJson in root.EnumerateArray()
                 select itemContentJson.GetProperty("content")
@@ -95,7 +95,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
                     "header" => GetContentValue(animalContent, type, "header"),
                     "image" => GetContentValue(animalContent, type, "image"),
                     _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown animal type")
-                };
+                }; 
                 var parsedContent = TransformContent(contentObject);
                 
                 contents.Add(parsedContent);
@@ -153,7 +153,7 @@ public class AalborgZooAnimalMapper : IAnimalMapper
     private IContent ParseText(IContent content)
     {
         if (content.Value is not string str) throw new InvalidOperationException($"Value must be a string");
-        
+
         var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
         var isHtml = regex.IsMatch(str);
         if (!isHtml) return new Content(str, content.Type);

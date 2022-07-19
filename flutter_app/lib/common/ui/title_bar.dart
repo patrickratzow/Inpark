@@ -1,31 +1,28 @@
 import "package:flutter/material.dart";
+import "../../hooks/hooks.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-class TitleBar extends StatelessWidget {
+class TitleBar extends HookWidget {
   const TitleBar({
-    Key? key,
+    super.key,
     required this.name,
-    required this.fontSize,
-    this.color,
-    this.height,
-  }) : super(key: key);
+    this.textScaleFactor,
+  });
 
   final String name;
-  final double fontSize;
-  final Color? color;
-  final double? height;
+  final double? textScaleFactor;
 
   @override
   Widget build(BuildContext context) {
+    final theme = useTheme();
+
     return Align(
       child: Text(
         name,
+        textScaleFactor: textScaleFactor,
         textAlign: TextAlign.left,
-        style: TextStyle(
-          color: color ?? Colors.black,
-          fontSize: fontSize,
-          height: height ?? 1,
+        style: theme.textTheme.headlineMedium?.copyWith(
           fontWeight: FontWeight.bold,
-          fontFamily: "Poppins",
         ),
       ),
       alignment: Alignment.centerLeft,

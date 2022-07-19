@@ -1,12 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Zoo.Inpark.Entities;
+using Zoo.Inpark.Errors;
 
 namespace Zoo.Inpark.Features.Animals;
-
-public record AnimalNotFound(string Name) : INotFoundError
-{
-    public string ErrorMessage => $"There is no animal with the latin name {Name}";
-}
 
 public record GetAnimalQuery(string LatinName) : IRequest<OneOf<Animal, AnimalNotFound>>;
 
@@ -39,6 +35,7 @@ public class GetAnimalQueryValidator : AbstractValidator<GetAnimalQuery>
 
 [ApiController]
 [MethodGroup(Groups.Animals)]
+[ResponseCache(Duration = 43200)]
 public partial class GetAnimalController : ZooController
 {
     private readonly IMediator _mediator;

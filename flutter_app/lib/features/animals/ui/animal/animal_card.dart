@@ -1,23 +1,28 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-import 'animal_category.dart';
+import "../../../../common/extensions/theme.dart";
+import "../../../../generated_code/zooinator.swagger.dart";
+import "../../../../hooks/hooks.dart";
+import "animal_category.dart";
 
-class AnimalCard extends StatelessWidget {
+class AnimalCard extends HookWidget {
   const AnimalCard({
-    Key? key,
+    super.key,
     required this.animal,
-  }) : super(key: key);
+  });
 
   final AnimalDto animal;
 
   @override
   Widget build(BuildContext context) {
+    final theme = useTheme();
+
     return AspectRatio(
       aspectRatio: 343 / 139,
       child: Card(
-        margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
         ),
@@ -26,7 +31,7 @@ class AnimalCard extends StatelessWidget {
           children: [
             buildImage(),
             buildShadow(),
-            buildTextOverlay(),
+            buildTextOverlay(theme),
           ],
         ),
       ),
@@ -74,7 +79,7 @@ class AnimalCard extends StatelessWidget {
     );
   }
 
-  Widget buildTextOverlay() {
+  Widget buildTextOverlay(ThemeData theme) {
     return Positioned.fill(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -88,11 +93,12 @@ class AnimalCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     animal.name.displayName,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: "Poppins",
+                    style: theme.textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: theme.adjustColor(
+                        light: Colors.white,
+                        dark: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -100,12 +106,13 @@ class AnimalCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     animal.name.latinName,
-                    style: const TextStyle(
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
                       height: 1.5,
-                      fontFamily: "Poppins",
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
+                      color: theme.adjustColor(
+                        light: Colors.white,
+                        dark: Colors.black,
+                      ),
                     ),
                   ),
                 )

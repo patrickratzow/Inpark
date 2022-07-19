@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/common/extensions/iterable.dart';
-import "package:flutter_app/common/ioc.dart";
-import "package:flutter_app/features/home/repositories/home_repository.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "../../../common/extensions/iterable.dart";
+import "../../../common/ioc.dart";
+import "../repositories/home_repository.dart";
+import "../../../generated_code/zooinator.swagger.dart";
 
 class HomeModel extends ChangeNotifier {
   List<OpeningHourDto> _openingHours = List.empty();

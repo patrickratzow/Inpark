@@ -1,20 +1,20 @@
-// ignore_for_file: unused_local_variable
-
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import "package:collection_ext/iterables.dart";
+import "package:flutter/material.dart";
+import "../../hooks/hooks.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
 class ZooinatorNavigationBar extends HookWidget {
   final List<ZooinatorNavigationTab> tabs;
 
   const ZooinatorNavigationBar({
-    Key? key,
+    super.key,
     required this.tabs,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    var selectedIndex = useState(0);
+    final selectedIndex = useState(0);
+    final theme = useTheme();
     const selectedColor = Color(0xffDDF8DA);
     const backgroundColor = Color(0xff698665);
 
@@ -24,10 +24,8 @@ class ZooinatorNavigationBar extends HookWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: tabs.asMap().entries.map(
-              (entry) {
-                final idx = entry.key;
-                final tab = entry.value;
+            children: tabs.mapIndexed(
+              (idx, tab) {
                 final isSelected = selectedIndex.value == idx;
                 final pillColor =
                     isSelected ? backgroundColor : Colors.transparent;
@@ -55,9 +53,7 @@ class ZooinatorNavigationBar extends HookWidget {
                         ),
                         Text(
                           tab.text,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: "Poppins",
+                          style: theme.textTheme.bodyMedium?.copyWith(
                             height: 16 / 12,
                             color: textColor,
                           ),
@@ -102,8 +98,6 @@ class ZooinatorNavigationTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: builder(context),
-    );
+    return builder(context);
   }
 }

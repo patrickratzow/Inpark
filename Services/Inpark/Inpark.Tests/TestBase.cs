@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 
 namespace Zoo.Inpark.Tests;
 
@@ -33,6 +36,33 @@ public abstract class TestBase
         var mediator = Scope.ServiceProvider.GetRequiredService<ISender>();
 
         return await mediator.Send(request);
+    }
+
+    protected async Task<TResponse> Send<TResponse>(IRequest<TResponse> request, params Mock[] mocks)
+    {
+        var requestType = request.GetType();
+        var handlerType = requestType.Assembly
+            .GetExportedTypes()
+            .First(x => x.Name.Contains(requestType.Name + "Handler"));
+        var ctor = handlerType.GetConstructors().First();
+        var parameters = ctor.GetParameters();
+        var parameterInstances = new List<object>();
+        foreach (var parameterInfo in parameters)
+        {
+            var mock = mocks.FirstOrDefault(x => x.GetType().GenericTypeArguments.First() == parameterInfo.ParameterType);
+            if (mock is null)
+            {
+                parameterInstances.Add(Scope.ServiceProvider.GetRequiredService(parameterInfo.ParameterType));
+                
+                continue;
+            }
+            
+            parameterInstances.Add(mock.Object);
+        }
+        var handler = ctor.Invoke(parameterInstances.ToArray());
+        var handleMethod = handler.GetType().GetMethods().First(x => x.Name.Contains("Handle"));
+
+        return await (Task<TResponse>)handleMethod.Invoke(handler, new object[] { request, CancellationToken.None })!;
     }
 
     protected async Task<TEntity?> Find<TEntity>(params object[] keyValues)

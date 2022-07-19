@@ -1,25 +1,43 @@
 import "package:flutter/material.dart";
-import 'package:flutter_app/routes.dart';
-import "package:provider/provider.dart";
 
+import "../../../common/feature.dart";
 import "../../../common/ui/title_bar.dart";
+import "../../../hooks/hooks.dart";
+import "../../calendar/ui/calendar_screen.dart";
 import "../models/home_model.dart";
 
-class OpeningHours extends StatelessWidget {
+class OpeningHours extends FrontPageWidget {
   const OpeningHours({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  }) : super(padding: EdgeInsets.zero);
 
   @override
   Widget build(BuildContext context) {
+    final home = useProvider<HomeModel>(watch: true);
+    final navigator = useNavigator();
+    final theme = useTheme();
+
+    if (home.loading) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    if (home.error.isNotEmpty) {
+      return const Center(
+        child: Text(
+          "Ingen åbningstider tilgængelig, prøv igen senere",
+        ),
+      );
+    }
+
     return InkWell(
       highlightColor: Colors.transparent,
-      splashColor: Theme.of(context).splashColor,
+      splashColor: theme.splashColor,
       onTap: () {
-        Routes.goToRoute(context, "/calendar");
+        navigator.push(context, const CalendarScreen());
       },
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+        padding: const EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -27,36 +45,14 @@ class OpeningHours extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const TitleBar(
-                  fontSize: 16,
                   name: "Åbningstider",
                 ),
-                Consumer<HomeModel>(
-                  builder: (context, value, child) {
-                    if (value.loading) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    if (value.error.isNotEmpty) {
-                      return const Center(
-                        child: Text(
-                          "Ingen åbningstider tilgængelig, prøv igen senere",
-                        ),
-                      );
-                    }
-
-                    return Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        value.openingHours,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    );
-                  },
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    home.openingHours,
+                    style: theme.textTheme.bodyLarge,
+                  ),
                 ),
               ],
             ),
@@ -70,4 +66,7 @@ class OpeningHours extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool shouldHide(BuildContext context) => false;
 }

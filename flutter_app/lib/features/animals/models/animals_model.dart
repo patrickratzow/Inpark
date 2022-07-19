@@ -1,19 +1,27 @@
 import "package:flutter/cupertino.dart";
-import "package:flutter_app/common/ioc.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
+import "package:flutter_app/features/animals/models/animal_area.dart";
+import "../../../common/ioc.dart";
+import "../../../generated_code/zooinator.swagger.dart";
 
 import "../repositories/animals_repository.dart";
 
 class AnimalsModel extends ChangeNotifier {
   List<AnimalDto> _animals = List.empty();
+  Map<String, List<AnimalArea>> _animalAreas = {};
   String _search = "";
   String error = "";
+  Set<AnimalCategory> _animalCategories = {};
+  Set<AnimalCategory> get categories => _animalCategories;
   bool isSearching = false;
+
   bool loading = false;
   bool get hasError => error.isNotEmpty;
 
   AnimalsModel();
-  AnimalsModel.withAnimals(this._animals);
+  AnimalsModel.withAnimals(this._animals) {
+    _animalCategories =
+        _animals.map((animal) => AnimalCategory(animal.category)).toSet();
+  }
 
   String get search => _search;
   set search(String value) {
@@ -45,6 +53,8 @@ class AnimalsModel extends ChangeNotifier {
       var animalsResult = await animalsRepository.fetchAnimals();
       if (animalsResult.isSuccess) {
         _animals = animalsResult.success as List<AnimalDto>;
+        _animalCategories =
+            _animals.map((animal) => AnimalCategory(animal.category)).toSet();
       } else {
         error = animalsResult.error.toString();
       }
@@ -55,18 +65,64 @@ class AnimalsModel extends ChangeNotifier {
     }
   }
 
+  Future fetchAnimalAreas(String latinName) async {
+    final animalsRepository = locator.get<AnimalsRepository>();
+
+    try {
+      loading = true;
+
+      var animalAreasResult = await animalsRepository.getAnimalArea(latinName);
+      _animalAreas[latinName] = animalAreasResult;
+    } catch (ex) {
+      error = ex.toString();
+    } finally {
+      loading = false;
+
+      notifyListeners();
+    }
+  }
+
+  List<AnimalArea>? getAnimalAreas(String latinName) => _animalAreas[latinName];
+
   List<AnimalDto> get animals {
-    var animals = _animals;
+    Iterable<AnimalDto> animals = _animals;
+
+    var enabledCategories = _animalCategories
+        .where((animalCategory) => animalCategory.enabled)
+        .map((animalCategory) => animalCategory.name)
+        .toSet();
+
+    animals = animals.where(
+      (animal) => enabledCategories.contains(animal.category),
+    );
+
     if (search.isNotEmpty) {
-      animals = animals
-          .where(
-            (animal) => animal.name.displayName
-                .toLowerCase()
-                .contains(search.toLowerCase()),
-          )
-          .toList();
+      animals = animals.where(
+        (animal) => animal.name.displayName
+            .toLowerCase()
+            .contains(search.toLowerCase()),
+      );
     }
 
-    return animals;
+    return animals.toList();
   }
+
+  void toggleCategory(AnimalCategory animalCategory) {
+    animalCategory.enabled = !animalCategory.enabled;
+
+    notifyListeners();
+  }
+}
+
+class AnimalCategory {
+  final String name;
+  bool enabled = true;
+
+  AnimalCategory(this.name);
+
+  @override
+  operator ==(other) => other is AnimalCategory && name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
 }

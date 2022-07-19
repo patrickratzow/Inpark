@@ -1,9 +1,10 @@
 import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
-import 'package:flutter_app/common/colors.dart';
-import "dart:io" show Platform;
+import "package:flutter/services.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
 
-import '../../routes.dart';
+import "../../hooks/hooks.dart";
+import "../../navigation/navigation_model.dart";
+import "../colors.dart";
 
 class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
   const _ToolbarContainerLayout(this.toolbarHeight);
@@ -30,26 +31,34 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
       toolbarHeight != oldDelegate.toolbarHeight;
 }
 
-class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
+class ScreenAppBar extends HookWidget implements PreferredSizeWidget {
   final String? title;
   final bool automaticallyImplyLeading;
   final Widget? leading;
   final List<Widget>? actions;
   final Widget? flexibleSpace;
+  final SystemUiOverlayStyle? systemUiOverlayStyle;
+  final Color? backgroundColor;
+  final Color? leadingColor;
+  final double? height;
 
   const ScreenAppBar({
-    Key? key,
+    super.key,
     this.title,
     this.automaticallyImplyLeading = true,
     this.leading,
     this.actions,
     this.flexibleSpace,
-  }) : super(key: key);
-
-  bool get isMaterial => !Platform.isIOS;
+    this.systemUiOverlayStyle,
+    this.backgroundColor,
+    this.leadingColor,
+    this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final navigation = useNavigator();
+
     // If the toolbar is allocated less than toolbarHeight make it
     // appear to scroll upwards within its shrinking container.
     Widget appBar = ClipRect(
@@ -65,7 +74,7 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: _buildLeading(context),
+          children: _buildLeading(context, navigation),
         ),
         Row(
           children: _buildActions(context),
@@ -78,7 +87,6 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       appBar = Column(
         children: [
           appBar,
-          const SizedBox(height: 2),
           flexibleSpace!,
         ],
       );
@@ -93,23 +101,35 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Semantics(
       container: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.dark.copyWith(
-          statusBarColor: CustomColor.green.lightest,
-        ),
+        value: systemUiOverlayStyle ??
+            SystemUiOverlayStyle.dark.copyWith(
+              statusBarColor: CustomColor.green.lightest,
+            ),
         child: Material(
-          color: CustomColor.green.lightest,
+          color: backgroundColor ?? CustomColor.green.lightest,
           elevation: 0,
           shadowColor: Colors.transparent,
           child: Semantics(
             explicitChildNodes: true,
-            child: appBar,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                minHeight: kToolbarHeight + 48,
+              ),
+              child: appBar,
+            ),
           ),
         ),
       ),
     );
   }
 
-  List<Widget> _buildLeading(BuildContext context) {
+  List<Widget> _buildLeading(
+    BuildContext context,
+    NavigationModel navigation,
+  ) {
+    final policies = usePolicies();
+    final theme = useTheme(context: context);
+
     List<Widget> results = [];
     if (automaticallyImplyLeading) {
       results.add(
@@ -120,11 +140,11 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             minWidth: 48,
           ),
           icon: Icon(
-            isMaterial ? Icons.arrow_back : Icons.arrow_back_ios,
-            color: CustomColor.green.middle,
+            policies.appBarBackButton,
+            color: leadingColor ?? CustomColor.green.middle,
             size: 18,
           ),
-          onPressed: () => Routes.popPage(context),
+          onPressed: () => navigation.pop(context),
         ),
       );
     }
@@ -132,17 +152,19 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       results.add(leading!);
     }
     if (title != null) {
+      final padding = automaticallyImplyLeading
+          ? const EdgeInsets.only(left: 2, top: 2)
+          // Hack for sizing when no back button
+          : const EdgeInsets.fromLTRB(16, 22, 0, 20);
       results.add(
         Padding(
-          padding: const EdgeInsets.only(top: 2),
+          padding: padding,
           child: Text(
             title!,
-            style: const TextStyle(
-              fontFamily: "Poppins",
+            style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
-              fontSize: 14,
-              height: 16 / 14,
-              color: Color(0xff718D6D),
+              height: 1.125,
+              color: const Color(0xff718D6D),
             ),
           ),
         ),
@@ -153,23 +175,9 @@ class ScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   List<Widget> _buildActions(BuildContext context) {
-    return actions ??
-        [
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: CustomColor.green.icon,
-            ),
-            onPressed: () {},
-          ),
-        ];
+    return actions ?? [];
   }
 
   @override
-  Size get preferredSize {
-    double height = 56;
-    // Add a way to find the height when using flexible space
-
-    return Size.fromHeight(height);
-  }
+  Size get preferredSize => Size.fromHeight(height ?? 56);
 }

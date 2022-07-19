@@ -7,12 +7,14 @@ class IUCNStatus {
   final Color textColor;
   final String name;
   final String description;
+  final String code;
 
   IUCNStatus({
     required this.color,
     required this.textColor,
     required this.name,
     required this.description,
+    required this.code,
   });
 }
 
@@ -23,6 +25,7 @@ final Map<IUCNStatusDto, IUCNStatus> ucnStatusColorMap = {
     name: "Uddød",
     description:
         "Alle forsøg på at finde levende eksemplarer af arten er mislykkedes. Det sidste kendte individ af arten er død efter år 1500. Eksempler er Tasmansk pungulv, moa og dronte.",
+    code: "EX",
   ),
   IUCNStatusDto.ew: IUCNStatus(
     color: const Color(0xff1A1A1A),
@@ -30,6 +33,7 @@ final Map<IUCNStatusDto, IUCNStatus> ucnStatusColorMap = {
     name: "Uddød i vild tilstand",
     description:
         "Der findes individer af arten i fangenskab, eller den kan være genudsat i nye miljøer, men arten er uddød i sit naturlige miljø. Udryddede arter er arter, der stadig findes i vild tilstand, men udenfor deres naturlige område. Et eksempel kunne være Przewalski-hesten.",
+    code: "EW",
   ),
   IUCNStatusDto.cr: IUCNStatus(
     color: const Color(0xffCC3333),
@@ -37,6 +41,7 @@ final Map<IUCNStatusDto, IUCNStatus> ucnStatusColorMap = {
     name: "Kritisk truet",
     description:
         "Arten er i ekstremt stor risiko for at uddø nu. Et eksempel kunne være Sort næsehorn.",
+    code: "CR",
   ),
   IUCNStatusDto.en: IUCNStatus(
     color: const Color(0xffCC6633),
@@ -44,6 +49,7 @@ final Map<IUCNStatusDto, IUCNStatus> ucnStatusColorMap = {
     name: "Truet",
     description:
         "Arten er i meget stor risiko for at uddø i den nærmeste fremtid. Eksempler er blåhval og stor panda.",
+    code: "EN",
   ),
   IUCNStatusDto.vu: IUCNStatus(
     color: const Color(0xffCC9900),
@@ -51,18 +57,21 @@ final Map<IUCNStatusDto, IUCNStatus> ucnStatusColorMap = {
     name: "Sårbar",
     description:
         "Der er en stor risiko for at arten uddør i vild tilstand på længere sigt. Et eksempel på en art i denne kategori kunne være den hvide haj.",
+    code: "VU",
   ),
   IUCNStatusDto.nt: IUCNStatus(
     color: const Color(0xff005050),
     textColor: const Color(0xff99CC99),
     name: "Næsten truet",
     description: "Arten er tæt på kvalificering som sårbar.",
+    code: "NT",
   ),
   IUCNStatusDto.lc: IUCNStatus(
     color: const Color(0xff006666),
     textColor: Colors.white,
     name: "Ikke truet",
     description:
-        "Almindelige arter samt arter hvor der måske er grund til bekymring, selvom arten ikke i øjeblikket er direkte truet.  Eksempler på dyr i denne kategori kunne være leoparden og spækhuggeren.",
+        "Almindelige arter samt arter hvor der måske er grund til bekymring, selvom arten ikke i øjeblikket er direkte truet.  Eksempler på dyr i denne kategori kunne være kapivar og spækhuggeren.",
+    code: "LC",
   )
 };

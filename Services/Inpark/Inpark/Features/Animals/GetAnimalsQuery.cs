@@ -21,11 +21,12 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
     public async Task<OneOf<List<AnimalDto>>> Handle(GetAnimalsQuery request, CancellationToken cancellationToken)
     {
         var animals = await _context.Animals
+            .Include(x => x.Areas)
             .OrderBy(x => x.Name.Name)
             .ToListAsync(cancellationToken);
         var animalDtos = animals.Select(x => {
             var name = new AnimalNameDto(x.Name.Name, x.Name.LatinName);
-            var image = new AnimalImageDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
+            var image = new ImagePairDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
             var status = (IUCNStatusDto) x.Status;
             if (!_mapper.ParseContent(x.Content).IsSuccess(out var content))
                 throw new InvalidDataException("Unable to parse content");
@@ -36,7 +37,8 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
                 image,
                 status,
                 x.Id.ToString(),
-                content!.Select(MapToContentDto).ToList()
+                content!.Select(MapToContentDto).ToList(),
+                x.Areas.Count != 0
             );
         });
     
@@ -68,7 +70,6 @@ public partial class GetAnimalsController : ZooController
     /// Get all animals in the park.
     /// </summary>
     [HttpGet("animals")]
-    [ResponseCache(Duration = 43200)]
     public async partial Task<ActionResult> GetAnimals(CancellationToken cancellationToken)
     {
         var command = new GetAnimalsQuery();

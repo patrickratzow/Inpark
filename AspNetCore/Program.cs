@@ -3,10 +3,19 @@ using Azure.Monitor.OpenTelemetry.Exporter;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Trace;
+using Serilog;
 using Zoo.Common.Api;
 using Zoo.Inpark;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
 
 // Add services to the container.
 builder.Services.AddTenantManager();

@@ -8,8 +8,9 @@ public enum IUCNStatusDto
 public record AnimalDto(
     AnimalNameDto Name,
     string Category,
-    AnimalImageDto Image,
+    ImagePairDto Image,
     IUCNStatusDto Status,
     string Id,
-    List<ContentDto> Contents
+    List<ContentDto> Contents,
+    bool HasMap
 );
