@@ -1,6 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Enums;
+using Zoo.Inpark.Features.OpeningHours.Interfaces;
 
 namespace Zoo.Inpark.Features.OpeningHours;
 
@@ -9,12 +8,15 @@ public record GetOpeningHoursForTodayQuery : IRequest<OneOf<List<OpeningHourDto>
 public class GetOpeningHoursForTodayQueryHandler 
     : IRequestHandler<GetOpeningHoursForTodayQuery, OneOf<List<OpeningHourDto>>>
 {
-    private readonly InparkDbContext _context;
+    private readonly IOpeningHoursRepository _repository;
+    private readonly IOpeningHoursMapper _mapper;
     private readonly IClock _clock;
-    
-    public GetOpeningHoursForTodayQueryHandler(InparkDbContext context, IClock clock)
+
+    public GetOpeningHoursForTodayQueryHandler(IOpeningHoursRepository repository, IOpeningHoursMapper mapper, 
+        IClock clock)
     {
-        _context = context;
+        _repository = repository;
+        _mapper = mapper;
         _clock = clock;
     }
 
@@ -22,29 +24,11 @@ public class GetOpeningHoursForTodayQueryHandler
         CancellationToken cancellationToken)
     {
         var today = new DateOnly(_clock.Today.Year, _clock.Today.Month, _clock.Today.Day);
-        var dateTime = today.ToDateTime(TimeOnly.MinValue);
-        var value = (int)Enum.Parse(typeof(WeekDay), today.DayOfWeek.ToString());
-        var openingHours = await _context.OpeningHours
-            .AsNoTracking()
-            .Where(x => 
-                x.Range.Start.Date <= dateTime.Date && 
-                x.Range.End.Date >= dateTime.Date && 
-                ((int)x.Days & value) != 0
-            )
-            .OrderByDescending(x => x.Range.Start)
-            .ToListAsync(cancellationToken);
+        var openingHours = await _repository.GetDate(today);
         
         return openingHours
-            .ToLookup(x => x.Range.Start.TimeOfDay)
-            .Select(start => start.MaxBy(x => x.Range.End.TimeOfDay))
-            .Select(longestOpeningHour => new OpeningHourDto(
-                    longestOpeningHour!.Name, 
-                    longestOpeningHour.Range.Start, 
-                    longestOpeningHour.Range.End, 
-                    longestOpeningHour.Open, 
-                    longestOpeningHour.Days.ToDays()
-                )
-            ).ToList();
+            .Select(_mapper.MapToDto)
+            .ToList();
     }
 }
 

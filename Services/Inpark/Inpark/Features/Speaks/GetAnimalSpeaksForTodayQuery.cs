@@ -1,11 +1,11 @@
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Zoo.Common.Api.Versioning;
 using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Enums;
-using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Features.Speaks;
 
+[Version("1.0.0")]
 public record GetAnimalSpeaksForTodayQuery : IRequest<OneOf<List<SpeakDto>>>;
 
 public class GetAnimalSpeaksForTodayQueryHandler :

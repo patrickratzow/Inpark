@@ -433,6 +433,100 @@
         }
       }
     },
+    "/opening-hours/hour-range": {
+      "post": {
+        "tags": [
+          "Opening Hours"
+        ],
+        "operationId": "addHourColor",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/opening-hours/today": {
       "get": {
         "tags": [
@@ -1055,6 +1149,7 @@
         "required": [
           "days",
           "end",
+          "fields",
           "name",
           "open",
           "start"
@@ -1078,6 +1173,12 @@
           "days": {
             "type": "array",
             "items": {
+              "type": "string"
+            }
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
               "type": "string"
             }
           }
@@ -1276,6 +1377,45 @@
         "type": "object",
         "properties": {
           "name": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Features.OpeningHours.AddHourColorRequest": {
+        "required": [
+          "color",
+          "end",
+          "start"
+        ],
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor": {
+        "required": [
+          "errorMessage",
+          "timeRange"
+        ],
+        "type": "object",
+        "properties": {
+          "timeRange": {
             "type": "string"
           },
           "errorMessage": {

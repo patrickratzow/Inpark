@@ -5,5 +5,6 @@ public record OpeningHourDto(
     DateTime Start,
     DateTime End,
     bool Open,
-    List<string> Days
+    List<string> Days,
+    Dictionary<string, string> Fields
 );

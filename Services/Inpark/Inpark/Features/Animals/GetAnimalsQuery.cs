@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Zoo.Inpark.Contents;
 using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Features.Animals.Interfaces;
 using Zoo.Inpark.Models;
@@ -37,7 +38,7 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
                 image,
                 status,
                 x.Id.ToString(),
-                content!.Select(MapToContentDto).ToList(),
+                content!.Select(MapToContentElementDto).ToList(),
                 x.Areas.Count != 0
             );
         });
@@ -45,12 +46,12 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
         return animalDtos.ToList();
     }
     
-    private static ContentDto MapToContentDto(IContent content)
+    private static ContentDto MapToContentElementDto(IContent content)
     {
         return new(
             content.Value,
             content.Type,
-            content.Children.Select(MapToContentDto).ToList()
+            content.Children.Select(MapToContentElementDto).ToList()
         );
     }
 }
