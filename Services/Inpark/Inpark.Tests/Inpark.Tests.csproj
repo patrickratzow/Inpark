@@ -29,17 +29,4 @@
       <ProjectReference Include="..\Inpark\Inpark.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="DomainFixture\Configurations\Contracts" />
-      <Folder Include="DomainFixture\Conventions" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="appsettings.Development.json">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      </Content>
-    </ItemGroup>
-
 </Project>
