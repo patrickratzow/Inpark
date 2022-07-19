@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.lock" afterDir="false" />
-    </list>
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="fix: remove tests" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +67,6 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
@@ -335,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649937432359</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix: remove tests">
+      <created>1658265572478</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1658265572478</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +377,8 @@
     <MESSAGE value="ci: update build-test.yml" />
     <MESSAGE value="ci: fix deploy" />
     <MESSAGE value="ci: fix not all artifacts being deployed" />
-    <option name="LAST_COMMIT_MESSAGE" value="ci: fix not all artifacts being deployed" />
+    <MESSAGE value="fix: remove tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: remove tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -396,12 +400,6 @@
           <line>129</line>
           <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\Common.Api\Pipelines\LoggingPipeline.cs" initialLine="122" containingFunctionPresentation="method 'AddProperty'" />
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/TestBase.cs</url>
-          <line>64</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark.Tests\TestBase.cs" initialLine="48" containingFunctionPresentation="method 'Send'" />
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Common/DomainFixture/FixtureBuilder/FixtureWithConfiguration.cs</url>

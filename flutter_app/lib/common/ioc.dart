@@ -19,7 +19,7 @@ final locator = GetIt.instance;
 
 void setupIoC() {
   String baseUrl;
-  if (kDebugMode) {
+  if (!kDebugMode) {
     baseUrl =
         Platform.isAndroid ? "https://10.0.2.2:5000" : "https://localhost:5000";
   } else {
