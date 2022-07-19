@@ -6,12 +6,14 @@ import "../../../generated_code/zooinator.models.swagger.dart";
 import "speak_state.dart";
 
 class Speak {
-  final String title;
+  final String _title;
   final DateTime start;
   final ImagePairDto image;
   final List<String> days;
 
-  Speak(this.title, DateTime start, this.image, this.days)
+  String get title => _title.split("|").first;
+
+  Speak(this._title, DateTime start, this.image, this.days)
       : start = start.asToday();
 
   String get previewImage => image.previewUrl;
@@ -19,7 +21,7 @@ class Speak {
   bool get hasBegun => start.isBefore(DateTime.now());
 
   int? _id;
-  int get id => _id ??= utf8.encode(title).reduce((curr, prev) => curr + prev);
+  int get id => _id ??= utf8.encode(_title).reduce((curr, prev) => curr + prev);
 
   SpeakState get state {
     final startTime = start;
