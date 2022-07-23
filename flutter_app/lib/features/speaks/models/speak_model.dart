@@ -2,6 +2,7 @@ import "dart:collection";
 
 import "package:flutter/material.dart";
 import "../../../extensions/datetime.dart";
+import "../../../services/notification_service.dart";
 import "notification_service.dart";
 import "speak.dart";
 import "package:localstorage/localstorage.dart";
@@ -16,7 +17,7 @@ class SpeakModel extends ChangeNotifier {
   bool loading = false;
 
   final LocalStorage _localStorage = LocalStorage("speaks.json");
-  final NotificationService _notificationService = NotificationService();
+  final NotificationModel _notificationService = NotificationModel();
 
   Future<void> fetchSpeaksForToday() async {
     final homeRepository = locator.get<SpeakRepository>();
@@ -55,13 +56,14 @@ class SpeakModel extends ChangeNotifier {
     return true;
   }
 
-  Future<bool> scheduleNotification(Speak speak) {
-    var seconds = secondsToNotification(speak.start);
+  Future<bool> scheduleNotification(Speak speak) async {
+    final seconds = await secondsToNotification(speak.start);
+    final duration = Duration(seconds: seconds);
 
     return _notificationService.showNotification(
       speak.id,
       "${speak.title} fodring",
-      "${speak.title} bliver fodret om 15 minutter",
+      "${speak.title} bliver fodret om ${duration.inMinutes} minutter",
       seconds,
     );
   }
@@ -70,13 +72,16 @@ class SpeakModel extends ChangeNotifier {
     _notificationService.cancelNotifications(speak.id);
   }
 
-  int secondsToNotification(DateTime time) => time
-      .asToday()
-      .subtract(
-        const Duration(minutes: 15),
-      )
-      .difference(DateTime.now())
-      .inSeconds;
+  Future<int> secondsToNotification(DateTime time) async {
+    final notificationService = locator.get<NotificationService>();
+    final duration = await notificationService.getReminderTime();
+
+    return time
+        .asToday()
+        .subtract(duration)
+        .difference(DateTime.now())
+        .inSeconds;
+  }
 
   Future cacheState(Speak speak, bool state) async {
     await _initStorage();

@@ -6,7 +6,6 @@ import "../../../common/ui/title_bar.dart";
 import "../../../hooks/hooks.dart";
 import "../models/speak.dart";
 import "../models/speak_model.dart";
-import "../models/speak_state.dart";
 import "speaks_list.dart";
 
 class SpeaksFrontPage extends FrontPageWidget {
@@ -17,9 +16,7 @@ class SpeaksFrontPage extends FrontPageWidget {
     final model = useProvider<SpeakModel>();
     final activeSpeaks = useMemoizedValue<List<Speak>>(
       const Duration(seconds: 1),
-      () => model.speaks
-          .where((speak) => speak.state != SpeakState.over)
-          .toList(),
+      () => model.speaks,
     );
 
     useEffectOnce(() {
@@ -32,7 +29,7 @@ class SpeaksFrontPage extends FrontPageWidget {
       children: [
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
-          child: TitleBar(name: "Kommende speaks"),
+          child: TitleBar(name: "Dagens speaks & aktiviteter"),
         ),
         const SizedBox(height: 4),
         SpeaksList(speaks: activeSpeaks.value),

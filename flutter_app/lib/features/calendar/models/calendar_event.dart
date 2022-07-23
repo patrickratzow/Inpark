@@ -1,11 +1,12 @@
+import "dart:core";
+
 import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
 import "package:intl/intl.dart";
 
 part "opening_hour_calendar_event.dart";
 
 @immutable
-abstract class CalendarEvent {
+abstract class CalendarEvent implements Comparable<CalendarEvent> {
   String get title;
   String get body;
   DateTime get start;
@@ -14,4 +15,8 @@ abstract class CalendarEvent {
   Color? get color;
 
   const CalendarEvent();
+
+  int compareTo(CalendarEvent other) => start.compareTo(other.start);
+
+  static int compare(Comparable a, Comparable b) => a.compareTo(b);
 }

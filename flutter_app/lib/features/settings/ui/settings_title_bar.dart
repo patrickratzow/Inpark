@@ -23,6 +23,7 @@ class SettingsTitleBar extends HookWidget {
           style: theme.textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,
           ),
+          textScaleFactor: 1.0,
         ),
         alignment: Alignment.centerLeft,
       ),

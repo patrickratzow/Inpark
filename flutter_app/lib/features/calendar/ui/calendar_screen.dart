@@ -63,6 +63,7 @@ class CalendarScreen extends HookWidget implements Screen {
                                 child: Text(
                                   text,
                                   style: theme.textTheme.bodyMedium,
+                                  textScaleFactor: 1.0,
                                 ),
                               );
                             },
@@ -95,9 +96,9 @@ class CalendarScreen extends HookWidget implements Screen {
                           },
                           startingDayOfWeek: StartingDayOfWeek.monday,
                           headerVisible: false,
-                          firstDay: DateTime(2021, 8, 1),
+                          firstDay: model.firstDay,
                           focusedDay: model.selectedDay,
-                          lastDay: DateTime(2022, 12, 30),
+                          lastDay: model.lastDay,
                         ),
                         const SizedBox(height: 16),
                       ],

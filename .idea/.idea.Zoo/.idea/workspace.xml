@@ -9,7 +9,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="fix: remove tests" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="fix: dont require tenant">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.metadata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ioc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ioc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/calendar_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/calendar_event.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/calendar_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/models/calendar_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/calendar/ui/calendar_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/home/ui/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_map/models/animal_park_map_location.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/models/animal_park_map_location.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_map/models/park_map_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/models/park_map_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_map/ui/park_map_background.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/ui/park_map_background.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_map/ui/park_map_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/ui/park_map_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/settings/ui/setting_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/settings/ui/setting_row.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/settings/ui/settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/settings/ui/settings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/settings/ui/settings_title_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/settings/ui/settings_title_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/notification_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/notification_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/models/speak_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speaks_frontpage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/speaks/ui/speaks_frontpage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/welcome_screen/video_player.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/welcome_screen/video_player.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/welcome_screen/welcome_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/welcome_screen/welcome_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/firebase_options.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/firebase_options.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/navigation/navigation_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/navigation/navigation_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/navigation/navigation_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/navigation/navigation_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="development" />
+        <entry key="$PROJECT_DIR$" value="feature/139/content-rendering" />
       </map>
     </option>
   </component>
@@ -37,20 +67,17 @@
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/MethodInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea95343b9387b73062a9b61b7538f826c54ce3529632b4472ba4494044d23/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ce4559e539d836695dd1cd2d81ab47b4515368c31d700e080d32cdb89e014/TimeOnlyTypeMapping.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/103ae790d238a01f8e6bada7e931fafa62b15caa2479045d77ec4f32e1d029/ISender.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff44a57136ecb6b1994155a6879d590993390d7b9606c337b761f6d1143da4b/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/26259b0a3c4b474b9f081864810b4654ba00/2d/fa2575fb/RequestHandlerDelegate`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5330988bfaacf93f15e30f9b3dd6018a768f89da3b38d874fda77299c62164/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
@@ -62,8 +89,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6dd43c7bdc3d88f06457829633b93d61f4a6d2ed708ae62df66f5c3c4041b6/DateOnly.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" root0="FORCE_HIGHLIGHTING" />
@@ -77,10 +102,8 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -91,7 +114,6 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/ValueObjectTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/Desktop/Sandbox/Zoo/Services/Inpark/Inpark/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
@@ -225,6 +247,7 @@
       <workItem from="1657744242765" duration="1878000" />
       <workItem from="1657884510489" duration="13632000" />
       <workItem from="1658135871757" duration="14931000" />
+      <workItem from="1658506760838" duration="1014000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -338,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658265572478</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix: dont require tenant">
+      <created>1658269937190</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1658269937190</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +408,8 @@
     <MESSAGE value="ci: fix deploy" />
     <MESSAGE value="ci: fix not all artifacts being deployed" />
     <MESSAGE value="fix: remove tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: remove tests" />
+    <MESSAGE value="fix: dont require tenant" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: dont require tenant" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
