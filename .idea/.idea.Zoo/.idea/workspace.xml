@@ -38,7 +38,6 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
@@ -391,27 +390,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepository.cs</url>
           <line>119</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark\Features\OpeningHours\AalborgZoo\AalborgZooOpeningHoursRepository.cs" initialLine="119" containingFunctionPresentation="method 'AddColors'">
-            <startOffsets>
-              <option value="4057" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4142" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark\Features\OpeningHours\AalborgZoo\AalborgZooOpeningHoursRepository.cs" initialLine="119" containingFunctionPresentation="method 'AddColors'" />
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Common/DomainFixture/EntityTestSource.cs</url>
           <line>145</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\DomainFixture\EntityTestSource.cs" initialLine="109" containingFunctionPresentation="method 'MakeEntityValid'">
-            <startOffsets>
-              <option value="5553" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5642" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\DomainFixture\EntityTestSource.cs" initialLine="109" containingFunctionPresentation="method 'MakeEntityValid'" />
           <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>

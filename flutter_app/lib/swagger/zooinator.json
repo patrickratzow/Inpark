@@ -20,6 +20,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
           }
         ],
         "responses": {
@@ -115,6 +124,15 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
             }
           }
         ],
@@ -216,6 +234,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
           }
         ],
         "responses": {
@@ -297,6 +324,17 @@
           "Animals"
         ],
         "operationId": "getAnimals",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -365,6 +403,17 @@
           "Customers"
         ],
         "operationId": "createCustomer",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -439,6 +488,17 @@
           "Opening Hours"
         ],
         "operationId": "addHourColor",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -533,6 +593,17 @@
           "Opening Hours"
         ],
         "operationId": "getOpeningHoursForToday",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -601,6 +672,17 @@
           "Opening Hours"
         ],
         "operationId": "getOpeningHours",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -669,6 +751,17 @@
           "Park Events"
         ],
         "operationId": "getParkEvents",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -737,6 +830,17 @@
           "Products"
         ],
         "operationId": "createProduct",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -820,6 +924,15 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
           }
         ],
         "responses": {
@@ -901,6 +1014,17 @@
           "Speaks"
         ],
         "operationId": "getSpeaksForToday",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
