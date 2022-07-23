@@ -1,14 +1,15 @@
 import "dart:io";
 
+import "package:device_preview/device_preview.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/content/demo.dart";
+import "package:flutter/services.dart";
 import "package:flutter_app/navigation/navigation_screen.dart";
+import "package:flutter_app/sdui/transformers/component.dart";
 import "package:flutter_app/transformers/conservation_status.dart";
 import "package:flutter_app/transformers/pre/hook_transformer.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:google_fonts/google_fonts.dart";
-import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
 
 import "common/ioc.dart";
@@ -34,17 +35,95 @@ void main() async {
   );
   HttpOverrides.global = MyHttpOverrides();
 
-  initializeDateFormatting();
   setupIoC();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
 
-  await NotificationService().init();
+  await NotificationModel().init();
 
   Transformer.preTransformers.add(HookPreTransformer());
   Transformer.transformers.add(ScreenAppBarTransformer());
   Transformer.transformers.add(NavbarTransformer());
   Transformer.transformers.add(ConservationStatusTransformer());
+  ComponentTransformer.registerComponent(
+    "AnimalCard",
+    """
+<AspectRatio ratio="2.4676">
+  <Card border-radius="circular(6)" clip="antiAlias">
+    <Stack>
+      <Positioned fill="true">
+        <Image
+          fit="cover"
+          src="\${{ src }}"
+          blend-mode="darken"
+        />
+      </Positioned> 
+      <Positioned fill="true">
+        <Row>
+          <Expanded>
+            <Container>
+              <Decoration>
+                <LinearGradient begin="topCenter" end="bottomCenter">
+                  <Color>#87000000</Color>
+                  <Color>#00000000</Color>
+                </LinearGradient>
+              </Decoration>
+            </Container>
+          </Expanded>
+        </Row>
+      </Positioned>
+      <Positioned fill="true">
+        <Padding all="8">
+          <Column main-axis-alignment="spaceBetween" main-axis-size="max">
+            <Column>
+              <Align alignment="centerLeft">
+                <Text 
+                  color="#ffffffff" 
+                  style="headlineMedium" 
+                  weight="bold"
+                >
+                  \${{ title }}
+                </Text>
+              </Align>
+              <Align alignment="centerLeft">
+                <Text 
+                  color="#ffffffff" 
+                  style="bodyMedium" 
+                  weight="w500"
+                  height="1.5"
+                >
+                  \${{ subTitle }}
+                </Text>
+              </Align>
+            </Column>
+            <Row>
+              <Container padding="6,4,6,4">
+                <Decoration border-radius="circular(4)">
+                  <Color>#FFECFCE5</Color>
+                </Decoration>
+                <Text style="bodyLarge" color="#FF198155" size="8" height="0.9375">
+                  \${{ category }}
+                </Text>
+              </Container>
+            </Row>
+          </Column>
+        </Padding>
+      </Positioned>
+    </Stack>
+  </Card>
+</AspectRatio>
+""",
+  );
 
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyHttpOverrides extends HttpOverrides {
@@ -77,7 +156,11 @@ class MyApp extends HookWidget {
           create: (context) => SpeakModel(),
         ),
         ChangeNotifierProvider<CalendarModel>(
-          create: (context) => CalendarModel(DateTime.now()),
+          create: (context) {
+            final time = DateTime.now();
+
+            return CalendarModel(time);
+          },
         ),
         ChangeNotifierProvider<NavigationModel>(
           create: (context) => NavigationModel(),
@@ -87,8 +170,11 @@ class MyApp extends HookWidget {
         ),
       ],
       child: MaterialApp(
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
-        home: NavigationScreen(),
+        home: const NavigationScreen(),
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: const Color(0xffECFCE5),

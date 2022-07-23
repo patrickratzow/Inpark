@@ -21,7 +21,7 @@ class ParkMapScreen extends HookWidget implements NavigationPage {
           statusBarColor: Colors.transparent,
         ),
       ),
-      body: ParkMap(),
+      body: const ParkMap(),
     );
   }
 
@@ -30,8 +30,6 @@ class ParkMapScreen extends HookWidget implements NavigationPage {
     final style = SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.transparent,
     );
-
-    SystemChrome.setSystemUIOverlayStyle(style);
   }
 
   @override
@@ -39,7 +37,5 @@ class ParkMapScreen extends HookWidget implements NavigationPage {
     final style = SystemUiOverlayStyle.dark.copyWith(
       statusBarColor: CustomColor.green.lightest,
     );
-
-    SystemChrome.setSystemUIOverlayStyle(style);
   }
 }

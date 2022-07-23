@@ -1,11 +1,15 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/extensions/string.dart";
 
 import "../elements/attribute.dart";
 import "attribute_resolver.dart";
 
 class AlignmentResolver extends AttributeResolver<Alignment> {
   @override
-  bool shouldResolve(Attribute attribute) => attribute.name == "alignment";
+  bool shouldResolve(Attribute attribute) =>
+      attribute.name.equalsIgnoreCase("alignment") ||
+      attribute.name.equalsIgnoreCase("begin") ||
+      attribute.name.equalsIgnoreCase("end");
 
   @override
   resolve(Attribute attribute, BuildContext context) {

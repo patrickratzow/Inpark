@@ -3,17 +3,17 @@ import "package:flutter_local_notifications/flutter_local_notifications.dart";
 import "package:timezone/data/latest.dart" as tz;
 import "package:timezone/timezone.dart" as tz;
 
-class NotificationService {
+class NotificationModel {
   //NotificationService a singleton object
-  static final NotificationService _notificationService =
-      NotificationService._internal();
+  static final NotificationModel _notificationService =
+      NotificationModel._internal();
 
-  factory NotificationService() {
+  factory NotificationModel() {
     tz.initializeTimeZones();
     return _notificationService;
   }
 
-  NotificationService._internal();
+  NotificationModel._internal();
 
   static const channelId = "zooinator_notification";
 

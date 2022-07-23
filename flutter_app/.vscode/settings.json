@@ -5,5 +5,12 @@
     "source.fixAll.eslint": true,
     "source.fixAll": true
   },
-  "dartImport.fixOnSave": true
+  "dartImport.fixOnSave": true,
+  "files.associations": {
+    "*.lau": "glau",
+    "*.laux": "laux",
+    ".lauxws": "json",
+    ".xpa": "json",
+    "memory": "cpp"
+  }
 }

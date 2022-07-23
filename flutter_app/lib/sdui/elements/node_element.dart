@@ -1,13 +1,46 @@
 import "package:flutter/material.dart";
 
 import "../resolvers/attribute_resolver.dart";
+import "../transformers/transformer.dart";
 import "attribute.dart";
 
 class NodeElement {
   final String name;
   final List<Attribute> attributes;
   final List<NodeElement> children;
-  final String innerText;
+  final String _innerText;
+  String get innerText {
+    final regex = RegExp(r"\${{(.*)}}");
+    if (regex.hasMatch(_innerText)) {
+      final match = regex.firstMatch(_innerText)!.group(1)!.trim();
+      final variable = Transformer.getVariable(match);
+      if (variable != null) {
+        return variable;
+      }
+    }
+
+    return _innerText;
+  }
+
+  @override
+  String toString() {
+    final buffer = new StringBuffer();
+    buffer.write("<$name");
+    for (final attribute in attributes) {
+      buffer.write(" ");
+      buffer.write(attribute.toString());
+    }
+    buffer.write(">");
+    buffer.write("\n");
+    for (final child in children) {
+      buffer.write(child.toString());
+    }
+    buffer.write("\n");
+    buffer.write("</$name>");
+
+    return buffer.toString();
+  }
+
   NodeElement? _parent;
   NodeElement? get parent => _parent;
   set parent(NodeElement? value) {
@@ -20,7 +53,7 @@ class NodeElement {
     this.name,
     this.attributes,
     this.children,
-    this.innerText,
+    this._innerText,
     this._parent,
   );
 
@@ -44,6 +77,16 @@ class NodeElement {
     _findInChildren(selector, list);
 
     return list;
+  }
+
+  NodeElement? findFirst(String selector) {
+    final list = <NodeElement>[];
+
+    _findInChildren(selector, list);
+
+    if (list.isEmpty) return null;
+
+    return list.first;
   }
 
   void _findInChildren(String selector, List<NodeElement> elements) {

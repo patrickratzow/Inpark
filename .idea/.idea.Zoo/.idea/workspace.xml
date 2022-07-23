@@ -18,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="development" />
+        <entry key="$PROJECT_DIR$" value="feature/139/content-rendering" />
       </map>
     </option>
   </component>
@@ -94,6 +94,7 @@
   <component name="PropertiesComponent">
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.4742647" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -303,7 +304,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649937432359</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix: remove tests">
+      <created>1658265572478</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1658265572478</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix: dont require tenant">
+      <created>1658269937190</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1658269937190</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +357,9 @@
     <MESSAGE value="ci: update build-test.yml" />
     <MESSAGE value="ci: fix deploy" />
     <MESSAGE value="ci: fix not all artifacts being deployed" />
-    <option name="LAST_COMMIT_MESSAGE" value="ci: fix not all artifacts being deployed" />
+    <MESSAGE value="fix: remove tests" />
+    <MESSAGE value="fix: dont require tenant" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: dont require tenant" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -366,16 +383,36 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark.Tests/TestBase.cs</url>
-          <line>64</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark.Tests\TestBase.cs" initialLine="48" containingFunctionPresentation="method 'Send'" />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Common/DomainFixture/FixtureBuilder/FixtureWithConfiguration.cs</url>
           <line>52</line>
           <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\DomainFixture\FixtureBuilder\FixtureWithConfiguration.cs" initialLine="45" containingFunctionPresentation="method 'Apply'" />
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepository.cs</url>
+          <line>119</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Inpark\Inpark\Features\OpeningHours\AalborgZoo\AalborgZooOpeningHoursRepository.cs" initialLine="119" containingFunctionPresentation="method 'AddColors'">
+            <startOffsets>
+              <option value="4057" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4142" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Common/DomainFixture/EntityTestSource.cs</url>
+          <line>145</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Common\DomainFixture\EntityTestSource.cs" initialLine="109" containingFunctionPresentation="method 'MakeEntityValid'">
+            <startOffsets>
+              <option value="5553" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5642" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

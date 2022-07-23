@@ -13,6 +13,7 @@ public static class SwaggerGenOptionsExtensions
         options.SchemaFilter<EnumSchemaFilter>();
         options.SchemaFilter<RequiredPropertiesSchemaFilter>();
         options.OperationFilter<ValidationErrorDescriptionOperationFilter>();
+        options.OperationFilter<TenantHeaderOperationFilter>();
         options.RequestBodyFilter<FixRequestBodyNullableReferencesSchemaFilter>();
         options.SupportNonNullableReferenceTypes();
         options.UseAllOfToExtendReferenceSchemas();

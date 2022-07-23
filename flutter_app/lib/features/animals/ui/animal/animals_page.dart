@@ -1,3 +1,6 @@
+import "dart:async";
+
+import "package:firebase_crashlytics/firebase_crashlytics.dart";
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_use/flutter_use.dart";
@@ -6,6 +9,9 @@ import "../../../../common/colors.dart";
 import "../../../../common/screen.dart";
 import "../../../../common/ui/screen_app_bar.dart";
 import "../../../../hooks/hooks.dart";
+import "../../../../sdui/elements/node_element.dart";
+import "../../../../sdui/parser/parser.dart";
+import "../../../../sdui/transformers/transformer.dart";
 import "../../models/animals_model.dart";
 import "animal_card.dart";
 import "animal_screen.dart";
@@ -125,6 +131,78 @@ class AnimalsScreen extends HookWidget implements Screen {
   }
 }
 
+void useAsyncEffect(Future<Dispose?> Function() effect, [List<Object?>? keys]) {
+  useEffect(
+    () {
+      final disposeFuture = Future.microtask(effect);
+      return () => disposeFuture.then((dispose) => dispose?.call());
+    },
+    keys,
+  );
+}
+
+class SDUITemplate extends HookWidget {
+  static Map<String, NodeElement> _cache = {};
+  final String template;
+  final Map<String, dynamic> data;
+  final Widget Function(BuildContext context, Widget child)? builder;
+
+  SDUITemplate({
+    required this.template,
+    required this.data,
+    this.builder,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final attributes = data.entries
+        .map((entry) => ":${entry.key}=\"${entry.value}\"")
+        .join(" ");
+    final template = """<${this.template} ${attributes}/>""";
+    final id = "template_${this.template}";
+    final parsed = useMemoized(
+      () {
+        if (_cache.containsKey(id)) {
+          return _cache[id]!;
+        }
+
+        final parsed = Parser().parse(
+          template,
+          id,
+          ParserData(),
+        );
+        _cache[id] = parsed;
+
+        return parsed;
+      },
+    );
+    final renderedContent = useState<Widget?>(null);
+
+    useAsyncEffect(
+      () {
+        try {
+          final widget = Transformer.transformOne(parsed, context);
+          renderedContent.value = widget;
+        } catch (error, stack) {
+          print(error);
+          FirebaseCrashlytics.instance.recordError(error, stack);
+        }
+
+        return Future.value(null);
+      },
+      const [],
+    );
+
+    if (renderedContent.value != null) {
+      return builder?.call(context, renderedContent.value!) ??
+          renderedContent.value!;
+    }
+
+    return const Center(child: CircularProgressIndicator.adaptive());
+  }
+}
+
 class _AnimalsOverviewList extends HookWidget {
   const _AnimalsOverviewList({super.key});
 
@@ -169,7 +247,9 @@ class _AnimalsOverviewList extends HookWidget {
                 hide: true,
               );
             },
-            child: AnimalCard(animal: animal),
+            child: AnimalCard(
+              animal: animal,
+            ),
           ),
         );
       }),

@@ -1,11 +1,21 @@
 import "dart:developer";
 
 import "package:flutter/material.dart";
+import "package:flutter_app/sdui/transformers/card.dart";
+import "package:flutter_app/sdui/transformers/image.dart";
 import "package:flutter_app/sdui/transformers/padding.dart";
+import "package:flutter_app/sdui/transformers/positioned.dart";
+import "package:flutter_app/sdui/transformers/row.dart";
 import "package:flutter_app/sdui/transformers/scaffold.dart";
+import "package:flutter_app/sdui/transformers/stack.dart";
 
+import "../../common/stack_collection.dart";
+import "../elements/attribute.dart";
 import "../elements/node_element.dart";
 import "../transformer_filters/transformer_filter.dart";
+import "align.dart";
+import "aspect_ratio.dart";
+import "button.dart";
 import "center.dart";
 import "column.dart";
 import "component.dart";
@@ -22,7 +32,6 @@ abstract class PreTransformer {
 
 abstract class Transformer {
   static Set<PreTransformer> preTransformers = {};
-
   static Set<Transformer> transformers = {
     ComponentTransformer(),
     TextTransformer(),
@@ -31,7 +40,18 @@ abstract class Transformer {
     ScaffoldTransformer(),
     ColumnTransformer(),
     ContainerTransformer(),
+    ButtonTransformer(),
+    AspectRatioTransformer(),
+    CardTransformer(),
+    PositionedTransformer(),
+    StackTransformer(),
+    ImageTransformer(),
+    RowTransformer(),
+    ExpandedTransformer(),
+    AlignTransformer(),
   };
+  static StackCollection<TransformerScope> scopes =
+      StackCollection<TransformerScope>();
 
   bool shouldTransform(NodeElement element);
   Widget transform(NodeElement element, BuildContext context);
@@ -83,5 +103,50 @@ abstract class Transformer {
       element.name,
       element.children.first,
     );
+  }
+
+  static TransformerScope beginScope(NodeElement element) {
+    final params = element.attributes
+        .where((attribute) => attribute.name.startsWith(":"))
+        .toList();
+    final scope = TransformerScope(params);
+
+    scopes.push(scope);
+
+    return scope;
+  }
+
+  static void clearScope() {
+    scopes = StackCollection();
+  }
+
+  static String? getVariable(String name) {
+    for (final scope in scopes) {
+      final variable = scope.get(name);
+      if (variable == null) continue;
+
+      return variable;
+    }
+
+    return null;
+  }
+
+  static void popScope() {
+    scopes.pop();
+  }
+}
+
+class TransformerScope {
+  final Map<String, Attribute> _data;
+
+  TransformerScope(List<Attribute> data)
+      : _data = {
+          for (final attribute in data) attribute.name.substring(1): attribute
+        };
+
+  String? get(String name) => _data[name]?.value;
+
+  void destroy() {
+    Transformer.popScope();
   }
 }

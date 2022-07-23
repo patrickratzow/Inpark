@@ -26,6 +26,10 @@ class ComponentTransformer extends Transformer {
   Widget transform(NodeElement element, BuildContext context) {
     final component = components[element.name];
 
-    return Transformer.transformOne(component!, context)!;
+    final scope = Transformer.beginScope(element);
+    final child = Transformer.transformOne(component!, context)!;
+    scope.destroy();
+
+    return child;
   }
 }

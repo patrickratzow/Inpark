@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
+using Zoo.Common.Api.Versioning;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Features.Animals.AalborgZoo;
 using Zoo.Inpark.Features.Animals.Interfaces;
@@ -36,6 +37,7 @@ public static class DependencyInjection
         services.AddMemoryCache();
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddVersioning();
         services.AddPipelines();
         services.AddClock();
         services.AddHangFire(dbConnection);
@@ -48,17 +50,17 @@ public static class DependencyInjection
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<IAnimalMapper, AalborgZooAnimalMapper>();
 
-        services.AddSingleton<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
+        services.AddScoped<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>();
         services.AddHttpClient<IOpeningHoursRepository, AalborgZooOpeningHoursRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<IOpeningHoursMapper, AalborgZooOpeningHoursMapper>();
 
-        services.AddSingleton<ISpeaksRepository, AalborgZooSpeaksRepository>();
+        services.AddScoped<ISpeaksRepository, AalborgZooSpeaksRepository>();
         services.AddHttpClient<ISpeaksRepository, AalborgZooSpeaksRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<ISpeaksMapper, AalborgZooSpeaksMapper>();
 
-        services.AddSingleton<IParkEventRepository, AalborgZooParkEventRepository>();
+        services.AddScoped<IParkEventRepository, AalborgZooParkEventRepository>();
         services.AddHttpClient<IParkEventRepository, AalborgZooParkEventRepository>(AalborgZooHttpClient)
             .AddPolicyHandler(GetRetryPolicy());
         services.AddSingleton<IParkEventMapper, AalborgZooParkEventMapper>();
@@ -74,6 +76,7 @@ public static class DependencyInjection
                 .AllowAnyMethod()
         );
         
+        app.UseVersioning();
         app.UseResponseMapper();
         
         RunMigrations(app.ApplicationServices);

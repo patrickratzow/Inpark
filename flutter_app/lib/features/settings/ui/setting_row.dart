@@ -40,6 +40,7 @@ class SettingRow extends HookWidget {
                 Text(
                   name,
                   style: theme.textTheme.headlineSmall,
+                  textScaleFactor: 1.0,
                 ),
               ],
             ),

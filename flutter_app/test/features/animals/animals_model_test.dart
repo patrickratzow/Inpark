@@ -14,6 +14,7 @@ void main() {
         id: "5",
         status: IUCNStatusDto.cr,
         contents: List.empty(),
+        hasMap: true,
       ),
       AnimalDto(
         name: AnimalNameDto(displayName: "Bingus", latinName: "BB"),
@@ -22,6 +23,7 @@ void main() {
         id: "5",
         status: IUCNStatusDto.en,
         contents: List.empty(),
+        hasMap: true,
       ),
       AnimalDto(
         name: AnimalNameDto(displayName: "Snek", latinName: "Snaike"),
@@ -30,6 +32,7 @@ void main() {
         id: "5",
         status: IUCNStatusDto.en,
         contents: List.empty(),
+        hasMap: true,
       )
     ];
   });

@@ -30,7 +30,7 @@ class Parser {
 
   NodeElement _parseElement(XmlElement element, ParserData data) {
     final name = element.name.toString();
-    final innerText = element.innerText;
+    final innerText = element.innerText.trim();
     final attributes = _parseAttributes(element, data);
     final children = element.children
         .map((child) {

@@ -1,6 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Enums;
+using Zoo.Inpark.Features.OpeningHours.Interfaces;
 
 namespace Zoo.Inpark.Features.OpeningHours;
 
@@ -9,30 +8,23 @@ public record GetOpeningHoursQuery : IRequest<OneOf<List<OpeningHourDto>>>;
 public class GetOpeningHoursQueryHandler 
     : IRequestHandler<GetOpeningHoursQuery, OneOf<List<OpeningHourDto>>>
 {
-    private readonly InparkDbContext _context;
-    
-    public GetOpeningHoursQueryHandler(InparkDbContext context)
+    private readonly IOpeningHoursRepository _repository;
+    private readonly IOpeningHoursMapper _mapper;
+
+    public GetOpeningHoursQueryHandler(IOpeningHoursRepository repository, IOpeningHoursMapper mapper)
     {
-        _context = context;
+        _repository = repository;
+        _mapper = mapper;
     }
 
     public async Task<OneOf<List<OpeningHourDto>>> Handle(GetOpeningHoursQuery request,
         CancellationToken cancellationToken)
     {
-        var openingHours = await _context.OpeningHours
-            .AsNoTracking()
-            .OrderByDescending(x => x.Range.Start)
-            .ToListAsync(cancellationToken);
+        var openingHours = await _repository.GetAll();
         
         return openingHours
-            .Select(longestOpeningHour => new OpeningHourDto(
-                    longestOpeningHour!.Name, 
-                    longestOpeningHour.Range.Start, 
-                    longestOpeningHour.Range.End, 
-                    longestOpeningHour.Open, 
-                    longestOpeningHour.Days.ToDays()
-                )
-            ).ToList();
+            .Select(_mapper.MapToDto)
+            .ToList();
     }
 }
 
