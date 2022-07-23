@@ -11,6 +11,81 @@ import "package:flutter_hooks/flutter_hooks.dart";
 import "../models/calendar_event.dart";
 import "../models/calendar_model.dart";
 
+class Calendar extends HookWidget {
+  final void Function(PageController) onCalendarCreated;
+  final void Function(DateTime) onPageChanged;
+
+  Calendar({
+    required this.onPageChanged,
+    required this.onCalendarCreated,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final model = useProvider<CalendarModel>(watch: true);
+    final theme = useTheme();
+
+    return TableCalendar<CalendarEvent>(
+      locale: "da",
+      onCalendarCreated: onCalendarCreated,
+      calendarBuilders: CalendarBuilders(
+        singleMarkerBuilder: (context, day, event) {
+          if (event.color == null) return Container();
+          //if (event.open == false) return Container();
+
+          return Icon(
+            Icons.circle,
+            size: 8,
+            color: event.color,
+          );
+        },
+        dowBuilder: (context, day) {
+          final text = DateFormat.E("da").format(day);
+
+          return Center(
+            child: Text(
+              text,
+              style: theme.textTheme.bodyMedium,
+              textScaleFactor: 1.0,
+            ),
+          );
+        },
+      ),
+      onPageChanged: onPageChanged,
+      calendarStyle: CalendarStyle(
+        outsideDaysVisible: false,
+        selectedDecoration: const BoxDecoration(
+          color: Color.fromARGB(255, 214, 216, 214),
+          shape: BoxShape.circle,
+        ),
+        selectedTextStyle: TextStyle(
+          color: CustomColor.green.middle,
+          fontSize: 14,
+        ),
+        isTodayHighlighted: false,
+      ),
+      selectedDayPredicate: (day) {
+        return day == model.selectedDay;
+      },
+      onDaySelected: (selectedDay, _) {
+        model.selectedDay = selectedDay;
+      },
+      eventLoader: (date) {
+        final result = model.getCalendarEventsForDay(date);
+        if (result.isError) return [];
+
+        return result.success!;
+      },
+      startingDayOfWeek: StartingDayOfWeek.monday,
+      headerVisible: false,
+      firstDay: model.firstDay,
+      focusedDay: model.focusedDay,
+      lastDay: model.lastDay,
+    );
+  }
+}
+
 class CalendarScreen extends HookWidget implements Screen {
   const CalendarScreen({
     super.key,
@@ -40,65 +115,13 @@ class CalendarScreen extends HookWidget implements Screen {
                       children: [
                         if (pageController.value != null)
                           _buildHeaderRow(pageController.value!, model, theme),
-                        TableCalendar<CalendarEvent>(
-                          locale: "da",
-                          onCalendarCreated: (controller) => Future.microtask(
+                        Calendar(
+                          onCalendarCreated: (PageController controller) =>
+                              Future.microtask(
                             () => pageController.value = controller,
                           ),
-                          calendarBuilders: CalendarBuilders(
-                            singleMarkerBuilder: (context, day, event) {
-                              if (event.color == null) return Container();
-                              //if (event.open == false) return Container();
-
-                              return Icon(
-                                Icons.circle,
-                                size: 8,
-                                color: event.color,
-                              );
-                            },
-                            dowBuilder: (context, day) {
-                              final text = DateFormat.E("da").format(day);
-
-                              return Center(
-                                child: Text(
-                                  text,
-                                  style: theme.textTheme.bodyMedium,
-                                  textScaleFactor: 1.0,
-                                ),
-                              );
-                            },
-                          ),
-                          onPageChanged: (focusedDay) =>
-                              model.selectedDay = focusedDay,
-                          calendarStyle: CalendarStyle(
-                            outsideDaysVisible: false,
-                            selectedDecoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 214, 216, 214),
-                              shape: BoxShape.circle,
-                            ),
-                            selectedTextStyle: TextStyle(
-                              color: CustomColor.green.middle,
-                              fontSize: 14,
-                            ),
-                            isTodayHighlighted: false,
-                          ),
-                          selectedDayPredicate: (day) {
-                            return isSameDay(model.selectedDay, day);
-                          },
-                          onDaySelected: (selectedDay, _) {
-                            model.selectedDay = selectedDay;
-                          },
-                          eventLoader: (date) {
-                            final result = model.getCalendarEventsForDay(date);
-                            if (result.isError) return [];
-
-                            return result.success!;
-                          },
-                          startingDayOfWeek: StartingDayOfWeek.monday,
-                          headerVisible: false,
-                          firstDay: model.firstDay,
-                          focusedDay: model.selectedDay,
-                          lastDay: model.lastDay,
+                          onPageChanged: (DateTime focusedDay) =>
+                              model.focusedDay = focusedDay,
                         ),
                         const SizedBox(height: 16),
                       ],
@@ -125,8 +148,7 @@ class CalendarScreen extends HookWidget implements Screen {
       minWidth: width,
       maxWidth: width,
     );
-    final monthName =
-        DateFormat("MMMM yyyy", "da-dk").format(model.selectedDay);
+    final monthName = DateFormat("MMMM yyyy", "da-dk").format(model.focusedDay);
     final monthNameUppercase =
         monthName.substring(0, 1).toUpperCase() + monthName.substring(1);
 

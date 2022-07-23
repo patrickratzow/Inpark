@@ -19,6 +19,7 @@ class SearchAppBar extends HookWidget {
     final focusNode = useFocusNode();
     final model = useProvider<AnimalsModel>(watch: true);
     final theme = useTheme();
+    final textController = useTextEditingController();
 
     useValueChanged(model.isSearching, (_, __) {
       if (model.isSearching) {
@@ -49,6 +50,7 @@ class SearchAppBar extends HookWidget {
           SizedBox(
             width: 150,
             child: TextField(
+              controller: textController,
               focusNode: focusNode,
               style: theme.textTheme.headlineMedium?.copyWith(
                 height: 18 / 16,
@@ -71,7 +73,13 @@ class SearchAppBar extends HookWidget {
 
     List<Widget> _actions() {
       return [
-        CancelButton(onPressed: model.stopSearching),
+        CancelButton(
+          onPressed: () {
+            textController.text = "";
+
+            model.stopSearching();
+          },
+        ),
       ];
     }
 
