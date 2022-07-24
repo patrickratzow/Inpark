@@ -267,8 +267,7 @@ export default function Layout({ children }: any) {
               </div>
             </div>
           </div>
-
-          <main className="flex-1">{children}</main>
+          <main className="">{children}</main>
         </div>
       </div>
     </>

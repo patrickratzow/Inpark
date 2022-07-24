@@ -1,9 +1,12 @@
 import create from "zustand";
 import { devtools} from "zustand/middleware";
+import { ZooInparkContractsIUCNStatusDto, ZooInparkEntitiesIUCNStatus } from "../out";
 
 export interface IAnimal {
   displayName: string;
   latinName: string;
+  previewUrl: string
+  status: ZooInparkEntitiesIUCNStatus | ZooInparkContractsIUCNStatusDto
 }
 
 interface AnimalState {

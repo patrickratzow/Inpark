@@ -24,7 +24,7 @@ export default function MapActionBar() {
       setAnimalName(animalStore.selectedAnimal!.latinName);
     }
 
-  }, []);
+  }, [animal]);
 
   //Export should send the exported points list to the API.
   async function saveMap(): Promise<void> {
@@ -56,8 +56,7 @@ export default function MapActionBar() {
   }
 
   return (
-    <div className={`flex flex-row space-x-4 p-4 bg-green-600`}>
-      <Button onClick={() => {router.back()}}>&lt; Tilbage</Button>
+    <div className={`flex flex-row space-x-4 p-4 bg-gray-900`}>
       <Button onClick={saveMap}>Export</Button>
       <div>
         <input
