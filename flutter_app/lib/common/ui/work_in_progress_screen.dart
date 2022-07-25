@@ -17,7 +17,7 @@ class WorkInProgressScreen extends StatelessWidget implements Screen {
         child: Center(
           child: Text(
             textAlign: TextAlign.center,
-            "Vi arbejder på at få færdiggjort det her :)",
+            "Vi arbejder på at få tilføjet en skærm :)",
             style: TextStyle(
               fontSize: 24,
             ),

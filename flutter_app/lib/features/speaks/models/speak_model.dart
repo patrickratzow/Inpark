@@ -1,6 +1,7 @@
 import "dart:collection";
 
 import "package:flutter/material.dart";
+import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "../../../extensions/datetime.dart";
 import "../../../services/notification_service.dart";
 import "notification_service.dart";
@@ -12,7 +13,20 @@ import "../repositories/speak_repository.dart";
 
 class SpeakModel extends ChangeNotifier {
   List<Speak> _speaks = List.empty();
-  UnmodifiableListView<Speak> get speaks => UnmodifiableListView(_speaks);
+  UnmodifiableListView<Speak> get speaks => UnmodifiableListView(
+        [
+          ..._speaks,
+          Speak(
+            "Test speak",
+            DateTime.now().add(const Duration(minutes: 20)),
+            ImagePairDto(
+              fullscreenUrl: _speaks.first.fullscreenImage,
+              previewUrl: _speaks.first.previewImage,
+            ),
+            _speaks.first.days,
+          ),
+        ],
+      );
   String error = "";
   bool loading = false;
 
@@ -36,7 +50,7 @@ class SpeakModel extends ChangeNotifier {
     }
   }
 
-  Future<bool> toggleNotification(Speak speak) async {
+  Future<bool> toggleNotification(Speak speak, Duration timeBefore) async {
     var isToggled = await this.isToggled(speak);
 
     if (isToggled) {
@@ -46,7 +60,8 @@ class SpeakModel extends ChangeNotifier {
       return false;
     }
 
-    var scheduleNotification = await this.scheduleNotification(speak);
+    var scheduleNotification =
+        await this.scheduleNotification(speak, timeBefore);
     if (!scheduleNotification) {
       return Future.error("no_permission");
     }
@@ -56,15 +71,17 @@ class SpeakModel extends ChangeNotifier {
     return true;
   }
 
-  Future<bool> scheduleNotification(Speak speak) async {
-    final seconds = await secondsToNotification(speak.start);
-    final duration = Duration(seconds: seconds);
+  Future<bool> scheduleNotification(Speak speak, Duration? timeBefore) async {
+    final duration = timeBefore ??
+        Duration(
+          seconds: await secondsToNotification(speak.start),
+        );
 
     return _notificationService.showNotification(
       speak.id,
       "${speak.title} fodring",
-      "${speak.title} bliver fodret om ${duration.inMinutes} minutter",
-      seconds,
+      "${speak.title} Speak starter om ${duration.inMinutes} minutter",
+      duration.inSeconds,
     );
   }
 
