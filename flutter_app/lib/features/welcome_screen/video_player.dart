@@ -9,7 +9,7 @@ class CustomVideoPlayer extends HookWidget {
   Widget build(BuildContext context) {
     var controller = useState(
       VideoPlayerController.network(
-        "https://cms.aalborgzoo.dk/media/twfdnqfc/familiefilm-sommer-1920x600-hjemmeside.mp4",
+        "https://i.imgur.com/2hDCaUA.mp4",
       ),
     );
     var isLoading = useState(true);

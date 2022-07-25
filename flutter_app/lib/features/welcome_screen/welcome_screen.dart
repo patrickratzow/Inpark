@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:flutter_use/flutter_use.dart";
 import "../../common/colors.dart";
 import "../../common/feature.dart";
 import "../../common/screen.dart";
@@ -17,6 +19,17 @@ class WelcomeScreen extends HookWidget implements Screen {
     final navigation = useNavigator();
     // Start fetching data for front page
     useRef(Features.setupAll(context));
+
+    useEffectOnce(() {
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+
+      return () => {
+            SystemChrome.setEnabledSystemUIMode(
+              SystemUiMode.manual,
+              overlays: SystemUiOverlay.values,
+            )
+          };
+    });
 
     return Scaffold(
       extendBodyBehindAppBar: true,

@@ -38,7 +38,9 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
 
   setupIoC();
-  initializeDateFormatting();
+  if (kReleaseMode) {
+    initializeDateFormatting();
+  }
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(

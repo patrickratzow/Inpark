@@ -2,6 +2,7 @@ import "dart:async";
 import "dart:math";
 
 import "package:cached_network_image/cached_network_image.dart";
+import "package:firebase_crashlytics/firebase_crashlytics.dart";
 import "package:flutter/material.dart";
 import "package:flutter_app/common/modal_sheet.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
@@ -204,15 +205,27 @@ class SpeakRowActions extends HookWidget {
             return NotifyButton(
               time: speak.start,
               initialState: snapshot.data!,
-              onPressed: (state) async {
+              // TODO: This method is quite ugly, should be refactored
+              onPressed: (state, longPress) async {
                 try {
-                  await selectReminderTimeIfFirstTime(context);
-
-                  final turnedOn = await model.toggleNotification(speak);
                   final notificationService =
                       locator.get<NotificationService>();
-                  final notificationTime =
-                      await notificationService.getReminderTime();
+                  Duration notificationTime = const Duration(minutes: 15);
+
+                  final isToggledOn = await model.isToggled(speak);
+                  if (!isToggledOn) {
+                    if (longPress) {
+                      notificationTime =
+                          await selectReminderTimeForNotification(context);
+                    } else {
+                      await selectReminderTimeIfFirstTime(context);
+                      notificationTime =
+                          await notificationService.getReminderTime();
+                    }
+                  }
+
+                  final turnedOn =
+                      await model.toggleNotification(speak, notificationTime);
                   final text = turnedOn
                       ? "Du får en notifikation ${notificationTime.inMinutes} minutter før ${speak.title} speak starter"
                       : "Du er afmeldt notifikationer for ${speak.title}";
@@ -220,10 +233,25 @@ class SpeakRowActions extends HookWidget {
                   showSnackBar(text, context);
 
                   return true;
-                } catch (e) {
+                } catch (e, stackTrace) {
+                  if (e.toString() == "no_permission") {
+                    showSnackBar(
+                      "Du har ikke givet tilladelse til notifikationer",
+                      context,
+                    );
+
+                    return false;
+                  }
+
                   showSnackBar(
-                    "Du har ikke givet tilladelse til notifikationer",
+                    "Der opstod en fejl, prøv igen senere",
                     context,
+                  );
+
+                  await FirebaseCrashlytics.instance.recordError(
+                    e,
+                    stackTrace,
+                    reason: "Unexpected error during notification toggle",
                   );
 
                   return false;
@@ -278,7 +306,32 @@ class SpeakRowActions extends HookWidget {
     );
   }
 
-  Future selectReminderTimeIfFirstTime(BuildContext context) async {
+  Future<Duration> selectReminderTimeForNotification(
+    BuildContext context,
+  ) async {
+    final notificationService = locator.get<NotificationService>();
+    var duration = await notificationService.getReminderTime();
+
+    await showModalSheet(
+      context: context,
+      title: "Hvor lang tid før vil du påmindes?",
+      builder: (context) {
+        return NotificationReminderTimeModal(
+          selectedDuration: duration,
+          onSelected: (selectedDuration) => {
+            duration = selectedDuration,
+            Navigator.of(context).pop(),
+          },
+        );
+      },
+    );
+
+    return duration;
+  }
+
+  Future selectReminderTimeIfFirstTime(
+    BuildContext context,
+  ) async {
     final notificationService = locator.get<NotificationService>();
 
     final hasSetReminderTime = await notificationService.hasSetReminderTime();
@@ -310,7 +363,7 @@ class SpeakRowActions extends HookWidget {
 }
 
 class NotifyButton extends HookWidget {
-  final Future<bool> Function(bool active) onPressed;
+  final Future<bool> Function(bool active, bool longPress) onPressed;
   final bool initialState;
   final SpeakColorPair offColor;
   final SpeakColorPair onColor;
@@ -361,6 +414,19 @@ class NotifyButton extends HookWidget {
         const shakeOffset = 1;
         final sineValue = sin(shakeCount * 2 * pi * animationController.value);
 
+        Future onNotifyPressed(bool longPress) async {
+          var success = await onPressed(state.value, longPress);
+          if (success) {
+            state.value = !state.value;
+
+            if (state.value) {
+              animationController.forward();
+            } else {
+              animationController.reverse();
+            }
+          }
+        }
+
         return Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: ClipRRect(
@@ -369,54 +435,52 @@ class NotifyButton extends HookWidget {
               width: 27 * 1.5,
               height: 27 * 1.5,
               color: backgroundTween.value,
-              child: IconButton(
-                icon: Transform.rotate(
-                  angle: deg2rad(sineValue * 3),
-                  child: Transform.translate(
-                    offset: Offset(sineValue * shakeOffset, 0),
-                    child: Stack(
-                      children: [
-                        SvgPicture.asset(
-                          "assets/clock_icon.svg",
-                          height: 14 * 1.5,
-                          width: 12 * 1.5,
-                          color: iconTween.value,
-                        ),
-                        Transform.translate(
-                          offset: Offset(
-                            3 - (animationController.value * 3),
-                            1 - (animationController.value * 3.5),
+              child: Material(
+                child: InkWell(
+                  onTap: () => onNotifyPressed(false),
+                  onLongPress: () => onNotifyPressed(true),
+                  child: Ink(
+                    color: backgroundTween.value,
+                    child: Center(
+                      child: Transform.rotate(
+                        angle: deg2rad(sineValue * 3),
+                        child: Transform.translate(
+                          offset: Offset(sineValue * shakeOffset, 0),
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/clock_icon.svg",
+                                height: 14 * 1.5,
+                                width: 12 * 1.5,
+                                color: iconTween.value,
+                              ),
+                              Transform.translate(
+                                offset: Offset(
+                                  3 - (animationController.value * 3),
+                                  1 - (animationController.value * 3.5),
+                                ),
+                                child: SvgPicture.asset(
+                                  "assets/clock_bow.svg",
+                                  width: (8 + (animationController.value * 4)) *
+                                      1.5,
+                                  color: iconTween.value,
+                                ),
+                              ),
+                              Transform.rotate(
+                                angle: deg2rad(sineValue * 10),
+                                child: SvgPicture.asset(
+                                  "assets/clock_dingle.svg",
+                                  width: 12 * 1.5,
+                                  color: iconTween.value,
+                                ),
+                              ),
+                            ],
                           ),
-                          child: SvgPicture.asset(
-                            "assets/clock_bow.svg",
-                            width: (8 + (animationController.value * 4)) * 1.5,
-                            color: iconTween.value,
-                          ),
                         ),
-                        Transform.rotate(
-                          angle: deg2rad(sineValue * 10),
-                          child: SvgPicture.asset(
-                            "assets/clock_dingle.svg",
-                            width: 12 * 1.5,
-                            color: iconTween.value,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-                onPressed: () async {
-                  var success = await onPressed(state.value);
-                  if (success) {
-                    state.value = !state.value;
-
-                    if (state.value) {
-                      animationController.forward();
-                    } else {
-                      animationController.reverse();
-                    }
-                  }
-                },
               ),
             ),
           ),
