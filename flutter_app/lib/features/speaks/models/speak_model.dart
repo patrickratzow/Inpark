@@ -1,7 +1,6 @@
 import "dart:collection";
 
 import "package:flutter/material.dart";
-import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "../../../extensions/datetime.dart";
 import "../../../services/notification_service.dart";
 import "notification_service.dart";
@@ -13,20 +12,7 @@ import "../repositories/speak_repository.dart";
 
 class SpeakModel extends ChangeNotifier {
   List<Speak> _speaks = List.empty();
-  UnmodifiableListView<Speak> get speaks => UnmodifiableListView(
-        [
-          ..._speaks,
-          Speak(
-            "Test speak",
-            DateTime.now().add(const Duration(minutes: 20)),
-            ImagePairDto(
-              fullscreenUrl: _speaks.first.fullscreenImage,
-              previewUrl: _speaks.first.previewImage,
-            ),
-            _speaks.first.days,
-          ),
-        ],
-      );
+  UnmodifiableListView<Speak> get speaks => UnmodifiableListView(_speaks);
   String error = "";
   bool loading = false;
 
