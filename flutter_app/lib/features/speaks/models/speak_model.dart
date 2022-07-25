@@ -58,10 +58,8 @@ class SpeakModel extends ChangeNotifier {
   }
 
   Future<bool> scheduleNotification(Speak speak, Duration? timeBefore) async {
-    final duration = timeBefore ??
-        Duration(
-          seconds: await secondsToNotification(speak.start),
-        );
+    final seconds = await secondsToNotification(speak.start, timeBefore);
+    final duration = Duration(seconds: seconds);
 
     return _notificationService.showNotification(
       speak.id,
@@ -75,9 +73,9 @@ class SpeakModel extends ChangeNotifier {
     _notificationService.cancelNotifications(speak.id);
   }
 
-  Future<int> secondsToNotification(DateTime time) async {
+  Future<int> secondsToNotification(DateTime time, Duration? duration) async {
     final notificationService = locator.get<NotificationService>();
-    final duration = await notificationService.getReminderTime();
+    duration ??= await notificationService.getReminderTime();
 
     return time
         .asToday()
