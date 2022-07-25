@@ -11,6 +11,7 @@ import "package:flutter_app/transformers/conservation_status.dart";
 import "package:flutter_app/transformers/pre/hook_transformer.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:google_fonts/google_fonts.dart";
+import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
 
 import "common/ioc.dart";
@@ -37,6 +38,8 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
 
   setupIoC();
+  initializeDateFormatting();
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
