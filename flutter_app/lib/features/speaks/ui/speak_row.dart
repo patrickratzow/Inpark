@@ -314,7 +314,7 @@ class SpeakRowActions extends HookWidget {
 
     await showModalSheet(
       context: context,
-      title: "Hvor lang tid før vil du påmindes?",
+      title: "Hvor lang tid før vil du påmindes for denne speak?",
       builder: (context) {
         return NotificationReminderTimeModal(
           selectedDuration: duration,

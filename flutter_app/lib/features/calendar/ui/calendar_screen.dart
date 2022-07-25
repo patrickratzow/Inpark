@@ -66,7 +66,7 @@ class Calendar extends HookWidget {
         isTodayHighlighted: false,
       ),
       selectedDayPredicate: (day) {
-        return day == model.selectedDay;
+        return isSameDay(day, model.selectedDay);
       },
       onDaySelected: (selectedDay, _) {
         model.selectedDay = selectedDay;
