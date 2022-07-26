@@ -8,12 +8,12 @@ import "../../../../hooks/hooks.dart";
 import "animal_category.dart";
 
 class AnimalCard extends HookWidget {
+  final AnimalDto animal;
+
   const AnimalCard({
     super.key,
     required this.animal,
   });
-
-  final AnimalDto animal;
 
   @override
   Widget build(BuildContext context) {

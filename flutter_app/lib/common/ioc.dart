@@ -1,6 +1,6 @@
 import "dart:io";
 
-import "package:flutter/foundation.dart" show kDebugMode;
+import "package:flutter/foundation.dart";
 import "package:flutter_app/sdui/screen.dart";
 import "package:flutter_app/sdui/transformers/button.dart";
 import "package:get_it/get_it.dart";
@@ -13,13 +13,14 @@ import "../features/park_map/repositories/park_map_repository.dart";
 import "../features/speaks/repositories/speak_repository.dart";
 import "../generated_code/zooinator.swagger.dart";
 import "../services/capability_service.dart";
+import "../services/notification_service.dart";
 import "../services/policy_service.dart";
 
 final locator = GetIt.instance;
 
 void setupIoC() {
   String baseUrl;
-  if (!kDebugMode) {
+  if (kDebugMode) {
     baseUrl =
         Platform.isAndroid ? "https://10.0.2.2:5000" : "https://localhost:5000";
   } else {
@@ -41,4 +42,6 @@ void setupIoC() {
   locator.registerLazySingleton<PolicyService>(() => PolicyService());
   locator.registerLazySingleton<CapabilityService>(() => CapabilityService());
   locator.registerLazySingleton<ParkMapRepository>(() => ParkMapRepository());
+  locator
+      .registerLazySingleton<NotificationService>(() => NotificationService());
 }

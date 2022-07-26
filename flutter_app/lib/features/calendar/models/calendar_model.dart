@@ -15,10 +15,32 @@ class CalendarModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  DateTime _focusedDay;
+  DateTime get focusedDay => _focusedDay;
+  void set focusedDay(DateTime value) {
+    _focusedDay = value;
+
+    notifyListeners();
+  }
+
   List<CalendarEvent> _calendarEvents = List.empty();
   bool get isLoading => _calendarEvents.isEmpty;
 
-  CalendarModel(this._selectedDay) {
+  DateTime get firstDay {
+    var calendarEvents = [..._calendarEvents];
+    calendarEvents.sort((a, b) => a.start.compareTo(b.start));
+
+    return calendarEvents.first.start;
+  }
+
+  DateTime get lastDay {
+    var calendarEvents = [..._calendarEvents];
+    calendarEvents.sort((a, b) => a.start.compareTo(b.start));
+
+    return calendarEvents.last.start;
+  }
+
+  CalendarModel(this._selectedDay) : this._focusedDay = _selectedDay {
     var repository = locator.get<CalendarRepository>();
     repository.fetchEvents().then(
           (value) => {

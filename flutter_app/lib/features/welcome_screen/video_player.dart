@@ -8,7 +8,9 @@ class CustomVideoPlayer extends HookWidget {
   @override
   Widget build(BuildContext context) {
     var controller = useState(
-      VideoPlayerController.network("https://i.imgur.com/0sx7vpa.mp4"),
+      VideoPlayerController.network(
+        "https://i.imgur.com/2hDCaUA.mp4",
+      ),
     );
     var isLoading = useState(true);
 

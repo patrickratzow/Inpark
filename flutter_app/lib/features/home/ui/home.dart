@@ -1,8 +1,5 @@
 import "package:collection_ext/iterables.dart";
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
-import "package:flutter_app/common/colors.dart";
-import "package:flutter_use/flutter_use.dart";
 import "../../../common/feature.dart";
 import "../../../common/screen.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
@@ -18,14 +15,7 @@ class HomeScreen extends HookWidget implements Screen {
     final futures = useRef(Features.setupAll(context));
     final future = useFuture(futures.value);
 
-    useEffectOnce(() {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle.dark.copyWith(
-          statusBarColor: CustomColor.green.lightest,
-        ),
-      );
-      return null;
-    });
+    ;
 
     Widget body;
     if (future.connectionState == ConnectionState.done) {

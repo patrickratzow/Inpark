@@ -1,7 +1,10 @@
 import "dart:io";
 
+import "package:device_preview/device_preview.dart";
 import "package:firebase_core/firebase_core.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:flutter_app/navigation/navigation_screen.dart";
 import "package:flutter_app/sdui/transformers/component.dart";
 import "package:flutter_app/transformers/conservation_status.dart";
@@ -34,10 +37,18 @@ void main() async {
   );
   HttpOverrides.global = MyHttpOverrides();
 
-  initializeDateFormatting();
   setupIoC();
+  if (kReleaseMode) {
+    initializeDateFormatting();
+  }
 
-  await NotificationService().init();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
+
+  await NotificationModel().init();
 
   Transformer.preTransformers.add(HookPreTransformer());
   Transformer.transformers.add(ScreenAppBarTransformer());
@@ -113,7 +124,12 @@ void main() async {
 """,
   );
 
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyHttpOverrides extends HttpOverrides {
@@ -160,6 +176,9 @@ class MyApp extends HookWidget {
         ),
       ],
       child: MaterialApp(
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         home: const NavigationScreen(),
         theme: ThemeData(

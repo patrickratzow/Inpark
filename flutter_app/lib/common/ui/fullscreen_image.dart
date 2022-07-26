@@ -12,11 +12,11 @@ class FullScreenImage extends HookWidget implements Screen {
   final String title;
 
   const FullScreenImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.tag,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

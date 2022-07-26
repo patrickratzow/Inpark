@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:flutter_use/flutter_use.dart";
 import "../../common/colors.dart";
 import "../../common/feature.dart";
+import "../../common/screen.dart";
 import "../../hooks/hooks.dart";
 import "../../navigation/navigation_model.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:flutter_svg/flutter_svg.dart";
-import "package:flutter_use/flutter_use.dart";
 
 import "video_player.dart";
 
-class WelcomeScreen extends HookWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+class WelcomeScreen extends HookWidget implements Screen {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +21,14 @@ class WelcomeScreen extends HookWidget {
     useRef(Features.setupAll(context));
 
     useEffectOnce(() {
-      final style = SystemUiOverlayStyle.light.copyWith(
-        statusBarColor: Colors.transparent,
-      );
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-      SystemChrome.setSystemUIOverlayStyle(style);
-
-      return () {
-        SystemChrome.setSystemUIOverlayStyle(
-          SystemUiOverlayStyle.dark.copyWith(
-            statusBarColor: CustomColor.green.lightest,
-          ),
-        );
-      };
+      return () => {
+            SystemChrome.setEnabledSystemUIMode(
+              SystemUiMode.manual,
+              overlays: SystemUiOverlay.values,
+            )
+          };
     });
 
     return Scaffold(
@@ -105,7 +101,7 @@ class WelcomeScreen extends HookWidget {
     BuildContext context,
     NavigationModel navigation,
   ) {
-    final hasBottomNotch = MediaQuery.of(context).viewPadding.bottom > 0;
+    final bottomViewPadding = MediaQuery.of(context).viewPadding.bottom;
 
     return Container(
       width: double.infinity,
@@ -113,19 +109,22 @@ class WelcomeScreen extends HookWidget {
       child: Padding(
         padding: EdgeInsets.only(
           top: 16,
-          bottom: hasBottomNotch ? 40 : 16,
+          bottom: 16.0 + bottomViewPadding,
           left: 24,
           right: 24,
         ),
         child: TextButton(
-          onPressed: () => navigation.hasSeenWelcomeScreen(),
-          style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all(CustomColor.green.lightest),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(48.0),
-              ),
+          onPressed: () {
+            navigation.hasSeenWelcomeScreen().then(
+              (value) {
+                navigation.pop(context);
+              },
+            );
+          },
+          style: TextButton.styleFrom(
+            backgroundColor: CustomColor.green.lightest,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(48.0),
             ),
           ),
           child: Padding(

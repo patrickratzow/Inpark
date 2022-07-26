@@ -14,6 +14,11 @@ class CalendarEvents extends HookWidget {
     final result = model.getCalendarEventsForDay(model.selectedDay);
     final theme = useTheme();
 
+    if (model.selectedDay.year != model.focusedDay.year ||
+        model.selectedDay.month != model.focusedDay.month) {
+      return Container();
+    }
+
     // Error = loading
     if (result.isError) {
       if (result.error == "none_selected") {
