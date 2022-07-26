@@ -50,7 +50,6 @@ export default function Example() {
 
   return (
     <>
-
             <main className="flex-1">
               <div className="relative max-w-4xl ml-32 md:px-8 xl:px-0">
                 <div className="pt-10 pb-16">
