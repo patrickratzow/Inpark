@@ -267,7 +267,7 @@ export default function Layout({ children }: any) {
               </div>
             </div>
           </div>
-          <main className="">{children}</main>
+          <main className="pt-5">{children}</main>
         </div>
       </div>
     </>
