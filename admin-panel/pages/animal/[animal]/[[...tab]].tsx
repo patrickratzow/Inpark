@@ -3,8 +3,7 @@ import { useEffect, useState } from "react"
 import { AnimalsApi, Configuration, GetAnimalRequest, ZooInparkContractsIUCNStatusDto, ZooInparkEntitiesAnimal, ZooInparkEntitiesIUCNStatus } from "../../../out"
 import useAnimalStore, { IAnimal } from "../../../stores/animal-store"
 import Map from "../../../pages/animal/[animal]/map"
-import InformationTab from "../../../components/tabs/animal/test"
-import AnimalInformationPage from "../../../pages/animal/[animal]/information"
+import AnimalInformation from "../../../pages/animal/[animal]/information"
 
 interface Tab {
   name: string
@@ -16,15 +15,15 @@ function Foo(name: string) {
   return <h1>{name}</h1>
 }
 
-const tabs: Tab[] = [
-  { name: "Information", href: "information", render: () => AnimalInformationPage() },
-  { name: "Oversigt", href: "oversigt", render: () => Foo("Ændre fakta om dyret") },
-  { name: "Kort", href: "kort", render: () => Map() },
-  { name: "Sjove fakta", href: "sjove-fakts", render: () => Foo("Sjove fakta") }
-]
 
 //This should be the Animals name;
 export default function AnimalPage() {
+  const tabs: Tab[] = [
+    { name: "Information", href: "information", render: () => AnimalInformation() },
+    { name: "Oversigt", href: "oversigt", render: () => Foo("Ændre fakta om dyret") },
+    { name: "Kort", href: "kort", render: () => Map() },
+    { name: "Sjove fakta", href: "sjove-fakts", render: () => Foo("Sjove fakta") }
+  ]
   const router = useRouter()
   const { animal } = router.query
   const animalStore = useAnimalStore()
@@ -51,7 +50,7 @@ export default function AnimalPage() {
 
     if (tab == undefined) {
       setActiveTab(tabs[0].href)
-      return
+      return;
     }
 
     setActiveTab(tab.href)

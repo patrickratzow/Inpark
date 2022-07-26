@@ -9,6 +9,8 @@ export interface IAnimal {
   status: ZooInparkEntitiesIUCNStatus | ZooInparkContractsIUCNStatusDto
 }
 
+const statusMap = new Map();
+
 interface AnimalState {
   selectedAnimal: IAnimal | null;
   selectAnimal: (animal: IAnimal) => void;
