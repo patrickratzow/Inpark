@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { AnimalsApi, Configuration, GetAnimalRequest, ZooInparkContractsIUCNStatusDto, ZooInparkEntitiesAnimal, ZooInparkEntitiesIUCNStatus } from "../../../out"
 import useAnimalStore, { IAnimal } from "../../../stores/animal-store"
 import Map from "../../../pages/animal/[animal]/map"
-import AnimalInformation from "../../../pages/animal/[animal]/information"
+import InformationTab from "../../../components/tabs/animal/information"
 
 interface Tab {
   name: string
@@ -19,7 +19,7 @@ function Foo(name: string) {
 //This should be the Animals name;
 export default function AnimalPage() {
   const tabs: Tab[] = [
-    { name: "Information", href: "information", render: () => AnimalInformation() },
+    { name: "Information", href: "information", render: () => InformationTab() },
     { name: "Oversigt", href: "oversigt", render: () => Foo("Ændre fakta om dyret") },
     { name: "Kort", href: "kort", render: () => Map() },
     { name: "Sjove fakta", href: "sjove-fakts", render: () => Foo("Sjove fakta") }
@@ -87,8 +87,8 @@ export default function AnimalPage() {
   return (
     <>
       <div className="min-h-screen pt-4">
-        <h1 className="pl-8 text-lg leading-6 font-medium text-gray-900">{animalStore.selectedAnimal?.displayName}</h1>
-        <h2 className="pl-8 max-w-2xl text-sm text-gray-500">{animalStore.selectedAnimal?.latinName}</h2>
+        <h1 className="pl-12 text-lg leading-6 font-medium text-gray-900">{animalStore.selectedAnimal?.displayName}</h1>
+        <h2 className="pl-12 max-w-2xl text-sm text-gray-500">{animalStore.selectedAnimal?.latinName}</h2>
 
         <div>
           <div className="sm:hidden flex gap-4">
@@ -99,7 +99,7 @@ export default function AnimalPage() {
             <select
               id="tabs"
               name="tabs"
-              className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               value={activeTab}
               onChange={t => changeTab(t.target.value)}
             >
