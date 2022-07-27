@@ -1,3 +1,5 @@
+import "package:flutter/material.dart";
+
 import "../../../common/ioc.dart";
 import "../../../generated_code/zooinator.swagger.dart";
 
@@ -23,7 +25,16 @@ class CalendarRepository {
 
       var events = response.body!;
       return events
-          .map((x) => OpeningHourCalendarEvent(x.start, x.end, x.open))
+          .map(
+            (x) => OpeningHourCalendarEvent(
+              x.start,
+              x.end,
+              x.open,
+              x.fields["color"] != null
+                  ? Color(int.tryParse("ff" + x.fields["color"], radix: 16)!)
+                  : null,
+            ),
+          )
           .toList();
     } catch (ex) {
       return Future.error(ex.toString());

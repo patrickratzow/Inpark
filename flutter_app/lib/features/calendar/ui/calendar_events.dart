@@ -11,7 +11,7 @@ class CalendarEvents extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final model = useProvider<CalendarModel>(watch: true);
-    final result = model.getTodaysEvents();
+    final result = model.getCalendarEventsForDay(model.selectedDay);
     final theme = useTheme();
 
     // Error = loading
@@ -40,13 +40,18 @@ class CalendarEvents extends HookWidget {
                 style: theme.textTheme.headlineLarge,
               ),
             )
-          : Wrap(
-              direction: Axis.vertical,
-              spacing: 16,
-              children: events
-                  .map((event) => CalendarEventRow(event: event))
-                  .cast<Widget>()
-                  .toList(),
+          : Align(
+              alignment: Alignment.centerLeft,
+              child: Scrollable(
+                viewportBuilder: (context, position) => Wrap(
+                  direction: Axis.vertical,
+                  spacing: 16,
+                  children: events
+                      .map((event) => CalendarEventRow(event: event))
+                      .cast<Widget>()
+                      .toList(),
+                ),
+              ),
             ),
     );
   }

@@ -1,5 +1,8 @@
 using System.Net;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Zoo.Inpark.Entities;
+using Zoo.Inpark.Enums;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.ValueObjects;
 
@@ -9,11 +12,14 @@ public class AalborgZooOpeningHoursRepository : IOpeningHoursRepository
 {
     private readonly HttpClient _client;
     private readonly ILogger<AalborgZooOpeningHoursRepository> _logger;
+    private readonly InparkDbContext _context;
     
-    public AalborgZooOpeningHoursRepository(HttpClient client, ILogger<AalborgZooOpeningHoursRepository> logger)
+    public AalborgZooOpeningHoursRepository(HttpClient client, ILogger<AalborgZooOpeningHoursRepository> logger, 
+        InparkDbContext context)
     {
         _client = client;
         _logger = logger;
+        _context = context;
     }
 
     public async ValueTask<Result<string, string>> GetRange(TimeRange range)
@@ -46,6 +52,75 @@ public class AalborgZooOpeningHoursRepository : IOpeningHoursRepository
                 "Exception occured while getting open hours for Aalborg Zoo. Exception: {Exception}", ex);
             
             return Result<string, string>.Error(ex.ToString());
+        }
+    }
+
+    public async ValueTask<List<OpeningHour>> GetDate(DateOnly date)
+    {
+        var dateTime = date.ToDateTime(TimeOnly.MinValue);
+        var value = (int)Enum.Parse(typeof(WeekDay), date.DayOfWeek.ToString());
+        var openingHours = await _context.OpeningHours
+            .AsNoTracking()
+            .Where(x => 
+                x.Range.Start.Date <= dateTime.Date && 
+                x.Range.End.Date >= dateTime.Date && 
+                ((int)x.Days & value) != 0
+            )
+            .OrderByDescending(x => x.Range.Start)
+            .ToListAsync();
+
+        // Group together opening hours that are on the same day
+        openingHours = openingHours
+            .ToLookup(x => x.Range.Start.TimeOfDay)
+            .Select(start => start.MaxBy(x => x.Range.End.TimeOfDay))
+            .Where(x => x is not null)
+            .Cast<OpeningHour>()
+            .ToList();
+        
+        // Populate the fields
+        await AddColors(openingHours);
+
+        return openingHours;
+    }
+
+    public async ValueTask<List<OpeningHour>> GetAll()
+    {
+        var openingHours = await _context.OpeningHours
+            .AsNoTracking()
+            .OrderByDescending(x => x.Range.Start)
+            .ToListAsync();
+        
+        // Populate the fields
+        await AddColors(openingHours);
+        
+        return openingHours;
+    }
+
+    private async ValueTask<Dictionary<string, string>> GetColors()
+    {
+        var hourRanges = await _context.HourRanges.ToListAsync();
+            
+        return hourRanges
+            .Select(x => new
+            {
+                Start = x.Start.ToString("HH\\:mm"),
+                End = x.End.ToString("HH\\:mm"),
+                x.Color,
+            })
+            .DistinctBy(x => $"${x.Start}-${x.End}")
+            .ToDictionary(x => $"{x.Start}-{x.End}", x => x.Color);
+    }
+
+    private async ValueTask AddColors(List<OpeningHour> openingHours)
+    {
+        var colors = await GetColors();
+        
+        foreach (var openingHour in openingHours)
+        {
+            var hourRange = $"{openingHour.Range.Start:HH\\:mm}-{openingHour.Range.End:HH\\:mm}";
+            if (!colors.TryGetValue(hourRange, out var color)) continue;
+
+            openingHour.SetField("color", color!);
         }
     }
 

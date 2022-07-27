@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/common/web_view_screen.dart";
+import "package:flutter_app/content/demo.dart";
 import "package:flutter_app/features/settings/licenses/license_list.dart";
 import "package:flutter_app/features/settings/ui/setting_row.dart";
 import "package:flutter_app/features/settings/ui/settings_title_bar.dart";
@@ -46,7 +47,7 @@ class SettingsScreen extends HookWidget implements Screen {
           */
           const SettingRow(
             leading: Icon(
-              Icons.settings,
+              Icons.notifications,
               color: Colors.black,
               size: 16.0,
             ),
@@ -93,6 +94,47 @@ class SettingsScreen extends HookWidget implements Screen {
               navigator.push(
                 context,
                 const LicenseList(),
+              )
+            },
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.black,
+              size: 16.0,
+            ),
+          ),
+          const SettingsTitleBar(name: "Udvikling"),
+          SettingRow(
+            leading: const Icon(
+              Icons.help,
+              color: Colors.black,
+              size: 16.0,
+            ),
+            name: "SDUI - Bevaringsstatus",
+            onPressed: () => {
+              navigator.push(
+                context,
+                const SDUIScreen(),
+                hide: true,
+              )
+            },
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.black,
+              size: 16.0,
+            ),
+          ),
+          SettingRow(
+            leading: const Icon(
+              Icons.help,
+              color: Colors.black,
+              size: 16.0,
+            ),
+            name: "SDUI - Navbar",
+            onPressed: () => {
+              navigator.push(
+                context,
+                const SDUIScreen(),
+                hide: true,
               )
             },
             trailing: const Icon(

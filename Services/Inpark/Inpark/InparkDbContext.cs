@@ -9,6 +9,11 @@ namespace Zoo.Inpark;
 public class InparkDbContext : DbContext
 {
     private readonly ILoggerFactory _loggerFactory;
+
+    public InparkDbContext()
+    {
+    }
+    
     public InparkDbContext(DbContextOptions<InparkDbContext> options, ILoggerFactory loggerFactory) : base(options)
     {
         _loggerFactory = loggerFactory;
@@ -18,6 +23,7 @@ public class InparkDbContext : DbContext
     public DbSet<OpeningHour> OpeningHours { get; set; } = null!;
     public DbSet<Speak> Speaks { get; set; } = null!;
     public DbSet<ParkEvent> ParkEvents { get; set; } = null!;
+    public DbSet<HourRange> HourRanges { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

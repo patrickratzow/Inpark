@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Enums;
+using Zoo.Inpark.Features.OpeningHours.Models;
 using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Entities;
@@ -16,7 +17,15 @@ public class OpeningHour : Entity
     public WeekDay Days { get; private set; }
     public bool Open { get; private set; }
 
-    public static OpeningHour Create(Guid id, string name, TimeRange range, WeekDay days, bool open)
+    private Dictionary<string, string> _fields { get; set; } = new();
+    public IReadOnlyDictionary<string, string> Fields
+    {
+        get => _fields;
+        private set => _fields = (Dictionary<string, string>)value;
+    }
+
+    public static OpeningHour Create(Guid id, string name, TimeRange range, WeekDay days, bool open, 
+        OpeningHourFields fields)
     {
         var instance = new OpeningHour
         {
@@ -24,11 +33,17 @@ public class OpeningHour : Entity
             Name = name,
             Range = range,
             Open = open,
-            Days = days
+            Days = days,
+            Fields = fields,
         };
         instance.Validate();
 
         return instance;
+    }
+
+    public void SetField(string key, string value)
+    {
+        _fields[key] = value;
     }
 }
 
@@ -40,6 +55,7 @@ public class OpeningHourValidator : AbstractValidator<OpeningHour>
         RuleFor(x => x.Name).NotEmpty().MaximumLength(255);
         RuleFor(x => x.Range).NotNull();
         RuleFor(x => x.Days).IsInEnum();
+        RuleFor(x => x.Fields).NotNull();
     }
 }
 
@@ -47,6 +63,8 @@ public class OpeningHourConfiguration : IEntityTypeConfiguration<OpeningHour>
 {
     public void Configure(EntityTypeBuilder<OpeningHour> builder)
     {
+        builder.Ignore(x => x.Fields);
+        
         builder.Property(x => x.Name).HasMaxLength(255);
 
         builder.OwnsOne(x => x.Range, b =>
@@ -60,4 +78,4 @@ public class OpeningHourConfiguration : IEntityTypeConfiguration<OpeningHour>
             b.Property(x => x.End).HasColumnName("TimeRange_End");
         });
     }
-} 
+}  

@@ -90,11 +90,11 @@ class ZooinatorNavigationTab extends StatelessWidget {
   final Widget Function(BuildContext context) builder;
 
   const ZooinatorNavigationTab({
-    Key? key,
+    super.key,
     required this.text,
     required this.icon,
     required this.builder,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

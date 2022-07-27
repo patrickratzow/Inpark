@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
+using Zoo.Inpark.Contents;
 using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Entities;
 using Zoo.Inpark.Features.Animals.Interfaces;

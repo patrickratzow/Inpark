@@ -12,11 +12,47 @@ public static class EntityTestSource
         if (!FluentTests.Bases.Any(b => entityType.IsSubclassOf(b)
                                         || FluentTests.IsAssignableToGenericType(entityType, b))) return null;
         */
-        var instance = Activator.CreateInstance(entityType, true);
+        var instance = CreateInstance(entityType);
         if (instance is null) return null;
 
         MakeEntityValid(instance, instance.GetType());
 
+        return instance;
+    }
+    
+    private static dynamic? CreateInstance(Type entityType)
+    {
+        if (entityType.IsInterface && entityType.IsGenericType)
+        {
+            var firstGeneric = entityType.GetGenericArguments().First();
+            var readonlyCollection = typeof(IReadOnlyCollection<>).MakeGenericType(firstGeneric);
+            var readonlyList = typeof(IReadOnlyList<>).MakeGenericType(firstGeneric);
+            if (entityType == readonlyCollection || entityType == readonlyList)
+            {
+                var type = typeof(List<>).MakeGenericType(firstGeneric);
+                
+                return Activator.CreateInstance(type, true);
+            }
+            var readonlySet = typeof(IReadOnlySet<>).MakeGenericType(firstGeneric);
+            if (entityType == readonlySet)
+            {
+                var set = typeof(HashSet<>).MakeGenericType(firstGeneric);
+                
+                return Activator.CreateInstance(set, true);
+            }
+            var secondGeneric = entityType.GetGenericArguments().Skip(1).First();
+            var readonlyDictionary = typeof(IReadOnlyDictionary<,>).MakeGenericType(firstGeneric, secondGeneric);
+            if (entityType == readonlyDictionary)
+            {
+                var dictionary = typeof(Dictionary<,>).MakeGenericType(firstGeneric, secondGeneric);
+                
+                return Activator.CreateInstance(dictionary, true);
+            }
+        }
+        
+        var instance = Activator.CreateInstance(entityType, true);
+        if (instance is null) return null;
+        
         return instance;
     }
 
@@ -112,7 +148,8 @@ public static class EntityTestSource
         var properties = type
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic |
                            BindingFlags.SetProperty)
-            .Where(x => x.CanWrite);
+            .Where(x => x.CanWrite)
+            .Where(x => !x.Name.StartsWith("_"));
 
         foreach (var property in properties)
         {
@@ -121,7 +158,7 @@ public static class EntityTestSource
             if (!entityDataDictionary.TryGetValue(key, out var tuple))
             {
                 var entityType = property.PropertyType;
-                if (property.PropertyType.IsAssignableTo(typeof(IEnumerable)))
+                if (property.PropertyType.IsAssignableTo(typeof(IList)))
                 {
                     entityType = property.PropertyType.GenericTypeArguments.First();
                 }
@@ -134,7 +171,7 @@ public static class EntityTestSource
                 }
 
 
-                if (property.PropertyType.IsAssignableTo(typeof(IEnumerable)))
+                if (property.PropertyType.IsAssignableTo(typeof(IList)))
                 {
                     var constructedType = typeof(List<>).MakeGenericType(entityType);
                     var collection = Activator.CreateInstance(constructedType) as dynamic;
@@ -145,7 +182,7 @@ public static class EntityTestSource
                         .ToList();
                     // Pure fucking GARBAGE
                     if (props.All(x => x.PropertyType != entityType &&
-                                       !x.PropertyType.IsAssignableTo(typeof(IEnumerable))
+                                       !x.PropertyType.IsAssignableTo(typeof(IList))
                                        && x.PropertyType.GenericTypeArguments.FirstOrDefault() != entityType))
                     {
                         value = CreateValidEntity(entityType) ??

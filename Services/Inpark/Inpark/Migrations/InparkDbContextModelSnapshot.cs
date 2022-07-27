@@ -50,6 +50,35 @@ namespace Zoo.Inpark.Migrations
                     b.ToTable("Animals");
                 });
 
+            modelBuilder.Entity("Zoo.Inpark.Entities.HourRange", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nchar(6)")
+                        .IsFixedLength();
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("End")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HourRanges");
+                });
+
             modelBuilder.Entity("Zoo.Inpark.Entities.OpeningHour", b =>
                 {
                     b.Property<Guid>("Id")

@@ -29,13 +29,11 @@ class Features {
 
   static Set<Feature> features = {openingHours, parkEvents, speaks};
 
-  static Iterable<FrontPageFeature> get frontPage sync* {
-    for (final feature in features) {
-      if (!feature.isEnabled) continue;
-      if (feature.frontPageMaterial == null) continue;
-
-      yield FrontPageFeature(feature);
-    }
+  static Iterable<FrontPageFeature> get frontPage {
+    return features
+        .where((f) => f.isEnabled)
+        .where((f) => f.frontPageMaterial != null)
+        .map((f) => FrontPageFeature(f));
   }
 
   static Future setupAll(BuildContext context) {

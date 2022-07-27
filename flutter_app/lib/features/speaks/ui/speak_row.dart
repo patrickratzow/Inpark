@@ -122,23 +122,29 @@ class SpeakRow extends HookWidget {
                 const SizedBox(
                   width: 8,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      speak.title,
-                      style: theme.textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        height: 1.428,
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    // 156 is image width + paddings + right side padding
+                    maxWidth: MediaQuery.of(context).size.width - 156,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        speak.title,
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          height: 1.428,
+                        ),
                       ),
-                    ),
-                    Text(
-                      "Kl. " + DateFormat("HH:mm").format(speak.start),
-                      style: theme.textTheme.bodyMedium,
-                    )
-                  ],
+                      Text(
+                        "Kl. " + DateFormat("HH:mm").format(speak.start),
+                        style: theme.textTheme.bodyMedium,
+                      )
+                    ],
+                  ),
                 ),
                 const SizedBox(width: 8),
               ],

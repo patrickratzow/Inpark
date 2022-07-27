@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
+using Zoo.Inpark.Contracts;
 using Zoo.Inpark.Entities;
 using Zoo.Inpark.Enums;
 using Zoo.Inpark.Features.OpeningHours.Interfaces;
@@ -10,13 +11,13 @@ namespace Zoo.Inpark.Features.OpeningHours.AalborgZoo;
 public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
 {
     private readonly ILogger<AalborgZooOpeningHoursMapper> _logger;
-    
+
     public AalborgZooOpeningHoursMapper(ILogger<AalborgZooOpeningHoursMapper> logger)
     {
         _logger = logger;
     }
 
-    public Result<List<OpeningHour>, string> Parse(string input)
+    public ValueTask<Result<List<OpeningHour>, string>> Parse(string input)
     {
         try
         {
@@ -41,20 +42,33 @@ public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
                     var header = time.Header.Replace("Aalborg Zoo -", "").Trim();
                     var days = time.WeekDays.ToHashSet();
                     var day = days.ToWeekDay();
-
-                    var openingHour = OpeningHour.Create(Guid.NewGuid(), header, timeRange, day, open);
+                    
+                    var openingHour = OpeningHour.Create(Guid.NewGuid(), header, timeRange, day, open, new());
                     
                     openingHours.Add(openingHour);
                 }
             }
-            return openingHours;
+
+            return new(openingHours);
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception occured while mapping. Exception: {Exception}", ex);
 
-            return "Failed to map";
+            return new("Failed to map");
         }
+    }
+
+    public OpeningHourDto MapToDto(OpeningHour openingHour)
+    {
+        return new(
+            openingHour.Name,
+            openingHour.Range.Start,
+            openingHour.Range.End,
+            openingHour.Open,
+            openingHour.Days.ToDays(),
+            openingHour.Fields.ToDictionary(x => x.Key, x => x.Value)
+        );
     }
 
     private class OpeningTime

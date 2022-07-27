@@ -33,8 +33,11 @@ class TabNavigator extends HookWidget {
       return tabItem;
     });
 
+    final heroController = useMemoized(() => HeroController());
+
     return Navigator(
       key: navigatorKey,
+      observers: [heroController],
       onGenerateRoute: (routeSettings) {
         return MaterialPageRoute(
           builder: (context) => child,
