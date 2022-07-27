@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Services\Auth\Auth\Auth.csproj" />
       <ProjectReference Include="..\Services\Inpark\Inpark\Inpark.csproj" />
       <ProjectReference Include="..\Services\Payments\Payments\Payments.csproj" />
     </ItemGroup>

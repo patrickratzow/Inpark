@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Trace;
 using Serilog;
+using Zeta.Inpark.Auth;
 using Zoo.Common.Api;
 using Zoo.Inpark;
 
@@ -20,6 +21,7 @@ builder.Logging.AddSerilog(logger);
 // Add services to the container.
 builder.Services.AddTenantManager();
 builder.Services.AddInpark(builder.Configuration);
+builder.Services.AddAuth(builder.Configuration);
 
 if (builder.Configuration["Azure:Insights:Enabled"] is "true")
 {
@@ -93,6 +95,7 @@ app.UseTenantManagerSession();
 
 app.UseFluentValidationExceptionHandler();
 
+app.UseAuth(builder.Environment);
 //app.UsePayments();
 app.UseInpark(builder.Environment);
 

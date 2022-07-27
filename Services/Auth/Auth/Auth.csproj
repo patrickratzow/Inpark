@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Zeta.Inpark.Auth</RootNamespace>
+        <AssemblyName>Zeta.Inpark.Auth</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.1.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
+      <PackageReference Include="Hangfire.Core" Version="1.7.28" />
+      <PackageReference Include="MediatR" Version="10.0.1" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+      <PackageReference Include="OneOf" Version="3.0.223" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Common\Common.Api\Common.Api.csproj" />
+      <ProjectReference Include="..\..\..\Common\Common\Common.csproj" />
+      <ProjectReference Include="..\..\..\Common\Common.Api.SourceGenerator.Attributes\Common.Api.SourceGenerator.Attributes.csproj" />
+      <ProjectReference Include="..\..\..\Common\Common.Api.SourceGenerator\Common.Api.SourceGenerator.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Migrations" />
+    </ItemGroup>
+
+</Project>

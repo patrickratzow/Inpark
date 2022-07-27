@@ -1,18 +1,13 @@
 using Microsoft.Extensions.Logging;
 
-namespace Zoo.Inpark.Common;
+namespace Zeta.Inpark.Auth.Common;
 
-public interface IEventPublisher
+public class DomainEventService
 {
-    Task Publish(DomainEvent domainEvent);
-}
-
-public class EventPublisher : IEventPublisher
-{
-    private readonly ILogger<EventPublisher> _logger;
+    private readonly ILogger<DomainEventService> _logger;
     private readonly IPublisher _mediator;
 
-    public EventPublisher(ILogger<EventPublisher> logger, IPublisher mediator)
+    public DomainEventService(ILogger<DomainEventService> logger, IPublisher mediator)
     {
         _logger = logger;
         _mediator = mediator;
@@ -20,14 +15,20 @@ public class EventPublisher : IEventPublisher
 
     public async Task Publish(DomainEvent domainEvent)
     {
+        if (domainEvent.IsPublished)
+        {
+            _logger.LogWarning("Domain event {DomainEvent} is already published", domainEvent.GetType().Name);
+
+            return;
+        }
+        
         _logger.LogInformation(
             "Publishing domain event. Event - {Event} with the contents {Contents}", 
             domainEvent.GetType().Name,
             domainEvent.ToString()
         );
-
         domainEvent.Publish();
-
+        
         await _mediator.Publish(GetNotificationCorrespondingToDomainEvent(domainEvent));
     }
 

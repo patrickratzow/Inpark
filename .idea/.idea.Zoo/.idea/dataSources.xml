@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Payments" uuid="3bde499d-331b-405f-85c6-7a67642dc76a">
-      <driver-ref>sqlserver.ms</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://hildur.ucn.dk:1433;database=dmaa0220_1083739;User Id=dmaa0220_1083739;Trusted_Connection=False</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="Inpark" uuid="4971351b-1f14-43cd-881d-fcca1f1b7645">
       <driver-ref>azure.ms</driver-ref>
       <synchronize>true</synchronize>

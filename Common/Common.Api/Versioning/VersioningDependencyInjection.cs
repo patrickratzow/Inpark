@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Zoo.Common.Api.Versioning;
 
@@ -13,7 +14,7 @@ public static class VersioningDependencyInjection
 {
     public static void AddVersioning(this IServiceCollection services)
     {
-        services.AddScoped<IVersionService, VersionService>();
+        services.TryAddScoped<IVersionService, VersionService>();
         
         if (services.All(x => x.ImplementationType != typeof(VersioningPipeline<,>)))
         {

@@ -1,29 +1,36 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.Entities;
+using Zeta.Inpark.Auth.Entities;
+using Tenant = Zeta.Inpark.Auth.Entities.Tenant;
 
-namespace Zoo.Inpark;
+namespace Zeta.Inpark.Auth;
 
-public class InparkDbContext : DbContext
+public class AuthDbContext : DbContext
 {
     private readonly ILoggerFactory _loggerFactory;
+    private readonly DomainEventService _domainEventService;
 
-    public InparkDbContext()
+    public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Tenant> Tenants { get; set; } = null!;
+    
+    // ReSharper disable once NotNullMemberIsNotInitialized
+#pragma warning disable CS8618
+    public AuthDbContext()
+#pragma warning restore CS8618
     {
     }
     
-    public InparkDbContext(DbContextOptions<InparkDbContext> options, ILoggerFactory loggerFactory) : base(options)
+    public AuthDbContext(
+        DbContextOptions<AuthDbContext> options, 
+        ILoggerFactory loggerFactory, 
+        DomainEventService domainEventService
+    ) : base(options)
     {
         _loggerFactory = loggerFactory;
+        _domainEventService = domainEventService;
     }
 
-    public DbSet<Animal> Animals { get; set; } = null!;
-    public DbSet<OpeningHour> OpeningHours { get; set; } = null!;
-    public DbSet<Speak> Speaks { get; set; } = null!;
-    public DbSet<ParkEvent> ParkEvents { get; set; } = null!;
-    public DbSet<HourRange> HourRanges { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -33,18 +40,20 @@ public class InparkDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Ignore<DomainEvent>();
-
+        
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         base.OnModelCreating(modelBuilder);
     }
 
-    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
+    public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
         CancellationToken cancellationToken = new())
     {
         SetTrackingDates();
+
+        await DispatchEvents();
         
-        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
     }
     
     private void SetTrackingDates()
@@ -75,5 +84,20 @@ public class InparkDbContext : DbContext
         var property = entity.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public
             | BindingFlags.SetProperty | BindingFlags.GetProperty | BindingFlags.NonPublic);
         property!.SetValue(entity, value);
+    }
+    
+    private async Task DispatchEvents()
+    {
+        while (true)
+        {
+            var domainEventEntity = ChangeTracker
+                .Entries<IHasDomainEvent>()
+                .Select(x => x.Entity.DomainEvents)
+                .SelectMany(x => x)
+                .FirstOrDefault(domainEvent => !domainEvent.IsPublished);
+            if (domainEventEntity == null) break;
+
+            await _domainEventService.Publish(domainEventEntity);
+        }
     }
 }
