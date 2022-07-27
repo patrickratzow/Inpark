@@ -1,4 +1,4 @@
-import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
 import "package:flutter_app/features/animals/models/animal_area.dart";
 import "../../../common/ioc.dart";
 import "../../../generated_code/zooinator.swagger.dart";
@@ -107,7 +107,23 @@ class AnimalsModel extends ChangeNotifier {
     return animals.toList();
   }
 
-  void toggleCategory(AnimalCategory animalCategory) {
+  void toggleCategory(AnimalCategory animalCategory, BuildContext context) {
+    final disabled =
+        _animalCategories.where((animalCategory) => !animalCategory.enabled);
+    final isDisablingLastEnabledCategory =
+        disabled.length == _animalCategories.length - 1 &&
+            animalCategory.enabled;
+    if (isDisablingLastEnabledCategory) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          duration: Duration(seconds: 2, milliseconds: 500),
+          content: Text("Mindst 1 kategori skal være slået til"),
+        ),
+      );
+
+      return;
+    }
+
     animalCategory.enabled = !animalCategory.enabled;
 
     notifyListeners();

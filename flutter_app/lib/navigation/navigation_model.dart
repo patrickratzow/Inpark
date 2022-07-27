@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:localstorage/localstorage.dart";
+import "package:shared_preferences/shared_preferences.dart";
 
 import "../common/screen.dart";
 
@@ -12,8 +12,6 @@ final Map<String, GlobalKey<NavigatorState>> navigatorKeys = {
 };
 
 class NavigationModel extends ChangeNotifier {
-  static final LocalStorage _localStorage = LocalStorage("navigator.json");
-
   bool _shouldSeeWelcomeScreen = false;
   bool get shouldSeeWelcomeScreen => _shouldSeeWelcomeScreen;
   bool _showNavbar = true;
@@ -24,9 +22,11 @@ class NavigationModel extends ChangeNotifier {
   int? _hiddenStackIndex;
 
   NavigationModel() {
-    _localStorage.ready.then((_) {
+    SharedPreferences.getInstance().then((preferences) {
       _shouldSeeWelcomeScreen =
-          _localStorage.getItem("has_seen_welcome_screen") == null;
+          !(preferences.getBool("has_seen_welcome_screen2") ?? false);
+
+      notifyListeners();
     });
   }
 
@@ -50,9 +50,11 @@ class NavigationModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void hasSeenWelcomeScreen() {
+  Future hasSeenWelcomeScreen() async {
     _shouldSeeWelcomeScreen = false;
-    _localStorage.setItem("has_seen_welcome_screen", true);
+    final preferences = await SharedPreferences.getInstance();
+
+    preferences.setBool("has_seen_welcome_screen", true);
 
     notifyListeners();
   }

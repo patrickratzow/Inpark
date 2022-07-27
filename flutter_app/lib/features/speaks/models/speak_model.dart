@@ -2,6 +2,7 @@ import "dart:collection";
 
 import "package:flutter/material.dart";
 import "../../../extensions/datetime.dart";
+import "../../../services/notification_service.dart";
 import "notification_service.dart";
 import "speak.dart";
 import "package:localstorage/localstorage.dart";
@@ -16,7 +17,7 @@ class SpeakModel extends ChangeNotifier {
   bool loading = false;
 
   final LocalStorage _localStorage = LocalStorage("speaks.json");
-  final NotificationService _notificationService = NotificationService();
+  final NotificationModel _notificationService = NotificationModel();
 
   Future<void> fetchSpeaksForToday() async {
     final homeRepository = locator.get<SpeakRepository>();
@@ -35,7 +36,7 @@ class SpeakModel extends ChangeNotifier {
     }
   }
 
-  Future<bool> toggleNotification(Speak speak) async {
+  Future<bool> toggleNotification(Speak speak, Duration timeBefore) async {
     var isToggled = await this.isToggled(speak);
 
     if (isToggled) {
@@ -45,7 +46,8 @@ class SpeakModel extends ChangeNotifier {
       return false;
     }
 
-    var scheduleNotification = await this.scheduleNotification(speak);
+    var scheduleNotification =
+        await this.scheduleNotification(speak, timeBefore);
     if (!scheduleNotification) {
       return Future.error("no_permission");
     }
@@ -55,14 +57,15 @@ class SpeakModel extends ChangeNotifier {
     return true;
   }
 
-  Future<bool> scheduleNotification(Speak speak) {
-    var seconds = secondsToNotification(speak.start);
+  Future<bool> scheduleNotification(Speak speak, Duration? timeBefore) async {
+    final seconds = await secondsToNotification(speak.start, timeBefore);
+    final duration = Duration(seconds: seconds);
 
     return _notificationService.showNotification(
       speak.id,
       "${speak.title} fodring",
-      "${speak.title} bliver fodret om 15 minutter",
-      seconds,
+      "${speak.title} Speak starter om ${duration.inMinutes} minutter",
+      duration.inSeconds,
     );
   }
 
@@ -70,13 +73,16 @@ class SpeakModel extends ChangeNotifier {
     _notificationService.cancelNotifications(speak.id);
   }
 
-  int secondsToNotification(DateTime time) => time
-      .asToday()
-      .subtract(
-        const Duration(minutes: 15),
-      )
-      .difference(DateTime.now())
-      .inSeconds;
+  Future<int> secondsToNotification(DateTime time, Duration? duration) async {
+    final notificationService = locator.get<NotificationService>();
+    duration ??= await notificationService.getReminderTime();
+
+    return time
+        .asToday()
+        .subtract(duration)
+        .difference(DateTime.now())
+        .inSeconds;
+  }
 
   Future cacheState(Speak speak, bool state) async {
     await _initStorage();

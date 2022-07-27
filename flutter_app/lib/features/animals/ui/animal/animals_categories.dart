@@ -20,7 +20,7 @@ class AnimalsCategories extends HookWidget {
                 categoryName: x.name,
                 enabled: x.enabled,
                 onPressed: () {
-                  model.toggleCategory(x);
+                  model.toggleCategory(x, context);
                 },
               ),
             )

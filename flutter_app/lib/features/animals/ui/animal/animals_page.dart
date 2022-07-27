@@ -9,9 +9,11 @@ import "../../../../common/colors.dart";
 import "../../../../common/screen.dart";
 import "../../../../common/ui/screen_app_bar.dart";
 import "../../../../hooks/hooks.dart";
+import "../../../../sdui/elements/node_element.dart";
 import "../../../../sdui/parser/parser.dart";
 import "../../../../sdui/transformers/transformer.dart";
 import "../../models/animals_model.dart";
+import "animal_card.dart";
 import "animal_screen.dart";
 import "animals_categories.dart";
 import "search_app_bar.dart";
@@ -140,6 +142,7 @@ void useAsyncEffect(Future<Dispose?> Function() effect, [List<Object?>? keys]) {
 }
 
 class SDUITemplate extends HookWidget {
+  static Map<String, NodeElement> _cache = {};
   final String template;
   final Map<String, dynamic> data;
   final Widget Function(BuildContext context, Widget child)? builder;
@@ -148,6 +151,7 @@ class SDUITemplate extends HookWidget {
     required this.template,
     required this.data,
     this.builder,
+    super.key,
   });
 
   @override
@@ -156,12 +160,22 @@ class SDUITemplate extends HookWidget {
         .map((entry) => ":${entry.key}=\"${entry.value}\"")
         .join(" ");
     final template = """<${this.template} ${attributes}/>""";
+    final id = "template_${this.template}";
     final parsed = useMemoized(
-      () => Parser().parse(
-        template,
-        "template_${this.template}",
-        ParserData(),
-      ),
+      () {
+        if (_cache.containsKey(id)) {
+          return _cache[id]!;
+        }
+
+        final parsed = Parser().parse(
+          template,
+          id,
+          ParserData(),
+        );
+        _cache[id] = parsed;
+
+        return parsed;
+      },
     );
     final renderedContent = useState<Widget?>(null);
 
@@ -224,27 +238,18 @@ class _AnimalsOverviewList extends HookWidget {
 
         return Padding(
           padding: EdgeInsets.fromLTRB(16, topPadding, 16, bottomPadding),
-          child: SDUITemplate(
-            template: "AnimalCard",
-            data: {
-              "src": animal.image.previewUrl,
-              "title": animal.name.displayName,
-              "subTitle": animal.name.latinName,
-              "category": animal.category,
-            },
-            builder: (context, child) {
-              return TextButton(
-                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                onPressed: () {
-                  navigation.push(
-                    context,
-                    AnimalScreen(animal: animal),
-                    hide: true,
-                  );
-                },
-                child: child,
+          child: TextButton(
+            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+            onPressed: () {
+              navigation.push(
+                context,
+                AnimalScreen(animal: animal),
+                hide: true,
               );
             },
+            child: AnimalCard(
+              animal: animal,
+            ),
           ),
         );
       }),

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:flutter_svg/flutter_svg.dart";
 import "../../features/settings/ui/settings.dart";
 import "../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
@@ -36,10 +37,12 @@ class HomeAppBar extends HookWidget implements PreferredSizeWidget {
                   statusBarColor: CustomColor.green.lightest,
                 ),
                 elevation: 0,
-                leading: ImageIcon(
-                  const AssetImage("assets/zoo_logo.png"),
-                  size: 12,
-                  color: CustomColor.green.icon,
+                leading: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 8, 0),
+                  child: SvgPicture.asset(
+                    "assets/zoo_logo.svg",
+                    color: CustomColor.green.middle,
+                  ),
                 ),
                 actions: <Widget>[
                   IconButton(

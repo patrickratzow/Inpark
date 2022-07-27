@@ -27,6 +27,7 @@ class AnimalParkMapLocation extends ParkMapLocation {
         hide: true,
       ),
       child: AnimalCard(
+        key: ValueKey(animal.id),
         animal: animal,
       ),
     );
