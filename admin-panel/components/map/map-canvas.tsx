@@ -9,6 +9,7 @@ interface Point {
 
 const svgWidth = 1009.6727 * 1.312;
 const svgHeight = 665.96301 * 1.312;
+//Should lose state if animal is not the same
 
 export default function MapCanvas() {
   const zones = useStore(state => state.zones)
@@ -72,7 +73,7 @@ export default function MapCanvas() {
           position: "relative",
           overflow: "scroll",
           height: svgHeight,
-          width: svgWidth
+          width: 1070
         }}
       >
         <Image

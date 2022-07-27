@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 import { AnimalsApi, Configuration, SetAnimalAreaRequest, ZooInparkContractsAnimalAreaDto } from "../../out"
+import useAnimalStore from "../../stores/animal-store"
 import useStore from "../../stores/map-store"
 import Button from "../button"
 
@@ -11,6 +13,18 @@ export default function MapActionBar() {
   const clearPoints = useStore(state => state.clearPoints)
   const clearPreviousPoint = useStore(state => state.clearPreviousPoint)
   const [animalName, setAnimalName] = useState("")
+  const router = useRouter();
+  const {animal} = router.query; //To delete?
+  const animalStore = useAnimalStore();
+
+  useEffect(() =>{
+    if(animalStore.selectedAnimal === null){
+      setAnimalName(animal as string);
+    } else {
+      setAnimalName(animalStore.selectedAnimal!.latinName);
+    }
+
+  }, [animal]);
 
   //Export should send the exported points list to the API.
   async function saveMap(): Promise<void> {
@@ -42,8 +56,7 @@ export default function MapActionBar() {
   }
 
   return (
-    <div className={`flex flex-row space-x-4 p-4 bg-green-600`}>
-      <Button onClick={() => {}}>&lt; Tilbage</Button>
+    <div className={`flex flex-row space-x-4 p-4 bg-gray-900`}>
       <Button onClick={saveMap}>Export</Button>
       <div>
         <input
@@ -51,7 +64,8 @@ export default function MapActionBar() {
           value={animalName}
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
           onChange={e => setAnimalName(e.target.value)}
-          placeholder="Indtast dyrets navn"
+          placeholder={`${animalName}`}
+          readOnly
         />
       </div>
       <Button onClick={addZone}>New Zone</Button>
