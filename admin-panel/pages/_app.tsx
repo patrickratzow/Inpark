@@ -1,11 +1,19 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import process from 'process';
-import { useEffect } from 'react';
+import React, { ReactElement, ReactNode, useEffect } from 'react';
 import Layout from '../components/layout';
+import { NextPage } from 'next';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  //Probably delete
+export type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   useEffect(() => {
     if (localStorage.getItem('sidebar-expanded') == 'true') {
       document.querySelector('body')!.classList.add('sidebar-expanded');
@@ -14,11 +22,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
   }, [])
 
-  return (
-    <Layout>
-          <Component {...pageProps} />
-    </Layout>
-  );
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>)
+
+  return getLayout(<Component {...pageProps} />)
 }
 
 

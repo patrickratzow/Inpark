@@ -6,11 +6,372 @@
     "version": "v1"
   },
   "paths": {
+    "/admin/user": {
+      "post": {
+        "tags": ["Admin"],
+        "operationId": "createUser",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateUser_Request"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateUser_Request"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateUser_Request"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateUser_Errors_EmailAddressAlreadyUsed"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateUser_Errors_EmailAddressAlreadyUsed"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateUser_Errors_EmailAddressAlreadyUsed"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/login": {
+      "post": {
+        "tags": ["Admin"],
+        "operationId": "login",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Request"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Request"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Request"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Errors_WrongLogin"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Errors_WrongLogin"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login_Errors_WrongLogin"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/refresh-login": {
+      "post": {
+        "tags": ["Admin"],
+        "operationId": "refreshLogin",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_Request"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_Request"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_Request"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_RefreshTokenNotFound"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_RefreshTokenNotFound"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_RefreshTokenNotFound"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_RefreshTokenInvalid"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_RefreshTokenInvalid"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin_RefreshTokenInvalid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/animals/{latinName}/areas": {
       "get": {
-        "tags": [
-          "Animals"
-        ],
+        "tags": ["Animals"],
         "operationId": "getAnimalAreas",
         "parameters": [
           {
@@ -19,6 +380,15 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
             }
           }
         ],
@@ -104,9 +474,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Animals"
-        ],
+        "tags": ["Animals"],
         "operationId": "setAnimalArea",
         "parameters": [
           {
@@ -115,6 +483,15 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
             }
           }
         ],
@@ -204,9 +581,7 @@
     },
     "/animals/{latinName}": {
       "get": {
-        "tags": [
-          "Animals"
-        ],
+        "tags": ["Animals"],
         "operationId": "getAnimal",
         "parameters": [
           {
@@ -215,6 +590,15 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
             }
           }
         ],
@@ -293,10 +677,19 @@
     },
     "/animals": {
       "get": {
-        "tags": [
-          "Animals"
-        ],
+        "tags": ["Animals"],
         "operationId": "getAnimals",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -361,10 +754,19 @@
     },
     "/customers": {
       "post": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "operationId": "createCustomer",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -433,12 +835,124 @@
         }
       }
     },
+    "/opening-hours/hour-range": {
+      "post": {
+        "tags": ["Opening Hours"],
+        "operationId": "addHourColor",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/opening-hours/today": {
       "get": {
-        "tags": [
-          "Opening Hours"
-        ],
+        "tags": ["Opening Hours"],
         "operationId": "getOpeningHoursForToday",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -503,10 +1017,19 @@
     },
     "/opening-hours": {
       "get": {
-        "tags": [
-          "Opening Hours"
-        ],
+        "tags": ["Opening Hours"],
         "operationId": "getOpeningHours",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -571,10 +1094,19 @@
     },
     "/park-events": {
       "get": {
-        "tags": [
-          "Park Events"
-        ],
+        "tags": ["Park Events"],
         "operationId": "getParkEvents",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -639,10 +1171,19 @@
     },
     "/products": {
       "post": {
-        "tags": [
-          "Products"
-        ],
+        "tags": ["Products"],
         "operationId": "createProduct",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -713,9 +1254,7 @@
     },
     "/products/{productId}": {
       "get": {
-        "tags": [
-          "Products"
-        ],
+        "tags": ["Products"],
         "operationId": "getProductById",
         "parameters": [
           {
@@ -725,6 +1264,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
             }
           }
         ],
@@ -803,10 +1351,19 @@
     },
     "/speaks/today": {
       "get": {
-        "tags": [
-          "Speaks"
-        ],
+        "tags": ["Speaks"],
         "operationId": "getSpeaksForToday",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -872,11 +1429,128 @@
   },
   "components": {
     "schemas": {
+      "Zeta.Inpark.Auth.Features.Admin.CreateUser_Errors_EmailAddressAlreadyUsed": {
+        "required": ["emailAddress", "errorMessage"],
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.CreateUser_Request": {
+        "required": ["emailAddress", "password"],
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.Login_Errors_WrongLogin": {
+        "required": ["errorMessage"],
+        "type": "object",
+        "properties": {
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.Login_Request": {
+        "required": ["emailAddress", "password"],
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.Login_Response": {
+        "required": ["refreshToken", "token"],
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.RefreshLogin_RefreshTokenInvalid": {
+        "required": ["errorMessage", "refreshToken"],
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.RefreshLogin_RefreshTokenNotFound": {
+        "required": ["errorMessage", "refreshToken"],
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.RefreshLogin_Request": {
+        "required": ["refreshToken"],
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.RefreshLogin_Response": {
+        "required": ["refreshToken", "token"],
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
       "Zoo.Common.PropertyError": {
-        "required": [
-          "errorMessage",
-          "propertyName"
-        ],
+        "required": ["errorMessage", "propertyName"],
         "type": "object",
         "properties": {
           "propertyName": {
@@ -889,10 +1563,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Common.DomainEvent": {
-        "required": [
-          "dateOccurred",
-          "isPublished"
-        ],
+        "required": ["dateOccurred", "isPublished"],
         "type": "object",
         "properties": {
           "isPublished": {
@@ -908,10 +1579,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.AnimalAreaDto": {
-        "required": [
-          "color",
-          "points"
-        ],
+        "required": ["color", "points"],
         "type": "object",
         "properties": {
           "color": {
@@ -928,15 +1596,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.AnimalDto": {
-        "required": [
-          "category",
-          "contents",
-          "hasMap",
-          "id",
-          "image",
-          "name",
-          "status"
-        ],
+        "required": ["category", "contents", "hasMap", "id", "image", "name", "status"],
         "type": "object",
         "properties": {
           "name": {
@@ -975,10 +1635,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.AnimalNameDto": {
-        "required": [
-          "displayName",
-          "latinName"
-        ],
+        "required": ["displayName", "latinName"],
         "type": "object",
         "properties": {
           "displayName": {
@@ -991,14 +1648,10 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.ContentDto": {
-        "required": [
-          "children",
-          "type",
-          "value"
-        ],
+        "required": ["children", "type", "value"],
         "type": "object",
         "properties": {
-          "value": { },
+          "value": {},
           "type": {
             "type": "string"
           },
@@ -1012,34 +1665,13 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.IUCNStatusDto": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7
-        ],
+        "enum": [0, 1, 2, 3, 4, 5, 6, 7],
         "type": "integer",
         "format": "int32",
-        "x-enumNames": [
-          "Unknown",
-          "EX",
-          "EW",
-          "CR",
-          "EN",
-          "VU",
-          "NT",
-          "LC"
-        ]
+        "x-enumNames": ["Unknown", "EX", "EW", "CR", "EN", "VU", "NT", "LC"]
       },
       "Zoo.Inpark.Contracts.ImagePairDto": {
-        "required": [
-          "fullscreenUrl",
-          "previewUrl"
-        ],
+        "required": ["fullscreenUrl", "previewUrl"],
         "type": "object",
         "properties": {
           "previewUrl": {
@@ -1052,13 +1684,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.OpeningHourDto": {
-        "required": [
-          "days",
-          "end",
-          "name",
-          "open",
-          "start"
-        ],
+        "required": ["days", "end", "fields", "name", "open", "start"],
         "type": "object",
         "properties": {
           "name": {
@@ -1080,20 +1706,18 @@
             "items": {
               "type": "string"
             }
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.ParkEventDto": {
-        "required": [
-          "descriptionContent",
-          "end",
-          "id",
-          "image",
-          "programContent",
-          "start",
-          "title"
-        ],
+        "required": ["descriptionContent", "end", "id", "image", "programContent", "start", "title"],
         "type": "object",
         "properties": {
           "id": {
@@ -1134,13 +1758,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Contracts.SpeakDto": {
-        "required": [
-          "days",
-          "end",
-          "image",
-          "start",
-          "title"
-        ],
+        "required": ["days", "end", "image", "start", "title"],
         "type": "object",
         "properties": {
           "title": {
@@ -1245,34 +1863,13 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.Entities.IUCNStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7
-        ],
+        "enum": [0, 1, 2, 3, 4, 5, 6, 7],
         "type": "integer",
         "format": "int32",
-        "x-enumNames": [
-          "Unknown",
-          "EX",
-          "EW",
-          "CR",
-          "EN",
-          "VU",
-          "NT",
-          "LC"
-        ]
+        "x-enumNames": ["Unknown", "EX", "EW", "CR", "EN", "VU", "NT", "LC"]
       },
       "Zoo.Inpark.Errors.AnimalNotFound": {
-        "required": [
-          "errorMessage",
-          "name"
-        ],
+        "required": ["errorMessage", "name"],
         "type": "object",
         "properties": {
           "name": {
@@ -1285,11 +1882,40 @@
         },
         "additionalProperties": false
       },
+      "Zoo.Inpark.Features.OpeningHours.AddHourColorRequest": {
+        "required": ["color", "end", "start"],
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor": {
+        "required": ["errorMessage", "timeRange"],
+        "type": "object",
+        "properties": {
+          "timeRange": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Zoo.Inpark.ValueObjects.AnimalArea": {
-        "required": [
-          "color",
-          "points"
-        ],
+        "required": ["color", "points"],
         "type": "object",
         "properties": {
           "color": {
@@ -1307,10 +1933,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.ValueObjects.AnimalName": {
-        "required": [
-          "latinName",
-          "name"
-        ],
+        "required": ["latinName", "name"],
         "type": "object",
         "properties": {
           "name": {
@@ -1325,10 +1948,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.ValueObjects.ImagePair": {
-        "required": [
-          "fullscreenUrl",
-          "previewUrl"
-        ],
+        "required": ["fullscreenUrl", "previewUrl"],
         "type": "object",
         "properties": {
           "previewUrl": {
@@ -1343,10 +1963,7 @@
         "additionalProperties": false
       },
       "Zoo.Inpark.ValueObjects.Point": {
-        "required": [
-          "x",
-          "y"
-        ],
+        "required": ["x", "y"],
         "type": "object",
         "properties": {
           "x": {
@@ -1363,9 +1980,7 @@
         "additionalProperties": false
       },
       "Zoo.Payments.Contracts.CreateProductRequest": {
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "type": "object",
         "properties": {
           "name": {
@@ -1375,10 +1990,7 @@
         "additionalProperties": false
       },
       "Zoo.Payments.Contracts.Customers.CreateCustomerRequest": {
-        "required": [
-          "email",
-          "name"
-        ],
+        "required": ["email", "name"],
         "type": "object",
         "properties": {
           "name": {
@@ -1391,10 +2003,7 @@
         "additionalProperties": false
       },
       "Zoo.Payments.Contracts.ProductDto": {
-        "required": [
-          "id",
-          "name"
-        ],
+        "required": ["id", "name"],
         "type": "object",
         "properties": {
           "id": {
@@ -1408,10 +2017,7 @@
         "additionalProperties": false
       },
       "Zoo.Payments.Contracts.ProductNotFound": {
-        "required": [
-          "errorMessage",
-          "id"
-        ],
+        "required": ["errorMessage", "id"],
         "type": "object",
         "properties": {
           "id": {

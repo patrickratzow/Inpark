@@ -31,6 +31,7 @@ public static class SwaggerGenOptionsExtensions
         var genericNames = regex.Groups[2].Value.Split(",")
             .Select(x => x.Split(".").Last());
 
-        return $"{typeName}Of{string.Join("And", genericNames)}";
+        var fullName = $"{typeName}Of{string.Join("And", genericNames)}";
+        return fullName;
     }
 }

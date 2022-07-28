@@ -9,51 +9,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Auth.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/AuthDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/DomainEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/DomainEventNotification.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/DomainEventService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/Entity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/IHasDomainEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/IValidatable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/ValidationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/ValueObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/DependencyInjection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/RefreshToken.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/Tenant.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/User.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/CreateUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/Login.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/RefreshLogin.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Groups.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Imports.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/20220726200011_InitialSetup.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/20220726200011_InitialSetup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/20220727155950_AddRefreshTokens.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/20220727155950_AddRefreshTokens.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/AuthDbContextModelSnapshot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Services/JwtService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Services/PasswordService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/ValueObjects/EmailAddress.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/ValueObjects/Password.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="feat: initial work on Inpark.Auth">
+      <change afterPath="$PROJECT_DIR$/admin-panel/pages/login.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/public/logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AspNetCore/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AspNetCore/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersioningDependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersioningDependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Common/EventPublisher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Common/EventPublisher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/SwaggerGenOptionsExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/SwaggerGenOptionsExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development-fallback/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development-fallback/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development-fallback/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development-fallback/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/server-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/server-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/server-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/server-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/fallback-build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/fallback-build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/middleware-build-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/server/middleware-build-manifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/middleware-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/server/middleware-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/pages-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/pages/_error.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/server/pages/_error.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/pages/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/webpack-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/server/webpack-runtime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/_error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/amp.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/amp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/amp.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/amp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/pages/_error.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/pages/_error.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/react-refresh.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/react-refresh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/webpack.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/webpack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/_error.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/_error.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/animals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/pages/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/polyfills.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/polyfills.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/react-refresh.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/react-refresh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/webpack.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/webpack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/development/_buildManifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/development/_buildManifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/webpack/0519d2d523b20aa4.webpack.hot-update.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/webpack/6764acb706796f6c.webpack.hot-update.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/webpack/9c9edde95b2758f8.webpack.hot-update.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/webpack/webpack.0519d2d523b20aa4.hot-update.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/webpack/webpack.6764acb706796f6c.hot-update.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/webpack/webpack.9c9edde95b2758f8.hot-update.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/trace" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/trace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/swagger.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/development" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -78,9 +91,11 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/User.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea95343b9387b73062a9b61b7538f826c54ce3529632b4472ba4494044d23/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/AuthDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
@@ -97,13 +112,16 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/Tenant.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6dd43c7bdc3d88f06457829633b93d61f4a6d2ed708ae62df66f5c3c4041b6/DateOnly.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/RefreshToken.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/39882c59da88a786946a40bf675cd7facf94e555372b58ae237ea5fc5d9972e/Stopwatch.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e2556d1cb95b3b0d1959fc61a36e5af11d7aa04dffb3a568a693f1dd4401b/RandomNumberGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AspNetCore/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
@@ -114,6 +132,7 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -263,7 +282,7 @@
       <workItem from="1658135871757" duration="14931000" />
       <workItem from="1658506760838" duration="1615000" />
       <workItem from="1658760879735" duration="7605000" />
-      <workItem from="1658864826751" duration="18088000" />
+      <workItem from="1658864826751" duration="21435000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -384,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658269937190</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: initial work on Inpark.Auth">
+      <created>1658951099735</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1658951099735</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,7 +451,8 @@
     <MESSAGE value="ci: fix not all artifacts being deployed" />
     <MESSAGE value="fix: remove tests" />
     <MESSAGE value="fix: dont require tenant" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: dont require tenant" />
+    <MESSAGE value="feat: initial work on Inpark.Auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: initial work on Inpark.Auth" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
