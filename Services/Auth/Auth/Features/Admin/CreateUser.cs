@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Zeta.Inpark.Auth.Entities;
 using Zeta.Inpark.Auth.Services;
 using Zeta.Inpark.Auth.ValueObjects;
 
@@ -11,7 +10,7 @@ public static class CreateUser
         Guid Id, 
         string EmailAddress, 
         string Password
-    ) : IRequest<OneOf<Unit, Errors.EmailAddressAlreadyUsed>>;
+    ) : IRequest<OneOf<Unit, EmailAddressAlreadyUsed>>;
 
     public class CommandValidator : AbstractValidator<Command>
     {
@@ -35,7 +34,7 @@ public static class CreateUser
         }
     }
     
-    public class Handler : IRequestHandler<Command, OneOf<Unit, Errors.EmailAddressAlreadyUsed>>
+    public class Handler : IRequestHandler<Command, OneOf<Unit, EmailAddressAlreadyUsed>>
     {
         private readonly AuthDbContext _context;
         private readonly PasswordService _passwordService;
@@ -46,21 +45,21 @@ public static class CreateUser
             _passwordService = passwordService;
         }
 
-        public async Task<OneOf<Unit, Errors.EmailAddressAlreadyUsed>> Handle(Command request,
+        public async Task<OneOf<Unit, EmailAddressAlreadyUsed>> Handle(Command request,
             CancellationToken cancellationToken)
         {
-            var existingUser = await _context.Users.FirstOrDefaultAsync(
+            var existingUser = await _context.Admins.FirstOrDefaultAsync(
                 x => x.EmailAddress.Value == request.EmailAddress,
                 cancellationToken
             );
             if (existingUser is not null)
-                return new Errors.EmailAddressAlreadyUsed(request.EmailAddress);
+                return new EmailAddressAlreadyUsed(request.EmailAddress);
 
             var emailAddress = EmailAddress.From(request.EmailAddress);
             var password = _passwordService.CreatePassword(request.Password);
-            var user = User.Create(request.Id, emailAddress, password);
+            var user = Entities.Admin.Create(request.Id, emailAddress, password);
             
-            _context.Users.Add(user);
+            _context.Admins.Add(user);
             
             await _context.SaveChangesAsync(cancellationToken);
 
@@ -68,12 +67,9 @@ public static class CreateUser
         }
     }
 
-    public static class Errors
+    public record EmailAddressAlreadyUsed(string EmailAddress) : IValidationError
     {
-        public record EmailAddressAlreadyUsed(string EmailAddress) : IValidationError
-        {
-            public string ErrorMessage => $"Email address '{EmailAddress}' is registered to a user.";
-        }
+        public string ErrorMessage => $"Email address '{EmailAddress}' is registered to a user.";
     }
 
     public record Request(
@@ -84,17 +80,17 @@ public static class CreateUser
 
 [ApiController]
 [MethodGroup(Groups.Admin)]
-public partial class CreateUserController : ZooController
+public partial class CreateAdminController : ZooController
 {
     private readonly IMediator _mediator;
 
-    public CreateUserController(IMediator mediator)
+    public CreateAdminController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    [HttpPost("admin/user")]
-    public async partial Task<ActionResult> CreateUser([FromBody] CreateUser.Request request, 
+    [HttpPost("auth/admin")]
+    public async partial Task<ActionResult> CreateAdmin([FromBody] CreateUser.Request request, 
         CancellationToken cancellationToken)
     {
         var id = Guid.NewGuid();

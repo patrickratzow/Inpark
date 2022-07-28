@@ -7,11 +7,11 @@ public class Tenant : Entity
 {
     public Guid Id { get; private set; }
     public string Name { get; private set; } = null!;
-    private List<User> _users = new();
-    public IReadOnlyCollection<User> Users
+    private List<Admin> _admins = new();
+    public IReadOnlyCollection<Admin> Admins
     {
-        get => _users;
-        set => _users = (List<User>)value;
+        get => _admins;
+        set => _admins = (List<Admin>)value;
     }
 
     private Tenant() { }
@@ -28,9 +28,9 @@ public class Tenant : Entity
         return instance;
     }
     
-    public void AddUser(User user)
+    public void AddAdmin(Admin admin)
     {
-        _users.Add(user);
+        _admins.Add(admin);
     }
 }
 
@@ -40,7 +40,7 @@ public class TenantValidator : AbstractValidator<Tenant>
     {
         RuleFor(x => x.Id).NotEmpty();
         RuleFor(x => x.Name).NotEmpty();
-        RuleFor(x => x.Users).NotNull();
+        RuleFor(x => x.Admins).NotNull();
     }
 }
 
@@ -48,7 +48,7 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
 {
     public void Configure(EntityTypeBuilder<Tenant> builder)
     {
-        builder.HasMany(x => x.Users)
+        builder.HasMany(x => x.Admins)
             .WithOne();
     }
 }

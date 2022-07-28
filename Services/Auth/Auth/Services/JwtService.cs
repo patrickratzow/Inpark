@@ -24,13 +24,13 @@ public class JwtService
         _options = options.Value;
     }
     
-    public string GenerateToken(User user)
+    public string GenerateToken(Admin admin)
     {
         var now = DateTime.UtcNow;
         var claims = new List<Claim>
         {
-            new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new(JwtRegisteredClaimNames.Email, user.EmailAddress.Value),
+            new(JwtRegisteredClaimNames.Sub, admin.Id.ToString()),
+            new(JwtRegisteredClaimNames.Email, admin.EmailAddress.Value),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
         };

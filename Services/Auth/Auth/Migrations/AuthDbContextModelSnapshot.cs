@@ -22,10 +22,38 @@ namespace Zeta.Inpark.Auth.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Admin", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("LastSeen")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId");
+
+                    b.ToTable("Admins");
+                });
+
             modelBuilder.Entity("Zeta.Inpark.Auth.Entities.RefreshToken", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AdminId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTimeOffset>("CreatedAt")
@@ -37,12 +65,9 @@ namespace Zeta.Inpark.Auth.Migrations
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("AdminId");
 
                     b.ToTable("RefreshToken");
                 });
@@ -68,47 +93,15 @@ namespace Zeta.Inpark.Auth.Migrations
                     b.ToTable("Tenants");
                 });
 
-            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTime>("LastSeen")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("UpdatedAt")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TenantId");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.RefreshToken", b =>
-                {
-                    b.HasOne("Zeta.Inpark.Auth.Entities.User", null)
-                        .WithMany("RefreshTokens")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.User", b =>
+            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Admin", b =>
                 {
                     b.HasOne("Zeta.Inpark.Auth.Entities.Tenant", null)
-                        .WithMany("Users")
+                        .WithMany("Admins")
                         .HasForeignKey("TenantId");
 
                     b.OwnsOne("Zeta.Inpark.Auth.ValueObjects.EmailAddress", "EmailAddress", b1 =>
                         {
-                            b1.Property<Guid>("UserId")
+                            b1.Property<Guid>("AdminId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
@@ -116,17 +109,17 @@ namespace Zeta.Inpark.Auth.Migrations
                                 .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Email");
 
-                            b1.HasKey("UserId");
+                            b1.HasKey("AdminId");
 
-                            b1.ToTable("Users");
+                            b1.ToTable("Admins");
 
                             b1.WithOwner()
-                                .HasForeignKey("UserId");
+                                .HasForeignKey("AdminId");
                         });
 
                     b.OwnsOne("Zeta.Inpark.Auth.ValueObjects.Password", "Password", b1 =>
                         {
-                            b1.Property<Guid>("UserId")
+                            b1.Property<Guid>("AdminId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Hash")
@@ -139,12 +132,12 @@ namespace Zeta.Inpark.Auth.Migrations
                                 .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Password_Salt");
 
-                            b1.HasKey("UserId");
+                            b1.HasKey("AdminId");
 
-                            b1.ToTable("Users");
+                            b1.ToTable("Admins");
 
                             b1.WithOwner()
-                                .HasForeignKey("UserId");
+                                .HasForeignKey("AdminId");
                         });
 
                     b.Navigation("EmailAddress")
@@ -154,14 +147,21 @@ namespace Zeta.Inpark.Auth.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Tenant", b =>
+            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.RefreshToken", b =>
                 {
-                    b.Navigation("Users");
+                    b.HasOne("Zeta.Inpark.Auth.Entities.Admin", null)
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("AdminId");
                 });
 
-            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.User", b =>
+            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Admin", b =>
                 {
                     b.Navigation("RefreshTokens");
+                });
+
+            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Tenant", b =>
+                {
+                    b.Navigation("Admins");
                 });
 #pragma warning restore 612, 618
         }

@@ -66,7 +66,7 @@ public static class Login
         private async Task<OneOf<Response, Errors.WrongLogin>> HandleInternal(Command request,
             CancellationToken cancellationToken)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(
+            var user = await _context.Admins.FirstOrDefaultAsync(
                 x => x.EmailAddress.Value == request.EmailAddress,
                 cancellationToken
             );
@@ -85,7 +85,7 @@ public static class Login
             var domainEvent = new UserLoggedInEvent(user.Id);
             user.AddDomainEvent(domainEvent);
 
-            _context.Users.Update(user);
+            _context.Admins.Update(user);
             await _context.SaveChangesAsync(cancellationToken);
             
             return new Response(token, refreshToken.Id);
@@ -119,7 +119,7 @@ public partial class LoginController : ZooController
         _mediator = mediator;
     }
 
-    [HttpPost("admin/user/login")]
+    [HttpPost("auth/admin/login")]
     public async partial Task<ActionResult> Login([FromBody] Login.Request request, 
         CancellationToken cancellationToken)
     {

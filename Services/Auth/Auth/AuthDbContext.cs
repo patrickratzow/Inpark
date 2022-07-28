@@ -11,7 +11,7 @@ public class AuthDbContext : DbContext
     private readonly ILoggerFactory _loggerFactory;
     private readonly DomainEventService _domainEventService;
 
-    public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Admin> Admins { get; set; } = null!;
     public DbSet<Tenant> Tenants { get; set; } = null!;
     
     // ReSharper disable once NotNullMemberIsNotInitialized

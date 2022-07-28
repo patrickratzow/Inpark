@@ -29,7 +29,7 @@ public static class RefreshLogin
         public async Task<OneOf<Response, RefreshTokenNotFound, RefreshTokenInvalid>> Handle(Command request,
             CancellationToken cancellationToken)
         {
-            var user = await _context.Users
+            var user = await _context.Admins
                 .Include(user => user.RefreshTokens)
                 .Where(user => user.RefreshTokens.Any(refreshToken => refreshToken.Id == request.RefreshToken))
                 .FirstOrDefaultAsync(cancellationToken);
@@ -46,7 +46,7 @@ public static class RefreshLogin
             // Create new JWT token
             var token = _jwtService.GenerateToken(user);
             
-            _context.Users.Update(user);
+            _context.Admins.Update(user);
 
             // Add domain event
             var domainEvent = new UserRefreshedLoginEvent(user.Id);
@@ -89,7 +89,7 @@ public partial class RefreshLoginController : ZooController
         _mediator = mediator;
     }
 
-    [HttpPost("admin/user/refresh-login")]
+    [HttpPost("auth/admin/refresh-login")]
     public async partial Task<ActionResult> RefreshLogin([FromBody] RefreshLogin.Request request, 
         CancellationToken cancellationToken)
     {
