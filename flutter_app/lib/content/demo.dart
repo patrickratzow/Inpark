@@ -1,8 +1,11 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/features/animals/models/iucn_status.dart";
+import "package:flutter_app/generated_code/zooinator.swagger.dart";
 import "package:flutter_app/sdui/screen.dart";
 
 import "../common/ioc.dart";
 import "../common/screen.dart";
+import "../features/animals/models/animal.dart";
 import "../sdui/content_renderer.dart";
 import "../sdui/parser/parser.dart";
 
@@ -14,23 +17,32 @@ class SDUIScreen extends StatelessWidget implements Screen {
     final screenManager = locator.get<ScreenManager>();
     final renderer = ContentRenderer();
     final data = ParserData();
-    screenManager.registerScreen(
-      "foo",
-      """
-<Scaffold>
-  <AppBar
-    title="Foo screen"
-  />
-  <Body>
-    <Container margin="10,10,10,10">
-      <Text>Foo</Text>
-    </Container>
-  </Body>
-</Scaffold>
-""",
+
+    final animal = Animal(
+      id: "1",
+      displayName: "Lion",
+      latinName: "Panthera leo",
+      category: "Mammal",
+      previewImageUrl:
+          "https://cms.aalborgzoo.dk/media/xy4hhjc3/l%C3%B8ve1920x900.jpg",
+      fullscreenImageUrl:
+          "https://cms.aalborgzoo.dk/media/xy4hhjc3/l%C3%B8ve1920x900.jpg",
+      conservationStatus: ucnStatusColorMap[IUCNStatusDto.en],
+      description: "",
     );
-    const input = """
-<Scaffold>
+
+    final input = """
+<AnimalScreen
+  :displayName="Lion"
+  :latinName="${animal.latinName}"
+  :previewImage="${animal.previewImageUrl}"
+  :fullscreenImage="${animal.fullscreenImageUrl}"
+  :tag="animal-${animal.latinName}"
+  :title="${animal.displayName}"
+  :category="${animal.category}"
+/>
+""";
+/*
   <AppBar
     title="Hi"
     automatically-imply-leading="false"
@@ -58,7 +70,7 @@ class SDUIScreen extends StatelessWidget implements Screen {
     </Container>
   </Body>
 </Scaffold>
-""";
+*/
     final result = renderer.render(input, context, data);
 
     return result;

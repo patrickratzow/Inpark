@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_app/common/screen.dart";
 import "package:flutter_app/sdui/transformers/transformer.dart";
 
+import "../features/animals/models/animal.dart";
+import "../features/animals/models/iucn_status.dart";
 import "../features/animals/ui/animal/animal_screen.dart";
 import "../generated_code/zooinator.models.swagger.dart";
 import "parser/parser.dart";
@@ -36,9 +38,19 @@ class ScreenManager {
   Screen Function(BuildContext context)? getScreen(String name, dynamic data) {
     if (name == "animal_screen") {
       final animalDto = AnimalDto.fromJson(data);
+      final animal = Animal(
+        id: animalDto.id,
+        displayName: animalDto.name.displayName,
+        latinName: animalDto.name.latinName,
+        category: animalDto.category,
+        previewImageUrl: animalDto.image.previewUrl,
+        fullscreenImageUrl: animalDto.image.fullscreenUrl,
+        conservationStatus: ucnStatusColorMap[animalDto.status],
+        description: "",
+      );
 
       return (BuildContext context) {
-        return AnimalScreen(animal: animalDto);
+        return AnimalScreen(animal: animal);
       };
     }
 

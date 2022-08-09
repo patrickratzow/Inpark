@@ -3,11 +3,12 @@ import "../../../../common/screen.dart";
 import "../../../../common/ui/screen_app_bar.dart";
 import "../../../../generated_code/zooinator.swagger.dart";
 
+import "../../models/iucn_status.dart";
 import "conservation_status_explaination_row.dart";
 
 class ConservationStatusOverviewScreen extends StatelessWidget
     implements Screen {
-  final IUCNStatusDto? highlightedStatus;
+  final IUCNStatus? highlightedStatus;
 
   const ConservationStatusOverviewScreen({
     Key? key,
@@ -38,7 +39,7 @@ class ConservationStatusOverviewScreen extends StatelessWidget
   }
 
   Widget _buildRow(IUCNStatusDto status) {
-    final isActive = status == highlightedStatus;
+    final isActive = ucnStatusColorMap[status] == highlightedStatus;
     final key = GlobalKey();
     final row = Padding(
       key: key,
@@ -50,7 +51,7 @@ class ConservationStatusOverviewScreen extends StatelessWidget
     );
 
     if (isActive) {
-      Future.delayed(const Duration(milliseconds: 100), () {
+      Future.delayed(const Duration(milliseconds: 50), () {
         if (key.currentContext == null) return;
 
         Scrollable.ensureVisible(key.currentContext!);

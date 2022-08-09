@@ -12,7 +12,7 @@ public class RefreshToken : Entity
     {
     }
 
-    public static RefreshToken From(DateTime expiresAt)
+    public static RefreshToken Create(DateTime expiresAt)
     {
         var instance = new RefreshToken
         {

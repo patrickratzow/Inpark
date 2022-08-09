@@ -48,4 +48,38 @@ public class JwtService
         
         return token;
     }
+
+    public JwtValidationResult IsValid(string token)
+    {
+        try
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            tokenHandler.ValidateToken(token, new()
+            {
+                ValidateIssuer = true,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "Zeta.Inpark.Auth",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_options.Secret))
+            }, out _);
+        }
+        catch (SecurityTokenExpiredException ex)
+        {
+            return JwtValidationResult.Expired;
+        }
+        catch (Exception ex)
+        {
+            return JwtValidationResult.Invalid;
+        }
+        
+        return JwtValidationResult.Valid;    
+    }
+    
+    public enum JwtValidationResult
+    {
+        Valid,
+        Invalid,
+        Expired
+    }
 }

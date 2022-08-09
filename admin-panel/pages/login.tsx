@@ -1,5 +1,7 @@
 import Image from "next/image";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
+import useService from "../hooks/use_service";
+import AuthService from "../services/auth.service";
 import { NextPageWithLayout } from "./_app";
 
 const height = 64;
@@ -7,10 +9,17 @@ const Login: NextPageWithLayout = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const authService = useService(AuthService);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.tokens == null);
+
+  useEffect(() => {
+    setIsLoggedIn(authService.tokens == null);
+  }, [authService.tokens]);
 
   function submitLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    authService.login(email, password);
     console.log(email, password, rememberMe);
   }
 

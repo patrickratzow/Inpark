@@ -79,7 +79,7 @@ public static class RefreshLogin
 }
 
 [ApiController]
-[MethodGroup(Groups.Admin)]
+[MethodGroup(Groups.Admins)]
 public partial class RefreshLoginController : ZooController
 {
     private readonly IMediator _mediator;
@@ -89,7 +89,7 @@ public partial class RefreshLoginController : ZooController
         _mediator = mediator;
     }
 
-    [HttpPost("auth/admin/refresh-login")]
+    [HttpPost("auth/admins/refresh-login")]
     public async partial Task<ActionResult> RefreshLogin([FromBody] RefreshLogin.Request request, 
         CancellationToken cancellationToken)
     {

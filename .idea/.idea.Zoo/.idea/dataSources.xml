@@ -15,5 +15,12 @@
       <jdbc-url>jdbc:sqlserver://sql-zoo-dev.database.windows.net:1433;database=sqldb-inpark-test</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="Auth - Test" uuid="264dad7b-a630-44f4-a8d2-e82302bbfa48">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://sql-zoo-dev.database.windows.net:1433;database=sqldb-auth-test</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

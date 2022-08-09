@@ -5,7 +5,6 @@ import "package:firebase_core/firebase_core.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/navigation/navigation_screen.dart";
 import "package:flutter_app/sdui/transformers/component.dart";
 import "package:flutter_app/transformers/conservation_status.dart";
 import "package:flutter_app/transformers/pre/hook_transformer.dart";
@@ -15,6 +14,7 @@ import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
 
 import "common/ioc.dart";
+import "content/demo.dart";
 import "features/animals/models/animals_model.dart";
 import "features/calendar/models/calendar_model.dart";
 import "features/home/models/home_model.dart";
@@ -54,6 +54,97 @@ void main() async {
   Transformer.transformers.add(ScreenAppBarTransformer());
   Transformer.transformers.add(NavbarTransformer());
   Transformer.transformers.add(ConservationStatusTransformer());
+  ComponentTransformer.registerComponent(
+    "AnimalScreenImage",
+    """
+<Column>
+  <GestureDetector on-tap="fullscreenImage">
+    <ActionData><![CDATA[{ "previewImageUrl": "\${{ previewImage }}", "fullscreenImageUrl": "\${{ fullscreenImage }}", "tag": "\${{ tag }}", "title": "\${{ title }}", "hide": true }]]></ActionData>
+    <Column>
+      <Stack>
+        <Image 
+          src="\${{ previewImage }}" 
+        />
+        <Padding left="9" top="6" right="9" bottom="6">
+          <Container padding="6,6,6,6">
+            <Decoration border-radius="circular(4)">
+              <Color>#ffECFCE5</Color>
+            </Decoration>
+            <Text
+                style="bodyLarge"
+                size="10"
+                height="0.95"
+                color="#ff198155"
+              >
+                \${{ category }}
+              </Text>
+          </Container>
+        </Padding>
+        <Positioned fill="true">
+          <Row>
+            <Expanded>
+              <Container>
+                <Decoration>
+                  <LinearGradient begin="bottomCenter" end="center">
+                    <Color>#ff698665</Color>
+                    <Color>#00698665</Color>
+                  </LinearGradient>
+                </Decoration>
+              </Container>
+            </Expanded>
+          </Row>
+        </Positioned>
+      </Stack>
+      <Container>
+        <Decoration>
+          <Color>#ff698665</Color>
+        </Decoration>
+        <Padding all="8">
+          <Column>
+            <Align alignment="centerLeft">
+              <Text 
+                style="headlineMedium"
+                height="0.9"
+                weight="bold"
+                color="#ffddf8da"
+              >
+                \${{ displayName }} 
+              </Text>
+            </Align>
+            <Padding bottom="5" />
+            <Align alignment="centerLeft">
+              <Text 
+                style="bodyMedium"
+                height="1.5"
+                color="#ffddf8da"
+              >
+                \${{ latinName }} 
+              </Text>
+            </Align>
+            <Padding bottom="4" />
+          </Column>
+        </Padding>
+      </Container>
+    </Column>
+  </GestureDetector>
+</Column>
+    """,
+  );
+  ComponentTransformer.registerComponent(
+    "AnimalScreen",
+    """
+<Scaffold>
+  <AppBar title="\${{ displayName }}" />
+  <Body>
+    <Column>
+      <AnimalScreenImage
+      
+      />
+    </Column>
+  </Body>
+</Scaffold>
+""",
+  );
   ComponentTransformer.registerComponent(
     "AnimalCard",
     """
@@ -180,7 +271,7 @@ class MyApp extends HookWidget {
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
-        home: const NavigationScreen(),
+        home: const SDUIScreen(),
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: const Color(0xffECFCE5),

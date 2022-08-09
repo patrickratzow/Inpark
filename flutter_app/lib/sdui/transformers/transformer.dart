@@ -20,6 +20,7 @@ import "center.dart";
 import "column.dart";
 import "component.dart";
 import "container.dart";
+import "gesture_detector.dart";
 import "text.dart";
 
 abstract class PreTransformer {
@@ -49,6 +50,7 @@ abstract class Transformer {
     RowTransformer(),
     ExpandedTransformer(),
     AlignTransformer(),
+    GestureDetectorTransformer(),
   };
   static StackCollection<TransformerScope> scopes =
       StackCollection<TransformerScope>();

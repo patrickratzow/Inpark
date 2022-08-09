@@ -7,7 +7,7 @@ import "../../../../hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 class ConservationStatus extends HookWidget {
-  final IUCNStatusDto activeStatus;
+  final IUCNStatus? activeStatus;
 
   const ConservationStatus({
     super.key,
@@ -15,12 +15,13 @@ class ConservationStatus extends HookWidget {
   });
 
   Widget _buildConservationCircle(IUCNStatusDto status) {
-    var color = ucnStatusColorMap[status]!;
+    final selectedStatus = ucnStatusColorMap[status]!;
+
     return ConservationCircle(
       text: describeEnum(status).toUpperCase(),
-      color: color.color,
-      textColor: color.textColor,
-      active: status == activeStatus,
+      color: selectedStatus.color,
+      textColor: selectedStatus.textColor,
+      active: selectedStatus == activeStatus,
     );
   }
 

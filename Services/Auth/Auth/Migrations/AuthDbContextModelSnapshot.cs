@@ -22,6 +22,21 @@ namespace Zeta.Inpark.Auth.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("PermissionRole", b =>
+                {
+                    b.Property<Guid>("PermissionsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RolesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("PermissionsId", "RolesId");
+
+                    b.HasIndex("RolesId");
+
+                    b.ToTable("PermissionRole");
+                });
+
             modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Admin", b =>
                 {
                     b.Property<Guid>("Id")
@@ -45,6 +60,31 @@ namespace Zeta.Inpark.Auth.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("Admins");
+                });
+
+            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Permission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissions");
                 });
 
             modelBuilder.Entity("Zeta.Inpark.Auth.Entities.RefreshToken", b =>
@@ -72,6 +112,42 @@ namespace Zeta.Inpark.Auth.Migrations
                     b.ToTable("RefreshToken");
                 });
 
+            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AdminId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdminId");
+
+                    b.HasIndex("TenantId", "Name")
+                        .IsUnique();
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
@@ -91,6 +167,21 @@ namespace Zeta.Inpark.Auth.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tenants");
+                });
+
+            modelBuilder.Entity("PermissionRole", b =>
+                {
+                    b.HasOne("Zeta.Inpark.Auth.Entities.Permission", null)
+                        .WithMany()
+                        .HasForeignKey("PermissionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Zeta.Inpark.Auth.Entities.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Admin", b =>
@@ -154,14 +245,31 @@ namespace Zeta.Inpark.Auth.Migrations
                         .HasForeignKey("AdminId");
                 });
 
+            modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Role", b =>
+                {
+                    b.HasOne("Zeta.Inpark.Auth.Entities.Admin", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("AdminId");
+
+                    b.HasOne("Zeta.Inpark.Auth.Entities.Tenant", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Admin", b =>
                 {
                     b.Navigation("RefreshTokens");
+
+                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Tenant", b =>
                 {
                     b.Navigation("Admins");
+
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

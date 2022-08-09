@@ -9,7 +9,7 @@ public static class Login
     public record Command(
         string EmailAddress, 
         string Password
-    ) : IRequest<OneOf<Response, Errors.WrongLogin>>;
+    ) : IRequest<OneOf<Response, WrongLogin>>;
 
     public class CommandValidator : AbstractValidator<Command>
     {
@@ -29,7 +29,7 @@ public static class Login
         Guid RefreshToken
     );
 
-    public class Handler : IRequestHandler<Command, OneOf<Response, Errors.WrongLogin>>
+    public class Handler : IRequestHandler<Command, OneOf<Response, WrongLogin>>
     {
         private readonly AuthDbContext _context;
         private readonly PasswordService _passwordService;
@@ -42,7 +42,7 @@ public static class Login
             _jwtService = jwtService;
         }
 
-        public async Task<OneOf<Response, Errors.WrongLogin>> Handle(Command request,
+        public async Task<OneOf<Response, WrongLogin>> Handle(Command request,
             CancellationToken cancellationToken)
         {
             // Count the time this takes to execute
@@ -63,7 +63,7 @@ public static class Login
             return result;
         }
 
-        private async Task<OneOf<Response, Errors.WrongLogin>> HandleInternal(Command request,
+        private async Task<OneOf<Response, WrongLogin>> HandleInternal(Command request,
             CancellationToken cancellationToken)
         {
             var user = await _context.Admins.FirstOrDefaultAsync(
@@ -71,10 +71,10 @@ public static class Login
                 cancellationToken
             );
             // Unable to find any user with this email address
-            if (user is null) return new Errors.WrongLogin();
+            if (user is null) return new WrongLogin();
             // Check if the password is correct
             var isCorrect = _passwordService.VerifyPassword(request.Password, user.Password);
-            if (!isCorrect) return new Errors.WrongLogin();
+            if (!isCorrect) return new WrongLogin();
 
             // Create tokens
             var token = _jwtService.GenerateToken(user);
@@ -92,12 +92,9 @@ public static class Login
         }
     }
     
-    public static class Errors
+    public record WrongLogin : IAlreadyExistsError
     {
-        public record WrongLogin : IAlreadyExistsError
-        {
-            public string ErrorMessage => "Was unable to login with the provided credentials.";
-        }
+        public string ErrorMessage => "Was unable to login with the provided credentials.";
     }
 
     public record UserLoggedInEvent(Guid Id) : DomainEvent;
@@ -109,7 +106,7 @@ public static class Login
 }
 
 [ApiController]
-[MethodGroup(Groups.Admin)]
+[MethodGroup(Groups.Admins)]
 public partial class LoginController : ZooController
 {
     private readonly IMediator _mediator;
@@ -119,7 +116,7 @@ public partial class LoginController : ZooController
         _mediator = mediator;
     }
 
-    [HttpPost("auth/admin/login")]
+    [HttpPost("auth/admins/login")]
     public async partial Task<ActionResult> Login([FromBody] Login.Request request, 
         CancellationToken cancellationToken)
     {

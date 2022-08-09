@@ -10,16 +10,17 @@ class NodeElement {
   final List<NodeElement> children;
   final String _innerText;
   String get innerText {
-    final regex = RegExp(r"\${{(.*)}}");
-    if (regex.hasMatch(_innerText)) {
-      final match = regex.firstMatch(_innerText)!.group(1)!.trim();
-      final variable = Transformer.getVariable(match);
+    var text = _innerText;
+    final matches = RegExp("\\\${{(.*?)}}").allMatches(text);
+    for (final match in matches) {
+      final key = match.group(1).toString().trim();
+      final variable = Transformer.getVariable(key);
       if (variable != null) {
-        return variable;
+        text = text.replaceAll("\${{ $key }}", variable);
       }
     }
 
-    return _innerText;
+    return text;
   }
 
   @override

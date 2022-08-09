@@ -1,16 +1,14 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
-import "package:flutter_app/features/animals/ui/animal/animal_map.dart";
 import "package:flutter_use/flutter_use.dart";
 import "../../../../common/colors.dart";
 import "../../../../common/extensions/theme.dart";
 import "../../../../common/screen.dart";
 import "../../../../common/ui/fullscreen_image.dart";
-import "../../../../common/ui/navigation_bar.dart";
 import "../../../../common/ui/screen_app_bar.dart";
+import "../../models/animal.dart";
 import "../../models/animals_model.dart";
 import "../conservation/conservation_status.dart";
-import "../conservation/conservation_status_overview_screen.dart";
 import "../../../../generated_code/zooinator.swagger.dart";
 import "../../../../hooks/hooks.dart";
 import "../../../../navigation/navigation_model.dart";
@@ -19,7 +17,7 @@ import "package:flutter_hooks/flutter_hooks.dart";
 import "animal_category.dart" as AnimalCategory;
 
 class AnimalScreen extends HookWidget implements Screen {
-  final AnimalDto animal;
+  final Animal animal;
 
   const AnimalScreen({
     super.key,
@@ -33,7 +31,7 @@ class AnimalScreen extends HookWidget implements Screen {
     final model = useProvider<AnimalsModel>(watch: true);
 
     useEffectOnce(() {
-      model.fetchAnimalAreas(animal.name.latinName);
+      model.fetchAnimalAreas(animal.latinName);
 
       return null;
     });
@@ -50,7 +48,7 @@ class AnimalScreen extends HookWidget implements Screen {
             foregroundColor: Colors.white,
             floating: true,
             flexibleSpace: ScreenAppBar(
-              title: animal.name.displayName,
+              title: animal.displayName,
             ),
           ),
           SliverList(
@@ -69,7 +67,7 @@ class AnimalScreen extends HookWidget implements Screen {
 
   Widget _buildCard(
     BuildContext context,
-    AnimalDto animal,
+    Animal animal,
     NavigationModel navigation,
     ThemeData theme,
     AnimalsModel model,
@@ -81,14 +79,15 @@ class AnimalScreen extends HookWidget implements Screen {
             navigation.push(
               context,
               FullScreenImage(
-                imageUrl: animal.image.fullscreenUrl,
+                imageUrl: animal.fullscreenImageUrl ?? animal.previewImageUrl,
                 tag: "animal-${animal.id}",
-                title: animal.name.displayName,
+                title: animal.displayName,
               ),
             ),
           },
           child: _buildImage(animal, theme),
         ),
+        /*
         ZooinatorNavigationBar(
           tabs: [
             ZooinatorNavigationTab(
@@ -130,6 +129,7 @@ class AnimalScreen extends HookWidget implements Screen {
               ),
           ],
         ),
+        */
       ],
     );
   }
@@ -188,23 +188,22 @@ class AnimalScreen extends HookWidget implements Screen {
     */
   }
 
-  Widget _buildConservationStatus(AnimalDto animal) {
-    if (animal.status == IUCNStatusDto.unknown ||
-        animal.status == IUCNStatusDto.swaggerGeneratedUnknown) {
+  Widget _buildConservationStatus(Animal animal) {
+    if (animal.conservationStatus == null) {
       return Container();
     }
 
-    return ConservationStatus(activeStatus: animal.status);
+    return ConservationStatus(activeStatus: animal.conservationStatus!);
   }
 
-  Widget _buildImage(AnimalDto animal, ThemeData theme) {
+  Widget _buildImage(Animal animal, ThemeData theme) {
     const Color softTextColor = Color(0xffDDF8DA);
 
     return Column(
       children: [
         Stack(
           children: [
-            CachedNetworkImage(imageUrl: animal.image.previewUrl),
+            CachedNetworkImage(imageUrl: animal.previewImageUrl),
             Padding(
               padding: const EdgeInsets.fromLTRB(9, 6, 9, 6),
               child: AnimalCategory.AnimalCategory(
@@ -244,7 +243,7 @@ class AnimalScreen extends HookWidget implements Screen {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.displayName,
+                    animal.displayName,
                     style: theme.textTheme.headlineMedium?.copyWith(
                       height: 18 / 20,
                       fontWeight: FontWeight.bold,
@@ -258,7 +257,7 @@ class AnimalScreen extends HookWidget implements Screen {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.latinName,
+                    animal.latinName,
                     style: theme.textTheme.bodyMedium?.copyWith(
                       height: 1.5,
                       color: softTextColor,

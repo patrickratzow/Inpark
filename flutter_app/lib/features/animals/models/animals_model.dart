@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/features/animals/models/animal_area.dart";
 import "../../../common/ioc.dart";
-import "../../../generated_code/zooinator.swagger.dart";
 
 import "../repositories/animals_repository.dart";
+import "animal.dart";
 
 class AnimalsModel extends ChangeNotifier {
-  List<AnimalDto> _animals = List.empty();
+  List<Animal> _animals = List.empty();
   Map<String, List<AnimalArea>> _animalAreas = {};
   String _search = "";
   String error = "";
@@ -50,14 +50,11 @@ class AnimalsModel extends ChangeNotifier {
     try {
       loading = true;
 
-      var animalsResult = await animalsRepository.fetchAnimals();
-      if (animalsResult.isSuccess) {
-        _animals = animalsResult.success as List<AnimalDto>;
-        _animalCategories =
-            _animals.map((animal) => AnimalCategory(animal.category)).toSet();
-      } else {
-        error = animalsResult.error.toString();
-      }
+      _animals = await animalsRepository.fetchAnimals();
+      _animalCategories =
+          _animals.map((animal) => AnimalCategory(animal.category)).toSet();
+    } catch (ex) {
+      error = ex.toString();
     } finally {
       loading = false;
 
@@ -84,8 +81,8 @@ class AnimalsModel extends ChangeNotifier {
 
   List<AnimalArea>? getAnimalAreas(String latinName) => _animalAreas[latinName];
 
-  List<AnimalDto> get animals {
-    Iterable<AnimalDto> animals = _animals;
+  List<Animal> get animals {
+    Iterable<Animal> animals = _animals;
 
     var enabledCategories = _animalCategories
         .where((animalCategory) => animalCategory.enabled)
@@ -98,22 +95,21 @@ class AnimalsModel extends ChangeNotifier {
 
     if (search.isNotEmpty) {
       animals = animals.where(
-        (animal) => animal.name.displayName
-            .toLowerCase()
-            .contains(search.toLowerCase()),
+        (animal) =>
+            animal.displayName.toLowerCase().contains(search.toLowerCase()),
       );
     }
 
     return animals.toList();
   }
 
-  void toggleCategory(AnimalCategory animalCategory, BuildContext context) {
+  void toggleCategory(AnimalCategory animalCategory, BuildContext? context) {
     final disabled =
         _animalCategories.where((animalCategory) => !animalCategory.enabled);
     final isDisablingLastEnabledCategory =
         disabled.length == _animalCategories.length - 1 &&
             animalCategory.enabled;
-    if (isDisablingLastEnabledCategory) {
+    if (isDisablingLastEnabledCategory && context != null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           duration: Duration(seconds: 2, milliseconds: 500),

@@ -4,7 +4,7 @@ using Zeta.Inpark.Auth.ValueObjects;
 
 namespace Zeta.Inpark.Auth.Features.Admin;
 
-public static class CreateUser
+public static class CreateAdmin
 {
     public record Command(
         Guid Id, 
@@ -79,7 +79,7 @@ public static class CreateUser
 }
 
 [ApiController]
-[MethodGroup(Groups.Admin)]
+[MethodGroup(Groups.Admins)]
 public partial class CreateAdminController : ZooController
 {
     private readonly IMediator _mediator;
@@ -89,12 +89,12 @@ public partial class CreateAdminController : ZooController
         _mediator = mediator;
     }
 
-    [HttpPost("auth/admin")]
-    public async partial Task<ActionResult> CreateAdmin([FromBody] CreateUser.Request request, 
+    [HttpPost("auth/admins")]
+    public async partial Task<ActionResult> CreateAdmin([FromBody] CreateAdmin.Request request, 
         CancellationToken cancellationToken)
     {
         var id = Guid.NewGuid();
-        var command = new CreateUser.Command(id, request.EmailAddress, request.Password);
+        var command = new CreateAdmin.Command(id, request.EmailAddress, request.Password);
         var result = await _mediator.Send(command, cancellationToken);
 
         return Map(result);

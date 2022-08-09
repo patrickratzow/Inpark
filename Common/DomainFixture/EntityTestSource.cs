@@ -158,7 +158,7 @@ public static class EntityTestSource
             if (!entityDataDictionary.TryGetValue(key, out var tuple))
             {
                 var entityType = property.PropertyType;
-                if (property.PropertyType.IsAssignableTo(typeof(IList)))
+                if (property.PropertyType.IsAssignableTo(typeof(IEnumerable)))
                 {
                     entityType = property.PropertyType.GenericTypeArguments.First();
                 }
@@ -171,7 +171,7 @@ public static class EntityTestSource
                 }
 
 
-                if (property.PropertyType.IsAssignableTo(typeof(IList)))
+                if (property.PropertyType.IsAssignableTo(typeof(IEnumerable)))
                 {
                     var constructedType = typeof(List<>).MakeGenericType(entityType);
                     var collection = Activator.CreateInstance(constructedType) as dynamic;

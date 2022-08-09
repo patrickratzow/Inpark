@@ -3,12 +3,12 @@ import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
 import "../../../../common/extensions/theme.dart";
-import "../../../../generated_code/zooinator.swagger.dart";
 import "../../../../hooks/hooks.dart";
+import "../../models/animal.dart";
 import "animal_category.dart";
 
 class AnimalCard extends HookWidget {
-  final AnimalDto animal;
+  final Animal animal;
 
   const AnimalCard({
     super.key,
@@ -42,7 +42,7 @@ class AnimalCard extends HookWidget {
     return Positioned.fill(
       child: CachedNetworkImage(
         fit: BoxFit.cover,
-        imageUrl: animal.image.previewUrl,
+        imageUrl: animal.previewImageUrl,
         colorBlendMode: BlendMode.darken,
         placeholder: (context, url) {
           return const Center(
@@ -92,7 +92,7 @@ class AnimalCard extends HookWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.displayName,
+                    animal.displayName,
                     style: theme.textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: theme.adjustColor(
@@ -105,7 +105,7 @@ class AnimalCard extends HookWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    animal.name.latinName,
+                    animal.latinName,
                     style: theme.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w500,
                       height: 1.5,

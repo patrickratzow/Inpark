@@ -17,6 +17,12 @@ public class Admin : Entity
         get => _refreshTokens;
         set => _refreshTokens = (List<RefreshToken>)value;
     }
+    private List<Role> _roles = new();
+    public IReadOnlyCollection<Role> Roles
+    {
+        get => _roles;
+        set => _roles = (List<Role>)value;
+    }
 
     private Admin() { }
 
@@ -37,7 +43,7 @@ public class Admin : Entity
     public RefreshToken CreateRefreshToken()
     {
         var expiresAt = DateTime.Now.AddDays(30);
-        var refreshToken = RefreshToken.From(expiresAt);
+        var refreshToken = RefreshToken.Create(expiresAt);
         
         _refreshTokens.Add(refreshToken);
         
@@ -48,6 +54,19 @@ public class Admin : Entity
     {
         _refreshTokens.Remove(refreshToken);
     }
+
+    public void AddRole(Role role)
+    {
+        var alreadyHasRole = _roles.Any(r => r.Id == role.Id);
+        if (alreadyHasRole) return;
+        
+        _roles.Add(role);
+    }
+    
+    public void RemoveRole(Role role)
+    {
+        _roles.Remove(role);
+    }
 }
 
 public class AdminValidator : AbstractValidator<Admin>
@@ -57,7 +76,10 @@ public class AdminValidator : AbstractValidator<Admin>
         RuleFor(x => x.Id).NotEmpty();
         RuleFor(x => x.EmailAddress).NotNull();
         RuleFor(x => x.Password).NotNull();
-        RuleFor(x => x.LastSeen).NotEmpty();
+        RuleFor(x => x.LastSeen).NotEmpty()
+            .LessThanOrEqualTo(x => DateTime.Now);
+        RuleFor(x => x.RefreshTokens).NotNull();
+        RuleFor(x => x.Roles).NotNull();
     }
 }
 

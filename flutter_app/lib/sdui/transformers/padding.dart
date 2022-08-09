@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../elements/node_element.dart';
-import 'transformer.dart';
+import "../elements/node_element.dart";
+import "transformer.dart";
 
 class PaddingTransformer extends Transformer {
   @override
@@ -33,7 +33,9 @@ class PaddingTransformer extends Transformer {
 
     return Padding(
       padding: padding,
-      child: Transformer.transformAll(element.children, context).first,
+      child: element.children.length != 0
+          ? Transformer.transformAll(element.children, context).first
+          : null,
     );
   }
 }

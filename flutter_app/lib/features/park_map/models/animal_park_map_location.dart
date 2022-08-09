@@ -2,13 +2,14 @@ import "package:flutter/material.dart";
 
 import "../../../generated_code/zooinator.models.swagger.dart";
 import "../../../hooks/hooks.dart";
+import "../../animals/models/animal.dart";
 import "../../animals/ui/animal/animal_card.dart";
 import "../../animals/ui/animal/animal_screen.dart";
 import "park_map_location.dart";
 
 @immutable
 class AnimalParkMapLocation extends ParkMapLocation {
-  final AnimalDto animal;
+  final Animal animal;
 
   AnimalParkMapLocation({
     required this.animal,

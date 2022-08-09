@@ -3,6 +3,7 @@ import "dart:convert";
 import "package:flutter/material.dart"
     show BuildContext, EdgeInsets, TextButton, Widget;
 import "package:flutter_app/extensions/string.dart";
+import "package:flutter_app/sdui/actions/fullscreen_image_action.dart";
 
 import "../../common/ioc.dart";
 import "../actions/action.dart";
@@ -13,6 +14,7 @@ import "transformer.dart";
 class ActionService {
   Set<Action> _actions = {
     NavigateToScreenAction(),
+    FullscreenImageAction(),
   };
 
   Function()? getAction(BuildContext context, String name, dynamic data) {

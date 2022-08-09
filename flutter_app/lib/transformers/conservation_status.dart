@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_app/features/animals/models/iucn_status.dart";
 import "package:flutter_app/features/animals/ui/conservation/conservation_status.dart";
 
 import "../features/animals/ui/conservation/conservation_status_overview_screen.dart";
@@ -39,17 +40,17 @@ class ConservationStatusTransformer extends Transformer
     return widget;
   }
 
-  IUCNStatusDto getStatus(NodeElement element) {
+  IUCNStatus? getStatus(NodeElement element) {
     final status = element.getAttribute("status")?.value;
-    if (status == "ex") return IUCNStatusDto.ex;
-    if (status == "ew") return IUCNStatusDto.ew;
-    if (status == "cr") return IUCNStatusDto.cr;
-    if (status == "en") return IUCNStatusDto.en;
-    if (status == "vu") return IUCNStatusDto.vu;
-    if (status == "nt") return IUCNStatusDto.nt;
-    if (status == "lc") return IUCNStatusDto.lc;
+    if (status == "ex") return ucnStatusColorMap[IUCNStatusDto.ex]!;
+    if (status == "ew") return ucnStatusColorMap[IUCNStatusDto.ew]!;
+    if (status == "cr") return ucnStatusColorMap[IUCNStatusDto.cr]!;
+    if (status == "en") return ucnStatusColorMap[IUCNStatusDto.en]!;
+    if (status == "vu") return ucnStatusColorMap[IUCNStatusDto.vu]!;
+    if (status == "nt") return ucnStatusColorMap[IUCNStatusDto.nt]!;
+    if (status == "lc") return ucnStatusColorMap[IUCNStatusDto.lc]!;
 
-    return IUCNStatusDto.unknown;
+    return null;
   }
 
   bool getShowOverview(NodeElement element) =>

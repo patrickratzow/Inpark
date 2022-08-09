@@ -24,10 +24,16 @@ public static class TenantManagerSessionMiddleware
 
         app.Use(async (context, next) =>
         {
+            // Don't care about options
+            if (context.Request.Method == "OPTIONS")
+            {
+                await next();
+                
+                return;
+            }
+            
             var tenantManager = context.RequestServices.GetRequiredService<ITenantManager>();
             var tenantHeader = context.Request.Headers["X-Tenant"];
-            await next();
-            /*
             if (tenantHeader.Count <= 0)
             {
                 await NoTenantFound(context);
@@ -52,7 +58,6 @@ public static class TenantManagerSessionMiddleware
             tenantManager.Tenant = tenant;
 
             await next();
-            */
         });
 
         return app;

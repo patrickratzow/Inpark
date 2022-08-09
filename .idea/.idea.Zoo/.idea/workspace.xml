@@ -9,22 +9,127 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="feat: initial work on auth front-end">
-      <change afterPath="$PROJECT_DIR$/admin-panel/services/inpark_api.ts" afterDir="false" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Contracts/Auth.Contracts.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Contracts/RoleDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Auth.Tests.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Categories.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/DomainFixture/Configurations/Entities/AdminConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/DomainFixture/Configurations/Entities/RefreshTokenConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/DomainFixture/Configurations/Entities/TenantConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/DomainFixture/Configurations/ValueObjects/PasswordConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Entities/AdminTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Entities/RefreshTokenTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Features/Admin/CreateAdminTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Features/Admin/LoginTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Imports.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/TestBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Testing.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/appsettings.Development.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/AuthAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Common/AuthPipeline.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/Permission.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/Role.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/IsTokenValid.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Roles/CreateRole.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Roles/GetAllRoles.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/20220806190912_CreateRoleAndPermissions.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/20220806190912_CreateRoleAndPermissions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth/ValueObjects/Color.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Categories.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Contents/ContentXmlSerializerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/AnimalConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/OpeningHourConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/ParkEventConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/SpeakConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalAreaConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalImageConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalNameConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/PointConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/ProgramEventConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/SpeakTimeConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/TimeRangeConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ContractTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/AalborgZooAnimalMapperTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalAreaQueryTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalQueryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalsQueryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/SetAnimalAreaCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursJobTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapperTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepositoryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/AalborgZooParkEventMapperTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/GetParkEventsQueryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/AalborgZooSpeaksMapperTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepositoryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Imports.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Services/HtmlDocumentTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/TestBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Testing.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/appsettings.Development.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/hooks/use_service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/nswag.nswag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/services/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/services/service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/animal.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/fullscreen_image_action.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/gesture_detector.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources/3bde499d-331b-405f-85c6-7a67642dc76a/storage_v2/_src_/database/dmaa0220_1083739.rVzzXg/schema/dbo.sYMBAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Tenants/TenantManagerSessionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Tenants/TenantManagerSessionMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/DomainFixture/EntityTestSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/DomainFixture/EntityTestSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Auth.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Auth.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/AuthDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/AuthDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Entities/Admin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/Admin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Entities/RefreshToken.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/RefreshToken.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Entities/Tenant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/Tenant.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Entities/Admin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/CreateUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/CreateUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/CreateUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/CreateAdmin.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/Login.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/RefreshLogin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/RefreshLogin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Groups.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Groups.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/AuthDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/AuthDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Services/JwtService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Services/JwtService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/.next/fallback-build-manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/amp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/pages/_app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/pages/_error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/react-refresh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/fallback/webpack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/client-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/server-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/cache/webpack/server-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/server/middleware-build-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/server/middleware-build-manifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/chunks/webpack.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/chunks/webpack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/static/development/_buildManifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/static/development/_buildManifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/.next/trace" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/.next/trace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/pages/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/services/inpark_api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/services/inpark_api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/content/demo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/content/demo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/animals_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/models/animals_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/repositories/animals_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/repositories/animals_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animal_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status_overview_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/conservation/conservation_status_overview_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_map/models/animal_park_map_location.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/models/animal_park_map_location.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_map/repositories/park_map_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_map/repositories/park_map_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/elements/node_element.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/elements/node_element.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/parser/parser.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/parser/parser.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/padding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/padding.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/transformer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/transformer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/transformers/conservation_status.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/transformers/conservation_status.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/test/features/animals/animals_model_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/test/features/animals/animals_model_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +163,7 @@
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/Admin.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b314525519f1b27e1c94253a577de2a24832a6aaaacfe82068889f9ae4f0cd/Faker[T].cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea95343b9387b73062a9b61b7538f826c54ce3529632b4472ba4494044d23/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
@@ -83,6 +189,7 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/RefreshToken.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5fa080365df4696c155bb06d6a2739f49bb8b6ffcb159b86101ddad2f2693b4/Faker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/39882c59da88a786946a40bf675cd7facf94e555372b58ae237ea5fc5d9972e/Stopwatch.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
@@ -113,6 +220,7 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/ValueObjectTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7d0c77b8de5d4898905b534ff44628aa13480/44/53685ebe/CorsMiddlewareExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" root0="FORCE_HIGHLIGHTING" />
@@ -135,7 +243,7 @@
     <property name="DatabaseDriversLRU" value="sqlserver" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="XThreadsFramesViewSplitterKey" value="0.4742647" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.42560554" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -248,7 +356,10 @@
       <workItem from="1658135871757" duration="14931000" />
       <workItem from="1658506760838" duration="1615000" />
       <workItem from="1658760879735" duration="7605000" />
-      <workItem from="1658864826751" duration="21780000" />
+      <workItem from="1658864826751" duration="28322000" />
+      <workItem from="1659549929122" duration="5893000" />
+      <workItem from="1659634443263" duration="28260000" />
+      <workItem from="1660060696846" duration="2208000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -383,11 +494,28 @@
       <option name="project" value="LOCAL" />
       <updated>1659037668013</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="refactor: rename User to Admin">
+      <created>1659038097665</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1659038097665</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnitTestsCoverage.Settings">
+    <option name="coveragePercentColumnWidth" value="149" />
+    <option name="sortOrder" value="DESCENDING" />
+    <option name="sortedColumn" value="1" />
+    <option name="symbolColumnWidth" value="510" />
+    <coverage-tree-state>
+      <expand />
+      <select />
+    </coverage-tree-state>
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
@@ -426,7 +554,8 @@
     <MESSAGE value="fix: dont require tenant" />
     <MESSAGE value="feat: initial work on Inpark.Auth" />
     <MESSAGE value="feat: initial work on auth front-end" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: initial work on auth front-end" />
+    <MESSAGE value="refactor: rename User to Admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: rename User to Admin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -482,17 +611,17 @@
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Services/Auth/Auth/DependencyInjection.cs</url>
-          <line>63</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Auth\Auth\DependencyInjection.cs" initialLine="56" containingFunctionPresentation="method 'RunMigrations'">
+          <url>file://$PROJECT_DIR$/Services/Auth/Auth/Services/JwtService.cs</url>
+          <line>71</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Auth\Auth\Services\JwtService.cs" initialLine="72" containingFunctionPresentation="method 'IsValid'">
             <startOffsets>
-              <option value="2001" />
+              <option value="2346" />
             </startOffsets>
             <endOffsets>
-              <option value="2036" />
+              <option value="2347" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="43" />
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

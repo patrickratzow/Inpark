@@ -13,9 +13,9 @@ class ParkMapRepository {
 
     return _locations ??= [
       AnimalParkMapLocation(
-        animal: animals.success!.first,
-        location: Offset(70, 35),
-        size: Size(12, 12),
+        animal: animals.first,
+        location: const Offset(70, 35),
+        size: const Size(12, 12),
       ),
     ];
   }

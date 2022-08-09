@@ -1,3 +1,4 @@
+import "package:flutter_app/extensions/string.dart";
 import "package:xml/xml.dart";
 
 import "../elements/attribute.dart";
@@ -30,8 +31,11 @@ class Parser {
 
   NodeElement _parseElement(XmlElement element, ParserData data) {
     final name = element.name.toString();
-    final innerText = element.innerText.trim();
+    var innerText = element.innerText.trim();
     final attributes = _parseAttributes(element, data);
+    if (name.equalsIgnoreCase("ActionData")) {
+      innerText = _parseActionData(innerText, data);
+    }
     final children = element.children
         .map((child) {
           if (child is XmlElement) {
@@ -53,6 +57,19 @@ class Parser {
     }
 
     return nodeElement;
+  }
+
+  String _parseActionData(String innerText, ParserData data) {
+    String value = innerText;
+    final matches = RegExp("\\\${(.*?)}").allMatches(value);
+    for (final match in matches) {
+      final key = match.group(1).toString();
+      if (data.has(key)) {
+        value = value.replaceAll("\${$key}", data.get(key) ?? "UNKNOWN");
+      }
+    }
+
+    return value;
   }
 
   List<Attribute> _parseAttributes(XmlElement element, ParserData data) {

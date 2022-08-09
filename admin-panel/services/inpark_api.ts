@@ -7,6 +7,11 @@ const config: AxiosRequestConfig = {
 const client: AxiosInstance = axios.create(config)
 
 client.interceptors.request.use(async config => {
+  config.headers = {
+    ...config.headers,
+    ["X-Tenant"]: "99348443-55F7-4104-83CB-031D29D95A14"
+  }
+
   const token = localStorage.getItem("token")
   if (token) {
     config.headers = {
