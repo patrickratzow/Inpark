@@ -5,7 +5,7 @@ namespace Zeta.Inpark.Auth.Features.Roles;
 
 public class CreateRole
 {
-    [AuthAttribute]
+    [Auth]
     public record Command(
         Guid Id,
         string Name,

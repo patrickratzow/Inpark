@@ -15,13 +15,19 @@ public class Admin : Entity
     public IReadOnlyCollection<RefreshToken> RefreshTokens
     {
         get => _refreshTokens;
-        set => _refreshTokens = (List<RefreshToken>)value;
+        private set => _refreshTokens = (List<RefreshToken>)value;
     }
     private List<Role> _roles = new();
     public IReadOnlyCollection<Role> Roles
     {
         get => _roles;
-        set => _roles = (List<Role>)value;
+        private set => _roles = (List<Role>)value;
+    }
+    private List<Permission> _permissions = new();
+    public IReadOnlyCollection<Permission> Permissions
+    {
+        get => _permissions;
+        private set => _permissions = (List<Permission>)value;
     }
 
     private Admin() { }
@@ -67,6 +73,19 @@ public class Admin : Entity
     {
         _roles.Remove(role);
     }
+    
+    public void AddPermission(Permission permission)
+    {
+        var alreadyHasPermission = _permissions.Any(r => r.Id == permission.Id);
+        if (alreadyHasPermission) return;
+        
+        _permissions.Add(permission);
+    }
+    
+    public void RemovePermission(Permission permission)
+    {
+        _permissions.Remove(permission);
+    }
 }
 
 public class AdminValidator : AbstractValidator<Admin>
@@ -80,6 +99,7 @@ public class AdminValidator : AbstractValidator<Admin>
             .LessThanOrEqualTo(x => DateTime.Now);
         RuleFor(x => x.RefreshTokens).NotNull();
         RuleFor(x => x.Roles).NotNull();
+        RuleFor(x => x.Permissions).NotNull();
     }
 }
 
@@ -89,6 +109,9 @@ public class AdminConfiguration : IEntityTypeConfiguration<Admin>
     {
         builder.HasMany(x => x.RefreshTokens)
             .WithOne();
+
+        builder.HasMany(x => x.Permissions)
+            .WithMany(x => x.Admins);
         
         builder.OwnsOne(x => x.Password, x =>
         {

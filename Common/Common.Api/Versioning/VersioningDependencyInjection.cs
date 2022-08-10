@@ -46,7 +46,6 @@ public static class VersioningDependencyInjection
                     throw exception;
                 }
 
-
                 var error = new PropertyError("X-Version", versionNotSupportedException.Message);
                 var errorText = JsonSerializer.Serialize(error);
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
