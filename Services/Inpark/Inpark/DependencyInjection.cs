@@ -101,11 +101,6 @@ public static class DependencyInjection
             "* 3 * * *", // Every day at 3 AM 
             TimeZoneInfo.Local
         );
-        RecurringJob.AddOrUpdate<AalborgZooUpdateAnimalsJob>(
-            x => x.Execute(),
-            "* 3 * * *", // Every day at 3 AM 
-            TimeZoneInfo.Local
-        );
         RecurringJob.AddOrUpdate<AalborgZooUpdateSpeaksJob>(
             x => x.Execute(),
             "* 3 * * *", // Every day at 3 AM 

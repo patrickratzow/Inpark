@@ -95,3 +95,27 @@ public class UpdateAnimalsCommandHandler : IRequestHandler<UpdateAnimalsCommand,
         }
     }
 }
+
+[ApiController]
+[MethodGroup(Groups.Animals)]
+public partial class UpdateAnimalsController : ZooController
+{
+    private readonly IMediator _mediator;
+
+    public UpdateAnimalsController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    /// <summary>
+    /// Creates an animal fetch job
+    /// </summary>
+    [HttpPost("jobs/animals/fetch")]
+    public async partial Task<ActionResult> UpdateAnimals(CancellationToken cancellationToken)
+    {
+        var command = new UpdateAnimalsCommand();
+        var result = await _mediator.Send(command, cancellationToken);
+
+        return Map(result);
+    }
+}
