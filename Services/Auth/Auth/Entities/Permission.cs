@@ -40,3 +40,12 @@ public class PermissionValidator : AbstractValidator<Permission>
         RuleFor(x => x.Admins).NotNull();
     }
 }
+
+public class PermissionConfiguration : IEntityTypeConfiguration<Permission>
+{
+    public void Configure(EntityTypeBuilder<Permission> builder)
+    {
+        builder.Property<Guid>("TenantId");
+        builder.HasKey("TenantId", "Id");
+    }
+}

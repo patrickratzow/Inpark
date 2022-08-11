@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zeta.Inpark.Auth;
 
@@ -11,9 +12,10 @@ using Zeta.Inpark.Auth;
 namespace Zeta.Inpark.Auth.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    partial class AuthDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220810184743_AdminsCanHaveDirectPermissions")]
+    partial class AdminsCanHaveDirectPermissions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,33 +29,27 @@ namespace Zeta.Inpark.Auth.Migrations
                     b.Property<Guid>("AdminsId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PermissionsTenantId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("PermissionsId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("AdminsId", "PermissionsTenantId", "PermissionsId");
+                    b.HasKey("AdminsId", "PermissionsId");
 
-                    b.HasIndex("PermissionsTenantId", "PermissionsId");
+                    b.HasIndex("PermissionsId");
 
                     b.ToTable("AdminPermission");
                 });
 
             modelBuilder.Entity("PermissionRole", b =>
                 {
-                    b.Property<Guid>("RolesId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PermissionsTenantId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("PermissionsId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("RolesId", "PermissionsTenantId", "PermissionsId");
+                    b.Property<Guid>("RolesId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasIndex("PermissionsTenantId", "PermissionsId");
+                    b.HasKey("PermissionsId", "RolesId");
+
+                    b.HasIndex("RolesId");
 
                     b.ToTable("PermissionRole");
                 });
@@ -85,9 +81,6 @@ namespace Zeta.Inpark.Auth.Migrations
 
             modelBuilder.Entity("Zeta.Inpark.Auth.Entities.Permission", b =>
                 {
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
@@ -97,7 +90,7 @@ namespace Zeta.Inpark.Auth.Migrations
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("datetimeoffset");
 
-                    b.HasKey("TenantId", "Id");
+                    b.HasKey("Id");
 
                     b.ToTable("Permissions");
                 });
@@ -190,22 +183,22 @@ namespace Zeta.Inpark.Auth.Migrations
 
                     b.HasOne("Zeta.Inpark.Auth.Entities.Permission", null)
                         .WithMany()
-                        .HasForeignKey("PermissionsTenantId", "PermissionsId")
+                        .HasForeignKey("PermissionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("PermissionRole", b =>
                 {
-                    b.HasOne("Zeta.Inpark.Auth.Entities.Role", null)
+                    b.HasOne("Zeta.Inpark.Auth.Entities.Permission", null)
                         .WithMany()
-                        .HasForeignKey("RolesId")
+                        .HasForeignKey("PermissionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Zeta.Inpark.Auth.Entities.Permission", null)
+                    b.HasOne("Zeta.Inpark.Auth.Entities.Role", null)
                         .WithMany()
-                        .HasForeignKey("PermissionsTenantId", "PermissionsId")
+                        .HasForeignKey("RolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -10,20 +10,25 @@ public class Admin : Entity
     public EmailAddress EmailAddress { get; private set; } = null!;
     public Password Password { get; private set; } = null!;
     public DateTime LastSeen { get; private set; }
-    
+
     private List<RefreshToken> _refreshTokens = new();
+
     public IReadOnlyCollection<RefreshToken> RefreshTokens
     {
         get => _refreshTokens;
         private set => _refreshTokens = (List<RefreshToken>)value;
     }
+
     private List<Role> _roles = new();
+
     public IReadOnlyCollection<Role> Roles
     {
         get => _roles;
         private set => _roles = (List<Role>)value;
     }
+
     private List<Permission> _permissions = new();
+
     public IReadOnlyCollection<Permission> Permissions
     {
         get => _permissions;
@@ -50,41 +55,40 @@ public class Admin : Entity
     {
         var expiresAt = DateTime.Now.AddDays(30);
         var refreshToken = RefreshToken.Create(expiresAt);
-        
+
         _refreshTokens.Add(refreshToken);
-        
+
         return refreshToken;
     }
-    
-    public void RemoveRefreshToken(RefreshToken refreshToken)
-    {
-        _refreshTokens.Remove(refreshToken);
-    }
+
+    public void RemoveRefreshToken(RefreshToken refreshToken) { _refreshTokens.Remove(refreshToken); }
 
     public void AddRole(Role role)
     {
         var alreadyHasRole = _roles.Any(r => r.Id == role.Id);
         if (alreadyHasRole) return;
-        
+
         _roles.Add(role);
     }
-    
-    public void RemoveRole(Role role)
-    {
-        _roles.Remove(role);
-    }
-    
+
+    public void RemoveRole(Role role) { _roles.Remove(role); }
+
     public void AddPermission(Permission permission)
     {
         var alreadyHasPermission = _permissions.Any(r => r.Id == permission.Id);
         if (alreadyHasPermission) return;
-        
+
         _permissions.Add(permission);
     }
-    
-    public void RemovePermission(Permission permission)
+
+    public void RemovePermission(Permission permission) { _permissions.Remove(permission); }
+
+    public bool HasPermission(string id)
     {
-        _permissions.Remove(permission);
+        var rolesPermissions = _roles.SelectMany(r => r.Permissions);
+        var permissions = _permissions.Concat(rolesPermissions);
+
+        return permissions.Any(x => x.Id == id);
     }
 }
 
