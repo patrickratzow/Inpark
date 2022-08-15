@@ -6,6 +6,7 @@ using OpenTelemetry.Trace;
 using Serilog;
 using Zeta.Inpark.Auth;
 using Zoo.Common.Api;
+using Zoo.Common.Api.Jobs;
 using Zoo.Inpark;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ var logger = new LoggerConfiguration()
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
+builder.Services.AddJobs(builder.Configuration);
 // Add services to the container.
 builder.Services.AddTenantManager();
 builder.Services.AddInpark(builder.Configuration);
