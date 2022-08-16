@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Security;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 
-namespace Zeta.Inpark.Functions;
+namespace Common.Functions;
 
 public class TriggerScheduledJobs
 {
@@ -21,7 +20,7 @@ public class TriggerScheduledJobs
         ILogger log)
     {
         var baseUrl = Environment.GetEnvironmentVariable("SCHEDULED_JOBS_BASE_URL");
-        log.LogInformation($"Executing {nameof(TriggerScheduledJobs)} at {DateTime.Now}");
+        log.LogInformation("Executing {JobName} at {Time}", nameof(TriggerScheduledJobs), DateTime.Now);
 
         var tasks = new List<Task>();
         using var httpClient = new HttpClient();
@@ -31,7 +30,7 @@ public class TriggerScheduledJobs
             var body = new { };
             var request = httpClient.PostAsJsonAsync(url, body);
 
-            log.LogInformation($"Adding request to {url} to queue");
+            log.LogInformation("Adding request to {Url} to queue", url);
 
             tasks.Add(request);
         }

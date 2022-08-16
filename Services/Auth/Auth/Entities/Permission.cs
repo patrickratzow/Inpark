@@ -19,7 +19,6 @@ public class Permission : Entity
         private set => _admins = (List<Admin>)value;
     }
 
-
     private Permission() {}
     
     public static Permission Create(string id)

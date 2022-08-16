@@ -14,7 +14,6 @@ public class Tenant : Entity
         get => _admins;
         set => _admins = (List<Admin>)value;
     }
-
     private List<Role> _roles = new();
     public IReadOnlyCollection<Role> Roles
     {
