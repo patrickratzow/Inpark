@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +12,12 @@ using Zoo.Common.Api;
 
 namespace Zeta.Inpark.Maps.Functions.Features;
 
-public class PingLocation
+public class PingLocationTrigger
 {
     private readonly IMediator _mediator;
     private readonly IResponseMapper _mapper;
 
-    public PingLocation(IMediator mediator, IResponseMapper mapper)
+    public PingLocationTrigger(IMediator mediator, IResponseMapper mapper)
     {
         _mediator = mediator;
         _mapper = mapper;
@@ -30,7 +31,7 @@ public class PingLocation
         var request = await req.FromJsonBody<Request>();
         var userId = req.GetUserId();
         
-        var command = new PingLocationCommand(userId, request.Latitude, request.Longitude);
+        var command = new PingLocation.Command(userId, request.Latitude, request.Longitude);
         var result = await _mediator.Send(command);
 
         return _mapper.Map(result)
@@ -38,7 +39,22 @@ public class PingLocation
     }
 
     public record Request(
-        string Latitude,
-        string Longitude
+        double Latitude,
+        double Longitude
     );
+
+    public class RequestValidator : AbstractValidator<Request>
+    {
+        public RequestValidator()
+        {
+            RuleFor(x => x.Latitude)
+                .NotEmpty()
+                .GreaterThanOrEqualTo(-90)
+                .LessThanOrEqualTo(90);
+            RuleFor(x => x.Longitude)
+                .NotEmpty()
+                .GreaterThanOrEqualTo(-180)
+                .LessThanOrEqualTo(180);
+        }
+    }
 }

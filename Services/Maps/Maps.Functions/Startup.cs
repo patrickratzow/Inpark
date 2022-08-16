@@ -1,12 +1,9 @@
-﻿using System.IO;
-using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Zeta.Inpark.Maps;
+﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Zeta.Inpark.Maps.Functions;
 
-[assembly: FunctionsStartup(typeof(Zeta.Maps.Functions.Startup))]
+[assembly: FunctionsStartup(typeof(Startup))]
 
-namespace Zeta.Maps.Functions;
+namespace Zeta.Inpark.Maps.Functions;
 
 public class Startup : FunctionsStartup
 { 
@@ -14,16 +11,6 @@ public class Startup : FunctionsStartup
     {
         var context = builder.GetContext();
 
-        var config = new ConfigurationBuilder()
-            .AddConfiguration(context.Configuration)
-            .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true,
-                reloadOnChange: false)
-            .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"),
-                optional: true, reloadOnChange: false)
-            .AddEnvironmentVariables()
-            .Build();
-
-        builder.Services.AddSingleton<IConfiguration>(_ => config);
-        builder.Services.AddMaps(config);
+        builder.Services.AddMaps(context.Configuration);
     }
 }

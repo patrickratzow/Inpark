@@ -24,11 +24,13 @@ public class User : Entity
         return instance;
     }
 
-    public void AddLocationPing(double latitude, double longitude)
+    public LocationPing AddLocationPing(double latitude, double longitude)
     {
         var ping = new LocationPing();
         
         _locationPings.Add(ping);
+
+        return ping;
     }
 }
 

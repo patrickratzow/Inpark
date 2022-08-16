@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FluentValidation;
@@ -24,7 +25,10 @@ public static class HttpRequestExtensions
 
         try
         {
-            var obj = JsonSerializer.Deserialize<T>(content);
+            var obj = JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
             if (obj is null) throw new Exception("Returned NULL value from JSON deserializing");
 
             var validationContext = new ValidationContext<T>(obj);
@@ -50,9 +54,8 @@ public static class HttpRequestExtensions
 
     private static IEnumerable<IValidator<T>> FindValidators<T>(T obj)
     {
-        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-        var validators = assemblies
-            .SelectMany(x => x.GetExportedTypes())
+        var validators = Assembly.GetExecutingAssembly()
+            .GetExportedTypes()
             .Where(t => IsDerivedOfGenericType(t, typeof(AbstractValidator<>)))
             .Where(t => t.GetInterfaces().Any(i =>
                 IsDerivedOfGenericType(i, typeof(IValidator<>))
