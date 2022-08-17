@@ -12,9 +12,10 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddMaps(this IServiceCollection services, IConfiguration configuration)
     {
+        var connectionString = configuration.GetConnectionString("MapsDatabase");
         services.AddDbContext<MapsDbContext>(opts =>
         {
-            opts.UseSqlServer(configuration.GetConnectionString("MapsDatabase"));
+            opts.UseSqlServer(connectionString);
         });
         
         services.AddMediatR(Assembly.GetExecutingAssembly());

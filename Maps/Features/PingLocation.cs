@@ -49,9 +49,11 @@ public class PingLocation
                 
                 _context.Users.Add(user);
             }
-            
-            var locationPing = user.AddLocationPing(request.Latitude, request.Longitude);
-            _context.Entry(locationPing).State = EntityState.Added;
+
+            var pingId = Guid.NewGuid();
+            var ping = Ping.Create(pingId, user, request.Latitude, request.Longitude);
+            user.AddLocationPing(ping);
+            _context.Pings.Add(ping);
             
             await _context.SaveChangesAsync(cancellationToken);
             

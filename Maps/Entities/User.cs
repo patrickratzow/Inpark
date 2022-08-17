@@ -1,4 +1,6 @@
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Zeta.Inpark.Maps.Common;
 
 namespace Zeta.Inpark.Maps.Entities;
@@ -6,13 +8,17 @@ namespace Zeta.Inpark.Maps.Entities;
 public class User : Entity
 {
     public Guid Id { get; private set; }
-    private List<LocationPing> _locationPings = new();
-    public IReadOnlyList<LocationPing> LocationPings
+    private List<Ping> _pings = new();
+    public IReadOnlyList<Ping> Pings
     {
-        get => _locationPings;
-        set => _locationPings = (List<LocationPing>)value;
+        get => _pings;
+        set => _pings = (List<Ping>)value;
     }
 
+    private User()
+    {
+    }
+    
     public static User Create(Guid id)
     {
         var instance = new User
@@ -24,14 +30,7 @@ public class User : Entity
         return instance;
     }
 
-    public LocationPing AddLocationPing(double latitude, double longitude)
-    {
-        var ping = new LocationPing();
-        
-        _locationPings.Add(ping);
-
-        return ping;
-    }
+    public void AddLocationPing(Ping ping) => _pings.Add(ping);
 }
 
 public class UserValidator : AbstractValidator<User>
@@ -39,5 +38,14 @@ public class UserValidator : AbstractValidator<User>
     public UserValidator()
     {
         RuleFor(x => x.Id).NotEmpty();
+    }
+}
+
+public class UserConfiguration : IEntityTypeConfiguration<User>
+{
+    public void Configure(EntityTypeBuilder<User> builder)
+    {
+        builder.HasMany(x => x.Pings)
+            .WithOne(x => x.User);
     }
 }

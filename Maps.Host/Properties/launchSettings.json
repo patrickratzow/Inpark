@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Maps.Functions": {
+    "Maps.Host": {
       "commandName": "Project",
       "commandLineArgs": "--port 7252",
       "launchBrowser": false

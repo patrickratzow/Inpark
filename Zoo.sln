@@ -49,11 +49,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Library", "Services\Au
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Functions", "Common\Common.Functions\Common.Functions.csproj", "{A0CF463F-EA83-49B6-872C-D820032045D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maps.Functions", "Services\Maps\Maps.Functions\Maps.Functions.csproj", "{43CF9FAB-7265-417D-8F03-71149D5AE195}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maps.Functions", "Services\Maps\Maps.Functions\Maps.Functions.csproj", "{43CF9FAB-7265-417D-8F03-71149D5AE195}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maps", "Maps", "{ABE8AA74-3C3E-41DC-BA24-A4460164C40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maps", "Maps\Maps.csproj", "{9BE70739-7927-4D23-87F2-A761D6498794}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maps", "Maps\Maps.csproj", "{9BE70739-7927-4D23-87F2-A761D6498794}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
