@@ -8,6 +8,10 @@ namespace Zeta.Inpark.Maps.Functions.Middleware;
 
 public class ModelBindingMiddleware : IFunctionsWorkerMiddleware
 {
+    private record ModelBindingError(
+        string Error
+    );
+    
     public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
     {
         try
@@ -18,7 +22,8 @@ public class ModelBindingMiddleware : IFunctionsWorkerMiddleware
         {
             var req = await context.GetHttpRequestDataAsync();
             var res = req!.CreateResponse();
-            await res.WriteAsJsonAsync(new { Error = e.Message }, HttpStatusCode.BadRequest);
+            var error = new ModelBindingError(e.Message);
+            await res.WriteAsJsonAsync(error, HttpStatusCode.BadRequest);
 
             context.GetInvocationResult().Value = res;
         }

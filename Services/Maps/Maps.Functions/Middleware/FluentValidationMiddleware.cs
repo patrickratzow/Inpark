@@ -8,7 +8,7 @@ namespace Zeta.Inpark.Maps.Functions.Middleware;
 
 public class FluentValidationMiddleware : IFunctionsWorkerMiddleware
 {
-    public record Error(
+    private record ValidationError(
         string PropertyName, 
         string Value
     );
@@ -24,7 +24,7 @@ public class FluentValidationMiddleware : IFunctionsWorkerMiddleware
             var req = await context.GetHttpRequestDataAsync();
             var res = req!.CreateResponse();
             var errors = e.Errors
-                .Select(x => new Error(
+                .Select(x => new ValidationError(
                     x.PropertyName,
                     x.ErrorMessage
                 ));

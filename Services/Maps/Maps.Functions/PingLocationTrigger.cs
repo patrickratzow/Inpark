@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Zeta.Inpark.Maps.Features;
 using Zeta.Inpark.Maps.Functions.Extensions;
 
-namespace Zeta.Inpark.Maps.Functions.Features;
+namespace Zeta.Inpark.Maps.Functions;
 
 public class PingLocationTrigger
 {
@@ -22,7 +22,7 @@ public class PingLocationTrigger
 
     [Function("ping-location")]
     public async Task<HttpResponseData> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req)
     {
         var request = await req.FromJsonBody<Request>();
         var userId = req.GetUserId();
@@ -31,9 +31,12 @@ public class PingLocationTrigger
         var result = await _mediator.Send(command);
         
         var response = req.CreateResponse(HttpStatusCode.OK);
-        response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-
-        response.WriteString("Welcome to Azure Functions!");
+        response.Headers.Add("Content-Type", "text/json; charset=utf-8");
+        
+        result.Switch(unit =>
+        {
+            response.StatusCode = HttpStatusCode.NoContent;
+        });
 
         return response;
     }
