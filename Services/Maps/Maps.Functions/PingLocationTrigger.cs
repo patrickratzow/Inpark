@@ -1,23 +1,22 @@
-using System.Net;
 using FluentValidation;
 using MediatR;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.Extensions.Logging;
 using Zeta.Inpark.Maps.Features;
 using Zeta.Inpark.Maps.Functions.Extensions;
+using Zoo.Common.Api;
 
 namespace Zeta.Inpark.Maps.Functions;
 
-public class PingLocationTrigger
+public class PingLocationTrigger : HttpTrigger
 {
     private readonly IMediator _mediator;
-    private readonly ILogger _logger;
 
-    public PingLocationTrigger(ILoggerFactory loggerFactory, IMediator mediator)
+    public PingLocationTrigger(
+        IMediator mediator, 
+        IResponseMapper responseMapper) : base(responseMapper)
     {
         _mediator = mediator;
-        _logger = loggerFactory.CreateLogger<PingLocationTrigger>();
     }
 
     [Function("ping-location")]
@@ -29,18 +28,9 @@ public class PingLocationTrigger
         
         var command = new PingLocation.Command(userId, request.Latitude, request.Longitude);
         var result = await _mediator.Send(command);
-        
-        var response = req.CreateResponse(HttpStatusCode.OK);
-        response.Headers.Add("Content-Type", "text/json; charset=utf-8");
-        
-        result.Switch(unit =>
-        {
-            response.StatusCode = HttpStatusCode.NoContent;
-        });
 
-        return response;
+        return MapResponse(req, result);
     }
-    
     
     public record Request(
         double Latitude,
@@ -62,51 +52,3 @@ public class PingLocationTrigger
         }
     }
 }
-
-/*
-public class PingLocationTrigger
-{
-    private readonly IMediator _mediator;
-    private readonly IResponseMapper _mapper;
-
-    public PingLocationTrigger(IMediator mediator, IResponseMapper mapper)
-    {
-        _mediator = mediator;
-        _mapper = mapper;
-    }
-
-    [Function("PingLocation")]
-    public async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req, 
-        ILogger log)
-    {
-        var request = await req.FromJsonBody<Request>();
-        var userId = req.GetUserId();
-        
-        var command = new PingLocation.Command(userId, request.Latitude, request.Longitude);
-        var result = await _mediator.Send(command);
-
-        return _mapper.Map(result)
-            .Build();
-    }
-
-    public record Request(
-        double Latitude,
-        double Longitude
-    );
-
-    public class RequestValidator : AbstractValidator<Request>
-    {
-        public RequestValidator()
-        {
-            RuleFor(x => x.Latitude)
-                .NotEmpty()
-                .GreaterThanOrEqualTo(-90)
-                .LessThanOrEqualTo(90);
-            RuleFor(x => x.Longitude)
-                .NotEmpty()
-                .GreaterThanOrEqualTo(-180)
-                .LessThanOrEqualTo(180);
-        }
-    }
-}*/
