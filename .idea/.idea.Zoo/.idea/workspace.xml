@@ -18,13 +18,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/Maps.Tests.Load.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber-log-20220819.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber_report_2022-08-19--13-42-14.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber_report_2022-08-19--13-42-14.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber_report_2022-08-19--13-42-14.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber_report_2022-08-19--13-42-14.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.42.39_session_a9b9c7cf/nbomber-log-20220819.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maps/Features/PingLocation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Maps/Features/PingLocation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/PingLocationTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/PingLocationTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +85,7 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/AnimalName.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/pra/RiderProjects/Zoo/Services/Maps/Maps.Functions/PingLocationTrigger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
@@ -118,18 +122,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "do_not_show_solution_notification": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;do_not_show_solution_notification&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Service Authentication&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.Maps.Tests.Load">
+    <configuration name="Publish Maps.Functions to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
+      <option name="AZURE_FUNCTION_APP_PROJECT" value="$PROJECT_DIR$/Services/Maps/Maps.Functions/Maps.Functions.csproj" />
+      <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_FUNCTION_APP_IS_CREATE_APP" value="0" />
+      <option name="AZURE_FUNCTION_APP_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Web/sites/func-zeta-maps-northeurope-dev-01" />
+      <option name="AZURE_FUNCTION_APP_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_IS_CREATE_RESOURCE_GROUP" value="0" />
+      <option name="AZURE_FUNCTION_APP_RESOURCE_GROUP_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_IS_CREATE_APP_SERVICE_PLAN" value="0" />
+      <option name="AZURE_FUNCTION_APP_SERVICE_PLAN_ID" value="" />
+      <option name="AZURE_FUNCTION_APP_SERVICE_PLAN_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_LOCATION" value="eastus" />
+      <option name="AZURE_FUNCTION_APP_PRICING_TIER" value="" />
+      <option name="AZURE_FUNCTION_APP_OPERATING_SYSTEM" value="LINUX" />
+      <option name="AZURE_FUNCTION_APP_RUNTIME" value="dotnet-isolated" />
+      <option name="AZURE_FUNCTION_APP_RUNTIMEVERSION" value="~4" />
+      <option name="AZURE_FUNCTION_APP_FXVERSION" value="dotnet-isolated|6.0" />
+      <option name="AZURE_FUNCTION_APP_IS_CREATE_STORAGE_ACCOUNT" value="0" />
+      <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_ID" value="" />
+      <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_TYPE" value="Standard_LRS" />
+      <option name="AZURE_FUNCTION_APP_IS_DEPLOY_TO_SLOT" value="0" />
+      <option name="AZURE_FUNCTION_APP_SLOT_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_SQL_DATABASE_IS_ENABLED" value="0" />
+      <option name="AZURE_SQL_DATABASE_CONNECTION_STRING_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE" value="0" />
+      <option name="AZURE_SQL_DATABASE_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Sql/servers/sql-zeta-northeurope-dev-01/databases/sqldb-zeta-northeurope-dev-maps" />
+      <option name="AZURE_SQL_DATABASE_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE_RESOURCE_GROUP" value="0" />
+      <option name="AZURE_SQL_DATABASE_RESOURCE_GROUP_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE_SQL_SERVER" value="0" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_ID" value="" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_ADMIN_LOGIN" value="zeta" />
+      <option name="AZURE_SQL_DATABASE_LOCATION" value="eastus" />
+      <option name="AZURE_SQL_DATABASE_COLLATION" value="SQL_Latin1_General_CP1_CI_AS" />
+      <method v="2" />
+    </configuration>
     <configuration name="Common.Functions" type="AzureFunctionsHost" factoryName="Azure Functions host">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -438,7 +483,7 @@
       <workItem from="1660677401421" duration="1789000" />
       <workItem from="1660841689857" duration="1716000" />
       <workItem from="1660844284568" duration="769000" />
-      <workItem from="1660912627955" duration="1402000" />
+      <workItem from="1660912627955" duration="3004000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -566,7 +611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660674914039</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat: add stress tests &amp; basic azure function trigger base class">
+      <created>1660915137543</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1660915137543</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,7 +660,8 @@
     <MESSAGE value="feat: add permissions route &amp; setup library project" />
     <MESSAGE value="feat: work on jobs" />
     <MESSAGE value="feat: initial dart map work" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: initial dart map work" />
+    <MESSAGE value="feat: add stress tests &amp; basic azure function trigger base class" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add stress tests &amp; basic azure function trigger base class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
