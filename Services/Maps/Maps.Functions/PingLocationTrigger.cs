@@ -26,7 +26,7 @@ public class PingLocationTrigger : HttpTrigger
         var request = await req.FromJsonBody<Request>();
         var userId = req.GetUserId();
         
-        var command = new PingLocation.Command(userId, request.Latitude, request.Longitude);
+        var command = new QueuePingLocation.Command(userId, request.Latitude, request.Longitude);
         var result = await _mediator.Send(command);
 
         return MapResponse(req, result);

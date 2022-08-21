@@ -36,7 +36,7 @@ var scenario = ScenarioBuilder
     .CreateScenario("maps_ping", step)
     .WithWarmUpDuration(TimeSpan.FromSeconds(5))
     .WithLoadSimulations(
-        Simulation.InjectPerSec(rate: 500, during: TimeSpan.FromSeconds(30))
+            Simulation.InjectPerSec(rate: 1500, during: TimeSpan.FromSeconds(30))
     );
 
 // creates ping plugin that brings additional reporting data

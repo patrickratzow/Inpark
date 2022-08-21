@@ -17,6 +17,7 @@ public static class DependencyInjection
         {
             opts.UseSqlServer(connectionString);
         });
+        services.AddSingleton<QueueService>();
         
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

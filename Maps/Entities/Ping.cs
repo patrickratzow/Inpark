@@ -26,6 +26,8 @@ public class Ping : Entity
             Longitude = longitude
         };
         instance.Validate();
+        
+        user.AddLocationPing(instance);
 
         return instance;
     }

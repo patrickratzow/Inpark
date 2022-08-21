@@ -7,6 +7,7 @@
     <projectFile>Maps.Host/Maps.Host.csproj</projectFile>
     <projectFile>test/test.csproj</projectFile>
     <projectFile>Services/Maps/Maps.Tests.Load/Maps.Tests.Load.csproj</projectFile>
+    <projectFile>Services/Maps/Maps.Contracts/Maps.Contracts.csproj</projectFile>
     <projectFile profileName="AspNetCore">AspNetCore/AspNetCore.csproj</projectFile>
     <projectFile profileName="IIS Express">AspNetCore/AspNetCore.csproj</projectFile>
     <projectFile profileName="Common.Functions">Common/Common.Functions/Common.Functions.csproj</projectFile>
@@ -18,16 +19,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber-log-20220819.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber_report_2022-08-19--13-42-14.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber_report_2022-08-19--13-42-14.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber_report_2022-08-19--13-42-14.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.41.30_session_ec197b95/nbomber_report_2022-08-19--13-42-14.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_13.42.39_session_a9b9c7cf/nbomber-log-20220819.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maps/Features/ProcessPingLocation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Maps/QueueService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Contracts/Maps.Contracts.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Contracts/PingQueueDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/ProcessPingsTrigger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_14.55.08_session_acc8f572/nbomber-log-20220819.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_14.56.05_session_3ab1787d/nbomber-log-20220819.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_14.56.05_session_3ab1787d/nbomber_report_2022-08-19--15-01-45.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_14.56.05_session_3ab1787d/nbomber_report_2022-08-19--15-01-45.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_14.56.05_session_3ab1787d/nbomber_report_2022-08-19--15-01-45.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/reports/2022-08-19_14.56.05_session_3ab1787d/nbomber_report_2022-08-19--15-01-45.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Categories.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Features/ProcessPingLocationTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Imports.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Maps.Tests.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/TestBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Testing.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maps/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Maps/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maps/Entities/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Maps/Entities/Ping.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maps/Features/PingLocation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Maps/Features/QueuePingLocation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maps/Maps.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Maps/Maps.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/Maps.Functions.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/Maps.Functions.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/PingLocationTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/PingLocationTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/appsettings.Development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/host.json" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/host.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests.Load/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,63 +71,60 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8159bffb703fc48902bc998f46c048a0b7000/d8/855e0d07/Response.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c979de0d4aaa210c809db6d74dbd60bf8400/ea/534ad165/Http.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/43a583eda4397148bf3ef8a58b0afac41d7335955f43c10a7ecd29ea06eeb/StringContent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cf45f671e76a56b0a4eedfd470563bea6a32f7e63e9e2bbf884375631089359e/ServiceCollectionDescriptorExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3a8dfd928d7124044723494a9a7b2872a8bb9f96333d4baed4e1992126616ce/Check.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/AspNetCore/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ClassesToGenerate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/MethodInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Maps.Host/Function1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/AuthDbContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/Admin.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/RefreshToken.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/Tenant.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Enums/WeekDay.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/AnimalName.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/pra/RiderProjects/Zoo/Services/Maps/Maps.Functions/PingLocationTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ae1f29ab81b34e909584423a3fc6fff7a23898/8d/539f0e7b/PortableThreadPool.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/Admin.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/AuthDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cf45f671e76a56b0a4eedfd470563bea6a32f7e63e9e2bbf884375631089359e/ServiceCollectionDescriptorExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/Tenant.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/Entities/RefreshToken.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3a8dfd928d7124044723494a9a7b2872a8bb9f96333d4baed4e1992126616ce/Check.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AspNetCore/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Speak.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/AnimalName.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Auth/Auth/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations.ps1" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Maps.Host/Function1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/ValueObjectTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations.ps1" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -122,19 +140,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;do_not_show_solution_notification&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Service Authentication&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Service Authentication" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager" selected=".NET Project.Maps.Tests.Load">
     <configuration name="Publish Maps.Functions to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
       <option name="AZURE_FUNCTION_APP_PROJECT" value="$PROJECT_DIR$/Services/Maps/Maps.Functions/Maps.Functions.csproj" />
@@ -149,12 +166,8 @@
       <option name="AZURE_FUNCTION_APP_SERVICE_PLAN_NAME" value="" />
       <option name="AZURE_FUNCTION_APP_LOCATION" value="eastus" />
       <option name="AZURE_FUNCTION_APP_PRICING_TIER" value="" />
-      <option name="AZURE_FUNCTION_APP_OPERATING_SYSTEM" value="LINUX" />
-      <option name="AZURE_FUNCTION_APP_RUNTIME" value="dotnet-isolated" />
-      <option name="AZURE_FUNCTION_APP_RUNTIMEVERSION" value="~4" />
-      <option name="AZURE_FUNCTION_APP_FXVERSION" value="dotnet-isolated|6.0" />
       <option name="AZURE_FUNCTION_APP_IS_CREATE_STORAGE_ACCOUNT" value="0" />
-      <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_ID" value="" />
+      <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Storage/storageAccounts/zetanortheuropea1e1" />
       <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_NAME" value="" />
       <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_TYPE" value="Standard_LRS" />
       <option name="AZURE_FUNCTION_APP_IS_DEPLOY_TO_SLOT" value="0" />
@@ -203,6 +216,25 @@
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/Services/Inpark/Inpark.Functions/Inpark.Functions.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <option name="FUNCTION_NAMES" value="" />
+      <method v="2">
+        <option name="BuildFunctionsProject" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Maps.Contracts" type="AzureFunctionsHost" factoryName="Azure Functions host">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Services/Maps/Maps.Contracts/Maps.Contracts.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -346,6 +378,24 @@
         <option name="BuildFunctionsProject" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Maps.Contracts" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Services/Maps/Maps.Contracts/Maps.Contracts.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Maps.Tests.Load" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -445,6 +495,26 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.AspNetCore" />
+      <item itemvalue=".NET Launch Settings Profile.AspNetCore: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.Maps.Functions" />
+      <item itemvalue=".NET Launch Settings Profile.Maps.Host" />
+      <item itemvalue=".NET Project.Maps.Contracts" />
+      <item itemvalue=".NET Project.Maps.Tests.Load" />
+      <item itemvalue=".NET Project.test" />
+      <item itemvalue="Azure - Publish Function App.Publish Maps.Functions to Azure" />
+      <item itemvalue="Azure Functions host.Common.Functions" />
+      <item itemvalue="Azure Functions host.Inpark.Functions" />
+      <item itemvalue="Azure Functions host.Maps.Contracts" />
+      <item itemvalue="Azure Functions host.Maps.Functions" />
+      <item itemvalue="Azure Functions host.Maps.Host" />
+      <item itemvalue="Azure Functions host.test" />
+      <item itemvalue="Azure Functions host.ping-location (Services\Maps\Maps.Functions)" />
+      <item itemvalue="Azure Functions host.PingLocation (Services\Maps\Maps.Functions)" />
+      <item itemvalue="Azure Functions host.TriggerScheduledJobs (Services\Inpark\Inpark.Functions)" />
+      <item itemvalue="HTTP Request.Trigger_TriggerScheduledJobs | #2" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Azure Functions host.ping-location (Services\Maps\Maps.Functions)" />
@@ -484,6 +554,9 @@
       <workItem from="1660841689857" duration="1716000" />
       <workItem from="1660844284568" duration="769000" />
       <workItem from="1660912627955" duration="3004000" />
+      <workItem from="1660938450824" duration="2946000" />
+      <workItem from="1660996829953" duration="2551000" />
+      <workItem from="1661079866935" duration="1376000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -689,30 +762,6 @@
           <line>41</line>
           <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Maps\Maps.Functions\Extensions\HttpRequestExtensions.cs" initialLine="41" containingFunctionPresentation="method 'FromJsonBody'" />
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Maps/Features/PingLocation.cs</url>
-          <line>66</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Maps\Features\PingLocation.cs" initialLine="59" containingFunctionPresentation="method 'Handle'" />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Maps/Features/PingLocation.cs</url>
-          <line>48</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Maps\Features\PingLocation.cs" initialLine="44" containingFunctionPresentation="method 'Handle'" />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Maps/Features/PingLocation.cs</url>
-          <line>49</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Maps\Features\PingLocation.cs" initialLine="45" containingFunctionPresentation="method 'Handle'" />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Maps/Features/PingLocation.cs</url>
-          <line>51</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Maps\Features\PingLocation.cs" initialLine="47" containingFunctionPresentation="method 'Handle'" />
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Services/Maps/Maps.Functions/PingLocationTrigger.cs</url>
