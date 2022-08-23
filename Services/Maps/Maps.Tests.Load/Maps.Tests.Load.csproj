@@ -12,4 +12,31 @@
     <PackageReference Include="NBomber.Http" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="reports\2022-08-19_13.50.03_session_2eb59da7\nbomber_report_2022-08-19--13-50-54.txt" />
+    <None Remove="reports\2022-08-19_13.50.03_session_2eb59da7\nbomber_report_2022-08-19--13-50-54.md" />
+    <None Remove="reports\2022-08-19_13.50.03_session_2eb59da7\nbomber_report_2022-08-19--13-50-54.html" />
+    <None Remove="reports\2022-08-19_13.50.03_session_2eb59da7\nbomber_report_2022-08-19--13-50-54.csv" />
+    <None Remove="reports\2022-08-19_13.48.64_session_2ebcfe5e\nbomber_report_2022-08-19--13-48-55.txt" />
+    <None Remove="reports\2022-08-19_13.48.64_session_2ebcfe5e\nbomber_report_2022-08-19--13-48-55.md" />
+    <None Remove="reports\2022-08-19_13.48.64_session_2ebcfe5e\nbomber_report_2022-08-19--13-48-55.html" />
+    <None Remove="reports\2022-08-19_13.48.64_session_2ebcfe5e\nbomber_report_2022-08-19--13-48-55.csv" />
+    <None Remove="reports\2022-08-19_13.45.04_session_a6053f78\nbomber_report_2022-08-19--13-46-34.txt" />
+    <None Remove="reports\2022-08-19_13.45.04_session_a6053f78\nbomber_report_2022-08-19--13-46-34.md" />
+    <None Remove="reports\2022-08-19_13.45.04_session_a6053f78\nbomber_report_2022-08-19--13-46-34.html" />
+    <None Remove="reports\2022-08-19_13.45.04_session_a6053f78\nbomber_report_2022-08-19--13-46-34.csv" />
+    <None Remove="reports\2022-08-19_13.41.30_session_ec197b95\nbomber_report_2022-08-19--13-42-14.txt" />
+    <None Remove="reports\2022-08-19_13.41.30_session_ec197b95\nbomber_report_2022-08-19--13-42-14.md" />
+    <None Remove="reports\2022-08-19_13.41.30_session_ec197b95\nbomber_report_2022-08-19--13-42-14.html" />
+    <None Remove="reports\2022-08-19_13.41.30_session_ec197b95\nbomber_report_2022-08-19--13-42-14.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="reports\2022-08-19_13.41.30_session_ec197b95" />
+    <Folder Include="reports\2022-08-19_13.42.39_session_a9b9c7cf" />
+    <Folder Include="reports\2022-08-19_13.45.04_session_a6053f78" />
+    <Folder Include="reports\2022-08-19_13.48.64_session_2ebcfe5e" />
+    <Folder Include="reports\2022-08-19_13.50.03_session_2eb59da7" />
+  </ItemGroup>
+
 </Project>
