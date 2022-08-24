@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
+using Zeta.Inpark.Translator.Contracts;
 using Zoo.Common.Api.Versioning;
 using Zoo.Inpark.Common;
 using Zoo.Inpark.Features.Animals.AalborgZoo;
@@ -34,6 +35,7 @@ public static class DependencyInjection
             options.UseSqlServer(dbConnection);
         });
 
+        services.AddTranslatorService(configuration);
         services.AddMemoryCache();
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
