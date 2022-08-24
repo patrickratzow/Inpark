@@ -2,5 +2,5 @@ namespace Zeta.Inpark.Translator.Services;
 
 public interface ITranslator
 {
-    Task<string> Translate(string to, string input);
+    Task<string> TranslateText(string to, string input);
 }

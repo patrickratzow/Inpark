@@ -7,18 +7,18 @@ using Zoo.Common.Api;
 
 namespace Zeta.Inpark.Translator.Functions;
 
-public class Translate : HttpTrigger
+public class TranslateTextTrigger : HttpTrigger
 {
     private readonly IMediator _mediator;
 
-    public Translate(
+    public TranslateTextTrigger(
         IMediator mediator, 
         IResponseMapper responseMapper) : base(responseMapper)
     {
         _mediator = mediator;
     }
 
-    [Function("translate")]
+    [Function("translate-text")]
     public async Task<HttpResponseData> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req)
     {

@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 using Zeta.Inpark.Translator.Models;
 using Zeta.Inpark.Translator.Services;
 using Zoo.Common.Api;
@@ -20,6 +21,7 @@ public static class DependencyInjection
         services.AddResponseMapper();
 
         services.AddSingleton<ITranslator, AzureTranslator>();
+        services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(configuration.GetConnectionString("Cache")));
 
         services.Configure<AzureTranslatorOptions>(options =>
         {

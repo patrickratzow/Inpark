@@ -23,7 +23,7 @@ public static class TranslateText
 
         public async Task<OneOf<string>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var result = await _translator.Translate(request.To, request.Text);
+            var result = await _translator.TranslateText(request.To, request.Text);
 
             return result;
         }
