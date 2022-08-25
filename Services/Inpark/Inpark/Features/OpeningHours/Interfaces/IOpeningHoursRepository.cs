@@ -1,7 +1,7 @@
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.OpeningHours.Interfaces;
+namespace Zeta.Inpark.Features.OpeningHours.Interfaces;
 
 public interface IOpeningHoursRepository
 {

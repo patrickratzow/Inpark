@@ -1,12 +1,12 @@
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Enums;
+using Zeta.Inpark.Features.OpeningHours.Interfaces;
+using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Enums;
-using Zoo.Inpark.Features.OpeningHours.Interfaces;
-using Zoo.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.OpeningHours.AalborgZoo;
+namespace Zeta.Inpark.Features.OpeningHours.AalborgZoo;
 
 public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
 {

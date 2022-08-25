@@ -1,8 +1,7 @@
-using Zoo.Inpark.Contents;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Models;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Models;
 
-namespace Zoo.Inpark.Features.Animals.Interfaces;
+namespace Zeta.Inpark.Features.Animals.Interfaces;
 
 public interface IAnimalMapper
 {

@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Zoo.Inpark.Common;
+namespace Zeta.Inpark.Common;
 
 public static class ValidationService
 {

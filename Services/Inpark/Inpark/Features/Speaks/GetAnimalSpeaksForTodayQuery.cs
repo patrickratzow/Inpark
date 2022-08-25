@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Zeta.Inpark.Enums;
 using Zoo.Common.Api.Versioning;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Enums;
 
-namespace Zoo.Inpark.Features.Speaks;
+namespace Zeta.Inpark.Features.Speaks;
 
 [Version("1.0.0")]
 public record GetAnimalSpeaksForTodayQuery : IRequest<OneOf<List<SpeakDto>>>;

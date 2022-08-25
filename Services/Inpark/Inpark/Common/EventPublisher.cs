@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace Zoo.Inpark.Common;
+namespace Zeta.Inpark.Common;
 
 public interface IEventPublisher
 {

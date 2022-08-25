@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.Protected;
-using Zoo.Inpark.Features.Speaks.AalborgZoo;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Features.Speaks.AalborgZoo;
+using Zeta.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Tests.Features.Speaks.AalborgZoo;
 

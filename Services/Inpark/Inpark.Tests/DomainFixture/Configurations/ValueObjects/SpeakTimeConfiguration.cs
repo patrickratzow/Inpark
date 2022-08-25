@@ -1,6 +1,6 @@
 using DomainFixture;
-using Zoo.Inpark.Enums;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Enums;
+using Zeta.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Tests.DomainFixture.Configurations.ValueObjects;
 

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.Protected;
-using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark;
+using Zeta.Inpark.Features.OpeningHours.AalborgZoo;
+using Zeta.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Tests.Features.OpeningHours.AalborgZoo;
 

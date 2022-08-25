@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Features.OpeningHours.Errors;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Features.OpeningHours.Errors;
 
-namespace Zoo.Inpark.Features.OpeningHours;
+namespace Zeta.Inpark.Features.OpeningHours;
 
 public record AddHourColorCommand(
     Guid Id,

@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Errors;
+namespace Zeta.Inpark.Errors;
 
 public record AnimalNotFound(string Name) : INotFoundError
 {

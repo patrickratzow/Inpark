@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Features.Animals.Interfaces;
+namespace Zeta.Inpark.Features.Animals.Interfaces;
 
 public interface IAnimalRepository
 {

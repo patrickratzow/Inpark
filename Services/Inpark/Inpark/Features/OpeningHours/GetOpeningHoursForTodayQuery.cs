@@ -1,7 +1,7 @@
+using Zeta.Inpark.Features.OpeningHours.Interfaces;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Features.OpeningHours.Interfaces;
 
-namespace Zoo.Inpark.Features.OpeningHours;
+namespace Zeta.Inpark.Features.OpeningHours;
 
 public record GetOpeningHoursForTodayQuery : IRequest<OneOf<List<OpeningHourDto>>>;
 

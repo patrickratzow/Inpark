@@ -1,7 +1,7 @@
 ﻿using System;
 using DomainFixture;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.Entities;
+using Zeta.Inpark.Common;
+using Zeta.Inpark.Entities;
 
 namespace Zoo.Inpark.Tests.DomainFixture;
 

@@ -1,9 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.Enums;
+using Zeta.Inpark.Common;
+using Zeta.Inpark.Enums;
 
-namespace Zoo.Inpark.ValueObjects;
+namespace Zeta.Inpark.ValueObjects;
 
 public class SpeakTime : ValueObject
 {

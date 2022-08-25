@@ -10,20 +10,20 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
+using Zeta.Inpark.Common;
+using Zeta.Inpark.Features.Animals.AalborgZoo;
+using Zeta.Inpark.Features.Animals.Interfaces;
+using Zeta.Inpark.Features.OpeningHours.AalborgZoo;
+using Zeta.Inpark.Features.OpeningHours.Interfaces;
+using Zeta.Inpark.Features.ParkEvents.AalborgZoo;
+using Zeta.Inpark.Features.ParkEvents.Interfaces;
+using Zeta.Inpark.Features.Speaks.AalborgZoo;
+using Zeta.Inpark.Features.Speaks.Interfaces;
+using Zeta.Inpark.Services;
 using Zeta.Inpark.Translator.Contracts;
 using Zoo.Common.Api.Versioning;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.Features.Animals.AalborgZoo;
-using Zoo.Inpark.Features.Animals.Interfaces;
-using Zoo.Inpark.Features.Events.AalborgZoo;
-using Zoo.Inpark.Features.Events.Interfaces;
-using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
-using Zoo.Inpark.Features.OpeningHours.Interfaces;
-using Zoo.Inpark.Features.Speaks.AalborgZoo;
-using Zoo.Inpark.Features.Speaks.Interfaces;
-using Zoo.Inpark.Services;
 
-namespace Zoo.Inpark;
+namespace Zeta.Inpark;
 
 public static class DependencyInjection
 {

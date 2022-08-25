@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zoo.Inpark.Features.Events.AalborgZoo;
-using Zoo.Inpark.Models;
-using Zoo.Inpark.Services;
+using Zeta.Inpark.Features.ParkEvents.AalborgZoo;
+using Zeta.Inpark.Models;
+using Zeta.Inpark.Services;
 
 namespace Zoo.Inpark.Tests.Features.ParkEvents;
 

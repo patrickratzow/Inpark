@@ -11,7 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Respawn;
 using Respawn.Graph;
-using Zoo.Inpark.Common;
+using Zeta.Inpark;
+using Zeta.Inpark.Common;
 
 namespace Zoo.Inpark.Tests;
 

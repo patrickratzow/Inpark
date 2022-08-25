@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Zoo.Inpark.Features.Speaks.AalborgZoo;
+namespace Zeta.Inpark.Features.Speaks.AalborgZoo;
 
 public class AalborgZooUpdateSpeaksJob
 {

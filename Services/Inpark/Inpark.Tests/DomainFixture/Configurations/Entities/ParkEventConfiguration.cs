@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zoo.Inpark.Entities;
+using Zeta.Inpark.Entities;
 
 namespace Zoo.Inpark.Tests.DomainFixture.Configurations.Entities
 {

@@ -1,15 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Zeta.Inpark.Common.SDUI;
+using Zeta.Inpark.Features.ParkEvents.AalborgZoo;
+using Zeta.Inpark.Features.ParkEvents.Interfaces;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Features.Events.Interfaces;
-using Zoo.Inpark.Models;
-using Zoo.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.Events;
+namespace Zeta.Inpark.Features.ParkEvents;
 
 public record GetParkEventsQuery : IRequest<OneOf<List<ParkEventDto>>>;
 public class GetParkEventsQueryQueryHandler :
@@ -38,51 +33,28 @@ public class GetParkEventsQueryQueryHandler :
         {
             var image = new ImagePairDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
 
-            if (!_mapper.ParseContent(x.Content).IsSuccess(out var content))
-                throw new InvalidDataException("Unable to parse content");
+            var parsedResult = _mapper.ParseContent(x.Content);
+            if (!parsedResult.IsSuccess(out var sduiNode))
+                throw new InvalidDataException("Unable to parse content. Error: " + parsedResult.AsT1.Value);
 
-            var parkEventDescription = new List<IContent>();
-            var parkEventProgram = new List<IContent>();
+            var content = SDUINodeSerializer.Serialize(sduiNode!);
             
-            //Seperation of the description of and event and the program
-            for (var i = 0; i < content!.Count; i++)
-            {
-                if (content[i].Value.ToString() != "Program")
-                    parkEventDescription.Add(content[i]);
-                else
-                {
-                    parkEventProgram.Add(content[i]);
-                    parkEventProgram.Add(content[i + 1]);
-                    i++;
-                }
-            }
             return new ParkEventDto(
                 x.Id,
                 image,
                 x.Title,
                 x.Range.Start,
                 x.Range.End,
-                parkEventDescription!.Select(MapToContentDto).ToList(),
-                parkEventProgram!.Select(MapToContentDto).ToList()
+                content
             );
         });
 
         return parkEventDtos.ToList();
     }
-
-    private static ContentDto MapToContentDto(IContent content)
-    {
-        return new(
-            content.Value,
-            content.Type,
-            content.Children.Select(MapToContentDto).ToList()
-        );
-    }
 }
 
 [ApiController]
 [MethodGroup(Groups.ParkEvents)]
-[ResponseCache(Duration = 43200)]
 public partial class ParkEventsController : ZooController
 {
     private readonly IMediator _mediator;
@@ -96,7 +68,7 @@ public partial class ParkEventsController : ZooController
     /// Get all events in the park.
     /// </summary>
     [HttpGet("park-events")]
-    [ResponseCache(Duration = 43200)]
+    //[ResponseCache(Duration = 43200)]
     public async partial Task<ActionResult> GetParkEvents(CancellationToken cancellationToken)
     {
         var command = new GetParkEventsQuery();

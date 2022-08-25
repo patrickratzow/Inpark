@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Common;
+using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Entities;
+namespace Zeta.Inpark.Entities;
 
 public class Speak : Entity
 {

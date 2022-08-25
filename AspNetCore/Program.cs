@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Trace;
 using Serilog;
+using Zeta.Inpark;
 using Zeta.Inpark.Auth;
 using Zoo.Common.Api;
 using Zoo.Common.Api.Jobs;

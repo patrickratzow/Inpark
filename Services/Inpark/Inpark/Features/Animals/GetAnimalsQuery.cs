@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Zoo.Inpark.Contents;
+using Zeta.Inpark.Features.Animals.Interfaces;
+using Zeta.Inpark.Models;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Features.Animals.Interfaces;
-using Zoo.Inpark.Models;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zeta.Inpark.Features.Animals;
 
 public record GetAnimalsQuery : IRequest<OneOf<List<AnimalDto>>>;
 

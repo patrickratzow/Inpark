@@ -1,5 +1,5 @@
 using DomainFixture;
-using Zoo.Inpark.Entities;
+using Zeta.Inpark.Entities;
 
 namespace Zoo.Inpark.Tests.DomainFixture.Configurations.Entities;
 

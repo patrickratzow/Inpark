@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Zeta.Inpark.Errors;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Errors;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zeta.Inpark.Features.Animals;
 
 
 public record GetAnimalAreaQuery(string LatinName) : IRequest<OneOf<List<AnimalAreaDto>, AnimalNotFound>>;

@@ -1,4 +1,4 @@
-using Zoo.Inpark.Contents;
+using Zeta.Inpark.Contents;
 
 namespace Zoo.Inpark.Tests.Contents;
 

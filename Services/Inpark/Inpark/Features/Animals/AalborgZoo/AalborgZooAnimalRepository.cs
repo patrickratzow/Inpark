@@ -1,8 +1,8 @@
 using System.Net;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Features.Animals.Interfaces;
+using Zeta.Inpark.Features.Animals.Interfaces;
 
-namespace Zoo.Inpark.Features.Animals.AalborgZoo;
+namespace Zeta.Inpark.Features.Animals.AalborgZoo;
 
 public class AalborgZooAnimalRepository : IAnimalRepository
 {

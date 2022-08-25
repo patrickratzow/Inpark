@@ -1,11 +1,10 @@
-using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Zeta.Inpark.Errors;
+using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Errors;
-using Zoo.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zeta.Inpark.Features.Animals;
 
 public record SetAnimalAreaCommand(string LatinName, List<AnimalAreaDto> Areas) : IRequest<OneOf<Unit, AnimalNotFound>>;
 

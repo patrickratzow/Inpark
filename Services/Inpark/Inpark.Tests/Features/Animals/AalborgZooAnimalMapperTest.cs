@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Zoo.Inpark.Features.Animals.AalborgZoo;
-using Zoo.Inpark.Models;
-using Zoo.Inpark.Services;
+using Zeta.Inpark.Features.Animals.AalborgZoo;
+using Zeta.Inpark.Models;
+using Zeta.Inpark.Services;
 
 namespace Zoo.Inpark.Tests.Features.Animals;
 

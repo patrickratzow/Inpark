@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Zoo.Inpark.Contents;
+namespace Zeta.Inpark.Contents;
 
 public class ContentXmlSerializer
 {

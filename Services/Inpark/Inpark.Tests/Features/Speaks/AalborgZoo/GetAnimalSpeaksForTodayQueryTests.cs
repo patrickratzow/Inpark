@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 using DomainFixture;
 using DomainFixture.FixtureBuilder;
 using Moq;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Enums;
+using Zeta.Inpark.Features.Speaks;
+using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Enums;
 using Zoo.Inpark.Features.Speaks;
-using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Tests.Features.Speaks.AalborgZoo;
 

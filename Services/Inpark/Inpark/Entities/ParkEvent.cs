@@ -1,14 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Common;
+using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Entities;
+namespace Zeta.Inpark.Entities;
 
 public class ParkEvent : Entity
 {

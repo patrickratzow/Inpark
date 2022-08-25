@@ -1,10 +1,10 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.Entities;
+using Zeta.Inpark.Common;
+using Zeta.Inpark.Entities;
 
-namespace Zoo.Inpark;
+namespace Zeta.Inpark;
 
 public class InparkDbContext : DbContext
 {

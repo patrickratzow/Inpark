@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Enums;
+namespace Zeta.Inpark.Enums;
 
 [Flags]
 public enum WeekDay

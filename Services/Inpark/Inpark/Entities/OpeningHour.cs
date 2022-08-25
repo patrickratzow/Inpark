@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.Enums;
-using Zoo.Inpark.Features.OpeningHours.Models;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Common;
+using Zeta.Inpark.Enums;
+using Zeta.Inpark.Features.OpeningHours.Models;
+using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Entities;
+namespace Zeta.Inpark.Entities;
 
 public class OpeningHour : Entity
 {

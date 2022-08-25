@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Moq;
-using Zoo.Inpark.Features.Speaks.AalborgZoo;
+using Zeta.Inpark.Features.Speaks.AalborgZoo;
 
 namespace Zoo.Inpark.Tests.Features.Speaks.AalborgZoo;
 

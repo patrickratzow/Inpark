@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using FluentValidation;
 using MediatR;
+using Zeta.Inpark;
 
 namespace Zoo.Inpark.Tests.ImplementationTests;
 

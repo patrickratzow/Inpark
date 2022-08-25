@@ -1,6 +1,6 @@
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.Speaks.Interfaces;
+namespace Zeta.Inpark.Features.Speaks.Interfaces;
 
 public interface ISpeaksRepository
 {

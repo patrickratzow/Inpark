@@ -1,13 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Zoo.Inpark.Features.Events.Interfaces;
+﻿using System.Net;
+using Microsoft.Extensions.Logging;
+using Zeta.Inpark.Features.ParkEvents.Interfaces;
 
-namespace Zoo.Inpark.Features.Events.AalborgZoo;
+namespace Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 
 public class AalborgZooParkEventRepository : IParkEventRepository
 {

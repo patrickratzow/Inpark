@@ -1,7 +1,7 @@
+using Zeta.Inpark.Entities;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Entities;
 
-namespace Zoo.Inpark.Features.OpeningHours.Interfaces;
+namespace Zeta.Inpark.Features.OpeningHours.Interfaces;
 
 public interface IOpeningHoursMapper
 {

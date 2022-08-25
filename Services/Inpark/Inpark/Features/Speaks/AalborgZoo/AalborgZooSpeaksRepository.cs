@@ -1,9 +1,9 @@
 using System.Net;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Features.Speaks.Interfaces;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Features.Speaks.Interfaces;
+using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.Speaks.AalborgZoo;
+namespace Zeta.Inpark.Features.Speaks.AalborgZoo;
 
 public class AalborgZooSpeaksRepository : ISpeaksRepository
 {

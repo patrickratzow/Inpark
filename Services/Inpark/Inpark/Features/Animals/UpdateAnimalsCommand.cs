@@ -1,10 +1,10 @@
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Features.Animals.Interfaces;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Features.Animals.Interfaces;
 
-namespace Zoo.Inpark.Features.Animals;
+namespace Zeta.Inpark.Features.Animals;
 
 public record UpdateAnimalsCommand : IRequest<OneOf<Unit>>;
 

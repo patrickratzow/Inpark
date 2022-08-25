@@ -1,15 +1,14 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Contents;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Features.Animals.Interfaces;
+using Zeta.Inpark.Models;
+using Zeta.Inpark.Services;
+using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Features.Animals.Interfaces;
-using Zoo.Inpark.Models;
-using Zoo.Inpark.Services;
-using Zoo.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.Animals.AalborgZoo;
+namespace Zeta.Inpark.Features.Animals.AalborgZoo;
 
 public class AalborgZooAnimalMapper : IAnimalMapper
 {

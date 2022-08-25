@@ -4,11 +4,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using DomainFixture;
 using Moq;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Enums;
+using Zeta.Inpark.Features.OpeningHours;
+using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Enums;
 using Zoo.Inpark.Features.OpeningHours;
-using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Tests.Features.OpeningHours;
 

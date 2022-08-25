@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using DomainFixture;
 using FluentValidation;
-using Zoo.Inpark.Common;
+using Zeta.Inpark.Common;
 using Zoo.Inpark.Tests.DomainFixture;
 
 namespace Zoo.Inpark.Tests.ImplementationTests;

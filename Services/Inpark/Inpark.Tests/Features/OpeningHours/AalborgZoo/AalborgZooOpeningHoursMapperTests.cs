@@ -2,8 +2,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Zoo.Inpark.Enums;
-using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
+using Zeta.Inpark.Enums;
+using Zeta.Inpark.Features.OpeningHours.AalborgZoo;
 
 namespace Zoo.Inpark.Tests.Features.OpeningHours.AalborgZoo;
 

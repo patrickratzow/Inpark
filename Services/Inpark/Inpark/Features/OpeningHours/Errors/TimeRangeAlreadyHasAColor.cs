@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Features.OpeningHours.Errors;
+namespace Zeta.Inpark.Features.OpeningHours.Errors;
 
 public record TimeRangeAlreadyHasAColor(string TimeRange) : IAlreadyExistsError
 {

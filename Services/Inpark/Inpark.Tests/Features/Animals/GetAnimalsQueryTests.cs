@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DomainFixture;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Features.Animals;
+using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Entities;
 using Zoo.Inpark.Features.Animals;
 using Zoo.Inpark.Features.OpeningHours;
-using Zoo.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Tests.Features.Animals;
 

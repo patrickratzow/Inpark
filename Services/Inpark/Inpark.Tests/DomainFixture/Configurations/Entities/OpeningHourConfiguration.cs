@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DomainFixture;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Enums;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Enums;
 
 namespace Zoo.Inpark.Tests.DomainFixture.Configurations.Entities;
 

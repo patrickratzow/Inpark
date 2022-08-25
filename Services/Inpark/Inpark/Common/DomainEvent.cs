@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Common;
+namespace Zeta.Inpark.Common;
 
 public abstract record DomainEvent
 {

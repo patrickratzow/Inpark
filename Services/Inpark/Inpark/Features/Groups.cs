@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Features;
+namespace Zeta.Inpark.Features;
 
 public static class Groups
 {

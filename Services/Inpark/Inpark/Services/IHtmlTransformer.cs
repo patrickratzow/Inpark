@@ -1,7 +1,7 @@
 using HtmlAgilityPack;
-using Zoo.Inpark.Models;
+using Zeta.Inpark.Models;
 
-namespace Zoo.Inpark.Services;
+namespace Zeta.Inpark.Services;
 
 public interface IHtmlDocument
 {

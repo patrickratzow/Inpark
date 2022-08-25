@@ -1,22 +1,20 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Features.Events.Interfaces;
-using Zoo.Inpark.Models;
-using Zoo.Inpark.Services;
-using Zoo.Inpark.ValueObjects;
+using Microsoft.Extensions.Logging;
+using Zeta.Inpark.Common.SDUI;
+using Zeta.Inpark.Common.SDUI.ButtonActions;
+using Zeta.Inpark.Common.SDUI.Nodes;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Features.ParkEvents.Interfaces;
+using Zeta.Inpark.Models;
+using Zeta.Inpark.Services;
+using Zeta.Inpark.ValueObjects;
+using Container = Zeta.Inpark.Common.SDUI.Nodes.Container;
 
-namespace Zoo.Inpark.Features.Events.AalborgZoo;
+namespace Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 
 public class AalborgZooParkEventMapper : IParkEventMapper
 {
-
     private readonly IHtmlTransformer _htmlTransformer;
     private readonly ILogger<AalborgZooParkEventMapper> _logger;
 
@@ -81,13 +79,49 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         }
     }
 
-    public Result<List<IContent>, string> ParseContent(string content)
+    public Result<SDUINode, string> ParseContent(string content)
     {
         try
         {
             using var json = JsonDocument.Parse(content);
             var root = json.RootElement;
 
+            var rootNode = new Container();
+            var navbar = new Navbar();
+            rootNode.AddChild(navbar);
+            
+            // Add tabs
+            var descriptionTab = new Navtab("Information", "menu");
+            navbar.AddTab(descriptionTab);
+
+            var tabsJson = root.EnumerateArray().ToList();
+            var informationTabs = tabsJson.Where(x =>
+                !x.EnumerateArray().Any(y =>
+                    y.GetProperty("type").ToString() == "header" &&
+                    y.GetProperty("header").ToString() == "Program")
+            );
+            var column = new SDUINode("Column");
+            foreach (var item in informationTabs)
+            {
+                var tabContent = ParseTab(item);
+                column.AddChild(tabContent);
+            }
+            descriptionTab.AddChild(column);
+
+            var programTabJson = tabsJson.FirstOrDefault(x =>
+                x.EnumerateArray().Any(y =>
+                    y.GetProperty("type").ToString() == "header" && 
+                    y.GetProperty("header").ToString() == "Program")
+            );
+            if (programTabJson.ValueKind is not JsonValueKind.Undefined)
+            {
+                var programTab = new Navtab("Program", "menu");
+                var programContent = ParseTab(programTabJson);
+                programTab.AddChild(programContent);
+                navbar.AddTab(programTab);
+            }
+
+            /*
             var contents = new List<IContent>();
             // What we want: additional images, descriptions of the event and a program for the event.
             foreach (var item in root.EnumerateArray())
@@ -109,7 +143,9 @@ public class AalborgZooParkEventMapper : IParkEventMapper
                     contents.Add(parsedContent);
                 }
             }
-            return contents;
+            */
+
+            return rootNode;
         }
         catch (Exception ex)
         {
@@ -118,24 +154,54 @@ public class AalborgZooParkEventMapper : IParkEventMapper
             return "Failed to map";
         }
     }
-    private static IContent GetContentValue(JsonElement content, string type, string propertyName = "text")
-    {
-        var text = content.GetProperty(propertyName).GetString();
 
-        if (text is null) throw new NullReferenceException("No property found");
-
-        return new Content(text, type);
-    }
-    private IContent TransformContent(IContent content)
+    private SDUINode ParseTab(JsonElement item)
     {
-        return content.Type switch
+        var column = new SDUINode("Column");
+        
+        foreach (var park in item.EnumerateArray())
         {
-            ContentType.Text or ContentType.HeadLine => ParseText(content),
-            ContentType.Image => ParseImage(content),
-            ContentType.Header => ParseText(content),
-            ContentType.CallToAction => ParseCallToAction(content),
-            _ => throw new ArgumentOutOfRangeException(nameof(content), content, null)
-        };
+            var type = park.GetProperty("type").GetString();
+            var node = type switch
+            {
+                "image" => CreateImage(park),
+                "callToAction" => CreateLink(park),
+                _ => null
+                //_ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown event type")
+            };
+            if (node is null)
+            {
+                _logger.LogWarning("Unknown event type: {Type}", type);
+
+                continue;
+            }
+
+            column.AddChild(node);
+        }
+
+        return column;
+    }
+
+    private static SDUINode CreateLink(JsonElement json)
+    {
+        var url = json.GetProperty("externalPage").ToString();
+        var linkText = json.GetProperty("linkButtonText").ToString();
+
+        var buttonAction = new OpenUrlButtonAction(url);
+        var button = new Button(buttonAction);
+        
+        var text = new Text(linkText);
+        button.AddChild(text);
+
+        return button;
+    }
+    
+    private static SDUINode CreateImage(JsonElement json)
+    {
+        var alt = json.GetProperty("alt").ToString();
+        var url = json.GetProperty("image").ToString();
+
+        return new Image("https://cms.aalborgzoo.dk" + url, alt);
     }
 
     private IContent ParseText(IContent content)
@@ -149,19 +215,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         return _htmlTransformer.Load(str.Replace("&amp;", "&")).Parse();
     }
 
-    private static IContent ParseImage(IContent content)
-    {
-        if (content.Value is not string str) throw new InvalidOperationException($"Value must be a string");
-
-        return new Content("https://cms.aalborgzoo.dk" + str, ContentType.Image);
-    }
-
-    private static IContent ParseCallToAction(IContent content)
-    {
-        if (content.Value is not string str) throw new InvalidOperationException($"Value must be a string");
-
-        return new Content(str, ContentType.CallToAction);
-    }
+ 
 
     private class EventTime
     {

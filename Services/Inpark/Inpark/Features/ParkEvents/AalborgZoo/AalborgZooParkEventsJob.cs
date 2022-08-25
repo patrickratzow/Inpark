@@ -1,12 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zoo.Inpark.Common;
+using Zeta.Inpark.Common;
 
-namespace Zoo.Inpark.Features.Events.AalborgZoo;
+namespace Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 
 public class AalborgZooParkEventsJob : IJob<UpdateAalborgZooParkEventsCommand>
 {

@@ -1,4 +1,4 @@
-using Zoo.Inpark.Services;
+using Zeta.Inpark.Services;
 
 namespace Zoo.Inpark.Tests.Services;
 

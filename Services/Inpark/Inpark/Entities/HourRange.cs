@@ -1,11 +1,9 @@
 using System.Globalization;
-using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Zoo.Inpark.Common;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Common;
 
-namespace Zoo.Inpark.Entities;
+namespace Zeta.Inpark.Entities;
 
 public class HourRange : Entity
 {

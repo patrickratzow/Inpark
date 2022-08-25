@@ -1,4 +1,4 @@
-import "package:flutter_app/features/park_map/services/location_to_map_service.dart";
+import 'package:flutter_app/features/park_map/models/map_model.dart';
 import "package:flutter_test/flutter_test.dart";
 
 void main() {

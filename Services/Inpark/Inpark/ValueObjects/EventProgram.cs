@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zoo.Inpark.Common;
+﻿using Zeta.Inpark.Common;
 
-namespace Zoo.Inpark.ValueObjects
+namespace Zeta.Inpark.ValueObjects
 {
     public class ProgramEvent : ValueObject
     {

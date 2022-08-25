@@ -1,7 +1,6 @@
-using System.Linq.Expressions;
-using Zoo.Inpark.Common;
+using Zeta.Inpark.Common;
 
-namespace Zoo.Inpark.ValueObjects;
+namespace Zeta.Inpark.ValueObjects;
 
 public class TimeRange : ValueObject
 {

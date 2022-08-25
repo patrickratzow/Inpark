@@ -2,9 +2,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Features.OpeningHours.AalborgZoo;
-using Zoo.Inpark.Features.OpeningHours.Interfaces;
+using Zeta.Inpark;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Features.OpeningHours.AalborgZoo;
+using Zeta.Inpark.Features.OpeningHours.Interfaces;
 
 namespace Zoo.Inpark.Tests.Features.OpeningHours.AalborgZoo;
 

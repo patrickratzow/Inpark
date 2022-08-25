@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Models;
+namespace Zeta.Inpark.Models;
 
 public static class ContentType
 {

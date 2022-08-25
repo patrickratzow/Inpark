@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Contents;
+namespace Zeta.Inpark.Contents;
 
 public class ContentElementBuilder
 {

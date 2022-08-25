@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DomainFixture;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.ValueObjects;
 
 namespace Zoo.Inpark.Tests.DomainFixture.Configurations.ValueObjects;
 

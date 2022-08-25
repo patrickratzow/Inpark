@@ -1,15 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Features.Events.Interfaces;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Features.ParkEvents.Interfaces;
 
-namespace Zoo.Inpark.Features.Events.AalborgZoo;
+namespace Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 
 public record UpdateAalborgZooParkEventsCommand : IRequest<OneOf<Unit>>;
 

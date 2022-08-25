@@ -6,11 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Zeta.Inpark;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Features.ParkEvents;
+using Zeta.Inpark.Features.ParkEvents.Interfaces;
+using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Entities;
 using Zoo.Inpark.Features.Events;
-using Zoo.Inpark.Features.Events.Interfaces;
-using Zoo.Inpark.ValueObjects;
+using Zoo.Inpark.Features.ParkEvents;
 
 namespace Zoo.Inpark.Tests.Features.ParkEvents;
 [TestFixture]

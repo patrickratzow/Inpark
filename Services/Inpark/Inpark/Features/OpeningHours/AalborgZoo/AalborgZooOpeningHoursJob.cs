@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
-using Zoo.Inpark.Common;
+using Zeta.Inpark.Common;
 
-namespace Zoo.Inpark.Features.OpeningHours.AalborgZoo;
+namespace Zeta.Inpark.Features.OpeningHours.AalborgZoo;
 
 public class AalborgZooOpeningHoursJob : IJob<UpdateAalborgZooOpeningHoursCommand>
 {

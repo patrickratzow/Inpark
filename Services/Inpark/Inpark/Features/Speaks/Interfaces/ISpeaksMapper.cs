@@ -1,6 +1,6 @@
-using Zoo.Inpark.Entities;
+using Zeta.Inpark.Entities;
 
-namespace Zoo.Inpark.Features.Speaks.Interfaces;
+namespace Zeta.Inpark.Features.Speaks.Interfaces;
 
 public interface ISpeaksMapper
 {

@@ -1,12 +1,12 @@
 using System.Net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Zoo.Inpark.Entities;
-using Zoo.Inpark.Enums;
-using Zoo.Inpark.Features.OpeningHours.Interfaces;
-using Zoo.Inpark.ValueObjects;
+using Zeta.Inpark.Entities;
+using Zeta.Inpark.Enums;
+using Zeta.Inpark.Features.OpeningHours.Interfaces;
+using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Features.OpeningHours.AalborgZoo;
+namespace Zeta.Inpark.Features.OpeningHours.AalborgZoo;
 
 public class AalborgZooOpeningHoursRepository : IOpeningHoursRepository
 {
