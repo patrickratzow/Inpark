@@ -1,4 +1,5 @@
 using HtmlAgilityPack;
+using Zeta.Inpark.Common.SDUI;
 using Zeta.Inpark.Models;
 
 namespace Zeta.Inpark.Services;
@@ -83,6 +84,7 @@ public class HtmlDocument : IHtmlDocument
 public interface IHtmlTransformer
 {
     IHtmlDocument Load(string html);
+    SDUINode ParseToSDUI(string html);
 }
 
 public class HtmlTransformer : IHtmlTransformer
@@ -93,5 +95,24 @@ public class HtmlTransformer : IHtmlTransformer
         document.LoadHtml(html);
 
         return new HtmlDocument(document);
+    }
+
+    public SDUINode ParseToSDUI(string html)
+    {
+        var wrapper = new SDUINode("Column");
+        var document = new HtmlAgilityPack.HtmlDocument();
+        document.LoadHtml(html);
+
+        ParseChildren(document.DocumentNode, wrapper);
+        
+        return wrapper;
+    }
+
+    private void ParseChildren(HtmlNode node, SDUINode parent)
+    {
+        foreach (var nodeChildNode in node.ChildNodes)
+        {
+            
+        }
     }
 }

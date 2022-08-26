@@ -121,30 +121,6 @@ public class AalborgZooParkEventMapper : IParkEventMapper
                 navbar.AddTab(programTab);
             }
 
-            /*
-            var contents = new List<IContent>();
-            // What we want: additional images, descriptions of the event and a program for the event.
-            foreach (var item in root.EnumerateArray())
-            {
-                var parkEventContent = item.EnumerateArray();
-                foreach (var park in item.EnumerateArray())
-                {
-                    var type = park.GetProperty("type").GetString();
-                    var contentObject = type switch
-                    {
-                        "text" or "headline" => GetContentValue(park, type),
-                        "header" => GetContentValue(park, type, "header"),
-                        "image" => GetContentValue(park, type, "image"),
-                        "callToAction" => GetContentValue(park, type, "externalPage"),
-                        _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown event type")
-                    };
-                    var parsedContent = TransformContent(contentObject);
-
-                    contents.Add(parsedContent);
-                }
-            }
-            */
-
             return rootNode;
         }
         catch (Exception ex)
@@ -164,6 +140,8 @@ public class AalborgZooParkEventMapper : IParkEventMapper
             var type = park.GetProperty("type").GetString();
             var node = type switch
             {
+                "text" or "headline" => CreateText(park),
+                "header" => CreateHeader(park),
                 "image" => CreateImage(park),
                 "callToAction" => CreateLink(park),
                 _ => null
@@ -202,6 +180,35 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         var url = json.GetProperty("image").ToString();
 
         return new Image("https://cms.aalborgzoo.dk" + url, alt);
+    }
+
+    private static SDUINode CreateHeader(JsonElement json)
+    {
+        var headerText = json.GetProperty("header").ToString();
+
+        var text = new Text(headerText);
+        text.SetStyle(TextStyle.DisplayMedium);
+        
+        return text;
+    }
+    
+    private static SDUINode CreateText(JsonElement json)
+    {
+        var jsonText = json.GetProperty("text").ToString();
+        var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
+        var isHtml = regex.IsMatch(jsonText);
+        if (!isHtml)
+        {
+            var node = new Text(jsonText);
+            node.SetStyle(TextStyle.BodyMedium);
+
+            return node;
+        }
+        
+        var wrapper = _htmlTransformer.ParseToSDUI(jsonText);
+        wrapper.SetDebug("HTML Segment wrapper");
+        
+        return wrapper;
     }
 
     private IContent ParseText(IContent content)

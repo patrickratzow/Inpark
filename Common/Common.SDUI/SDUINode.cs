@@ -33,4 +33,9 @@ public class SDUINode
     {
         InnerText = shouldTranslate ? $"z-translate({text})" : text;
     }
+
+    public void SetDebug(string text)
+    {
+        SetAttribute("z-debug", text);
+    }
 }
