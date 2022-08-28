@@ -1,12 +1,12 @@
-namespace Zeta.Inpark.Common.SDUI.ButtonActions;
+namespace Zeta.Inpark.Common.SDUI;
 
-public class OpenUrlButtonAction : ButtonAction
+public class OpenUrlAction : SDUIAction
 {
     public override string Id => "openUrl";
     public override string Data { get; }
     public override bool DataIsAttribute => true;
     
-    public OpenUrlButtonAction(string url)
+    public OpenUrlAction(string url)
     {
         Data = url;
     }

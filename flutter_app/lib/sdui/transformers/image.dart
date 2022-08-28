@@ -1,5 +1,6 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import "package:flutter_app/common/ui/fullscreen_image.dart";
 import "package:flutter_app/extensions/string.dart";
 
 import "../elements/node_element.dart";
@@ -24,19 +25,23 @@ class ImageTransformer extends Transformer {
       context,
       BlendMode.color,
     );
+    final alt = element.getAttribute("alt")?.value;
 
-    return CachedNetworkImage(
-      fit: fit,
-      imageUrl: src,
-      colorBlendMode: blendMode,
-      placeholder: (context, url) {
-        return const Center(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: CircularProgressIndicator(),
-          ),
-        );
-      },
+    return Semantics(
+      label: alt,
+      child: CachedNetworkImage(
+        fit: fit,
+        imageUrl: src,
+        colorBlendMode: blendMode,
+        placeholder: (context, url) {
+          return const Center(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: CircularProgressIndicator(),
+            ),
+          );
+        },
+      ),
     );
   }
 }

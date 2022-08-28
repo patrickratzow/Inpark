@@ -20,7 +20,7 @@ class ColumnTransformer extends Transformer {
       MainAxisSize.max,
     );
     final crossAxisAlignment = element.resolveAttribute<CrossAxisAlignment>(
-      "crossAxisAlignment",
+      "cross-axis-alignment",
       context,
       CrossAxisAlignment.center,
     );

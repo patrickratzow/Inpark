@@ -6,6 +6,575 @@
     "version": "v1"
   },
   "paths": {
+    "/auth/admins": {
+      "post": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "createAdmin",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateAdmin+Request"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateAdmin+Request"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateAdmin+Request"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateAdmin+EmailAddressAlreadyUsed"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateAdmin+EmailAddressAlreadyUsed"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.CreateAdmin+EmailAddressAlreadyUsed"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/{adminId}/permissions": {
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "getPermissions",
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.GetPermissions+Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.GetPermissions+Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.GetPermissions+Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.GetPermissions+AdminNotFound"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.GetPermissions+AdminNotFound"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.GetPermissions+AdminNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/admin/is-token-valid/{token}": {
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "isTokenValid",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.IsTokenValid+InvalidToken"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.IsTokenValid+InvalidToken"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.IsTokenValid+InvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.IsTokenValid+ExpiredToken"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.IsTokenValid+ExpiredToken"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.IsTokenValid+ExpiredToken"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/admins/login": {
+      "post": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "login",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+Request"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+Request"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+Request"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+WrongLogin"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+WrongLogin"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.Login+WrongLogin"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/admins/refresh-login": {
+      "post": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "refreshLogin",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+Request"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+Request"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+Request"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+RefreshTokenNotFound"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+RefreshTokenNotFound"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+RefreshTokenNotFound"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+RefreshTokenInvalid"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+RefreshTokenInvalid"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Admin.RefreshLogin+RefreshTokenInvalid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/animals/{latinName}/areas": {
       "get": {
         "tags": [
@@ -66,17 +635,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               }
             }
@@ -173,17 +742,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               }
             }
@@ -251,17 +820,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Entities.Animal"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Entities.Animal"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Entities.Animal"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Entities.Animal"
                 }
               }
             }
@@ -271,17 +840,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Errors.AnimalNotFound"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Errors.AnimalNotFound"
                 }
               }
             }
@@ -364,6 +933,59 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/animals/fetch": {
+      "post": {
+        "tags": [
+          "Animals"
+        ],
+        "operationId": "updateAnimals",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
           },
           "422": {
             "description": "Request validation error",
@@ -505,7 +1127,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                    "$ref": "#/components/schemas/Zeta.Inpark.Features.OpeningHours.AddHourColorRequest"
                   }
                 ]
               }
@@ -514,7 +1136,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                    "$ref": "#/components/schemas/Zeta.Inpark.Features.OpeningHours.AddHourColorRequest"
                   }
                 ]
               }
@@ -523,7 +1145,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.AddHourColorRequest"
+                    "$ref": "#/components/schemas/Zeta.Inpark.Features.OpeningHours.AddHourColorRequest"
                   }
                 ]
               }
@@ -540,17 +1162,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
+                  "$ref": "#/components/schemas/Zeta.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor"
                 }
               }
             }
@@ -1008,6 +1630,179 @@
         }
       }
     },
+    "/auth/roles": {
+      "post": {
+        "tags": [
+          "Roles"
+        ],
+        "operationId": "createRole",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.CreateRole+Request"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.CreateRole+Request"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.CreateRole+Request"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.CreateRole+NameIsAlreadyTaken"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.CreateRole+NameIsAlreadyTaken"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.CreateRole+NameIsAlreadyTaken"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "operationId": "getAllRoles",
+        "parameters": [
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "description": "Tenant",
+            "schema": {
+              "type": "string",
+              "default": "99348443-55F7-4104-83CB-031D29D95A14"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.GetAllRoles+Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.GetAllRoles+Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zeta.Inpark.Auth.Features.Roles.GetAllRoles+Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zoo.Common.PropertyError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/speaks/today": {
       "get": {
         "tags": [
@@ -1090,23 +1885,292 @@
   },
   "components": {
     "schemas": {
-      "Zoo.Common.PropertyError": {
+      "Zeta.Inpark.Auth.Contracts.PermissionDto": {
         "required": [
-          "errorMessage",
-          "propertyName"
+          "id"
         ],
         "type": "object",
         "properties": {
-          "propertyName": {
-            "type": "string"
-          },
-          "errorMessage": {
+          "id": {
             "type": "string"
           }
         },
         "additionalProperties": false
       },
-      "Zoo.Inpark.Common.DomainEvent": {
+      "Zeta.Inpark.Auth.Contracts.RoleDto": {
+        "required": [
+          "color",
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.CreateAdmin+EmailAddressAlreadyUsed": {
+        "required": [
+          "emailAddress",
+          "errorMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.CreateAdmin+Request": {
+        "required": [
+          "emailAddress",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.GetPermissions+AdminNotFound": {
+        "required": [
+          "adminId",
+          "errorMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "adminId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.GetPermissions+Response": {
+        "required": [
+          "permissions"
+        ],
+        "type": "object",
+        "properties": {
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zeta.Inpark.Auth.Contracts.PermissionDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.IsTokenValid+ExpiredToken": {
+        "required": [
+          "errorMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.IsTokenValid+InvalidToken": {
+        "required": [
+          "errorMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.Login+Request": {
+        "required": [
+          "emailAddress",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.Login+Response": {
+        "required": [
+          "refreshToken",
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.Login+WrongLogin": {
+        "required": [
+          "errorMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.RefreshLogin+RefreshTokenInvalid": {
+        "required": [
+          "errorMessage",
+          "refreshToken"
+        ],
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.RefreshLogin+RefreshTokenNotFound": {
+        "required": [
+          "errorMessage",
+          "refreshToken"
+        ],
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.RefreshLogin+Request": {
+        "required": [
+          "refreshToken"
+        ],
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Admin.RefreshLogin+Response": {
+        "required": [
+          "refreshToken",
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "refreshToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Roles.CreateRole+NameIsAlreadyTaken": {
+        "required": [
+          "errorMessage",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Roles.CreateRole+Request": {
+        "required": [
+          "color",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Auth.Features.Roles.GetAllRoles+Response": {
+        "required": [
+          "roles"
+        ],
+        "type": "object",
+        "properties": {
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zeta.Inpark.Auth.Contracts.RoleDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Common.DomainEvent": {
         "required": [
           "dateOccurred",
           "isPublished"
@@ -1121,6 +2185,253 @@
             "type": "string",
             "format": "date-time",
             "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Entities.Animal": {
+        "required": [
+          "areas",
+          "category",
+          "content",
+          "createdAt",
+          "domainEvents",
+          "id",
+          "image",
+          "name",
+          "status",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "domainEvents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zeta.Inpark.Common.DomainEvent"
+            },
+            "readOnly": true
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zeta.Inpark.ValueObjects.AnimalName"
+              }
+            ],
+            "readOnly": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/Zeta.Inpark.Entities.IUCNStatus"
+          },
+          "image": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Zeta.Inpark.ValueObjects.ImagePair"
+              }
+            ],
+            "readOnly": true
+          },
+          "category": {
+            "type": "string",
+            "readOnly": true
+          },
+          "content": {
+            "type": "string",
+            "readOnly": true
+          },
+          "areas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zeta.Inpark.ValueObjects.AnimalArea"
+            },
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Entities.IUCNStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "type": "integer",
+        "format": "int32",
+        "x-enumNames": [
+          "Unknown",
+          "EX",
+          "EW",
+          "CR",
+          "EN",
+          "VU",
+          "NT",
+          "LC"
+        ]
+      },
+      "Zeta.Inpark.Errors.AnimalNotFound": {
+        "required": [
+          "errorMessage",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Features.OpeningHours.AddHourColorRequest": {
+        "required": [
+          "color",
+          "end",
+          "start"
+        ],
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor": {
+        "required": [
+          "errorMessage",
+          "timeRange"
+        ],
+        "type": "object",
+        "properties": {
+          "timeRange": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.ValueObjects.AnimalArea": {
+        "required": [
+          "color",
+          "points"
+        ],
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "readOnly": true
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Zeta.Inpark.ValueObjects.Point"
+            },
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.ValueObjects.AnimalName": {
+        "required": [
+          "latinName",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "latinName": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.ValueObjects.ImagePair": {
+        "required": [
+          "fullscreenUrl",
+          "previewUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "previewUrl": {
+            "type": "string",
+            "readOnly": true
+          },
+          "fullscreenUrl": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zeta.Inpark.ValueObjects.Point": {
+        "required": [
+          "x",
+          "y"
+        ],
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "y": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Zoo.Common.PropertyError": {
+        "required": [
+          "errorMessage",
+          "propertyName"
+        ],
+        "type": "object",
+        "properties": {
+          "propertyName": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1311,11 +2622,10 @@
       },
       "Zoo.Inpark.Contracts.ParkEventDto": {
         "required": [
-          "descriptionContent",
+          "content",
           "end",
           "id",
           "image",
-          "programContent",
           "start",
           "title"
         ],
@@ -1343,17 +2653,8 @@
             "type": "string",
             "format": "date-time"
           },
-          "descriptionContent": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
-            }
-          },
-          "programContent": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.Contracts.ContentDto"
-            }
+          "content": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1391,237 +2692,6 @@
             "items": {
               "type": "string"
             }
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.Entities.Animal": {
-        "required": [
-          "areas",
-          "category",
-          "content",
-          "createdAt",
-          "domainEvents",
-          "id",
-          "image",
-          "name",
-          "status",
-          "updatedAt"
-        ],
-        "type": "object",
-        "properties": {
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          },
-          "domainEvents": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.Common.DomainEvent"
-            },
-            "readOnly": true
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "readOnly": true
-          },
-          "name": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.AnimalName"
-              }
-            ],
-            "readOnly": true
-          },
-          "status": {
-            "$ref": "#/components/schemas/Zoo.Inpark.Entities.IUCNStatus"
-          },
-          "image": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.ImagePair"
-              }
-            ],
-            "readOnly": true
-          },
-          "category": {
-            "type": "string",
-            "readOnly": true
-          },
-          "content": {
-            "type": "string",
-            "readOnly": true
-          },
-          "areas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.AnimalArea"
-            },
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.Entities.IUCNStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7
-        ],
-        "type": "integer",
-        "format": "int32",
-        "x-enumNames": [
-          "Unknown",
-          "EX",
-          "EW",
-          "CR",
-          "EN",
-          "VU",
-          "NT",
-          "LC"
-        ]
-      },
-      "Zoo.Inpark.Errors.AnimalNotFound": {
-        "required": [
-          "errorMessage",
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "errorMessage": {
-            "type": "string",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.Features.OpeningHours.AddHourColorRequest": {
-        "required": [
-          "color",
-          "end",
-          "start"
-        ],
-        "type": "object",
-        "properties": {
-          "start": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "end": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "color": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.Features.OpeningHours.Errors.TimeRangeAlreadyHasAColor": {
-        "required": [
-          "errorMessage",
-          "timeRange"
-        ],
-        "type": "object",
-        "properties": {
-          "timeRange": {
-            "type": "string"
-          },
-          "errorMessage": {
-            "type": "string",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.ValueObjects.AnimalArea": {
-        "required": [
-          "color",
-          "points"
-        ],
-        "type": "object",
-        "properties": {
-          "color": {
-            "type": "string",
-            "readOnly": true
-          },
-          "points": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Zoo.Inpark.ValueObjects.Point"
-            },
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.ValueObjects.AnimalName": {
-        "required": [
-          "latinName",
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "readOnly": true
-          },
-          "latinName": {
-            "type": "string",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.ValueObjects.ImagePair": {
-        "required": [
-          "fullscreenUrl",
-          "previewUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "previewUrl": {
-            "type": "string",
-            "readOnly": true
-          },
-          "fullscreenUrl": {
-            "type": "string",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Zoo.Inpark.ValueObjects.Point": {
-        "required": [
-          "x",
-          "y"
-        ],
-        "type": "object",
-        "properties": {
-          "x": {
-            "type": "number",
-            "format": "double",
-            "readOnly": true
-          },
-          "y": {
-            "type": "number",
-            "format": "double",
-            "readOnly": true
           }
         },
         "additionalProperties": false

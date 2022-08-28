@@ -203,6 +203,62 @@ class SDUITemplate extends HookWidget {
   }
 }
 
+class SDUIRender extends HookWidget {
+  static Map<String, NodeElement> _cache = {};
+  final String data;
+  final Widget Function(BuildContext context, Widget child)? builder;
+
+  SDUIRender({
+    required this.data,
+    this.builder,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final id = data;
+    final parsed = useMemoized(
+      () {
+        if (_cache.containsKey(id)) {
+          return _cache[id]!;
+        }
+
+        final parsed = Parser().parse(
+          data,
+          id,
+          ParserData(),
+        );
+        _cache[id] = parsed;
+
+        return parsed;
+      },
+    );
+    final renderedContent = useState<Widget?>(null);
+
+    useAsyncEffect(
+      () {
+        try {
+          final widget = Transformer.transformOne(parsed, context);
+          renderedContent.value = widget;
+        } catch (error, stack) {
+          print(error);
+          FirebaseCrashlytics.instance.recordError(error, stack);
+        }
+
+        return Future.value(null);
+      },
+      const [],
+    );
+
+    if (renderedContent.value != null) {
+      return builder?.call(context, renderedContent.value!) ??
+          renderedContent.value!;
+    }
+
+    return const Center(child: CircularProgressIndicator.adaptive());
+  }
+}
+
 class _AnimalsOverviewList extends HookWidget {
   const _AnimalsOverviewList({super.key});
 

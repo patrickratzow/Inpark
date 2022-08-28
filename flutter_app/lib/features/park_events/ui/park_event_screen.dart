@@ -1,26 +1,22 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:intl/intl.dart";
 
-import "../../../common/browser.dart";
 import "../../../common/colors.dart";
 import "../../../common/screen.dart";
 import "../../../common/ui/fullscreen_image.dart";
-import "../../../common/ui/navigation_bar.dart";
 import "../../../common/ui/screen_app_bar.dart";
 import "../../../generated_code/zooinator.models.swagger.dart";
 import "../../../hooks/hooks.dart";
+import "../../animals/ui/animal/animals_page.dart";
 
 class ParkEventScreen extends HookWidget implements Screen {
-  ParkEventScreen({super.key, required this.parkEvent});
+  const ParkEventScreen({
+    super.key,
+    required this.parkEvent,
+  });
 
   final ParkEventDto parkEvent;
-  //This value is used to ensure no double spacers are used.
-  bool wasLastNodeSpacer = false;
-  final DateFormat endFormatter = DateFormat("d. MMMM yyyy", "da");
-  final DateFormat startFormatter = DateFormat("d. MMMM", "da");
-  final DateFormat soloStartFormatter = DateFormat("d. MMMM yyyy", "da");
   static const Color softTextColor = Color(0xffDDF8DA);
 
   @override
@@ -45,6 +41,10 @@ class ParkEventScreen extends HookWidget implements Screen {
               },
               child: _buildImage(parkEvent),
             ),
+            SDUIRender(
+              data: parkEvent.content,
+            )
+            /*
             ZooinatorNavigationBar(
               tabs: [
                 ZooinatorNavigationTab(
@@ -65,12 +65,14 @@ class ParkEventScreen extends HookWidget implements Screen {
                 ..._getProgramTab(parkEvent),
               ],
             ),
+            */
           ],
         ),
       ),
     );
   }
 
+/*
   List<ZooinatorNavigationTab> _getProgramTab(ParkEventDto parkEvent) {
     if (parkEvent.programContent.isEmpty) {
       return List.empty();
@@ -93,6 +95,7 @@ class ParkEventScreen extends HookWidget implements Screen {
       ];
     }
   }
+  */
 
   Widget _buildImage(ParkEventDto parkEvent) {
     return HookBuilder(
@@ -170,6 +173,7 @@ class ParkEventScreen extends HookWidget implements Screen {
     );
   }
 
+/*
   Widget _buildTriviaContents(List<ContentDto> contents) {
     return Column(
       children: [
@@ -322,4 +326,5 @@ final transformer = useTransformer()
       return const TextSpan();
     }
   }
+  */
 }

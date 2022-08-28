@@ -44,16 +44,19 @@ class FullScreenImage extends HookWidget implements Screen {
       ),
       body: Center(
         child: SizedBox.expand(
-          child: InteractiveViewer(
-            transformationController: transformationController,
-            maxScale: 7,
-            child: CachedNetworkImage(
-              imageUrl: imageUrl,
-              placeholder: (context, url) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
+          child: Hero(
+            tag: tag,
+            child: InteractiveViewer(
+              transformationController: transformationController,
+              maxScale: 7,
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                placeholder: (context, url) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
             ),
           ),
         ),

@@ -11,7 +11,7 @@ class FullscreenImageAction extends Action {
       actionName.equalsIgnoreCase("fullscreenImage");
 
   @override
-  void run(BuildContext context, input) {
+  Future run(BuildContext context, input) {
     final navigator = useNavigator(context: context);
     final previewImage = input["previewImageUrl"] as String;
     final fullscreenImage = input["fullscreenImageUrl"] as String?;
@@ -30,5 +30,7 @@ class FullscreenImageAction extends Action {
       screen,
       hide: hide,
     );
+
+    return Future.value();
   }
 }

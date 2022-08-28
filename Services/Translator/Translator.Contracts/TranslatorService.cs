@@ -1,15 +1,12 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Zeta.Inpark.Translator.Contracts;
 
 public class TranslatorService : ITranslatorService
 {
-    private static readonly JsonSerializerOptions SerializerOptions = new()
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-    };
     private readonly IMemoryCache _cache;
     private readonly string _baseUrl;
 
@@ -17,6 +14,29 @@ public class TranslatorService : ITranslatorService
     {
         _cache = cache;
         _baseUrl = baseUrl;
+    }
+
+    private readonly Regex _zTranslateRegex = new(@"z-translate\((.*)\)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+    public async ValueTask<string> TranslateSdui(string to, string text)
+    {
+        var regexMatches = _zTranslateRegex.Matches(text);
+        if (regexMatches.Count <= 0) return text;
+        
+        foreach (Match match in regexMatches)
+        {
+            var obj = new
+            {
+                Text = match.Groups[1].Value
+            };
+            var translation = await Translate(to, obj, new List<string>()
+            {
+                "Text"
+            });
+                    
+            text = text.Replace("z-translate(" + obj.Text + ")", translation.Text);
+        }
+
+        return text;
     }
 
     public async ValueTask<T> Translate<T>(string to, T input, ICollection<string> properties)
@@ -50,7 +70,7 @@ public class TranslatorService : ITranslatorService
         response.EnsureSuccessStatusCode();
         
         var responseBody = await response.Content.ReadAsStringAsync();
-        var body = JsonSerializer.Deserialize<T>(responseBody, SerializerOptions);
+        var body = JsonSerializer.Deserialize<T>(responseBody);
         if (body is null)
             throw new NullReferenceException("Response body is null");
 

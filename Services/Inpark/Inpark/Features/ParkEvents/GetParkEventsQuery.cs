@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 using Zeta.Inpark.Common.SDUI;
-using Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 using Zeta.Inpark.Features.ParkEvents.Interfaces;
+using Zeta.Inpark.Translator.Contracts;
 using Zoo.Inpark.Contracts;
 
 namespace Zeta.Inpark.Features.ParkEvents;
+
+public record TextWrapper(string Text);
 
 public record GetParkEventsQuery : IRequest<OneOf<List<ParkEventDto>>>;
 public class GetParkEventsQueryQueryHandler :
@@ -13,12 +16,15 @@ public class GetParkEventsQueryQueryHandler :
     private readonly InparkDbContext _context;
     private readonly IClock _clock;
     private readonly IParkEventMapper _mapper;
+    private readonly ITranslatorService _translatorService;
 
-    public GetParkEventsQueryQueryHandler(InparkDbContext context, IClock clock, IParkEventMapper mapper)
+    public GetParkEventsQueryQueryHandler(InparkDbContext context, IClock clock, IParkEventMapper mapper, 
+        ITranslatorService translatorService)
     {
         _context = context;
         _clock = clock;
         _mapper = mapper;
+        _translatorService = translatorService;
     }
  
     public async Task<OneOf<List<ParkEventDto>>> Handle(GetParkEventsQuery request, CancellationToken cancellationToken)
@@ -28,8 +34,8 @@ public class GetParkEventsQueryQueryHandler :
             .Where(x => x.Range.End >= today.Date)
             .OrderBy(x => x.Range.Start)
             .ToListAsync(cancellationToken);
-
-        var parkEventDtos = parkEvents.Select(x =>
+        
+        var parkTasks = parkEvents.Select(async x =>
         {
             var image = new ImagePairDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
 
@@ -38,6 +44,7 @@ public class GetParkEventsQueryQueryHandler :
                 throw new InvalidDataException("Unable to parse content. Error: " + parsedResult.AsT1.Value);
 
             var content = SDUINodeSerializer.Serialize(sduiNode!);
+            content = await _translatorService.TranslateSdui("he", content);
             
             return new ParkEventDto(
                 x.Id,
@@ -48,8 +55,9 @@ public class GetParkEventsQueryQueryHandler :
                 content
             );
         });
-
-        return parkEventDtos.ToList();
+        
+        var dtos = await Task.WhenAll(parkTasks);
+        return dtos.ToList();
     }
 }
 

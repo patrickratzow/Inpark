@@ -8,6 +8,7 @@ import "package:flutter_app/sdui/actions/fullscreen_image_action.dart";
 import "../../common/ioc.dart";
 import "../actions/action.dart";
 import "../actions/navigate_to_screen_action.dart";
+import "../actions/open_url_action.dart";
 import "../elements/node_element.dart";
 import "transformer.dart";
 
@@ -15,9 +16,14 @@ class ActionService {
   Set<Action> _actions = {
     NavigateToScreenAction(),
     FullscreenImageAction(),
+    OpenUrlAction(),
   };
 
-  Function()? getAction(BuildContext context, String name, dynamic data) {
+  Future Function()? getAction(
+    BuildContext context,
+    String name,
+    dynamic data,
+  ) {
     final parsedData = parseData(data);
     final action = _actions.firstWhere(
       (action) => action.shouldRun(name),

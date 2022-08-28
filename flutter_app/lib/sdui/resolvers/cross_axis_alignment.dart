@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
+import "package:flutter_app/extensions/string.dart";
 
-import '../elements/attribute.dart';
-import 'attribute_resolver.dart';
+import "../elements/attribute.dart";
+import "attribute_resolver.dart";
 
 class CrossAxisAlignmentResolver extends AttributeResolver<CrossAxisAlignment> {
   @override
   bool shouldResolve(Attribute attribute) =>
-      attribute.name == "crossAxisAlignment";
+      attribute.name.equalsIgnoreCase("cross-axis-alignment");
 
   @override
   resolve(Attribute attribute, BuildContext context) {

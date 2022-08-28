@@ -1,4 +1,4 @@
-namespace Zeta.Inpark.Common.SDUI.Nodes;
+namespace Zeta.Inpark.Common.SDUI;
 
 public class Text : SDUINode
 {
@@ -9,7 +9,7 @@ public class Text : SDUINode
 
     public void SetStyle(TextStyle style)
     {
-        SetAttribute("style", ConvertToCamelCase(style));
+        SetAttribute("style", style.ToCamelCase());
     }
 
     public void SetWeight(TextWeight weight)
@@ -19,39 +19,9 @@ public class Text : SDUINode
             TextWeight.Bold => "bold",
             TextWeight.Normal => "500",
             TextWeight.Light => "400",
-            _ => ConvertToCamelCase(weight)
+            _ => weight.ToCamelCase()
         };
         
         SetAttribute("weight", value);
     }
-    
-    private string ConvertToCamelCase<T>(T value) where T : struct, Enum
-    {
-        var enumName = Enum.GetName(value);
-        var camelCase = enumName![..1].ToLower() + enumName[1..];
-
-        return camelCase;
-    }
-}
-
-public enum TextWeight
-{
-    Bold,
-    Normal,
-    Light
-}
-
-public enum TextStyle
-{
-    DisplayLarge,
-    DisplayMedium,
-    DisplaySmall,
-    HeadlineLarge,
-    HeadlineMedium,
-    HeadlineSmall,
-    TitleLarge,
-    TitleMedium,
-    BodyLarge,
-    BodyMedium,
-    BodySmall
 }

@@ -1,4 +1,4 @@
-namespace Zeta.Inpark.Common.SDUI.Nodes;
+namespace Zeta.Inpark.Common.SDUI;
 
 public class Navtab : SDUINode
 {

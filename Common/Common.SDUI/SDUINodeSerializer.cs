@@ -2,6 +2,7 @@ using System.Text;
 
 namespace Zeta.Inpark.Common.SDUI;
 
+// ReSharper disable once InconsistentNaming
 public class SDUINodeSerializer
 {
     private readonly StringBuilder _builder;
@@ -34,14 +35,14 @@ public class SDUINodeSerializer
         }
         if (node.Children.Any())
         {
-            _builder.Append('\n');
-            _indent++;
+            //_builder.Append('\n');
+           // _indent++;
             foreach (var child in node.Children)
             {
                 Add(child);
             }
-            _indent--;
-            _builder.Append('\n');
+            //_indent--;
+            //_builder.Append('\n');
             _builder.Append(Indentation);
         }
         _builder.Append($"</{node.Name}>");

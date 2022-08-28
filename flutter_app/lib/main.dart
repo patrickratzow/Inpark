@@ -5,6 +5,7 @@ import "package:firebase_core/firebase_core.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:flutter_app/navigation/navigation_screen.dart";
 import "package:flutter_app/sdui/transformers/component.dart";
 import "package:flutter_app/transformers/conservation_status.dart";
 import "package:flutter_app/transformers/pre/hook_transformer.dart";
@@ -271,7 +272,7 @@ class MyApp extends HookWidget {
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
-        home: const SDUIScreen(),
+        home: const NavigationScreen(),
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: const Color(0xffECFCE5),

@@ -1,6 +1,7 @@
-namespace Zeta.Inpark.Common.SDUI.ButtonActions;
+namespace Zeta.Inpark.Common.SDUI;
 
-public abstract class ButtonAction
+// ReSharper disable once InconsistentNaming
+public abstract class SDUIAction
 {
     public abstract string Id { get; }
     public abstract string Data { get; }

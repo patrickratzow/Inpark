@@ -5,9 +5,11 @@ import "package:flutter_app/sdui/transformers/card.dart";
 import "package:flutter_app/sdui/transformers/image.dart";
 import "package:flutter_app/sdui/transformers/padding.dart";
 import "package:flutter_app/sdui/transformers/positioned.dart";
+import "package:flutter_app/sdui/transformers/rich_text.dart";
 import "package:flutter_app/sdui/transformers/row.dart";
 import "package:flutter_app/sdui/transformers/scaffold.dart";
 import "package:flutter_app/sdui/transformers/stack.dart";
+import "package:flutter_app/sdui/transformers/text_span.dart";
 
 import "../../common/stack_collection.dart";
 import "../elements/attribute.dart";
@@ -21,6 +23,7 @@ import "column.dart";
 import "component.dart";
 import "container.dart";
 import "gesture_detector.dart";
+import "hero.dart";
 import "text.dart";
 
 abstract class PreTransformer {
@@ -51,6 +54,9 @@ abstract class Transformer {
     ExpandedTransformer(),
     AlignTransformer(),
     GestureDetectorTransformer(),
+    RichTextTransformer(),
+    TextSpanTransformer(),
+    HeroTransformer(),
   };
   static StackCollection<TransformerScope> scopes =
       StackCollection<TransformerScope>();

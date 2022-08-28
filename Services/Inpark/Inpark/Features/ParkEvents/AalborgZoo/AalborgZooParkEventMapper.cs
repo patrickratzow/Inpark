@@ -2,14 +2,12 @@
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 using Zeta.Inpark.Common.SDUI;
-using Zeta.Inpark.Common.SDUI.ButtonActions;
-using Zeta.Inpark.Common.SDUI.Nodes;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Features.ParkEvents.Interfaces;
 using Zeta.Inpark.Models;
 using Zeta.Inpark.Services;
 using Zeta.Inpark.ValueObjects;
-using Container = Zeta.Inpark.Common.SDUI.Nodes.Container;
+using Container = Zeta.Inpark.Common.SDUI.Container;
 
 namespace Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 
@@ -88,23 +86,25 @@ public class AalborgZooParkEventMapper : IParkEventMapper
 
             var rootNode = new Container();
             var navbar = new Navbar();
-            rootNode.AddChild(navbar);
+            navbar.SetParent(rootNode);
             
             // Add tabs
             var descriptionTab = new Navtab("Information", "menu");
             navbar.AddTab(descriptionTab);
 
             var tabsJson = root.EnumerateArray().ToList();
-            var informationTabs = tabsJson.Where(x =>
-                !x.EnumerateArray().Any(y =>
-                    y.GetProperty("type").ToString() == "header" &&
-                    y.GetProperty("header").ToString() == "Program")
-            );
+            var informationTabs = tabsJson
+                .Where(x =>
+                    !x.EnumerateArray().Any(y =>
+                        y.GetProperty("type").ToString() == "header" &&
+                        y.GetProperty("header").ToString() == "Program")
+                );
+            
             var column = new SDUINode("Column");
             foreach (var item in informationTabs)
             {
                 var tabContent = ParseTab(item);
-                column.AddChild(tabContent);
+                tabContent.SetParent(column);
             }
             descriptionTab.AddChild(column);
 
@@ -117,7 +117,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
             {
                 var programTab = new Navtab("Program", "menu");
                 var programContent = ParseTab(programTabJson);
-                programTab.AddChild(programContent);
+                programContent.SetParent(programTab);
                 navbar.AddTab(programTab);
             }
 
@@ -133,9 +133,16 @@ public class AalborgZooParkEventMapper : IParkEventMapper
 
     private SDUINode ParseTab(JsonElement item)
     {
-        var column = new SDUINode("Column");
+        var padding = new SDUINode("Padding");
+        padding.SetAttribute("all", "8");
         
-        foreach (var park in item.EnumerateArray())
+        var column = new SDUINode("Column");
+        column.SetAttribute("cross-axis-alignment", "start");
+        padding.AddChild(column);
+
+        // Skip first as it is the title of the tab
+        var items = item.EnumerateArray().Skip(1);
+        foreach (var park in items)
         {
             var type = park.GetProperty("type").GetString();
             var node = type switch
@@ -157,7 +164,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
             column.AddChild(node);
         }
 
-        return column;
+        return padding;
     }
 
     private static SDUINode CreateLink(JsonElement json)
@@ -165,7 +172,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         var url = json.GetProperty("externalPage").ToString();
         var linkText = json.GetProperty("linkButtonText").ToString();
 
-        var buttonAction = new OpenUrlButtonAction(url);
+        var buttonAction = new OpenUrlAction(url);
         var button = new Button(buttonAction);
         
         var text = new Text(linkText);
@@ -178,21 +185,44 @@ public class AalborgZooParkEventMapper : IParkEventMapper
     {
         var alt = json.GetProperty("alt").ToString();
         var url = json.GetProperty("image").ToString();
+        var imageUrl = "https://cms.aalborgzoo.dk" + url;
+        
+        var gestureDetector = new GestureDetector();
+        gestureDetector.OnTap(new FullscreenImageAction(
+            new(
+                imageUrl,
+                imageUrl,
+                "Fullscreen",
+                imageUrl,
+                true
+            )
+        ));
 
-        return new Image("https://cms.aalborgzoo.dk" + url, alt);
+        var card = new Card();
+        card.SetParent(gestureDetector);
+        card.SetBorderRadius(BorderRadius.Circular(6));
+        card.SetClip(Clip.AntiAlias);
+
+        var image = new Image(imageUrl, alt);
+        image.SetParent(card);
+
+        return gestureDetector;
     }
 
     private static SDUINode CreateHeader(JsonElement json)
     {
         var headerText = json.GetProperty("header").ToString();
 
+        var padding = new Padding(EdgeInsets.Top(8));
+
         var text = new Text(headerText);
-        text.SetStyle(TextStyle.DisplayMedium);
+        text.SetParent(padding);
+        text.SetStyle(TextStyle.HeadlineLarge);
         
-        return text;
+        return padding;
     }
     
-    private static SDUINode CreateText(JsonElement json)
+    private SDUINode CreateText(JsonElement json)
     {
         var jsonText = json.GetProperty("text").ToString();
         var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);

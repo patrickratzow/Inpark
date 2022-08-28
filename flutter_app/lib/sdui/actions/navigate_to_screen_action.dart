@@ -12,7 +12,7 @@ class NavigateToScreenAction extends Action {
       actionName.equalsIgnoreCase("navigateToScreen");
 
   @override
-  void run(BuildContext context, input) {
+  Future run(BuildContext context, input) {
     final screenManager = locator.get<ScreenManager>();
     final navigator = useNavigator(context: context);
     final routeName = input is String ? input : input?["routeName"];
@@ -30,5 +30,7 @@ class NavigateToScreenAction extends Action {
       screen,
       hide: hide,
     );
+
+    return Future.value();
   }
 }
