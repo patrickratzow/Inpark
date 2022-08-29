@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Zeta.Inpark.Common.SDUI;
 using Zeta.Inpark.Features.ParkEvents.Interfaces;
 using Zeta.Inpark.Translator.Contracts;
+using Zoo.Common.Api.Translator;
 using Zoo.Inpark.Contracts;
 
 namespace Zeta.Inpark.Features.ParkEvents;
@@ -16,15 +17,15 @@ public class GetParkEventsQueryQueryHandler :
     private readonly InparkDbContext _context;
     private readonly IClock _clock;
     private readonly IParkEventMapper _mapper;
-    private readonly ITranslatorService _translatorService;
+    private readonly ITranslationService _translationService;
 
     public GetParkEventsQueryQueryHandler(InparkDbContext context, IClock clock, IParkEventMapper mapper, 
-        ITranslatorService translatorService)
+        ITranslationService translationService)
     {
         _context = context;
         _clock = clock;
         _mapper = mapper;
-        _translatorService = translatorService;
+        _translationService = translationService;
     }
  
     public async Task<OneOf<List<ParkEventDto>>> Handle(GetParkEventsQuery request, CancellationToken cancellationToken)
@@ -44,7 +45,7 @@ public class GetParkEventsQueryQueryHandler :
                 throw new InvalidDataException("Unable to parse content. Error: " + parsedResult.AsT1.Value);
 
             var content = SDUINodeSerializer.Serialize(sduiNode!);
-            content = await _translatorService.TranslateSdui("he", content);
+            content = await _translationService.Translate(content);
             
             return new ParkEventDto(
                 x.Id,

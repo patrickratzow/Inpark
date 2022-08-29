@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_app/common/ui/navigation_bar.dart";
+import "package:flutter_app/extensions/string.dart";
 
 import "../sdui/elements/node_element.dart";
 import "../sdui/transformers/transformer.dart";
@@ -25,17 +26,19 @@ class NavbarTransformer extends Transformer {
     final list = <ZooinatorNavigationTab>[];
 
     for (final element in elements) {
-      final text = element.getAttribute("text");
+      final text = element.children
+          .firstWhere((c) => c.name.equalsIgnoreCase("Text"))
+          .innerText;
       final icon = element.resolveAttribute<IconData?>("icon", context, null);
       final content = element.children;
-      if (text == null || icon == null || content.isEmpty) continue;
+      if (icon == null || content.isEmpty) continue;
 
       final tab = ZooinatorNavigationTab(
-        text: text.value,
+        text: text,
         icon: icon,
         builder: (context) =>
-            Transformer.transformOne(content.first, context) ??
-            Text("Unable to render tab"),
+            Transformer.transformOne(content.last, context) ??
+            const Text("Unable to render tab"),
       );
 
       list.add(tab);

@@ -20,7 +20,7 @@ using Zeta.Inpark.Features.ParkEvents.Interfaces;
 using Zeta.Inpark.Features.Speaks.AalborgZoo;
 using Zeta.Inpark.Features.Speaks.Interfaces;
 using Zeta.Inpark.Services;
-using Zeta.Inpark.Translator.Contracts;
+using Zoo.Common.Api.Translator;
 using Zoo.Common.Api.Versioning;
 
 namespace Zeta.Inpark;
@@ -35,7 +35,6 @@ public static class DependencyInjection
             options.UseSqlServer(dbConnection);
         });
 
-        services.AddTranslatorService(configuration);
         services.AddMemoryCache();
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
@@ -43,6 +42,7 @@ public static class DependencyInjection
         services.AddPipelines();
         services.AddClock();
         services.AddHangFire(dbConnection);
+        services.AddTranslator(configuration);
         services.AddSingleton<IEventPublisher, EventPublisher>();
 
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();
@@ -80,6 +80,7 @@ public static class DependencyInjection
         
         app.UseVersioning();
         app.UseResponseMapper();
+        app.UseTranslator();
         
         RunMigrations(app.ApplicationServices);
 

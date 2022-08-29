@@ -17,29 +17,22 @@ public class TranslatorService : ITranslatorService
     }
 
     private readonly Regex _zTranslateRegex = new(@"z-translate\((.*)\)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-    public async ValueTask<string> TranslateSdui(string to, string text)
+    
+    public async ValueTask<string> Translate(string to, string text)
     {
-        var regexMatches = _zTranslateRegex.Matches(text);
-        if (regexMatches.Count <= 0) return text;
-        
-        foreach (Match match in regexMatches)
+        var obj = new
         {
-            var obj = new
-            {
-                Text = match.Groups[1].Value
-            };
-            var translation = await Translate(to, obj, new List<string>()
-            {
-                "Text"
-            });
-                    
-            text = text.Replace("z-translate(" + obj.Text + ")", translation.Text);
-        }
+            Text = text
+        };
+        var result = await TranslateObject(to, obj, new List<string>
+        {
+            "Text"
+        });
 
-        return text;
+        return result.Text;
     }
 
-    public async ValueTask<T> Translate<T>(string to, T input, ICollection<string> properties)
+    public async ValueTask<T> TranslateObject<T>(string to, T input, ICollection<string> properties)
     {
         var obj = new
         {

@@ -40,7 +40,7 @@ public class AzureTranslator : ITranslator
         using var request = new HttpRequestMessage();
         
         request.Method = HttpMethod.Post;
-        request.RequestUri = new Uri(_options.Endpoint + $"/translate?api-version=3.0&to={to}");
+        request.RequestUri = new Uri(_options.Endpoint + $"/translate?api-version=3.0&to={to}&textType=html");
         request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
         request.Headers.Add("Ocp-Apim-Subscription-Key", _options.ResourceKey);
         request.Headers.Add("Ocp-Apim-Subscription-Region", _options.Region);

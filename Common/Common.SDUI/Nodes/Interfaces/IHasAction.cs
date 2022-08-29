@@ -18,6 +18,7 @@ public static class HasActionExtensions
         else
         {
             var actionData = new SDUINode("ActionData");
+            actionData.SetAttribute("class", "notranslate");
             actionData.SetText($"<![CDATA[{action.Data}]]>", false);
             actionData.SetParent(node);
         }

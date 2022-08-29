@@ -35,7 +35,7 @@ class ActionService {
 
   dynamic parseData(dynamic data) {
     try {
-      return jsonDecode(data);
+      return jsonDecode(data ?? "{}");
     } on FormatException {
       return data;
     }

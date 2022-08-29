@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using Zeta.Inpark.Common.SDUI;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Features.ParkEvents.Interfaces;
-using Zeta.Inpark.Models;
 using Zeta.Inpark.Services;
 using Zeta.Inpark.ValueObjects;
 using Container = Zeta.Inpark.Common.SDUI.Container;
@@ -240,19 +239,6 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         
         return wrapper;
     }
-
-    private IContent ParseText(IContent content)
-    {
-        if (content.Value is not string str) throw new InvalidOperationException($"Value must be a string");
-
-        var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
-        var isHtml = regex.IsMatch(str);
-        if (!isHtml) return new Content(str, content.Type);
-
-        return _htmlTransformer.Load(str.Replace("&amp;", "&")).Parse();
-    }
-
- 
 
     private class EventTime
     {

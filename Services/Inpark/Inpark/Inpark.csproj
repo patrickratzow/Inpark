@@ -43,7 +43,6 @@
         <ProjectReference Include="..\..\..\Common\Common.Api\Common.Api.csproj" />
         <ProjectReference Include="..\..\..\Common\Common.SDUI\Common.SDUI.csproj" />
         <ProjectReference Include="..\..\..\Common\Common\Common.csproj" />
-        <ProjectReference Include="..\..\Translator\Translator.Contracts\Translator.Contracts.csproj" />
         <ProjectReference Include="..\Inpark.Contracts\Inpark.Contracts.csproj" />
     </ItemGroup>
 

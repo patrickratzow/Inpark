@@ -16,56 +16,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Actions/FullscreenImageAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/BorderRadius.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Common.SDUI.csproj.DotSettings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Enums/Clip.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Enums/TextStyle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Enums/TextWeight.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Extensions/EnumExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Card.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/GestureDetector.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Hero.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasBorderRadius.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasClip.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Padding.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/open_url_action.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/hero.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/rich_text.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/text_span.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="feat: lots of SDUI work">
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Translator/DependencyInjection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Translator/ITranslationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/Common.Api/Translator/TranslationService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AspNetCore/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/ButtonActions/ButtonAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Actions/SDUIAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/ButtonActions/OpenUrlButtonAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Actions/OpenUrlAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Button.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Button.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Container.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Image.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Image.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Navbar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Navbar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Common.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Common.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Navtab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Navtab.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Text.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Text.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/SDUINode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/SDUINode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/SDUINodeSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.SDUI/SDUINodeSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventMapper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/ITranslatorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/ITranslatorService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/TranslatorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/TranslatorService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/common/ui/fullscreen_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/common/ui/fullscreen_image.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/animals/ui/animal/animals_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/park_event_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/features/park_events/ui/park_event_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/action.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/action.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/fullscreen_image_action.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/fullscreen_image_action.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/navigate_to_screen_action.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/actions/navigate_to_screen_action.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/resolvers/cross_axis_alignment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/resolvers/cross_axis_alignment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator/Services/AzureTranslator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator/Services/AzureTranslator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/column.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/column.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/image.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/transformer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/sdui/transformers/transformer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/swagger/zooinator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/lib/transformers/navbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/lib/transformers/navbar.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +160,46 @@
       <option name="AZURE_FUNCTION_APP_FXVERSION" value="dotnet|6.0" />
       <option name="AZURE_FUNCTION_APP_IS_CREATE_STORAGE_ACCOUNT" value="0" />
       <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Storage/storageAccounts/zetanortheuropea1e1" />
+      <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_TYPE" value="Standard_LRS" />
+      <option name="AZURE_FUNCTION_APP_IS_DEPLOY_TO_SLOT" value="0" />
+      <option name="AZURE_FUNCTION_APP_SLOT_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_OPEN_BROWSER_PUBLISH" value="0" />
+      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_SQL_DATABASE_IS_ENABLED" value="0" />
+      <option name="AZURE_SQL_DATABASE_CONNECTION_STRING_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE" value="0" />
+      <option name="AZURE_SQL_DATABASE_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Sql/servers/sql-zeta-northeurope-dev-01/databases/sqldb-zeta-northeurope-dev-maps" />
+      <option name="AZURE_SQL_DATABASE_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE_RESOURCE_GROUP" value="0" />
+      <option name="AZURE_SQL_DATABASE_RESOURCE_GROUP_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE_SQL_SERVER" value="0" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_ID" value="" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_ADMIN_LOGIN" value="zeta" />
+      <option name="AZURE_SQL_DATABASE_LOCATION" value="eastus" />
+      <option name="AZURE_SQL_DATABASE_COLLATION" value="SQL_Latin1_General_CP1_CI_AS" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Publish Translator.Functions to Azure (1)" type="AzureFunctionAppPublish" factoryName="Azure Function App">
+      <option name="AZURE_FUNCTION_APP_PROJECT" value="$PROJECT_DIR$/Services/Translator/Translator.Functions/Translator.Functions.csproj" />
+      <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_FUNCTION_APP_IS_CREATE_APP" value="0" />
+      <option name="AZURE_FUNCTION_APP_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Web/sites/func-zeta-translator-northeurope-dev-01" />
+      <option name="AZURE_FUNCTION_APP_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_IS_CREATE_RESOURCE_GROUP" value="0" />
+      <option name="AZURE_FUNCTION_APP_RESOURCE_GROUP_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_IS_CREATE_APP_SERVICE_PLAN" value="0" />
+      <option name="AZURE_FUNCTION_APP_SERVICE_PLAN_ID" value="" />
+      <option name="AZURE_FUNCTION_APP_SERVICE_PLAN_NAME" value="" />
+      <option name="AZURE_FUNCTION_APP_LOCATION" value="eastus" />
+      <option name="AZURE_FUNCTION_APP_PRICING_TIER" value="Y1" />
+      <option name="AZURE_FUNCTION_APP_OPERATING_SYSTEM" value="LINUX" />
+      <option name="AZURE_FUNCTION_APP_RUNTIME" value="dotnet-isolated" />
+      <option name="AZURE_FUNCTION_APP_RUNTIMEVERSION" value="~4" />
+      <option name="AZURE_FUNCTION_APP_FXVERSION" value="dotnet-isolated|6.0" />
+      <option name="AZURE_FUNCTION_APP_IS_CREATE_STORAGE_ACCOUNT" value="0" />
+      <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/cloud-shell-storage-westeurope/providers/Microsoft.Storage/storageAccounts/csb10032001cc1b8c34" />
       <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_NAME" value="" />
       <option name="AZURE_FUNCTION_APP_STORAGE_ACCOUNT_TYPE" value="Standard_LRS" />
       <option name="AZURE_FUNCTION_APP_IS_DEPLOY_TO_SLOT" value="0" />
@@ -662,6 +669,7 @@
       <item itemvalue=".NET Project.Maps.Tests.Load" />
       <item itemvalue=".NET Project.test" />
       <item itemvalue="Azure - Publish Function App.Publish Translator.Functions to Azure" />
+      <item itemvalue="Azure - Publish Function App.Publish Translator.Functions to Azure (1)" />
       <item itemvalue="Azure - Publish Function App.Publish Maps.Functions to Azure" />
       <item itemvalue="Azure Functions host.Inpark.Functions" />
       <item itemvalue="Azure Functions host.Maps.Contracts" />
@@ -719,7 +727,7 @@
       <workItem from="1661443868261" duration="11007000" />
       <workItem from="1661503041974" duration="2936000" />
       <workItem from="1661511427190" duration="2202000" />
-      <workItem from="1661703775546" duration="4018000" />
+      <workItem from="1661703775546" duration="12166000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -854,7 +862,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660915137543</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat: lots of SDUI work">
+      <created>1661722558676</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1661722558676</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -897,7 +912,8 @@
     <MESSAGE value="feat: work on jobs" />
     <MESSAGE value="feat: initial dart map work" />
     <MESSAGE value="feat: add stress tests &amp; basic azure function trigger base class" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add stress tests &amp; basic azure function trigger base class" />
+    <MESSAGE value="feat: lots of SDUI work" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: lots of SDUI work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
