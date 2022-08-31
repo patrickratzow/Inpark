@@ -128,6 +128,13 @@ public class HtmlTransformer : IHtmlTransformer
                 
                 ParseChildren(child, textSpan);
             }
+            else if (child is { Name: "strong" or "b" })
+            {
+                var node = new TextSpan();
+                node.SetParent(parent);
+                node.SetTextWeight(TextWeight.Bold);
+                node.SetText(child.InnerText);
+            }
             else if (child is { Name: "em" or "i" })
             {
                 var node = new TextSpan();
@@ -135,7 +142,7 @@ public class HtmlTransformer : IHtmlTransformer
                 node.SetFontStyle(FontStyle.Italic);
                 node.SetText(child.InnerText);
             }
-            else if (child is HtmlTextNode textNode && !string.IsNullOrWhiteSpace(textNode.InnerText))
+            else if (child is HtmlTextNode textNode)
             {
                 var node = new TextSpan();
                 node.SetParent(parent);

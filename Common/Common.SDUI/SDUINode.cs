@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Zeta.Inpark.Common.SDUI;
 
 // ReSharper disable once InconsistentNaming
@@ -35,7 +37,6 @@ public class SDUINode
     public void SetText(string text, bool shouldTranslate = true)
     {
         InnerText = text;
-        //InnerText = shouldTranslate ? $"z-translate({text})" : text;
     }
 
     public void SetDebug(string text)

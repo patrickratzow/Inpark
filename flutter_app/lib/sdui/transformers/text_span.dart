@@ -11,19 +11,60 @@ class TextSpanTransformer extends Transformer {
 
   @override
   Widget transform(NodeElement element, BuildContext context) {
-    final text = element.innerText;
-    final textStyle = getTextStyle(element, context) ??
-        Theme.of(context).textTheme.bodyMedium!;
-
     return RichText(
       text: TextSpan(
-        style: textStyle,
-        text: element.innerText,
+        style: getTextStyle(element, context),
+        children: element.children
+            .map(
+              (element) => TextSpan(
+                text: element.innerText,
+                style: getTextStyle(element, context),
+              ),
+            )
+            .toList(),
       ),
     );
   }
 
-  TextStyle? getTextStyle(NodeElement element, BuildContext context) {
+  FontStyle? getFontStyle(NodeElement element, BuildContext context) {
+    final attribute = element.getAttribute("font-style");
+    if (attribute == null) return null;
+
+    switch (attribute.value) {
+      case "italic":
+        return FontStyle.italic;
+      case "normal":
+        return FontStyle.normal;
+      default:
+        return null;
+    }
+  }
+
+  TextStyle getTextStyle(NodeElement element, BuildContext context) {
+    final textStyle = getTextStyleFromTheme(element, context) ??
+        Theme.of(context).textTheme.bodyMedium!;
+    final fontStyle = getFontStyle(element, context);
+    final fontWeight = getFontWeight(element, textStyle);
+
+    return textStyle.copyWith(
+      fontStyle: fontStyle,
+      fontWeight: fontWeight,
+    );
+  }
+
+  FontWeight? getFontWeight(NodeElement element, TextStyle? style) {
+    final fontWeight = element.getAttribute("weight")?.value;
+    if (fontWeight == null) return style?.fontWeight ?? FontWeight.normal;
+    if (fontWeight == "normal") return FontWeight.normal;
+    if (fontWeight == "bold") return FontWeight.bold;
+
+    return FontWeight.values.firstWhere(
+      (f) => f.toString() == fontWeight,
+      orElse: () => FontWeight.normal,
+    );
+  }
+
+  TextStyle? getTextStyleFromTheme(NodeElement element, BuildContext context) {
     final style = element.getAttribute("style");
     if (style == null) return null;
 

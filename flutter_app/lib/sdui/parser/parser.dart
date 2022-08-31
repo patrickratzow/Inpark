@@ -31,7 +31,7 @@ class Parser {
 
   NodeElement _parseElement(XmlElement element, ParserData data) {
     final name = element.name.toString();
-    var innerText = element.innerText.trim();
+    var innerText = element.innerText;
     final attributes = _parseAttributes(element, data);
     if (name.equalsIgnoreCase("ActionData")) {
       innerText = _parseActionData(innerText, data);
