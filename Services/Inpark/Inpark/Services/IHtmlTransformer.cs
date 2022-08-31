@@ -114,26 +114,33 @@ public class HtmlTransformer : IHtmlTransformer
         {
             if (child is { Name: "br" } or { InnerText: "\n" })
             {
-                var node = new SDUINode("TextSpan");
+                var node = new TextSpan();
+                node.SetParent(parent);
                 node.SetText("\n\n", false);
-
-                parent.AddChild(node);
             }
             else if (child is { Name: "p" })
             {
                 var node = new SDUINode("RichText");
-                var textSpan = new SDUINode("TextSpan");
-                node.AddChild(textSpan);
-                parent.AddChild(node);
+                node.SetParent(parent);
+                
+                var textSpan = new TextSpan();
+                textSpan.SetParent(node);
                 
                 ParseChildren(child, textSpan);
             }
+            else if (child is { Name: "em" or "i" })
+            {
+                var node = new TextSpan();
+                node.SetParent(parent);
+                node.SetFontStyle(FontStyle.Italic);
+                node.SetText(child.InnerText);
+            }
             else if (child is HtmlTextNode textNode && !string.IsNullOrWhiteSpace(textNode.InnerText))
             {
-                var node = new SDUINode("TextSpan");
+                var node = new TextSpan();
+                node.SetParent(parent);
+                node.SetFontStyle(FontStyle.Normal);
                 node.SetText(textNode.InnerText);
-                
-                parent.AddChild(node);
             }
         }
     }
