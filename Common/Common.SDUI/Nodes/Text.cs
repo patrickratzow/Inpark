@@ -2,9 +2,9 @@ namespace Zeta.Inpark.Common.SDUI;
 
 public class Text : SDUINode
 {
-    public Text(string innerText, bool shouldTranslate = true) : base("Text")
+    public Text(string innerText) : base("Text")
     {
-        SetText(innerText, shouldTranslate);
+        SetText(innerText);
     }
 
     public void SetStyle(TextStyle style)
