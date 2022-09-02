@@ -116,11 +116,11 @@ public class HtmlTransformer : IHtmlTransformer
             {
                 var node = new TextSpan();
                 node.SetParent(parent);
-                node.SetText("\n\n", false);
+                node.SetText("\n\n");
             }
             else if (child is { Name: "p" })
             {
-                var node = new SDUINode("RichText");
+                var node = new RichText();
                 node.SetParent(parent);
                 
                 var textSpan = new TextSpan();

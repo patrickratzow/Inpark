@@ -6,7 +6,7 @@ public class Navtab : SDUINode
     {
         var child = new Text(text);
         child.SetParent(this);
-        //SetAttribute("text", $"z-translate({text})");
+        
         SetAttribute("icon", icon);
     }
 }

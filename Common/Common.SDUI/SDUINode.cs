@@ -24,7 +24,7 @@ public class SDUINode
         InternalData = new();
     }
 
-    public void AddChild(SDUINode child)
+    public virtual void AddChild(SDUINode child)
     {
         Children.Add(child);
     }
@@ -34,7 +34,7 @@ public class SDUINode
         Attributes[key] = value;
     }
 
-    public void SetText(string text, bool shouldTranslate = true)
+    public void SetText(string text)
     {
         InnerText = text;
     }
@@ -47,6 +47,19 @@ public class SDUINode
     public void SetParent(SDUINode parent)
     {
         parent.AddChild(this);
+    }
+
+    public void ShouldNotTranslate()
+    {
+        if (!Attributes.TryGetValue("class", out var classString))
+        {
+            classString = string.Empty;
+        }
+
+        var classSplit = classString.Trim().Split(" ").ToList();
+        classSplit.Add("notranslate");
+
+        SetAttribute("class", string.Join(" ", classSplit));
     }
     
     internal void SetInternalData<T>(string key, string internalKey, T data) 
