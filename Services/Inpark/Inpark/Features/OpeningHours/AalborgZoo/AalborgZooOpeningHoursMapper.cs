@@ -11,6 +11,7 @@ namespace Zeta.Inpark.Features.OpeningHours.AalborgZoo;
 public class AalborgZooOpeningHoursMapper : IOpeningHoursMapper
 {
     private readonly ILogger<AalborgZooOpeningHoursMapper> _logger;
+    
 
     public AalborgZooOpeningHoursMapper(ILogger<AalborgZooOpeningHoursMapper> logger)
     {

@@ -40,7 +40,7 @@ public class GetParkEventsQueryQueryHandler :
         {
             var image = new ImagePairDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
 
-            var parsedResult = _mapper.ParseContent(x.Content);
+            var parsedResult = await _mapper.ParseContent(x.Content);
             if (!parsedResult.IsSuccess(out var sduiNode))
                 throw new InvalidDataException("Unable to parse content. Error: " + parsedResult.AsT1.Value);
 

@@ -1,23 +1,24 @@
 ﻿using System.Text.Json;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
-using Zeta.Inpark.Common.SDUI;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Features.ParkEvents.Interfaces;
-using Zeta.Inpark.Services;
 using Zeta.Inpark.ValueObjects;
-using Container = Zeta.Inpark.Common.SDUI.Container;
+using Zeta.UI;
+using Zeta.UI.Transformers.Html;
+using Container = Zeta.UI.Container;
 
 namespace Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 
 public class AalborgZooParkEventMapper : IParkEventMapper
 {
-    private readonly IHtmlTransformer _htmlTransformer;
+    private readonly ITransformerService _transformerService;
     private readonly ILogger<AalborgZooParkEventMapper> _logger;
-
-    public AalborgZooParkEventMapper(IHtmlTransformer htmlTransformer, ILogger<AalborgZooParkEventMapper> logger)
+    
+    public AalborgZooParkEventMapper(ITransformerService transformerService, 
+        ILogger<AalborgZooParkEventMapper> logger)
     {
-        _htmlTransformer = htmlTransformer;
+        _transformerService = transformerService;
         _logger = logger;
     }
 
@@ -76,7 +77,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         }
     }
 
-    public Result<SDUINode, string> ParseContent(string content)
+    public async ValueTask<Result<SDUINode, string>> ParseContent(string content)
     {
         try
         {
@@ -102,10 +103,10 @@ public class AalborgZooParkEventMapper : IParkEventMapper
             var column = new SDUINode("Column");
             foreach (var item in informationTabs)
             {
-                var tabContent = ParseTab(item);
+                var tabContent = await ParseTab(item);
                 tabContent.SetParent(column);
             }
-            descriptionTab.AddChild(column);
+            column.SetParent(descriptionTab);
 
             var programTabJson = tabsJson.FirstOrDefault(x =>
                 x.EnumerateArray().Any(y =>
@@ -115,7 +116,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
             if (programTabJson.ValueKind is not JsonValueKind.Undefined)
             {
                 var programTab = new Navtab("Program", "menu");
-                var programContent = ParseTab(programTabJson);
+                var programContent = await ParseTab(programTabJson);
                 programContent.SetParent(programTab);
                 navbar.AddTab(programTab);
             }
@@ -130,15 +131,15 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         }
     }
 
-    private SDUINode ParseTab(JsonElement item)
+    private async ValueTask<SDUINode> ParseTab(JsonElement item)
     {
         var padding = new SDUINode("Padding");
         padding.SetAttribute("all", "8");
         
         var column = new SDUINode("Column");
+        column.SetParent(padding);
         column.SetAttribute("cross-axis-alignment", "start");
-        padding.AddChild(column);
-
+        
         // Skip first as it is the title of the tab
         var items = item.EnumerateArray().Skip(1);
         foreach (var park in items)
@@ -146,7 +147,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
             var type = park.GetProperty("type").GetString();
             var node = type switch
             {
-                "text" or "headline" => CreateText(park),
+                "text" or "headline" => await CreateText(park),
                 "header" => CreateHeader(park),
                 "image" => CreateImage(park),
                 "callToAction" => CreateLink(park),
@@ -160,7 +161,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
                 continue;
             }
 
-            column.AddChild(node);
+            node.SetParent(column);
         }
 
         return padding;
@@ -172,10 +173,11 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         var linkText = json.GetProperty("linkButtonText").ToString();
 
         var buttonAction = new OpenUrlAction(url);
-        var button = new Button(buttonAction);
+        var button = new Button();
+        button.SetAction("action", buttonAction);
         
         var text = new Text(linkText);
-        button.AddChild(text);
+        text.SetParent(button);
 
         return button;
     }
@@ -221,7 +223,7 @@ public class AalborgZooParkEventMapper : IParkEventMapper
         return padding;
     }
     
-    private SDUINode CreateText(JsonElement json)
+    private async ValueTask<SDUINode> CreateText(JsonElement json)
     {
         var jsonText = json.GetProperty("text").ToString();
         var regex = new Regex(@"<(.+)>(.*)</(.+)>", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
@@ -233,8 +235,8 @@ public class AalborgZooParkEventMapper : IParkEventMapper
 
             return node;
         }
-        
-        var wrapper = _htmlTransformer.ParseToSDUI(jsonText);
+
+        var wrapper = await _transformerService.Transform(jsonText);
         wrapper.SetDebug("HTML Segment wrapper");
         
         return wrapper;

@@ -41,8 +41,11 @@
         <ProjectReference Include="..\..\..\Common\Common.Api.SourceGenerator.Attributes\Common.Api.SourceGenerator.Attributes.csproj" />
         <ProjectReference Include="..\..\..\Common\Common.Api.SourceGenerator\Common.Api.SourceGenerator.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
         <ProjectReference Include="..\..\..\Common\Common.Api\Common.Api.csproj" />
-        <ProjectReference Include="..\..\..\Common\Common.SDUI\Common.SDUI.csproj" />
+        <ProjectReference Include="..\..\..\Common\Common.SDUI.Transformers\Common.SDUI.Transformers.csproj" />
+        <ProjectReference Include="..\..\..\Common\Zeta.UI\Zeta.UI.csproj" />
         <ProjectReference Include="..\..\..\Common\Common\Common.csproj" />
+        <ProjectReference Include="..\..\..\SDUI\Zeta.UI.Transformers\Zeta.UI.Transformers.csproj" />
+        <ProjectReference Include="..\..\..\SDUI\Zeta.UI\Zeta.UI.csproj" />
         <ProjectReference Include="..\Inpark.Contracts\Inpark.Contracts.csproj" />
     </ItemGroup>
 
