@@ -1,23 +1,23 @@
 using System.Text;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
 namespace Zeta.Inpark.Translator.Contracts;
 
 public class TranslatorService : ITranslatorService
 {
+    private readonly ILogger<TranslatorService> _logger;
     private readonly IMemoryCache _cache;
     private readonly string _baseUrl;
 
-    public TranslatorService(IMemoryCache cache, string baseUrl)
+    public TranslatorService(ILogger<TranslatorService> logger, IMemoryCache cache, string baseUrl)
     {
+        _logger = logger;
         _cache = cache;
         _baseUrl = baseUrl;
     }
 
-    private readonly Regex _zTranslateRegex = new(@"z-translate\((.*)\)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-    
     public async ValueTask<string> Translate(string to, string text)
     {
         var obj = new
@@ -45,18 +45,26 @@ public class TranslatorService : ITranslatorService
         var typeName = typeof(T).Name.ToLower();
         var cacheKey = $"{typeName}-{to}-{json}";
         if (_cache.TryGetValue(cacheKey, out T cachedResponse))
+        {
+            _logger.LogInformation("Found {TranslatorKey} in cache while trying to translate", $"{typeName}-{to}");
+
             return cachedResponse;
-        
-        var response = await GetResponse<T>(json);
+        }
+
+        _logger.LogInformation("No {TranslatorKey} found in cache", $"{typeName}-{to}");
+        var response = await GetResponse<T>(json, $"{typeName}-{to}");
         _cache.Set(cacheKey, response);
-        
+        _logger.LogInformation("Got {TranslatorKey} from Translator, saved in cache", $"{typeName}-{to}");
+
         return response;
     }
     
-    private async ValueTask<T> GetResponse<T>(string input)
+    private async ValueTask<T> GetResponse<T>(string input, string translatorKey)
     {
         var url = $"{_baseUrl}/translate-object";
         using var client = new HttpClient();
+
+        _logger.LogInformation("Requesting {TranslatorKey} from Translator, URL: {url}", translatorKey, url);
 
         var content = new StringContent(input, Encoding.UTF8, "application/json");
         var response = await client.PostAsync(url, content);

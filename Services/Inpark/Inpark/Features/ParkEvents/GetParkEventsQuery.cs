@@ -1,14 +1,10 @@
-﻿using System.Text.RegularExpressions;
-using Microsoft.EntityFrameworkCore;
-using Zeta.Inpark.Common.SDUI;
+﻿using Microsoft.EntityFrameworkCore;
 using Zeta.Inpark.Features.ParkEvents.Interfaces;
-using Zeta.Inpark.Translator.Contracts;
+using Zeta.UI;
 using Zoo.Common.Api.Translator;
 using Zoo.Inpark.Contracts;
 
 namespace Zeta.Inpark.Features.ParkEvents;
-
-public record TextWrapper(string Text);
 
 public record GetParkEventsQuery : IRequest<OneOf<List<ParkEventDto>>>;
 public class GetParkEventsQueryQueryHandler :

@@ -17,110 +17,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/ITransformer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IUseCaseMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IUseCaseOptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IVisitor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/NodeTypes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/Visitors/CallToActionVisitor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Zeta.UI.Mappers.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/DependencyInjection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/HtmlTransformerService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/ITransformer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/ITransformerService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/IVisitor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/Priority.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/Transformers/RichTextTransformer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/Transformers/TextSpanTransformer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/VisitorService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/Visitors/FontStyleVisitor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/Visitors/NewlineTextSpanVisitor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Html/Visitors/TextWeightVisitor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Zeta.UI.Transformers.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Transformers/Zeta.UI.Transformers.csproj.DotSettings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Actions/FullscreenImageAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Actions/OpenUrlAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Actions/SDUIAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/BorderRadius.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Enums/Clip.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Enums/FontStyle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Enums/TextStyle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Enums/TextWeight.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Extensions/EnumExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/ActionData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Button.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Card.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Container.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/GestureDetector.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Hero.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Image.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Interfaces/IHasAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Interfaces/IHasBorderRadius.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Interfaces/IHasClip.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Interfaces/IHasFontStyle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Interfaces/IHasTextStyle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Interfaces/IHasTextWeight.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Navbar.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Navtab.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Padding.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/RichText.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Text.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/TextSpan.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/ParsingNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/SDUINode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/SDUINodeSerializer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Zeta.UI.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Zeta.UI.csproj.DotSettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/IParser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/IntermediateNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Nodes/ImageNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/JsonElementExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/NodeTypes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/ImageParser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/LinkParser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Zeta.UI.Intermediate.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/DependencyInjection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/ConfigurationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/FeatureConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/Transformers/ImageTransformer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/Common.SDUI.Transformers.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/Common.SDUI.Transformers.csproj.DotSettings" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/HtmlTransformerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/ITransformer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/ITransformerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/IVisitor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/Priority.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/Transformers/RichTextTransformer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/Transformers/TextSpanTransformer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI.Transformers/Visitors/FontWeightVisitor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Actions/FullscreenImageAction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Actions/OpenUrlAction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Actions/SDUIAction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/BorderRadius.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Common.SDUI.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Common.SDUI.csproj.DotSettings" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Enums/Clip.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Enums/FontStyle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Enums/TextStyle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Enums/TextWeight.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Extensions/EnumExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/ActionData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Button.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Card.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Container.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/GestureDetector.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Hero.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Image.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasAction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasBorderRadius.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasClip.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasFontStyle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasTextStyle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Interfaces/IHasTextWeight.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Navbar.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Navtab.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Padding.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/RichText.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/Text.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/Nodes/TextSpan.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/SDUINode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.SDUI/SDUINodeSerializer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/ITransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/ITransformer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/NodeTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/NodeTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Zeta.UI.Mappers.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Zeta.UI.Mappers.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Auth.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Auth.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/20220812171138_RecreateMigrations.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/20220812171138_RecreateMigrations.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Migrations/AuthDbContextModelSnapshot.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventMapper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/Interfaces/IParkEventMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/Interfaces/IParkEventMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Inpark.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Services/IHtmlTransformer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/Translator.Contracts.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/Translator.Contracts.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/TranslatorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Contracts/TranslatorService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,18 +68,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ae1f29ab81b34e909584423a3fc6fff7a23898/8d/539f0e7b/PortableThreadPool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/57a1b763d9c3b55e7d6266c336fc5b97dc3ca0169e7e4d222dd15e81ab64e/JsonSerializerOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9d4f4ac7db6d2c5d183ab2d92602280ed4349fd6e6a1b6313546b3d01fdab5/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9e76859e27e7ada11744f8967d6c1ddc24e519d4173072aa6fbeee796592b/JsonElement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9f3f2539caf1d1d3bc962f51b12a49523c53a6a135dd252df0b23b14b3515df/EntityFrameworkServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cf45f671e76a56b0a4eedfd470563bea6a32f7e63e9e2bbf884375631089359e/ServiceCollectionDescriptorExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/de7cca8bbad440a84863dc9a66814897f9b51cd9916dcdce4857992d5d492c/HashSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e38745c94d65cb54dad5c55660612749c0690da385b9c148982feadef54/OptionsServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e7e231682be8652744726acc6de35323daa68061429db55e0c251114902f60/String.Manipulation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/efd3e9c4749621d4a53b45d7117d2a581e02a265c444a040f1387a155db/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3a8dfd928d7124044723494a9a7b2872a8bb9f96333d4baed4e1992126616ce/Check.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AspNetCore/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -236,7 +154,7 @@
 }</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
     <configuration name="Publish Maps.Functions to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
-      <option name="AZURE_FUNCTION_APP_PROJECT" value="$PROJECT_DIR$/Services/Maps/Maps.Functions/Maps.Functions.csproj" />
+      <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
       <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
       <option name="AZURE_FUNCTION_APP_IS_CREATE_APP" value="0" />
       <option name="AZURE_FUNCTION_APP_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Web/sites/func-zeta-maps-northeurope-dev-01" />
@@ -276,7 +194,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Publish Translator.Functions to Azure (1)" type="AzureFunctionAppPublish" factoryName="Azure Function App">
-      <option name="AZURE_FUNCTION_APP_PROJECT" value="$PROJECT_DIR$/Services/Translator/Translator.Functions/Translator.Functions.csproj" />
+      <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
       <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
       <option name="AZURE_FUNCTION_APP_IS_CREATE_APP" value="0" />
       <option name="AZURE_FUNCTION_APP_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Web/sites/func-zeta-translator-northeurope-dev-01" />
@@ -316,7 +234,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Publish Translator.Functions to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
-      <option name="AZURE_FUNCTION_APP_PROJECT" value="$PROJECT_DIR$/Services/Translator/Translator.Functions/Translator.Functions.csproj" />
+      <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
       <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
       <option name="AZURE_FUNCTION_APP_IS_CREATE_APP" value="0" />
       <option name="AZURE_FUNCTION_APP_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Web/sites/func-zeta-translator-northeurope-dev-01" />
@@ -367,7 +285,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -405,7 +323,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -424,7 +342,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -443,7 +361,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -481,7 +399,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -500,7 +418,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="PingLocation" />
       <method v="2">
@@ -519,7 +437,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -557,7 +475,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions)))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="TriggerScheduledJobs" />
       <method v="2">
@@ -576,7 +494,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="ping-location" />
       <method v="2">
@@ -595,7 +513,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="ping-location" />
       <method v="2">
@@ -614,7 +532,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -825,6 +743,7 @@
       <workItem from="1661954161888" duration="1440000" />
       <workItem from="1662103904929" duration="8828000" />
       <workItem from="1662200141166" duration="12093000" />
+      <workItem from="1662453859704" duration="1567000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -1044,6 +963,19 @@
           <line>26</line>
           <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\Services\Maps\Maps.Functions\PingLocationTrigger.cs" initialLine="26" containingFunctionPresentation="method 'Run'" />
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventMapper.cs</url>
+          <line>76</line>
+          <properties documentPath="C:\Users\pra\RiderProjects\Zoo\Services\Inpark\Inpark\Features\ParkEvents\AalborgZoo\AalborgZooParkEventMapper.cs" initialLine="76" containingFunctionPresentation="method 'ParseParkEvent'">
+            <startOffsets>
+              <option value="2942" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2943" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
 using Zeta.Inpark.Common;
-using Zeta.Inpark.Common.SDUI.Transformers;
 using Zeta.Inpark.Features.Animals.AalborgZoo;
 using Zeta.Inpark.Features.Animals.Interfaces;
 using Zeta.Inpark.Features.OpeningHours.AalborgZoo;
@@ -21,6 +20,7 @@ using Zeta.Inpark.Features.ParkEvents.Interfaces;
 using Zeta.Inpark.Features.Speaks.AalborgZoo;
 using Zeta.Inpark.Features.Speaks.Interfaces;
 using Zeta.Inpark.Services;
+using Zeta.UI.Transformers;
 using Zoo.Common.Api.Translator;
 using Zoo.Common.Api.Versioning;
 
@@ -44,7 +44,7 @@ public static class DependencyInjection
         services.AddClock();
         services.AddHangFire(dbConnection);
         services.AddTranslator(configuration);
-        services.AddSDUITransformation();
+        services.AddZetaUITransformation();
         services.AddSingleton<IEventPublisher, EventPublisher>();
 
         services.AddSingleton<IHtmlTransformer, HtmlTransformer>();

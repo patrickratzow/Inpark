@@ -81,6 +81,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeta.UI.Transformers", "SDU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeta.UI.Mappers", "SDUI\Zeta.UI.Mappers\Zeta.UI.Mappers.csproj", "{34BCDC07-DCEE-4D07-82EE-439C5B1EB0FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeta.UI.Intermediate", "SDUI\Zeta.UI.Intermediate\Zeta.UI.Intermediate.csproj", "{1C6D36BF-7A75-427D-A2C3-6AA8F972CF95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -203,6 +205,10 @@ Global
 		{34BCDC07-DCEE-4D07-82EE-439C5B1EB0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34BCDC07-DCEE-4D07-82EE-439C5B1EB0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34BCDC07-DCEE-4D07-82EE-439C5B1EB0FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C6D36BF-7A75-427D-A2C3-6AA8F972CF95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C6D36BF-7A75-427D-A2C3-6AA8F972CF95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C6D36BF-7A75-427D-A2C3-6AA8F972CF95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C6D36BF-7A75-427D-A2C3-6AA8F972CF95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -243,6 +249,7 @@ Global
 		{313DEA60-B909-4AB9-A24A-B3631F66DBF0} = {DB4DA918-DB13-4FCA-9759-11E54ABCC9B9}
 		{55ABC747-56DF-43F5-9FA0-FDD1C3062DB8} = {DB4DA918-DB13-4FCA-9759-11E54ABCC9B9}
 		{34BCDC07-DCEE-4D07-82EE-439C5B1EB0FE} = {DB4DA918-DB13-4FCA-9759-11E54ABCC9B9}
+		{1C6D36BF-7A75-427D-A2C3-6AA8F972CF95} = {DB4DA918-DB13-4FCA-9759-11E54ABCC9B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2AC09FE-11CB-42E6-BF6D-A702BA7BECE3}

@@ -2,6 +2,6 @@ namespace Zeta.UI.Mappers;
 
 public interface ITransformer
 {
-    bool ShouldTransform(ParsingNode node);
-    SDUINode Transform(ParsingNode node);
+    ValueTask<bool> ShouldTransform(ParsingNode node);
+    ValueTask<SDUINode> Transform(ParsingNode node);
 }
