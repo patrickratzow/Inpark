@@ -6,7 +6,7 @@ namespace Zeta.UI.Intermediate.Umbraco.Parsers;
 public class ImageParser : IParser
 {
     public ValueTask<bool> ShouldParse(JsonElement json) 
-        => new(json.GetElementType() is NodeTypes.Image);
+        => new(json.GetElementType() is "image");
 
     public ValueTask<IntermediateNode> Parse(JsonElement json)
     {
@@ -14,7 +14,6 @@ public class ImageParser : IParser
         var url = json.GetProperty("image").ToString();
         
         var node = new ImageNode(
-            NodeTypes.Image,
             url,
             alt,
             true    
