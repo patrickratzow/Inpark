@@ -3,21 +3,25 @@ using Zeta.UI.Intermediate.Nodes;
 
 namespace Zeta.UI.Intermediate.Umbraco.Parsers;
 
-public class ImageParser : IParser
+public class ImageParser : Parser
 {
-    public ValueTask<bool> ShouldParse(JsonElement json) 
-        => new(json.GetElementType() is "image");
-
-    public ValueTask<IntermediateNode> Parse(JsonElement json)
+    public ImageParser(JsonElement element) : base(element)
     {
-        var alt = json.GetProperty("alt").ToString();
-        var url = json.GetProperty("image").ToString();
+    }
+    
+    public override bool ShouldParse() => IsType("image");
+
+    public override IntermediateNode Parse()
+    {
+        NotNull("alt", out string? alt);
+        NotNull("image", out string? url);
+
+        Validate();
         
-        var node = new ImageNode(
-            url,
+        return new ImageNode(
+            url!,
             alt,
             true    
         );
-        return new(node);
     }
 }

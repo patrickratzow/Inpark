@@ -4,6 +4,6 @@ namespace Zeta.UI.Intermediate;
 
 public interface IParser
 {
-    ValueTask<bool> ShouldParse(JsonElement json);
-    ValueTask<IntermediateNode> Parse(JsonElement json);
+    bool ShouldParse(JsonElement json);
+    IntermediateNode Parse(JsonElement json);
 }
