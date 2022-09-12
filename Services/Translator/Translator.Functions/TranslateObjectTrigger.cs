@@ -1,8 +1,10 @@
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Zeta.Common.Functions;
+using Zeta.Common.Functions.Extensions;
 using Zeta.Inpark.Translator.Features;
-using Zeta.Inpark.Translator.Functions.Extensions;
 using Zoo.Common.Api;
 
 namespace Zeta.Inpark.Translator.Functions;
@@ -11,15 +13,13 @@ public class TranslateObjectTrigger : HttpTrigger
 {
     private readonly IMediator _mediator;
 
-    public TranslateObjectTrigger(
-        IMediator mediator, 
-        IResponseMapper responseMapper) : base(responseMapper)
+    public TranslateObjectTrigger(IMediator mediator, IResponseMapper mapper) : base(mapper)
     {
         _mediator = mediator;
     }
 
     [Function("translate-object")]
-    public async Task<HttpResponseData> Run(
+    public async Task<ActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req)
     {
         var request = await req.FromJsonBody<Request>();
@@ -33,7 +33,7 @@ public class TranslateObjectTrigger : HttpTrigger
         );
         var result = await _mediator.Send(command);
 
-        return MapResponse(req, result);
+        return Map(result);
     }
 
     public record Request(

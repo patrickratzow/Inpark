@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Zeta.Common.Functions;
 using Zeta.Inpark.Translator;
-using Zeta.Inpark.Translator.Functions.Middleware;
 
 var host = new HostBuilder()
     .ConfigureAppConfiguration(builder =>
@@ -12,11 +12,11 @@ var host = new HostBuilder()
     })
     .ConfigureFunctionsWorkerDefaults(builder =>
     {
-        builder.UseMiddleware<FluentValidationMiddleware>();
-        builder.UseMiddleware<ModelBindingMiddleware>();
+        builder.UseCommon();
     })
     .ConfigureServices((host, services) =>
     {
+        services.UseCommon();
         services.AddTranslator(host.Configuration);
     })
     .Build();

@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Common.Api\Common.Api.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.Functions\Common.Functions.csproj" />
     <ProjectReference Include="..\Translator\Translator.csproj" />
   </ItemGroup>
 </Project>

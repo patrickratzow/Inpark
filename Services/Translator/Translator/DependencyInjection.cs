@@ -18,7 +18,6 @@ public static class DependencyInjection
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddPipelines();
-        services.AddResponseMapper();
 
         services.AddSingleton<ITranslator, AzureTranslator>();
         services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(configuration.GetConnectionString("Cache")));

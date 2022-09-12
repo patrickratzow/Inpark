@@ -4,7 +4,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 
-namespace Zeta.Inpark.Translator.Functions.Middleware;
+namespace Zeta.Common.Functions.Middleware;
 
 public class FluentValidationMiddleware : IFunctionsWorkerMiddleware
 {
