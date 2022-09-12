@@ -1,6 +1,6 @@
 using Zeta.UI.Intermediate.Nodes;
-using Zeta.UI.Intermediate.Umbraco;
 using Zeta.UI.Intermediate.Umbraco.Parsers;
+using Zeta.UI.Intermediate.Validation;
 
 namespace Zeta.UI.Intermediate.Tests.Umbraco.Parsers;
 
@@ -38,11 +38,12 @@ public class CallToActionParserTests
         node.Text.Should().Be("Click here");
     }
     
-    [Test]
-    public void Should_Fail_Without_ExternalPage()
+    [TestCase("externalPage")]
+    [TestCase("linkButtonText")]    
+    public void Should_Fail_Without_Key(string key)
     {
         // Arrange
-        _input.Remove("externalPage");
+        _input.Remove(key);
         var parser = new CallToActionParser(_input);
 
         // Act

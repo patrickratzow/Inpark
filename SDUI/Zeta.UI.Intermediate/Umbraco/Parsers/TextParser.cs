@@ -22,11 +22,9 @@ public class TextParser : Parser
         
         Validate();
 
-        var kind = text switch
-        {
-            _ when Regex.IsMatch(text!) => TextKind.Text,
-            _ => TextKind.Text
-        };
+        var kind = Regex.IsMatch(text!) 
+            ? TextKind.Html 
+            : TextKind.Text;
         
         return new TextNode(text!, kind, type is "header");
     }

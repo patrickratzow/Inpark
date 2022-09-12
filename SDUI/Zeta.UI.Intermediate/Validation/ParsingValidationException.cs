@@ -1,4 +1,4 @@
-namespace Zeta.UI.Intermediate.Umbraco;
+namespace Zeta.UI.Intermediate.Validation;
 
 public class ParsingValidationException : Exception
 {
