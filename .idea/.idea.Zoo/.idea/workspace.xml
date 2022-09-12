@@ -11,6 +11,7 @@
     <projectFile>Services/Maps/Maps.Contracts/Maps.Contracts.csproj</projectFile>
     <projectFile profileName="Maps.Functions">Services/Maps/Maps.Functions/Maps.Functions.csproj</projectFile>
     <projectFile>Services/Maps/Maps.Tests.Load/Maps.Tests.Load.csproj</projectFile>
+    <projectFile profileName="Tenants.Functions">Services/Tenants/Tenants.Functions/Tenants.Functions/Tenants.Functions.csproj</projectFile>
     <projectFile profileName="Translator.Functions">Services/Translator/Translator.Functions/Translator.Functions.csproj</projectFile>
     <projectFile>test/test.csproj</projectFile>
   </component>
@@ -19,29 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Categories.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/JsonBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Umbraco/Parsers/CallToActionParserTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Usings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Zeta.UI.Intermediate.Tests.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Nodes/CallToActionNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Nodes/TextNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Parser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/CallToActionParser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/TextParser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Usings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Validation/ParsingValidationException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Validation/ValidationBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/IParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/IParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/NodeTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/NodeTypes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Nodes/LinkNode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/JsonElementExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/ImageParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/ImageParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/LinkParser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Zeta.UI.Intermediate.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Zeta.UI.Intermediate.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,22 +46,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ae1f29ab81b34e909584423a3fc6fff7a23898/8d/539f0e7b/PortableThreadPool.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/23e31092363db7107ca21367adea927bccc2e7cf2075f9ee398ad1175b8e87/Nullable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/57a1b763d9c3b55e7d6266c336fc5b97dc3ca0169e7e4d222dd15e81ab64e/JsonSerializerOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/604bfcd05facf6bac09d737af9ce6be382f9d52014d24b8c3d17f4df6d7d48/JsonDocument.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/66609a6cf1d10dc691cd2f65ecfafc3ff4dec97783c81b9e774469b691ff81/CallerIdentifier.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/82e9288cb3e4fb0e5316f85257376df465dc7bc82890c2121a640dfb03916/JsonElement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9bc51aeca7c89c567a4edfdd2ced4177b70ff51a93d8671b6fb79175a35/JsonElement.Parse.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9d4f4ac7db6d2c5d183ab2d92602280ed4349fd6e6a1b6313546b3d01fdab5/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9f3f2539caf1d1d3bc962f51b12a49523c53a6a135dd252df0b23b14b3515df/EntityFrameworkServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cf45f671e76a56b0a4eedfd470563bea6a32f7e63e9e2bbf884375631089359e/ServiceCollectionDescriptorExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/de7cca8bbad440a84863dc9a66814897f9b51cd9916dcdce4857992d5d492c/HashSet.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e38745c94d65cb54dad5c55660612749c0690da385b9c148982feadef54/OptionsServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e7e231682be8652744726acc6de35323daa68061429db55e0c251114902f60/String.Manipulation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/efd3e9c4749621d4a53b45d7117d2a581e02a265c444a040f1387a155db/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3a8dfd928d7124044723494a9a7b2872a8bb9f96333d4baed4e1992126616ce/Check.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AspNetCore/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
@@ -147,22 +113,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Project.color&quot;: &quot;002548&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;HotReloadSettingsPage&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Project.color": "002548",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "HotReloadSettingsPage",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
     <configuration name="Publish Maps.Functions to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
       <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
-      <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="" />
       <option name="AZURE_FUNCTION_APP_IS_CREATE_APP" value="0" />
       <option name="AZURE_FUNCTION_APP_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Web/sites/func-zeta-maps-northeurope-dev-01" />
       <option name="AZURE_FUNCTION_APP_NAME" value="" />
@@ -184,7 +152,7 @@
       <option name="AZURE_FUNCTION_APP_IS_DEPLOY_TO_SLOT" value="0" />
       <option name="AZURE_FUNCTION_APP_SLOT_NAME" value="" />
       <option name="AZURE_FUNCTION_APP_OPEN_BROWSER_PUBLISH" value="0" />
-      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="" />
       <option name="AZURE_SQL_DATABASE_IS_ENABLED" value="0" />
       <option name="AZURE_SQL_DATABASE_CONNECTION_STRING_NAME" value="" />
       <option name="AZURE_SQL_DATABASE_IS_CREATE" value="0" />
@@ -202,7 +170,7 @@
     </configuration>
     <configuration name="Publish Translator.Functions to Azure (1)" type="AzureFunctionAppPublish" factoryName="Azure Function App">
       <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
-      <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="" />
       <option name="AZURE_FUNCTION_APP_IS_CREATE_APP" value="0" />
       <option name="AZURE_FUNCTION_APP_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Web/sites/func-zeta-translator-northeurope-dev-01" />
       <option name="AZURE_FUNCTION_APP_NAME" value="" />
@@ -224,7 +192,7 @@
       <option name="AZURE_FUNCTION_APP_IS_DEPLOY_TO_SLOT" value="0" />
       <option name="AZURE_FUNCTION_APP_SLOT_NAME" value="" />
       <option name="AZURE_FUNCTION_APP_OPEN_BROWSER_PUBLISH" value="0" />
-      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="" />
       <option name="AZURE_SQL_DATABASE_IS_ENABLED" value="0" />
       <option name="AZURE_SQL_DATABASE_CONNECTION_STRING_NAME" value="" />
       <option name="AZURE_SQL_DATABASE_IS_CREATE" value="0" />
@@ -242,7 +210,7 @@
     </configuration>
     <configuration name="Publish Translator.Functions to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
       <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
-      <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="" />
       <option name="AZURE_FUNCTION_APP_IS_CREATE_APP" value="0" />
       <option name="AZURE_FUNCTION_APP_ID" value="/subscriptions/3b8009bb-7bc4-4e79-9c43-c19b4844d502/resourceGroups/zeta-north-europe/providers/Microsoft.Web/sites/func-zeta-translator-northeurope-dev-01" />
       <option name="AZURE_FUNCTION_APP_NAME" value="" />
@@ -264,7 +232,7 @@
       <option name="AZURE_FUNCTION_APP_IS_DEPLOY_TO_SLOT" value="0" />
       <option name="AZURE_FUNCTION_APP_SLOT_NAME" value="" />
       <option name="AZURE_FUNCTION_APP_OPEN_BROWSER_PUBLISH" value="0" />
-      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="3b8009bb-7bc4-4e79-9c43-c19b4844d502" />
+      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="" />
       <option name="AZURE_SQL_DATABASE_IS_ENABLED" value="0" />
       <option name="AZURE_SQL_DATABASE_CONNECTION_STRING_NAME" value="" />
       <option name="AZURE_SQL_DATABASE_IS_CREATE" value="0" />
@@ -292,7 +260,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -330,7 +298,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -349,7 +317,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -368,7 +336,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -406,7 +374,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -425,9 +393,28 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="PingLocation" />
+      <method v="2">
+        <option name="BuildFunctionsProject" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tenants.Functions" type="AzureFunctionsHost" factoryName="Azure Functions host">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Tenants.Functions/Tenants.Functions.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=None))" />
+      <option name="PROJECT_TFM" value="" />
+      <option name="FUNCTION_NAMES" value="" />
       <method v="2">
         <option name="BuildFunctionsProject" enabled="true" />
       </method>
@@ -444,7 +431,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -482,7 +469,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="TriggerScheduledJobs" />
       <method v="2">
@@ -501,7 +488,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="ping-location" />
       <method v="2">
@@ -520,7 +507,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="ping-location" />
       <method v="2">
@@ -539,7 +526,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -728,6 +715,7 @@
       <item itemvalue="Azure - Publish Function App.Publish Translator.Functions to Azure" />
       <item itemvalue="Azure - Publish Function App.Publish Translator.Functions to Azure (1)" />
       <item itemvalue="Azure - Publish Function App.Publish Maps.Functions to Azure" />
+      <item itemvalue="Azure Functions host.Tenants.Functions" />
       <item itemvalue="Azure Functions host.Inpark.Functions" />
       <item itemvalue="Azure Functions host.Maps.Contracts" />
       <item itemvalue="Azure Functions host.Maps.Host" />
@@ -794,6 +782,7 @@
       <workItem from="1662812755742" duration="1800000" />
       <workItem from="1662815940171" duration="822000" />
       <workItem from="1662818170774" duration="12069000" />
+      <workItem from="1662910775885" duration="622000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -1023,14 +1012,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/CallToActionParser.cs</url>
           <line>21</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\SDUI\Zeta.UI.Intermediate\Umbraco\Parsers\CallToActionParser.cs" initialLine="15" containingFunctionPresentation="method 'Parse'">
-            <startOffsets>
-              <option value="532" />
-            </startOffsets>
-            <endOffsets>
-              <option value="532" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\SDUI\Zeta.UI.Intermediate\Umbraco\Parsers\CallToActionParser.cs" initialLine="15" containingFunctionPresentation="method 'Parse'" />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
