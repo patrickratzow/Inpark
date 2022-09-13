@@ -2,9 +2,6 @@
 using Moq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 using Zeta.Inpark.Models;
 using Zeta.Inpark.Services;
@@ -44,6 +41,7 @@ public class AalborgZooParkEventMapperTests : TestBase
         });
     }
 
+    /*
     [Test]
     public void ParseContent_ShouldReturnExpectedOutput_WhenGivenInput()
     {
@@ -115,6 +113,6 @@ public class AalborgZooParkEventMapperTests : TestBase
         response.IsSuccess(out var result).Should().BeTrue();
         result!.Should().BeEquivalentTo(expectedContent);
     }
-
+    */
 }
 

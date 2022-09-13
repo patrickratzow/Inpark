@@ -1,5 +1,3 @@
-using System;
-
 namespace Zoo.Inpark.Tests.DomainFixture;
 
 [TestFixture]

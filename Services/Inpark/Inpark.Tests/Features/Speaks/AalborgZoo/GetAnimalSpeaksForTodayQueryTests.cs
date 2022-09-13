@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using DomainFixture;
 using DomainFixture.FixtureBuilder;
@@ -12,7 +10,6 @@ using Zeta.Inpark.Enums;
 using Zeta.Inpark.Features.Speaks;
 using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Features.Speaks;
 
 namespace Zoo.Inpark.Tests.Features.Speaks.AalborgZoo;
 

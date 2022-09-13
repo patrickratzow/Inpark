@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using DomainFixture;
 using Moq;
@@ -9,7 +8,6 @@ using Zeta.Inpark.Enums;
 using Zeta.Inpark.Features.OpeningHours;
 using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Features.OpeningHours;
 
 namespace Zoo.Inpark.Tests.Features.OpeningHours;
 

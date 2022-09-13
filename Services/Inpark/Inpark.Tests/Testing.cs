@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using DomainFixture;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;

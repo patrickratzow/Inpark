@@ -6,7 +6,6 @@ using Zeta.Inpark.Entities;
 using Zeta.Inpark.Features.Animals;
 using Zeta.Inpark.ValueObjects;
 using Zoo.Inpark.Contracts;
-using Zoo.Inpark.Features.Animals;
 
 namespace Zoo.Inpark.Tests.Features.Animals;
 
