@@ -23,7 +23,6 @@ class Sidebar extends HookWidget {
       ),
     );
     final theme = Theme.of(context);
-    final meme = theme.textTheme.titleMedium;
 
     return AnimatedBuilder(
       animation: animation,
@@ -37,13 +36,13 @@ class Sidebar extends HookWidget {
                 color: const Color(0xffFFFBFE),
               ),
               Container(
-                color: theme.primaryColorLight.withAlpha(100),
+                color: theme.primaryColorLight.withAlpha(50),
               ),
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: ListView(children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                    padding: const EdgeInsets.fromLTRB(16, 8, 8, 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
