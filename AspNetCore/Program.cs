@@ -6,9 +6,9 @@ using OpenTelemetry.Trace;
 using Serilog;
 using Zeta.Inpark;
 using Zeta.Inpark.Auth;
+using Zeta.Inpark.Tenants;
 using Zoo.Common.Api;
 using Zoo.Common.Api.Jobs;
-using Zoo.Inpark;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +25,7 @@ builder.Services.AddJobs(builder.Configuration);
 builder.Services.AddTenantManager();
 builder.Services.AddInpark(builder.Configuration);
 builder.Services.AddAuth(builder.Configuration);
+builder.Services.AddTenant(builder.Configuration);
 
 if (builder.Configuration["Azure:Insights:Enabled"] is "true")
 {
@@ -101,6 +102,7 @@ app.UseFluentValidationExceptionHandler();
 app.UseAuth(builder.Environment);
 //app.UsePayments();
 app.UseInpark(builder.Environment);
+app.UseTenant(builder.Environment);
 
 app.UseHttpsRedirection();
 

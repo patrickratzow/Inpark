@@ -21,73 +21,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ee4acad-efc3-4930-b166-90b4df3ce29a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Common/Common.Functions/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Contracts/FeatureDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Contracts/ServiceDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Contracts/Tenants.Contracts.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/SaveServiceTrigger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Tenants.Functions.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/host.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/Categories.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/DomainFixture/Configurations/Entities/FeatureConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/DomainFixture/Configurations/Entities/ServiceConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/DomainFixture/Configurations/Entities/TenantConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/DomainFixture/Configurations/ValueObjects/AddressConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/DomainFixture/Configurations/ValueObjects/GpsLocationConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/DomainFixture/ContractTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/DomainFixture/EntityTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/DomainFixture/ValueObjectTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/Features/Tenants/GetServiceTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/Features/Tenants/SaveServiceTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/ImplementationTests/DomainTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/ImplementationTests/TestsTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/Tenants.Tests.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/TestBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/Testing.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Common/DomainEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Common/DomainEventNotification.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Common/DomainEventService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Common/Entity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Common/IHasDomainEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Common/IValidatable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Common/ValidationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Common/ValueObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/DependencyInjection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Entities/Feature.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Entities/Service.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Entities/Tenant.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Errors/ServiceNotFound.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Errors/TenantNotFound.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/GetAllTenantsQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/GetService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/Groups.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/SaveService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/20220905123021_InitialSetUp.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/20220905123021_InitialSetUp.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/20220907144425_ChangesToServiceAndFeature.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/20220907144425_ChangesToServiceAndFeature.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/20220907152156_AddedIndicesServiceAndFeature.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/20220907152156_AddedIndicesServiceAndFeature.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/20220913141423_MadeChangesToTenant.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/20220913141423_MadeChangesToTenant.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Migrations/TenantDbContextModelSnapshot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/TenantDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Tenants.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/ValueObjects/Address.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/ValueObjects/GpsLocation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/SuccessResponseAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/SuccessResponseAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Functions/Common.Functions.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Functions/Common.Functions.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AspNetCore/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AspNetCore/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_admin/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_admin/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/.packages" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +51,18 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/103ae790d238a01f8e6bada7e931fafa62b15caa2479045d77ec4f32e1d029/ISender.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/30c251e6c91e9e9c78c5afeb63e341e13b6dc2153c8e965dd9c8f5acea519332/LateBoundTestFramework.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea95343b9387b73062a9b61b7538f826c54ce3529632b4472ba4494044d23/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/487c158e8cb5a321b9b98cd2b78b67bb9a66722f7e969267c076b0d796caa6/RedisCacheOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5330988bfaacf93f15e30f9b3dd6018a768f89da3b38d874fda77299c62164/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9d4f4ac7db6d2c5d183ab2d92602280ed4349fd6e6a1b6313546b3d01fdab5/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1da7b6c7c71a954fe3eb2531c6476711b3e6d93a8d76795386d326bb9dbc/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5b9c140912e8295f69159adbf39ad664d070868f2c2ae42d7e7dd1d92a9d4/ServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f360779027ab17e5e4e3fd5265f4d517a2cb87478614dec7899e899423040/StackExchangeRedisCacheServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff44a57136ecb6b1994155a6879d590993390d7b9606c337b761f6d1143da4b/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AspNetCore/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Common/Common.Api.SourceGenerator/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -163,28 +115,8 @@
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Extensions/HttpRequestDataExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Extensions/HttpRequestDataExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Extensions/HttpRequestDataExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Extensions/HttpRequestDataExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/HttpTrigger.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/HttpTrigger.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/HttpTrigger.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/HttpTrigger.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Middleware/FluentValidationMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Middleware/FluentValidationMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Middleware/FluentValidationMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Middleware/FluentValidationMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Middleware/ModelBindingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Middleware/ModelBindingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Middleware/ModelBindingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Middleware/ModelBindingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Functions/Tenants.Functions/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Tests/Tenants.Tests/DomainFixture/ContractTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Tests/Tenants.Tests/DomainFixture/ContractTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Tests/Tenants.Tests/DomainFixture/ContractTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Nikol/OneDrive/Dokumenter/GitHub/Zoo/Services/Tenants/Tenants.Tests/Tenants.Tests/DomainFixture/ContractTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Tenants/Tenants.Contracts/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Tenants/Tenants.Tests/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -214,7 +146,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Azure Functions host.Tenants.Functions">
+  <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
     <configuration name="Publish Maps.Functions to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
       <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
       <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="" />
@@ -347,7 +279,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -385,7 +317,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -404,7 +336,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -423,7 +355,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -461,7 +393,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -480,7 +412,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="PingLocation" />
       <method v="2">
@@ -499,7 +431,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=AzureFunctions)" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="" />
       <browser url="http://localhost:7071" />
@@ -519,7 +451,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -557,7 +489,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions)))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="TriggerScheduledJobs" />
       <method v="2">
@@ -576,7 +508,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="ping-location" />
       <method v="2">
@@ -595,7 +527,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="ping-location" />
       <method v="2">
@@ -614,7 +546,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
