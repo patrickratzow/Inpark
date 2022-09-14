@@ -42,19 +42,25 @@ public abstract class Parser
 
     private T? Get<T>(string propertyName)
     {
-        if (!Element.TryGetProperty(propertyName, out var property))
-            return default;
+        var propertySplit = propertyName.Split(",");
+        foreach (var propertySplitName in propertySplit)
+        {
+            if (!Element.TryGetProperty(propertySplitName, out var property))
+                continue;
 
-        var genericType = typeof(T);
-        var type = genericType.IsGenericType && genericType.GetGenericTypeDefinition() == typeof(Nullable<>)
+            var genericType = typeof(T);
+            var type = genericType.IsGenericType && genericType.GetGenericTypeDefinition() == typeof(Nullable<>)
                 ? Nullable.GetUnderlyingType(genericType)
                 : genericType;
-        if (type == typeof(string))
-        {
-            return (T) (object) property.GetString()!;
+            if (type == typeof(string))
+            {
+                return (T) (object) property.GetString()!;
+            }
+
         }
 
-        throw new NotImplementedException($"Has not implemented type {type!.Name}");
+        throw new NotImplementedException($"Has not implemented type {propertyName}");
+
     }
     
 }

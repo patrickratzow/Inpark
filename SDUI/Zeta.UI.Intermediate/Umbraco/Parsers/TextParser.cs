@@ -13,11 +13,11 @@ public class TextParser : Parser
     {
     }
 
-    public override bool ShouldParse() => IsType("text") || IsType("header");
+    public override bool ShouldParse() => IsType("text") || IsType("header") || IsType("headline");
 
     public override IntermediateNode Parse()
     {
-        NotEmpty("text", out string? text);
+        NotEmpty("text,header", out string? text);
         NotEmpty("type", out string? type);
         
         Validate();
