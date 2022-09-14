@@ -4,7 +4,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 
-namespace Zeta.Common.Functions.Middleware;
+namespace Zeta.Inpark.Translator.Functions.Middleware;
 
 public class ModelBindingMiddleware : IFunctionsWorkerMiddleware
 {

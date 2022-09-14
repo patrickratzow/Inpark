@@ -21,14 +21,19 @@ class SidebarButton extends HookWidget {
   Widget build(BuildContext context) {
     const onColor = Color(0xffE8DEF8);
     final offColor = onColor.withOpacity(0);
+    final initialActive = useState(isActive);
 
     const textColor = Color(0xff1D192B);
     final animationController = useAnimationController(
       duration: const Duration(milliseconds: 300),
     );
+
+    var beginColor = initialActive.value ? onColor : offColor;
+    var endColor = initialActive.value ? offColor : onColor;
+
     final animation = ColorTween(
-      begin: onColor,
-      end: offColor,
+      begin: beginColor,
+      end: endColor,
     ).animate(
       CurvedAnimation(
         parent: animationController,
