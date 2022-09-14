@@ -1,6 +1,6 @@
 ﻿namespace Zoo.Common.Api.SourceGenerator.Attributes.OpenApi;
 
-[AttributeUsage(AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public class SuccessResponseAttribute : Attribute
 {
     private int _statusCode;

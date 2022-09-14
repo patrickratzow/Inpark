@@ -96,6 +96,7 @@ public static class DependencyInjection
             // Not having JobStorage setup will cause RecurringJob to fail
             app.ApplicationServices.GetRequiredService<JobStorage>();
         }
+        /*
         RecurringJob.AddOrUpdate<AalborgZooParkEventsJob>(
             x => x.Execute(),
             "* 3 * * *", // Every day at 3 AM 
@@ -111,6 +112,7 @@ public static class DependencyInjection
             "* 3 * * *", // Every day at 3 AM 
             TimeZoneInfo.Local
         );
+        */
     }
 
     private static IServiceCollection AddHangFire(this IServiceCollection services, string connectionString)
