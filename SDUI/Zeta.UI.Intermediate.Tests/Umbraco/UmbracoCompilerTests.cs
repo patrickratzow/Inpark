@@ -1,18 +1,19 @@
 using Microsoft.Extensions.Logging;
 using Moq;
+using Zeta.UI.Intermediate.Umbraco;
 
-namespace Zeta.UI.Intermediate.Tests;
+namespace Zeta.UI.Intermediate.Tests.Umbraco;
 
 [TestFixture]
 [Category(Categories.Unit)]
-public class CompilerTests
+public class UmbracoCompilerTests
 {
-    private Compiler _compiler = null!;
+    private UmbracoCompiler _compiler = null!;
     
     [SetUp]
     public void SetUp()
     {
-        var logger = new Mock<ILogger<Compiler>>();
+        var logger = new Mock<ILogger<UmbracoCompiler>>();
         _compiler = new(logger.Object);
     }
 

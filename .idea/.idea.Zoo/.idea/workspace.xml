@@ -20,20 +20,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ee4acad-efc3-4930-b166-90b4df3ce29a" name="Changes" comment="feat: add swagger to Translator Functions">
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/CompilerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Compiler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/ICompiler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Nodes/RootNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Nodes/SectionNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Zeta.UI.Intermediate.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Zeta.UI.Intermediate.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/IParser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/IntermediateNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/IntermediateNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/NodeTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/NodeTypes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Parser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Parser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/TextParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/TextParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Zeta.UI.Intermediate.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Zeta.UI.Intermediate.csproj" afterDir="false" />
+    <list default="true" id="7ee4acad-efc3-4930-b166-90b4df3ce29a" name="Changes" comment="feat(sdui): work on initial compiler">
+      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/CompilerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Umbraco/UmbracoCompilerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Compiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/UmbracoCompiler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -980,7 +969,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663183762620</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat(sdui): work on initial compiler">
+      <created>1663187865303</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1663187865303</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1026,7 +1022,8 @@
     <MESSAGE value="feat: lots of SDUI work" />
     <MESSAGE value="refactor(zu): improve tests" />
     <MESSAGE value="feat: add swagger to Translator Functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add swagger to Translator Functions" />
+    <MESSAGE value="feat(sdui): work on initial compiler" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(sdui): work on initial compiler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1074,17 +1071,30 @@
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/CompilerTests.cs</url>
+          <url>file://$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Umbraco/UmbracoCompilerTests.cs</url>
           <line>115</line>
           <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\SDUI\Zeta.UI.Intermediate.Tests\CompilerTests.cs" initialLine="36" containingFunctionPresentation="method 'Compile_Should_Compile'">
             <startOffsets>
-              <option value="7430" />
+              <option value="7495" />
             </startOffsets>
             <endOffsets>
-              <option value="7458" />
+              <option value="7523" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/UmbracoCompiler.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\SDUI\Zeta.UI.Intermediate\Umbraco\UmbracoCompiler.cs" initialLine="11" containingFunctionPresentation="lambda expression inside 'Parsers' declaration">
+            <startOffsets>
+              <option value="318" />
+            </startOffsets>
+            <endOffsets>
+              <option value="358" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
         <breakpoint enabled="true" type="DotNet Exception Breakpoints">
           <properties exception="Zeta.UI.Intermediate.Validation.ParsingValidationException" displayValue="ParsingValidationException" namespaceName="Zeta.UI.Intermediate.Validation" />

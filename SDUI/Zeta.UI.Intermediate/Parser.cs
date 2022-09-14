@@ -57,10 +57,10 @@ public abstract class Parser
                 return (T) (object) property.GetString()!;
             }
 
+            throw new NotImplementedException($"Has not implemented type {propertyName}");
         }
-
-        throw new NotImplementedException($"Has not implemented type {propertyName}");
-
+        
+        return default;
     }
     
 }

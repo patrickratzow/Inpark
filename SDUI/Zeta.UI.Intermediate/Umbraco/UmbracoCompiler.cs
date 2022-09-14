@@ -2,19 +2,20 @@ using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Zeta.UI.Intermediate.Nodes;
 
-namespace Zeta.UI.Intermediate;
+namespace Zeta.UI.Intermediate.Umbraco;
 
-public class Compiler : ICompiler
+public class UmbracoCompiler : ICompiler
 {
     private static readonly IReadOnlyList<Type> Parsers = typeof(Parser)
         .Assembly
         .GetExportedTypes()
         .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Parser)))
+        .Where(t => t.Namespace?.Contains("Umbraco") == true)
         .ToList();
     
-    private readonly ILogger<Compiler> _logger;
+    private readonly ILogger<UmbracoCompiler> _logger;
     
-    public Compiler(ILogger<Compiler> logger)
+    public UmbracoCompiler(ILogger<UmbracoCompiler> logger)
     {
         _logger = logger;
     }
