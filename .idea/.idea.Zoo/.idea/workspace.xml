@@ -379,7 +379,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Azure Functions host.Translator.Functions">
+  <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCore">
     <configuration name="Publish Maps.Functions to Azure" type="AzureFunctionAppPublish" factoryName="Azure Function App">
       <option name="AZURE_FUNCTION_APP_PROJECT" value="" />
       <option name="AZURE_FUNCTION_APP_SUBSCRIPTION_ID" value="" />

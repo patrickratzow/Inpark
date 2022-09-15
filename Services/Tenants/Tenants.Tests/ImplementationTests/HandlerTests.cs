@@ -8,7 +8,6 @@ using FluentValidation;
 using MediatR;
 using NUnit.Framework;
 using Zeta.Common;
-using Zoo.Common;
 
 namespace Zeta.Inpark.Tenants.Tests.ImplementationTests;
 
