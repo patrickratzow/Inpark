@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 
-namespace Zoo.Inpark.Tests;
+namespace Zeta.Inpark.Tests;
 
 using static Testing;
 

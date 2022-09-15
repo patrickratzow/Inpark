@@ -1,5 +1,6 @@
+using Zeta.Common;
+using Zeta.Inpark.Contracts;
 using Zeta.Inpark.Entities;
-using Zoo.Inpark.Contracts;
 
 namespace Zeta.Inpark.Features.OpeningHours.Interfaces;
 

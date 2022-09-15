@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DomainFixture;
 using Moq;
+using Zeta.Common.Api;
+using Zeta.Inpark.Contracts;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Enums;
 using Zeta.Inpark.Features.OpeningHours;
 using Zeta.Inpark.ValueObjects;
-using Zoo.Inpark.Contracts;
 
-namespace Zoo.Inpark.Tests.Features.OpeningHours;
+namespace Zeta.Inpark.Tests.Features.OpeningHours;
 
 [TestFixture]
 [Category(Categories.Integration)]

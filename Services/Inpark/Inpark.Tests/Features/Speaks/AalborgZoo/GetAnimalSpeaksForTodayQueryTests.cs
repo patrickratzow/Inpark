@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using DomainFixture;
 using DomainFixture.FixtureBuilder;
 using Moq;
+using Zeta.Common.Api;
+using Zeta.Inpark.Contracts;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Enums;
 using Zeta.Inpark.Features.Speaks;
 using Zeta.Inpark.ValueObjects;
-using Zoo.Inpark.Contracts;
 
-namespace Zoo.Inpark.Tests.Features.Speaks.AalborgZoo;
+namespace Zeta.Inpark.Tests.Features.Speaks.AalborgZoo;
 
 [TestFixture]
 [Category(Categories.Integration)]

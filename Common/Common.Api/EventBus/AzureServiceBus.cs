@@ -3,7 +3,7 @@ using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Zoo.Common.Api.EventBus;
+namespace Zeta.Common.Api.EventBus;
 
 public class AzureServiceBus : IEventBus
 {

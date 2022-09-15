@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Contracts;
+namespace Zeta.Inpark.Contracts;
 
 [Flags]
 public enum WeekDayDto

@@ -4,7 +4,7 @@ using Zeta.Inpark.Entities;
 using Zeta.Inpark.Errors;
 using Zeta.Inpark.Features.Animals;
 
-namespace Zoo.Inpark.Tests.Features.Animals;
+namespace Zeta.Inpark.Tests.Features.Animals;
 
 [TestFixture]
 [Category(Categories.Integration)]

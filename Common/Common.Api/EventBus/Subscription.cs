@@ -1,6 +1,6 @@
 using Azure.Messaging.ServiceBus;
 
-namespace Zoo.Common.Api.EventBus;
+namespace Zeta.Common.Api.EventBus;
 
 public record Subscription(
     ServiceBusReceiver Receiver,

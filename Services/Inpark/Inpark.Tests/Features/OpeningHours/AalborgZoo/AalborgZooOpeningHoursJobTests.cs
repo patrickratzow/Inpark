@@ -2,12 +2,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Zeta.Inpark;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Features.OpeningHours.AalborgZoo;
 using Zeta.Inpark.Features.OpeningHours.Interfaces;
 
-namespace Zoo.Inpark.Tests.Features.OpeningHours.AalborgZoo;
+namespace Zeta.Inpark.Tests.Features.OpeningHours.AalborgZoo;
 
 [TestFixture]
 [Category(Categories.Integration)]

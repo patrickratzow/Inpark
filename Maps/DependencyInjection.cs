@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Zoo.Common.Api;
+using Zeta.Common.Api;
 
 namespace Zeta.Inpark.Maps;
 

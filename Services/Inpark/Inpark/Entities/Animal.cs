@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Zeta.Common;
 using Zeta.Inpark.Common;
 using Zeta.Inpark.ValueObjects;
 using Error = OneOf.Types.Error;

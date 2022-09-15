@@ -3,7 +3,7 @@ using DomainFixture;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Enums;
 
-namespace Zoo.Inpark.Tests.DomainFixture.Configurations.Entities;
+namespace Zeta.Inpark.Tests.DomainFixture.Configurations.Entities;
 
 public class OpeningHourConfiguration : FixtureConfiguration<OpeningHour>
 {

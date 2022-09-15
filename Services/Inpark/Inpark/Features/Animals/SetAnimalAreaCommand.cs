@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Zeta.Common.Api;
+using Zeta.Inpark.Contracts;
 using Zeta.Inpark.Errors;
 using Zeta.Inpark.ValueObjects;
-using Zoo.Inpark.Contracts;
 
 namespace Zeta.Inpark.Features.Animals;
 
@@ -57,8 +58,7 @@ public class SetAnimalAreaCommandHandler : IRequestHandler<SetAnimalAreaCommand,
         }
         catch (Exception ex)
         {
-            _logger.LogError(
-                $"Failed to insert Areas to {request.LatinName} for unknwon reasons");
+            _logger.LogError("Failed to insert Areas to {Name} for unknown reasons", request.LatinName);
         }
 
         return Unit.Value;

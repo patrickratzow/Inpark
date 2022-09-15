@@ -1,3 +1,4 @@
+using Zeta.Common.Api;
 using Zoo.Payments.Contracts;
 
 namespace Zoo.Payments.Features.Products;

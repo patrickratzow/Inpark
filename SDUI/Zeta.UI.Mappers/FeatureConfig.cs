@@ -1,4 +1,4 @@
-namespace Zeta.UI.Mappers.Umbraco;
+namespace Zeta.UI.Mappers;
 
 public class FeatureConfig
 {

@@ -1,3 +1,5 @@
+using Zeta.Common;
+
 namespace Zeta.Inpark.Errors;
 
 public record AnimalNotFound(string Name) : INotFoundError

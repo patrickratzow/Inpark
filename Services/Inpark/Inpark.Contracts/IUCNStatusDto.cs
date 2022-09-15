@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace Zoo.Inpark.Contracts;
+namespace Zeta.Inpark.Contracts;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 public enum IUCNStatusDto

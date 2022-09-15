@@ -1,4 +1,4 @@
-namespace Zoo.Common.Api.EventBus;
+namespace Zeta.Common.Api.EventBus;
 
 public interface IEventBus
 {

@@ -4,8 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Zoo.Common.Api</RootNamespace>
-        <AssemblyName>Zoo.Common.Api</AssemblyName>
+        <RootNamespace>Zeta.Common.Api</RootNamespace>
+        <AssemblyName>Zeta.Common.Api</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

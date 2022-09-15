@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Zeta.Inpark.Translator.Contracts;
 
-namespace Zoo.Common.Api.Translator;
+namespace Zeta.Common.Api.Translator;
 
 public static class TranslatorDependencyInjection
 {

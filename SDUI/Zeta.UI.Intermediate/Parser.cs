@@ -38,9 +38,14 @@ public abstract class Parser
         _validationBuilder.NotEmpty(value, name);
     }
 
+    protected void Get<T>(string propertyName, out T? value)
+    {
+        value = Get<T>(propertyName);
+    }
+
     protected void Validate() => _validationBuilder.Validate();
 
-    private T? Get<T>(string propertyName)
+    public T? Get<T>(string propertyName)
     {
         var propertySplit = propertyName.Split(",");
         foreach (var propertySplitName in propertySplit)
@@ -55,9 +60,17 @@ public abstract class Parser
             if (type == typeof(string))
             {
                 return (T) (object) property.GetString()!;
+            } 
+            if (type == typeof(int))
+            {
+                return (T) (object) property.GetInt32();
+            }
+            if (type == typeof(long))
+            {
+                return (T) (object) property.GetInt64();
             }
 
-            throw new NotImplementedException($"Has not implemented type {propertyName}");
+            return (T) (object) property.GetString()!;
         }
         
         return default;

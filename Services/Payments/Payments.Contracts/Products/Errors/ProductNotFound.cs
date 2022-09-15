@@ -1,4 +1,4 @@
-﻿using Zoo.Common;
+﻿using Zeta.Common;
 
 namespace Zoo.Payments.Contracts;
 

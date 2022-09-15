@@ -4,7 +4,7 @@ using System.Text;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Zoo.Common.Api;
+namespace Zeta.Common.Api;
 
 public class LoggingPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>

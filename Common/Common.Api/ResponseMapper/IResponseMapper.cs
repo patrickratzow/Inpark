@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Zoo.Common.Api;
+namespace Zeta.Common.Api;
 
 public interface IResponseMapper
 {

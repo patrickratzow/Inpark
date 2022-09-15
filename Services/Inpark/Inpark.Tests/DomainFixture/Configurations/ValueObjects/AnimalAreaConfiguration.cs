@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DomainFixture;
 using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Tests.DomainFixture.Configurations.ValueObjects;
+namespace Zeta.Inpark.Tests.DomainFixture.Configurations.ValueObjects;
 
 public class AnimalAreaConfiguration : FixtureConfiguration<AnimalArea>
 {

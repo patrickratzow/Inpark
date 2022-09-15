@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Zoo.Common.Api;
+namespace Zeta.Common.Api;
 
 public static class PipelinesDependencyInjection
 {

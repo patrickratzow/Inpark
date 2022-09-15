@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Zeta.Common.Api;
 using Zeta.Inpark.Translator;
 using Zeta.Inpark.Translator.Functions.Middleware;
-using Zoo.Common.Api;
 
 var host = new HostBuilder()
     .ConfigureAppConfiguration(builder =>

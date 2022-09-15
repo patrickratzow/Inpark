@@ -12,7 +12,11 @@ public class ProcessPingLocationTests : TestBase
     public async Task Handle_ShouldCreateUser_IfNoUserExisted()
     {
         // Arrange
-        var command = await Create<ProcessPingLocation.Command>();
+        var pingId = Guid.NewGuid();
+        var userId = Guid.NewGuid();
+        var latitude = 54.3f;
+        var longitude = 10.1f;
+        var command = new ProcessPingLocation.Command(pingId, userId, latitude, longitude);
                
         // Act
         var result = await Send(command);
@@ -26,13 +30,18 @@ public class ProcessPingLocationTests : TestBase
     public async Task Handle_ShouldAddPingToUser()
     {
         // Arrange
-        var command = await Create<ProcessPingLocation.Command>();
+        var user = await Add(User.Create(Guid.NewGuid()));
+        var pingId = Guid.NewGuid();
+        var userId = user.Id;
+        var latitude = 54.3f;
+        var longitude = 10.1f;
+        var command = new ProcessPingLocation.Command(pingId, userId, latitude, longitude);
         
         // Act
         var result = await Send(command);
         
         // Assert
         result.Value.Should().BeOfType<Unit>();
-        await ShouldFind<Ping>(command.UserId);
+        await ShouldFind<Ping>(command.PingId);
     }
 }

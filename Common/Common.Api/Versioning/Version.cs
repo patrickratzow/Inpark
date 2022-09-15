@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Zoo.Common.Api.Versioning;
+namespace Zeta.Common.Api.Versioning;
 
 public record Version(
     int Major,

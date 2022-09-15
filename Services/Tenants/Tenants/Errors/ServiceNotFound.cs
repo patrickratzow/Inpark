@@ -1,3 +1,4 @@
+using Zeta.Common;
 using Zoo.Common;
 
 namespace Zeta.Inpark.Tenants.Errors;

@@ -1,5 +1,6 @@
 using System.Net;
 using Microsoft.Extensions.Logging;
+using Zeta.Common;
 using Zeta.Inpark.Features.Animals.Interfaces;
 
 namespace Zeta.Inpark.Features.Animals.AalborgZoo;

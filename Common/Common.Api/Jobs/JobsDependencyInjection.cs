@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Zoo.Common.Api.Jobs;
+namespace Zeta.Common.Api.Jobs;
 
 public static class JobsDependencyInjection
 {

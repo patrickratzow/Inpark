@@ -1,8 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Zeta.Common.Functions;
-using Zeta.Common.Functions.Middleware;
 using Zeta.Inpark.Tenants;
+using Zeta.Inpark.Tenants.Functions.Middleware;
 
 var host = new HostBuilder()
     .ConfigureAppConfiguration(builder =>

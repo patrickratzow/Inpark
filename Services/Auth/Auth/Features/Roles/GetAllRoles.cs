@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Zeta.Common.Api;
 using Zeta.Inpark.Auth.Contracts;
 
 namespace Zeta.Inpark.Auth.Features.Roles;

@@ -10,6 +10,7 @@ using Moq;
 using NUnit.Framework;
 using Respawn;
 using Respawn.Graph;
+using Zeta.Common.Api;
 using Zeta.Inpark.Tenants.Common;
 
 namespace Zeta.Inpark.Tenants.Tests;
@@ -29,7 +30,7 @@ public class Testing
     {
         FluentTests.AddBase(typeof(Entity));
         FluentTests.AddBase(typeof(ValueObject));
-        FluentTests.AddAssembly(typeof(Zoo.Common.Api.ResponseMapperDependencyInjection).Assembly);
+        FluentTests.AddAssembly(typeof(ResponseMapperDependencyInjection).Assembly);
 
         var path = Directory.GetCurrentDirectory();
         var builder = new ConfigurationBuilder()

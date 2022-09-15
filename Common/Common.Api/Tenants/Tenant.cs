@@ -1,4 +1,4 @@
-namespace Zoo.Common.Api;
+namespace Zeta.Common.Api;
 
 public record Tenant(
     Guid Id,

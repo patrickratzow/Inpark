@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using FluentValidation;
 using MediatR;
+using Zeta.Common;
 
 namespace Zoo.Payments.Tests.ImplementationTests;
 

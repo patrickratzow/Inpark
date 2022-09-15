@@ -1,4 +1,4 @@
-namespace Zoo.Common.Api.Translator;
+namespace Zeta.Common.Api.Translator;
 
 public interface ITranslationService
 {

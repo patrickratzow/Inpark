@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
+using Zeta.Common;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Enums;
 using Zeta.Inpark.Features.Speaks.Interfaces;

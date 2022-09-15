@@ -5,8 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
-        <AssemblyName>Zoo.Common.Api.SourceGenerator.Attributes</AssemblyName>
-        <RootNamespace>Zoo.Common.Api.SourceGenerator.Attributes</RootNamespace>
+        <AssemblyName>Zeta.Common.Api.SourceGenerator.Attributes</AssemblyName>
+        <RootNamespace>Zeta.Common.Api.SourceGenerator.Attributes</RootNamespace>
     </PropertyGroup>
 
 </Project>

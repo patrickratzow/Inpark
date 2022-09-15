@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Respawn;
 using Respawn.Graph;
+using Zeta.Common.Api;
 using Zeta.Inpark.Maps.Common;
 
 namespace Zeta.Inpark.Maps.Tests;
@@ -26,7 +27,7 @@ public class Testing
     {
         FluentTests.AddBase(typeof(Entity));
         FluentTests.AddBase(typeof(ValueObject));
-        FluentTests.AddAssembly(typeof(Zoo.Common.Api.ResponseMapperDependencyInjection).Assembly);
+        FluentTests.AddAssembly(typeof(ResponseMapperDependencyInjection).Assembly);
 
         var path = Directory.GetCurrentDirectory();
         var builder = new ConfigurationBuilder()
@@ -46,9 +47,6 @@ public class Testing
         services.AddSingleton(env);
         services.AddLogging();
         services.AddMaps(_configuration);
-
-        services.Remove(services.First(x => x.ServiceType == typeof(IMemoryCache)));
-        services.AddSingleton<IMemoryCache, TestMemoryCache>();
 
         _scopeFactory = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
 
@@ -80,27 +78,11 @@ public class Testing
 
     public static async Task ResetState()
     {
-        var connectionString = _configuration.GetConnectionString("AuthConnection");
+        var connectionString = _configuration.GetConnectionString("MapsDatabase");
    
         await _checkpoint.Reset(connectionString);
     }
 
     [OneTimeTearDown]
     public void RunAfterAnyTests() { }
-    
-    public class TestMemoryCache : IMemoryCache
-    {
-        public void Dispose() { }
-
-        public ICacheEntry CreateEntry(object key) { return new Mock<ICacheEntry>().Object; }
-
-        public void Remove(object key) {}
-
-        public bool TryGetValue(object key, out object value)
-        {
-            value = null!;
-        
-            return false; 
-        }
-    }
 }

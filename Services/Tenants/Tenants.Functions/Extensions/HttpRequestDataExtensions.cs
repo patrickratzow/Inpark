@@ -3,7 +3,7 @@ using System.Text.Json;
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker.Http;
 
-namespace Zeta.Common.Functions.Extensions;
+namespace Zeta.Inpark.Tenants.Functions.Extensions;
 
 public static class HttpRequestDataExtensions
 {

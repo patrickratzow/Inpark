@@ -4,10 +4,10 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OneOf;
+using Zeta.Common.Api;
+using Zeta.Common.Api.SourceGenerator.Attributes.OpenApi;
 using Zeta.Inpark.Tenants.Entities;
 using Zeta.Inpark.Tenants.Errors;
-using Zoo.Common.Api;
-using Zoo.Common.Api.SourceGenerator.Attributes.OpenApi;
 using Tenant = Zeta.Inpark.Tenants.Entities.Tenant;
 
 namespace Zeta.Inpark.Tenants.Features;

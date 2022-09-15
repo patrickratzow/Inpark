@@ -1,7 +1,7 @@
 ﻿using OneOf;
-using Zoo.Common.Api;
+using Zeta.Common.Api;
 
-namespace Zeta.Common.Functions;
+namespace Zeta.Inpark.Tenants.Functions;
 
 public abstract class HttpTrigger
 {

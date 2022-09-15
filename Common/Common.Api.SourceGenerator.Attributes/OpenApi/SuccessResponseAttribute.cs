@@ -1,4 +1,4 @@
-﻿namespace Zoo.Common.Api.SourceGenerator.Attributes.OpenApi;
+﻿namespace Zeta.Common.Api.SourceGenerator.Attributes.OpenApi;
 
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public class SuccessResponseAttribute : Attribute

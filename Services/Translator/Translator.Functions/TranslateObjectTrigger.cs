@@ -5,9 +5,9 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
+using Zeta.Common.Api;
 using Zeta.Inpark.Translator.Features;
 using Zeta.Inpark.Translator.Functions.Extensions;
-using Zoo.Common.Api;
 
 namespace Zeta.Inpark.Translator.Functions;
 

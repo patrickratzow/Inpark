@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Zoo.Common.Api.Versioning;
+namespace Zeta.Common.Api.Versioning;
 
 public static class VersioningDependencyInjection
 {

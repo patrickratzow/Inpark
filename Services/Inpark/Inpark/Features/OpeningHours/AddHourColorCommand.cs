@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Zeta.Common.Api;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Features.OpeningHours.Errors;
 

@@ -1,3 +1,5 @@
+using Zeta.Common;
+
 namespace Zeta.Inpark.Features.Animals.Interfaces;
 
 public interface IAnimalRepository

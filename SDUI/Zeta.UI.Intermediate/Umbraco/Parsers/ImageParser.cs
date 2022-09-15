@@ -15,13 +15,19 @@ public class ImageParser : Parser
     {
         NotNull("alt", out string? alt);
         NotNull("image", out string? url);
-
-        Validate();
+        Get("width", out int? width);
+        Get("height", out int? height);
         
+        Validate();
+
+        var metadata = new ImageMetadata(
+            width,
+            height
+        );
         return new ImageNode(
             url!,
             alt,
-            true    
+            metadata
         );
     }
 }

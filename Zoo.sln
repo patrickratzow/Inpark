@@ -93,6 +93,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tenants.Functions", "Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tenants.Tests", "Services\Tenants\Tenants.Tests\Tenants.Tests.csproj", "{BC5A6B47-AD64-4BD0-8739-7B83060BA238}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeta.UI.Mappers.Tests", "SDUI\Zeta.UI.Mappers.Tests\Zeta.UI.Mappers.Tests.csproj", "{79EB2E6E-E367-4E96-BC80-494F1B60C858}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +241,10 @@ Global
 		{BC5A6B47-AD64-4BD0-8739-7B83060BA238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC5A6B47-AD64-4BD0-8739-7B83060BA238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC5A6B47-AD64-4BD0-8739-7B83060BA238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79EB2E6E-E367-4E96-BC80-494F1B60C858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79EB2E6E-E367-4E96-BC80-494F1B60C858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79EB2E6E-E367-4E96-BC80-494F1B60C858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79EB2E6E-E367-4E96-BC80-494F1B60C858}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -285,6 +291,7 @@ Global
 		{C59E1F1C-3A85-43C0-8F51-19B3C225B5F2} = {D8770BD6-4863-4553-A9E0-A370240BCC72}
 		{AEEC42DD-9E8D-4976-BBFF-475034BFB79A} = {D8770BD6-4863-4553-A9E0-A370240BCC72}
 		{BC5A6B47-AD64-4BD0-8739-7B83060BA238} = {D8770BD6-4863-4553-A9E0-A370240BCC72}
+		{79EB2E6E-E367-4E96-BC80-494F1B60C858} = {DB4DA918-DB13-4FCA-9759-11E54ABCC9B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2AC09FE-11CB-42E6-BF6D-A702BA7BECE3}

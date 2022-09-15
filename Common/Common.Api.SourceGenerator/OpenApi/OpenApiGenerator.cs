@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace Zoo.Common.Api.SourceGenerator.OpenApi;
+namespace Zeta.Common.Api.SourceGenerator.OpenApi;
 
 [Generator]
 public class OpenApiGenerator : IIncrementalGenerator

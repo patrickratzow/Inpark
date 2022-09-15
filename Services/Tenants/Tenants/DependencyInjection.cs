@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Zoo.Common.Api;
+using Zeta.Common.Api;
 
 namespace Zeta.Inpark.Tenants;
 

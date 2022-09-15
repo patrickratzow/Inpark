@@ -2,9 +2,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Zeta.Common.Api;
 using Zeta.Inpark.Translator.Features;
 using Zeta.Inpark.Translator.Functions.Extensions;
-using Zoo.Common.Api;
 
 namespace Zeta.Inpark.Translator.Functions;
 

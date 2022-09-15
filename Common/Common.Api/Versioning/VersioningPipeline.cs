@@ -1,7 +1,7 @@
 using System.Reflection;
 using MediatR;
 
-namespace Zoo.Common.Api.Versioning;
+namespace Zeta.Common.Api.Versioning;
 
 public class VersioningPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
