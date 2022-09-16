@@ -8,7 +8,6 @@ using Zeta.Common.Api;
 using Zeta.Common.Api.Jobs;
 using Zeta.Inpark;
 using Zeta.Inpark.Auth;
-using Zeta.Inpark.Tenants;
 
 var builder = WebApplication.CreateBuilder(args);
 
