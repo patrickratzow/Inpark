@@ -21,23 +21,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ee4acad-efc3-4930-b166-90b4df3ce29a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220918114809_ChangedNameBackToDisplayName.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/20220918114809_ChangedNameBackToDisplayName.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Contracts/AddressDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Contracts/GpsLocationDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Contracts/ParkDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/GetAllParksTrigger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/GetAllParksQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/DomainFixture/Configurations/Entities/UserConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalNameConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalNameConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalsQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalsQueryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Migrations/InparkDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/AnimalName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/AnimalName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/HttpTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/HttpTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/GetAllTenantsQuery.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -825,7 +810,7 @@
       <workItem from="1662910775885" duration="622000" />
       <workItem from="1663006051548" duration="2290000" />
       <workItem from="1663331055720" duration="1004000" />
-      <workItem from="1663497204317" duration="4470000" />
+      <workItem from="1663497204317" duration="7027000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
