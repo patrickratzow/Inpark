@@ -54,11 +54,11 @@ public class GetAnimalsQueryTests : TestBase
         result.Should().HaveCount(2)
             .And.SatisfyRespectively(first =>
             {
-                first.Name.DisplayName.Should().Be(secondAnimal.Name.Name);
+                first.Name.DisplayName.Should().Be(secondAnimal.Name.DisplayName);
             }, 
             second =>
             {
-                second.Name.DisplayName.Should().Be(firstAnimal.Name.Name);
+                second.Name.DisplayName.Should().Be(firstAnimal.Name.DisplayName);
             });
     }
 }
