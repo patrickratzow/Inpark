@@ -1,7 +1,10 @@
+using System.Net;
+using Azure.Core;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Zeta.Common.Api;
 using Zeta.Inpark.Tenants.Features;
 
@@ -17,11 +20,24 @@ public class GetAllParksTrigger : HttpTrigger
     }
     
     [Function("get-all-parks")]
-    public async Task<ActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req)
+    [OpenApiOperation(
+        operationId: "get-all-parks", 
+        tags: new[] { "parks" }, 
+        Summary = "Shows all parks",
+        Visibility = OpenApiVisibilityType.Important
+    )]
+    [OpenApiResponseWithBody(
+        statusCode: HttpStatusCode.OK, 
+        contentType: "application/json", 
+        bodyType: typeof(Dictionary<string, string>), 
+        Summary = "successful operation", 
+        Description = "successful operation"
+    )]
+    public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req)
     {
         var query = new GetAllParksQuery();
         var result = await _mediator.Send(query);
 
-        return Map(result);
+        return await Map(result).Build(req);
     }
 }
