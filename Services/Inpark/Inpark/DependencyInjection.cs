@@ -85,32 +85,6 @@ public static class DependencyInjection
         app.UseTranslator();
         
         RunMigrations(app.ApplicationServices);
-
-        if (env.IsDevelopment())
-        {
-            app.UseHangfireDashboard();
-        }
-        else
-        {
-            // Force JobStorage to be resolved outside development
-            // Not having JobStorage setup will cause RecurringJob to fail
-            app.ApplicationServices.GetRequiredService<JobStorage>();
-        }
-        RecurringJob.AddOrUpdate<AalborgZooParkEventsJob>(
-            x => x.Execute(),
-            "* 3 * * *", // Every day at 3 AM 
-            TimeZoneInfo.Local
-        );
-        RecurringJob.AddOrUpdate<AalborgZooOpeningHoursJob>(
-            x => x.Execute(),
-            "* 3 * * *", // Every day at 3 AM 
-            TimeZoneInfo.Local
-        );
-        RecurringJob.AddOrUpdate<AalborgZooUpdateSpeaksJob>(
-            x => x.Execute(),
-            "* 3 * * *", // Every day at 3 AM 
-            TimeZoneInfo.Local
-        );
     }
 
     private static IServiceCollection AddHangFire(this IServiceCollection services, string connectionString)
