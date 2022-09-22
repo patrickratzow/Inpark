@@ -1,6 +1,7 @@
 using System.Net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Zeta.Common;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Enums;
 using Zeta.Inpark.Features.OpeningHours.Interfaces;

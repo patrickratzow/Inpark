@@ -5,7 +5,7 @@ using Moq;
 using Zeta.Inpark.Enums;
 using Zeta.Inpark.Features.OpeningHours.AalborgZoo;
 
-namespace Zoo.Inpark.Tests.Features.OpeningHours.AalborgZoo;
+namespace Zeta.Inpark.Tests.Features.OpeningHours.AalborgZoo;
 
 [TestFixture]
 [Category(Categories.Unit)]

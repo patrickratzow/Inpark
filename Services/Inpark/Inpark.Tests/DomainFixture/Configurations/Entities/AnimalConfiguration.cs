@@ -1,7 +1,7 @@
 using DomainFixture;
 using Zeta.Inpark.Entities;
 
-namespace Zoo.Inpark.Tests.DomainFixture.Configurations.Entities;
+namespace Zeta.Inpark.Tests.DomainFixture.Configurations.Entities;
 
 public class AnimalConfiguration : FixtureConfiguration<Animal>
 {

@@ -5,8 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>10.0</LangVersion>
-        <RootNamespace>Zoo.Common</RootNamespace>
-        <AssemblyName>Zoo.Common</AssemblyName>
+        <RootNamespace>Zeta.Common</RootNamespace>
+        <AssemblyName>Zeta.Common</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

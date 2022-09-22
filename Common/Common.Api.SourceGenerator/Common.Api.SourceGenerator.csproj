@@ -8,8 +8,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>true</ImplicitUsings>
         <LangVersion>latest</LangVersion>
-        <AssemblyName>Zoo.Common.Api.SourceGenerator</AssemblyName>
-        <RootNamespace>Zoo.Common.Api.SourceGenerator</RootNamespace>
+        <AssemblyName>Zeta.Common.Api.SourceGenerator</AssemblyName>
+        <RootNamespace>Zeta.Common.Api.SourceGenerator</RootNamespace>
     </PropertyGroup>
 
     <!-- The following libraries include the source generator interfaces and types we need -->

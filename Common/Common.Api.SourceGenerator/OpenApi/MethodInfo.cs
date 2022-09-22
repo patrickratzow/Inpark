@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace Zoo.Common.Api.SourceGenerator.OpenApi;
+namespace Zeta.Common.Api.SourceGenerator.OpenApi;
 
 public record Parameter(string Type, string Name)
 {

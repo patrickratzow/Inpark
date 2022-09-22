@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Tests.DomainFixture;
+namespace Zeta.Inpark.Tests.DomainFixture;
 
 [TestFixture]
 [Category(Categories.Unit)]

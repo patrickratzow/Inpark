@@ -1,6 +1,4 @@
-using Microsoft.VisualBasic.CompilerServices;
-
-namespace Zoo.Inpark.Contracts;
+namespace Zeta.Inpark.Contracts;
 
 public record AnimalAreaDto(
     string Color,

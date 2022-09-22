@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Zoo.Common.Api;
+namespace Zeta.Common.Api;
 
 public static class ResponseMapperDependencyInjection
 {

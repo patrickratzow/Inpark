@@ -1,7 +1,7 @@
 using OneOf;
 using OneOf.Types;
 
-namespace Zoo.Common;
+namespace Zeta.Common;
 
 public class Result : OneOfBase<Success, Error>
 {

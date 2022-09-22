@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Zeta.Common.Api;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Errors;
 
@@ -15,6 +16,7 @@ public class GetAnimalQueryHandler : IRequestHandler<GetAnimalQuery, OneOf<Anima
         _context = context;
     }
 
+    //TODO change this to return AnimalDto
     public async Task<OneOf<Animal, AnimalNotFound>> Handle(GetAnimalQuery request, CancellationToken cancellationToken)
     {
         var animal = await _context.Animals

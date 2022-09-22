@@ -38,23 +38,42 @@ public abstract class Parser
         _validationBuilder.NotEmpty(value, name);
     }
 
+    protected void Get<T>(string propertyName, out T? value)
+    {
+        value = Get<T>(propertyName);
+    }
+
     protected void Validate() => _validationBuilder.Validate();
 
-    private T? Get<T>(string propertyName)
+    public T? Get<T>(string propertyName)
     {
-        if (!Element.TryGetProperty(propertyName, out var property))
-            return default;
+        var propertySplit = propertyName.Split(",");
+        foreach (var propertySplitName in propertySplit)
+        {
+            if (!Element.TryGetProperty(propertySplitName, out var property))
+                continue;
 
-        var genericType = typeof(T);
-        var type = genericType.IsGenericType && genericType.GetGenericTypeDefinition() == typeof(Nullable<>)
+            var genericType = typeof(T);
+            var type = genericType.IsGenericType && genericType.GetGenericTypeDefinition() == typeof(Nullable<>)
                 ? Nullable.GetUnderlyingType(genericType)
                 : genericType;
-        if (type == typeof(string))
-        {
+            if (type == typeof(string))
+            {
+                return (T) (object) property.GetString()!;
+            } 
+            if (type == typeof(int))
+            {
+                return (T) (object) property.GetInt32();
+            }
+            if (type == typeof(long))
+            {
+                return (T) (object) property.GetInt64();
+            }
+
             return (T) (object) property.GetString()!;
         }
-
-        throw new NotImplementedException($"Has not implemented type {type!.Name}");
+        
+        return default;
     }
     
 }

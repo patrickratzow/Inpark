@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Tenants.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7251",
+      "launchBrowser": false
+    }
+  }
+}

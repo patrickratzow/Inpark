@@ -1,4 +1,4 @@
-namespace Zoo.Common.Api.Jobs;
+namespace Zeta.Common.Api.Jobs;
 
 public class JobAttribute : Attribute
 {

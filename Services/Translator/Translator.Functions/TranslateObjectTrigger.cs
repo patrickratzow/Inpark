@@ -1,11 +1,13 @@
+using System.Net;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using Zeta.Common.Functions;
-using Zeta.Common.Functions.Extensions;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
+using Zeta.Common.Api;
 using Zeta.Inpark.Translator.Features;
-using Zoo.Common.Api;
+using Zeta.Inpark.Translator.Functions.Extensions;
 
 namespace Zeta.Inpark.Translator.Functions;
 
@@ -19,6 +21,25 @@ public class TranslateObjectTrigger : HttpTrigger
     }
 
     [Function("translate-object")]
+    [OpenApiOperation(
+        operationId: "translate-object", 
+        tags: new[] { "translate" }, 
+        Summary = "Translates object",
+        Visibility = OpenApiVisibilityType.Important
+    )]
+    [OpenApiRequestBody(
+        contentType: "application/json", 
+        bodyType: typeof(Request), 
+        Required = true, 
+        Description = "Translated object"
+    )]
+    [OpenApiResponseWithBody(
+        statusCode: HttpStatusCode.OK, 
+        contentType: "application/json", 
+        bodyType: typeof(Dictionary<string, string>), 
+        Summary = "successful operation", 
+        Description = "successful operation"
+    )]
     public async Task<ActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req)
     {

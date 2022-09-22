@@ -1,6 +1,6 @@
 using Zeta.Inpark.Contents;
 
-namespace Zoo.Inpark.Tests.Contents;
+namespace Zeta.Inpark.Tests.Contents;
 
 [TestFixture]
 [Category(Categories.Unit)]

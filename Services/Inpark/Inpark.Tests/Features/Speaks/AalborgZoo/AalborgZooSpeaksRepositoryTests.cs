@@ -9,7 +9,7 @@ using Moq.Protected;
 using Zeta.Inpark.Features.Speaks.AalborgZoo;
 using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Tests.Features.Speaks.AalborgZoo;
+namespace Zeta.Inpark.Tests.Features.Speaks.AalborgZoo;
 
 [TestFixture]
 [Category(Categories.Unit)]

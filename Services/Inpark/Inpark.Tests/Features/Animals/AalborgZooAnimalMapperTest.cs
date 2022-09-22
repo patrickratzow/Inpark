@@ -6,7 +6,7 @@ using Zeta.Inpark.Features.Animals.AalborgZoo;
 using Zeta.Inpark.Models;
 using Zeta.Inpark.Services;
 
-namespace Zoo.Inpark.Tests.Features.Animals;
+namespace Zeta.Inpark.Tests.Features.Animals;
 
 [TestFixture]
 [Category(Categories.Unit)]

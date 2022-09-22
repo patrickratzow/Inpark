@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DomainFixture;
+using Zeta.Inpark.Contracts;
 using Zeta.Inpark.Entities;
 using Zeta.Inpark.Features.Animals;
 using Zeta.Inpark.ValueObjects;
-using Zoo.Inpark.Contracts;
 
-namespace Zoo.Inpark.Tests.Features.Animals;
+namespace Zeta.Inpark.Tests.Features.Animals;
 
 [TestFixture]
 [Category(Categories.Integration)]
@@ -54,11 +54,11 @@ public class GetAnimalsQueryTests : TestBase
         result.Should().HaveCount(2)
             .And.SatisfyRespectively(first =>
             {
-                first.Name.DisplayName.Should().Be(secondAnimal.Name.Name);
+                first.Name.DisplayName.Should().Be(secondAnimal.Name.DisplayName);
             }, 
             second =>
             {
-                second.Name.DisplayName.Should().Be(firstAnimal.Name.Name);
+                second.Name.DisplayName.Should().Be(firstAnimal.Name.DisplayName);
             });
     }
 }

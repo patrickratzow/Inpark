@@ -1,3 +1,5 @@
+using Zeta.Common;
+
 namespace Zeta.Inpark.Features.OpeningHours.Errors;
 
 public record TimeRangeAlreadyHasAColor(string TimeRange) : IAlreadyExistsError

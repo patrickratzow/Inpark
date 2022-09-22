@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Zoo.Inpark.Tests.Features.Animals;
+namespace Zeta.Inpark.Tests.Features.Animals;
 
 public class SetAnimalAreaCommand
 {

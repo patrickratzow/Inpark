@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using DomainFixture;
 using FluentValidation;
-using Zoo.Inpark.Contracts;
+using Zeta.Inpark.Contracts;
 
-namespace Zoo.Inpark.Tests.ImplementationTests;
+namespace Zeta.Inpark.Tests.ImplementationTests;
 
 /*
  * The purpose of these tests are to ensure implementations of certain things.

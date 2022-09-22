@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Zeta.Inpark.Features.Speaks.AalborgZoo;
 
-namespace Zoo.Inpark.Tests.Features.Speaks.AalborgZoo;
+namespace Zeta.Inpark.Tests.Features.Speaks.AalborgZoo;
 
 [TestFixture]
 [Category(Categories.Unit)]

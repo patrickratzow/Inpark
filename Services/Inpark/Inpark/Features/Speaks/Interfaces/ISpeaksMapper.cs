@@ -1,3 +1,4 @@
+using Zeta.Common;
 using Zeta.Inpark.Entities;
 
 namespace Zeta.Inpark.Features.Speaks.Interfaces;

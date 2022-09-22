@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Zoo.Common.Api.Jobs;
+namespace Zeta.Common.Api.Jobs;
 
 public class JobHandler
 {

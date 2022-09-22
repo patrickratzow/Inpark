@@ -1,4 +1,4 @@
-namespace Zoo.Common.Api.Versioning;
+namespace Zeta.Common.Api.Versioning;
 
 public class VersionAttribute : Attribute
 {

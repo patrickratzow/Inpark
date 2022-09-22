@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Zeta.Common.Api;
+using Zeta.Inpark.Contracts;
 using Zeta.Inpark.Errors;
-using Zoo.Inpark.Contracts;
 
 namespace Zeta.Inpark.Features.Animals;
 

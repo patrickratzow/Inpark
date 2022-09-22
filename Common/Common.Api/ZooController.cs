@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Zoo.Common.Api;
+namespace Zeta.Common.Api;
 
 public class ZooController : ControllerBase
 {

@@ -4,8 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Zoo.Inpark.Contracts</RootNamespace>
-        <AssemblyName>Zoo.Inpark.Contracts</AssemblyName>
+        <RootNamespace>Zeta.Inpark.Contracts</RootNamespace>
+        <AssemblyName>Zeta.Inpark.Contracts</AssemblyName>
     </PropertyGroup>
 
 </Project>

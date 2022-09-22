@@ -1,7 +1,13 @@
+using Zeta.UI.Intermediate;
+
 namespace Zeta.UI.Mappers;
 
 public interface IVisitor
 {
-    bool ShouldVisit(SDUINode node, ParsingNode parsingNode);
-    void Visit(SDUINode node, ParsingNode parsingNode);
+}
+
+public interface IVisitor<in T> : IVisitor where T : IntermediateNode
+{
+    bool ShouldVisit(SDUINode node, T intermediateNode) => true;
+    void Visit(SDUINode node, T intermediateNode);
 }

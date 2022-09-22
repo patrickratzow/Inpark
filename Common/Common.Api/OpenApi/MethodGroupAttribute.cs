@@ -1,4 +1,4 @@
-﻿namespace Zoo.Common.Api;
+﻿namespace Zeta.Common.Api;
 
 public class MethodGroupAttribute : Attribute
 {

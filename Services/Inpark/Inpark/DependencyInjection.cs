@@ -10,6 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
+using Zeta.Common.Api;
+using Zeta.Common.Api.Translator;
+using Zeta.Common.Api.Versioning;
 using Zeta.Inpark.Common;
 using Zeta.Inpark.Features.Animals.AalborgZoo;
 using Zeta.Inpark.Features.Animals.Interfaces;
@@ -21,8 +24,6 @@ using Zeta.Inpark.Features.Speaks.AalborgZoo;
 using Zeta.Inpark.Features.Speaks.Interfaces;
 using Zeta.Inpark.Services;
 using Zeta.UI.Transformers;
-using Zoo.Common.Api.Translator;
-using Zoo.Common.Api.Versioning;
 
 namespace Zeta.Inpark;
 
@@ -85,6 +86,34 @@ public static class DependencyInjection
         app.UseTranslator();
         
         RunMigrations(app.ApplicationServices);
+
+        if (env.IsDevelopment())
+        {
+            app.UseHangfireDashboard();
+        }
+        else
+        {
+            // Force JobStorage to be resolved outside development
+            // Not having JobStorage setup will cause RecurringJob to fail
+            app.ApplicationServices.GetRequiredService<JobStorage>();
+        }
+        /*
+        RecurringJob.AddOrUpdate<AalborgZooParkEventsJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
+        RecurringJob.AddOrUpdate<AalborgZooOpeningHoursJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
+        RecurringJob.AddOrUpdate<AalborgZooUpdateSpeaksJob>(
+            x => x.Execute(),
+            "* 3 * * *", // Every day at 3 AM 
+            TimeZoneInfo.Local
+        );
+        */
     }
 
     private static IServiceCollection AddHangFire(this IServiceCollection services, string connectionString)

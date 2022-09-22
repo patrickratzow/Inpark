@@ -10,10 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Respawn;
 using Respawn.Graph;
-using Zeta.Inpark;
+using Zeta.Common.Api;
 using Zeta.Inpark.Common;
 
-namespace Zoo.Inpark.Tests;
+namespace Zeta.Inpark.Tests;
 
 [SetUpFixture]
 public class Testing
@@ -30,7 +30,7 @@ public class Testing
     {
         FluentTests.AddBase(typeof(Entity));
         FluentTests.AddBase(typeof(ValueObject));
-        FluentTests.AddAssembly(typeof(Zoo.Common.Api.ResponseMapperDependencyInjection).Assembly);
+        FluentTests.AddAssembly(typeof(ResponseMapperDependencyInjection).Assembly);
 
         var path = Directory.GetCurrentDirectory();
         var builder = new ConfigurationBuilder()

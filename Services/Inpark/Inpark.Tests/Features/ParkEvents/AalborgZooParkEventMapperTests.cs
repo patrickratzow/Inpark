@@ -1,12 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using Moq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Zeta.Inpark.Features.ParkEvents.AalborgZoo;
 using Zeta.Inpark.Models;
-using Zeta.Inpark.Services;
 
-namespace Zoo.Inpark.Tests.Features.ParkEvents;
+namespace Zeta.Inpark.Tests.Features.ParkEvents;
 
 [TestFixture]
 [Category(Categories.Unit)]

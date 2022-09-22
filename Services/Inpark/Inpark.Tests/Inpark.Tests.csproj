@@ -5,8 +5,8 @@
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
-        <RootNamespace>Zoo.Inpark.Tests</RootNamespace>
-        <AssemblyName>Zoo.Inpark.Tests</AssemblyName>
+        <RootNamespace>Zeta.Inpark.Tests</RootNamespace>
+        <AssemblyName>Zeta.Inpark.Tests</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

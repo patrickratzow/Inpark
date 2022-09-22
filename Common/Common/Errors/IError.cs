@@ -1,4 +1,4 @@
-﻿namespace Zoo.Common;
+﻿namespace Zeta.Common;
 
 public interface IError
 {

@@ -2,7 +2,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Zoo.Common.Api;
+namespace Zeta.Common.Api;
 
 public class TenantHeaderOperationFilter : IOperationFilter
 {

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.Protected;
-using Zeta.Inpark;
 using Zeta.Inpark.Features.OpeningHours.AalborgZoo;
 using Zeta.Inpark.ValueObjects;
 
-namespace Zoo.Inpark.Tests.Features.OpeningHours.AalborgZoo;
+namespace Zeta.Inpark.Tests.Features.OpeningHours.AalborgZoo;
 
 [TestFixture]
 [Category(Categories.Unit)]

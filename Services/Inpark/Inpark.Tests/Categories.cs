@@ -1,4 +1,4 @@
-﻿namespace Zoo.Inpark.Tests;
+﻿namespace Zeta.Inpark.Tests;
 
 public static class Categories
 {

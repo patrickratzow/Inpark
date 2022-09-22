@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Zoo.Common.Api;
+namespace Zeta.Common.Api;
 
 public static class SwaggerGenOptionsExtensions
 {

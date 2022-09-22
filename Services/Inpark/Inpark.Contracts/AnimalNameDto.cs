@@ -1,4 +1,4 @@
-namespace Zoo.Inpark.Contracts;
+namespace Zeta.Inpark.Contracts;
 
 public record AnimalNameDto(
     string DisplayName,

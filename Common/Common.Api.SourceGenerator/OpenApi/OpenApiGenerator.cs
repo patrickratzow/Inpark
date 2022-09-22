@@ -5,13 +5,13 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace Zoo.Common.Api.SourceGenerator.OpenApi;
+namespace Zeta.Common.Api.SourceGenerator.OpenApi;
 
 [Generator]
 public class OpenApiGenerator : IIncrementalGenerator
 {
     private const string SuccessAttributePath =
-        "Zoo.Common.Api.SourceGenerator.Attributes.OpenApi.SuccessResponseAttribute";
+        "Zeta.Common.Api.SourceGenerator.Attributes.OpenApi.SuccessResponseAttribute";
 
     private static Regex HttpVerbAttributeRegex =
         new(@"Microsoft.AspNetCore.Mvc.Http(.*)Attribute", RegexOptions.Compiled);
@@ -62,7 +62,7 @@ public class OpenApiGenerator : IIncrementalGenerator
                     continue;
                 }
                 // Is it the [DoNotGenerateResponses] attribute?
-                if (fullName is "Zoo.Common.Api.SourceGenerator.Attributes.OpenApi.DoNotGenerateResponsesAttribute")
+                if (fullName is "Zeta.Common.Api.SourceGenerator.Attributes.OpenApi.DoNotGenerateResponsesAttribute")
                 {
                     foundDoNotGenerateResponses = true;
                 }
@@ -160,7 +160,7 @@ public class OpenApiGenerator : IIncrementalGenerator
                     builder.AppendLine($"{indentation}[{producesResponseType}({responseData})]");
                 }
                 builder.AppendLine(
-                    $"{indentation}[{producesResponseType}(typeof(System.Collections.Generic.List<Zoo.Common.PropertyError>), 422)]");
+                    $"{indentation}[{producesResponseType}(typeof(System.Collections.Generic.List<Zeta.Common.PropertyError>), 422)]");
 
                 var parameters = string.Join(", ", method.Parameters);
                 builder.AppendLine(

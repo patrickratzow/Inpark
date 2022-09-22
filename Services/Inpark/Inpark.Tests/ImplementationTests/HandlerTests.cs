@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using FluentValidation;
 using MediatR;
-using Zeta.Inpark;
+using Zeta.Common;
 
-namespace Zoo.Inpark.Tests.ImplementationTests;
+namespace Zeta.Inpark.Tests.ImplementationTests;
 
 /// <summary>
 /// The purpose of these tests are to ensure implementations of certain things.

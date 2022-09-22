@@ -13,6 +13,7 @@ public class AuthDbContext : DbContext
 
     public DbSet<Admin> Admins { get; set; } = null!;
     public DbSet<Tenant> Tenants { get; set; } = null!;
+    public DbSet<User> Users { get; set; } = null!;
     public DbSet<Role> Roles { get; set; } = null!;
     public DbSet<Permission> Permissions { get; set; } = null!;
     

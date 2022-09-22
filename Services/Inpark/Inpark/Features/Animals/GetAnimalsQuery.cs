@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Zeta.Common.Api;
+using Zeta.Inpark.Contracts;
 using Zeta.Inpark.Features.Animals.Interfaces;
 using Zeta.Inpark.Models;
-using Zoo.Inpark.Contracts;
 
 namespace Zeta.Inpark.Features.Animals;
 
@@ -22,10 +23,10 @@ public class GetAnimalsHandler : IRequestHandler<GetAnimalsQuery, OneOf<List<Ani
     {
         var animals = await _context.Animals
             .Include(x => x.Areas)
-            .OrderBy(x => x.Name.Name)
+            .OrderBy(x => x.Name.DisplayName)
             .ToListAsync(cancellationToken);
         var animalDtos = animals.Select(x => {
-            var name = new AnimalNameDto(x.Name.Name, x.Name.LatinName);
+            var name = new AnimalNameDto(x.Name.DisplayName, x.Name.LatinName);
             var image = new ImagePairDto(x.Image.PreviewUrl, x.Image.FullscreenUrl);
             var status = (IUCNStatusDto) x.Status;
             if (!_mapper.ParseContent(x.Content).IsSuccess(out var content))

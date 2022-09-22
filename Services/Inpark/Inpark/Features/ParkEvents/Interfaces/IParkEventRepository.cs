@@ -1,4 +1,6 @@
-﻿namespace Zeta.Inpark.Features.ParkEvents.Interfaces;
+﻿using Zeta.Common;
+
+namespace Zeta.Inpark.Features.ParkEvents.Interfaces;
 
 public interface IParkEventRepository
 {
