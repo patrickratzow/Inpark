@@ -644,6 +644,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.13.5"
+  http_mock_adapter:
+    dependency: transitive
+    description:
+      name: http_mock_adapter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.3"
   http_multi_server:
     dependency: transitive
     description:
@@ -1170,7 +1177,7 @@ packages:
   tenants:
     dependency: "direct main"
     description:
-      path: "C:\\Users\\Nikol\\OneDrive\\Dokumenter\\GitHub\\Zoo\\flutter_app\\packages\\tenants"
+      path: "C:\\Users\\Nikol\\OneDrive\\Dokumenter\\GitHub\\Zoo\\flutter_app\\package\\tenants"
       relative: false
     source: path
     version: "0.0.1"
