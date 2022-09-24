@@ -1,0 +1,25 @@
+Index: .idea/.idea.Zoo/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.Zoo/.idea/workspace.xml b/.idea/.idea.Zoo/.idea/workspace.xml
+--- a/.idea/.idea.Zoo/.idea/workspace.xml	
++++ b/.idea/.idea.Zoo/.idea/workspace.xml	
+@@ -148,7 +148,7 @@
+       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+-      <option name="PROJECT_KIND" value="None" />
++      <option name="PROJECT_KIND" value="RunnableProjectKind(name=None)" />
+       <option name="PROJECT_TFM" value="" />
+       <option name="FUNCTION_NAMES" value="" />
+       <method v="2">
+@@ -188,6 +188,7 @@
+     <list>
+       <item itemvalue=".NET Launch Settings Profile.AspNetCore" />
+       <item itemvalue=".NET Launch Settings Profile.AspNetCore: IIS Express" />
++      <item itemvalue="Azure Functions host.Inpark.Functions" />
+     </list>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

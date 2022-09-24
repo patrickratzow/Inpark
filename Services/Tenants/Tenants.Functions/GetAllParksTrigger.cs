@@ -1,5 +1,4 @@
 using System.Net;
-using Azure.Core;
 using MediatR;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;

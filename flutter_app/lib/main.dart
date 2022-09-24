@@ -15,7 +15,6 @@ import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
 
 import "common/ioc.dart";
-import "content/demo.dart";
 import "features/animals/models/animals_model.dart";
 import "features/calendar/models/calendar_model.dart";
 import "features/home/models/home_model.dart";

@@ -25,7 +25,6 @@ class FacebookAuthenticationProvider extends AuthenticationProvider {
 
   @override
   Future signOut() async {
-    // TODO: implement signOut
     return await FirebaseAuth.instance.signOut();
   }
 }
