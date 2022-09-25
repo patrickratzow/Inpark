@@ -7,7 +7,7 @@ public class AnimalNameConfiguration : FixtureConfiguration<AnimalName>
 {
     public override void Configure()
     {
-        Property(x => x.Name)
+        Property(x => x.DisplayName)
             .Length(1, 512).IsValid()
             .Empty().IsInvalid();
         

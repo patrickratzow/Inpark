@@ -27,7 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  chopper: ^4.0.1
+  chopper: ^5.0.0
   json_annotation: ^4.4.0
   flutter:
     sdk: flutter
@@ -45,7 +45,7 @@ dependencies:
   flutter_hooks: ^0.18.5+1
   intl: ^0.17.0
   collection_ext: ^1.0.0
-  google_fonts: ^2.3.2
+  google_fonts: ^3.0.1
   flutter_custom_tabs: ^1.0.4
   flutter_svg: ^1.0.3
   video_player: ^2.4.0
@@ -54,17 +54,25 @@ dependencies:
   flutter_use: ^0.0.2
   webview_flutter: ^3.0.4
   package_info_plus: ^1.0.6
-  photo_view: ^0.13.0
-  xml: ^5.0.0
+  photo_view: ^0.14.0
+  xml: ^6.1.0
   table_calendar: ^3.0.6
   device_preview: ^1.1.0
   shared_preferences: ^2.0.15
+  google_sign_in: ^5.4.0
+  firebase_auth: ^3.6.1
+  flutter_facebook_auth: ^5.0.0-dev.4
+  crypto: ^3.0.2
+  sign_in_with_apple: ^4.1.0
+  flutter_facebook_auth_web: ^4.0.1
+  tenants:
+    path: C:\Users\Nikol\OneDrive\Dokumenter\GitHub\Zoo\flutter_app\package\tenants
 
 dev_dependencies:
   build_runner: ^2.1.7
-  chopper_generator: ^4.0.5
+  chopper_generator: ^5.0.0+1
   json_serializable: ^6.1.4
-  swagger_dart_code_generator: ^2.4.9
+  swagger_dart_code_generator: ^2.8.1
   flutter_native_splash: ^2.0.1
   flutter_test:
     sdk: flutter

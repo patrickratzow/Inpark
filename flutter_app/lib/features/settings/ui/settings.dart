@@ -9,12 +9,10 @@ import "package:flutter_app/features/settings/ui/settings_title_bar.dart";
 import "package:flutter_app/hooks/hooks.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 
-import "../../../common/screen.dart";
 import "../../../common/ui/screen_app_bar.dart";
+import "../../../log_in/ui/login_settings.dart";
 import "../../../navigation/navigation_model.dart";
 import "notification_settings_page.dart";
-import "setting_row.dart";
-import "settings_title_bar.dart";
 
 class SettingsScreen extends HookWidget implements Screen {
   const SettingsScreen({super.key});
@@ -27,6 +25,7 @@ class SettingsScreen extends HookWidget implements Screen {
       appBar: const ScreenAppBar(title: "Indstillinger"),
       body: Column(
         children: [
+          const LoginSettings(),
           ..._buildGeneral(context, navigator),
           ..._buildMisc(context, navigator),
           ..._buildDevelopment(context, navigator),

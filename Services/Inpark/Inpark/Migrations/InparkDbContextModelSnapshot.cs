@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zeta.Inpark;
-using Zoo.Inpark;
 
 #nullable disable
 
@@ -18,12 +17,12 @@ namespace Zoo.Inpark.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.4")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.Animal", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.Animal", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +50,7 @@ namespace Zoo.Inpark.Migrations
                     b.ToTable("Animals");
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.HourRange", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.HourRange", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,7 +79,7 @@ namespace Zoo.Inpark.Migrations
                     b.ToTable("HourRanges");
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.OpeningHour", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.OpeningHour", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +107,7 @@ namespace Zoo.Inpark.Migrations
                     b.ToTable("OpeningHours");
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.ParkEvent", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.ParkEvent", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,7 +132,7 @@ namespace Zoo.Inpark.Migrations
                     b.ToTable("ParkEvents");
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.Speak", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.Speak", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -155,9 +154,9 @@ namespace Zoo.Inpark.Migrations
                     b.ToTable("Speaks");
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.Animal", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.Animal", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "Image", b1 =>
+                    b.OwnsOne("Zeta.Inpark.ValueObjects.ImagePair", "Image", b1 =>
                         {
                             b1.Property<Guid>("AnimalId")
                                 .HasColumnType("uniqueidentifier");
@@ -178,7 +177,7 @@ namespace Zoo.Inpark.Migrations
                                 .HasForeignKey("AnimalId");
                         });
 
-                    b.OwnsMany("Zoo.Inpark.ValueObjects.AnimalArea", "Areas", b1 =>
+                    b.OwnsMany("Zeta.Inpark.ValueObjects.AnimalArea", "Areas", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .ValueGeneratedOnAdd()
@@ -200,7 +199,7 @@ namespace Zoo.Inpark.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("AnimalId");
 
-                            b1.OwnsMany("Zoo.Inpark.ValueObjects.Point", "Points", b2 =>
+                            b1.OwnsMany("Zeta.Inpark.ValueObjects.Point", "Points", b2 =>
                                 {
                                     b2.Property<Guid>("Id")
                                         .ValueGeneratedOnAdd()
@@ -228,18 +227,18 @@ namespace Zoo.Inpark.Migrations
                             b1.Navigation("Points");
                         });
 
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.AnimalName", "Name", b1 =>
+                    b.OwnsOne("Zeta.Inpark.ValueObjects.AnimalName", "Name", b1 =>
                         {
                             b1.Property<Guid>("AnimalId")
                                 .HasColumnType("uniqueidentifier");
 
+                            b1.Property<string>("DisplayName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
                             b1.Property<string>("LatinName")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(450)");
-
-                            b1.Property<string>("Name")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
 
                             b1.HasKey("AnimalId");
 
@@ -260,9 +259,9 @@ namespace Zoo.Inpark.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.OpeningHour", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.OpeningHour", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.TimeRange", "Range", b1 =>
+                    b.OwnsOne("Zeta.Inpark.ValueObjects.TimeRange", "Range", b1 =>
                         {
                             b1.Property<Guid>("OpeningHourId")
                                 .HasColumnType("uniqueidentifier");
@@ -289,9 +288,9 @@ namespace Zoo.Inpark.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.ParkEvent", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.ParkEvent", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "Image", b1 =>
+                    b.OwnsOne("Zeta.Inpark.ValueObjects.ImagePair", "Image", b1 =>
                         {
                             b1.Property<Guid>("ParkEventId")
                                 .HasColumnType("uniqueidentifier");
@@ -312,7 +311,7 @@ namespace Zoo.Inpark.Migrations
                                 .HasForeignKey("ParkEventId");
                         });
 
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.TimeRange", "Range", b1 =>
+                    b.OwnsOne("Zeta.Inpark.ValueObjects.TimeRange", "Range", b1 =>
                         {
                             b1.Property<Guid>("ParkEventId")
                                 .HasColumnType("uniqueidentifier");
@@ -342,9 +341,9 @@ namespace Zoo.Inpark.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Zoo.Inpark.Entities.Speak", b =>
+            modelBuilder.Entity("Zeta.Inpark.Entities.Speak", b =>
                 {
-                    b.OwnsOne("Zoo.Inpark.ValueObjects.ImagePair", "Image", b1 =>
+                    b.OwnsOne("Zeta.Inpark.ValueObjects.ImagePair", "Image", b1 =>
                         {
                             b1.Property<Guid>("SpeakId")
                                 .HasColumnType("uniqueidentifier");
@@ -365,7 +364,7 @@ namespace Zoo.Inpark.Migrations
                                 .HasForeignKey("SpeakId");
                         });
 
-                    b.OwnsMany("Zoo.Inpark.ValueObjects.SpeakTime", "SpeakTimes", b1 =>
+                    b.OwnsMany("Zeta.Inpark.ValueObjects.SpeakTime", "SpeakTimes", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .ValueGeneratedOnAdd()
@@ -390,7 +389,7 @@ namespace Zoo.Inpark.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("SpeakId");
 
-                            b1.OwnsOne("Zoo.Inpark.ValueObjects.TimeRange", "Range", b2 =>
+                            b1.OwnsOne("Zeta.Inpark.ValueObjects.TimeRange", "Range", b2 =>
                                 {
                                     b2.Property<Guid>("SpeakTimeId")
                                         .HasColumnType("uniqueidentifier");

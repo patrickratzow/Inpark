@@ -3,8 +3,8 @@ targets:
     builders:
       swagger_dart_code_generator:
         options:
-          input_folder: 'lib/swagger'
-          output_folder: 'lib/generated_code/'
+          input_folder: "lib/swagger"
+          output_folder: "lib/generated_code/"
           use_path_for_request_names: false
-          cut_from_model_names: ZooInparkContracts
+          cut_from_model_names: ZetaInparkContracts
           separate_models: true

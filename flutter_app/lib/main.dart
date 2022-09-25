@@ -15,7 +15,6 @@ import "package:intl/date_symbol_data_local.dart";
 import "package:provider/provider.dart";
 
 import "common/ioc.dart";
-import "content/demo.dart";
 import "features/animals/models/animals_model.dart";
 import "features/calendar/models/calendar_model.dart";
 import "features/home/models/home_model.dart";
@@ -24,6 +23,7 @@ import "features/park_map/models/park_map_model.dart";
 import "features/speaks/models/notification_service.dart";
 import "features/speaks/models/speak_model.dart";
 import "firebase_options.dart";
+import "log_in/models/user_model.dart";
 import "navigation/navigation_model.dart";
 import "sdui/transformers/transformer.dart";
 import "transformers/navbar.dart";
@@ -265,6 +265,9 @@ class MyApp extends HookWidget {
         ),
         ChangeNotifierProvider<ParkMapModel>(
           create: (context) => ParkMapModel(),
+        ),
+        ChangeNotifierProvider<UserModel>(
+          create: (context) => UserModel(),
         ),
       ],
       child: MaterialApp(
