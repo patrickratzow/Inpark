@@ -21,224 +21,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ee4acad-efc3-4930-b166-90b4df3ce29a" name="Changes" comment="refactor: rename Compiler to UmbracoCompiler">
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers.Tests/Categories.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers.Tests/MapperTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers.Tests/TestBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers.Tests/Testing.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers.Tests/Usings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers.Tests/Zeta.UI.Mappers.Tests.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers.Tests/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Transformers/CallToActionTransformer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Transformers/TextTransformer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Transformers/WrapperTransformer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_admin/assets/28654227_20080101-20081231_R_R.tif.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/AspNetCore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AspNetCore/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AspNetCore/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/Common.Api.SourceGenerator.Attributes.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/Common.Api.SourceGenerator.Attributes.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/DoNotGenerateResponsesAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/SuccessResponseAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator.Attributes/OpenApi/SuccessResponseAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/Common.Api.SourceGenerator.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/Common.Api.SourceGenerator.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ClassesToGenerate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ClassesToGenerate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/MethodInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/MethodInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/OpenApiGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api.SourceGenerator/OpenApi/ResponseData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Clock/Clock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Clock/Clock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Clock/ClockDependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Clock/ClockDependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Clock/IClock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Clock/IClock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Common.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Common.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/EventBus/AzureServiceBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/EventBus/AzureServiceBus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/EventBus/IEventBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/EventBus/IEventBus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/EventBus/Subscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/EventBus/Subscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Extensions/ApplicationBuilderExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Extensions/ApplicationBuilderExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Jobs/JobAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Jobs/JobAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Jobs/JobHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Jobs/JobHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Jobs/JobsDependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Jobs/JobsDependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/EnumSchemaFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/FixRequestBodyNullableReferencesSchemaFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/FixRequestBodyNullableReferencesSchemaFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/MethodGroupAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/MethodGroupAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/RequiredPropertiesSchemaFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/RequiredPropertiesSchemaFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/SwaggerGenOptionsExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/SwaggerGenOptionsExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/TenantHeaderOperationFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/TenantHeaderOperationFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/OpenApi/ValidationErrorDescriptionOperationFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/OpenApi/ValidationErrorDescriptionOperationFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Pipelines/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Pipelines/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Pipelines/LoggingPipeline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Pipelines/LoggingPipeline.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Pipelines/ValidationPipeline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Pipelines/ValidationPipeline.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/DefaultResponseMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/IResponseMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/IResponseMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/IResponseMappingWhenOperation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/IResponseMappingWhenOperation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/ResponseMapperDependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/ResponseMapperDependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/ResponseMappingBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/ResponseMappingBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/ResponseMappingWhenOperation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ResponseMapper/ResponseMappingWhenOperation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Tenants/ITenantManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Tenants/ITenantManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Tenants/Providers/AnimalProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Tenants/Providers/AnimalProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Tenants/Tenant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Tenants/Tenant.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Tenants/TenantManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Tenants/TenantManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Tenants/TenantManagerSessionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Tenants/TenantManagerSessionMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Translator/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Translator/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Translator/ITranslationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Translator/ITranslationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Translator/TranslationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Translator/TranslationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Versioning/IVersionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/IVersionService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Versioning/Version.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/Version.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionNotSupportedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionNotSupportedException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersionService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersioningDependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersioningDependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersioningPipeline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/Versioning/VersioningPipeline.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common.Api/ZooController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common.Api/ZooController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Common.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Errors/GenericError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Errors/GenericError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Errors/IAlreadyExistsError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Errors/IAlreadyExistsError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Errors/IError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Errors/IError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Errors/INotFoundError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Errors/INotFoundError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Errors/IValidationError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Errors/IValidationError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Errors/PropertyError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Errors/PropertyError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/Common/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Common/Result.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maps/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Maps/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Nodes/ImageNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Nodes/ImageNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Parser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Parser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/ImageParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate/Umbraco/Parsers/ImageParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/ITransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/ITransformer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IUseCaseOptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IUseCaseOptions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/IVisitor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/ConfigurationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/ConfigurationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/FeatureConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/FeatureConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/NodeTypes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/Transformers/ImageTransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Transformers/ImageTransformer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Umbraco/Visitors/CallToActionVisitor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Zeta.UI.Mappers.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Zeta.UI.Mappers.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Image.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI/Nodes/Image.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI/ParsingNode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Imports.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Imports.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Testing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth.Tests/Testing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/CreateAdmin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/CreateAdmin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/GetPermissions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/GetPermissions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/IsTokenValid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/IsTokenValid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/Login.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/RefreshLogin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Admin/RefreshLogin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Roles/CreateRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Roles/CreateRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Features/Roles/GetAllRoles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Features/Roles/GetAllRoles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Auth/Auth/Imports.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Auth/Auth/Imports.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalAreaDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalAreaDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalNameDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/AnimalNameDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ContentDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ContentDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ContentElementDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ContentElementDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/IUCNStatusDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/IUCNStatusDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ImagePairDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ImagePairDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/Inpark.Contracts.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/OpeningHourDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/OpeningHourDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ParkEventDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/ParkEventDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/SpeakDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/SpeakDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/WeekDayDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Contracts/WeekDayDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Categories.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Categories.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Contents/ContentXmlSerializerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Contents/ContentXmlSerializerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/AnimalConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/AnimalConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/OpeningHourConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/OpeningHourConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/ParkEventConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/ParkEventConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/SpeakConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/Entities/SpeakConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalAreaConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalAreaConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalImageConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalImageConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalNameConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/AnimalNameConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/PointConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/PointConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/ProgramEventConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/ProgramEventConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/SpeakTimeConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/SpeakTimeConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/TimeRangeConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/Configurations/ValueObjects/TimeRangeConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ContractTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ContractTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/EntityTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/DomainFixture/ValueObjectTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/AalborgZooAnimalMapperTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/AalborgZooAnimalMapperTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalAreaQueryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalAreaQueryTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalQueryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalsQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/GetAnimalsQueryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/SetAnimalAreaCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Animals/SetAnimalAreaCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursJobTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursJobTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapperTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapperTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/OpeningHours/GetOpeningHoursForTodayQueryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/AalborgZooParkEventMapperTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/AalborgZooParkEventMapperTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/GetParkEventsQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/ParkEvents/GetParkEventsQueryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/AalborgZooSpeaksMapperTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/AalborgZooSpeaksMapperTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Features/Speaks/AalborgZoo/GetAnimalSpeaksForTodayQueryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/ContractTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/DomainTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/ImplementationTests/TestsTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Imports.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Imports.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Inpark.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Inpark.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Services/HtmlDocumentTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Services/HtmlDocumentTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/TestBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/TestBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Testing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark.Tests/Testing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Entities/Animal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Errors/AnimalNotFound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Errors/AnimalNotFound.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/AalborgZoo/AalborgZooAnimalRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalAreaQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalAreaQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/GetAnimalsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/Interfaces/IAnimalRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/SetAnimalAreaCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/SetAnimalAreaCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/UpdateAnimalsCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Animals/UpdateAnimalsCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AalborgZoo/AalborgZooOpeningHoursRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AddHourColorCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/AddHourColorCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Errors/TimeRangeAlreadyHasAColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Errors/TimeRangeAlreadyHasAColor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursForTodayQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/GetOpeningHoursQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Interfaces/IOpeningHoursMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Interfaces/IOpeningHoursMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Interfaces/IOpeningHoursRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/OpeningHours/Interfaces/IOpeningHoursRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/AalborgZoo/AalborgZooParkEventRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/GetParkEventsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/Interfaces/IParkEventMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/Interfaces/IParkEventMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/Interfaces/IParkEventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/ParkEvents/Interfaces/IParkEventRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/AalborgZoo/AalborgZooSpeaksRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/GetAnimalSpeaksForTodayQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/Interfaces/ISpeaksMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/Interfaces/ISpeaksMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/Interfaces/ISpeaksRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Features/Speaks/Interfaces/ISpeaksRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Inpark/Inpark/Imports.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Inpark/Inpark/Imports.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/HttpTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/HttpTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/Maps.Functions.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/Maps.Functions.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Functions/PingLocationTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Functions/PingLocationTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Features/ProcessPingLocationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Features/ProcessPingLocationTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Maps.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Maps.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Testing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Maps/Maps.Tests/Testing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments.Contracts/Products/Errors/ProductNotFound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments.Contracts/Products/Errors/ProductNotFound.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/HandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments.Tests/Imports.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments.Tests/Imports.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Extensions/HttpRequestDataExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Extensions/HttpRequestDataExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/HttpTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/HttpTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Middleware/FluentValidationMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Middleware/FluentValidationMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Middleware/ModelBindingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Middleware/ModelBindingMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/SaveServiceTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Functions/SaveServiceTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/ImplementationTests/HandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/ImplementationTests/HandlerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/Testing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants.Tests/Testing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants/Errors/ServiceNotFound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Errors/ServiceNotFound.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants/Errors/TenantNotFound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Errors/TenantNotFound.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/GetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/GetService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/SaveService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Tenants/Tenants/Features/SaveService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Functions/HttpTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Functions/HttpTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Functions/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Functions/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Functions/TranslateObjectTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Functions/TranslateObjectTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator.Functions/TranslateTextTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator.Functions/TranslateTextTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Translator/Translator/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Translator/Translator/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zoo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Transformers/TextTransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SDUI/Zeta.UI.Mappers/Transformers/TextTransformer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/.packages" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_app/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_app/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,27 +117,6 @@
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/InparkDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/AnimalName.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Inpark/Inpark/ValueObjects/TimeRange.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Customers/CreateCustomerRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Contracts/Payments.Contracts.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/CustomerConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/Entities/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/Configurations/ValueObjects/EmailAddressConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/EntityTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/DomainFixture/ValueObjectTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments.Tests/ImplementationTests/DomainTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Customer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Entities/Product.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Customers/CreateCustomer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Groups.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/CreateProduct.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Features/Products/GetProductById.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Imports.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations.ps1" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131541_InitialCreate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/20220405131706_AddProduct.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/Migrations/PaymentsDbContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Payments/Payments/PaymentsDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Tenants/Tenants.Contracts/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Tenants/Tenants.Tests/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -512,7 +281,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -550,7 +319,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -569,7 +338,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -588,7 +357,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -626,7 +395,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -645,7 +414,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="PingLocation" />
       <method v="2">
@@ -664,7 +433,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions)))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="" />
       <browser url="http://localhost:7071" />
@@ -684,7 +453,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -722,7 +491,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions))))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=AzureFunctions)))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="TriggerScheduledJobs" />
       <method v="2">
@@ -741,7 +510,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="ping-location" />
       <method v="2">
@@ -760,7 +529,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings))))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=LaunchSettings)))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="net6.0" />
       <option name="FUNCTION_NAMES" value="ping-location" />
       <method v="2">
@@ -779,7 +548,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None))))))))))))))))))))))))))" />
+      <option name="PROJECT_KIND" value="RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=RunnableProjectKind(name=None)))))))))))))))))))))))))))" />
       <option name="PROJECT_TFM" value="" />
       <option name="FUNCTION_NAMES" value="" />
       <method v="2">
@@ -1006,7 +775,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f5ecd15f-1abb-4ae2-b323-892caef13e77" name="Changes" comment="" />
+      <changelist id="7ee4acad-efc3-4930-b166-90b4df3ce29a" name="Changes" comment="refactor: rename Compiler to UmbracoCompiler" />
       <created>1649158167076</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -1053,6 +822,7 @@
       <workItem from="1662818170774" duration="12069000" />
       <workItem from="1662910775885" duration="622000" />
       <workItem from="1663006051548" duration="2290000" />
+      <workItem from="1664124275756" duration="2002000" />
     </task>
     <task id="LOCAL-00001" summary="feat: initial files">
       <created>1649177531191</created>
@@ -1313,14 +1083,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SDUI/Zeta.UI.Intermediate.Tests/Umbraco/UmbracoCompilerTests.cs</url>
           <line>115</line>
-          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\SDUI\Zeta.UI.Intermediate.Tests\CompilerTests.cs" initialLine="36" containingFunctionPresentation="method 'Compile_Should_Compile'">
-            <startOffsets>
-              <option value="7495" />
-            </startOffsets>
-            <endOffsets>
-              <option value="7523" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\patri\Desktop\Sandbox\Zoo\SDUI\Zeta.UI.Intermediate.Tests\CompilerTests.cs" initialLine="36" containingFunctionPresentation="method 'Compile_Should_Compile'" />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
