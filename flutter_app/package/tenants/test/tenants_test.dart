@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
-import 'package:tenants/tenants.dart';
+import 'package:tenants/api_client.dart';
 
 void main() {
   late ApiClient apiClient;

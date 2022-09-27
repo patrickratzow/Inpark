@@ -1,5 +1,4 @@
 import 'package:tenants/models/address.dart';
-
 import 'gps_location.dart';
 
 class Park {

@@ -2,7 +2,7 @@ library tenants;
 
 import 'package:dio/dio.dart';
 
-import '../models/park.dart';
+import 'models/park.dart';
 
 class ApiClient {
   late final Dio _client;
@@ -12,7 +12,7 @@ class ApiClient {
     void Function(Dio client)? configure,
   }) {
     options ??= BaseOptions(
-      baseUrl: 'http://192.168.87.113:7071/api',
+      baseUrl: 'http://10.0.2.2:7071/api',
       connectTimeout: 5000,
       receiveTimeout: 3000,
     );
