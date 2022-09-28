@@ -15,7 +15,7 @@ import "package:intl/date_symbol_data_local.dart";
 import "package:plugin/plugin_manager.dart";
 import "package:provider/provider.dart";
 import "package:tenants/tenant_plugin.dart";
-import "package:tenants/ui/tenant_page.dart";
+import "package:tenants/ui/start_screen.dart";
 
 import "common/ioc.dart";
 import "features/animals/models/animals_model.dart";
@@ -284,7 +284,7 @@ class MyApp extends HookWidget {
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
-        home: const ParkPage(),
+        home: const StartScreen(),
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: const Color(0xffECFCE5),
