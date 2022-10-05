@@ -1,4 +1,3 @@
-using DomainFixture;
 using MediatR;
 using Zeta.Inpark.Maps.Entities;
 using Zeta.Inpark.Maps.Features;

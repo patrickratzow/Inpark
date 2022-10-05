@@ -11,6 +11,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using Zeta.Common.Api;
 
 namespace Zeta.Inpark.Auth.Tests;
 
@@ -25,6 +26,15 @@ public abstract class TestBase
     {
         await ResetState();
         ResetScope();
+
+        var tenantManager = GetRequiredService<ITenantManager>();
+        var commonTenant = new Tenant(Guid.NewGuid(), AnimalProvider.Umbraco);
+        await Add(
+            Fixture.Valid<Inpark.Auth.Entities.Tenant>()
+                .With(x => x.Id, commonTenant.Id)
+                .Create()
+        );
+        tenantManager.Tenant = commonTenant;
     }
 
     protected TService GetRequiredService<TService>()

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using DomainFixture;
@@ -51,8 +52,19 @@ public class Testing
         services.AddLogging();
         services.AddAuth(_configuration);
 
-        services.Remove(services.First(x => x.ServiceType == typeof(IMemoryCache)));
+        var memoryCache = services.FirstOrDefault(x => x.ServiceType == typeof(IMemoryCache));
+        if (memoryCache is not null)
+        {
+            services.Remove(services.First(x => x.ServiceType == typeof(IMemoryCache)));
+        }
         services.AddSingleton<IMemoryCache, TestMemoryCache>();
+
+        var tenantManager = services.FirstOrDefault(x => x.ServiceType == typeof(ITenantManager));
+        if (tenantManager is not null)
+        {
+            services.Remove(tenantManager);
+        }
+        services.AddSingleton<ITenantManager, TestTenantManager>();
 
         _scopeFactory = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
 
@@ -105,6 +117,21 @@ public class Testing
             value = null!;
         
             return false; 
+        }
+    }
+    
+    public class TestTenantManager : ITenantManager
+    {
+        private Tenant? _tenant;
+        public Tenant Tenant
+        {
+            get => _tenant ??= new(Guid.NewGuid(), AnimalProvider.Umbraco);
+            set => _tenant = value;
+        }
+
+        public ValueTask<Tenant?> GetTenant(Guid tenantId)
+        {
+            return new(new Tenant(tenantId, AnimalProvider.Umbraco));
         }
     }
 }
