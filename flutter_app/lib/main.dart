@@ -1,21 +1,23 @@
 import "dart:io";
 
+import "package:collection_ext/all.dart";
 import "package:device_preview/device_preview.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_app/navigation/navigation_screen.dart";
 import "package:flutter_app/sdui/transformers/component.dart";
 import "package:flutter_app/transformers/conservation_status.dart";
 import "package:flutter_app/transformers/pre/hook_transformer.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:intl/date_symbol_data_local.dart";
+import "package:plugin/plugin_manager.dart";
 import "package:provider/provider.dart";
+import "package:tenants/tenant_plugin.dart";
+import "package:tenants/ui/start_screen.dart";
 
 import "common/ioc.dart";
-import "content/demo.dart";
 import "features/animals/models/animals_model.dart";
 import "features/calendar/models/calendar_model.dart";
 import "features/home/models/home_model.dart";
@@ -43,6 +45,8 @@ void main() async {
   if (kReleaseMode) {
     initializeDateFormatting();
   }
+
+  TenantPlugin()..init();
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -240,6 +244,9 @@ class MyApp extends HookWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var pluginManager = PluginManager();
+    var providers =
+        pluginManager.plugins.flatMap((e) => e.registerProviders()).toList();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AnimalsModel>(
@@ -270,13 +277,14 @@ class MyApp extends HookWidget {
         ChangeNotifierProvider<UserModel>(
           create: (context) => UserModel(),
         ),
+        ...providers
       ],
       child: MaterialApp(
         useInheritedMediaQuery: true,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
-        home: const NavigationScreen(),
+        home: const StartScreen(),
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: const Color(0xffECFCE5),

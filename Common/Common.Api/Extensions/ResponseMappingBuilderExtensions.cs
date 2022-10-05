@@ -1,4 +1,6 @@
 using System.Net;
+using System.Text.Json;
+using Azure.Core.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker.Http;
 
@@ -16,8 +18,11 @@ public static class ResponseMappingBuilderExtensions
             response.StatusCode = (HttpStatusCode) statusCodeResult.StatusCode;
         }
         if (result is ObjectResult objectResult) {
-            response.StatusCode = (HttpStatusCode) objectResult.StatusCode;
-            await response.WriteAsJsonAsync(objectResult.Value);
+            response.StatusCode = (HttpStatusCode) objectResult.StatusCode!;
+            await response.WriteAsJsonAsync(objectResult.Value, new JsonObjectSerializer(new()
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            }));
         }
 
         return response;

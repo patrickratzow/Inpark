@@ -12,13 +12,13 @@ public class TextTransformer : ITransformer<TextNode>
         _transformerService = transformerService;
     }
 
-    public ValueTask<SDUINode> Transform(TextNode node)
+    public async ValueTask<SDUINode> Transform(TextNode node)
     {
         if (node.Kind is TextKind.Html)
-            return _transformerService.Transform(node.Text);
+            return await _transformerService.Transform(node.Text);
         
         var text = new Text(node.Text);
-        
-        return new(text);
+
+        return text;
     }
 }
