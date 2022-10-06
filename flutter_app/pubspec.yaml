@@ -66,9 +66,9 @@ dependencies:
   sign_in_with_apple: ^4.1.0
   flutter_facebook_auth_web: ^4.0.1
   tenants:
-    path: C:\Users\Nikol\OneDrive\Dokumenter\GitHub\Zoo\flutter_app\package\tenants
+    path: .\package\tenants
   plugin:
-    path: C:\Users\Nikol\OneDrive\Dokumenter\GitHub\Zoo\flutter_app\package\plugin
+    path: .\package\plugin
 
 dev_dependencies:
   build_runner: ^2.1.7

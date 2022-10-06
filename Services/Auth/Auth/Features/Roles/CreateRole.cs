@@ -20,8 +20,8 @@ public class CreateRole
         {
             RuleFor(x => x.Id).NotEmpty();
             RuleFor(x => x.Name).NotEmpty()
-                .MinimumLength(4)
-                .MaximumLength(64);
+                .MinimumLength(1)
+                .MaximumLength(255);
             RuleFor(x => x.Color)
                 .NotEmpty()
                 .Length(6);

@@ -1,0 +1,56 @@
+POST http://localhost:7071/admin/functions/TriggerScheduledJobs
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:7071/admin/functions/TriggerScheduledJobs
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:7071/admin/functions/TriggerScheduledJobs
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:7071/admin/functions/TriggerScheduledJobs
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:7071/admin/functions/TriggerScheduledJobs
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:7071/admin/functions/TriggerScheduledJobs
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:7071/admin/functions/TriggerScheduledJobs
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:7071/admin/functions/TriggerScheduledJobs
+Content-Type: application/json
+
+{}
+
+###
+
