@@ -50,12 +50,24 @@ public abstract class TestBase
         return await mediator.Send(request);
     }
 
+    private static string GetRequestHandlerName(Type type)
+    {
+        var name = type.FullName;
+        if (!name.Contains('+')) return name + "Handler";
+        
+        var split = name.Split("+");
+        var className = split.First();
+
+        return className + "+Handler";
+    }
+    
     protected async Task<TResponse> Send<TResponse>(IRequest<TResponse> request, params Mock[] mocks)
     {
         var requestType = request.GetType();
+        var requestHandlerName = GetRequestHandlerName(requestType);
         var handlerType = requestType.Assembly
             .GetExportedTypes()
-            .First(x => x.Name.Contains(requestType.Name + "Handler"));
+            .First(x => x.FullName.Contains(requestHandlerName));
         var ctor = handlerType.GetConstructors().First();
         var parameters = ctor.GetParameters();
         var parameterInstances = new List<object>();
