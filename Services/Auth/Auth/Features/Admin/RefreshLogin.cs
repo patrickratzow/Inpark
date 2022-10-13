@@ -20,9 +20,9 @@ public static class RefreshLogin
     public class Handler : IRequestHandler<Command, OneOf<Response, RefreshTokenNotFound, RefreshTokenInvalid>>
     {
         private readonly AuthDbContext _context;
-        private readonly JwtService _jwtService;
+        private readonly IJwtService _jwtService;
         
-        public Handler(AuthDbContext context, JwtService jwtService)
+        public Handler(AuthDbContext context, IJwtService jwtService)
         {
             _context = context;
             _jwtService = jwtService;

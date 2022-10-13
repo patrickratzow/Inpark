@@ -32,7 +32,7 @@ public static class DependencyInjection
 
         services.TryAddScoped<DomainEventService>();
         services.TryAddSingleton<PasswordService>();
-        services.TryAddSingleton<JwtService>();
+        services.TryAddSingleton<IJwtService, JwtService>();
         services.Configure<JwtOptions>(configuration.GetSection(JwtOptions.Position));
 
         services.AddResponseMapper();

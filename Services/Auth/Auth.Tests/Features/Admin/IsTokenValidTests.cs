@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using MediatR;
+using Moq;
 using Zeta.Inpark.Auth.Features.Admin;
 using Zeta.Inpark.Auth.Services;
 
@@ -16,10 +17,16 @@ public class IsTokenValidTests : TestBase
     public async Task Handle_ShouldReturnState(JwtService.JwtValidationResult state, Type returnType)
     {
         // Arrange
+        var jwtService = new Mock<IJwtService>();
+        jwtService.Setup(m => m.IsValid(It.IsAny<string>()))
+            .Returns(state);
+        const string token = Bogus.Chars.AlphaNumericLowerCase;
+        var query = new IsTokenValid.Query(token);
         
         // Act
-        
+        var result = await Send(query, jwtService);
+
         // Assert
-        
+        result.Value.Should().BeOfType(returnType);
     }
 }

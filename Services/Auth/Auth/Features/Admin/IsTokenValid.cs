@@ -19,9 +19,9 @@ public class IsTokenValid
     
     public class Handler : IRequestHandler<Query, OneOf<Unit, InvalidToken, ExpiredToken>>
     {
-        private readonly JwtService _jwtService;
+        private readonly IJwtService _jwtService;
 
-        public Handler(JwtService jwtService)
+        public Handler(IJwtService jwtService)
         {
             _jwtService = jwtService;
         }

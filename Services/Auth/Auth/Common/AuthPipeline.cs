@@ -6,10 +6,10 @@ namespace Zeta.Inpark.Auth.Common;
 public class AuthPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
-    private readonly JwtService _jwtService;
+    private readonly IJwtService _jwtService;
     private readonly IHttpContextAccessor _accessor;
     
-    public AuthPipeline(JwtService jwtService, IHttpContextAccessor accessor)
+    public AuthPipeline(IJwtService jwtService, IHttpContextAccessor accessor)
     {
         _jwtService = jwtService;
         _accessor = accessor;
