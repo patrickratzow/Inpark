@@ -15,8 +15,6 @@ class HomeScreen extends HookWidget implements Screen {
     final futures = useRef(Features.setupAll(context));
     final future = useFuture(futures.value);
 
-    ;
-
     Widget body;
     if (future.connectionState == ConnectionState.done) {
       body = SingleChildScrollView(

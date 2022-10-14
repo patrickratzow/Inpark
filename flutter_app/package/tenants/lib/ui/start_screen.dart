@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tenants/ui/park_page.dart';
+import 'package:provider/provider.dart';
+import 'package:tenants/common/button.dart';
+import 'package:tenants/services/location_service.dart';
+import 'package:tenants/ui/park/park_page.dart';
 
 import '../common/color.dart';
+import '../models/location_model.dart';
 
 class StartScreen extends HookWidget {
   const StartScreen({super.key});
@@ -22,11 +26,33 @@ class StartScreen extends HookWidget {
               ),
             ),
             _buildSvg(),
-            _buildGetStartedButton(context)
+            _createButton(context)
           ],
         ),
       ),
     );
+  }
+
+  Widget _createButton(BuildContext context) {
+    var location = Provider.of<LocationModel>(context);
+    return CustomButton.createButton(
+        context,
+        "Kom igang",
+        CustomColor.green.middle,
+        Icon(
+          Icons.arrow_forward,
+          color: CustomColor.green.middle,
+        ),
+        () => {
+              location.getLocation(LocationService()),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => const ParkPage()),
+                ),
+              )
+            },
+        CustomColor.green.lightest);
   }
 
   Widget _buildInparkLogo() {
@@ -46,58 +72,6 @@ class StartScreen extends HookWidget {
         child: SvgPicture.asset(
           "package/tenants/assets/front_page.svg",
           fit: BoxFit.contain,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildGetStartedButton(
-    BuildContext context,
-  ) {
-    final bottomViewPadding = MediaQuery.of(context).viewPadding.bottom;
-
-    return Container(
-      width: double.infinity,
-      color: CustomColor.green.middle,
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: 16,
-          bottom: 16.0 + bottomViewPadding,
-          left: 24,
-          right: 24,
-        ),
-        child: TextButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ParkPage(),
-              ),
-            );
-          },
-          style: TextButton.styleFrom(
-            backgroundColor: CustomColor.green.lightest,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(48.0),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Kom igang",
-                  style: TextStyle(color: CustomColor.green.middle),
-                ),
-                const SizedBox(width: 6),
-                Icon(
-                  Icons.arrow_forward,
-                  color: CustomColor.green.middle,
-                )
-              ],
-            ),
-          ),
         ),
       ),
     );
