@@ -35,9 +35,9 @@ public static class Login
     {
         private readonly AuthDbContext _context;
         private readonly PasswordService _passwordService;
-        private readonly JwtService _jwtService;
+        private readonly IJwtService _jwtService;
 
-        public Handler(AuthDbContext context, PasswordService passwordService, JwtService jwtService)
+        public Handler(AuthDbContext context, PasswordService passwordService, IJwtService jwtService)
         {
             _context = context;
             _passwordService = passwordService;

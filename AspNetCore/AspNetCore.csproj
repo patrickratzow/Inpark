@@ -27,6 +27,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Services\Auth\Auth\Auth.csproj" />
+      <ProjectReference Include="..\Services\Food\Food\Food.csproj" />
       <ProjectReference Include="..\Services\Inpark\Inpark\Inpark.csproj" />
     </ItemGroup>
 

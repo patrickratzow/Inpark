@@ -13,9 +13,15 @@ public class JwtOptions
 
     public string Secret { get; set; } = string.Empty;
     public double ValidForMinutes { get; set; } = 0;
-} 
+}
 
-public class JwtService
+public interface IJwtService
+{
+    string GenerateToken(Admin admin);
+    JwtService.JwtValidationResult IsValid(string token);
+}
+
+public class JwtService : IJwtService
 {
     private readonly JwtOptions _options;
 

@@ -9,10 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Features\NewFile1.txt" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="FluentValidation" Version="11.1.0" />
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
       <PackageReference Include="MediatR" Version="10.0.1" />

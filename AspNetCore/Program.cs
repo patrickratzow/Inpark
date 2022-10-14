@@ -8,6 +8,7 @@ using Zeta.Common.Api;
 using Zeta.Common.Api.Jobs;
 using Zeta.Inpark;
 using Zeta.Inpark.Auth;
+using Zeta.Inpark.Food;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddJobs(builder.Configuration);
 builder.Services.AddTenantManager();
 builder.Services.AddInpark(builder.Configuration);
 builder.Services.AddAuth(builder.Configuration);
+builder.Services.AddFood(builder.Configuration);
 
 if (builder.Configuration["Azure:Insights:Enabled"] is "true")
 {
