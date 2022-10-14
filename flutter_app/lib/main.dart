@@ -284,6 +284,7 @@ class MyApp extends HookWidget {
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
+        //NavigationScreen() or StartScreen(),
         home: const StartScreen(),
         theme: ThemeData(
           brightness: Brightness.light,

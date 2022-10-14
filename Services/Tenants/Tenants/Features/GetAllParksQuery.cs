@@ -25,7 +25,7 @@ public class GetAllParksHandler : IRequestHandler<GetAllParksQuery, OneOf<List<P
             var address = new AddressDto(x.Address.Street, x.Address.Number, x.Address.ZipCode, x.Address.City);
             var gpsLocation = new GpsLocationDto(x.Location.X, x.Location.Y);
 
-            return new ParkDto(x.Name, x.ImageUrl, address, gpsLocation);
+            return new ParkDto(x.Id, x.Name, x.ImageUrl, address, gpsLocation);
         });
 
         return parkDtos.ToList();
