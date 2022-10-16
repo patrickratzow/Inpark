@@ -12,12 +12,10 @@ class DistanceToPark extends HookWidget {
 
   const DistanceToPark({super.key, required this.park});
 
-  //Use location service
-
   @override
   Widget build(BuildContext context) {
     var userLocation = Provider.of<LocationModel>(context);
-    print("latitude er: ${userLocation.currentPosition?.latitude}");
+    userLocation.subscribeToLocation();
 
     return Container(
         decoration: BoxDecoration(

@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:tenants/common/button.dart';
-import 'package:tenants/services/location_service.dart';
 import 'package:tenants/ui/park/park_page.dart';
 
 import '../common/color.dart';
@@ -44,7 +43,6 @@ class StartScreen extends HookWidget {
           color: CustomColor.green.middle,
         ),
         () => {
-              location.getLocation(LocationService()),
               Navigator.push(
                 context,
                 MaterialPageRoute(
