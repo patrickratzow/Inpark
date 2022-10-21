@@ -8,26 +8,42 @@ import 'package:tenants/services/location_service.dart';
 class LocationModel extends ChangeNotifier {
   LocationPermission permission = LocationPermission.unableToDetermine;
   Position? currentPosition;
-  late StreamSubscription<Position> positionStream;
 
   bool loading = false;
 
-  Future getLocation() async {
+  Future subscribeToLocation() async {
     var locationService = LocationService();
 
     try {
       loading = true;
-      notifyListeners();
-      var positionStream = await locationService.determinePosition();
-      positionStream.listen((Position position) {
-        print("Position is $position");
-        currentPosition = position;
-        notifyListeners();
-      });
+
+      var positionStream = await listenToLocation(locationService);
+
+      if (positionStream is Stream<Position>) {
+        positionStream.listen((Position position) {
+          print("Position is $position");
+          currentPosition = position;
+          notifyListeners();
+        });
+      }
+    } catch (error) {
+      print("stream error: $error");
+      return error;
     } finally {
       loading = false;
       notifyListeners();
     }
+  }
+
+  Future<dynamic> listenToLocation(LocationService locationService) async {
+    var hasPermission = await locationService.hasPermission();
+    if (!hasPermission) {
+      var result = await locationService.requestPermission();
+      print("Permission: " + result);
+      return result;
+    }
+
+    return locationService.streamPosition();
   }
 
   String calculateDistance(lat1, lon1, lat2, lon2) {

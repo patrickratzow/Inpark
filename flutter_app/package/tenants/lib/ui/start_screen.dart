@@ -43,7 +43,6 @@ class StartScreen extends HookWidget {
           color: CustomColor.green.middle,
         ),
         () => {
-              location.subscribeToLocation(),
               Navigator.push(
                 context,
                 MaterialPageRoute(

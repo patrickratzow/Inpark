@@ -9,48 +9,56 @@ class LocationService {
 
   LocationService._internal();
 
-  final LocationSettings locationSettings = const LocationSettings(
-    accuracy: LocationAccuracy.high,
-    distanceFilter: 100,
-  );
-  Position? pos;
-
-  /// Determine the current position of the device.
-  ///
-  /// When the location services are not enabled or permissions
-  /// are denied the `Future` will return an error.
-  Future<Stream<Position>> determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-      return Future.error('Location services are disabled.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
-
+  Stream<Position> streamPosition() {
+    const LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 100,
+    );
     return Geolocator.getPositionStream(locationSettings: locationSettings);
   }
+
+  Future<bool> serviceEnabled() async {
+    var serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error("Location services are disabled.");
+    }
+
+    return serviceEnabled;
+  }
+
+  Future<bool> hasPermission() async {
+    var permission = await Geolocator.checkPermission();
+    return permission != LocationPermission.denied;
+  }
+
+  Future requestPermission() async {
+    var permission = await Geolocator.requestPermission();
+    switch (permission) {
+      case LocationPermission.denied:
+        return LocationPermission.denied;
+      case LocationPermission.deniedForever:
+        return LocationPermission.deniedForever.name;
+      case LocationPermission.whileInUse:
+        // TODO: Handle this case.
+        break;
+      case LocationPermission.always:
+        // TODO: Handle this case.
+        break;
+      case LocationPermission.unableToDetermine:
+        // TODO: Handle this case.
+        break;
+    }
+  }
 }
+
+
+
+/**
+ * var hasPermissions = await locationService.hasPermissions;
+    if (!hasPermissions) {
+      var result = locationService.requestPermissions();
+      // handle if they said no idk?
+    }
+
+return await locationService.streamLocation();
+ */
