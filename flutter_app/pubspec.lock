@@ -969,8 +969,8 @@ packages:
   plugin:
     dependency: "direct main"
     description:
-      path: "C:\\Users\\Nikol\\OneDrive\\Dokumenter\\GitHub\\Zoo\\flutter_app\\package\\plugin"
-      relative: false
+      path: "package/plugin"
+      relative: true
     source: path
     version: "0.0.1"
   plugin_platform_interface:
@@ -1226,8 +1226,8 @@ packages:
   tenants:
     dependency: "direct main"
     description:
-      path: "C:\\Users\\Nikol\\OneDrive\\Dokumenter\\GitHub\\Zoo\\flutter_app\\package\\tenants"
-      relative: false
+      path: "package/tenants"
+      relative: true
     source: path
     version: "0.0.1"
   term_glyph:

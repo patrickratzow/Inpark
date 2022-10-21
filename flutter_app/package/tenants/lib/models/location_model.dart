@@ -12,13 +12,18 @@ class LocationModel extends ChangeNotifier {
 
   bool loading = false;
 
-  Future<Position> getLocation(LocationService locationService) async {
+  Future getLocation() async {
+    var locationService = LocationService();
+
     try {
       loading = true;
       notifyListeners();
-      var getPosition = await locationService.determinePosition();
-
-      return currentPosition = getPosition;
+      var positionStream = await locationService.determinePosition();
+      positionStream.listen((Position position) {
+        print("Position is $position");
+        currentPosition = position;
+        notifyListeners();
+      });
     } finally {
       loading = false;
       notifyListeners();

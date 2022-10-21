@@ -87,7 +87,7 @@ public static class EntityTestSource
                 var value = (dynamic)valid;
                 var compiled = value.Compile();
                 var valueName = GetValueName(value);
-                var tester = new EntityTester(instance, key, compiled, true, valueName);
+                var tester = new EntityTester(instance, key, compiled, true, valueName, value);
                 entityTesters.Add(tester);
 
                 yield return new object[]
@@ -100,7 +100,7 @@ public static class EntityTestSource
                 var value = (dynamic)invalid;
                 var compiled = value.Compile();
                 var valueName = GetValueName(value);
-                var tester = new EntityTester(instance, key, compiled, false, valueName);
+                var tester = new EntityTester(instance, key, compiled, false, valueName, value);
                 entityTesters.Add(tester);
 
                 yield return new object[]
@@ -230,15 +230,17 @@ public class EntityTester : IEntityTester
     private readonly object _entity;
     private readonly bool _shouldSucceed;
     private readonly string _valueName;
+    private readonly dynamic _func;
 
     public EntityTester(object entity, string propertyName, dynamic compiledFunc, bool shouldSucceed,
-        string valueName)
+        string valueName, dynamic func)
     {
         _entity = entity;
         PropertyName = propertyName;
         _compiledFunc = compiledFunc;
         _shouldSucceed = shouldSucceed;
         _valueName = valueName;
+        _func = func;
     }
 
     public string PropertyName { get; }
@@ -273,7 +275,7 @@ public class EntityTester : IEntityTester
             validateMethod?.Invoke(_entity, Array.Empty<object>());
 
             if (!_shouldSucceed)
-                throw new Exception("Excepted to fail :(");
+                throw new($"Excepted to fail :(. Expression: {_func}");
         }
         catch (TargetInvocationException)
         {

@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Zeta.Common.Api;
@@ -12,6 +13,25 @@ public record AddHourColorCommand(
     DateTime End, 
     string Color
 ) : IRequest<OneOf<Unit, TimeRangeAlreadyHasAColor>>;
+
+public class AddHourColorCommandValidator : AbstractValidator<AddHourColorCommand>
+{
+    public AddHourColorCommandValidator()
+    {
+        RuleFor(x => x.Id).NotEmpty();
+        RuleFor(x => x.Start).NotEmpty();
+        RuleFor(x => x.End).NotEmpty();
+        RuleFor(x => x.Color).NotEmpty();
+        
+        When(x => x.Color.StartsWith("#"), () =>
+        {
+            RuleFor(x => x.Color).Length(7);
+        }).Otherwise(() =>
+        {
+            RuleFor(x => x.Color).Length(6);
+        });
+    }
+}
 
 public class AddHourColorCommandHandler : IRequestHandler<AddHourColorCommand, 
     OneOf<Unit, TimeRangeAlreadyHasAColor>>

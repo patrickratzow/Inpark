@@ -36,4 +36,11 @@ public class EntityTests
         new object[] { typeof(ParkEvent), new[] { typeof(Entity), typeof(ValueObject) }, new Type[] { } }
     )]
     public void ParkEventTests(IEntityTester tester) => tester.Run();
+    
+    [TestCaseSource(
+        typeof(EntityTestSource),
+        nameof(EntityTestSource.Test),
+        new object[] { typeof(HourRange), new[] { typeof(Entity), typeof(ValueObject) }, new Type[] { } }
+    )]
+    public void HourRangeTests(IEntityTester tester) => tester.Run();
 }

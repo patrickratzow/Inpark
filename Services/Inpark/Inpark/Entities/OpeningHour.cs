@@ -17,7 +17,7 @@ public class OpeningHour : Entity
     public WeekDay Days { get; private set; }
     public bool Open { get; private set; }
 
-    private Dictionary<string, string> _fields { get; set; } = new();
+    private Dictionary<string, string> _fields = new();
     public IReadOnlyDictionary<string, string> Fields
     {
         get => _fields;

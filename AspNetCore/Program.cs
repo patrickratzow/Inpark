@@ -102,6 +102,7 @@ app.UseFluentValidationExceptionHandler();
 app.UseAuth(builder.Environment);
 //app.UsePayments();
 app.UseInpark(builder.Environment);
+app.UseFood(builder.Environment);
 
 app.UseHttpsRedirection();
 

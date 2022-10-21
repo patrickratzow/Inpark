@@ -2,13 +2,16 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Zeta.Inpark.Food.Common;
+using Zeta.Inpark.Food.Entities;
 
 namespace Zeta.Inpark.Food;
 
 public class FoodDbContext : DbContext
 {
     private readonly ILoggerFactory _loggerFactory;
-
+    
+    public DbSet<Merchant> Merchants { get; private set; } = null!;
+    
     public FoodDbContext()
     {
     }

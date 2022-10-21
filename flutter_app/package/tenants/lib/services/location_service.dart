@@ -19,7 +19,7 @@ class LocationService {
   ///
   /// When the location services are not enabled or permissions
   /// are denied the `Future` will return an error.
-  Future<Position> determinePosition() async {
+  Future<Stream<Position>> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -51,20 +51,6 @@ class LocationService {
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
-    StreamSubscription<Position> positionStream =
-        Geolocator.getPositionStream(locationSettings: locationSettings)
-            .listen((Position? position) {
-      print(pos);
-      print(position);
-      print(pos);
-
-      pos = position;
-      print(position == null
-          ? 'Unknown'
-          : '${position.latitude.toString()}, ${position.longitude.toString()}');
-    });
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
+    return Geolocator.getPositionStream(locationSettings: locationSettings);
   }
 }

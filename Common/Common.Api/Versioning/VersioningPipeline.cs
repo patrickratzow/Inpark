@@ -6,7 +6,7 @@ namespace Zeta.Common.Api.Versioning;
 public class VersioningPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
-    private IVersionService _versionService;
+    private readonly IVersionService _versionService;
 
     public VersioningPipeline(IVersionService versionService)
     {

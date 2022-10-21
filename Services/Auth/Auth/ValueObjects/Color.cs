@@ -31,7 +31,7 @@ public class ColorValidator : AbstractValidator<Color>
     {
         RuleFor(x => x.Value)
             .NotEmpty()
-            .Length(6)
+            .Length(6, 7)
             // Used to check if the string is a valid hex color
             .Must(x => int.TryParse(x, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out _));
     }
