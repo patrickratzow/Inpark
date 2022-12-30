@@ -39,7 +39,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: "AIzaSyD25ZV0tZ1xT9SpkxhZmMLHlkGI58liLsA",
+    apiKey: "",
     appId: "1:237063156596:web:6c1b27050a495d4b26f221",
     messagingSenderId: "237063156596",
     projectId: "zooinator",
@@ -49,7 +49,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: "AIzaSyBD3h7O3S4bFKdebGB0okmhtocLVFYb6bk",
+    apiKey: "",
     appId: "1:237063156596:android:3b616501ba84d13f26f221",
     messagingSenderId: "237063156596",
     projectId: "zooinator",
@@ -57,7 +57,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: "AIzaSyA7jhYhgLEW5eJBRaF46H4AQzCOujN18r4",
+    apiKey: "",
     appId: "1:237063156596:ios:36b6c9066f7cdbfe26f221",
     messagingSenderId: "237063156596",
     projectId: "zooinator",
